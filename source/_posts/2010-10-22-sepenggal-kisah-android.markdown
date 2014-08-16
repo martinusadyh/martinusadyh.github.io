@@ -1,0 +1,182 @@
+---
+comments: true
+date: 2010-10-22 03:29:30+00:00
+layout: post
+slug: sepenggal-kisah-android
+title: Sepenggal Kisah Android
+wordpress_id: 1040
+categories:
+- Android
+- Blogging
+tags:
+- Android
+- android sdk
+- Apple
+- BB
+- BlackBerry
+- HTC
+- HTC Desire
+- iPhone 4
+- Steve Jobs
+---
+
+Waaaw... baru tahu, ternyata Android baru saja ber Ulang Tahun :) Pada Ulang Tahun ke 2-nya ini, om **Lucky Sebastian** dari milis [id-android@googlegroups.com](mailto:id-android@googlegroups.com) membagikan sebuah kisah perjalanan si **"Robot Ijo"** berdasarkan pengalaman beliau sendiri :) Nah yuuuk, mari kita simak sama-sama tulisan beliau dibawah ini :
+
+Guys, apa kabar.
+
+Kiranya sekarang sudah banyak yang mendengar tentang android dan boomingnya. Dalam tulisan iseng ini, saya mau berbagi cerita tentang awal mulanya android kenapa bisa muncul, sudah sampai mana dan mau kemana. Tulisan ini sebagian pernah saya ceritakan sebagai bagian presentasi dalam gathering id-android yg entah ke berapa kali, dan sedikit dalam peluncuran Dell Streak. Kiranya bermanfaat buat android lover dan gadgeteer lainnya, untuk melihat semangat yang dikandung android di dalamnya.
+
+Suatu ketika Google, raksasa search engine, membeli Android inc, yang dipimpin Andy Rubin. Setelah dibeli, Google mengangkat Andy Rubin sebagai Vice President of Engineering urusan android, google menyadari, Andy Rubin yang berkutat di android adalah orang yang paling mengerti tentang android, orang ini tetap harus memimpin.
+
+(Bandingkan dengan kisah Steve Jobs di Apple inc, dia yang membuat apple, dia memberi rohnya, saat membesarkan Apple, eh dia bisa disingkirkan dari Apple sampai harus membuat Next computer, dan akhirnya kembali ke Apple menghasilkan kejayaan)
+
+Saat itu digelar meeting, untuk mendengarkan visi dan misi dari Android yang dibawakan oleh Andy Rubin. Hadir disana adalah VP Engineering google, Vic Gundotra. Ketika meeting baru mulai dan Andy siap memaparkan apa itu android, Vic langsung menyela dengan skeptis, dengan pertanyaan:
+
+**"Andy, apa dunia ini benar masih butuh mobile operating system lain?"**
+<!-- more -->
+Usaha google adalah di mesin pencari dan iklan, dan mesin pencari google sudah ada disetiap smartphone. Saat itu di dunia sudah ada banyak operating system, ada Windows Mobile, ada Blackberry, ada Symbian , dan ada rajanya smartphone, Apple dengan iPhone or iOS nya, belum lagi operating system kecil lain .
+
+Dan Andy menjelaskan demikian, ada 2 point utama kenapa android harus dibuat.
+
+**Point pertama.**
+Saat ini kita sedang kritis, dan butuh sebuah operating system yang free dan terbuka (open source) supaya setiap developer bisa bebas berinovasi di setiap level di dalamnya. Dengan cara ini para pembuat handset atau vendor  bisa membuat handset sesuai keinginannya, boleh layar 2", 3" atau 4". Boleh pakai keyboard, boleh tidak., boleh ada kamera depan atau tidak...
+
+Dan nanti semua operator bisa ikut bergabung bersama sesuai kemampuan mereka, boleh 2G, 3G, 4G, LTE, Wimax, boleh CDMA boleh GSM dll.
+
+Akhirnya nanti adalah konsumen yang diuntungkan, mereka bisa menentukan sendiri handset smartphone android mana yang terbaik menurut mereka, sesuai kebutuhan, kemampuan dan operator yang menjadi pilihan mereka.
+
+----- dan begitulah dasar dari android yang ada sekarang, dalam usia masuk 2 tahun, android ada di berbagai merk, ada yg murah , ada yang mahal, ada yg
+layar 2 inch, 3" , 4" bahkan 5" dan 7", ada yang kecepatan prosesornya 300Mhz, ada yang 1Ghz, dan ada yang lebih dari itu , ada yang berkeyboard, ada yang berlayar sentuh kapasitif, resistif, berkamera depan, berkamera 3MP, 5MP, 8MP dll, juga dengan berbagai dukungan operator berbeda-beda, android fit di dalamnya.--------
+
+**Point ke 2.**
+Andy menambahkan point ke 2.
+Karena kini google adalah raksasa IT, google punya kemampuan. **Kalau google diam saja, maka dunia akan menghadapi Draconian Future** --(draconian future mengacu kepada jaman Yunani ketika seorang bernama Draco menjadi pengatur hukum disana, dimana pelanggaran kecil saja mendapat hukuman yang berat)--- masa depan yang "sulit" dimana nanti di depan hanya akan ada:
+
+
+
+
+  1. 1 Orang
+
+
+  2. 1 Perusahaan
+
+
+  3. 1 Operating System
+
+
+  4. dan 1 Operator saja yang bisa  jadi pilihan konsumen...
+
+
+That's the future we don't want ...
+
+(dan sekarang yg baca bertanya-tanya siapa yang dimaksud oleh Andy Rubin sebagai 1 penguasa? , kuncinya adalah tahun 1984 :-))
+
+Pembicaraan ditutup dengan kata2 ini:
+
+Jadi jika kita adalah orang yang
+
+percaya akan:
+Keterbukaan,
+
+percaya akan
+Pilihan
+
+dan percaya akan
+Inovasi
+yang bisa dilakukan semua orang
+
+Selamat datang di Android!
+
+
+Semangat ini yang membawa Android terus berevolusi sampai sekarang, maka dalam 1,5 tahun kehadiran android, sudah dipercaya oleh:
+
+
+  1. 59 Operator
+
+
+  2. 48 Negara
+
+
+  3. 21 OEM
+
+
+  4. 100 ribu aplikasi
+
+
+  5. 200ribu android baru diaktivasi setiap hari.
+
+
+Data sekarang sepertinya jauh lebih banyak, data ini kira2 ada di bulan Juni-Juli 2010.
+
+Sekarang, pada hari ini 21 Oktober 2010, android genap berumur 2 tahun. Dalam umur yang sangat muda, kita merasakah euforia nya merangsek semua aspek, silahkan buka semua grafik yang ada tentang android, semua menyatakan gerakan yang menaik, setiap hari berita-berita gadgets diisi oleh android, setiap beberapa hari android model baru di launching. Semua aspek , semua level konsumen hampir bisa menggunakan android sebagai pilihannya, mau yang murah dikepala 1 juta ada, mau yang tercanggih dan cepat ada, mau yang level mid ada, mau cdma, mau gsm, mau yang bisa hsdpa, mau yang 4G, semua ada.
+
+Sebuah gerakan keterbukaan dan gratis (open source dan free) , membuat pandangan tentang sesuatu yang gratis biasanya tidak bagus, dijungkir balikkan. Lihat aplikasi2 dari google yang gratis tanpa harus bayar, we can say itu adalah aplikasi2 terbaik dibanding yang harus berbayar sekalipun. Lihat mereka yang cepat tanggap dan langsung berani menaiki perahu keterbukaan ini, misalnya Motorola, ketika diambang keterpurukan ketika tidak mampu bersaing dengan merk2 lain dalam hal inovasi, langsung menanjak bahkan memperoleh anugerah best smartphone 2009, dan sekarang adalah merk yang sangat berinovasi dengan android nya di banyak level. Dengan berani boss Motorola berkata :"kedepan motorola hanya akan membuat smartphone android  :-)  "
+
+Lihat HTC, sama2 langsung berani percaya kepada google dan menjadi partner terbaik, sekarang namanya bersinar di dunia sebagai pembuat smartphone kelas atas dan membukukan keuntungan naik 60% dalam setahun.
+
+Samsung melakukan gebrakan, mengusung android dan langsung berani fight dengan sang raksasa iPhone, sekarang SGS terjual jutaan dalam waktu singkat, ada di banyak negara, dengan variasi type dan diusung operator kelas atas.
+
+Nokia , terlena dengan keberhasilannya yang panjang, lupa dan lambat berinovasi, sekarang sulit mengejar 2 raksasa , android dan iPhone. Hanya bisa mengejek ketika ditanya kenapa tidak ikut segera masuk ke kapal android, " hanya seperti anak kecil yang kencing dalam celana waktu musim dingin, untuk merasakan kehangatan sesaat" begitu kira2 komentar CEO Nokia, dan kini proyek meego nya masih harus berjuang keras membuktikan diri untuk bersaing dengan raksasa android dan iphone yang terus berlari berkejaran, setelah langkahnya membuat segala macam OVI untuk menyaingi rival penggerusnya BlackBerry kandas.
+
+Blackberry menyadari, dia sangat hebat di sosialita dan server, tapi untuk menggapai level emas smartphone terbaik masih harus digapai lebih keras, ketika usahanya berevolusi di blackberry OS 6 , BB Torch masih dianggap belum selevel duo raksasa. Ini seperti dalam sekolah SMA, biasanya ada seorang murid yang menjadi idola, ganteng, ramah tamah, banyak teman dan disukai banyak orang juga terkenal disekolah. Tapi nanti yang namanya ada dihalaman khusus di buku tahunan, dan terpajang namanya di dinding hall of fame sekolah adalah bukan yang terganteng dan banyak teman, tapi selalu : lulusan terbaik. Dan calon lulusan terbaik itu adalah android dan iPhone.
+
+Itulah fakta yang berbicara dalam 2 tahun ini, tentang keterbukaan, pilihan dan inovasi. Dan sekarang dipuncak pertarungan hanya ada 2 raksasa, android dan iPhone. (entahlah windows phone 7 akan jadi raksasa yg lain atau tetap akan ada 2 raksasa)
+
+Mari saya bercerita sedikit tentang pengalaman saya dengan android, mengapa saya tergila2 dengan nya. 
+
+Dulu tahun 2009 saya pernah bercerita tentang why i left blackberry and move on to android, ketika saya memutuskan berganti "kendaraan" dari bb ke android, padahal saat itu BB sedang ada di puncak, dan android baru nongol sebagai handset model ke 2 yang ada di pasaran. Sekarang sudah ada 100 bahkan  lebih model handset android. Saat itu android belum sehebat sekarang, sama seperti saya mengenang ketika pertama mencoba iPhone 2G, saat itu iPhone juga belum sehebat sekarang.
+
+Akhir tahun 2009 google mengumumkan merelease  the Nexus One, lompatan android pertama dengan spek tinggi yang melampaui spek iPhone 3Gs sekalipun, membuat oom Steve Jobs ngambek dengan mengatakan " kita tidak masuk ke bisnis mesin pencari, kenapa sekarang google masuk bersaing ke bisnis kita di smartphone!" ( I Love Steve Jobs, kisah hidupnya, visinya, speechnya  luar biasa dan saya mengamini dia memang pantas menjadi icon yang membawa perubahaan besar bagi teknologi dunia). Saya pernah bercerita juga tentang ini (di ketika google bermain cantik) bahwa ternyata dugaan oom Steve salah, google bermaksud lain ketika membuat Nexus One, dan hasilnya nyata, google hanya mendorong lebih jauh vendor2 lain untuk mengayuh lebih cepat, makanya dalam tahun 2010 ini perkembangan smartphone menjadi luar biasa cepat, speed tinggi, layar makin cantik, user interface makih hebat dll. Baru keluar yang terhebat, sebentar kemudian ada yang lebih hebat. Beberapa orang mengatakan : cape, baru beli yg terbaik rasanya sudah ada yang lebih baik lagi.
+
+Apple fanboy mengatakan, lebih baik apple, inovasinya jelas, setahun sekali, beli sekarang , tahun depan baru ganti lagi:-)
+Android fanboy mengatakan, we want more! Let's release the new one with more power, more innovation now! Jangan tunda2  :-) 
+
+Sekitar bulan januari-februari lalu saya menjadi (kemungkinan) angkatan pertama yang memiliki nexus one, sekarang usianya menuju 1 tahun, betapa dalam perjalanan memilikinya saya menyaksikan perkembangan yang cepat. Juni 2010, kita mencoba OS android baru yang namanya Froyo 2.2, dan speed tiba2 naik menjadi 2,5 x lebih cepat. Entah sudah berapa puluh macam custom rom saya coba, hasil pengembangan otak2 encer dari luar dan dalam negeri yang menjukkan bakat talentanya. Entah sudah berapa ribu aplikasi saya coba dalam waktu yang singkat.
+
+Saya ingat ketika anak saya minta handphone nya diganti dari sebuah windows mobile yg berantakan ketika jatuh dari motor. Dia memilih iPhone, dan semenjak itu menjadi apple fanboy, cita2 nya 1, menabung untuk membeli iPhone terbaru dan sebuah Mac. Dalam waktu singkat dia sudah jago ngehack iPhone, terampil jailbreak, sehingga memudahkan pekerjaan saya, pulang tinggal kasih iPhone customer ke tangan dia, besok bangun sudah selesai di jailbreak dan diisi aplikasi sampai penuh:-) Waktu dia iseng nyoba2 nexus saya dia berkata: tidak sebagus dan selancar iPhone, saya iyakan. Saya senang isengi dia ketika ada satu aplikasi menarik, saya perlihatkan, dan besoknya dia berkutat akan cari lawannya di iPhone. Ini proses belajar buat dia dan saya untuk melihat lebih terbuka kemajuan dua raksasa.
+
+Keluhannya tentang iPhone kadang hanya masalah menjadi berat ketika terlalu banyak di hack, mendahului masanya bikin iPhone bisa multitasking, bisa dikelompokkan dll, dan kadang dia harus mulai dari awal lagi ketika akhirnya iPhone nya ngehang berkepanjangan. Dan lama2 dia mengeluh menantikan iPhone 4 yg tidak nongol2 , kata dia bosan mau diapain lagi iPhone yang sekarang  :-) 
+
+Saya jadi mengerti kenapa Oom Steve sebel dengan jailbreakers, it makes iPhone tidak menunjukkan karisma flawlesly nya lagi. Disatu sisi saya melihat apple fanboys yang jago jailbreak rindu yang namanya inovasi segera, menambahkan apa yang dirasa kurang disana, yang kalau ditunggu harap2 cemas apakah akan dimasukkan dalam edisi iPhone berikutnya tahun depan. Oom Steve Jobs adalah orang yang perfectionist, jangan berharap akan masuk ranah wimax atau LTE, sebelum wimax dan LTE menjadi umum dan terlihat jalan baik. (saat iphone 2g keluar, dunia lagi test koneksi 3G) Android berbeda, dia menurut saya seperti Star Trek, " to boldly go where no one has gone before..." makanya segera ada HTC Evo 4, samsung epic dan ada desire Z.
+
+One day saya pulang bawa iPhone 4, anak saya begitu senang, langsung dia test, segala macam dia install termasuk film2 hasil convert nya. Ketika duduk bersama saya bilang  ayo kita lihat siapa lebih snappy sekarang, pertama kita coba scroll, betapa kaget dia melihat, dulu sama iPhone 3G aja kalah snappy itu nexus, sekarang nexus yang sama bisa lebih snappy dari iPhone 4:-) Dia tidak percaya , dibilangnya saya ganti sama handset android baru, setelah mencoba sendiri dia percaya itu nexus saya yang lama. Besoknya dia mengembalikan iPhone 4 nya, saya tanya kenapa, dia bilang dia tidak tertarik lagi, hanya mendapat gambar yang lebih bagus saja tidak ada yg bisa dioprek lebih jauh... tidak jauh beda sama iPhone nya yang lama. (saya rasa dia mengoprek terlalu jauh, sehingga apa yang ada sekarang di iPhone4 dulu sudah dirasakannya walau tidak sehebat pengalaman aslinya)
+
+Pada cerita diatas saya bukan meledek iPhone jelek, nope sama sekali tidak, iPhone 4 sangat bagus. Beberapa kali saya tergoda untuk memakainya, tapi user experience nya belum nempel buat saya, seperti baju yang keren, tapi tidak membuat saya merasa nyaman. Caranya mengolah email, notification, dan ketergantungan yang tidak henti kepada iTunes not fit for me walau aplikasi2 nya luar biasa hebat.
+
+Butuh 1 tahun dari iPhone 2G ke 3G untuk menikmati forwarding sms, dan copy paste, butuh 1 tahun untuk ke 3Gs untuk bisa punya kompas dan autofokus camera, dan butuh 1 tahun lagi untuk bisa multitasking di iPhone 4. 
+
+Setiap bulan semenjak memakai Nexus, **saya mengalami seolah2 selalu memiliki handset baru**, dulu bisanya hanya ini, sekarang bisa itu, dulu speed saya hanya segini, sekarang saya bisa melewati barriernya:-) Menurut saya ini adalah hasil dari keterbukaan dan inovasi setiap level yang boleh dilakukan semua orang. Saya sekarang sangat nyaman dengan Nexus one yang sangat cepat dan snappy, dan sudah tidak sabar menantikan inovasi di Gingerbread, android 3.0!
+
+Keterbukaan bukan disukai semua orang, seperti baru saja Oom Steve dalam wawancara dengan macworld menyinggung masalah fragmentasi di android dan masalah keterbukaan android dibanding dengan ketertutupan apple. Oom SJ menyinggung masalah android market, akan ada market dari bestbuy, dari amazon, dari verizon , vodafone dan dari google sendiri, (belum lagi market2 lokal) , dikatakan ini akan membuat developer bingung. (setiap cerita oom steve selalu bawa developers, bahwa apple adalah yang terbaik yang mengayomi developers, disatu sisi ini menunjukkan pengakuan bahwa iphone menjadi hebat karena inovasi dan dukungan developer? :-))
+
+Sebelumnya masalah ini pernah dibawa menjadi pertanyaan ke google, why google membiarkan ada "toko" aplikasi lain selain android market? Tidakkah membuat google rugi? Pertama google bercerita , bahwa komitmen mereka terhadap keterbukaan (open source) jelas, bolehnya dibuat toko aplikasi lain sah sah saja, ini dianggap memperkaya keterbukaan tersebut, developer boleh memilih mana yang fit buat mereka, sama dengan cerita diatas konsumen android boleh pilih type android mana dan operator mana yang dianggap paling fit buat mereka.
+
+Google tidak berbisnis jualan aplikasi, Oom Steve iya di appsore nya. Tidak ada kerugian buat google ada toko aplikasi yg hasil penjualannya tidak masuk ke kas google, karena itu bukan core bisnis google, core bisnis google di iklan  :-)  Dengan banyaknya android, sekarang pertumbuhan hit iklan di android naik 5x lipat. Ini seperti memberi petani lahan gratis, ujung2 nya menang pilkada  :-) 
+
+Kalau ada appstore lain di iphone tentu ini mengurangi pendapatan oom Steve secara signifikan, karena jualan lagu dan aplikasi disana sumbangan buat apple sangat-sangat besar. Kalau saya jadi Oom Steve, memang itu langkah logis paling cengli, harus bisa monopoli:-)
+
+Masalah opensource android bukan hanya diuji di toko aplikasi, beberapa handset android keluar dengan mesin pencari bukan google, melainkan Bing dari microsoft atau Yahoo search. Google diminta komentarnya, menurut pandangan orang2 itu memang kurang ajar, sudah jelas2 android punya google dan anda ganti mesin pencarinya dengan yg lain. Google dengan tenang hanya menjawab, "kalau kami melarang mesin pencari lain, bukankah itu mencederai semangat open source?" Makanya dengan free anda bisa mencari aplikasi pencari lain di market android, diantaranya Bing dan Yahoo search...  :-)  but kita2 tahu siapa yang bisa diandalkan.(kalau waktu itu gosip iPhone baru akan memakai Bing sebagai mesin pencari pengganti google menjadi kenyataan, bagaimana rasanya memiliki sebuah iPhone?  I thing you'll miss something big   :-) 
+
+Di android ada banyak aplikasi untuk sebuah browser, xscope, dolphine HD, Opera, Fennec (firefox), skyfire dll... apa yang menurut kita lebih nyaman atau lebih baik silahkan dipakai bersama chrome lite bawaan android bahkan menggantikannya. Butuh berapa generasi iPhone sampai opera dijinkan ada sebagai pendamping safari browser?
+
+Fragmentasi diangkat besar2 oleh Oom Steve kemarin itu, sebagai masalah besar di android, salah satu contohnya bahwa butuh 100 lebih macam aplikasi Tweet deck (oom SJ keseleo menyebutnya TwitterDeck) untuk fit di 244 macam handset android (sekarang kita tahu ada 244 macam handset android, how fast, juni lalu di Google IO baru around 60-80 macam). Tapi ternyata besoknya dijawab oleh boss TweetDeck bahwa hanya ada 2 orang yang ngurusin aplikasi tweetdeck untuk android, menunjukkan fragmentasi hanya masalah kecil.
+
+Fragmentasi saya lihat terjadi kalau vendor lambat mengikuti arus, misal sony ericsson yang dari awal bikin handset di bulan Juni x10, dilanjutkan x10 mini,  mini pro, dan sampai sekarang yang terbaru x8 tetap pakai donut 1.6 didalamnya, maka akan mengalami aplikasi2 baru tidak bisa jalan di handsetnya ketika developer membuatnya untuk OS yang lebih maju. Kemungkinan dengan ini google mengajari ayo maju-maju, kalau nanti tidak inovasi kamu dilibas yang lain. Jadi ketika mau ikut keberhasilan didalam perahu android, selain menghasilkan handset yang layak jual, vendor juga harus ikut mendayung, kalau tidak tertinggal dan dilupakan.
+
+Benar ada masalah fragmentasi di android, tapi no big deals seperti diceritakan diatas. Apakah masalah ini tidak ada di iPhone? Dengan rajinnya sekarang iPhone berperang dengan lock jailbreak, setiap beberapa saat ada upgrade, 4.0, 4.01. 4.02, 4.1 dan mau 4.2 . Kalau kita rajin mendownloadnya bayangkan berapa giga habis untuk OS ini, karena iphone OS nya sudah menyentuh 500-600 Mega:-) Dan tidak semua aplikasi yang tadinya jalan di OS yang satu akan jalan di OS mendatang  :-) 
+
+Oom Steve , senang dengan angka2, penjualan iPhone sekian juta, mengalahkan RIM dll (walau kemudian dibantah oleh RIM juga), jangan suka tergiur dengan angka2. Look at Nokia, terlalu asik dengan angka2 penjualannya sampai lupa berinovasi, dan a little too late sekarang untuk mengejar perahu iPhone dan android yg asik ngebut. Walau tahun 2012 symbian akan tetap nomer 1 dalam hal jumlah, tapi tidak lagi ada gengsi memakainya. Jangan nanti suatu saat speech oom Steve yang memberikan banyak inspirasi hanya tinggal angka2... **Kalau oom Steve berhenti berinovasi, saya takut android juga berhenti, coz no one to fight for**  :-) 
+
+**
+Selamat ulang tahun ke 2 android
+Keep Open Source
+Keep open for choices
+Keep Innovation
+
+Senang kamu hadir menjadi penyeimbang, so we don't face a draconian future...
+**
+
+Salam,
+
+Lucky Sebastian
+

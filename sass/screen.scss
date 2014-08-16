@@ -1,10 +1,11 @@
 @import "compass";
 @include global-reset;
+@include reset-html5;
+@import "font-awesome/font-awesome.scss";
 
 @import "custom/colors";
 @import "custom/fonts";
 @import "custom/layout";
 @import "base";
 @import "partials";
-@import "plugins/**/*";
 @import "custom/styles";
