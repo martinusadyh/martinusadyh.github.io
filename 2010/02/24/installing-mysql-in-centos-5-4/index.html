@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Installing MySQL in CentOS 5.4 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Kalau dulu kita sudah pernah install dan konfigurasi MySQL pada Slackware dan OpenSolaris, sekarang bagaimana jika kita install di distro CentOS ??? &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/02/24/installing-mysql-in-centos-5-4/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Installing MySQL in CentOS 5.4</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-24T03:14:22+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Kalau dulu kita sudah pernah install dan konfigurasi <a href="http://www.mysql.com/downloads/">MySQL</a> pada <a href="http://martinusadyh.web.id/2009/09/27/konfigurasi-mysql-di-slackware-130/">Slackware</a> dan <a href="http://martinusadyh.web.id/2009/03/28/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/">OpenSolaris</a>, sekarang bagaimana jika kita install di distro <a href="http://centos.org/">CentOS</a> ??? Cara install-nya sih <strong>berbeda</strong> tapi untuk konfigurasi-nya sama saja. Karena <a href="http://martinusadyh.web.id/2010/02/17/step-by-step-installing-centos-54/">kemarin</a> kita sudah belajar untuk meng-install distro <a href="http://centos.org/">CentOS</a>, sekarang mari kita install dan konfigurasi <a href="http://www.mysql.com/downloads/">MySQL</a>-nya :)</p>
+
+<p>Langkah pertama yang harus dilakukan yaitu bukalah sebuah terminal kemudian ganti akses user anda menjadi <strong>super user</strong> atau <strong>root</strong> dengan mengetikkan perintah <strong>su -</strong> kemudian isikan password <strong>user root</strong> yang terdapat pada sistem anda. Jika sudah, sekarang mari kita install <a href="http://www.mysql.com/downloads/">MySQL</a> dengan menggunakan <strong>yum</strong> dengan cara seperti dibawah ini :
+[plain]
+[root@localhost ~]# yum install mysql-server
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * addons: ftp.oss.eznetsols.org
+ * base: ftp.oss.eznetsols.org
+ * extras: ftp.oss.eznetsols.org
+ * updates: ftp.oss.eznetsols.org
+Setting up Install Process
+Resolving Dependencies
+&ndash;> Running transaction check
+&mdash;> Package mysql-server.i386 0:5.0.77-4.el5_4.1 set to be updated
+&ndash;> Processing Dependency: mysql = 5.0.77-4.el5_4.1 for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient.so.15(libmysqlclient_15) for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient_r.so.15(libmysqlclient_15) for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient.so.15 for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient_r.so.15 for package: mysql-server
+&ndash;> Processing Dependency: perl-DBD-MySQL for package: mysql-server
+&ndash;> Running transaction check
+&mdash;> Package mysql.i386 0:5.0.77-4.el5_4.1 set to be updated
+&mdash;> Package perl-DBD-MySQL.i386 0:3.0007-2.el5 set to be updated
+&ndash;> Finished Dependency Resolution</p>
+
+<p>Dependencies Resolved</p>
+
+<hr />
+
+<h1> Package                   Arch            Version                      Repository          Size</h1>
+
+<p>Installing:
+ mysql-server              i386            5.0.77-4.el5_4.1             updates            9.8 M
+Installing for dependencies:
+ mysql                     i386            5.0.77-4.el5_4.1             updates            4.8 M
+ perl-DBD-MySQL            i386            3.0007-2.el5                 base               148 k</p>
+
+<h1>Transaction Summary</h1>
+
+<p>Install      3 Package(s)       <br/>
+Update       0 Package(s)       <br/>
+Remove       0 Package(s)</p>
+
+<p>Total download size: 15 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/3): perl-DBD-MySQL-3.0007-2.el5.i386.rpm                               | 148 kB     00:11   <br/>
+(2/3): mysql-5.0.77-4.el5_4.1.i386.rpm                                    | 4.8 MB     06:33</p>
+
+<h2>(3/3): mysql-server-5.0.77-4.el5_4.1.i386.rpm                             | 9.8 MB     06:21     </h2>
+
+<p>Total                                                             19 kB/s |  15 MB     13:17   <br/>
+Running rpm_check_debug
+Running Transaction Test
+Finished Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing     : mysql                                                                     1/3
+  Installing     : perl-DBD-MySQL                                                            2/3
+  Installing     : mysql-server                                                              3/3</p>
+
+<p>Installed:
+  mysql-server.i386 0:5.0.77-4.el5_4.1</p>
+
+<p>Dependency Installed:
+  mysql.i386 0:5.0.77-4.el5_4.1                perl-DBD-MySQL.i386 0:3.0007-2.el5</p>
+
+<p>Complete!
+[root@localhost ~]#
+[/plain]</p>
+
+<!-- more -->
+
+
+<p>Setelah proses installasi selesai, sekarang mari kita install tabel-tabel yang berhubungan dengan <a href="http://www.mysql.com/downloads/">MySQL</a> dengan menjalankan perintah <strong>/etc/init.d/mysqld start</strong> seperti dibawah ini :
+[plain]
+[root@localhost ~]# /etc/init.d/mysqld start
+Initializing MySQL database:  Installing MySQL system tables&hellip;
+100209  9:21:00 [Warning] option &lsquo;max_join_size&rsquo;: unsigned value 18446744073709551615 adjusted to 4294967295
+100209  9:21:00 [Warning] option &lsquo;max_join_size&rsquo;: unsigned value 18446744073709551615 adjusted to 4294967295
+OK
+Filling help tables&hellip;
+100209  9:21:01 [Warning] option &lsquo;max_join_size&rsquo;: unsigned value 18446744073709551615 adjusted to 4294967295
+100209  9:21:01 [Warning] option &lsquo;max_join_size&rsquo;: unsigned value 18446744073709551615 adjusted to 4294967295
+OK</p>
+
+<p>To start mysqld at boot time you have to copy
+support-files/mysql.server to the right place for your system</p>
+
+<p>PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+To do so, start the server, then issue the following commands:
+/usr/bin/mysqladmin -u root password &lsquo;new-password&rsquo;
+/usr/bin/mysqladmin -u root -h localhost.localdomain password &lsquo;new-password&rsquo;</p>
+
+<p>Alternatively you can run:
+/usr/bin/mysql_secure_installation</p>
+
+<p>which will also give you the option of removing the test
+databases and anonymous user created by default.  This is
+strongly recommended for production servers.</p>
+
+<p>See the manual for more instructions.</p>
+
+<p>You can start the MySQL daemon with:
+cd /usr ; /usr/bin/mysqld_safe &amp;</p>
+
+<p>You can test the MySQL daemon with mysql-test-run.pl
+cd[root@localhost martin]# /sbin/chkconfig mysqld &ndash;level 2345 on mysql-test ; perl mysql-test-run.pl</p>
+
+<p>Please report any problems with the /usr/bin/mysqlbug script!</p>
+
+<p>The latest information about MySQL is available on the web at
+<a href="http://www.mysql.com">http://www.mysql.com</a>
+Support MySQL by buying support/licenses at <a href="http://shop.mysql.com">http://shop.mysql.com</a>
+                                                           [  OK  ]
+Starting MySQL:                                            [  OK  ]
+[root@localhost ~]#
+[/plain]</p>
+
+<p>Proses inisialisasi tabel untuk <a href="http://www.mysql.com/downloads/">MySQL</a> sudah selesai, sekarang mari kita setting password untuk user <strong>root</strong> <a href="http://www.mysql.com/downloads/">MySQL</a> dan sekaligus menkonfigurasi agara setiap kali <strong>boot</strong> service <a href="http://www.mysql.com/downloads/">MySQL</a> ini dijalankan dengan menggunakan perintah seperti dibawah ini:
+[plain]
+[root@localhost ~]# /usr/bin/mysqladmin -u root password &lsquo;admin&rsquo;
+[root@localhost ~]# /sbin/chkconfig mysqld &ndash;level 2345 on
+[/plain]</p>
+
+<p>Dan untuk mengetes apakah installasi dan konfigurasi <a href="http://www.mysql.com/downloads/">MySQL</a> kita sukses atau tidak, sekarang coba-lah untuk login dengan mengetikkan perintah seperti dibawah ini :
+[plain]
+[root@localhost ~]# mysql -u root -padmin
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.0.77 Source distribution</p>
+
+<p>Type &lsquo;help;&rsquo; or &lsquo;\h&rsquo; for help. Type &lsquo;\c&rsquo; to clear the buffer.</p>
+
+<p>mysql>
+[/plain]</p>
+
+<p>Tingtong &hellip;. service <a href="http://www.mysql.com/downloads/">MySQL</a> kita sudah berjalan sesuai dengan apa yang diharapkan, nah sekarang mari kita lanjutkan pekerjaan masing-masing yang berhubungan dengan DataBase <a href="http://www.mysql.com/downloads/">MySQL</a></p>
+
+<p>Akhir kata, happy coding all  :) :D</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-24T03:14:22+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/database/'>database</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/02/24/installing-mysql-in-centos-5-4/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/02/24/installing-mysql-in-centos-5-4/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/02/22/update-blog/" title="Previous Post: Update Blog">&laquo; Update Blog</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/" title="Next Post: Monitoring MySQL DataBase Server with MySQL Monitor">Monitoring MySQL DataBase Server with MySQL Monitor &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/02/24/installing-mysql-in-centos-5-4/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/02/24/installing-mysql-in-centos-5-4/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

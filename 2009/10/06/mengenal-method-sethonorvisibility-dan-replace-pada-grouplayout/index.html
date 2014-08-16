@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Mengenal Method setHonorVisibility() dan replace() pada GroupLayout - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Buat teman-teman pengguna NetBeans IDE, pasti sudah tahu fitur baru di NetBeans versi 6.7 kan. Yak, adanya penambahan integrasi dengan Project Kenai &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Mengenal Method setHonorVisibility() Dan Replace() Pada GroupLayout</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-06T01:00:05+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Buat teman-teman pengguna NetBeans IDE, pasti sudah tahu fitur baru di NetBeans versi 6.7 kan. Yak, adanya penambahan integrasi dengan <a href="http://kenai.com/">Project Kenai</a> :) Terus terang saya sendiri belum pernah pakai <a href="http://kenai.com/">Project Kenai</a> , tapi kemarin iseng cobain fitur <a href="http://kenai.com/">Project Kenai</a> di NetBeans IDE dan ternyata humm ada yang keren loh :) Mungkin buat yang belum tahu, coba deh lihat di status bar NetBeans versi 6.7.1, disana ada 1 tambahan icon yang tampilan-nya seperti gambar dibawah ini (tempat-nya ada di pojok kanan bawah):
+<a href="http://www.flickr.com/photos/10243554@N02/3984646214/"><img src="http://farm3.static.flickr.com/2625/3984646214_4f3785c631_o.png" alt="ToolBarKenai" /><br/>
+Tampilan Icon Project Kenai Pada StatusBar NetBeans</a></p>
+
+<p>Tidak ada yang spesial dengan icon diatas, tapi sekarang coba klik 2 kali pada icon tersebut kemudian coba deh tekan tombol login tanpa memasukkan username dan password. Dan hasil-nya adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3983879223/"><img src="http://farm4.static.flickr.com/3531/3983879223_ed802dba53_o.png" alt="Login" /><br/>
+Tampilan Awal Login Dialog</a>
+<a href="http://www.flickr.com/photos/10243554@N02/3984646204/"><img src="http://farm3.static.flickr.com/2504/3984646204_e9a747932b_o.png" alt="ProsesLogin" /><br/>
+Ketika Tombol Login Di Tekan</a>
+<a href="http://www.flickr.com/photos/10243554@N02/3984646166/"><img src="http://farm3.static.flickr.com/2674/3984646166_7c84bb4f25_o.png" alt="LoginFailed" /><br/>
+Login Failed, Pesan Kesalahan Berada Pada Posisi JProgressBar</a></p>
+
+<p>Hmm&hellip; ada yang aneh dari <strong>UI</strong> diatas ?? Klo menurut saya ada yang aneh, coba deh lihat lagi pada gambar dialog login dan proses login di atas. JToolBar-nya bisa muncul diantara label <strong>No account on Kenai.com? Sign up now.</strong> dan tombol <strong>Login</strong>. Kenapa aneh, setahu saya klo kita menggunakan <strong>GroupLayout</strong> secara standart dan kita ingin menyembunyikan komponen ditengah-tengah komponen yang lain dengan menggunakan method <strong>setVisible()</strong> hasil-nya pasti jelek :D Ok sekarang mari kita coba, bikinlah 1 project java kemudian tambahkanlah <strong>JDialog</strong> dan design seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3983879193/"><img src="http://farm3.static.flickr.com/2467/3983879193_96563de50e_o.png" alt="DesignLogin" /><br/>
+Design Login Dialog</a></p>
+
+<!-- more -->
+
+
+<p>Nah setelah selesai men-design seperti gambar diatas, sekarang mari kita coba sembunyikan komponen <strong>JProgressBar</strong> dengan menggunakan method <strong>setVisible(false);</strong> Cara-nya yaitu, tambahkan method <strong>setVisible()</strong> pada konstruktor <strong>JDialog</strong> hingga konstruktor kita sekarang menjadi seperti kode dibawah ini :</p>
+
+<pre><code>    /** Creates new form LoginDialog */
+    public LoginDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        jProgressBar1.setVisible(Boolean.FALSE);
+    }
+</code></pre>
+
+<p>Sekarang coba jalankan, dan kita akan mendapatkan tampilan yang tidak kita ingin-kan seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3983879205/"><img src="http://farm4.static.flickr.com/3485/3983879205_1e1c39686c_o.png" alt="DialogUggly" /><br/>
+Tampilan Login Dialog Terlihat Uggly, karena space kosong Milik JProgressBar di Makan oleh JButton</a></p>
+
+<p>Nah tahu kan klo kita menggunakan <strong>GroupLayout</strong> dan menggunakan method <strong>setVisible()</strong> hasil-nya pasti akan kacau seperti diatas (Komponen dibawah-nya memakan space kosong komponen yang di sembunyikan). Kalau menggunakan <strong>Layout</strong> yang lain saya percaya, urusan seperti ini sangat mudah :) Tapi masak <strong>Layout</strong> secanggih <strong>GroupLayout</strong> tidak bisa ?</p>
+
+<p>Akhirnya setelah baca-baca sebentar pada halaman manual <strong>GroupLayout</strong> akhirnya saya menemukan method <strong>setHonorsVisibility()</strong> dan dibawah ini adalah penjelasan untuk method <strong>setHonorsVisibility()</strong> yang saya dapat dari tutorial <a href="http://java.sun.com/docs/books/tutorial/uiswing/layout/group.html">GroupLayout</a> :</p>
+
+<blockquote><p>Another common operation in user interfaces is to dynamically change the visibility of components. Perhaps components are shown only as a user completes earlier portions of a form. To avoid components shuffling around in such a scenario, space should be taken up regardless of the visibility of the components. GroupLayout offers two ways to configure how invisible components are treated. The setHonorsVisibility(boolean) method globally sets how invisible components are handled. A value of true, the default, indicates invisible components are treated as if they are not there. On the other hand, a value of false provides space for invisible components, treating them as though they were visible. The setHonorsVisibility(Component,Boolean) method can be used to configure the behavior at the level of a specific component. To determine how visibility is handled, GroupLayout first checks if a value has been specified for the Component, if not, it checks the setting of the global property.</p></blockquote>
+
+<p>Penjelasan diatas sangat jelas sekali, jika kita ingin menyembunyikan sebuah komponen dan kita tidak ingin space komponen yang kita sembunyikan <strong>dimakan</strong> oleh komponen yang lain, maka kita harus menggunakan method <strong>setHonorsVisibility(komponen, false);</strong> pada komponen yang kita sembunyikan :) Ok sekarang mari kita rubah kode program kita diatas menjadi seperti dibawah ini :</p>
+
+<pre><code>    /** Creates new form LoginDialog */
+    public LoginDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        jProgressBar1.setVisible(Boolean.FALSE);
+
+        /* default layout yang digunakan JDialog adalah BorderLayout (cek
+         * dengan memanggil langsung method getLayout()) , jadi
+         * kita harus mengambil GroupLayout-nya dari ContentPane(). Bisa di cek
+         * pada method initComponent() */
+        GroupLayout gl = (GroupLayout) getContentPane().getLayout();
+        gl.setHonorsVisibility(jProgressBar1, false);
+    }
+</code></pre>
+
+<p>Simpan perubahan yang sudah dilakukan dan mari kita jalankan, hasil-nya sudah cukup bagus menjadi seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3984646012/"><img src="http://farm4.static.flickr.com/3526/3984646012_243000daae_o.png" alt="LoginDialogGood" /><br/>
+Hmm&hellip; sudah terlihat sedikit cantik bukan ?</a></p>
+
+<p>Ok sudah terlihat bagus, sekarang mari kita coba tampilkan <strong>JProgressBar-nya</strong> dan sebelumnya editlah dahulu 2 buah <strong>JButton</strong> menjadi <strong>Login</strong> dan <strong>Cancel</strong> kemudian pada tombol <strong>Login</strong> tambahkanlah kode seperti dibawah ini :</p>
+
+<pre><code>    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {
+        jProgressBar1.setVisible(true);
+        jProgressBar1.setIndeterminate(true);
+    }
+</code></pre>
+
+<p>Kemudian mari kita jalankan, dan kita akan mendapatkan tampilan seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3984646226/"><img src="http://farm3.static.flickr.com/2477/3984646226_c4216b51b1.jpg" alt="dialog_result_visibility" /><br/>
+Hasil Penggunaan Method setHonorsVisibility()</a></p>
+
+<p>Nah udah keren bukan sekarang <strong>LoginDialog</strong> kita :) Sekarang tinggal 1 lagi keanehan yang belum terpecah-kan pada Login Dialog di Project kenai-nya NetBeans yaitu pada gambar 2 dan gambar 3, ketika proses login gagal pesan kegagal tersebut ditampilkan juga pada posisi <strong>JProgressBar-nya</strong> wah gimana itu ?? Kembali lagi pada halaman tutorial GroupLayout yang ada <a href="http://java.sun.com/docs/books/tutorial/uiswing/layout/group.html">disini</a> dan kita menemukan 1 method lagi yaitu <strong>replace(existingComponent, newComponent);</strong> berikut penjelasan-nya :</p>
+
+<blockquote><p>replace(Component existingComponent, Component newComponent) replaces an existing component with a new one. One of the common operations needed for dynamic layouts is the ability to replace components like this. For example, perhaps a check box toggles between a component displaying a graph or a tree. GroupLayout makes this scenario simple with the replace() method. You can swap components without recreating all the groups.</p></blockquote>
+
+<p>Sekarang mari kita coba menerapkan method <strong>replace()</strong> tersebut pada kode kita, dan rubahlah konstruktor yang telah dibuat pada langkah diatas menjadi seperti dibawah ini :</p>
+
+<pre><code>    private GroupLayout gl;
+
+    /** Creates new form LoginDialog */
+    public LoginDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        jProgressBar1.setVisible(Boolean.FALSE);
+
+        /* default layout yang digunakan JDialog adalah BorderLayout (cek
+         * dengan memanggil langsung method getLayout()) , jadi
+         * kita harus mengambil GroupLayout-nya dari ContentPane(). Bisa di cek
+         * pada method initComponent() */
+        gl = (GroupLayout) getContentPane().getLayout();
+        gl.setHonorsVisibility(jProgressBar1, false);
+    }
+</code></pre>
+
+<p>Setelah merubah konstruktor, sekarang tambahkanlah komponen <strong>JLabel</strong> melalui <strong>Other Components</strong> pada panel <strong>Inspector</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3984646220/"><img src="http://farm3.static.flickr.com/2423/3984646220_e0f9f9a393_o.png" alt="add_jlabel" /><br/>
+Tambahan JLabel untuk Pesan Error</a></p>
+
+<p>Kemudian rubahlah method <strong>actionPerformed()</strong> untuk tombol login menjadi seperti dibawah ini :</p>
+
+<pre><code>    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {
+        jProgressBar1.setVisible(true);
+        jProgressBar1.setIndeterminate(true);
+        /* Simulasi long running task menggunakan javax.swing.Timer :) */
+        ActionListener actionListener = new ActionListener() {
+            int i = 0;
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("i " + i);
+                if (i==10) {
+                    gl.replace(jProgressBar1, lblError);
+                }
+                i++;
+            }
+        };
+
+        Timer actionTimer = new Timer(1000, actionListener);
+        actionTimer.start();
+    }
+</code></pre>
+
+<p>Jika sudah selesai, sekarang coba jalankan dan kita akan mendapatkan hasil seperti dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3983913907/"><img src="http://farm4.static.flickr.com/3442/3983913907_8e99a97480_o.png" alt="Login1" /><br/>
+Tampilan Awal Login Dialog</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/3983913929/"><img src="http://farm4.static.flickr.com/3435/3983913929_418c14b6c6_o.png" alt="Login2" /><br/>
+Tampilan Ketika Tombol Login di pencet </a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/3983913981/"><img src="http://farm3.static.flickr.com/2600/3983913981_6b2bf3f239_o.png" alt="Login3" /><br/>
+Hasil Akhir</a></p>
+
+<p>Hurray &hellip;. sudah seperti milik NetBenas IDE, keren kan :)</p>
+
+<p><strong>Link-link terkait : </strong>
+- <a href="http://java.sun.com/docs/books/tutorial/uiswing/layout/group.html">GroupLayout Tutorial</a>
+- <a href="http://martin-personal-project.googlecode.com/files/GroupLayout.tar.bz2">Contoh Project</a>
+- <a href="http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/">SubVersion Mudah Dengan RabbitVCS</a>
+<strong>Tulisan ini dibuat untuk menyukseskan <a href="http://www.informatika.lipi.go.id/seminar/lombablog/">Lomba Blog Open Source</a> P2I-LIPI dan <a href="http://www.informatika.lipi.go.id/seminar/">Seminar Open Source</a> P2I-LIPI 2009. </strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-06T01:00:05+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/09/28/konfigurasi-mysql-di-slackware-130/" title="Previous Post: Konfigurasi MySQL Di Slackware 13.0">&laquo; Konfigurasi MySQL Di Slackware 13.0</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/10/08/gnome-2280-in-gsb-current-for-slackware-130/" title="Next Post: GNOME 2.28.0 in gsb-current for Slackware 13.0">GNOME 2.28.0 in gsb-current for Slackware 13.0 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

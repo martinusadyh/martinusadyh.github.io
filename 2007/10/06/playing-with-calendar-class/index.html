@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Playing with Calendar Class - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Pernah merasa kebingungan atau kesulitan ketika ingin melakukan manipulasi tanggal seperti penambahan hari, minggu, bulan dan tahun di Java terutama &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2007/10/06/playing-with-calendar-class/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Playing With Calendar Class</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-10-06T20:33:28+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Pernah merasa kebingungan atau kesulitan ketika ingin melakukan manipulasi tanggal seperti penambahan hari, minggu, bulan dan tahun di Java terutama pada aplikasi Desktop berbasis Java Swing ? Kalau iya mari kita bikin sebuah project latihan untuk melakukan proses penambahan hari, minggu, bulan dah tahun sesuai dengan keinginan kita sendiri :)</p>
+
+<p>Ok, sekarang marilah kita mulai latihannya dan peralatan yang digunakan pada latihan ini adalah :
+1. NetBeans IDE 5.5
+2. Library JXDatePicker yang bisa didapat dari project SwingX <a href="http://swinglabs.org/index.jsp">disini.</a>
+3. JDK 1.6.0_01</p>
+
+<!-- more -->
+
+
+<p>Setelah semua peratan latihan telah siap, sekarang buatlah sebuah <strong>New Project</strong> pada NetBeans seperti pada langkah-langkah dibawah ini:</p>
+
+<ol>
+<li><p> Klik New Project kemudian beri nama project-nya LatihanTanggal.</p></li>
+<li><p> Sebelum dapat menggunakan komponen JXDatePicker, tambahkanlah dahulu library SwingX pada NetBeans. Sedangkan bagaimana cara menambahkan library SwingX kedalam NetBeans dapat dilihat <a href="http://wiki.java.net/bin/view/Javadesktop/SwingXIDE">disini.</a></p></li>
+<li><p> Klik kanan root node pada palete Project, kemudian pilih <strong>New > JFrame</strong> kemudian tambahkanlah beberapa komponen didalam JFrame tersebut yaitu :</p>
+
+<ul>
+<li><p>2 komponen JXDatePicker dan beri nama currDate dan resultDate.</p></li>
+<li><p>1 komponen JTextField dan beri nama txtTambah</p></li>
+<li><p>1 komponen JComboBox dan beri nama cmbWaktu</p></li>
+<li><p>1 komponen JButton dan beri nama btnProses</p></li>
+<li><p>4 buah komponen JLabel</p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>   Aturlah komponen-komponen diatas seperti gambar dibawah ini:
+   <a href="http://farm3.static.flickr.com/2114/1496217891_a0bf37d40a_o.png"><img src="http://farm3.static.flickr.com/2114/1496217891_0b55f51841_m.jpg" alt="jframe" /></a><br/>
+Click to Large Image</p>
+
+<ol>
+<li><p> Setelah mengatur tampilan seperti tampilan diatas, sekarang tambahkanlah event pada btnProses dengan cara klik kanan btnProses kemudian pilih <strong>Event > Action > actionPerformed</strong> Setelah itu pastekan kode dibawah ini :</p>
+
+<p>   // TODO add your handling code here:
+        try {
+            final Date hariIni     = currDate.getDate();
+            final int jmlTambah    = Integer.parseInt(txtTambah.getText());
+            final String kategoriWaktu = cmbWaktu.getSelectedItem().toString();</p>
+
+<pre><code>        if (jmlTambah &lt;= 0) {
+            txtTambah.requestFocusInWindow();
+        } else {
+            final Calendar tempCal = Calendar.getInstance();
+            tempCal.setTime(hariIni);
+
+            if (kategoriWaktu.equals("HARI")) {
+                tempCal.add(Calendar.DATE, jmlTambah);
+            } else if (kategoriWaktu.equals("MINGGU")) {
+                tempCal.add(Calendar.DAY_OF_WEEK_IN_MONTH, jmlTambah);
+            } else if (kategoriWaktu.equals("BULAN")) {
+                tempCal.add(Calendar.MONTH, jmlTambah);
+            } else if (kategoriWaktu.equals("TAHUN")) {
+                tempCal.add(Calendar.YEAR, jmlTambah);
+            }
+
+            int dayResult = tempCal.get(Calendar.DATE);
+            int blnResult = tempCal.get(Calendar.MONTH);
+            int thnResult = tempCal.get(Calendar.YEAR);
+
+            final Date result = new Date();
+
+            result.setDate(dayResult);
+            result.setMonth(blnResult);
+            result.setYear(thnResult-1900);
+
+            resultDate.setDate(result);
+        }
+    } catch (NumberFormatException nfe) {
+        JOptionPane.showMessageDialog(null, "Kolom Ingin Ditambah Harus Diisi !!!");
+        txtTambah.requestFocusInWindow();
+    }
+</code></pre></li>
+</ol>
+
+
+<p>   Penjelasan kode diatas adalah sebagai berikut :</p>
+
+<pre><code>1. Pada baris ke 3 sampai ke 5 pertama-tama kita ambil semua parameter untuk proses penambahan tanggal ini, parameter-parameter tersebut yaitu tanggal hari ini, jumlah angka dan keterangan waktu yang ingin kita tambahkan.
+
+
+2. Sedangkan pada baris ke 7, kita memberikan kriteria jika kolom isian 'Ingin Ditambah' tidak diisi atau nilainya kurang dari nol, maka berikan pesan error dengan mengembalikan focus ke kolom isian 'Ingin Ditambah'
+
+
+3. Proses inti sebenarnya terdapat pada baris ke 10 sampai baris ke 25, pertama-tama pada baris 10 kita membuat sebuah variabel baru yaitu tempCal yang bertipe Calendar. Dan agar waktunya sesuai dengan parameter, maka kita set waktu pada variabel tempCal menggunakan waktu yang terdapat pada currDate.
+
+
+4. Sedangkan pada baris ke 13 sampai baris ke 21 ini, kita mendeteksi waktu yang ingin ditambahkan yaitu **"HARI", "MINGGU", "BULAN" atau "TAHUN"**. Daripada kita menghitung satu persatu jumlah hari, jumlah bulan dan lain sebagainya secara manual, tidak ada salahnya kalau kita coba-coba lihat ke JavaDoc tentang class Calendar siapa tahu sudah terdapat sebuah method yang berfungsi untuk menangani hal ini. Pada JavaDoc di class Calendar ada keterangan untuk field manipulation yang kurang lebih seperti berikut :
+</code></pre>
+
+<blockquote><p><strong>Field Manipulation</strong>
+The calendar fields can be changed using three methods: set(), add(), and roll().</p></blockquote>
+
+<p>set(f, value) changes calendar field f to value. In addition, it sets an internal member variable to indicate that calendar field f has been changed. Although calendar field f is changed immediately, the calendar&rsquo;s time value in milliseconds is not recomputed until the next call to get(), getTime(), getTimeInMillis(), add(), or roll() is made. Thus, multiple calls to set() do not trigger multiple, unnecessary computations. As a result of changing a calendar field using set(), other calendar fields may also change, depending on the calendar field, the calendar field value, and the calendar system. In addition, get(f) will not necessarily return value set by the call to the set method after the calendar fields have been recomputed. The specifics are determined by the concrete calendar class.</p>
+
+<p>Example: Consider a GregorianCalendar originally set to August 31, 1999. Calling set(Calendar.MONTH, Calendar.SEPTEMBER) sets the date to September 31, 1999. This is a temporary internal representation that resolves to October 1, 1999 if getTime()is then called. However, a call to set(Calendar.DAY_OF_MONTH, 30) before the call to getTime() sets the date to September 30, 1999, since no recomputation occurs after set() itself.</p>
+
+<p>add(f, delta) adds delta to field f. This is equivalent to calling set(f, get(f) + delta) with two adjustments:</p>
+
+<pre><code>Add rule 1. The value of field f after the call minus the value of field f before the call is delta, modulo any overflow that has occurred in field f. Overflow occurs when a field value exceeds its range and, as a result, the next larger field is incremented or decremented and the field value is adjusted back into its range.
+
+Add rule 2. If a smaller field is expected to be invariant, but it is impossible for it to be equal to its prior value because of changes in its minimum or maximum after field f is changed or other constraints, such as time zone offset changes, then its value is adjusted to be as close as possible to its expected value. A smaller field represents a smaller unit of time. HOUR is a smaller field than DAY_OF_MONTH. No adjustment is made to smaller fields that are not expected to be invariant. The calendar system determines what fields are expected to be invariant.
+</code></pre>
+
+<p>In addition, unlike set(), add() forces an immediate recomputation of the calendar&rsquo;s milliseconds and all fields.</p>
+
+<pre><code> Hmm.. ternyata untuk memanipulasi tanggalan kita bisa menggunakan method add pada class Calendar, sekarang kita lihat lebih detail pada method add pada JavaDoc yaitu sebagai berikut :
+</code></pre>
+
+<blockquote><pre><code> **add**
+</code></pre></blockquote>
+
+<p>public abstract void add(int field,  int amount)</p>
+
+<pre><code>Adds or subtracts the specified amount of time to the given calendar field, based on the calendar's rules. For example, to subtract 5 days from the current time of the calendar, you can achieve it by calling:
+
+add(Calendar.DAY_OF_MONTH, -5).
+
+Parameters:
+    field - the calendar field.
+    amount - the amount of date or time to be added to the field.
+
+See Also:
+    roll(int,int), set(int,int)
+
+
+
+
+ Nah berhubung sekarang kita sudah tahu bagaimana cara menambahkan tanggalannya :) , sekarang mari kita tambahkan baris kode yang menambah tanggal hari ini dengan parameter yang telah ditentukan yaitu **"HARI", "MINGGU", "BULAN" dan "TAHUN"** dan kode untuk menangani hal tersebut terdapat pada baris ke 14, 16, 18 dan 20. 
+
+
+5. Karena pada komponen JXDatePicker untuk manipulasi tanggalnya hanya dapat menggunakan method  **setDate(Date date);** maka pada baris 22 sampai baris 25 kita ambil satu persatu variabel hari, bulan dan tahun dari class Calendar yang telah diproses :) dan kita tampung pada **int**
+
+
+6. Pada baris ke 27 kita buat 1 buah variabel lagi bertipe Date dan kita manipulasi hari, bulan dan tahun pada variabel date ini dengan menggunakan method **setDate, setMonth dan setYear**. 
+
+
+7. Dan pada akhirnya pada baris ke 33 kita manipulasi tanggal pada komponen JXDatePicker dengan variabel date yang telah kita buat pada baris ke 27 untuk ditampilkan :)
+
+
+
+8. Sedangkan block **try { ... } catch ** berfungsi untuk menangkap kesalahan parsing dari JTextField yang bertipe **String** ke **int**
+</code></pre>
+
+<ol>
+<li> Setelah semuanya selesai, sekarang coba jalankan projectnya dengan menekan tombol <strong>F6</strong> dan jika tidak ada error maka hasilnya akan seperti gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2292/1496217881_b00ac459d1_o.png"><img src="http://farm3.static.flickr.com/2292/1496217881_a863b62d2f_m.jpg" alt="Tampilan_GTKNimbus" /></a><br/>
+Click to Large Image</li>
+</ol>
+
+
+<p>Bagaimana asyik bukan ?? ternyata me-manipulasi tanggal di Java tidak begitu sulit :) and your comments are very-very appreciated.</p>
+
+<p>Resource :
+- <a href="http://martin-personal-project.googlecode.com/files/PlayingCalendar.zip">Download sample project PlayingCalendar.zip</a> (~ 1.1 MB)
+- <a href="http://java.sun.com/javase/6/docs/api/java/util/Calendar.html">API Class Calendar at JavaDoc</a>
+- <a href="http://swinglabs.org/index.jsp">SwingX Project at SwingLabs</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-10-06T20:33:28+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2007/10/06/playing-with-calendar-class/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2007/10/06/playing-with-calendar-class/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2007/10/06/java-se-6-update-n/" title="Previous Post: Java SE 6 Update N">&laquo; Java SE 6 Update N</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2007/10/07/review-jdk-16-update-n/" title="Next Post: Review JDK 1.6 Update N">Review JDK 1.6 Update N &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2007/10/06/playing-with-calendar-class/';
+        var disqus_url = 'http://martinusadyh.web.id/2007/10/06/playing-with-calendar-class/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

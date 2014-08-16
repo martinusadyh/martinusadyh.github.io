@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>View Your DataBase Schema with OpenOffice 3.0.1 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Hore.. OpenOffice sekarang sudah bisa menampilkan schema database loh, misalkan kita punya 3 tabel yaitu T_ARTIKEL, T_KOMENTAR dan &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">View Your DataBase Schema With OpenOffice 3.0.1</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-20T20:55:25+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Hore.. OpenOffice sekarang sudah bisa menampilkan schema database loh, misalkan kita punya 3 tabel yaitu <strong>T_ARTIKEL, T_KOMENTAR</strong> dan <strong>T_ARTIKEL_T_KOMENTAR</strong> dengan struktur tabel seperti dibawah ini:</p>
+
+<pre><code>mysql&gt; show create table T_ARTIKEL;
+*************************** 1. row ***************************
+       Table: T_ARTIKEL
+Create Table: CREATE TABLE `T_ARTIKEL` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `content` varchar(255) default NULL,
+  `mode` varchar(255) default NULL,
+  `publishDate` datetime default NULL,
+  `title` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.01 sec)
+
+ERROR:
+No query specified
+
+mysql&gt; show create table T_KOMENTAR;
+*************************** 1. row ***************************
+       Table: T_KOMENTAR
+Create Table: CREATE TABLE `T_KOMENTAR` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `email` varchar(255) default NULL,
+  `komentar` varchar(255) default NULL,
+  `url` varchar(255) default NULL,
+  `username` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.66 sec)
+
+ERROR:
+No query specified
+
+mysql&gt; show create table T_ARTIKEL_T_KOMENTAR;
+*************************** 1. row ***************************
+       Table: T_ARTIKEL_T_KOMENTAR
+Create Table: CREATE TABLE `T_ARTIKEL_T_KOMENTAR` (
+  `T_ARTIKEL_id` bigint(20) NOT NULL,
+  `listKomentar_id` bigint(20) NOT NULL,
+  UNIQUE KEY `listKomentar_id` (`listKomentar_id`),
+  KEY `FK2BF571DCDAEA7AB0` (`listKomentar_id`),
+  KEY `FK2BF571DC8E399F31` (`T_ARTIKEL_id`),
+  CONSTRAINT `FK2BF571DC8E399F31` FOREIGN KEY (`T_ARTIKEL_id`) REFERENCES `T_ARTIKEL` (`id`),
+  CONSTRAINT `FK2BF571DCDAEA7AB0` FOREIGN KEY (`listKomentar_id`) REFERENCES `T_KOMENTAR` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.47 sec)
+
+ERROR:
+No query specified
+
+mysql&gt;
+</code></pre>
+
+<p>Kalau tabel yang kita miliki cuma sedikit sih tidak begitu masalah, sekarang bagaimana kalau tabel kita lebih dari 10 ? Mau dilihat satu persatu dari terminal ? :D Nah untungnya sekarang kita bisa melihat schema database tersebut dari OpenOffice :) Sedangkan perlengkapan yang saya pakai disini adalah seperti berikut:
+- <a href="http://mysql.com">MySQL server versi 5.0.67</a>
+- <a href="http://openoffice.org/">OpenOffice 3.0.1</a></p>
+
+<p>Sedangkan langkah-langkah yang harus kita lakukan yaitu adalah sebagai berikut:
+1. Memasang MySQL JDBC Driver di OpenOffice
+2. Akses Database MySQL menggunakan OpenOffice</p>
+
+<!-- more -->
+
+
+<ol>
+<li> <strong>Memasang MySQL JDBC Driver di OpenOffice</strong>
+Bukalah dahulu OpenOffice anda, kemudian masuklah ke menu <strong>Tools > Options</strong>, setelah jendela Options terbuka sekarang pilihlah menu Java seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3643168009/"><img src="http://farm4.static.flickr.com/3372/3643168009_b0d0fb8fa1.jpg" alt="JavaOptions" /><br/>
+Click to View Large</a></li>
+</ol>
+
+
+<p>Sekarang tekanlah tombol <strong>Class Path..</strong> untuk membuka jendela <strong>Class Path</strong>. Pada jendela <strong>Class Path</strong> tekanlah tombol <strong>Add Archive</strong> kemudian pilihlah file <strong>mysql-connector-java-5.1.6-bin.jar</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3643168015/"><img src="http://farm4.static.flickr.com/3615/3643168015_3115c285d9.jpg" alt="jdbc" /><br/>
+Click to View Large</a></p>
+
+<p>Setelah menambahkan MySQL JDBC Driver, sekarang restart OpenOffice anda dan agar OpenOffice siap digunakan untuk mengakses database melalui JDBC :)</p>
+
+<ol>
+<li> <strong>Akses Database MySQL menggunakan OpenOffice</strong>
+Untuk mengakses MySQL dari OpenOffice, pertama yang harus dilakukan yaitu jalankan dahulu OpenOffice Base hingga muncul jendela <strong>DataBase Wizard</strong>. Pada jendela <strong>DataBase Wizard</strong> ini, pilihlah opsi <strong>Connect to an existing database</strong> kemudian pilihlah MySQL seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3643168021/"><img src="http://farm4.static.flickr.com/3391/3643168021_c3d4a00ff2.jpg" alt="DB1" /><br/>
+Click to View Large</a></li>
+</ol>
+
+
+<p>Setelah itu tekanlah tombol Next, pada jendela selanjutnya yaitu <strong>Set up a connection to a MySQL database</strong> pilihlah opsi <strong>Connect Using JDBC (Java Database Connectivity)</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3643168025/"><img src="http://farm4.static.flickr.com/3118/3643168025_50a9f45598.jpg" alt="DB2png" /><br/>
+Click to View Large</a></p>
+
+<p>Tekanlah tombol Next untuk masuk ke jendela <strong>Set up connection to MySQL database using JDBC</strong>, pada jendela ini ada beberapa kolom isian yang harus kita isi yaitu :
+<strong>Name of the database</strong> : Nama database yang ingin diakses, masukkan nama database anda. (Dalam tulisan ini, nama databasenya yaitu <strong>coba_schema</strong>)
+<strong>Server URL </strong>          : Alamat MySQL Server, kalau server MySQL di install di 1 komputer isikan <strong>localhost</strong> untuk kolom isian ini.
+<strong>Port Number</strong>          : Port MySQL, default adalah 3306
+Isikan konfigurasi yang sesuai hingga tampilannya menjadi seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3643168031/"><img src="http://farm4.static.flickr.com/3626/3643168031_e8910ba46a.jpg" alt="DB3" /><br/>
+Click to View Large</a></p>
+
+<p><strong>Note:</strong> Anda juga bisa mengecek apakah MySQL JDBC Driver yang kita pasang sudah dikenali atau belum dengan menekan tombol <strong>Test Class</strong></p>
+
+<p>Tekanlah tombol Next untuk masuk ke jendela <strong>Set up the user authentication</strong>, kemudian isikan username yang ingin mengakses database tersebut dan jika mempunyai password beri centang pada pada opsi <strong>Password required</strong> seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/3643168035/"><img src="http://farm3.static.flickr.com/2463/3643168035_47d428048c.jpg" alt="DB4" /><br/>
+Click to View Large</a></p>
+
+<p>Sekarang tekanlah tombol Next sekali lagi untuk masuk ke jendela <strong>Decide how to proceed after saving the database</strong>, pilihlah opsi <strong>No, do not register the database</strong> pada pertanyaan <strong>Do you want the wizard to register the database in OpenOffice.org ?</strong> dan pilihlah opsi <strong>Open the database for editing</strong> pada pertanyaan <strong>After the database files has been saved, what do you want to do?</strong> seperti gambar dibawah ini kemdian tekanlah tombol Finish untuk menyimpan konfigurasi yang sudah kita lakukan.
+<a href="http://www.flickr.com/photos/10243554@N02/3644022138/"><img src="http://farm4.static.flickr.com/3397/3644022138_e8c4289064.jpg" alt="Screenshot" /><br/>
+Click to View Large</a></p>
+
+<p>Setelah anda melakukan proses diatas dan melakukan penyimpanan, maka OpenOffice akan menampilkan <strong>Login Form</strong> untuk melakukan proses login ke MySQL. Isikan password untuk user yang telah anda tambahkan pada proses diatas seperti gambar dibawah ini kemudian tekanlah tombol OK.
+<a href="http://www.flickr.com/photos/10243554@N02/3643997572/"><img src="http://farm3.static.flickr.com/2431/3643997572_ef6f8f5b6f.jpg" alt="DB5" /><br/>
+Click to View Large</a></p>
+
+<p>Jika proses login anda berhasil, maka OpenOffice akan menampilkan database anda seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3643997576/"><img src="http://farm4.static.flickr.com/3643/3643997576_46f3891bfb.jpg" alt="DBManager" /><br/>
+Click to View Large</a></p>
+
+<p>Untuk melihat database schema, sekarang pilihlah menu <strong>Tool > Relationship&hellip;</strong> dan anda akan melihat tampilan seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3643997580/"><img src="http://farm3.static.flickr.com/2438/3643997580_97fbbd76eb.jpg" alt="schema" /><br/>
+Click to View Large</a></p>
+
+<p>Keren bukan ?? :) OpenOffice Rock :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-20T20:55:25+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/other/'>other</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/" title="Previous Post: Violeted Constraints When Installing Packages in OpenSolaris">&laquo; Violeted Constraints When Installing Packages in OpenSolaris</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/06/22/adding-multiple-svn-externals/" title="Next Post: Adding Multiple SVN Externals">Adding Multiple SVN Externals &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

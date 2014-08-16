@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Beberapa Persamaan Antara MySQL dan PostgreSQL - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Buat teman-teman yang sudah pernah menggunakan MySQL dan sedang menjajaki PostgreSQL, mungkin tulisan ini bisa dijadikan sebagai shortcut untuk &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/03/04/beberapa-persamaan-antara-mysql-dan-postgresql/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Beberapa Persamaan Antara MySQL Dan PostgreSQL</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-04T02:20:48+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Buat teman-teman yang sudah pernah menggunakan <a href="http://mysql.com"></a>MySQL dan sedang menjajaki <a href="http://www.postgresql.org/">PostgreSQL</a>, mungkin tulisan ini bisa dijadikan sebagai <strong>shortcut</strong> untuk segera mulai menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a>. Karena tulisan ini merupakan pengalaman saya dalam menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> selama beberapa hari terakhir ini :) , dan jika teman-teman mencari bagaimana cara melakukan konfigurasi <a href="http://www.postgresql.org/">PostgreSQL</a> sebagai server mungkin tidak akan menemukan-nya dalam tulisan kali ini karena tulisan kali ini lebih ditujukan dalam proses <strong>development</strong> yang <strong>just work</strong> saja :D Maklum ini juga baru mulai <strong>belajar</strong>  bagaimana menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> yang baik dan benar :)</p>
+
+<p>Nah dari hasil <strong>oprek-oprek</strong> beberapa hari terakhir ini, agar kita dapat mulai menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> dalam proses <strong>development</strong> kita maka pengetahuan dasar yang harus kita ketahui dalam mengoperasikan <a href="http://www.postgresql.org/">PostgreSQL</a> adalah kurang lebih seperti berikut :</p>
+
+<ol>
+<li><p> Membuat DataBase</p></li>
+<li><p> Membuat User</p></li>
+<li><p> Proses Login</p></li>
+<li><p> Melihat Informasi Tabel</p></li>
+<li><p> DataBase Backup</p></li>
+<li><p> DataBase Restore</p></li>
+</ol>
+
+
+<p>Sedangkan pada tulisan kali ini akan dibahas persamaan-nya antara <a href="http://mysql.com"></a>MySQL dan <a href="http://www.postgresql.org/">PostgreSQL</a> dengan maksud dan tujuan agar teman-teman yang masih <strong>mysql mode</strong> bisa cepat menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> sebagai database server-nya (seperti saya :D :) ), dan Sistem Operasi yang digunakan pada tulisan kali ini yaitu Slackware dan saya rasa tidak ada perbedaan mencolok dengan distribusi GNU/Linux yang lain :) Ok kalau begitu, sekarang mari kita lihat bagaimana cara  Membuat DataBase pada <a href="http://mysql.com"></a>MySQL dan <a href="http://www.postgresql.org/">PostgreSQL</a> :)</p>
+
+<!-- more -->
+
+
+<ol>
+<li><p><strong>Membuat DataBase</strong>
+Untuk mulai bermain-main dengan DataBase, maka hal pertama yang perlu kita lakukan yaitu adalah membuat DataBase itu sendiri. Sekarang mari kita bahas pembuatan DataBase pada <a href="http://mysql.com"></a>MySQL dan <a href="http://www.postgresql.org/">PostgreSQL</a> yang kurang lebih seperti dibawah ini :</p>
+
+<ol>
+<li> <strong>Cara Pada MySQL</strong>
+Buat teman-teman yang sudah <strong><em>familiar</em></strong> dengan <a href="http://mysql.com"></a>MySQL mungkin sudah tidak asing lagi bagaimana cara membuat sebuah database pada <a href="http://mysql.com"></a>MySQL, yups cara-nya adalah dengan menggunakan perintah <strong>create database <em>[databasename]</em></strong> (sebelum menjalankan perintah <strong>create database</strong> loginlah dahulu pada <a href="http://mysql.com"></a>MySQL Server) seperti dibawah ini :
+[plain]
+martinus@martinusadyh:[~]$ mysql -u root -padmin
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.0.84 Source distribution</li>
+</ol>
+</li>
+</ol>
+
+
+<p>Type &lsquo;help;&rsquo; or &lsquo;\h&rsquo; for help. Type &lsquo;\c&rsquo; to clear the current input statement.</p>
+
+<p>mysql> create database martindb;
+Query OK, 1 row affected (0.07 sec)</p>
+
+<p>mysql>
+[/plain]
+<strong>Note: Nama DataBase yang digunakan adalah martindb</strong></p>
+
+<p>Dan pada <a href="http://mysql.com"></a>MySQL kita juga bisa melihat DataBase yang telah dibuat dengan mengetikkan perintah <strong>show databases</strong> seperti perintah dibawah ini :
+[plain]
+mysql> show databases;
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| Database           |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| information_schema |
+| martindb           |
+| &hellip;&hellip;..           |
+| &hellip;&hellip;..           |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+4 rows in set (0.21 sec)</p>
+
+<p>mysql>
+[/plain]</p>
+
+<pre><code>2. **Cara Pada PostgreSQL**
+</code></pre>
+
+<p>Nah sekarang bagaimana kalau di <a href="http://www.postgresql.org/">PostgreSQL</a> ? Untuk membuat sebuah DataBase pada <a href="http://www.postgresql.org/">PostgreSQL</a> rubah-lah akses anda menjadi <strong>root</strong> dahulu dengan mengetikkan perintah <strong>su -</strong> setelah itu baru ganti hak akses menjadi <strong>user postgres</strong> dengan mengetikkan perintah <strong>su - postgres</strong> seperti dibawah ini :
+[plain]
+martinus@martinusadyh:[~]$ su -
+Password:</p>
+
+<p>Things are more like they used to be than they are new.</p>
+
+<p>root@martinusadyh:[~]# su - postgres</p>
+
+<p>You do not have mail.</p>
+
+<p>postgres@martinusadyh:[~]$
+[/plain]</p>
+
+<p>Setelah menggunakan akses <strong>user postgres</strong>, sekarang buat-lah sebuah DataBase dengan nama <strong>martindb</strong> dengan mengetikkan perintah <strong>createdb martindb</strong> seperti dibawah ini :
+[plain]
+postgres@martinusadyh:[~]$ createdb martindb
+postgres@martinusadyh:[~]$
+[/plain]</p>
+
+<p>Dan kita juga bisa melihat database-nya dengan mengetikkan perintah <strong>psql -l</strong> seperti perintah dibawah ini :
+[plain]
+postgres@martinusadyh:[~]$ psql -l
+                              List of databases
+   Name    |  Owner   | Encoding | Collation | Ctype |   Access privileges <br/>
+&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
+ martindb  | postgres | LATIN1   | C         | en_US |
+ postgres  | postgres | LATIN1   | C         | en_US |
+ template0 | postgres | LATIN1   | C         | en_US | =c/postgres
+                                                     : postgres=CTc/postgres
+ template1 | postgres | LATIN1   | C         | en_US | =c/postgres
+                                                     : postgres=CTc/postgres
+(4 rows)</p>
+
+<p>postgres@martinusadyh:[~]$
+[/plain]</p>
+
+<p>Dua langkah yang dilakukan untuk <a href="http://www.postgresql.org/">PostgreSQL</a> diatas <strong>(perintah createdb dan psql -l)</strong>, sepenuh-nya dijalankan dari <strong>Linux Prompt</strong> dengan menggunakan <strong>user postgres</strong>. Selain itu <a href="http://www.postgresql.org/">PostgreSQL</a> mempunyai beberapa metode lagi untuk kebutuhan diatas, dan semua-nya itu bisa dibaca pada <a href="http://www.postgresql.org/docs/8.4/interactive/index.html">halaman manual PostgreSQL</a> :) :D</p>
+
+<p>Bagaimana teman-teman, tidak begitu sulit kan ? Kalau tidak, mari kita lanjut ke tahap selanjut-nya :)</p>
+
+<ol>
+<li><p><strong>Membuat User</strong>
+Proses pembuatan DataBase pada <a href="http://mysql.com"></a>MySQL dan <a href="http://www.postgresql.org/">PostgreSQL</a> sudah berhasil kita lakukan, sekarang bagaimana cara membuat user dan memberi ijin user yang akan kita buat pada DataBase yang sudah dibuat sebelum-nya ?</p>
+
+<ol>
+<li> <strong>Cara Pada MySQL</strong>
+Untuk membuat sebuah user dengan nama <strong>belajar</strong> dan password <strong>java</strong> pada <a href="http://mysql.com"></a>MySQL yang mempunyai akses penuh pada DataBase <strong>martindb</strong> yang sudah dibuat pada langkah sebelumnya, jalankan perintah dibawah ini pada <strong>mysql></strong> prompt :
+[plain]
+mysql> grant all on martindb.* to &lsquo;belajar&rsquo;@&lsquo;localhost&rsquo; identified by &lsquo;java&rsquo;;
+Query OK, 0 rows affected (0.20 sec)</li>
+</ol>
+</li>
+</ol>
+
+
+<p>mysql>
+[/plain]</p>
+
+<pre><code>2. **Cara Pada PostgreSQL**
+</code></pre>
+
+<p>Sedangkan untuk membuat sebuah user dengan nama <strong>belajar</strong> dan password <strong>java</strong> pada <a href="http://www.postgresql.org/">PostgreSQL</a> yang mempunyai akses penuh pada DataBase <strong>martindb</strong> yang sudah dibuat pada langkah sebelumnya, jalankan perintah dibawah ini pada <strong>Linux Prompt</strong> dengan menggunakan akses <strong>user postgres</strong> :
+[plain]
+postgres@martinusadyh:[~]$ createuser -D -P belajar
+Enter password for new role:
+Enter it again:
+Shall the new role be a superuser? (y/n) y
+postgres@martinusadyh:[~]$
+[/plain]
+<strong>Note : Opsi -D artinya no create db, -P menampilkan prompt untuk mengisi password. Isikan java pada pertanyaan &ldquo;Enter password for new role:&rdquo; dan &ldquo;Enter it again:&rdquo; </strong></p>
+
+<p>Setelah selesai membuat sebuah user, sekarang coba loginlah pada <a href="http://www.postgresql.org/">PostgreSQL</a> menggunakan user <strong>postgres</strong> dengan mengetikkan <strong>psql -U postgres</strong> dan tambahkan akses <strong>GRANT ALL PRIVILEGES</strong> untuk user <strong>belajar</strong> ke database <strong>martindb</strong> seperti dibawah ini :
+[plain]
+postgres@martinusadyh:[~]$ psql -U postgres
+psql (8.4.2)
+Type &ldquo;help&rdquo; for help.</p>
+
+<p>postgres=# grant all privileges on database martindb to belajar;
+GRANT
+postgres=#
+[/plain]</p>
+
+<p>Fyuh&hellip;. akhirnya pembuatan user dan pemberian akses ke database selesai juga, sekarang mari kita testing dengan login menggunakan user yang sudah kita buat :)</p>
+
+<ol>
+<li><p><strong>Proses Login</strong>
+Sekarang mari kita testing apakah user yang sudah dibuat pada langkah kedua diatas sudah berjalan dengan semesti-nya atau belum :)</p>
+
+<ol>
+<li> <strong>Cara Pada MySQL</strong>
+Untuk login pada <a href="http://mysql.com"></a>MySQL dengan menggunakan user <strong>belajar</strong> dan pasword <strong>java</strong> kita bisa mengetikkan perintah <strong>mysql -u <em>[username]</em> -p_Password<em> </em>[databasename]_</strong> seperti dibawah ini :
+[plain]
+martinus@martinusadyh:[~]$ mysql -u belajar -pjava martindb
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.0.84 Source distribution</li>
+</ol>
+</li>
+</ol>
+
+
+<p>Type &lsquo;help;&rsquo; or &lsquo;\h&rsquo; for help. Type &lsquo;\c&rsquo; to clear the current input statement.</p>
+
+<p>mysql> show databases;
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| Database           |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| information_schema |
+| martindb           |
+| test               |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+3 rows in set (0.00 sec)</p>
+
+<p>mysql>
+[/plain]</p>
+
+<pre><code>2. **Cara Pada PostgreSQL**
+</code></pre>
+
+<p>Sedangkan cara pada <a href="http://www.postgresql.org/">PostgreSQL</a>-nya adalah mengetikkan perintah <strong>psql -U <em>[username]</em> -W -d <em>[databasename]</em></strong> seperti dibawah ini :
+[plain]
+martinus@martinusadyh:[~]$ psql -U belajar -W -d martindb
+Password for user belajar:
+psql (8.4.2)
+Type &ldquo;help&rdquo; for help.</p>
+
+<p>martindb=# \l
+                              List of databases
+   Name    |  Owner   | Encoding | Collation | Ctype |   Access privileges <br/>
+&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;-+&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
+ martindb  | postgres | LATIN1   | C         | en_US | =Tc/postgres
+                                                     : postgres=CTc/postgres
+                                                     : belajar=CTc/postgres
+ postgres  | postgres | LATIN1   | C         | en_US |
+ template0 | postgres | LATIN1   | C         | en_US | =c/postgres
+                                                     : postgres=CTc/postgres
+ template1 | postgres | LATIN1   | C         | en_US | =c/postgres
+                                                     : postgres=CTc/postgres
+(4 rows)</p>
+
+<p>martindb=#
+[/plain]</p>
+
+<p>Horee&hellip;. kita sudah bisa menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> layak-nya kita menggunakan <a href="http://mysql.com"></a>MySQL, sekarang yuuuk mari kita <strong>explore</strong> fitur-fitur yang lain :) ;)</p>
+
+<ol>
+<li><p><strong>Melihat Informasi Tabel</strong>
+Karena DataBase kita masih kosong, sekarang buatlah dahulu sebuah tabel dengan nama tabel <strong>pengunjung</strong> dan kolomnya yaitu <strong>nama</strong> baik pada <a href="http://mysql.com"></a>MySQL dan <a href="http://www.postgresql.org/">PostgreSQL</a> dengan mengetikkan perintah <strong>create table pengunjung(nama varchar(11));</strong> seperti dibawah ini :
+<strong>MySQL</strong>
+[plain]
+mysql> create table pengunjung(nama varchar(11));
+Query OK, 0 rows affected (0.00 sec)</p></li>
+</ol>
+
+
+<p>mysql>
+[/plain]
+<strong>PostgreSQL</strong>
+[plain]
+martindb=# create table pengunjung(nama varchar(11));
+CREATE TABLE
+martindb=#
+[/plain]</p>
+
+<p>Setelah membuat sebuah tabel pada <a href="http://mysql.com"></a>MySQL maupun <a href="http://www.postgresql.org/">PostgreSQL</a>, sekarang mari kita lihat bagaimana menampilkan informasi yang berkaitan dengan tabel dari kedua database :</p>
+
+<pre><code>1. **Cara Pada MySQL**
+</code></pre>
+
+<p>Untuk melihat informasi tabel pada <a href="http://mysql.com"></a>MySQL kita bisa menggunakan beberapa perintah, dan perintah-perintah yang saya tahu :D yaitu <strong>show tables, show create table <em>[table-name]</em> dan desc <em>[table-name]</em></strong> yang tampilan-nya kurang lebih seperti dibawah ini :
+[plain]
+mysql> show tables;
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| Tables_in_martindb |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| pengunjung         |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+1 row in set (0.00 sec)</p>
+
+<p>mysql> show create table pengunjung;
++&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+
+| Table      | Create Table                                                                                         |
++&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+
+| pengunjung | CREATE TABLE <code>pengunjung</code> (
+  <code>nama</code> varchar(11) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 |
++&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+
+1 row in set (0.00 sec)</p>
+
+<p>mysql> desc pengunjung;
++&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;+&mdash;&ndash;+&mdash;&mdash;&mdash;+&mdash;&mdash;-+
+| Field | Type        | Null | Key | Default | Extra |
++&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;+&mdash;&ndash;+&mdash;&mdash;&mdash;+&mdash;&mdash;-+
+| nama  | varchar(11) | YES  |     | NULL    |       |
++&mdash;&mdash;-+&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;+&mdash;&ndash;+&mdash;&mdash;&mdash;+&mdash;&mdash;-+
+1 row in set (0.00 sec)</p>
+
+<p>mysql>
+[/plain]</p>
+
+<pre><code>2. **Cara Pada PostgreSQL**
+</code></pre>
+
+<p>Sedangkan pada <a href="http://www.postgresql.org/">PostgreSQL</a>, seperti-nya tidak ada perintah yang sepadan dengan perintah <strong>show create table <em>[table-name]</em></strong> yang terdapat pada <a href="http://mysql.com"></a>MySQL. Tetapi <a href="http://www.postgresql.org/">PostgreSQL</a> mempunyai beberapa perintah yang sama untuk menampilkan informasi tabel yaitu <strong>\d (sama dengan perintah show tables), \d <em>[table-name]</em> dan \dt <em>[table-name]</em></strong> yang  tampilan-nya kurang lebih seperti dibawah ini :
+[plain]
+martindb=# \d
+           List of relations
+ Schema |    Name    | Type  |  Owner<br/>
+&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;-+&mdash;&mdash;&mdash;
+ public | pengunjung | table | belajar
+(1 row)</p>
+
+<p>martindb=# \d pengunjung
+         Table &ldquo;public.pengunjung&rdquo;
+ Column |         Type          | Modifiers
+&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&ndash;
+ nama   | character varying(11) |</p>
+
+<p>martindb=# \dt pengunjung
+           List of relations
+ Schema |    Name    | Type  |  Owner<br/>
+&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;-+&mdash;&mdash;&mdash;
+ public | pengunjung | table | belajar
+(1 row)</p>
+
+<p>martindb=#
+[/plain]</p>
+
+<p>Hehehe&hellip; :D saya belum bisa menjelaskan banyak tentang tabel, saya masih perlu baca <a href="http://www.postgresql.org/docs/8.4/interactive/index.html">primbon</a> saya dulu :)</p>
+
+<ol>
+<li><p><strong>DataBase Backup</strong>
+Nah bagaimana jika kita tiba-tiba ingin melakukan proses backup pada ke dua DataBase tersebut ? Ok, cara backup-nya sebenarnya tidak jauh berbeda yaitu :</p>
+
+<ol>
+<li> <strong>Cara Pada MySQL</strong>
+Untuk melakukan proses backup pada <a href="http://mysql.com"></a>MySQL kita bisa menggunakan perintah <strong>mysqldump -B <em>[nama-database]</em> -u <em>[user-name]</em> -p<em>[password]</em> > <em>[file-backup.sql]</em></strong> seperti perintah dibawah ini :
+[plain]
+martinus@martinusadyh:[~]$ mysqldump -B martindb -u belajar -pjava > martindb-mysql.sql
+martinus@martinusadyh:[~]$
+[/plain]
+Sedangkan hasil <strong>dump</strong> yang dihasilkan dari perintah diatas adalah seperti dibawah ini :</li>
+</ol>
+
+
+<h2>  &ndash; MySQL dump 10.11</h2>
+
+  &ndash; Host: localhost    Database: martindb
+
+<hr />
+
+<p>  &ndash; Server version   5.0.84</p>
+
+<p>  /<em>!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT </em>/;
+  /<em>!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS </em>/;
+  /<em>!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION </em>/;
+  /<em>!40101 SET NAMES utf8 </em>/;
+  /<em>!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE </em>/;
+  /<em>!40103 SET TIME_ZONE=&lsquo;+00:00&rsquo; </em>/;
+  /<em>!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 </em>/;
+  /<em>!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 </em>/;
+  /<em>!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&lsquo;NO_AUTO_VALUE_ON_ZERO&rsquo; </em>/;
+  /<em>!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 </em>/;</p>
+
+<p>  &ndash;</p>
+
+<h2>  &ndash; Current Database: <code>martindb</code></h2>
+
+<p>  CREATE DATABASE /<em>!32312 IF NOT EXISTS</em>/ <code>martindb</code> /<em>!40100 DEFAULT CHARACTER SET latin1 </em>/;</p>
+
+<p>  USE <code>martindb</code>;</p>
+
+<p>  &ndash;</p>
+
+<h2>  &ndash; Table structure for table <code>pengunjung</code></h2>
+
+<p>  DROP TABLE IF EXISTS <code>pengunjung</code>;
+  /<em>!40101 SET @saved_cs_client     = @@character_set_client </em>/;
+  /<em>!40101 SET character_set_client = utf8 </em>/;
+  CREATE TABLE <code>pengunjung</code> (
+    <code>nama</code> varchar(11) default NULL
+  ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  /<em>!40101 SET character_set_client = @saved_cs_client </em>/;</p>
+
+<p>  &ndash;</p>
+
+<h2>  &ndash; Dumping data for table <code>pengunjung</code></h2>
+
+<p>  LOCK TABLES <code>pengunjung</code> WRITE;
+  /<em>!40000 ALTER TABLE <code>pengunjung</code> DISABLE KEYS </em>/;
+  /<em>!40000 ALTER TABLE <code>pengunjung</code> ENABLE KEYS </em>/;
+  UNLOCK TABLES;
+  /<em>!40103 SET TIME_ZONE=@OLD_TIME_ZONE </em>/;</p>
+
+<p>  /<em>!40101 SET SQL_MODE=@OLD_SQL_MODE </em>/;
+  /<em>!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS </em>/;
+  /<em>!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS </em>/;
+  /<em>!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT </em>/;
+  /<em>!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS </em>/;
+  /<em>!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION </em>/;
+  /<em>!40111 SET SQL_NOTES=@OLD_SQL_NOTES </em>/;</p>
+
+<p>  &ndash; Dump completed on 2010-03-04  1:45:41</p>
+
+<ol>
+<li> <strong>Cara Pada PostgreSQL</strong>
+Sedangkan pada <a href="http://www.postgresql.org/">PostgreSQL</a> kita bisa menggunakan perintah <strong>pg_dump -U <em>[user-name]</em> -W <em>[nama-database]</em> > <em>[file-backup.sql]</em></strong> seperti dibawah ini :
+[plain]
+martinus@martinusadyh:[~]$ pg_dump -U belajar -W martindb > martindb-postgresql.sql
+Password:
+martinus@martinusadyh:[~]$
+[/plain]
+<strong>Note: Proses dump dengan perintah ini, tidak serta merta memberi statement create database seperti pada &ldquo;MySQL&rdquo;. Jadi sebaiknya berhati-hati</strong>
+Dan hasil <strong>dump</strong> yang dihasilkan dari perintah diatas adalah seperti dibawah ini :</li>
+</ol>
+
+
+<p>  &ndash;</p>
+
+<h2>  &ndash; PostgreSQL database dump</h2>
+
+<p>  SET statement_timeout = 0;
+  SET client_encoding = &lsquo;LATIN1&rsquo;;
+  SET standard_conforming_strings = off;
+  SET check_function_bodies = false;
+  SET client_min_messages = warning;
+  SET escape_string_warning = off;</p>
+
+<p>  SET search_path = public, pg_catalog;</p>
+
+<p>  SET default_tablespace = &lsquo;&rsquo;;</p>
+
+<p>  SET default_with_oids = false;</p>
+
+<p>  &ndash;</p>
+
+<h2>  &ndash; Name: pengunjung; Type: TABLE; Schema: public; Owner: belajar; Tablespace: </h2>
+
+<p>  CREATE TABLE pengunjung (
+      nama character varying(11)
+  );</p>
+
+<p>  ALTER TABLE public.pengunjung OWNER TO belajar;</p>
+
+<p>  &ndash;</p>
+
+<h2>  &ndash; Data for Name: pengunjung; Type: TABLE DATA; Schema: public; Owner: belajar</h2>
+
+<p>  COPY pengunjung (nama) FROM stdin;
+  .</p>
+
+<p>  &ndash;</p>
+
+<h2>  &ndash; Name: public; Type: ACL; Schema: -; Owner: postgres</h2>
+
+<p>  REVOKE ALL ON SCHEMA public FROM PUBLIC;
+  REVOKE ALL ON SCHEMA public FROM postgres;
+  GRANT ALL ON SCHEMA public TO postgres;
+  GRANT ALL ON SCHEMA public TO PUBLIC;</p>
+
+<p>  &ndash;</p>
+
+<h2>  &ndash; PostgreSQL database dump complete</h2></li>
+</ol>
+
+
+<p>Sampai proses ini, kita sudah mempunyai <strong>sedikit bekal</strong> yang cukup lah untuk mulai melangkah lebih dalam ke <a href="http://www.postgresql.org/">PostgreSQL</a> :) , setelah kita mengetahui bagaimana proses <strong>backup</strong> maka selanjutnya kita akan coba melakukan proses restore data yang sudah berhasil kita backup :)</p>
+
+<ol>
+<li><p><strong>DataBase Restore</strong>
+Untuk cara <strong>restore</strong> file hasil <strong>dump</strong> antara <a href="http://mysql.com"></a>MySQL dan <a href="http://www.postgresql.org/">PostgreSQL</a> tidak jauh berbda, sedangkan untuk <strong>syntax</strong>-nya yaitu seperti dibawah ini :</p>
+
+<ol>
+<li> <strong>Cara Pada MySQL</strong>
+Kalau kita mempunyai file backup seperti diatas, dan jika DataBase <strong>martindb</strong> belum dibuat pada server <a href="http://mysql.com"></a>MySQL. Maka kita bisa dengan aman menjalankan perintah seperti dibawah ini dan membiarkan <a href="http://mysql.com"></a>MySQL membuatkan DataBase <strong>martindb</strong> lagi secara otomatis :) (berdasarkan file <strong>martindb-mysql.sql</strong>) :
+[plain]
+martinus@martinusadyh:[~]$ mysql -u belajar -pjava &lt; martindb-mysql.sql
+martinus@martinusadyh:[~]$ mysql -u belajar -pjava martindb;
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7
+Server version: 5.0.84 Source distribution</li>
+</ol>
+</li>
+</ol>
+
+
+<p>Type &lsquo;help;&rsquo; or &lsquo;\h&rsquo; for help. Type &lsquo;\c&rsquo; to clear the current input statement.</p>
+
+<p>mysql> show tables;
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| Tables_in_martindb |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+| pengunjung         |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+1 row in set (0.00 sec)</p>
+
+<p>mysql>
+[/plain]</p>
+
+<pre><code>2. **Cara Pada PostgreSQL**
+</code></pre>
+
+<p>Nah yang berbahaya di <a href="http://www.postgresql.org/">PostgreSQL</a> adalah jika kita mempunyai backup seperti diatas, dan DataBase <strong>martindb</strong> terhapus. Maka kita tidak bisa secara langsung menjalankan perintah <strong>psql -U <em>[username]</em> -W -d <em>[database-name]</em> &lt; <em>[backup-filename.sql]</em></strong> secara langsung seperti yang dilakukan oleh <a href="http://mysql.com"></a>MySQL. Solusi-nya yaitu, sebelum menjalankan perintah <strong>psql -U <em>[username]</em> -W -d <em>[database-name]</em> &lt; <em>[backup-filename.sql]</em></strong>, lakukan dulu langkah-langkah Membuat DataBase dan beri <strong>PRIVILEGES</strong> lagi pada user <strong>belajar</strong> ke DataBase yang baru dibuat. Nah setelah semua-nya selesai, baru kita bisa dengan aman menjalankan perintah <strong>psql -U <em>[username]</em> -W -d <em>[database-name]</em> &lt; <em>[backup-filename.sql]</em></strong> seperti dibawah ini :
+[plain]
+martinus@martinusadyh:[~]$ psql -U belajar -W -d martindb &lt; martindb-postgresql.sql
+Password for user belajar:
+SET
+SET
+SET
+SET
+SET
+SET
+SET
+SET
+SET
+CREATE TABLE
+ALTER TABLE
+REVOKE
+REVOKE
+GRANT
+GRANT
+martinus@martinusadyh:[~]$ psql -U belajar -W -d martindb
+Password for user belajar:
+psql (8.4.2)
+Type &ldquo;help&rdquo; for help.</p>
+
+<p>martindb=# \d
+           List of relations
+ Schema |    Name    | Type  |  Owner<br/>
+&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&mdash;+&mdash;&mdash;-+&mdash;&mdash;&mdash;
+ public | pengunjung | table | belajar
+(1 row)</p>
+
+<p>martindb=# select * from pengunjung;</p>
+
+<h2> nama </h2>
+
+<p>(0 rows)</p>
+
+<p>martindb=#
+[/plain]</p>
+
+<p>Hm.. saya belum menemukan, apakah bisa hasil <strong>dump</strong> dari <a href="http://www.postgresql.org/">PostgreSQL</a> bisa seperti hasil <strong>dump</strong> milik <a href="http://mysql.com"></a>MySQL, atau saya yang kurang baca <a href="http://www.postgresql.org/docs/8.4/interactive/index.html">primbon</a> kali ya :D</p>
+
+<p>Nah bagaimana teman-teman, sudah mulai ada gambaran tentang <a href="http://www.postgresql.org/">PostgreSQL</a> ?? Bagaimana, ingin menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> sebagai DataBase Server utama di tempat teman-teman ? :D Jika iya, syukurlah :) mari kita sama-sama <strong>ngoprek</strong> <a href="http://www.postgresql.org/">PostgreSQL</a> :D :) dan untuk teman-teman yang merasa kurang dengan tulisan ini saya mohon maaf. Karena tujuan dari tulisan ini sebenarnya adalah agar teman-teman bisa langsung menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> tanpa perlu bingung-bingung baca <a href="http://www.postgresql.org/docs/8.4/interactive/index.html">primbon</a>-nya :) Dan akhir kata, jangan lupa untuk selalu membaca <a href="http://www.postgresql.org/docs/8.4/interactive/index.html">Halaman Manual PostgreSQL 8.4 (Bahasa Inggris)</a> yang membahas secara mendetail tentang konfigurasi dan perintah-perintah dasar <a href="http://www.postgresql.org/">PostgreSQL</a> yah, dan dibawah tulisan ini mungkin ada beberapa link yang bisa jadi bahan referensi buat teman-teman :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ul>
+<li><p><a href="http://martinusadyh.web.id/2010/02/28/installing-postgresql-8-4-2-on-slackware-13-0/">Installing PostgreSQL 8.4.2 on Slackware 13.0</a></p></li>
+<li><p><a href="http://www.postgresql.org/docs/8.4/interactive/index.html">Halaman Manual PostgreSQL 8.4 (Bahasa Inggris)</a></p></li>
+<li><p><a href="http://blog.endpoint.com/2009/12/mysql-and-postgres-command-equivalents.html">MySQL and PostgreSQL Command Equivalents</a></p></li>
+<li><p><a href="http://www.thegeekstuff.com/2009/04/15-practical-postgresql-database-adminstration-commands/"> 15 Practical PostgreSQL DataBase Administration Commands</a></p></li>
+<li><p><a href="http://mysql.com"></a>MySQL</p></li>
+<li><p><a href="http://www.postgresql.org/">PostgreSQL</a></p></li>
+<li><p><a href="http://martinusadyh.web.id/2009/08/31/mysql-tips-n-trik/">MySQL Tips dan Trik</a></p></li>
+<li><p><a href="http://martinusadyh.web.id/category/database/">Tips dan trik DataBase Lain-nya</a></p></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-04T02:20:48+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/03/04/beberapa-persamaan-antara-mysql-dan-postgresql/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/03/04/beberapa-persamaan-antara-mysql-dan-postgresql/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/03/01/installing-postgresql-8-4-2-on-slackware-13-0/" title="Previous Post: Installing PostgreSQL 8.4.2 on Slackware 13.0">&laquo; Installing PostgreSQL 8.4.2 on Slackware 13.0</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/03/04/toko-komputer-murah-daerah-surabaya/" title="Next Post: Toko Komputer Murah Daerah Surabaya">Toko Komputer Murah Daerah Surabaya &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/03/04/beberapa-persamaan-antara-mysql-dan-postgresql/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/03/04/beberapa-persamaan-antara-mysql-dan-postgresql/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

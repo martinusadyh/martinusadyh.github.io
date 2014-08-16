@@ -1,0 +1,1397 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Paging On JTable - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sedang mencari solusi Paging di JTable ? Jika iya, pada posting kali ini kita akan mencoba membuat supaya JTable pada aplikasi kita mendukung &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2011/01/31/paging-on-jtable/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Paging on JTable</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-31T02:43:45+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Sedang mencari solusi <strong>Paging di JTable</strong> ? Jika iya, pada posting kali ini kita akan mencoba membuat supaya <strong>JTable</strong> pada aplikasi kita mendukung <strong>pagination</strong> :D Niat awal sih sebenarnya ingin menjadikan <strong>Table Paging</strong> ini menjadi sebuah komponen yang tinggal <strong>&ldquo;drag and drop&rdquo;</strong> saja untuk menggunakan-nya, tapi apa daya sampai sekarang juga belum jadi-jadi komponen-nya :D</p>
+
+<p>Pembuatan <strong>Table Paging</strong> ini semuanya terinspirasi dari komponen javascript untuk jQuery bernama <a href="http://www.flexigrid.info/">Flexigrid</a> yang tampilan-nya kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5400874631/"><img src="http://farm6.static.flickr.com/5052/5400874631_7bfb733fcf.jpg" alt="flexigrid" /></a><br/>
+<strong>Tampilan Paging Flexigrid</strong></p>
+
+<p>Sedangkan tampilan <strong>JTable</strong> yang akan kita buat kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5400874633/"><img src="http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg" alt="Screenshot" /></a><br/>
+<strong>Tampilan Paging on JTable</strong></p>
+
+<p>Pada posting kali ini, kita akan coba meng-implementasikan <strong>Table Paging</strong> ini menggunakan <strong>JDBC</strong> dan <strong>Hibernate</strong>. Untuk yang tidak menggunakan <strong>JDBC</strong> maupun <strong>Hibernate</strong>, saya rasa juga tidak akan begitu kesulitan karena tinggal mengganti sintaks query-nya saja :D Dan database yang digunakan pada posting kali ini adalah MySQL :)</p>
+
+<!-- more -->
+
+
+<p>Ok sebelum mulai latihan-nya, sekarang downloadlah dahulu contoh database-nya. Contoh database ini hanya mempunyai 1 table yaitu <strong>wp_comments</strong> dan mempunyai record sejumlah 1303 baris. Untuk contoh database beserta tabelnya bisa didownload <a href="http://martin-personal-project.googlecode.com/files/table_paging.sql">disini</a>, dan jika sudah selesai sekarang restore dengan cara jalankan perintah dibawah ini pada <strong>Command Prompt</strong> ataupun <strong>Console</strong> :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ mysql -u root -padmin &lt; table_paging.sql
+martinus@martinusadyh:[~]$ 
+</code></pre>
+
+<p>Nah jika sudah, sekarang bukalah NetBeans IDE dan buatlah 4 buah project yaitu <strong>domain,service,service.impl dan ui</strong> kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5401141101/"><img src="http://farm6.static.flickr.com/5299/5401141101_59a8e445f1.jpg" alt="StrukturProject" /></a><br/>
+<strong>Contoh Struktur Project</strong></p>
+
+<p>Sebelum mulai lebih lanjut, sekarang tambahkanlah dahulu beberapa library yang diperlukan oleh ke empat project diatas seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5401949258/"><img src="http://farm6.static.flickr.com/5133/5401949258_c80289c9b4.jpg" alt="LibraryDomain" /></a><br/>
+<strong>Library Project Domain</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5401949260/"><img src="http://farm6.static.flickr.com/5172/5401949260_fc9941c546.jpg" alt="LibraryService" /></a><br/>
+<strong>Library Project Service</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5401949264/"><img src="http://farm6.static.flickr.com/5094/5401949264_dfa27ae237.jpg" alt="LibraryServiceImpl" /></a><br/>
+<strong>Library Project Service Impl</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5401949266/"><img src="http://farm6.static.flickr.com/5051/5401949266_b4f56e6cdd.jpg" alt="LibraryUI1" /></a><br/>
+<strong>Library Project UI</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5401949268/"><img src="http://farm6.static.flickr.com/5217/5401949268_2045053900.jpg" alt="LibraryUI2" /></a><br/>
+<strong>Lanjutan Library Project UI</strong></p>
+
+<p>Jika library yang diperlukan sudah ditambahkan seperti gambar diatas, sekarang buatlah sebuah <strong>domain class</strong> dengan nama <code>WPComment.java</code> pada project <code>com.artivisi.sample.tablepaging.domain</code> dengan isi kurang lebih seperti berikut :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">artivisi</span><span class="o">.</span><span class="na">sample</span><span class="o">.</span><span class="na">tablepaging</span><span class="o">.</span><span class="na">domain</span><span class="o">.</span><span class="na">hibernate</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.persistence.Column</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.persistence.Id</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.persistence.Table</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.persistence.Temporal</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * @author Martinus Ady H &lt;martinus@artivisi.com&gt;</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nd">@Entity</span>
+</span><span class='line'><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;wp_comments&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WPComment</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Id</span> <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;comment_ID&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">commentID</span><span class="o">;</span>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;comment_author&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">commentAuthor</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Temporal</span><span class="o">(</span><span class="n">javax</span><span class="o">.</span><span class="na">persistence</span><span class="o">.</span><span class="na">TemporalType</span><span class="o">.</span><span class="na">TIMESTAMP</span><span class="o">)</span>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;comment_date&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Date</span> <span class="n">commentDate</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;comment_content&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">commentContent</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// auto generate getter and setter</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Note: Klik <a href="https://github.com/martinusadyh/artivisi-farm-server/blob/master/table-paging/com.artivisi.sample.tablepaging.domain/src/com/artivisi/sample/tablepaging/domain/hibernate/WPComment.java">WPComment.java</a> untuk melihat source code lengkap.</strong></p>
+
+<p>Setelah selesai dengan masalah <strong>domain class</strong>, sekarang buatlah sebuah interface dengan nama <code>TablePagingService.java</code> pada project <code>com.artivisi.sample.tablepaging.service</code> yang berfungsi sebagai service layer kita. Sedangkan kode-nya kurang lebih seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">artivisi</span><span class="o">.</span><span class="na">sample</span><span class="o">.</span><span class="na">tablepaging</span><span class="o">.</span><span class="na">service</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.domain.hibernate.WPComment</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * @author Martinus Ady H &lt;martinus@artivisi.com&gt;</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TablePagingService</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">wpcomment</span><span class="o">&gt;</span> <span class="nf">findAllComment</span><span class="o">(</span><span class="n">Integer</span> <span class="n">pageNumber</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">rowsPerPage</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">countComments</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>
+<strong>Note: Klik <a href="https://github.com/martinusadyh/artivisi-farm-server/blob/master/table-paging/com.artivisi.sample.tablepaging.service/src/com/artivisi/sample/tablepaging/service/TablePagingService.java">TablePagingService.java</a> untuk melihat source code lengkap.</strong></p>
+
+<p>Karena pada tulisan ini kita akan menggunakan <strong>JDBC</strong> dan <strong>Hibernate</strong>, maka kita harus membuat 2 buah implementasi pada project <code>com.artivisi.sample.tablepaging.service.impl</code> untuk <strong>JDBC</strong> dan <strong>Hibernate</strong>. Dibawah ini adalah contoh implementasi untuk <strong>JDBC</strong> yang kodenya kurang lebih seperti berikut :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">artivisi</span><span class="o">.</span><span class="na">sample</span><span class="o">.</span><span class="na">tablepaging</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">impl</span><span class="o">.</span><span class="na">jdbc</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.domain.hibernate.WPComment</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.service.TablePagingService</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.logging.Level</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.logging.Logger</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * @author Martinus Ady H &lt;martinus@artivisi.com&gt;</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TablePagingServiceJDBC</span> <span class="kd">implements</span> <span class="n">TablePagingService</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">COUNT_QRY</span> <span class="o">=</span> <span class="s">&quot;select count(*) from wp_comments&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">FIND_ALL_QRY</span> <span class="o">=</span> <span class="s">&quot;select * from wp_comments limit ?,?&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">PreparedStatement</span> <span class="n">preparedCount</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">PreparedStatement</span> <span class="n">preparedFindAll</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Connection</span> <span class="n">connection</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">TablePagingServiceJDBC</span><span class="o">(</span><span class="n">Connection</span> <span class="n">con</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">SQLException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">connection</span> <span class="o">=</span> <span class="n">con</span><span class="o">;</span>
+</span><span class='line'>        <span class="n">preparedCount</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">COUNT_QRY</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">preparedFindAll</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">FIND_ALL_QRY</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">wpcomment</span><span class="o">&gt;</span> <span class="nf">findAllComment</span><span class="o">(</span><span class="n">Integer</span> <span class="n">pageNumber</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">rowsPerPage</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">List</span><span class="o">&lt;</span><span class="n">wpcomment</span><span class="o">&gt;</span> <span class="n">listWP</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">wpcomment</span><span class="o">&gt;();</span>
+</span><span class='line'>            <span class="n">preparedFindAll</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="o">(</span><span class="n">rowsPerPage</span><span class="o">*(</span><span class="n">pageNumber</span><span class="o">-</span><span class="mi">1</span><span class="o">)));</span>
+</span><span class='line'>            <span class="n">preparedFindAll</span><span class="o">.</span><span class="na">setInt</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">rowsPerPage</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">preparedFindAll</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+</span><span class='line'>            <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">WPComment</span> <span class="n">comment</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">WPComment</span><span class="o">();</span>
+</span><span class='line'>                <span class="n">comment</span><span class="o">.</span><span class="na">setCommentID</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&quot;comment_ID&quot;</span><span class="o">));</span>
+</span><span class='line'>                <span class="n">comment</span><span class="o">.</span><span class="na">setCommentAuthor</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;comment_author&quot;</span><span class="o">));</span>
+</span><span class='line'>                <span class="n">comment</span><span class="o">.</span><span class="na">setCommentDate</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getDate</span><span class="o">(</span><span class="s">&quot;comment_date&quot;</span><span class="o">));</span>
+</span><span class='line'>                <span class="n">comment</span><span class="o">.</span><span class="na">setCommentContent</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;comment_content&quot;</span><span class="o">));</span>
+</span><span class='line'>                <span class="n">listWP</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">comment</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">listWP</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">TablePagingServiceJDBC</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">countComments</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Integer</span> <span class="n">totalRows</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>            <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">preparedCount</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+</span><span class='line'>            <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">totalRows</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&quot;count(*)&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">totalRows</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">TablePagingServiceJDBC</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Note: Klik <a href="https://github.com/martinusadyh/artivisi-farm-server/blob/master/table-paging/com.artivisi.sample.tablepaging.service.impl/src/com/artivisi/sample/tablepaging/service/impl/jdbc/TablePagingServiceJDBC.java">TablePagingServiceJDBC.java</a> untuk melihat source code lengkap.</strong></p>
+
+<p>Sedangkan implementasi untuk <strong>Hibernate</strong> kurang lebih seperti berikut :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">artivisi</span><span class="o">.</span><span class="na">sample</span><span class="o">.</span><span class="na">tablepaging</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">impl</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.domain.hibernate.WPComment</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.service.TablePagingService</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.hibernate.SessionFactory</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * @author Martinus Ady H &lt;martinus@artivisi.com&gt;</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nd">@Service</span><span class="o">(</span><span class="s">&quot;tablePagingService&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="nd">@Transactional</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TablePagingServiceHibernate</span> <span class="kd">implements</span> <span class="n">TablePagingService</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Autowired</span> <span class="kd">private</span> <span class="n">SessionFactory</span> <span class="n">sessionFactory</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">wpcomment</span><span class="o">&gt;</span> <span class="nf">findAllComment</span><span class="o">(</span><span class="n">Integer</span> <span class="n">pageNumber</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">rowsPerPage</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">sessionFactory</span><span class="o">.</span><span class="na">getCurrentSession</span><span class="o">()</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="s">&quot;from WPComment wp&quot;</span><span class="o">)</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">setFirstResult</span><span class="o">(</span><span class="n">rowsPerPage</span><span class="o">*(</span><span class="n">pageNumber</span><span class="o">-</span><span class="mi">1</span><span class="o">))</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">setMaxResults</span><span class="o">(</span><span class="n">rowsPerPage</span><span class="o">)</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">list</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">countComments</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Long</span> <span class="n">totalRow</span> <span class="o">=</span> <span class="o">(</span><span class="n">Long</span><span class="o">)</span> <span class="n">sessionFactory</span><span class="o">.</span><span class="na">getCurrentSession</span><span class="o">()</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="s">&quot;select count(*) from WPComment wp&quot;</span><span class="o">)</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">uniqueResult</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">totalRow</span><span class="o">.</span><span class="na">intValue</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Note: Klik <a href="https://github.com/martinusadyh/artivisi-farm-server/blob/master/table-paging/com.artivisi.sample.tablepaging.service.impl/src/com/artivisi/sample/tablepaging/service/impl/TablePagingServiceHibernate.java">TablePagingServiceHibernate.java</a> untuk melihat source code lengkap.</strong></p>
+
+<p>Setelah urusan dengan <strong>backend</strong> selesai, sekarang mari kita fokus pada masalah di sisi UI :) Pada proejct <code>com.artivisi.sample.tablepaging.ui</code>, buatlah dahulu 3 buah file untuk inisialisasi <strong>Spring Framework</strong> dan <strong>Hibernate</strong>-nya. Ketiga buah file tersebut yaitu <code>applicationContext.xml</code> yang isinya kurang lebih seperti berikut :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.springframework.org/schema/beans&quot;</span> <span class="na">xmlns:tx=</span><span class="s">&quot;http://www.springframework.org/schema/tx&quot;</span> <span class="na">xmlns:p=</span><span class="s">&quot;http://www.springframework.org/schema/p&quot;</span> <span class="na">xmlns:context=</span><span class="s">&quot;http://www.springframework.org/schema/context&quot;</span> <span class="na">xmlns:util=</span><span class="s">&quot;http://www.springframework.org/schema/util&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:schemalocation=</span><span class="s">&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd</span>
+</span><span class='line'><span class="s">          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd</span>
+</span><span class='line'><span class="s">          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd</span>
+</span><span class='line'><span class="s">          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd</span>
+</span><span class='line'><span class="s">&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">&quot;com.artivisi.sample.tablepaging.service&quot;</span><span class="nt">&gt;&lt;/context:component-scan&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;context:property-placeholder</span> <span class="na">location=</span><span class="s">&quot;classpath:jdbc.properties&quot;</span><span class="nt">&gt;&lt;/context:property-placeholder&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;context:annotation-config&gt;&lt;/context:annotation-config&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tx:annotation-driven&gt;&lt;/tx:annotation-driven&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;bean</span> <span class="na">p:driverclassname=</span><span class="s">&quot;${jdbc.driver}&quot;</span> <span class="na">class=</span><span class="s">&quot;org.apache.commons.dbcp.BasicDataSource&quot;</span> <span class="na">p:url=</span><span class="s">&quot;${jdbc.url}&quot;</span> <span class="na">p:username=</span><span class="s">&quot;${jdbc.username}&quot;</span> <span class="na">p:password=</span><span class="s">&quot;${jdbc.password}&quot;</span> <span class="na">id=</span><span class="s">&quot;dataSource&quot;</span><span class="nt">&gt;&lt;/bean&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;bean</span> <span class="na">p:datasource-ref=</span><span class="s">&quot;dataSource&quot;</span> <span class="na">p:configlocation=</span><span class="s">&quot;classpath:hibernate.cfg.xml&quot;</span> <span class="na">id=</span><span class="s">&quot;sessionFactory&quot;</span> <span class="na">class=</span><span class="s">&quot;org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;hibernateProperties&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;props&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;prop</span> <span class="na">key=</span><span class="s">&quot;hibernate.dialect&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                    ${hibernate.dialect}
+</span><span class='line'>                <span class="nt">&lt;/prop&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/props&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/property&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/bean&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;bean</span> <span class="na">p:sessionfactory-ref=</span><span class="s">&quot;sessionFactory&quot;</span> <span class="na">id=</span><span class="s">&quot;transactionManager&quot;</span> <span class="na">class=</span><span class="s">&quot;org.springframework.orm.hibernate3.HibernateTransactionManager&quot;</span><span class="nt">&gt;&lt;/bean&gt;</span>
+</span><span class='line'><span class="nt">&lt;/beans&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>yang kedua yaitu file <code>hibernate.cfg.xml</code> yang isinya kurang lebih seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;hibernate-configuration&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;session-factory&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;hibernate.dialect&quot;</span><span class="nt">&gt;</span>org.hibernate.dialect.MySQLInnoDBDialect<span class="nt">&lt;/property&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;hibernate.hbm2ddl.auto&quot;</span><span class="nt">&gt;</span>update<span class="nt">&lt;/property&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;hibernate.show_sql&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;hibernate.format_sql&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;mapping</span> <span class="na">class=</span><span class="s">&quot;com.artivisi.sample.tablepaging.domain.hibernate.WPComment&quot;</span><span class="nt">&gt;&lt;/mapping&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/session-factory&gt;</span>
+</span><span class='line'><span class="nt">&lt;/hibernate-configuration&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>dan yang terakhir adalah file <code>jdbc.properties</code> yang isinya kurang lebih seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='properties'><span class='line'><span class="c"># To change this template, choose Tools | Templates</span>
+</span><span class='line'><span class="c"># and open the template in the editor.</span>
+</span><span class='line'><span class="na">jdbc.username</span><span class="o">=</span><span class="s">root</span>
+</span><span class='line'><span class="na">jdbc.password</span><span class="o">=</span><span class="s">admin</span>
+</span><span class='line'><span class="na">jdbc.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3306/table_paging</span>
+</span><span class='line'><span class="na">jdbc.driver</span><span class="o">=</span><span class="s">com.mysql.jdbc.Driver</span>
+</span><span class='line'><span class="na">hibernate.dialect</span><span class="o">=</span><span class="s">org.hibernate.dialect.MySQLInnoDBDialect</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Simpan ke 3 file tersebut pada project <code>com.artivisi.sample.tablepaging.ui</code> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5402028584/"><img src="http://farm6.static.flickr.com/5053/5402028584_2e872dc9a9.jpg" alt="FileKonfigurasiSpringHibernate" /></a><br/>
+<strong>Simpan file applicationContext.xml, hibernate.cfg.xml dan jdbc.properties pada root direktori src</strong></p>
+
+<p>Jika sudah, sekarang buatlah sebuah <strong>Main class</strong> yang mempunyai fungsi sebagai inisialisasi awal aplikasi kita yang isinya kurang lebih seperti kode dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">artivisi</span><span class="o">.</span><span class="na">sample</span><span class="o">.</span><span class="na">tablepaging</span><span class="o">.</span><span class="na">ui</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.service.TablePagingService</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.service.impl.jdbc.TablePagingServiceJDBC</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.mysql.jdbc.jdbc2.optional.MysqlDataSource</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.UIManager</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.UnsupportedLookAndFeelException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.springframework.context.ApplicationContext</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.springframework.context.support.ClassPathXmlApplicationContext</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * @author Martinus Ady H &lt;martinus@artivisi.com&gt;</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">TablePagingService</span> <span class="n">tablePagingService</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Boolean</span> <span class="n">jdbcMode</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">FALSE</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">TablePagingService</span> <span class="nf">getTablePagingService</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">tablePagingService</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * @param args the command line arguments</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="kd">throws</span> <span class="n">SQLException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(!</span><span class="n">jdbcMode</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">ApplicationContext</span> <span class="n">appCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ClassPathXmlApplicationContext</span><span class="o">(</span>
+</span><span class='line'>                    <span class="s">&quot;classpath:applicationContext.xml&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">tablePagingService</span> <span class="o">=</span> <span class="o">(</span><span class="n">TablePagingService</span><span class="o">)</span> <span class="n">appCtx</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&quot;tablePagingService&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">MysqlDataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">MysqlDataSource</span><span class="o">();</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="s">&quot;root&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">&quot;admin&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setDatabaseName</span><span class="o">(</span><span class="s">&quot;table_paging&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setServerName</span><span class="o">(</span><span class="s">&quot;localhost&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setPortNumber</span><span class="o">(</span><span class="mi">3306</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">tablePagingService</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TablePagingServiceJDBC</span><span class="o">(</span><span class="n">dataSource</span><span class="o">.</span><span class="na">getConnection</span><span class="o">());</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">EventQueue</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="nf">Runnable</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>                    <span class="n">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="n">UIManager</span><span class="o">.</span><span class="na">getSystemLookAndFeelClassName</span><span class="o">());</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InstantiationException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IllegalAccessException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedLookAndFeelException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">});</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah selesai membuat sebuah <strong>Main class</strong>, sekarang buatlah dahulu sebuah table model dengan nama <code>CommentTableModel.java</code> yang berfungsi untuk menampung data yang berasal dari database yang kodenya kurang lebih seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">artivisi</span><span class="o">.</span><span class="na">sample</span><span class="o">.</span><span class="na">tablepaging</span><span class="o">.</span><span class="na">ui</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.domain.hibernate.WPComment</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.table.AbstractTableModel</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * @author Martinus Ady H &lt;martinus@artivisi.com&gt;</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CommentTableModel</span> <span class="kd">extends</span> <span class="n">AbstractTableModel</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span><span class="o">[]</span> <span class="n">HEADER</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span>
+</span><span class='line'>        <span class="s">&quot;#&quot;</span><span class="o">,</span> <span class="s">&quot;ID&quot;</span><span class="o">,</span> <span class="s">&quot;AUTHOR&quot;</span><span class="o">,</span> <span class="s">&quot;DATE&quot;</span><span class="o">,</span> <span class="s">&quot;CONTENT&quot;</span>
+</span><span class='line'>    <span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">wpcomment</span><span class="o">&gt;</span> <span class="n">wPComments</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">CommentTableModel</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">wpcomment</span><span class="o">&gt;</span> <span class="n">wPComments</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">wPComments</span> <span class="o">=</span> <span class="n">wPComments</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getRowCount</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">wPComments</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getColumnCount</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">HEADER</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getColumnName</span><span class="o">(</span><span class="kt">int</span> <span class="n">column</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">HEADER</span><span class="o">[</span><span class="n">column</span><span class="o">];</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getValueAt</span><span class="o">(</span><span class="kt">int</span> <span class="n">rowIndex</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">WPComment</span> <span class="n">comment</span> <span class="o">=</span> <span class="n">wPComments</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">switch</span> <span class="o">(</span><span class="n">columnIndex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="k">return</span> <span class="n">rowIndex</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="k">return</span> <span class="n">comment</span><span class="o">.</span><span class="na">getCommentID</span><span class="o">();</span>
+</span><span class='line'>            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="k">return</span> <span class="n">comment</span><span class="o">.</span><span class="na">getCommentAuthor</span><span class="o">();</span>
+</span><span class='line'>            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="k">return</span> <span class="n">comment</span><span class="o">.</span><span class="na">getCommentDate</span><span class="o">();</span>
+</span><span class='line'>            <span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="k">return</span> <span class="n">comment</span><span class="o">.</span><span class="na">getCommentContent</span><span class="o">();</span>
+</span><span class='line'>            <span class="k">default</span><span class="o">:</span> <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah membuat sebuah table model, sekarang buatlah sebuah <strong>JFrame</strong> dengan nama <code>MainForm.java</code> yang mempunyai tampilan seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5401313671/"><img src="http://farm6.static.flickr.com/5098/5401313671_7217162b8a.jpg" alt="DesignForm" /></a><br/>
+<strong>Design Form</strong></p>
+
+<p>Pada design form diatas terdapat 5 buah tombol yaitu <code>btnFirst, btnPrevious, btnNext, btnLast</code> dan <code>btnRefresh</code>. Sebelum menambahkan event pada setiap tombol diatas, sekarang buatlah 4 buah variable yaitu <code>totalRows, pageNumber, totalPage</code> dan <code>rowsPerPage</code> pada <code>MainForm.java</code> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainForm</span> <span class="kd">extends</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">JFrame</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// paging utility</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">totalRows</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">pageNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">totalPage</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">rowsPerPage</span> <span class="o">=</span> <span class="mi">15</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/** Creates new form MainForm */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">MainForm</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">initComponents</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">setLocationRelativeTo</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="o">....</span>
+</span><span class='line'>    <span class="o">....</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Jika sudah, sekarang buatlah sebuah method dengan nama <code>autoResizeColumn(JTable jTable1)</code> pada <code>MainForm.java</code> yang fungsinya untuk melebarkan kolom sesuai dengan isi pada tabel yang kurang lebih kode-nya seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">autoResizeColumn</span><span class="o">(</span><span class="n">JTable</span> <span class="n">jTable1</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">JTableHeader</span> <span class="n">header</span> <span class="o">=</span> <span class="n">jTable1</span><span class="o">.</span><span class="na">getTableHeader</span><span class="o">();</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">rowCount</span> <span class="o">=</span> <span class="n">jTable1</span><span class="o">.</span><span class="na">getRowCount</span><span class="o">();</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="kd">final</span> <span class="n">Enumeration</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">jTable1</span><span class="o">.</span><span class="na">getColumnModel</span><span class="o">().</span><span class="na">getColumns</span><span class="o">();</span>
+</span><span class='line'>  <span class="k">while</span><span class="o">(</span><span class="n">columns</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">()){</span>
+</span><span class='line'>      <span class="n">TableColumn</span> <span class="n">column</span> <span class="o">=</span> <span class="o">(</span><span class="n">TableColumn</span><span class="o">)</span><span class="n">columns</span><span class="o">.</span><span class="na">nextElement</span><span class="o">();</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="na">getColumnModel</span><span class="o">().</span><span class="na">getColumnIndex</span><span class="o">(</span><span class="n">column</span><span class="o">.</span><span class="na">getIdentifier</span><span class="o">());</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">jTable1</span><span class="o">.</span><span class="na">getTableHeader</span><span class="o">().</span><span class="na">getDefaultRenderer</span><span class="o">()</span>
+</span><span class='line'>              <span class="o">.</span><span class="na">getTableCellRendererComponent</span><span class="o">(</span><span class="n">jTable1</span><span class="o">,</span> <span class="n">column</span><span class="o">.</span><span class="na">getIdentifier</span><span class="o">()</span>
+</span><span class='line'>                      <span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">col</span><span class="o">).</span><span class="na">getPreferredSize</span><span class="o">().</span><span class="na">getWidth</span><span class="o">();</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">row</span><span class="o">&lt;</span><span class="n">rowCount</span><span class="o">;</span> <span class="n">row</span><span class="o">++){</span>
+</span><span class='line'>          <span class="kt">int</span> <span class="n">preferedWidth</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">jTable1</span><span class="o">.</span><span class="na">getCellRenderer</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">col</span><span class="o">).</span><span class="na">getTableCellRendererComponent</span><span class="o">(</span><span class="n">jTable1</span><span class="o">,</span>
+</span><span class='line'>                  <span class="n">jTable1</span><span class="o">.</span><span class="na">getValueAt</span><span class="o">(</span><span class="n">row</span><span class="o">,</span> <span class="n">col</span><span class="o">),</span> <span class="kc">false</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="n">row</span><span class="o">,</span> <span class="n">col</span><span class="o">).</span><span class="na">getPreferredSize</span><span class="o">().</span><span class="na">getWidth</span><span class="o">();</span>
+</span><span class='line'>          <span class="n">width</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">width</span><span class="o">,</span> <span class="n">preferedWidth</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="n">header</span><span class="o">.</span><span class="na">setResizingColumn</span><span class="o">(</span><span class="n">column</span><span class="o">);</span> <span class="c1">// this line is very important</span>
+</span><span class='line'>      <span class="n">column</span><span class="o">.</span><span class="na">setWidth</span><span class="o">(</span><span class="n">width</span><span class="o">+</span><span class="n">jTable1</span><span class="o">.</span><span class="na">getIntercellSpacing</span><span class="o">().</span><span class="na">width</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="o">....</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah membuat sebuah method untuk konfigurasi lebar kolom pada <code>JTable</code> diatas, sekarang buatlah sebuah method dengan nama <code>initDefaultValue()</code> tepat dibawah method <code>autoResizeColumn(JTable jTable1)</code> yang mempunyai fungsi untuk mengambil data ke database yang kodenya kurang lebih seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">initDefaultValue</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">rowsPerPage</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">cmbPageSize</span><span class="o">.</span><span class="na">getSelectedItem</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+</span><span class='line'>  <span class="n">totalRows</span> <span class="o">=</span> <span class="n">Main</span><span class="o">.</span><span class="na">getTablePagingService</span><span class="o">().</span><span class="na">countComments</span><span class="o">();</span>
+</span><span class='line'>  <span class="n">Double</span> <span class="n">dblTotPage</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">totalRows</span><span class="o">.</span><span class="na">doubleValue</span><span class="o">()/</span><span class="n">rowsPerPage</span><span class="o">.</span><span class="na">doubleValue</span><span class="o">());</span>
+</span><span class='line'>  <span class="n">totalPage</span> <span class="o">=</span> <span class="n">dblTotPage</span><span class="o">.</span><span class="na">intValue</span><span class="o">();</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">pageNumber</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">btnFirst</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">btnPrevious</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">btnFirst</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">btnPrevious</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">pageNumber</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">totalPage</span><span class="o">))</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">btnNext</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">btnLast</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">btnNext</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">btnLast</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="n">txtPageNumber</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">pageNumber</span><span class="o">));</span>
+</span><span class='line'>  <span class="n">lblPageOf</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot; of &quot;</span> <span class="o">+</span> <span class="n">totalPage</span> <span class="o">+</span> <span class="s">&quot; &quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">lblTotalRecord</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;Total Record &quot;</span> <span class="o">+</span> <span class="n">totalRows</span> <span class="o">+</span> <span class="s">&quot; rows.&quot;</span><span class="o">);</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="n">List</span><span class="o">&lt;</span><span class="n">wpcomment</span><span class="o">&gt;</span> <span class="n">wPComments</span> <span class="o">=</span> <span class="n">Main</span><span class="o">.</span><span class="na">getTablePagingService</span><span class="o">().</span><span class="na">findAllComment</span><span class="o">(</span><span class="n">pageNumber</span><span class="o">,</span> <span class="n">rowsPerPage</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">jTable1</span><span class="o">.</span><span class="na">setModel</span><span class="o">(</span><span class="k">new</span> <span class="nf">CommentTableModel</span><span class="o">(</span><span class="n">wPComments</span><span class="o">));</span>
+</span><span class='line'>  <span class="n">autoResizeColumn</span><span class="o">(</span><span class="n">jTable1</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="o">....</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah selesai, sekarang waktunya untuk menambahkan event pada ke 5 buah tombol yang sebelumnya sudah kita buat. Sedangkan event untuk ke 5 buah tombol diatas kodenya kurang lebih seperti potongan kode dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnFirstActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">pageNumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>  <span class="n">initDefaultValue</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnPreviousActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">pageNumber</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">pageNumber</span> <span class="o">-=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>        <span class="n">initDefaultValue</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnNextActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">pageNumber</span> <span class="o">&lt;</span> <span class="n">totalPage</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">pageNumber</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>      <span class="n">initDefaultValue</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnLastActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">pageNumber</span> <span class="o">=</span> <span class="n">totalPage</span><span class="o">;</span>
+</span><span class='line'>  <span class="n">initDefaultValue</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnRefreshActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">initDefaultValue</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">....</span>
+</span><span class='line'><span class="o">....</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Sampai disini proses pembuatan UI sudah hampir selesai, langkah terakhir yang perlu kita lakukan yaitu menambahkan launcher pada class <code>Main.java</code> agar memanggil class <code>MainForm.java</code>. Untuk melakukan hal ini, sekarang tambahkanlah <strong>statement</strong> <code>new MainForm().setVisible(true);</code> pada file <code>Main.java</code> hingga kode kita menjadi seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">artivisi</span><span class="o">.</span><span class="na">sample</span><span class="o">.</span><span class="na">tablepaging</span><span class="o">.</span><span class="na">ui</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.service.TablePagingService</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.artivisi.sample.tablepaging.service.impl.jdbc.TablePagingServiceJDBC</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.mysql.jdbc.jdbc2.optional.MysqlDataSource</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.UIManager</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">javax.swing.UnsupportedLookAndFeelException</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.springframework.context.ApplicationContext</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.springframework.context.support.ClassPathXmlApplicationContext</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * @author Martinus Ady H &lt;martinus@artivisi.com&gt;</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">TablePagingService</span> <span class="n">tablePagingService</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Boolean</span> <span class="n">jdbcMode</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">FALSE</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">TablePagingService</span> <span class="nf">getTablePagingService</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">tablePagingService</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * @param args the command line arguments</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="kd">throws</span> <span class="n">SQLException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(!</span><span class="n">jdbcMode</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">ApplicationContext</span> <span class="n">appCtx</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ClassPathXmlApplicationContext</span><span class="o">(</span>
+</span><span class='line'>                    <span class="s">&quot;classpath:applicationContext.xml&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">tablePagingService</span> <span class="o">=</span> <span class="o">(</span><span class="n">TablePagingService</span><span class="o">)</span> <span class="n">appCtx</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&quot;tablePagingService&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">MysqlDataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">MysqlDataSource</span><span class="o">();</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="s">&quot;root&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">&quot;admin&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setDatabaseName</span><span class="o">(</span><span class="s">&quot;table_paging&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setServerName</span><span class="o">(</span><span class="s">&quot;localhost&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setPortNumber</span><span class="o">(</span><span class="mi">3306</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">tablePagingService</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">TablePagingServiceJDBC</span><span class="o">(</span><span class="n">dataSource</span><span class="o">.</span><span class="na">getConnection</span><span class="o">());</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">EventQueue</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="nf">Runnable</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>                    <span class="n">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="n">UIManager</span><span class="o">.</span><span class="na">getSystemLookAndFeelClassName</span><span class="o">());</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InstantiationException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IllegalAccessException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedLookAndFeelException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>                <span class="k">new</span> <span class="nf">MainForm</span><span class="o">().</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">});</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Nah sampai disini sekarang kita tinggal menjalankan projectnya dengan cara menekan tombol <strong>F6</strong> dan jika tidak ada pesan kesalahan maka harusnya kita sudah bisa melihat tampilan table kita seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5400874633/"><img src="http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg" alt="Screenshot" /></a><br/>
+<strong>Tampilan Paging on JTable</strong></p>
+
+<p>Bagaimana ? Mudah bukan ? :D Mungkin solusi ini masih kurang elegan, tapi ya mari di diskusikan bagaimana baiknya :D :) Jika ada yang ingin bertanya, silahkan langsung tanya saja pada kolom komentar ya :)</p>
+
+<p><strong>Referensi-referensi :</strong></p>
+
+<ul>
+<li><p><a href="http://martinusadyh.web.id/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/">Membuat Menu Login di Java Swing Dengan Animasi Progress Bar</a></p></li>
+<li><p><a href="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a></p></li>
+<li><p><a href="http://martinusadyh.web.id/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Swing Component Focus Handler Using KeyStroke Editor</a></p></li>
+<li><p><a href="http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/">DropDown Button di Java Swing</a></p></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-31T02:43:45+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2011/01/31/paging-on-jtable/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2011/01/31/paging-on-jtable/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2011/01/18/android-gingerbeard-on-htc-desire-with-oxygen-rom/" title="Previous Post: Android GingerBeard On HTC Desire with Oxygen ROM">&laquo; Android GingerBeard On HTC Desire with Oxygen ROM</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2011/02/18/artivisi-bootcamp/" title="Next Post: ArtiVisi Bootcamp">ArtiVisi Bootcamp &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2011/01/31/paging-on-jtable/';
+        var disqus_url = 'http://martinusadyh.web.id/2011/01/31/paging-on-jtable/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

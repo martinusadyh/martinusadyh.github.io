@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Installing PgAdmin3 1.10.1 on Slackware 13.0 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Akhir-nya berhasil juga melakukan installasi PgAdmin3-1.10.1 di Slackware 13.0 saya :) , tulisan kali ini merupakan jawaban untuk pertanyaan saya &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Installing PgAdmin3 1.10.1 on Slackware 13.0</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-05T04:06:52+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Akhir-nya berhasil juga melakukan installasi <a href="http://www.pgadmin.org/">PgAdmin3-1.10.1</a> di Slackware 13.0 saya :) , tulisan kali ini merupakan jawaban untuk pertanyaan saya sendiri yang kemarin belum sempat terjawab pada milis <a href="mailto:id-slackware@googlegroups.com">id-slackware@googlegroups.com</a> dengan subyek <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/998fbab9cedb34da">Installing pgadmin error di proses make</a> :D Nah karena kemarin belum ada yang jawab, menurut asumsi saya <strong>pribadi</strong> kemungkinan teman-teman di milis juga belum pernah mengalami hal yang saya alamin jadinya bingung mau menjawab apaan :D . Dan asumsi kedua saya yaitu, saya yang kurang teliti dalam hal mengatur urusan <strong>dependencies</strong> yang diperlukan oleh <a href="http://www.pgadmin.org/">pgadmin</a>-nya :) Setelah ditelusuri lebih lanjut, masalah utama yaitu ternyata saya sendiri yang kurang teliti membaca halaman <strong>INSTALL</strong> yang terdapat dalam direktori source code <a href="http://www.pgadmin.org/">pgadmin</a> :D , kenapa saya sempat melewatkan file <strong>INSTALL</strong> tersebut ? Nah kasus yang terjadi pada saya yaitu adalah, <strong>saya terlalu percaya</strong> oleh SlackBuild Script bawaan dari <a href="http://slackbuild.org">SBo</a> :D (Maklum biasanya saya tidak pernah mengalami masalah sama sekali dengan SlackBuild Script bawaan <a href="http://slackbuild.org">SBo</a> :D ) Hmm&hellip; mantap kan Slackware :) , untuk teman-teman pengguna distribusi GNU/Linux lain mungkin sudah bisa bernyaman-nyaman dengan mengetikkan 1 baris perintah untuk menginstall <a href="http://www.pgadmin.org/">pgadmin</a> beserta <strong>dependencies</strong>-nya. Tapi di Slackware &hellip;.. hmm&hellip; mari kita lihat apa yang harus kita lakukan agar Slackware kita bisa seperti distribusi GNU/Linux yang lain :) (Ini yang membuat saya tetep <strong>keukeuh</strong> sama Slackware, ada aja yang perlu di ****) :)</p>
+
+<p>Sekedar catatan untuk teman-teman, semua versi aplikasi maupun library pada tulisan ini merupakan versi yang terbaru ketika artikel ini mulai ditulis. Dan <strong>mungkin</strong> langkah-langkah pada tulisan ini sudah tidak <strong>relevan</strong> lagi jika versi library maupun aplikasi yang teman-teman gunakan sudah berbeda jauh, jadi <strong>SAYA TIDAK MENJAMIN</strong> apa yang saya tulis disini bisa berjalan dengan mulus pada sistem teman-teman. Sedangkan spesifikasi sistem yang saya gunakan pada tulisan kali ini yaitu adalah sebagai berikut :</p>
+
+<ol>
+<li><p> Slackware 13.0 versi stable (saya belum sanggup mengikuti perkembangan Slackware current :( )</p></li>
+<li><p> PostgreSQL 8.4.2</p></li>
+<li><p> PgAdmin3 v1.10.1</p></li>
+<li><p> wxPython 2.8.10.1</p></li>
+</ol>
+
+
+<p>Ok konfigurasi sistem yang teman-teman gunakan sama dan mengalami masalah yang sama juga ? Kalau iya, mari kita lanjutkan :D Nah untuk mulai menginstall <a href="http://www.pgadmin.org/">pgadmin</a> pada Slackware, yang kita perlukan pasti-nya installer <a href="http://www.pgadmin.org/">pgadmin</a> itu sendiri kan. Karena saya lebih suka melakukan proses installasi dari source, maka pilihan yang saya pakai yaitu mendownload <strong>SlackBuild Script</strong> untuk <a href="http://www.pgadmin.org/">pgadmin</a> yang bisa kita download pada halaman <a href="http://slackbuilds.org/repository/13.0/system/pgadmin3/">PgAdmin SBo</a>. Pada halaman download tersebut juga terdapat <strong>catatan</strong> yang kurang lebih seperti berikut :</p>
+
+<!-- more -->
+
+
+<blockquote><p>pgAdmin requires wxPython PostgreSQL (available at slackbuilds.org).</p></blockquote>
+
+<p>Maintained by: Iskar Enev
+Approved by: dsomero</p>
+
+<p>Nah untuk teman-teman yang belum menginstall <strong>package wxPython</strong>, downloadlah dahulu semua source code wxPython beserta SlackBuild Script-nya tapi jangan sampai melakukan <strong>PROSES INSTALLASI wxPython</strong> dahulu. Sedangkan untuk teman-teman yang sudah terlanjur menginstall packages wxPython yang berasal dari <a href="http://slackbuild.org">SBo</a>, maka hapuslah dahulu packages wxPython yang sudah terinstall dengan menggunakan perintah <strong>removepkg wxPython-2.8.10.1-i486-1_SBo</strong>. Jika teman-teman tidak menghapus packages wxPython yang berasal dari SBo terlebih dahulu, dan kemudian mencoba untuk langsung melakukan proses <strong>kompilasi</strong> pada source code <a href="http://www.pgadmin.org/">pgadmin</a>. Maka bisa dipastikan, teman-teman pasti akan mendapatkan pesan error seperti dibawah ini ketika proses <strong>make</strong> sedang berjalan:
+[plain]
+./pgAdmin3.cpp:27:24: error: wx/ogl/ogl.h: No such file or directory
+In file included from /usr/include/libxml2/libxml/xmlreader.h:13,
+                 from ../pgadmin/include/utils/favourites.h:18,
+                 from ../pgadmin/include/frm/frmQuery.h:19,
+                 from ./pgAdmin3.cpp:55:
+/usr/include/libxml2/libxml/xmlversion.h:429:1: warning: &ldquo;ATTRIBUTE_PRINTF&rdquo; redefined
+In file included from /usr/include/wx-2.8/wx/wx.h:15,
+                 from ../pgadmin/include/pgAdmin3.h:16,
+                 from ./pgAdmin3.cpp:13:
+/usr/include/wx-2.8/wx/defs.h:501:1: warning: this is the location of the previous definition
+./pgAdmin3.cpp: In member function &lsquo;virtual bool pgAdmin3::OnInit()&rsquo;:
+./pgAdmin3.cpp:383: error: &lsquo;wxOGLInitialize&rsquo; was not declared in this scope
+make[2]: <strong><em> [pgAdmin3.o] Error 1
+make[2]: Leaving directory <code>/tmp/SBo/pgadmin3-1.10.1/pgadmin'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory</code>/tmp/SBo/pgadmin3-1.10.1'
+make: </em></strong> [all] Error 2
+root@martinusadyh:[/media/data/SLACKBUILDS/pgadmin]#
+[/plain]</p>
+
+<p>Setelah googling sebentar dengan menggunakan keyword <a href="http://www.google.co.id/search?q=.%2FpgAdmin3.cpp%3A383%3A+error%3A+%27wxOGLInitialize%27+was+not+declared+in+this+scope+&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;rls=org.mozilla:en-US:official&amp;client=firefox-a">./pgAdmin3.cpp:383: error: &lsquo;wxOGLInitialize&rsquo; was not declared in this scope</a>, saya menemukan link yang mengarah ke milis <a href="http://old.nabble.com/Can%27t-compile-pgadmin3-1.10.1-td27659249.html">pgadmin-hackers</a> dan mendapatkan <strong>pencerahan</strong> pada email balasan yang isinya seperti berikut :</p>
+
+<blockquote><p>Hi,</p></blockquote>
+
+<p>Le 19/02/2010 20:35, Haiyan Chi a écrit :</p>
+
+<blockquote><p>[&hellip;]
+I am installing  pgadmin3-1.10.1 from source.  I am at linux.</p>
+
+<p>The configuration passed:</p>
+
+<hr />
+
+<p>PostgreSQL directory:
+[&hellip;]
+When I tried to compile, got the following error:
+[&hellip;]
+&hellip; [show rest of quote]</p></blockquote>
+
+<p>You probably forgot to compile the wxWidgets contribs. Go in the contrib
+directory and &ldquo;make &amp;&amp; make install&rdquo;.</p>
+
+<p>&ndash;
+Guillaume.
+ <a href="http://www.postgresqlfr.org">http://www.postgresqlfr.org</a>
+ <a href="http://dalibo.com">http://dalibo.com</a></p>
+
+<p>Waaaks&hellip;. harus menginstall juga direktori <strong>contrib</strong> pada packages <strong>wxWidgets</strong> ??? Ok sekarang mari kita bongkar source code <a href="http://www.pgadmin.org/">pgadmin</a> dan coba buka file <strong>INSTALL</strong> dan hasil-nya adalah seperti dibawah ini :</p>
+
+<pre><code>....
+3) Unpack the wxGTK tarball to a convenient location, and build and install it
+   as follows:
+
+     cd /path/to/wxGTK/source/
+     ./configure --with-gtk --enable-gtk2 --enable-unicode
+     make
+     sudo make install
+
+     # Install wxWidgets contrib modules.
+     cd contrib/
+     make
+     sudo make install
+
+   A script is included in the pgAdmin source tarball 
+   (xtra/wx-build/build-wxgtk) which will build and install wxWidgets in each 
+   combination of shared/static/debug/release builds for you.
+....
+</code></pre>
+
+<p>Karena packages <strong>wxGTK</strong> yang terdapat pada <a href="http://slackbuild.org">SBo</a> sudah di <strong>include</strong> pada packages <strong>wxPython</strong>, maka sepertinya masalah terdapat pada packages <strong>wxPython</strong>-nya. Dari file <strong>INSTALL</strong> dan info dari milis <a href="http://old.nabble.com/Can%27t-compile-pgadmin3-1.10.1-td27659249.html">pgadmin-hackers</a> diatas, kita sudah mendapatkan informasi yang jelas yaitu kita harus <strong>MENGINSTALL JUGA MODUL contrib/</strong> yang terdapat pada distribusi <strong>wxWidgets</strong> atau <strong>wxPython</strong> kita. Sekarang coba ekstrak file <strong>wxPython-src-2.8.10.1.tar.bz2</strong> dan cek apakah direktori <strong>contrib/</strong> ada atau tidak (seharusnya sih kita menemukan direktori <strong>contrib/</strong> pada distribusi <strong>wxPython</strong>), dan kemudian cek juga file <strong>wxPython.SlackBuild</strong> dan lihat pada baris yang menjalankan perintah <strong>make</strong> dan <strong>make install</strong>. Dan inilah yang saya temukan pada file <strong>wxPython.SlackBuild</strong> yang di download dari <a href="http://slackbuild.org">SBo</a> :</p>
+
+<pre><code>#Additional stuff needed by wxPython
+make -C contrib/src/gizmos
+make -C contrib/src/stc
+
+make install DESTDIR=$PKG
+make -C contrib/src/gizmos install DESTDIR=$PKG
+make -C contrib/src/stc install DESTDIR=$PKG
+</code></pre>
+
+<p>Nah pada script diatas bisa kita lihat, bahwa ternyata tidak semua direktori <strong>contrib/</strong> di install oleh SlackBuild Script <strong>wxPython</strong> bawaan dari <a href="http://slackbuild.org">SBo</a>. Agar proses <strong>make</strong> <a href="http://www.pgadmin.org/">pgadmin</a> bisa berjalan dengan mulus, sekarang modifikasilah file <strong>wxPython.SlackBuild</strong> diatas menjadi seperti dibawah ini :</p>
+
+<pre><code>#Additional stuff needed by wxPython
+# make -C contrib/src/gizmos
+# make -C contrib/src/stc
+
+make -C contrib/
+
+make install DESTDIR=$PKG
+# make -C contrib/src/gizmos install DESTDIR=$PKG
+# make -C contrib/src/stc install DESTDIR=$PKG
+make -C contrib/ install DESTDIR=$PKG
+</code></pre>
+
+<p>Setelah selesai melakukan proses modifikasi diatas, sekarang coba <strong>build</strong> lagi binary packages untuk <strong>wxPython</strong> dan install dengan menggunakan perintah <strong>installpkg /tmp/wxPython-2.8.10.1-i486-1_SBo.tgz</strong>. Jika packages <strong>wxPython</strong> hasil modifikasi kita telah terinstall, sekarang jalankan-lah SlackBuild Script <a href="http://www.pgadmin.org/">pgadmin</a>-nya. Dan jika pada proses <strong>build</strong> packages <a href="http://www.pgadmin.org/">pgadmin</a> tidak terdapat error, kita bisa mulai menginstall dengan mengetikkan perintah <strong>installpkg /tmp/pgadmin3-1.10.1-i486-1_SBo.tgz</strong> :) Jika proses installasi <a href="http://www.pgadmin.org/">pgadmin</a> sudah selesai, sekarang coba jalankan <a href="http://www.pgadmin.org/">pgadmin</a>-nya dengan mengetikkan perintah <strong>pgadmin3</strong> pada terminal dan hasil akhir yang akan kita dapatkan adalah seperti gambar-gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4407311790/"><img src="http://farm5.static.flickr.com/4070/4407311790_876aafde90.jpg" alt="TampilanPgAdmin" /><br/>
+PgAdmin3 Menampilkan Daftar Tabel</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4407311788/"><img src="http://farm5.static.flickr.com/4037/4407311788_2e4dbac623.jpg" alt="PgAdminQueryTool" /><br/>
+Tampilan Query Designer PgAdmin3</a></p>
+
+<p>Waaaaah&hellip; mangstab kan, bagaimana menurut pendapat teman-teman keren tidak ?? :D :) Jadi lebih gampang bukan belajar <a href="http://www.postgresql.org/">PostgreSQL</a> menggunakan <a href="http://www.pgadmin.org/">pgadmin</a> ? Apalagi <a href="http://www.pgadmin.org/">pgadmin</a> ini jalan di Slackware kita yang tercinta :D :)</p>
+
+<p>Akhir kata, happy slacking&rsquo;s guys :)
+<strong>Link-link terkait : </strong></p>
+
+<ol>
+<li><p> <a href="http://martinusadyh.web.id/2010/02/28/installing-postgresql-8-4-2-on-slackware-13-0/">Installing PostgreSQL 8.4.2 On Slackware 13.0</a></p></li>
+<li><p> <a href="http://martinusadyh.web.id/2010/03/03/beberapa-persamaan-antara-mysql-dan-postgresql/">Beberapa Persamaan MySQL dan PostgreSQL</a></p></li>
+<li><p> <a href="http://www.postgresql.org/">PostgreSQL</a></p></li>
+<li><p> <a href="http://www.pgadmin.org/">pgadmin</a></p></li>
+<li><p> <a href="http://slackbuild.org">SlackBuild.org</a></p></li>
+<li><p> <a href="mailto:id-slackware@googlegroups.com">Tempat Diskusi Slacker&rsquo;s Indonesia</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-05T04:06:52+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/03/04/toko-komputer-murah-daerah-surabaya/" title="Previous Post: Toko Komputer Murah Daerah Surabaya">&laquo; Toko Komputer Murah Daerah Surabaya</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/03/07/cara-mudah-mendapatkan-google-adsense/" title="Next Post: Cara Mudah Mendapatkan Google Adsense">Cara Mudah Mendapatkan Google Adsense &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

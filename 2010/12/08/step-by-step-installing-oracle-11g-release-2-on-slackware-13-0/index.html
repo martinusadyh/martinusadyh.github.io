@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Step By Step Installing Oracle 11g Release 2 On Slackware 13.0 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Akhirnya kesampaian juga bermain-main dengan Database Oracle di Slackware 13.0 :) dan ternyata proses installasi Oracle tidak semudah yang &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Step by Step Installing Oracle 11g Release 2 on Slackware 13.0</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-08T05:07:55+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Akhirnya kesampaian juga bermain-main dengan Database <a href="http://www.oracle.com/index.html">Oracle</a> di Slackware 13.0 :) dan ternyata proses installasi Oracle tidak semudah yang dibayangkan meskipun saya sudah mengikuti tulisan <a href="http://fxbudiar.blogspot.com/2009/04/menginstall-oracle-10g-di-slackware.html">Menginstall Oracle 10g di Slackware</a> dari mas Budi Ariyanto :( Ok sekarang mari kita mulai saja tahapan-tahapan proses instalasi Oracle pada Slackware 13.0 :)</p>
+
+<p>Sebelum melakukan proses installasi, buatlah 3 <strong>group</strong> dahulu untuk Oracle yaitu <strong>oinstall,dba</strong> dan <strong>oper</strong> dengan cara seperti dibawah ini :
+[plain]
+root@martinusadyh:[~]# /usr/sbin/groupadd oinstall
+root@martinusadyh:[~]# /usr/sbin/groupadd -g 502 dba
+root@martinusadyh:[~]# /usr/sbin/groupadd -g 505 oper
+[/plain]</p>
+
+<p>Setelah membuat 3 <strong>group</strong> tersebut, sekarang buatlah user <strong>oracle</strong> yang mempunyai primary group <strong>oinstall</strong> dan secondary group-nya <strong>dba</strong> dan <strong>oper</strong> dengan mengetikkan perintah seperti dibawah ini :</p>
+
+<!-- more -->
+
+
+<p>[plain]
+root@martinusadyh:[~]# adduser oracle</p>
+
+<p>Login name for new user: oracle</p>
+
+<p>User ID (&lsquo;UID&rsquo;) [ defaults to next available ]:</p>
+
+<dl>
+<dt>Initial group [ users ]: oinstall</dt>
+<dt>Additional UNIX groups:</dt>
+<dt>&hellip;&hellip;</dt>
+<dt>&hellip;&hellip;</dt>
+<dt>Press ENTER to continue without adding any additional groups</dt>
+<dt>Or press the UP arrow to add/select/edit additional groups</dt>
+<dd> dba oper                                   <br/>
+&hellip;&hellip;
+&hellip;&hellip;
+Account setup complete.
+root@martinusadyh:[~]#
+[/plain]
+<strong>Sebagai contoh, isikan password untuk user oracle ini dengan oracle123</strong></dd>
+</dl>
+
+<p>Jika sudah menambahkan user <strong>oracle</strong> kedalam sistem, kita bisa mengecek dengan mengetikkan perintah dibawah ini :
+[plain]
+root@martinusadyh:[~]# id oracle
+uid=1002(oracle) gid=210(oinstall) groups=210(oinstall),502(dba),505(oper)
+[/plain]</p>
+
+<p>Urusan <strong>user</strong> dan <strong>group</strong> yang dibutuhkan untuk menginstall Oracle sudah selesai, sekarang mari kita lakukan konfigurasi parameter kernel yang dibutuhkan oleh Oracle. Sedangkan konfigurasi parameter kernel yang direkomendasikan oleh Oracle adalah seperti berikut :</p>
+
+<p>Kernel Parameter Configuration For Oracle DB</p>
+
+<pre><code>Parameter
+Min. Value
+Max. Value
+File
+Command to Check
+Result
+</code></pre>
+
+<p>semmsl</p>
+
+<p>250</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/kernel/sem</code></p>
+
+<p><code>cat /proc/sys/kernel/sem | awk '{print $1}'</code></p>
+
+<p>250</p>
+
+<p>semmns</p>
+
+<p>32000</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/kernel/sem</code></p>
+
+<p><code>cat /proc/sys/kernel/sem | awk '{print $2}'</code></p>
+
+<p>32000</p>
+
+<p>semopm</p>
+
+<p>100</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/kernel/sem</code></p>
+
+<p><code>cat /proc/sys/kernel/sem | awk '{print $3}'</code></p>
+
+<p><strong>32</strong></p>
+
+<p>semmni</p>
+
+<p>128</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/kernel/sem</code></p>
+
+<p><code>cat /proc/sys/kernel/sem | awk '{print $4}'</code></p>
+
+<p>128</p>
+
+<p>shmall</p>
+
+<p>2097152</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/kernel/shmall</code></p>
+
+<p><code>cat /proc/sys/kernel/shmall</code></p>
+
+<p>2097152</p>
+
+<p>shmmax</p>
+
+<p>536870912</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/kernel/shmmax</code></p>
+
+<p><code>cat /proc/sys/kernel/shmmax</code></p>
+
+<p><strong>33554432</strong></p>
+
+<p>shmmni</p>
+
+<p>4096</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/kernel/shmmni</code></p>
+
+<p><code>cat /proc/sys/kernel/shmmni</code></p>
+
+<p>4096</p>
+
+<p>aio-max-nr</p>
+
+<p>-</p>
+
+<p>1048576</p>
+
+<p><code>/proc/sys/fs/aio-max-nr</code></p>
+
+<p><code>cat /proc/sys/fs/aio-max-nr</code></p>
+
+<p><strong>65536</strong></p>
+
+<p>ip_local_port_range</p>
+
+<p>9000</p>
+
+<p>65500</p>
+
+<p><code>/proc/sys/net/ipv4/ip_local_port_range</code></p>
+
+<p><code>cat /proc/sys/net/ipv4/ip_local_port_range</code></p>
+
+<p><strong>32768 61000</strong></p>
+
+<p>rmem_default</p>
+
+<p>262144</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/net/core/rmem_default</code></p>
+
+<p><code>cat /proc/sys/net/core/rmem_default</code></p>
+
+<p><strong>111616</strong></p>
+
+<p>rmem_max</p>
+
+<p>4194304</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/net/core/rmem_max</code></p>
+
+<p><code>cat /proc/sys/net/core/rmem_max</code></p>
+
+<p><strong>131071</strong></p>
+
+<p>wmem_default</p>
+
+<p>262144</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/net/core/wmem_default</code></p>
+
+<p><code>cat /proc/sys/net/core/wmem_default</code></p>
+
+<p><strong>111616</strong></p>
+
+<p>wmem_max</p>
+
+<p>1048576</p>
+
+<p>-</p>
+
+<p><code>/proc/sys/net/core/wmem_max</code></p>
+
+<p><code>cat /proc/sys/net/core/wmem_max</code></p>
+
+<p><strong>131071</strong></p>
+
+<p>Seperti kita lihat diatas, ternyata nilai parameter kernel yang terdapat di Slackware masih ada beberapa yang dibawah nilai minimal (ditandai dengan nilai yang di <strong>bold</strong>). Untuk mengkonfigurasi parameter kernel di Slackware agar sesuai dengan kebutuhan Oracle, sekarang edit dan modifikasi-lah file <code>/etc/sysctl.conf</code> menjadi seperti dibawah ini :</p>
+
+<pre><code>kernel.sem = 250 32000 100 128
+kernel.shmmax = 536870912
+fs.aio-max-nr = 1048576
+net.ipv4.ip_local_port_range = 9000 65500
+net.core.rmem_default = 262144
+net.core.rmem_max = 4194304
+net.core.wmem_default = 262144
+net.core.wmem_max = 1048586
+</code></pre>
+
+<p>Setelah melakukan modifikasi pada file <code>/etc/sysctl.conf</code>, jalankan perintah dibawah ini untuk mengganti nilai parameter kernel secara langsung :
+[plain]
+root@martinusadyh:[~]# /sbin/sysctl -p
+kernel.sem = 250 32000 100 128
+kernel.shmmax = 536870912
+fs.aio-max-nr = 1048576
+net.ipv4.ip_local_port_range = 9000 65500
+net.core.rmem_default = 262144
+net.core.rmem_max = 4194304
+net.core.wmem_default = 262144
+net.core.wmem_max = 1048586
+root@martinusadyh:[~]#
+[/plain]</p>
+
+<p>Sedangkan untuk melakukan konfirmasi apakah nilainya sudah berubah atau belum, silahkan cek dengan menggunakan perintah dibawah ini :
+[plain]
+root@martinusadyh:[~]# /sbin/sysctl -a
+[/plain]</p>
+
+<p>Setelah selesai melakukan konfigurasi parameter kernel, sekarang mari kita siapkan beberapa direktori yang diperlukan oleh Oracle yaitu :</p>
+
+<ul>
+<li><p><strong>Base Directory Oracle</strong>
+Jalankan perintah dibawah ini untuk membuat Base directory Oracle :
+[plain]root@martinusadyh:[/media/disk/oracle/i386/database]# mkdir /opt/oracle11gr2[/plain]</p></li>
+<li><p><strong>DataBase Directory</strong>
+Jalankan perintah dibawah ini untuk membuat DataBase directory Oracle :
+[plain]root@martinusadyh:[/media/disk/oracle/i386/database]# mkdir /opt/oracle11gr2/oradata[/plain]</p></li>
+<li><p><strong>Recovery Directory</strong>
+Jalankan perintah dibawah ini untuk membuat Recovery directory Oracle :
+[plain]root@martinusadyh:[/media/disk/oracle/i386/database]# mkdir /opt/oracle11gr2/recovery_data[/plain]</p></li>
+<li><p><strong>Inventory Directory</strong>
+Jalankan perintah dibawah ini untuk membuat Inventory directory Oracle :
+[plain]root@martinusadyh:[/media/disk/oracle/i386/database]# mkdir /opt/oraInventory[/plain]</p></li>
+</ul>
+
+
+<p>Sekarang rubah <strong>permission</strong> dari direktori-direktori yang telah kita buat diatas dengan mengetikkan perintah seperti dibawah ini :
+[plain]
+root@martinusadyh:[/media/disk/oracle/i386/database]# chown oracle -R /opt/oracle11gr2/
+root@martinusadyh:[/media/disk/oracle/i386/database]# chgrp oinstall -R /opt/oracle11gr2/
+root@martinusadyh:[/media/disk/oracle/i386/database]# chown oracle -R /opt/oraInventory/
+root@martinusadyh:[/media/disk/oracle/i386/database]# chgrp oinstall -R /opt/oraInventory
+[/plain]</p>
+
+<p>Sekarang pindah-lah ke user <strong>oracle</strong> dengan mengetikkan perintah <code>su oracle</code> kemudian konfigurasilah <strong>ENVIRONMENT VARIABLE</strong> dengan membuat sebuah file yaitu <code>.bash_profile</code> dengan isi kurang lebih seperti dibawah ini :</p>
+
+<pre><code>ORACLE_BASE=/opt/oracle11gr2
+ORACLE_SID=devel
+ORACLE_HOME=/opt/oracle11gr2/product/11.2.0/dbhome_1
+
+export ORACLE_BASE ORACLE_SID ORACLE_HOME
+export PATH=${PATH}:$ORACLE_HOME/bin
+</code></pre>
+
+<p><strong>Isi file /home/oracle/.bash_profile</strong></p>
+
+<p>Agar proses installasi Oracle berjalan dengan sukses, kita perlu menghilangkan akses kontrol yang berjalan pada X11 dengan cara bukalah terminal atau konsole baru kemudian jalankan perintah <code>xhost +</code> seperti dibawah ini :
+[plain]
+martinus@martinusadyh:[~]$ xhost +
+access control disabled, clients can connect from any host
+martinus@martinusadyh:[~]$
+[/plain]</p>
+
+<p>Jika sudah, buka terminal baru kemudian jalankan perintah seperti dibawah ini dengan menggunakan user <strong>oracle</strong> :
+[plain]
+oracle@martinusadyh:[~]$ DISPLAY=:0.0
+oracle@martinusadyh:[~]$ export DISPLAY
+oracle@martinusadyh:[~]$ echo $DISPLAY
+:0.0
+[/plain]</p>
+
+<p>Untuk mengetest apakah user <strong>oracle</strong> sudah bisa menjalankan installer Oracle, sekarang jalankan dahulu aplikasi <code>/usr/bin/xclock</code>. Jika konfigurasi yang telah dilakukan tidak terdapat kesalahan, maka harusnya aplikasi <code>/usr/bin/xclock</code> akan tampil seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5241552477/"><img src="http://farm6.static.flickr.com/5285/5241552477_ddb6133b16.jpg" alt="xclock-test" /></a><br/>
+<strong>Test aplikasi xclock</strong></p>
+
+<p>Setelah berhasil menjalankan aplikasi <code>/usr/bin/xclock</code> dengan menggunakan user <strong>oracle</strong>, sekarang install-lah Oracle-nya dengan menjalankan perintah <code>/path/installer/oracle/runInstaller</code> seperti contoh dibawah ini :
+[plain]
+oracle@martinusadyh:[/media/disk/oracle]$ /media/disk/oracle/i386/database/runInstaller
+[/plain]</p>
+
+<p>Tunggulah beberapa saat dan jika tidak ada masalah maka kita akan melihat splash screen Oracle seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5229665264/"><img src="http://farm6.static.flickr.com/5049/5229665264_1808d376a9.jpg" alt="ora1" /></a><br/>
+<strong>Splash Screen Installer Oracle</strong></p>
+
+<p>Setelah splash screen installer Oracle, akan tampil form <strong>Configure Security Updates</strong> seperti dibawah ini. Biarkan kosong dan tekanlah tombol <strong>Next</strong> untuk melanjutkan pada proses berikut-nya :
+<a href="http://www.flickr.com/photos/10243554@N02/5229665268/"><img src="http://farm6.static.flickr.com/5048/5229665268_913cd874f4.jpg" alt="ora2" /></a><br/>
+<strong>Tampilan Configure Security Updates</strong></p>
+
+<p>Pada tahap <strong>Select Installation Option</strong> ini, pilihlah opsi pertama yaitu <strong>Create and configure a database</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5229665270/"><img src="http://farm6.static.flickr.com/5006/5229665270_fb9b7109d8.jpg" alt="ora3" /></a><br/>
+<strong>Tampilan Select Installation Option</strong></p>
+
+<p>Pada <strong>System Class</strong> pilihlah opsi <strong>Desktop Class</strong> seperti gambar dibawah ini kemudian tekanlah tombol <strong>Next</strong> :
+<a href="http://www.flickr.com/photos/10243554@N02/5229665272/"><img src="http://farm6.static.flickr.com/5247/5229665272_8e188300dc.jpg" alt="ora4" /></a><br/>
+<strong>Tampilan System Class</strong></p>
+
+<p>Di tahap selanjutnya yaitu <strong>Typical Install Configuration</strong> isilah 3 kolom saja (kolom yang lain harusnya sudah otomatis ke isi oleh Oracle) yaitu <strong>Global database name, Administrative password</strong> dan <strong>Confirm password</strong> dengan konfigurasi seperti ini :</p>
+
+<ol>
+<li><p> <strong>Global database name :</strong> orcl</p></li>
+<li><p> <strong>Administrative password :</strong> OracleDB123</p></li>
+<li><p> <strong>Confirm password :</strong> OracleDB123</p></li>
+</ol>
+
+
+<p>dan tampilan-nya kurang lebih adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5229665274/"><img src="http://farm6.static.flickr.com/5121/5229665274_cc546a2669.jpg" alt="ora5" /></a><br/>
+<strong>Tampilan Typical Install Configuration</strong></p>
+
+<p>Pada jendela selanjutnya yaitu <strong>Create Inventory</strong>, harusnya kita tinggal menekan tombol <strong>Next</strong> saja karena direktori <strong>inventory</strong> ini akan dideteksi langsung oleh Oracle seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5229665278/"><img src="http://farm6.static.flickr.com/5282/5229665278_9dbc9e8397.jpg" alt="ora6" /></a><br/>
+<strong>Tampilan Create Inventory</strong></p>
+
+<p>Setelah menekan tombol <strong>Next</strong>, Oracle akan melakukan pengecekan apakah sistem kita sudah memenuhi kebutuhan Oracle. Pada jendela ini, centanglah checkbox <strong>Ignore All</strong> seperti gambar dibawah ini kemudian tekanlah tombol <strong>Next</strong> :
+<a href="http://www.flickr.com/photos/10243554@N02/5242195640/"><img src="http://farm6.static.flickr.com/5010/5242195640_5b9d9b1031.jpg" alt="ora7" /></a><br/>
+<strong>Tampilan Perfom Prerequiste Checks</strong></p>
+
+<p>Pada jendela <strong>Summary</strong> seperti gambar dibawah ini, tekanlah tombol <strong>Finish</strong> untuk mulai melakukan proses installasi.
+<a href="http://www.flickr.com/photos/10243554@N02/5242195644/"><img src="http://farm6.static.flickr.com/5126/5242195644_03e32c6b78.jpg" alt="ora8" /></a><br/>
+<strong>Tampilan Summary</strong></p>
+
+<p>Sekarang, tunggulah proses installasi Oracle yang sedang berjalan. Jika ada notification error bisa diabaikan saja (Pada proses installasi ini, saya juga mendapat pesan error). Dan dibawah ini adalah gambar proses installasi Oracle yang sedang berjalan :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5242195648/"><img src="http://farm6.static.flickr.com/5003/5242195648_4f81b3eb90.jpg" alt="ora9" /></a></p>
+
+<p><strong>Proses Installasi Oracle 1</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5242195650/"><img src="http://farm6.static.flickr.com/5283/5242195650_7ff5ee7aff.jpg" alt="ora10" /></a></p>
+
+<p><strong>Proses Installasi Oracle 2</strong></p>
+
+<p>Pada jendela <strong>Database Configuration Assistant</strong> seperti dibawah ini, tekanlah tombol <strong>Password Management</strong> dan isilah password untuk <strong>SYS</strong> dan <strong>SYSTEM</strong> dengan konfigurasi seperti dibawah ini :</p>
+
+<ol>
+<li><p> <strong>username : SYS</strong> Password SYSDB123</p></li>
+<li><p> <strong>username : SYSTEM</strong> Password SYSTEMDB123</p></li>
+</ol>
+
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5242195654/"><img src="http://farm6.static.flickr.com/5247/5242195654_4c4722e103.jpg" alt="ora11" /></a><br/>
+<strong>Tampilan Database Configuration Assistant, konfigurasilah user dan password disini jika ingin login pada Oracle Enterprise Manager</strong></p>
+
+<p>Jika sudah tekanlah tombol <strong>OK</strong> dan sekarang kita masuk pada jendela <strong>Execute Configuration script</strong> seperti dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5242195658/"><img src="http://farm6.static.flickr.com/5162/5242195658_6d44f76a62.jpg" alt="ora12" /></a><br/>
+<strong>Tampilan Execute Configuration script</strong></p>
+
+<p>Jangan tekan tombol <strong>OK</strong> dahulu, tapi jalankan-lah perintah <code>/opt/oracle11gr2/product/11.2.0/dbhome_1/root.sh</code> dan <code>/opt/oraInventory/orainstRoot.sh</code> seperti dibawah ini dahulu dengan menggunakan akses <strong>root</strong> baru menekan tombol <strong>OK</strong> diatas :
+[plain]
+root@martinusadyh:[~]# /opt/oracle11gr2/product/11.2.0/dbhome_1/root.sh
+Running Oracle 11g root.sh script&hellip;</p>
+
+<p>The following environment variables are set as:
+    ORACLE_OWNER= oracle
+    ORACLE_HOME=  /opt/oracle11gr2/product/11.2.0/dbhome_1</p>
+
+<p>Enter the full pathname of the local bin directory: [/usr/local/bin]:
+   Copying dbhome to /usr/local/bin &hellip;
+   Copying oraenv to /usr/local/bin &hellip;
+   Copying coraenv to /usr/local/bin &hellip;</p>
+
+<p>Creating /etc/oratab file&hellip;
+Entries will be added to the /etc/oratab file as needed by
+Database Configuration Assistant when a database is created
+Finished running generic part of root.sh script.
+Now product-specific root actions will be performed.
+Finished product-specific root actions.</p>
+
+<p>root@martinusadyh:[~]# /opt/oraInventory/orainstRoot.sh
+Changing permissions of /opt/oraInventory.
+Adding read,write permissions for group.
+Removing read,write,execute permissions for world.</p>
+
+<p>Changing groupname of /opt/oraInventory to oinstall.
+The execution of the script is complete.
+root@martinusadyh:[~]#
+[/plain]</p>
+
+<p>Jika sudah, sekarang login-lah ke Oracle Enterprise Manager yang bisa diakses pada alamat <a href="http://localhost:1158/">http://localhost:1158/</a> dengan menggunakan user <strong>SYS</strong> dengan password <strong>SYSDB123</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5242196808/"><img src="http://farm6.static.flickr.com/5168/5242196808_8db2154250.jpg" alt="ora13" /></a><br/>
+<strong>Tampilan Oracle Enterprise Manager</strong></p>
+
+<p>Nah kalau sudah, sekarang cobalah login ke <strong>SQL*Plus</strong> dengan menggunakan user <strong>oracle</strong> pada terminal seperti dibawah ini :
+[plain]
+oracle@martinusadyh:[~]$ sqlplus / as sysdba</p>
+
+<p>SQL*Plus: Release 11.2.0.1.0 Production on Sat Nov 27 17:19:54 2010</p>
+
+<p>Copyright &copy; 1982, 2009, Oracle.  All rights reserved.</p>
+
+<p>Connected to an idle instance.</p>
+
+<p>SQL> quit
+oracle@martinusadyh:[~]$
+[/plain]</p>
+
+<p>Langkah selanjutnya yaitu modifikasilah file <code>/opt/oracle11gr2/product/11.2.0/dbhome_1/network/admin/listener.ora</code> menjadi seperti dibawah ini :</p>
+
+<pre><code># listener.ora Network Configuration File: /opt/oracle11gr2/product/11.2.0/dbhome_1/network/admin/listener.ora
+# Generated by Oracle configuration tools.
+
+LISTENER =
+  (DESCRIPTION_LIST =
+    (DESCRIPTION =
+      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC))
+      (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    )
+  )
+
+SID_LIST_LISTENER = 
+  (SID_LIST =
+     (SID_DESC =
+       (SID_NAME = PLSExtProc)
+       (ORACLE_HOME = /opt/oracle11gr2/product/11.2.0/dbhome_1)
+       (PROGRAM = extproc)
+     )
+     (SID_DESC =
+       (SID_NAME = orcl)
+       (ORACLE_HOME = /opt/oracle11gr2/product/11.2.0/dbhome_1)
+       (ENVS = "LD_LIBRARY_PATH=/opt/oracle11gr2/product/11.2.0/dbhome_1/jdk/jre/lib/i386:/opt/oracle11gr2/product/11.2.0/dbhome_1/jdk/jre/lib/i386/server:/opt/oracle11gr
+2/product/11.2.0/dbhome_1/lib")
+       (PROGRAM = extproc)
+     )
+     (SID_DESC =
+       (SID_NAME = mgwextproc)
+       (ENVS = "LD_LIBRARY_PATH=/opt/oracle11gr2/product/11.2.0/dbhome_1/jdk/jre/lib/i386:/opt/oracle11gr2/product/11.2.0/dbhome_1/jdk/jre/lib/i386/server:/opt/oracle11gr
+2/product/11.2.0/dbhome_1/lib")
+       (ORACLE_HOME = /opt/oracle11gr2/product/11.2.0/dbhome_1)
+       (PROGRAM = extproc)
+     )
+  )
+
+ADR_BASE_LISTENER = /opt/oracle11gr2
+</code></pre>
+
+<p>Modifikasilah juga file <code>/opt/oracle11gr2/product/11.2.0/dbhome_1/network/admin/tnsnames.ora</code> menjadi seperti dibawah ini :</p>
+
+<pre><code># tnsnames.ora Network Configuration File: /opt/oracle11gr2/product/11.2.0/dbhome_1/network/admin/tnsnames.ora
+# Generated by Oracle configuration tools.
+
+ORCL =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+    (CONNECT_DATA =
+      (SID=orcl)
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = orcl)
+    )
+  )
+
+MGW_AGENT =
+  (DESCRIPTION = 
+     (ADDRESS_LIST= (ADDRESS= (PROTOCOL=IPC) (KEY=EXTPROC)))
+     (CONNECT_DATA= (SID=mgwextproc))
+  )
+</code></pre>
+
+<p>Dan langkah terakhir, modifikasi-lah file <code>/etc/oratab</code> menjadi seperti dibawah ini :</p>
+
+<pre><code>orcl:/opt/oracle11gr2/product/11.2.0/dbhome_1:Y
+</code></pre>
+
+<p>Sampai disini proses installasi dan konfigurasi telah selesai dilakukan, dan jika kita ingin menjalankan Oracle dikemudian hari kita dapat menjalankan listener-nya dahulu dengan mengetikkan perintah <code>lsnrctl start</code> baru kemudian menjalankan database-nya sendiri dengan mengetikkan perintah <code>dbstart $ORACLE_HOME</code> menggunakan user <strong>oracle</strong> seperti dibawah ini :
+[plain]
+oracle@martinusadyh:[~]$ lsnrctl start</p>
+
+<p>LSNRCTL for Linux: Version 11.2.0.1.0 - Production on 08-DEC-2010 04:45:56</p>
+
+<p>Copyright &copy; 1991, 2009, Oracle.  All rights reserved.</p>
+
+<p>Starting /opt/oracle11gr2/product/11.2.0/dbhome_1/bin/tnslsnr: please wait&hellip;</p>
+
+<p>TNSLSNR for Linux: Version 11.2.0.1.0 - Production
+System parameter file is /opt/oracle11gr2/product/11.2.0/dbhome_1/network/admin/listener.ora
+Log messages written to /opt/oracle11gr2/diag/tnslsnr/martinusadyh/listener/alert/log.xml
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC)))
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=martinusadyh)(PORT=1521)))</p>
+
+<p>Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC)))</p>
+
+<h2>STATUS of the LISTENER</h2>
+
+<p>Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 11.2.0.1.0 - Production
+Start Date                08-DEC-2010 04:45:56
+Uptime                    0 days 0 hr. 0 min. 1 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   /opt/oracle11gr2/product/11.2.0/dbhome_1/network/admin/listener.ora
+Listener Log File         /opt/oracle11gr2/diag/tnslsnr/martinusadyh/listener/alert/log.xml
+Listening Endpoints Summary&hellip;
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=martinusadyh)(PORT=1521)))
+Services Summary&hellip;
+Service &ldquo;PLSExtProc&rdquo; has 1 instance(s).
+  Instance &ldquo;PLSExtProc&rdquo;, status UNKNOWN, has 1 handler(s) for this service&hellip;
+Service &ldquo;mgwextproc&rdquo; has 1 instance(s).
+  Instance &ldquo;mgwextproc&rdquo;, status UNKNOWN, has 1 handler(s) for this service&hellip;
+Service &ldquo;orcl&rdquo; has 1 instance(s).
+  Instance &ldquo;orcl&rdquo;, status UNKNOWN, has 1 handler(s) for this service&hellip;
+The command completed successfully
+oracle@martinusadyh:[~]$ dbstart $ORACLE_HOME
+Processing Database instance &ldquo;orcl&rdquo;: log file /opt/oracle11gr2/product/11.2.0/dbhome_1/startup.log
+oracle@martinusadyh:[~]$
+[/plain]</p>
+
+<p>Gunakan perintah <code>lsnrctl stop</code> untuk men-stop listener-nya dan <code>dbshut $ORACLE_HOME</code> untuk database seperti dibawah ini :
+[plain]
+oracle@martinusadyh:[~]$ lsnrctl stop</p>
+
+<p>LSNRCTL for Linux: Version 11.2.0.1.0 - Production on 08-DEC-2010 04:50:54</p>
+
+<p>Copyright &copy; 1991, 2009, Oracle.  All rights reserved.</p>
+
+<p>Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC)))
+The command completed successfully
+oracle@martinusadyh:[~]$ dbshut $ORACLE_HOME
+Processing Database instance &ldquo;orcl&rdquo;: log file /opt/oracle11gr2/product/11.2.0/dbhome_1/shutdown.log
+oracle@martinusadyh:[~]$
+[/plain]</p>
+
+<p>Fyuh&hellip; panjang juga tulisan-nya sampai disini kita sudah bisa menggunakan Oracle untuk keperluan development :) , cuma sayangnya sampai sekarang saya masih belum dapat menjalankan Oracle melalui startup script :( Jika ada teman-teman yang sudah berhasil, silahkan sharing disini juga yah :D</p>
+
+<p><strong>Referensi-referensi yang digunakan :</strong></p>
+
+<p><a href="http://www.oracle-base.com/articles/11g/OracleDB11gR2InstallationOnEnterpriseLinux5.php">OracleDB 11g R2 Installation On Enterprise Linux 5</a>
+<a href="http://fxbudiar.blogspot.com/2009/04/menginstall-oracle-10g-di-slackware.html">Menginstall Oracle 10g di Slackware</a>
+<a href="http://download.oracle.com/docs/cd/E11882_01/em.112/e12255/toc.htm">Oracle® Universal Installer and OPatch User&rsquo;s Guide 11g Release 2 (11.2) for Windows and UNIX</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-08T05:07:55+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/11/09/tutorial-iso-8583-with-jpos/" title="Previous Post: Tutorial ISO 8583 with jPOS">&laquo; Tutorial ISO 8583 with jPOS</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/12/10/mysqlworkbench-5-2-31-for-slackware/" title="Next Post: MySQLWorkbench 5.2.31 For Slackware">MySQLWorkbench 5.2.31 For Slackware &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

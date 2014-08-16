@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Bermain dengan Apache Solr dan Nutch - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sudah lama saya tidak menulis hal-hal yang berkaitan dengan dunia TI, dan akhirnya setelah cukup lama beristirahat akhirnya malam ini saya mencoba &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Bermain Dengan Apache Solr Dan Nutch</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-02T00:38:10+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Sudah lama saya tidak menulis hal-hal yang berkaitan dengan dunia TI, dan akhirnya setelah cukup lama beristirahat akhirnya malam ini saya mencoba menuliskan pengalaman bermain-main dengan <a href="http://lucene.apache.org/solr/">Apache SOLR</a> dan <a href="http://nutch.apache.org/">Apache Nutch</a>. Sebenarnya kedua mainan ini merupakan barang lama, tapi bagi saya merupakan barang baru dikarenakan ada teman yang minta tolong dikonfigurasikan menggunakan kedua mainan ini dan ternyata mengkombinasikan 2 mainan ini tidak semudah seperti yang dibayangkan, maka akhirnya saya jadikan sebuah catatan tersendiri hanya sebagai pengingat saja :D</p>
+
+<p>Nah untuk yang belum tahu apasih sebenarnya <a href="http://lucene.apache.org/solr/">Apache SOLR</a> ini, bahasa mudahnya <strong>SOLR</strong> ini adalah sebuah aplikasi mesin pencari seperti <a href="http://google.com">Google</a> yang ditulis menggunakan bahasa pemrograman java. Dan berikut ini adalah penjelasan yang lebih lengkap diambil dari web resmi-nya <a href="http://lucene.apache.org/solr/">Apache SOLR</a>:</p>
+
+<blockquote><p>SolrTM is the popular, blazing fast open source enterprise search platform from the Apache LuceneTM project. Its major features include powerful full-text search, hit highlighting, faceted search, near real-time indexing, dynamic clustering, database integration, rich document (e.g., Word, PDF) handling, and geospatial search. Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world&rsquo;s largest internet sites.
+Solr is written in Java and runs as a standalone full-text search server within a servlet container such as Tomcat. Solr uses the Lucene Java search library at its core for full-text indexing and search, and has REST-like HTTP/XML and JSON APIs that make it easy to use from virtually any programming language. Solr&rsquo;s powerful external configuration allows it to be tailored to almost any type of application without Java coding, and it has an extensive plugin architecture when more advanced customization is required.</p></blockquote>
+
+<p>Sedangkan <a href="http://nutch.apache.org/">Apache Nutch</a> adalah sebuah aplikasi <strong>web-crawler</strong> yang ditulis menggunakan bahasa pemrograman java juga, dan penjelasan lengkapnya adalah seperti berikut ini :</p>
+
+<blockquote><p>Apache Nutch is an open source web-search software project. Stemming from <a href="http://lucene.apache.org/java/">Apache Lucene</a>, it now builds on Apache Solr adding web-specifics, such as a crawler, a link-graph database and parsing support handled by Apache Tika for HTML and and array other document formats.</p></blockquote>
+
+<p>Apache Nutch can run on a single machine, but gains a lot of its strength from running in a <a href="http://hadoop.apache.org/">Hadoop cluster</a></p>
+
+<p>The system can be enhanced (eg other document formats can be parsed) using a highly flexible, easily extensible and thoroughly maintained plugin infrastructure.</p>
+
+<p>Pada tulisan kali ini, kita akan mencoba membangun sebuah mesin pencari menggunakan <a href="http://lucene.apache.org/solr/">Apache SOLR</a> dan untuk <strong>web-crawler</strong>-nya menggunakan <a href="http://nutch.apache.org/">Apache Nutch</a>. Dikarenakan percobaan menggunakan versi terbaru dari kedua aplikasi ini bermasalah, maka pada tulisan kali ini kita akan menggunakan :</p>
+
+<ol>
+<li><p> <a href="http://apache.mirrors.tds.net/lucene/solr/3.6.2/apache-solr-3.6.2.tgz">Apache Solr 3.6.2</a> dan</p></li>
+<li><p> <a href="http://mirror.cc.columbia.edu/pub/software/apache/nutch/1.6/apache-nutch-1.6-bin.zip">Apache Nutch 1.6</a></p></li>
+</ol>
+
+
+<p>Langkah pertama yang perlu dilakukan adalah pastikan bahwa Java telah terinstall pada komputer atau laptop anda, jika sudah konfigurasilah <code>environment variable JAVA_HOME</code> dahulu. Untuk mengecek apakah <code>JAVA_HOME</code> sudah terkonfigurasi dengan benar atau tidak, jalankan perintah <code>echo $JAVA_HOME</code> di terminal. Jika menampilkan direktori tempat dimana java terinstall, maka konfigurasi <code>JAVA_HOME</code> sudah benar. Selanjutnya adalah downloadlah <a href="http://lucene.apache.org/solr/">Apache Solr</a> dari link diatas, kemudian ekstrak ke sebuah direktori hingga kita mendapatkan direktori <strong>apache-solr-3.6.2</strong> Sekarang masuklah kedalam direktori <code>apache-solr-3.6.2/example</code> dan jalankan perintah <code>java -jar start.jar</code> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp/apache-solr-3.6.2/example$ java -jar start.jar
+&hellip;
+&hellip;
+&hellip;
+Mar 01, 2013 10:23:43 PM org.apache.solr.servlet.SolrUpdateServlet init
+INFO: SolrUpdateServlet.init() done
+2013-03-01 22:23:43.638:INFO::Started SocketConnector@0.0.0.0:8983
+[/plain]</p>
+
+<!-- more -->
+
+
+<p>Jika sudah, sekarang bukalah alamat <a href="http://localhost:8983/solr/admin/">http://localhost:8983/solr/admin/</a> dan jika tidak ada masalah, maka kita akan melihat tampilan seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_2418&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=389"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/HalamanDepanApacheSolr-300x113.png" alt="Halaman Depan Apache Solr" /></a> Halaman Depan Apache Solr[/caption]</p>
+
+<p>Setelah <a href="http://lucene.apache.org/solr/">Apache Solr</a> berhasil kita jalankan, sekarang waktunya bermain-main dengan <a href="http://nutch.apache.org/">Apache Nutch</a>. Downloadlah <strong>Apache Nutch</strong> pada link diatas kemudian ekstraklah hingga kita mendapatkan sebuah direktori <strong>apache-nutch-1.6</strong>, sekarang editlah file <code>apache-nutch-1.6/conf/nuch-site.xml</code> menjadi seperti dibawah ini :</p>
+
+<pre><code>&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;http.agent.name&lt;/name&gt;
+        &lt;value&gt;SSG Web Crawler&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p><strong>Konfigurasi ini bertujuan untuk memberi nama crawler yang akan kita gunakan nanti-nya.</strong></p>
+
+<p>Untuk memberi tahu <a href="http://nutch.apache.org/">Apache Nutch</a> url mana saja yang harus di <strong>crawling</strong>, sekarang buatlah sebuah direktori dengan nama <strong>urls</strong> didalam direktori <strong>apache-nutch-1.6</strong> kemudian buatlah sebuah file dengan nama <code>seed.txt</code> dan daftarkan url apa saja yang ingin di crawling seperti contohnya adalah :</p>
+
+<pre><code>http://kompas.com/
+http://detik.com/
+http://goal.com/
+</code></pre>
+
+<p>Jika sudah, masih ada 1 konfigurasi file yang perlu kita edit yaitu file <code>apache-nutch-1.6/conf/regex-urlfilter.txt</code>. Bukalah file tersebut dan editlah baris paling bawah sendiri menjadi seperti dibawah ini :</p>
+
+<pre><code># accept anything else
++^http://([a-z0-9]*\.)*kompas.com/
++^http://([a-z0-9]*\.)*detik.com/
++^http://([a-z0-9]*\.)*goal.com/
+</code></pre>
+
+<p>Sekarang mari kita test apakah semua url yang sudah kita daftarkan berhasil di <strong>crawling</strong> oleh <a href="http://nutch.apache.org/">Apache Nutch</a> dengan menjalankan perintah <code>bin/nutch crawl urls -dir crawl -depth 3 -topN 5</code> pada direktori <strong>apache-nutch-1.6</strong> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp/apache-nutch-1.6$ bin/nutch crawl urls -dir crawl -depth 3 -topN 5
+solrUrl is not set, indexing will be skipped&hellip;
+crawl started in: crawl
+rootUrlDir = urls
+threads = 10
+depth = 3
+solrUrl=null
+topN = 5
+Injector: starting at 2013-03-01 23:34:15
+Injector: crawlDb: crawl/crawldb
+Injector: urlDir: urls
+Injector: Converting injected urls to crawl db entries.
+Injector: total number of urls rejected by filters: 0
+Injector: total number of urls injected after normalization and filtering: 3
+Injector: Merging injected urls into crawl db.
+&hellip;
+&hellip;
+&hellip;
+[/plain]</p>
+
+<p>Tunggulah beberapa saat, proses <strong>crawling</strong> ini bisa sangat lama tergantung dengan banyak-nya url yang ingin di <strong>crawling</strong> dan cepatnya koneksi internet yang kita gunakan :D Sampai disini <a href="http://lucene.apache.org/solr/">Apache Solr</a> dan <a href="http://nutch.apache.org/">Apache Nutch</a> berjalan sesuai dengan harapan kita, dan sekarang waktunya untuk melakukan integrasi untuk kedua-nya. Jadi apa yang akan di <strong>crawling</strong> oleh <a href="http://nutch.apache.org/">Apache Nutch</a> bisa kita cari di <a href="http://lucene.apache.org/solr/">Apache Solr</a>.</p>
+
+<p>Nah untuk mulai proses integrasi ini, sekarang copykanlah dahulu file <code>apache-nutch-1.6/conf/schema.xml</code> ke direktori <code>apache-solr-3.6.2/example/solr/conf</code> dengan menggunakan perintah <code>cp</code> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp$ cp apache-nutch-1.6/conf/schema.xml apache-solr-3.6.2/example/solr/conf/
+martinusadyh@artivisi:/tmp$
+[/plain]</p>
+
+<p>Jika sudah sekarang editlah file <code>apache-solr-3.6.2/example/solr/conf/solrconfig.xml</code> dan kemudian editlah baris dibawah ini :</p>
+
+<pre><code>  &lt;requesthandler name="/select" class="solr.SearchHandler"&gt;
+
+     &lt;lst name="defaults"&gt;
+       &lt;str name="echoParams"&gt;explicit&lt;/str&gt;
+       &lt;int name="rows"&gt;10&lt;/int&gt;
+       &lt;str name="df"&gt;text&lt;/str&gt;
+     &lt;/lst&gt;
+</code></pre>
+
+<p>menjadi seperti dibawah ini :</p>
+
+<pre><code>  &lt;requesthandler name="/select" class="solr.SearchHandler"&gt;
+
+     &lt;lst name="defaults"&gt;
+       &lt;str name="echoParams"&gt;explicit&lt;/str&gt;
+       &lt;int name="rows"&gt;10&lt;/int&gt;
+       &lt;str name="df"&gt;content&lt;/str&gt; 
+     &lt;/lst&gt;
+</code></pre>
+
+<p>Setelah mengedit file <code>apache-solr-3.6.2/example/solr/conf/solrconfig.xml</code> sekarang editlah juga file <code>apache-solr-3.6.2/example/solr/conf/schema.xml</code> dan carilah baris seperti dibawah ini :</p>
+
+<pre><code>        &lt;field indexed="true" stored="false" type="string" name="host"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="true" type="url" name="url" required="true"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="false" type="text" name="content"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="true" type="text" name="title"&gt;&lt;/field&gt;
+        &lt;field indexed="false" stored="true" type="string" name="cache"&gt;&lt;/field&gt;
+        &lt;field indexed="false" stored="true" type="date" name="tstamp"&gt;&lt;/field&gt;
+</code></pre>
+
+<p>Dan kemudian editlah menjadi seperti dibawah ini :</p>
+
+<pre><code>        &lt;field indexed="true" stored="false" type="string" name="host"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="true" type="url" name="url" required="true"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="true" type="text" name="content"&gt;&lt;/field&gt; 
+        &lt;field indexed="true" stored="true" type="text" name="title"&gt;&lt;/field&gt;
+        &lt;field indexed="false" stored="true" type="string" name="cache"&gt;&lt;/field&gt;
+        &lt;field indexed="false" stored="true" type="date" name="tstamp"&gt;&lt;/field&gt;
+</code></pre>
+
+<p>Jika sudah, sekarang waktunya kita untuk melakukan pengetesan apakah hasil <strong>crawling</strong> dari <a href="http://nutch.apache.org/">Apache Nutch</a> bisa ke index oleh <a href="http://lucene.apache.org/solr/">Apache Solr</a>. Yang pertama perlu lakukan adalah menjalankan <strong>Solr</strong>-nya dahulu dengan perintah <code>java -jar start.jar</code> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp/apache-solr-3.6.2/example$ java -jar start.jar
+&hellip;.
+&hellip;.
+&hellip;.
+INFO: JNDI not configured for solr (NoInitialContextEx)
+Mar 02, 2013 12:14:30 AM org.apache.solr.core.SolrResourceLoader locateSolrHome
+INFO: solr home defaulted to &lsquo;solr/&rsquo; (could not find system property or JNDI)
+Mar 02, 2013 12:14:30 AM org.apache.solr.servlet.SolrUpdateServlet init
+INFO: SolrUpdateServlet.init() done
+2013-03-02 00:14:30.581:INFO::Started SocketConnector@0.0.0.0:8983
+[/plain]</p>
+
+<p>Setelah <a href="http://lucene.apache.org/solr/">Apache Solr</a>-nya berjalan, sekarang masuk ke dalam direktori <strong>apache-nutch-1.6</strong> dan jalankan perintah <code>bin/nutch solrindex http://127.0.0.1:8983/solr/ crawl/crawldb -linkdb crawl/linkdb crawl/segments/*</code> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp/apache-nutch-1.6$ bin/nutch solrindex <a href="http://127.0.0.1:8983/solr/">http://127.0.0.1:8983/solr/</a> crawl/crawldb -linkdb crawl/linkdb crawl/segments/*
+SolrIndexer: starting at 2013-03-02 00:23:17
+SolrIndexer: deleting gone documents: false
+SolrIndexer: URL filtering: false
+SolrIndexer: URL normalizing: false
+Indexing 11 documents
+SolrIndexer: finished at 2013-03-02 00:24:04, elapsed: 00:00:47
+martinusadyh@artivisi:/tmp/apache-nutch-1.6$
+[/plain]</p>
+
+<p>Jika sudah, mari kita mengecek-nya dengan memasukkan <strong>query string</strong> seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_2433&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=390"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/Coba-Search-Dari-File-Seed-300x140.png" alt="Coba Search Dari File Seed" /></a> Coba Search Dari File Seed[/caption]</p>
+
+<p>Dan inilah hasil pencarian yang kita lakukan :
+[caption id=&ldquo;attachment_2434&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=391"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/Hasil-Pencarian-Dari-Nutch-300x173.png" alt="Hasil Pencarian Dari Nutch" /></a> Hasil Pencarian Dari Nutch[/caption]</p>
+
+<p>Hmm&hellip; bagaimana, mudah bukan ? :)</p>
+
+<p><strong>Referensi-referensi:</strong></p>
+
+<ol>
+<li><p> <a href="http://lucene.apache.org/solr/">Apache Solr</a></p></li>
+<li><p> <a href="http://nutch.apache.org/">Apache Nutch</a></p></li>
+<li><p> <a href="http://blog.building-blocks.com/building-a-search-engine-with-nutch-and-solr-in-10-minutes">Building a Search Engine with Nutch and Solr in 10 Minutes</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-02T00:38:10+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2013/01/18/ride-and-capture-nusantaride-event/" title="Previous Post: Ride And Capture Nusantaride Event">&laquo; Ride And Capture Nusantaride Event</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2013/03/16/howto-change-default-editor-font-in-mysql-workbench/" title="Next Post: Howto Change Default Editor Font in MySQL Workbench">Howto Change Default Editor Font in MySQL Workbench &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch/';
+        var disqus_url = 'http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

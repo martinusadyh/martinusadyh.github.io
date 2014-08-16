@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Yahoo Messanger Text Mode Using Finch - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Teman-teman pasti sudah tahu dong alternatif dari Yahoo Messenger yang biasa digunakan di Sistem Operasi GNU/Linux ? Yups.. nama Pidgin (yang dulu &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/04/08/yahoo-messanger-text-mode-using-finch/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Yahoo Messanger Text Mode Using Finch</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-08T00:11:53+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Teman-teman pasti sudah tahu dong alternatif dari <a href="http://messenger.yahoo.com/download/">Yahoo Messenger</a> yang biasa  digunakan di Sistem Operasi GNU/Linux ? Yups.. nama <a href="http://www.pidgin.im/">Pidgin</a> (yang dulu bernama Gaim ini) pasti sudah tidak asing di telinga teman-teman. Nah sekarang apa jadinya jika suatu ketika kita ingin chatting dengan teman kantor, tapi orangnya tidak bisa online karena alasan-nya <strong>&ldquo;Waduh kalau saya online pakai Pidgin, laptop saya jadi lemot :( &rdquo; </strong> (Maklum teman saya ini tiap harinya ngebuka NetBeans, Firefox dan OpenOffice untuk alat perang dikantor dan sayangnya memori laptop-nya cuma 1 GB ajah :( ) Nah gara-gara alasan inilah akhirnya saya coba-coba mencari aplikasi chatting yang bisa jalan di terminal atau text mode, nah untungnya packages <a href="http://www.pidgin.im/">Pidgin</a> untuk Slackware saya sudah menyertakan aplikasi bernama <a href="http://developer.pidgin.im/">Finch</a> untuk keperluan chatting melalui terminal atau text mode ini. Mungkin informasi ini sudah basi banget yah untuk teman-teman yang sudah tahu, tapi bagi saya ini merupakan hal baru dan saya posting ini untuk memberitahu teman kantor saya bahwa ternyata ada loh aplikasi chatting yang jalan di text mode :D (Setidak-nya agar besok-besok lagi, saya tidak mendapat jawaban <strong>&ldquo;laptop saya lemot kalau menjalankan pidgin&rdquo;</strong> :D )</p>
+
+<p>Buat teman-teman yang bingung apa sih sebenarnya <a href="http://developer.pidgin.im/">Finch</a> itu ? Ini adalah deskripsi singkat dari halaman manual <a href="http://developer.pidgin.im/">Finch</a> yang isinya kurang lebih sebagai berikut :</p>
+
+<blockquote><p>finch  is  a console-based modular messaging client based on libpurple which is capable of connecting to AIM, MSN, Yahoo!, XMPP, ICQ, IRC, SILC,Novell GroupWise, Lotus Sametime, Zephyr, Gadu-Gadu, and QQ all at once. It has many common features found in other clients,  as  well  as  many unique features.  Finch is not endorsed by or affiliated with America Online, ICQ, Microsoft, or Yahoo.</p></blockquote>
+
+<p>Nah bagaimana sudah paham kan ? sekarang mari kita coba dengan mengetikkan perintah <code>finch</code> di terminal dan harusnya teman-teman mendapatkan tampilan seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4500465082/"><img src="http://farm5.static.flickr.com/4036/4500465082_c91c885bc2.jpg" alt="Finch2" /></a><br/>
+<strong>Menu Login Finch</strong></p>
+
+<!-- more -->
+
+
+<p>Kalau sudah mengisi <strong>password</strong> tekanlah tombol <code>Tab</code> hingga kursor berada pada tombol <code>OK</code> kemudian tekan <code>ENTER</code>, tunggulah beberapa saat hingga tampilan <strong>Buddy List</strong> menampilkan daftar semua teman-teman yang sudah kita tambahkan. Dan dibawah ini adalah beberapa tampilan dari <a href="http://developer.pidgin.im/">Finch</a> :)</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4500465072/"><img src="http://farm3.static.flickr.com/2731/4500465072_515f4f88a5.jpg" alt="Finch1" /></a><br/>
+<strong>Tampilan Menu Account Finch</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4500465068/"><img src="http://farm5.static.flickr.com/4032/4500465068_e035178925.jpg" alt="BuddyListFinch" /></a><br/>
+<strong>Tampilan Buddy List Finch</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4500465084/"><img src="http://farm5.static.flickr.com/4035/4500465084_b72ab69653.jpg" alt="FinchInAction" /></a><br/>
+**Tampilan Finch Ketika Chatting 1</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4500465086/"><img src="http://farm5.static.flickr.com/4007/4500465086_664f55283b.jpg" alt="Screenshot" /></a><br/>
+**Tampilan Finch Ketika Chatting 1</p>
+
+<p>Hm&hellip; bagaimana teman-teman ? Dengan background shell atau terminal yang transparan <a href="http://developer.pidgin.im/">Finch</a> jadi keliatan cantik bukan ?? :) Nah jika teman-teman ingin menggunakan <a href="http://developer.pidgin.im/">Finch</a>, mungkin beberapa <em><strong>shortcut</strong></em> dibawah ini sedikit berguna :</p>
+
+<ol>
+<li><p> <strong>ALT+a</strong>, menampilkan seluruh action yang tersedia pada finch. Kita bisa menggunakan <strong>shortcut</strong> ini untuk mengakses menu <strong>Preferences, Account, dll</strong></p></li>
+<li><p> <strong>ALT+c</strong>, menutup jendela yang aktif saat ini</p></li>
+<li><p> <strong>ALT+m</strong>, berfungsi untuk memindahkan jendela yang aktif</p></li>
+<li><p> <strong>ALT+r</strong>, untuk mengecilkan atau memperbesar jendela.</p></li>
+<li><p> <strong>ALT+w</strong>, menampilkan seluruh daftar jendela yang terbuka.</p></li>
+<li><p> <strong>ALT+q</strong>, keluar dari aplikasi finch</p></li>
+</ol>
+
+
+<p>Nah mantap bukan ?? Tertarik menggunakan <a href="http://developer.pidgin.im/">Finch</a> sebagai <strong>default IM</strong> teman-teman ? :D:)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://developer.pidgin.im/">Finch</a></p></li>
+<li><p> <a href="http://messenger.yahoo.com/download/">Yahoo Messenger</a></p></li>
+<li><p> <a href="http://www.pidgin.im/">Pidgin</a></p></li>
+<li><p> <a href="http://developer.pidgin.im/wiki/Using%20Finch">Howto Using Finch</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-08T00:11:53+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/opensolaris/'>opensolaris</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/04/08/yahoo-messanger-text-mode-using-finch/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/04/08/yahoo-messanger-text-mode-using-finch/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/04/03/free-web-hosting/" title="Previous Post: Free Web Hosting With MySQL PHP and CPanel">&laquo; Free Web Hosting With MySQL PHP and CPanel</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/04/10/wordpress-top-10-plugin/" title="Next Post: WordPress Top 10 Plugin">WordPress Top 10 Plugin &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/04/08/yahoo-messanger-text-mode-using-finch/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/04/08/yahoo-messanger-text-mode-using-finch/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

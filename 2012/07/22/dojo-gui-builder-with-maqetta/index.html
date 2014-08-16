@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Dojo GUI Builder with Maqetta - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Apakah anda baru pertama kali mencoba Dojo ? Apakah anda juga pernah merasa kesulitan ketika men-design layout di Dojo ? Jika iya, mungkin anda perlu &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Dojo GUI Builder With Maqetta</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-22T01:54:38+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p><img src="http://martinusadyh.web.id/wp-content/uploads/2012/07/logo-dojo.png" alt="Logo Dojo" />Apakah anda baru pertama kali mencoba <a href="http://dojotoolkit.org/">Dojo</a> ? Apakah anda juga pernah merasa kesulitan ketika men-design layout di <strong>Dojo</strong> ? Jika iya, mungkin anda perlu mencoba sebuah aplikasi yaitu <a href="http://maqetta.org/">Maqetta</a> :) Dengan menggunakan <strong>Maqetta</strong>, proses pengembangan aplikasi web menjadi lebih mudah terutama jika kita menggunakan <strong>Dojo</strong> sebagai library utama-nya. Yang lebih menggembirakan lagi adalah, <strong>Maqetta</strong> juga mendukung proses <strong><em>&ldquo;drag and drop&rdquo;</em></strong> ketika kita men-design sebuah layout. Dan fitur ini juga tersedia untuk pembuatan aplikasi berbasis <strong>Mobile</strong> yang menggunakan <strong>Dojo</strong> sebagai library javascript-nya.</p>
+
+<p>Ingin tahu fitur-fitur apa saja yang terdapat pada <strong>Maqetta</strong> ? Berdasarkan halaman web-nya, <strong>Maqetta</strong> mempunyai fitur-fitur yang kurang lebih sebagai berikut :</p>
+
+<ol>
+<li><p> Visual Page Editor</p></li>
+<li><p> States: Interactivity Without Programming</p></li>
+<li><p> Review and Commenting</p></li>
+<li><p> Designer/Developer Workflow</p></li>
+<li><p> Theme Editor</p></li>
+<li><p> Wireframing</p></li>
+<li><p> JavaScript Libraries, Widgets and Themes</p></li>
+<li><p> Mobile Authoring</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Selain bisa digunakan secara &ldquo;live&rdquo;, Maqetta juga bisa kita gunakan secara offline dan tanpa perlu melakukan proses registrasi. Nah untuk yang penasaran bagaimana tampilan Maqetta, berikut ini adalah tampilan Maqetta yang akan kita lihat ketika menjalankan aplikasi-nya.</p>
+
+<pre><code>[caption id="attachment_1749" align="alignnone" width="300"][![Tampilan Dashboard Maqetta](http://martinusadyh.web.id/wp-content/uploads/2012/07/Tampilan-Dashboard-300x168.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=172) Tampilan Dashboard Maqetta[/caption]
+
+
+
+
+[caption id="attachment_1753" align="alignnone" width="300"][![Dojo GUI Design](http://martinusadyh.web.id/wp-content/uploads/2012/07/Dojo-GUI-Design-300x168.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=173) Dojo GUI Design[/caption]
+</code></pre>
+
+<p>[caption id=&ldquo;attachment_1755&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=174"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/07/Maqetta-View-Source-Mode-300x168.png" alt="Maqetta View Source Mode" /></a> Maqetta View Source Mode[/caption]</p>
+
+<p>[caption id=&ldquo;attachment_1756&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=175"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/07/Mobile-GUI-Design-300x168.png" alt="Mobile GUI Design" /></a> Mobile GUI Design[/caption]</p>
+
+<pre><code>[caption id="attachment_1758" align="alignnone" width="300"][![Run Mobile App](http://martinusadyh.web.id/wp-content/uploads/2012/07/Run-Mobile-App-300x168.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=176) Run Mobile App[/caption]
+
+
+
+
+[caption id="attachment_1759" align="alignnone" width="300"][![Run Web App](http://martinusadyh.web.id/wp-content/uploads/2012/07/Run-Web-App-300x202.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=177) Run Web App[/caption]
+</code></pre>
+
+<p>Menarik bukan ? Untuk anda yang tertarik dan ingin mencoba Maqetta, pastikan dahulu di komputer anda sudah terinstall minimal <strong>Java versi 5</strong> supaya Maqetta bisa berjalan dengan baik. Dan jika sudah, jalankan script <code>maqetta.local.unix.sh</code> jika menggunakan GNU/Linux, atau <code>maqetta.local.win.bat</code> jika menggunakan Windows.</p>
+
+<p>Bagaimana ? Tertarik untuk mencoba Maqetta ?</p>
+
+<p><strong>Referensi-referensi</strong> :</p>
+
+<ol>
+<li><p> <a href="http://dojotoolkit.org/">Dojo Unbeatable JavaScript Tools</a></p></li>
+<li><p> <a href="http://maqetta.org/">Halaman Resmi Project Maqetta</a></p></li>
+<li><p> <a href="http://maqetta.org:55556/maqetta/">Halaman Live Demo Maqetta</a></p></li>
+<li><p> <a href="http://maqetta.org:55556/maqetta/app/docs/index.html#tutorials/tutorials">Maqetta Tutorial Resources</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">admin</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-22T01:54:38+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2012/07/14/cara-mudah-memiliki-tabungan-emas/" title="Previous Post: Cara Mudah Memiliki Tabungan Emas">&laquo; Cara Mudah Memiliki Tabungan Emas</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2012/07/28/dark-themes-for-eclipse-ide/" title="Next Post: Dark Themes for Eclipse IDE">Dark Themes for Eclipse IDE &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta/';
+        var disqus_url = 'http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

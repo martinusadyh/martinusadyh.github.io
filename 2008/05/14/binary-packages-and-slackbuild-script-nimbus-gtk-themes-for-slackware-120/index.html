@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Binary Packages and SlackBuild Script Nimbus GTK Themes for Slackware 12.0 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Wah gara-gara om Walecha kemarin dulu kasih komentar tentang themes nimbus disini, akhirnya saya jadi penasaran. Apaan sih yang baru dari themes &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2008/05/14/binary-packages-and-slackbuild-script-nimbus-gtk-themes-for-slackware-120/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Binary Packages and SlackBuild Script Nimbus GTK Themes for Slackware 12.0</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-14T00:17:58+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Wah gara-gara om <a href="http://wallinux.blogspot.com/">Walecha</a> kemarin dulu kasih komentar tentang themes nimbus <a href="http://martinusadyh.web.id/2007/09/26/install-nimbus-gtk-themes-di-slackware-101/">disini</a>, akhirnya saya jadi penasaran. Apaan sih yang baru dari themes nimbus ? Koq sampai-sampai master GNOME-nya Slackware ngasih tahu saya :D , akhirnya tadi malam saya coba cek ke link download themes nimbus-nya <a href="http://dlc.sun.com/osol/jds/downloads/extras/">disini</a>. Wah ada versi baru rupa-nya, dulu waktu pertama kali install di Slackware 10.1 masih versi 0.0.8 dan sekarang ternyata versi-nya sekarang udah 0.0.12 :)</p>
+
+<!-- more -->
+
+
+<p>Sebenarnya yang membuat rasa penasaran saya bukan masalah versi-nya yang naik, tapi om <a href="http://wallinux.blogspot.com/">Walecha</a> udah bikin patch untuk proses <strong>configure</strong>-nya. Wah jadi tambah penasaran nih, berhubung saya sedikit &ldquo;sungkan&rdquo; ama om <a href="http://wallinux.blogspot.com/">Walecha</a> untuk minta patch-nya langsung. Akhirnya saya cobain dulu deh, nanti kalau udah mentok-tok, baru minta patch-nya ke beliau :D untuk proses <strong>configure</strong>-nya (Masak belum apa-apa udah minta patch, enak banget <strong> halah ngomong apaan sih ^^ </strong>).</p>
+
+<p>Ok sekarang langsung ajah ke proses intinya, soalnya langkah-langkah yang ada disini tidak jauh beda dengan posting saya <a href="http://martinusadyh.web.id/2007/09/26/install-nimbus-gtk-themes-di-slackware-101/">dulu</a>. Kembali ke masalah patch yang diberitahukan oleh om <a href="http://wallinux.blogspot.com/">Walecha</a> kemarin, memang iya pada proses instalasi themes Nimbus kemarin saya menggunakan patch yang sudah dibikin oleh orang lain dan memang hasilnya bisa berjalan dengan baik. Nah sekarang bagaimana jika tidak menggunakan patch, maksudnya jika kita langsung main hajar dengan perintah <strong>configure</strong> pada source code nimbus-nya ? Hasilnya adalah seperti dibawah ini :</p>
+
+<pre><code>[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$ ./configure
+checking for a BSD-compatible install... /usr/bin/ginstall -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for style of include used by make... GNU
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking dependency style of gcc... gcc3
+checking for intltool &gt;= 0.23... awk: cmd. line:1: fatal: cannot open file `./intltool-update.in' for reading (No such file or directory)
+awk: cmd. line:1: fatal: cannot open file `./intltool-update.in' for reading (No such file or directory)
+ found
+./configure: line 3597: test: : integer expression expected
+configure: error: Your intltool is too old.  You need intltool 0.23 or later.
+[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$
+</code></pre>
+
+<p>Wataw koq error ? Hmm.. pada pesan error terakhir, script <strong>configure</strong> memberitahukan bahwa <strong>intltool</strong> yang terdapat di sistem saya versi-nya terlalu lama. Akhirnya coba cek apa bener <strong>intltool</strong> saya udah ketinggalan jaman ? Dan ini hasil pengecekan-nya:</p>
+
+<pre><code>[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$ ls /var/log/packages | grep intltool
+intltool-0.36.3-noarch-9as
+[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$
+</code></pre>
+
+<p>Nah baru ketahuan, ternyata <strong>intltool</strong> saya versi-nya udah cukup tinggi. Cuman koq masih gagal yah ? Pada pesan error <strong>configure</strong> diatas juga memberitahukan kalau <strong>intltool-update.in</strong> tidak ada, nah akhirnya jadi penasaran sebenarnya intltool ini buat apaan sih. Berhubung saya masih punya <strong>patch</strong> themes nimbus versi 0.0.8(sayangnya patch nimbus versi 0.0.8 tidak bisa dipakai pada versi 0.0.12 :( ), akhirnya saya coba cari kata-kata <strong>intltool</strong> pada patch tersebut. Akhirnya saya menemukan beberapa <strong>keyword</strong> yang menyangkut <strong>intltool</strong> yaitu <strong>intltool-prepare</strong>, <strong>intltool-merge</strong>, <strong>intltool-update</strong>. Nah akhirnya iseng-iseng deh baca manual <strong>intltool</strong> satu persatu dan hasil-nya untuk membuat file <strong>intltool.in</strong> harus menjalankan perintah <strong>intltoolize</strong> pada direktori utama dari source code. Dan voillla, akhirnya setelah menjalankan perintah <strong>intltoolize</strong>, hasilnya adalah seperti berikut :</p>
+
+<pre><code>[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$ ls
+AUTHORS    INSTALL      NEWS        autogen.sh    config.sub    depcomp     index.theme     ltmain.sh  mkinstalldirs
+COPYING    Makefile.am  README      config.guess  configure     gtk-engine  index.theme.in  metacity   po
+ChangeLog  Makefile.in  aclocal.m4  config.h.in   configure.in  icons       install-sh      missing
+[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$ intltoolize --force
+[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$ ls
+AUTHORS    INSTALL      NEWS        autogen.sh    config.sub    depcomp     index.theme     intltool-extract.in  ltmain.sh  mkinstalldirs
+COPYING    Makefile.am  README      config.guess  configure     gtk-engine  index.theme.in  intltool-merge.in    metacity   po
+ChangeLog  Makefile.in  aclocal.m4  config.h.in   configure.in  icons       install-sh      intltool-update.in   missing
+[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$
+</code></pre>
+
+<p>Nah sekarang coba jalankan perintah <strong>configure</strong>, maka script <strong>configure</strong> akan berjalan dengan mulus tanpa cacat :). Sedangkan untuk teman-teman yang ingin melihat proses kompilasi dan instalasi yang saya lakukan secara lebih detail, silahkan cek file nimbus.SlackBuild yang sudah saya commit ke repository Slackware Linux Indonesia <a href="http://slackware.linux.or.id/cgi-bin/viewcvs.cgi/slackbuild/12.0/nimbus-gtk-engine/">disini.</a></p>
+
+<p>Nah buat teman-teman yang belum tahu cara menggunakan file SlackBuild, ayo sekarang kita coba bermain-main dengan script SlackBuild. Sekarang coba download-lah semua file yang dibutuhkan yang sudah ditulis pada file <a href="http://slackware.linux.or.id/cgi-bin/viewcvs.cgi/slackbuild/12.0/nimbus-gtk-engine/readme?rev=1.1&amp;content-type=text/vnd.viewcvs-markup">README</a> beserta file <a href="http://slackware.linux.or.id/cgi-bin/viewcvs.cgi/slackbuild/12.0/nimbus-gtk-engine/">nimbus.SlackBuild</a> dan semua file <a href="http://slackware.linux.or.id/cgi-bin/viewcvs.cgi/slackbuild/12.0/nimbus-gtk-engine/">slack-desc</a> yang diperlukan hingga menjadi seperti dibawah ini:</p>
+
+<pre><code>[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus]$ ls
+README                             slack-desc-sun-gdm-themes          nimbus-0.0.12.tar.bz2              slack-desc-nimbus                  solaris-branding-0.0.3.tar.bz2     nimbus.SlackBuild                  slack-desc-opensolaris-gdm-themes  sun-gdm-themes-0.25.tar.gz         opensolaris-gdm-themes-0.2.tar.gz  slack-desc-solaris-branding
+</code></pre>
+
+<p>Sebelum mulai menjalankan file nimbus.SlackBuild, coba cek-lah dahulu paket-paket dependencies yang diperlukan, jika ketiga library ini sudah terdapat di sistem maka proses menjalankan script nimbus.SlackBuild bisa diteruskan.
+Note: Untuk GNOME, pastikan sudah ter-install pada sistem anda. :)</p>
+
+<pre><code>[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$ ls /var/log/packages | grep xml-simple
+xml-simple-2.18-i486-1sl
+[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$ ls /var/log/packages | grep intltool
+intltool-0.36.3-noarch-9as
+[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus/nimbus-0.0.12]$ ls /var/log/packages | grep icon-naming-utils
+icon-naming-utils-0.8.6-noarch-6as
+</code></pre>
+
+<p>Nah jika seluruh dependencies sudah terinstal dengan baik sekarang jalankan-lah file nimbus.SlackBuild seperti dibawah ini:</p>
+
+<pre><code>[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus]$ ./nimbus.SlackBuild
+
++=======================================================================+
+| Step 1. Preparing Compilation process for Nimbus GTK Engine           |
++=======================================================================+"
+............
+............
++=======================================================================+
+| Creating Solaris Branding Package for Slackware Distribution          |
++=======================================================================+
+............
+............
+Gzipping solaris-branding-0.0.3-i686-1_mrt.tar...
+
+Renaming solaris-branding-0.0.3-i686-1_mrt.tar.gz to solaris-branding-0.0.3-i686-1_mrt.tgz...
+
+Moving solaris-branding-0.0.3-i686-1_mrt.tgz to /tmp...
+
+Package creation complete.
+
+Package log creation at -&gt;  /tmp/id-slack/package-nimbus-log (Please removed it later)
+Package result at -&gt;  /tmp/nimbus-0.0.12-i686-1_mrt.tgz
+Package result at -&gt;  /tmp/opensolaris-gdm-themes-0.2-i686-1_mrt.tgz
+Package result at -&gt;  /tmp/sun-gdm-themes-0.25-i686-1_mrt.tgz
+Package result at -&gt;  /tmp/solaris-branding-0.0.3-i686-1_mrt.tgz
+Package creation done.
+
+Indonesian Slackware Community
+http://slackware.linux.or.id/
+
+[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus]$
+</code></pre>
+
+<p>Nah setelah tampilan terminal teman-teman seperti diatas, kita bisa melanjutkan dengan proses installasi dengan menggunakan perintah <strong>installpkg</strong>, dan jika teman-teman ingin meng-analisa pesan pada waktu proses <strong>configure</strong>, <strong>make</strong> dan <strong>make install</strong> teman-teman bisa membaca-baca file log yang disertakan. Tapi jika teman-teman ingin langsung meng-install-nya ke sistem, pastikan teman-teman merubah dahulu hak akses menjadi root dengan menjalankan perintah <strong>su</strong> kemudian baru mengetikkan perintah <strong>installpkg</strong> terhadap paket-paket yang ingin kita install seperti dibawah ini:</p>
+
+<pre><code>[javamaniac@pemula:~/ProgramFiles/Slack-ID/nimbus]$ su
+Password:
+[root@pemula:/home/javamaniac/ProgramFiles/Slack-ID/nimbus]# installpkg /tmp/nimbus-0.0.12-i686-1_mrt.tgz
+Installing package nimbus-0.0.12-i686-1_mrt...
+PACKAGE DESCRIPTION:
+nimbus: Nimbus - Nimbus is new GTK Themes for Solaris
+nimbus:
+nimbus: Nimbus is the name of a look-and-feel designed by Sun for the
+nimbus: Java Desktop System; it is implemented as a GTK theme in the latest
+nimbus: Solaris 11 pre-release builds.
+nimbus:
+nimbus: Packaged by: Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;
+Executing install script for nimbus-0.0.12-i686-1_mrt...
+
+[root@pemula:/home/javamaniac/ProgramFiles/Slack-ID/nimbus]# installpkg /tmp/opensolaris-gdm-themes-0.2-i686-1_mrt.tgz
+Installing package opensolaris-gdm-themes-0.2-i686-1_mrt...
+PACKAGE DESCRIPTION:
+opensolaris-gdm-themes: OpenSolaris GDM - The GDM Themes for OpenSolaris
+opensolaris-gdm-themes:
+opensolaris-gdm-themes: OpenSolaris GDM Themes is New GDM Themes in OpenSolaris
+opensolaris-gdm-themes: and this themes designed by Sun for the Java Desktop
+opensolaris-gdm-themes: System.
+opensolaris-gdm-themes:
+opensolaris-gdm-themes: Packaged by: Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;
+
+[root@pemula:/home/javamaniac/ProgramFiles/Slack-ID/nimbus]# installpkg /tmp/sun-gdm-themes-0.25-i686-1_mrt.tgz
+Installing package sun-gdm-themes-0.25-i686-1_mrt...
+PACKAGE DESCRIPTION:
+sun-gdm-themes: SUN GDM Themes - The GDM Themes for Solaris Operating System
+sun-gdm-themes:
+sun-gdm-themes: SUN GDM Themes is GDM Themes in Solaris and this themes
+sun-gdm-themes: designed by Sun for the Java Desktop System.
+sun-gdm-themes:
+sun-gdm-themes: Packaged by: Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;
+
+[root@pemula:/home/javamaniac/ProgramFiles/Slack-ID/nimbus]# installpkg /tmp/solaris-branding-0.0.3-i686-1_mrt.tgz
+Installing package solaris-branding-0.0.3-i686-1_mrt...
+PACKAGE DESCRIPTION:
+solaris-branding: Solaris Branding - All stuff and image about Solaris OS
+solaris-branding:
+solaris-branding: This packages contains all stuff used in Solaris Operating
+solaris-branding: System. Like SplashScreen, Wallpaper, etc.
+solaris-branding:
+solaris-branding: Packaged by: Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;
+
+[root@pemula:/home/javamaniac/ProgramFiles/Slack-ID/nimbus]#
+</code></pre>
+
+<p>Nah mudah bukan :) , oh iya sampai lupa. Untuk teman-teman yang tidak mau pusing dengan script SlackBuild, teman-teman bisa download file binary-nya yang sudah saya tulis di akhir posting ini. :)</p>
+
+<p>Btw ada yang baru di versi ini, yaitu GDM Themes-nya baru dan tampilan-nya seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/2489624972/"><img src="http://farm3.static.flickr.com/2082/2489624972_6f9c804c30.jpg" alt="GDMThemesIndiana" /><br/>
+Click to View Large Image</a></p>
+
+<p>Dan selain GDM Themes yang baru tersebut, yang membuat saya senang yaitu icon trash-nya udah mau nongol :) dan dibawah ini adalah tampilan desktop saya menggunakan themes nimbus yang baru :
+<a href="http://www.flickr.com/photos/10243554@N02/2489624978/"><img src="http://farm4.static.flickr.com/3089/2489624978_85c0989d5e.jpg" alt="OpenSolarisCleanDesktop" /><br/>
+Click to View Large Image</a></p>
+
+<p>So.. Happy Slacking Guy&rsquo;s ;)</p>
+
+<p><strong>Resource :</strong>
+- <a href="ftp://slackware.linux.or.id/pub/people/javamaniac/slackware12.0/">Binary Packages For Slackware 12.0</a>
+- <a href="http://slackware.linux.or.id/cgi-bin/viewcvs.cgi/slackbuild/12.0/nimbus-gtk-engine/">SlackBuild script For Slackware 12.0</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-14T00:17:58+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2008/05/14/binary-packages-and-slackbuild-script-nimbus-gtk-themes-for-slackware-120/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2008/05/14/binary-packages-and-slackbuild-script-nimbus-gtk-themes-for-slackware-120/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2008/04/25/portable-classpath-di-netbeans/" title="Previous Post: Portable Classpath di NetBeans">&laquo; Portable Classpath di NetBeans</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2008/09/09/dropdownbutton-di-java-swing/" title="Next Post: DropDownButton di Java Swing">DropDownButton di Java Swing &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2008/05/14/binary-packages-and-slackbuild-script-nimbus-gtk-themes-for-slackware-120/';
+        var disqus_url = 'http://martinusadyh.web.id/2008/05/14/binary-packages-and-slackbuild-script-nimbus-gtk-themes-for-slackware-120/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

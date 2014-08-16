@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Step by step Apache Tomcat SSL Configuration - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sedang bingung bagaimana mengaktifkan fitur SSL (Secure Sockets Layer) pada Apache Tomcat? Jika iya, pada tulisan kali ini mari kita bahas bagaimana &hellip;">
+  <meta name="keywords" content="Apache, https, Java, Single Sign On, SSL, Tomcat">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Step by Step Apache Tomcat SSL Configuration</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-23T12:22:15+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Sedang bingung bagaimana mengaktifkan fitur <strong>SSL <em>(Secure Sockets Layer)</em></strong> pada <a href="http://tomcat.apache.org/">Apache Tomcat</a> ? Jika iya, pada tulisan kali ini mari kita bahas bagaimana mengkonfigurasi <strong>Apache Tomcat</strong> yang kita gunakan agar bisa mendukung fitur <strong>SSL</strong> ini. Pada tulisan kali ini sistem operasi yang digunakan adalah <strong>GNU/Linux Ubuntu 12.04</strong> sehingga semua proses konfigurasi dan installasi aplikasi akan mengikuti cara kerja dan struktur direktori milik Ubuntu :) Supaya lebih memudahkan, maka tulisan kali ini akan dibagi menjadi beberapa tahapan yang kurang lebih sebagai berikut :</p>
+
+<ol>
+<li> <strong>Installasi Java Development Kit</strong>,
+Sebelum melakukan installasi <strong>JDK</strong>, ada baiknya kita mengecek dahulu apakah di sistem kita sebelumnya sudah terinstall <strong>java (baik JRE maupun JDK)</strong> dengan versi yang lain. Pastikan bahwa kita hanya mempunyai 1 versi <strong>java</strong> saja yang terinstall, jalankan perintah dibawah ini untuk melakukan pengecekan versi <strong>Java</strong> yang terinstall pada sistem kita :</li>
+</ol>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>server@pangrango# dpkg --get-selections | grep jdk</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Catatan</strong>: Jika ditemukan, hapus semua dengan menggunakan perintah sudo apt-get remove <em>nama-package</em></p>
+
+<p>Dan pastikan juga didalam direktori <code>/usr/lib/jvm/</code> kosong, semua proses ini kita lakukan supaya kita tidak bingung apakah certificate kita terbaca atau tidak oleh <strong>Apache Tomcat</strong>. Jika sudah sekarang lakukan installasi java dengan mengetikkan perintah <code>sudo apt-get install openjdk-7-jdk</code>, dan kalau sudah lakukan pengecekkan dengan mengetikkan perintah <code>java -version</code> atau <code>javac -version</code>.</p>
+
+<!-- more -->
+
+
+<ol>
+<li> <strong>Pembuatan Certificate</strong>
+Untuk membuat <strong>certificate</strong> kita bisa menggunakan perintah <code>keytool</code>, yang perlu diperhatikan pada langkah ini adalah isikan kolom isian <strong>What is your first and last name?</strong> dengan <strong>hostname</strong> tempat <strong>Apache Tomcat</strong> di install. Cara paling mudah untuk mengetahui <strong>hostname</strong> adalah dengan mengetikkan perintah <code>hostname</code> seperti dibawah ini :</li>
+</ol>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>server@pangrango:~$ hostname
+</span><span class='line'>pangrango
+</span><span class='line'>server@pangrango:~$ </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah mengetahui <strong>hostname</strong> kita, sekarang mari kita buat sebuah certificate dengan menjalankan perintah <code>keytool -genkey -alias tomcat -keypass changeit -keyalg RSA -validity 730</code> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>server@pangrango:~$ keytool -genkey -alias tomcat -keypass changeit -keyalg RSA -validity 730
+</span><span class='line'>Enter keystore password:  
+</span><span class='line'>Re-enter new password: 
+</span><span class='line'>What is your first and last name?
+</span><span class='line'>  [Unknown]:  pangrango
+</span><span class='line'>What is the name of your organizational unit?
+</span><span class='line'>  [Unknown]:  s2gis-dev
+</span><span class='line'>What is the name of your organization?
+</span><span class='line'>  [Unknown]:  S2GIS
+</span><span class='line'>What is the name of your City or Locality?
+</span><span class='line'>  [Unknown]:  Jakarta
+</span><span class='line'>What is the name of your State or Province?
+</span><span class='line'>  [Unknown]:  Jakarta
+</span><span class='line'>What is the two-letter country code for this unit?
+</span><span class='line'>  [Unknown]:  ID
+</span><span class='line'>Is CN=pangrango, OU=s2gis-dev, O=S2GIS, L=Jakarta, ST=Jakarta, C=ID correct?
+</span><span class='line'>  [no]:  yes
+</span><span class='line'>  
+</span><span class='line'>server@pangrango:~$ </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Catatan</strong>: Kolom isian keystore password dan keypass harus sama</p>
+
+<p>Proses pembuatan certificate sudah selesai, sekarang mari kita import dengan menjalankan perintah seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>server@pangrango:~$ keytool -export -alias tomcat -keypass changeit -file /tmp/server.crt
+</span><span class='line'>Enter keystore password:  
+</span><span class='line'>Certificate stored in file 
+</span><span class='line'>server@pangrango:~$ </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Dan langkah terakhir yang harus kita lakukan adalah menambahkan certificate yang sudah kita buat kedalam <strong>keystore</strong> di <strong>java</strong> dengan mengetikkan perintah seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>server@pangrango:~$ sudo keytool -import -file /tmp/server.crt -keypass changeit -keystore /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/cacerts 
+</span><span class='line'>Enter keystore password:  
+</span><span class='line'>Owner: CN=pangrango, OU=s2gis-dev, O=S2GIS, L=Jakarta, ST=Jakarta, C=ID
+</span><span class='line'>Issuer: CN=pangrango, OU=s2gis-dev, O=S2GIS, L=Jakarta, ST=Jakarta, C=ID
+</span><span class='line'>Serial number: 4299a11a
+</span><span class='line'>Valid from: Tue Apr 23 09:41:00 WIT 2013 until: Thu Apr 23 09:41:00 WIT 2015
+</span><span class='line'>Certificate fingerprints:
+</span><span class='line'>   MD5:  B5:C9:09:67:8C:F0:31:DE:C2:66:94:CA:7E:E7:94:43
+</span><span class='line'>   SHA1: E4:4A:BD:A3:90:C5:10:C6:6B:88:64:5C:C8:FA:E6:9F:29:31:51:A9
+</span><span class='line'>   SHA256: 80:FA:D2:9F:CC:FF:25:79:1A:4D:16:31:72:98:40:F8:D3:72:B5:C8:4A:65:08:0E:52:CE:36:3B:C5:DF:4C:F6
+</span><span class='line'>   Signature algorithm name: SHA256withRSA
+</span><span class='line'>   Version: 3
+</span><span class='line'>
+</span><span class='line'>Extensions: 
+</span><span class='line'>
+</span><span class='line'>#1: ObjectId: 2.5.29.14 Criticality=false
+</span><span class='line'>SubjectKeyIdentifier [
+</span><span class='line'>KeyIdentifier [
+</span><span class='line'>0000: 24 82 41 37 6B 3E 76 F7   FE C2 89 35 02 44 F1 37  $.A7k&gt;v....5.D.7
+</span><span class='line'>0010: 08 68 F1 EE                                        .h..
+</span><span class='line'>]
+</span><span class='line'>]
+</span><span class='line'>
+</span><span class='line'>Trust this certificate? [no]:  yes
+</span><span class='line'>Certificate was added to keystore
+</span><span class='line'>server@pangrango:~$ </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<ol>
+<li> <strong>Installasi dan Konfigurasi SSL Apache Tomcat</strong>
+Installasi Java dan pembuatan certificate sudah selesai, sekarang mari kita install <strong>Apache Tomcat</strong>-nya dengan mengetikkan perintah <code>sudo apt-get install tomcat7</code>. Tunggulah beberapa saat hingga proses installasi selesai, jika sudah selesai matikan service tomcatnya dengan perintah <code>sudo /etc/init.d/tomcat7 stop</code> kemudian copy-lah file <code>.keystore</code> ke direktori <code>/usr/share/tomcat7/</code> dengan perintah seperti berikut :</li>
+</ol>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>server@pangrango:~$ sudo cp .keystore /usr/share/tomcat7/
+</span><span class='line'>server@pangrango:~$ ls -al /usr/share/tomcat7
+</span><span class='line'>total 36
+</span><span class='line'>drwxr-xr-x   4 root root  4096 Mar 27 15:52 .
+</span><span class='line'>drwxr-xr-x 275 root root 12288 Mar 27 13:49 ..
+</span><span class='line'>drwxr-xr-x   2 root root  4096 Mar 27 13:49 bin
+</span><span class='line'>-rw-r--r--   1 root root    39 Jul 13  2012 defaults.md5sum
+</span><span class='line'>-rw-r--r--   1 root root  1960 Jul 13  2012 defaults.template
+</span><span class='line'>-rw-r--r--   1 root root  2247 Mar 27 15:52 .keystore
+</span><span class='line'>drwxr-xr-x   2 root root  4096 Mar 27 13:49 lib </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Jika sudah sekarang editlah file <code>/var/lib/tomcat7/conf/server.xml</code> dan carilah baris dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!-- </span>
+</span><span class='line'><span class="c">    &lt;Connector port=&quot;8443&quot; protocol=&quot;HTTP/1.1&quot; SSLEnabled=&quot;true&quot;</span>
+</span><span class='line'><span class="c">               maxThreads=&quot;150&quot; scheme=&quot;https&quot; secure=&quot;true&quot;</span>
+</span><span class='line'><span class="c">               clientAuth=&quot;false&quot; sslProtocol=&quot;TLS&quot; /&gt;</span>
+</span><span class='line'><span class="c">--&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>kemudian edit hingga menjadi seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">&quot;8443&quot;</span> <span class="na">protocol=</span><span class="s">&quot;org.apache.coyote.http11.Http11NioProtocol&quot;</span> <span class="na">SSLEnabled=</span><span class="s">&quot;true&quot;</span>
+</span><span class='line'>           <span class="na">maxThreads=</span><span class="s">&quot;150&quot;</span> <span class="na">scheme=</span><span class="s">&quot;https&quot;</span> <span class="na">secure=</span><span class="s">&quot;true&quot;</span>
+</span><span class='line'>           <span class="na">clientAuth=</span><span class="s">&quot;false&quot;</span> <span class="na">sslProtocol=</span><span class="s">&quot;TLS&quot;</span>
+</span><span class='line'>           <span class="na">keystoreFile=</span><span class="s">&quot;/usr/share/tomcat7/.keystore&quot;</span>
+</span><span class='line'>           <span class="na">keystorePass=</span><span class="s">&quot;changeit&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah melakukan perubahan diatas, simpan dan jalankan <strong>Apache Tomcat</strong>-nya dengan mengetikkan perintah <code>sudo /etc/init.d/tomcat7 start &amp;&amp; tail -f /var/log/tomcat7/catalina.out</code> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>server@pangrango:~$ sudo /etc/init.d/tomcat7 start <span class="err">&amp;&amp;</span> tail -f /var/log/tomcat7/catalina.out
+</span><span class='line'> * Starting Tomcat servlet engine tomcat7                                                                                                                        [ OK ]
+</span><span class='line'>Mar 27, 2013 4:01:36 PM org.apache.catalina.core.StandardService startInternal
+</span><span class='line'>INFO: Starting service Catalina
+</span><span class='line'>Mar 27, 2013 4:01:36 PM org.apache.catalina.core.StandardEngine startInternal
+</span><span class='line'>INFO: Starting Servlet Engine: Apache Tomcat/7.0.26
+</span><span class='line'>Mar 27, 2013 4:01:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+</span><span class='line'>INFO: Deploying web application directory /var/lib/tomcat7/webapps/ROOT
+</span><span class='line'>Mar 27, 2013 4:01:37 PM org.apache.coyote.AbstractProtocol start
+</span><span class='line'>INFO: Starting ProtocolHandler [&quot;http-bio-8080&quot;]
+</span><span class='line'>Mar 27, 2013 4:01:37 PM org.apache.catalina.startup.Catalina start
+</span><span class='line'>INFO: Server startup in 1040 ms
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Dan sekarang bukalah sebuah browser dan arahkan ke alamat <code>https://localhost:8443</code>, jika tidak ada kesalahan maka kita akan melihat tampilan seperti screenshot dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/blog-images/Java_NetBeans/StepbystepApacheTomcatSSLConfiguration/TampilanAwalHTTPS.png' width='300' height='168' title='Tampilan Awal Ketika Membuka Halaman Https'><span class='caption-text'>Tampilan Awal Ketika Membuka Halaman Https</span></span></p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/blog-images/Java_NetBeans/StepbystepApacheTomcatSSLConfiguration/TambahkanSecurityException.png' width='300' height='168' title='Tambahkan Security Exception'><span class='caption-text'>Tambahkan Security Exception</span></span></p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/blog-images/Java_NetBeans/StepbystepApacheTomcatSSLConfiguration/SSLSukses.png' width='300' height='168' title='Konfigurasi SSL Berhasil'><span class='caption-text'>Konfigurasi SSL Berhasil</span></span></p>
+
+<p>Bagaimana mudah bukan ? :)</p>
+
+<p><strong>Referensi-referensi:</strong></p>
+
+<ol>
+<li><p> <a href="http://tomcat.apache.org/tomcat-6.0-doc/ssl-howto.html">SSL Configuration How-To</a></p></li>
+<li><p> <a href="http://java.dzone.com/articles/setting-ssl-tomcat-5-minutes">Setting SSL Tomcat 5 minutes</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-23T12:22:15+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/" title="Previous Post: Serunya Perjalanan ke Waduk Jatiluhur">&laquo; Serunya Perjalanan ke Waduk Jatiluhur</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/" title="Next Post: Berburu Sunset di Pantai Ranca Buaya dan Pantai Santolo">Berburu Sunset di Pantai Ranca Buaya dan Pantai Santolo &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/';
+        var disqus_url = 'http://martinusadyh.web.id/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

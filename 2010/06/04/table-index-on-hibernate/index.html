@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Table Index On Hibernate - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Buat teman-teman yang sudah terbiasa menggunakan MySQL mungkin pernah mendengar atau mendapatkan saran seperti ini &ldquo;Jika ingin query-nya &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/06/04/table-index-on-hibernate/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Table Index on Hibernate</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-04T02:13:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Buat teman-teman yang sudah terbiasa menggunakan MySQL mungkin pernah mendengar atau mendapatkan saran seperti ini <strong>&ldquo;Jika ingin query-nya berjalan cepat maka kita harus menambahkan sebuah index pada kolom-kolom yang sering digunakan pada klausa where&rdquo;</strong>. Saran seperti ini memang betul sih jika kita menggunakan MySQL sebagai solusi DataBase Server yang kita gunakan, sedangkan untuk DataBase Server lain mungkin berbeda lagi penerapan-nya karena saya juga belum mempunyai pengalaman :D</p>
+
+<p>Dulu.. pada milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan seperti ini <strong>&ldquo;TANYA : Table Index Pada Hibernate&rdquo;</strong> (thread lengkap untuk pertanyaan ini bisa dibaca <a href="http://tech.groups.yahoo.com/group/netbeans-indonesia/message/8066">disini</a>), nah karena dulu saya juga belum tahu dan ketika itu mencari-cari referensi di Google juga tidak mendapatkan hasil yang memuaskan (apa saya yang kurang jeli ya ??) akhirnya keputusan terakhir adalah solusi pembuatan index harus dilakukan manual melalui MySQL bukan dari sisi Hibernate.</p>
+
+<p>Nah ternyata, cara untuk menambahkan sebuah index pada sebuah kolom pada tabel di hibernate dapat dilakukan dengan menggunakan Annotations (@) <strong>@org.hibernate.annotations.Table</strong> pada domain class yang kita buat. Sedangkan cara penggunaan annotations <strong>@org.hibernate.annotations.Table</strong> adalah seperti contoh kode dibawah ini :</p>
+
+<pre><code>@org.hibernate.annotations.Table(
+    appliesTo="&lt;&lt; table-name &gt;&gt;",
+    indexes={
+        @Index(name="&lt;&lt; index-name &gt;&gt;", columnNames={"&lt;&lt; column-names &gt;&gt;"}),
+        @Index(name="&lt;&lt; another-index-name &gt;&gt;", columnNames={"&lt;&lt; another-column-names &gt;&gt;"})
+    }
+)
+</code></pre>
+
+<p>Yang perlu diperhatikan disini yaitu <strong>&ldquo;Annotations @org.hibernate.annotations.Table ini bukan merupakan pengganti dari annotations @javax.persistence.Table&rdquo;</strong> dan dibawah ini adalah kutipan dari halaman manual hibernate :</p>
+
+<blockquote><p>@org.hibernate.annotations.Table is a complement, not a replacement to @javax.persistence.Table. Especially, if you want to change the default name of a table, you must use @javax.persistence.Table, not @org.hibernate.annotations.Table.</p></blockquote>
+
+<p>Merasa penasaran ??? Jika iya, yuk mari kita coba sekarang :) Peralatan yang dipakai pada latihan kali ini adalah :</p>
+
+<ol>
+<li><p> MySQL DataBase</p></li>
+<li><p> Hibernate Annotations</p></li>
+<li><p> Spring Framework 3.0.2</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Semua perlengkapan sudah siap ? Jika sudah, sekarang mari kita buat sebuah domain class sebagai contoh yaitu Buku yang mempunyai kolom <strong>id, tanggalMasuk, nomorSeri, namaPengarang, kategori dan penerbit</strong> dan kolom yang akan kita index adalah kolom <strong>nomorSeri dan namaPengarang</strong>. Hasilnya adalah seperti kode dibawah ini :</p>
+
+<pre><code>package id.web.martinusadyh.tableindexhibernate;
+
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import org.hibernate.annotations.Index;
+
+@Entity
+@Table(name="master_buku")
+@org.hibernate.annotations.Table(
+    appliesTo="master_buku",
+    indexes={
+        @Index(name="nomor_seri", columnNames={"nomor_seri"}),
+        @Index(name="nama_pengarang", columnNames={"nama_pengarang"})
+    }
+)
+public class Buku implements Serializable {
+    @Id @GeneratedValue
+    private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name="tanggal_masuk")
+    private Date tanggalMasuk;
+    @Column(name="nomor_seri")
+    private String nomorSeri;
+    @Column(name="nama_pengarang")
+    private String namaPengarang;
+    @Column(name="kategori")
+    private String kategori;
+    @Column(name="penerbit")
+    private String penerbit;
+
+    // Automatic Getter n Setter
+}
+</code></pre>
+
+<p>Nah jika sudah selesai membuat sebuah domain class, sekarang mari kita mapping melalui file <strong>hibernate.xml</strong> seperti dibawah ini :</p>
+
+<pre><code>&lt;hibernate-configuration&gt;
+  &lt;session-factory&gt;
+    &lt;property name="hibernate.hbm2ddl.auto"&gt;update&lt;/property&gt;
+    &lt;property name="hibernate.dialect"&gt;org.hibernate.dialect.MySQLInnoDBDialect&lt;/property&gt;
+    &lt;mapping class="id.web.martinusadyh.tableindexhibernate.Buku"&gt;&lt;/mapping&gt;
+  &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+</code></pre>
+
+<p>Jika sudah, sekarang buatlah file <strong>jdbc.properties</strong> untuk mengisi informasi yang berkaitan dengan database seperti dibawah ini :</p>
+
+<pre><code># To change this template, choose Tools | Templates
+# and open the template in the editor.
+hibernate.dialect = org.hibernate.dialect.MySQLInnoDBDialect
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost/lat_hibernate
+jdbc.username=root
+jdbc.password=admin
+</code></pre>
+
+<p>Dan yang terakhir yaitu memanggil semuanya melalui file konfigurasi Spring yaitu <strong>applicationContext.xml</strong> seperti dibawah ini :</p>
+
+<pre><code>&lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+"&gt;
+    &lt;context:property-placeholder location="classpath:jdbc.properties"&gt;&lt;/context:property-placeholder&gt;
+    &lt;context:annotation-config&gt;&lt;/context:annotation-config&gt;
+    &lt;tx:annotation-driven&gt;&lt;/tx:annotation-driven&gt;
+
+    &lt;bean p:driverclassname="${jdbc.driver}" class="org.springframework.jdbc.datasource.DriverManagerDataSource" p:url="${jdbc.url}" p:username="${jdbc.username}" p:password="${jdbc.password}" id="dataSource"&gt;&lt;/bean&gt;
+
+    &lt;bean p:datasource-ref="dataSource" p:configlocation="classpath:hibernate.cfg.xml" id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"&gt;
+        &lt;property name="hibernateProperties"&gt;
+            &lt;props&gt;
+                &lt;prop key="dialect"&gt;${hibernate.dialect}&lt;/prop&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;bean p:sessionfactory-ref="sessionFactory" id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"&gt;&lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>Sebagai <strong>launcher</strong>-nya, buatlah sebuah <strong>MainClass</strong> dengan isi seperti dibawah ini :</p>
+
+<pre><code>package id.web.martinusadyh.tableindexhibernate;
+
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+    }
+}
+</code></pre>
+
+<p>Setelah semua selesai, sekarang jalankan-lah project yang telah kita buat diatas dan mari kita cek apakah tabel master_buku hasil <strong>generate</strong> hibernate ini berhasil mempunyai index atau tidak dengan menjalankan perintah pada <strong>mysql prompt</strong> seperti dibawah ini :</p>
+
+<pre><code>mysql&gt; show create table master_buku\G
+*************************** 1. row ***************************
+       Table: master_buku
+Create Table: CREATE TABLE `master_buku` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `kategori` varchar(255) default NULL,
+  `nama_pengarang` varchar(255) default NULL,
+  `nomor_seri` varchar(255) default NULL,
+  `penerbit` varchar(255) default NULL,
+  `tanggal_masuk` date default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `nama_pengarang` (`nama_pengarang`),
+  KEY `nomor_seri` (`nomor_seri`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.00 sec)
+
+mysql&gt; show index from master_buku;
++-------------+------------+----------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+
+| Table       | Non_unique | Key_name       | Seq_in_index | Column_name    | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment |
++-------------+------------+----------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+
+| master_buku |          0 | PRIMARY        |            1 | id             | A         |           0 |     NULL | NULL   |      | BTREE      |         | 
+| master_buku |          1 | nama_pengarang |            1 | nama_pengarang | A         |           0 |     NULL | NULL   | YES  | BTREE      |         | 
+| master_buku |          1 | nomor_seri     |            1 | nomor_seri     | A         |           0 |     NULL | NULL   | YES  | BTREE      |         | 
++-------------+------------+----------------+--------------+----------------+-----------+-------------+----------+--------+------+------------+---------+
+3 rows in set (0.00 sec)
+
+mysql&gt; 
+</code></pre>
+
+<p>Yuhuuuu &hellip;. index sudah berhasil dibuat langsung dari Hibernate, sekarang kita sudah tidak perlu susah-susah lagi untuk menambahkan index secara manual melalui MySQL Prompt. Mantap kan ??? Semuanya bisa dilakukan dari java :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://code.google.com/p/martin-personal-project/source/browse/#svn/trunk/java/TableIndexHibernate">Source Code Project TableIndexOnHibernate</a></p></li>
+<li><p> <a href="http://www.ziddu.com/download/10127256/TableIndexHibernate.zip.html">Demo TableIndexOnHibernate</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-04T02:13:04+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/06/04/table-index-on-hibernate/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/06/04/table-index-on-hibernate/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/05/27/google-adwords-account-strategist-bahasa-indonesian-singapore/" title="Previous Post: Google AdWords Account Strategist (Bahasa Indonesian) Singapore">&laquo; Google AdWords Account Strategist (Bahasa Indonesian) Singapore</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/06/06/howto-become-good-technical-team-leader/" title="Next Post: HowTo Become Good Technical Team Leader">HowTo Become Good Technical Team Leader &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/06/04/table-index-on-hibernate/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/06/04/table-index-on-hibernate/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

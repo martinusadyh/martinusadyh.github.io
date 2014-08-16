@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ubuntu | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Finding Duplicate File in Linux]]></title>
+    <link href="http://martinusadyh.web.id/2012/09/01/finding-duplicate-file-in-linux/"/>
+    <updated>2012-09-01T21:12:48+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/09/01/finding-duplicate-file-in-linux</id>
+    <content type="html"><![CDATA[<p>Kemarin ada yang tanya, gimana sih caranya mencari file duplicate di <strong>GNU/Linux</strong> ? Setelah beberapa kali mencari bantuan di <a href="http://google.com">Google</a> akhirnya ketemu juga caranya yaitu dengan menjalankan perintah seperti dibawah ini :
+[plain]
+$ find /tmp -type f | rev | sort | sed -nr &lsquo;:a N;/^([^/]<em>\/).</em>\n\1/p;D;ba&rsquo; | uniq | rev
+[/plain]
+Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di inginkan.</p>
+
+<p>Tips ini saya temukan secara tidak sengeja di <a href="http://google.com">Google</a> tapi sayang-nya lupa dimana tepat-nya, jadi supaya tidak lupa saya posting sekalian di blog supaya bisa jadi referensi di kemudian hari :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu Global Menu Support In NetBeans]]></title>
+    <link href="http://martinusadyh.web.id/2012/08/18/ubuntu-global-menu-support-in-netbeans/"/>
+    <updated>2012-08-18T01:12:28+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/08/18/ubuntu-global-menu-support-in-netbeans</id>
+    <content type="html"><![CDATA[<p>Untuk pengguna distribusi GNU/Linux Ubuntu pastinya sudah tidak asing lagi bukan dengan yang namanya <strong>Global Menu</strong>, nah yang jadi masalah disini adalah dengan adanya <strong>Global Menu</strong> semua aplikasi yang berbasis pada Java Swing terutama NetBeans jadi kelihatan <em>&ldquo;aneh&rdquo;</em> seperti terlihat pada screenshot dibawah ini :(</p>
+
+<p>[caption id=&ldquo;attachment_1844&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=182"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/NetBeans-Default-300x168.png" alt="NetBeans Default" /></a> NetBeans Default[/caption]</p>
+
+<!-- more -->
+
+
+<p>Nah untungnya ada proyek <a href="http://code.google.com/p/java-swing-ayatana/">Java Swing Ayatana</a> yang dapat mengintegrasikan aplikasi berbasis Java Swing agar dapat menggunakan fasilitas <strong>Global Menu</strong> di Ubuntu :) Yang menggembirakan lagi adalah, proyek ini juga menyertakan sebuah plugin untuk NetBeans. Jika ingin mencoba, silahkan download dulu <a href="http://code.google.com/p/java-swing-ayatana/downloads/list">plugin Java Swing Ayatana</a> versi terbaru (Downloadlah file dengan ekstensi <strong>*.nbm</strong>, versi plugin pada saat tulisan ini dibuat adalah <strong>1.2.3.1</strong>) dan simpan pada laptop atau komputer anda.</p>
+
+<p>Jika sudah, bukalah NetBeans dan masuk pada menu <strong>Tools > Plugin</strong>. Pada jendela <strong>Plugins</strong>, bukalah tab <strong>Downloaded</strong> kemudian klik pada tombol <strong>Add Plugins</strong> dan arahkan ke file <strong>*.nbm</strong> yang baru kita download hingga tampak seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_1854&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=183"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/Install-Plugin-Java-Swing-Ayatana-300x168.png" alt="Install Plugin Java Swing Ayatana" /></a> Install Plugin Java Swing Ayatana[/caption]</p>
+
+<p>Klik tombol <strong>Install</strong> untuk mulai proses installasi, jika proses installasi sudah selesai dan NetBeans sudah di reboot. Maka NetBeans yang kita gunakan sekarang sudah mendukung Global Menu seperti yang bisa kita lihat seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_1857&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=184"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/NetBeans-with-Java-Swing-Ayatana-300x168.png" alt="NetBeans with Java Swing Ayatana" /></a> NetBeans with Java Swing Ayatana[/caption]</p>
+
+<p>Menyenangkan bukan ? Tertarik untuk mencoba ? :)</p>
+
+<p><strong>Referensi</strong> :</p>
+
+<ol>
+<li> <a href="http://code.google.com/p/java-swing-ayatana/">Java Swing Ayatana</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remove Guest Session in Ubuntu 12.04]]></title>
+    <link href="http://martinusadyh.web.id/2012/08/16/remove-guest-session-in-ubuntu-12-04/"/>
+    <updated>2012-08-16T03:00:50+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/08/16/remove-guest-session-in-ubuntu-12-04</id>
+    <content type="html"><![CDATA[<p>Ingin menghilangkan guest session di Ubuntu 12.04 ? Jika iya, silahkan edit file <code>/etc/lightdm/lightdm.conf</code> dan tambahkan baris <code>allow-guest=false</code> menjadi seperti dibawah ini :</p>
+
+<pre><code>[SeatDefaults]
+user-session=ubuntu
+greeter-session=unity-greeter
+allow-guest=false
+</code></pre>
+
+<p>Setelah merubah file <code>/etc/lightdm/lightdm.conf</code> simpan dan logout :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How To Embedding Your Binary Files into Shell Script]]></title>
+    <link href="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/"/>
+    <updated>2012-08-04T14:47:56+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script</id>
+    <content type="html"><![CDATA[<p>Pada tulisan kali ini, kita akan membahas bagaimana membuat sebuah shell script yang berisi sebuah <strong><em>binary file</em></strong>. Apa sih sebenarnya yang bisa kita lakukan dengan sebuah shell script yang berisi file binary ? Hm.. sebenarnya banyak sih, dan salah satunya adalah membuat installer untuk sistem operasi GNU/Linux seperti installer milik <strong>NetBeans IDE</strong> yang mempunyai ekstensi <strong>*.sh</strong> :)</p>
+
+<p>Nah untuk membantu tujuan kita diatas, kita membutuhkan bantuan sebuah shell script yaitu <a href="http://megastep.org/makeself/">makeself</a>. Untuk yang belum tahu apa itu script makeself, dibawah ini adalah deskripsi singkat tentang  script makeself :</p>
+
+<blockquote><p><a href="http://megastep.org/makeself/">makeself.sh</a> is a small shell script that generates a self-extractable tar.gz archive from a directory. The resulting file appears as a shell script (many of those have a .run suffix), and can be launched as is. The archive will then uncompress itself to a temporary directory and an optional arbitrary command will be executed (for example an installation script). This is pretty similar to archives generated with WinZip Self-Extractor in the Windows world. Makeself archives also include checksums for integrity self-validation (CRC and/or MD5 checksums).</p></blockquote>
+
+<p>Dan yang menggembirakan lagi adalah, script makeself ini sudah di test dan dapat digunakan pada beberapa sistem operasi yang kurang lebih seperti berikut :</p>
+
+<ol>
+<li><p> Linux (all distributions)</p></li>
+<li><p> Sun Solaris (8 and above)</p></li>
+<li><p> HP-UX (tested on 11.0 and 11i on HPPA RISC)</p></li>
+<li><p> SCO OpenUnix and OpenServer</p></li>
+<li><p> IBM AIX 5.1L</p></li>
+<li><p> MacOS X (Darwin)</p></li>
+<li><p> SGI IRIX 6.5</p></li>
+<li><p> FreeBSD</p></li>
+<li><p> UnicOS / Cray</p></li>
+<li><p>. Cygwin (Windows)</p></li>
+</ol>
+
+
+<p>Sedangkan yang sudah menggunakan script ini sebagai installer mereka adalah :</p>
+
+<ol>
+<li><p> Game patches and installers for <a href="http://www.idsoftware.com/">Id Software games</a> like Quake 3 for Linux or Return To Castle Wolfenstien ;</p></li>
+<li><p> All game patches released by <a href="http://www.lokigames.com/products/myth2/updates.php3">Loki Software</a> for the Linux version of popular games</p></li>
+<li><p> The <a href="http://www.nvidia.com/">nVidia drivers</a> for Linux</p></li>
+<li><p> The installer for the Linux version of <a href="http://earth.google.com/">Google Earth</a></p></li>
+<li><p> The <a href="http://www.virtualbox.org/">VirtualBox</a> installers for Linux</p></li>
+<li><p> The Makeself distribution itself ;-)</p></li>
+</ol>
+
+
+<p>Menarik bukan ? Masih tertarik bagaimana caranya menggunakan script ini untuk membuat sebuah installer sendiri ?</p>
+
+<!-- more -->
+
+
+<p>Jika iya, maka sekarang downloadlah dahulu script makeself <a href="http://megastep.org/makeself/makeself-2.1.5.run">disini</a> yang pada saat tulisan ini dibuat mempunyai versi 2.1.5, atau kalau mau versi yang lebih baru bisa mengikuti timeline project ini di <a href="https://github.com/megastep/makeself">halaman github makeself</a>. Jika proses download sudah selesai, simpanlah file <code>makeself-2.1.5.run</code> pada sebuah direktori dengan nama <strong>test-makeself</strong>. Sebelum mulai menggunakan, beri hak <strong><em>execute</em></strong> dahulu pada file <code>makeself-2.1.5.run</code> dengan perintah <code>chmod +x makeself-2.1.5.run</code> dan ekstrak dengan menjalankan perintah <code>./makeself-2.1.5.run</code>. Hasil dari perintah tadi akan membuat sebuah direktori <strong>makeself-2.1.5</strong> yang berisi script makeself seluruh-nya seperti terlihat dari perintah <code>tree</code> dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[~/tmp/test-makeself]$ tree
+.
+├── makeself-2.1.5
+│   ├── COPYING
+│   ├── makeself.1
+│   ├── makeself-header.sh
+│   ├── makeself.lsm
+│   ├── makeself.sh
+│   ├── README
+│   └── TODO
+└── makeself-2.1.5.run
+
+1 directory, 8 files
+martinus@artivisi:[~/tmp/test-makeself]$ 
+</code></pre>
+
+<p>Untuk percobaan, sekarang buatlah 2 direktori <code>binary</code> dan <code>result</code> didalam direktori <code>makeself-2.1.5</code> seperti terlihat dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[~/tmp/test-makeself]$ tree
+.
+├── makeself-2.1.5
+│   ├── binary
+│   ├── COPYING
+│   ├── makeself.1
+│   ├── makeself-header.sh
+│   ├── makeself.lsm
+│   ├── makeself.sh
+│   ├── README
+│   ├── result
+│   └── TODO
+└── makeself-2.1.5.run
+martinus@artivisi:[~/tmp/test-makeself]$ 
+</code></pre>
+
+<p>Fungsi direktori <code>binary</code> diatas adalah untuk menempatkan aplikasi yang akan kita distribusikan, sedangkan direktori <code>result</code> adalah untuk menyimpan file installer yang akan dibuat oleh script <code>makeself</code> :)</p>
+
+<p>Jika sudah, masukkanlah direktori aplikasi yang ingin kita distribusikan kedalam direktori <code>binary</code> dan sebuah shell script dengan nama <code>pre-install.sh</code> (nama file <code>pre-install.sh</code> ini hanya sebagai contoh saja) sebagai launcher didalam direktori <code>binary</code> seperti dibawah ini:</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/binary]$ tree
+.
+├── app
+│   ├── lib
+│   │   ├── MartinSwingUtil-1.0.0.jar
+│   │   ├── mysql-connector-java-5.1.6-bin.jar
+│   │   └── swing-layout-1.0.4.jar
+│   ├── MenuLogin.jar
+│   └── README.TXT
+└── pre-install.sh
+
+2 directories, 6 files
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/binary]$ 
+</code></pre>
+
+<blockquote><p>Direktori <code>app/</code> beserta isinya adalah contoh aplikasi yang ingin di distribusikan, untuk penggunaan sebenar-nya kita bisa memasukkan apa saja didalam direktori <code>binary</code>.</p></blockquote>
+
+<p>File <code>pre-install.sh</code> ini dapat digunakan untuk melakukan proses-proses yang dibutuhkan sebelum mulai menginstall aplikasi yang sebenar-nya, seperti contohnya :</p>
+
+<ol>
+<li><p> Melakukan pengecekan apakah user <strong>root</strong> atau bukan yang menjalankan installer.</p></li>
+<li><p> Melakukan pengecekan apakah library yang dibutuhkan oleh aplikasi sudah tersedia atau belum.</p></li>
+<li><p> Melakukan restore database (dibutuhkan opsi untuk memasukkan username dan password mysql yang digunakan oleh user)</p></li>
+<li><p> Menempatkan file konfigurasi aplikasi pada direktori-direktori yang telah ditentukan.</p></li>
+<li><p> dan lain-lain &hellip; :)</p></li>
+</ol>
+
+
+<p>Sebelum bermain lebih lanjut dengan script <code>pre-install.sh</code>, mari kita buat dahulu skenario yang akan dijalankan oleh script <code>pre-install.sh</code> kita. Sebagai contoh, kita membuat skenario seperti dibawah ini :</p>
+
+<ol>
+<li><p> Installer hanya dapat dijalankan oleh user yang mempunyai hak akses <strong>root</strong>.</p></li>
+<li><p> Copy direktori <code>app</code> ke direktori <code>opt/</code></p></li>
+<li><p> Beri hak akses 755 pada direktori <code>/opt/app</code> beserta isinya supaya dapat dijalankan oleh user.</p></li>
+</ol>
+
+
+<p>Setelah kita mempunyai skenario seperti diatas, sekarang saatnya untuk bermain-main dengan script <code>pre-install.sh</code>, dan kode untuk skenario diatas adalah seperti berikut :</p>
+
+<pre><code class="bash   ">#!/bin/sh
+# 
+# Contoh file pre-install.sh
+
+# Langkah pertama, pengecekan apakah user root yang menjalankan installer
+# ini. Jika bukan user root, tampilkan pesan bagaimana menjalankan installer
+# dan exit.
+if [ "$(id -u)" != "0" ]; then
+    echo "Usage : sudo ./installerku.sh"
+    exit 1
+else
+    # Langkah kedua, copy direktori app/ beserta isinya kedalam direktori
+    # /opt
+    echo "Sedang menginstall aplikasi ...."
+    cp -R app /opt/app
+
+    echo "Memberi hak akses ..."
+    chmod 755 -R /opt/app
+
+    echo "Proses installasi selesai !!!"
+fi
+</code></pre>
+
+<p>Sampai disini proses yang kita lakukan sudah bisa dibilang hampir selesai, hanya tinggal 1 proses lagi yaitu membuat installer-nya. Sekarang mari kita buat sebuah installer menggunakan script <code>makeself</code> dan pastikan bahwa kita berada didalam direktori <code>makeself-2.1.5</code> :) Jika sudah, kita bisa menjalankan script <code>makeself</code> dengan perintah <code>./makeself.sh [parameter1] [parameter2] [parameter3] [parameter4]</code> dimana :</p>
+
+<ol>
+<li><p> <strong>[parameter1]</strong>, adalah tempat dimana kita meletakkan aplikasi yang ingin di distribusikan. (Dalam contoh kita, adalah direktori <code>binary</code>).</p></li>
+<li><p> <strong>[parameter2]</strong>, adalah nama file installer yang ingin kita buat. (Sebagai contoh pada tulisan ini, nama file installer yang akan kita buat bernama <code>installerku.sh</code> dan akan ditempatkan pada direktori <code>result</code>).</p></li>
+<li><p> <strong>[parameter3]</strong>, adalah label untuk installer aplikasi yang ingin kita distribusikan.</p></li>
+<li><p> <strong>[parameter4]</strong>, script yang ingin kita jalankan ketika proses installasi. (Dalam contoh kita adalah script <code>pre-install.sh</code>)</p></li>
+</ol>
+
+
+<p>Setelah mengetahui parameter-parameter yang akan digunakan, sekarang jalankan perintah <code>./makeself.sh binary/ result/installerku.sh "Aplikasi Login v1.0" ./pre-install.sh</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ ./makeself.sh binary/ result/installerku.sh "Aplikasi Login v1.0" ./pre-install.sh
+Header is 401 lines long
+
+About to compress 889 KB of data...
+Adding files to archive named "result/installerku.sh"...
+./
+./app/
+./app/lib/
+./app/lib/mysql-connector-java-5.1.6-bin.jar
+./app/lib/MartinSwingUtil-1.0.0.jar
+./app/lib/swing-layout-1.0.4.jar
+./app/README.TXT
+./app/MenuLogin.jar
+./pre-install.sh
+CRC: 677728827
+MD5: 3b84ed4eb87351a2eac8b0f235490fca
+
+Self-extractible archive "result/installerku.sh" successfully created.
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ 
+</code></pre>
+
+<p>Sekarang cek pada direktori <code>result/</code>, harusnya kita sudah mempunyai file dengan nama <code>installerku.sh</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ ls result/
+installerku.sh
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$
+</code></pre>
+
+<p>Sekarang mari kita test script <code>installerku.sh</code> dengan mencoba menjalankan-nya tanpa menggunakan akses root, apakah yang akan terjadi ?</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ ./installerku.sh 
+Verifying archive integrity... All good.
+Uncompressing Aplikasi Login v1.0.........
+Usage : sudo ./installerku.sh
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Yuuhu&hellip; proses installasi gagal dilakukan, sekarang mari kita coba menjalankan script <code>installerku.sh</code> menggunakan <code>sudo</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ sudo ./installerku.sh 
+Verifying archive integrity... All good.
+Uncompressing Aplikasi Login v1.0.........
+Sedang menginstall aplikasi ....
+Memberi hak akses ...
+Proses installasi selesai !!!
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Hore.. berhasil, sekarang mari kita check apakah direktori <code>app/</code> beserta isinya sudah masuk kedalam direktori <code>opt/</code> ?</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ ls -l /opt/app/
+total 52
+drwxr-xr-x 3 root root  4096 Jul 29 06:12 app
+drwxr-xr-x 2 root root  4096 Jul 29 05:41 lib
+-rwxr-xr-x 1 root root 38591 Jul 29 05:41 MenuLogin.jar
+-rwxr-xr-x 1 root root  1447 Jul 29 05:41 README.TXT
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Mantap&hellip; akhirnya kita bisa membuat sendiri installer di GNU/Linux seperti installer-installer dari project-project besar opensource yang lain :) Nah untuk teman-teman sesama programmer ada yang tertarik untuk mencoba-nya ??</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Konfigurasi User Home Direktori Apache di Ubuntu 12.04]]></title>
+    <link href="http://martinusadyh.web.id/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04/"/>
+    <updated>2012-07-07T18:58:40+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>

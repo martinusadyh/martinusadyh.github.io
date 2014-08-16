@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Fyuh&hellip; setelah lama ngendon di draft, akhirnya baru pagi ini tulisan pertama saya bisa di publish :gembira: :gembira: Konsep yang saya bawa &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/9/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/11/09/tutorial-iso-8583-with-jpos/">Tutorial ISO 8583 With jPOS</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-09T03:26:36+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/11/09/tutorial-iso-8583-with-jpos/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Fyuh&hellip; setelah lama <em>ngendon</em> di draft, akhirnya baru pagi ini tulisan pertama saya bisa di publish  :gembira:  :gembira: Konsep yang saya bawa pada tulisan di blog ini adalah model semi DockBook + ada fasilitas untuk komentar bagi pembaca :D Nah bagi yang penasaran apa sih daftar isinya ? Berikut ini adalah daftar isi dari tulisan pertama saya yang berjudul <strong>Berkenalan dengan ISO8583 Menggunakan Java</strong> :</p>
+
+<ol>
+<li><p> Tentang Buku Ini</p>
+
+<ol>
+<li><p>Latar Belakang Pembaca</p></li>
+<li><p>Aturan Penulisan</p></li>
+</ol>
+</li>
+<li><p> Pendahuluan</p>
+
+<ol>
+<li><p>Apa Itu ISO 8583</p></li>
+<li><p>Tipe Message ISO 8583</p></li>
+</ol>
+</li>
+<li><p> Message Type Indicator</p>
+
+<ol>
+<li><p>Versi ISO 8583</p></li>
+<li><p>Message Class</p></li>
+<li><p>Message Function</p></li>
+<li><p>Message Origin</p></li>
+<li><p>Contoh Message Type Indicator</p></li>
+</ol>
+</li>
+<li><p> Bitmap</p>
+
+<ol>
+<li>Cara Menghitung Bitmap</li>
+</ol>
+</li>
+<li><p> Data Element</p>
+
+<ol>
+<li><p>Data Element Standart ISO 8583</p></li>
+<li><p>Contoh Menyusun Message Lengkap ISO 8583</p></li>
+</ol>
+</li>
+<li><p> Implementasi Menggunakan Java</p>
+
+<ol>
+<li><p>Pembuatan Spesifikasi Message Network Management</p></li>
+<li><p>Pembuatan Aplikasi Server</p></li>
+<li><p>Pembuatan Aplikasi Client</p></li>
+<li><p>Testing</p></li>
+</ol>
+</li>
+<li><p> Pengenalan jPOS</p>
+
+<ol>
+<li><p>ISOPackager</p></li>
+<li><p>ISOChannel</p></li>
+<li><p>ISOServer dan ISOMUX</p></li>
+<li><p>ISOMsg</p></li>
+</ol>
+</li>
+<li><p> Implementasi Menggunakan jPOS</p>
+
+<ol>
+<li><p>Persiapan Project</p></li>
+<li><p>Pembuatan Aplikasi Server</p></li>
+<li><p>Pembuatan Aplikasi Client</p></li>
+</ol>
+</li>
+<li><p> Referensi</p></li>
+<li><p>. Penutup</p></li>
+</ol>
+
+
+<p>Sedangkan untuk tutorial-nya bisa teman-teman lihat pada halaman <a href="http://martinusadyh.web.id/tulisanku/">Tulisanku</a> diatas :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/23/apa-itu-transaksi/">Apa Itu Transaksi?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-23T00:42:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/10/23/apa-itu-transaksi/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Apa Itu Transaksi?</h2>
+
+<p><strong>oleh : Steven Haryanto</strong></p>
+
+<p>Artikel ini hendak memperkenalkan konsep transaksi kepada mereka yang masih asing dengannya. Berhubung transaksi baru diperkenalkan di MySQL sekitar 2 tahun lalu, masih banyak penggunanya yang tidak pernah mengenal fasilitas yang sebetulnya amat penting ini. Begitu database kita sudah mengandung data yang cukup penting bukan sekedar berisi posting komentar pengunjung situs yang bisa dihapus kapan saja, misalnya atau begitu kita menginginkan stabilitas dan konsistensi dan tidak ingin waktu demi waktu harus memperbaiki record yang ngaco, misalnya maka kita harus memahami transaksi.</p>
+
+<h2>Contoh Pertama</h2>
+
+<p>Setiap kali orang menerangkan tentang transaksi database, contoh yang biasanya diambil adalah nyaris selalu tentang transaksi di bank, khususnya tentang seorang nasabah yang menyimpan sejumlah uang di rekening tabungannya, atau memindahkan uang dari rekening cek ke tabungan. Saya akan meneruskan tradisi ini karena memang contoh tersebut pas sekali menekankan pentingnya sebuah transaksi.</p>
+
+<p>Anggaplah kita seorang nasabah untuk sebuah bank bernama Mandi Sendiri jelas bukan bank dengan aset terbesar di Indonesia karena ternyata dia sudah merasa cukup dengan hanya memakai Python dan MySQL. Tiga buah tabel di database bank ini skemanya sebagai berikut (telah disederhanakan):</p>
+
+<pre><code># mencatat daftar transaksi
+CREATE TABLE trans (
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    tgl DATETIME,
+    ket varchar(255) NOT NULL,
+    teller_id SMALLINT NOT NULL
+);
+
+# jurnal kredit tabungan
+CREATE TABLE jtabungan (
+    trans_id BIGINT NOT NULL,
+    norek_nasabah INT NOT NULL,
+    jumlah DOUBLE NOT NULL
+);
+
+# jurnal kas bank
+CREATE TABLE jkas (
+    trans_id BIGINT NOT NULL,
+    jumlah DOUBLE NOT NULL
+);
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/10/23/apa-itu-transaksi/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/22/sepenggal-kisah-android/">Sepenggal Kisah Android</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-22T10:29:30+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/10/22/sepenggal-kisah-android/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Waaaw&hellip; baru tahu, ternyata Android baru saja ber Ulang Tahun :) Pada Ulang Tahun ke 2-nya ini, om <strong>Lucky Sebastian</strong> dari milis <a href="mailto:id-android@googlegroups.com">id-android@googlegroups.com</a> membagikan sebuah kisah perjalanan si <strong>&ldquo;Robot Ijo&rdquo;</strong> berdasarkan pengalaman beliau sendiri :) Nah yuuuk, mari kita simak sama-sama tulisan beliau dibawah ini :</p>
+
+<p>Guys, apa kabar.</p>
+
+<p>Kiranya sekarang sudah banyak yang mendengar tentang android dan boomingnya. Dalam tulisan iseng ini, saya mau berbagi cerita tentang awal mulanya android kenapa bisa muncul, sudah sampai mana dan mau kemana. Tulisan ini sebagian pernah saya ceritakan sebagai bagian presentasi dalam gathering id-android yg entah ke berapa kali, dan sedikit dalam peluncuran Dell Streak. Kiranya bermanfaat buat android lover dan gadgeteer lainnya, untuk melihat semangat yang dikandung android di dalamnya.</p>
+
+<p>Suatu ketika Google, raksasa search engine, membeli Android inc, yang dipimpin Andy Rubin. Setelah dibeli, Google mengangkat Andy Rubin sebagai Vice President of Engineering urusan android, google menyadari, Andy Rubin yang berkutat di android adalah orang yang paling mengerti tentang android, orang ini tetap harus memimpin.</p>
+
+<p>(Bandingkan dengan kisah Steve Jobs di Apple inc, dia yang membuat apple, dia memberi rohnya, saat membesarkan Apple, eh dia bisa disingkirkan dari Apple sampai harus membuat Next computer, dan akhirnya kembali ke Apple menghasilkan kejayaan)</p>
+
+<p>Saat itu digelar meeting, untuk mendengarkan visi dan misi dari Android yang dibawakan oleh Andy Rubin. Hadir disana adalah VP Engineering google, Vic Gundotra. Ketika meeting baru mulai dan Andy siap memaparkan apa itu android, Vic langsung menyela dengan skeptis, dengan pertanyaan:</p>
+
+<p><strong>&ldquo;Andy, apa dunia ini benar masih butuh mobile operating system lain?&rdquo;</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/10/22/sepenggal-kisah-android/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/20/take-screenshot-from-your-htc-desire/">Take Screenshot From Your HTC Desire</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-20T22:17:18+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/10/20/take-screenshot-from-your-htc-desire/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Selama mengikuti perkembangan Android di milis <a href="mailto:id-android@googlegroups.com">id-android@googlegroups.com</a> ada yang paling mengesankan buat saya, yaitu tentang bagaimana caranya mengambil screenshot screen yang terdapat pada handphone kita :D Nah karena saya juga pengguna awam <strong>Android</strong> maka posting pertama ini juga yang enteng-enteng dulu :D Yuuk mari kita mulai aja :)</p>
+
+<p>Pertama yang harus dilakukan agar kita bisa mengambil screenshot yaitu meng-aktifkan fitur <strong>USB Debugging</strong> pada HTC Desire yang anda miliki, sedangkan untuk mengaktifkan fitur ini langkah-nya yaitu pada tampilan <strong>Home Screen</strong> tekanlah tombol <strong>menu</strong> kemudian pilihlah opsi <strong>Settings</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5099680468/"><img src="http://farm2.static.flickr.com/1101/5099680468_d99baedfae_m.jpg" alt="Settings" /></a><br/>
+<strong>Tampilan Menu Home Screen</strong></p>
+
+<p>Pada jendela <strong>Settings</strong> sekarang cari dan pilihlah menu <strong>Applications</strong> seperti dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5099680476/"><img src="http://farm2.static.flickr.com/1250/5099680476_657ce348a7_m.jpg" alt="MenuSettings" /></a><br/>
+<strong>Tampilan Menu Settings</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/10/20/take-screenshot-from-your-htc-desire/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/19/java-desktop-training-paket-pahe/">Java Desktop Training Paket PAHE</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-19T21:33:07+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/10/19/java-desktop-training-paket-pahe/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://artivisi.com">ARTIVISI INTERMEDIA</a> akan mengadakan training <strong>JAVA DESKTOP BASIC</strong> (Sabtu/Minggu) pada tanggal 23 dan 24 Oktober 2010 mendatang, info lebih lanjut silahkan menghubungi :
+- Ira &lt; <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#x69;&#114;&#97;&#64;&#97;&#114;&#116;&#105;&#118;&#x69;&#115;&#105;&#46;&#99;&#111;&#109;">&#x69;&#114;&#x61;&#64;&#x61;&#114;&#x74;&#x69;&#x76;&#x69;&#x73;&#105;&#x2e;&#99;&#111;&#109;</a> >
+- Meliawati &lt; <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x65;&#x6c;&#x69;&#x40;&#x61;&#x72;&#x74;&#105;&#x76;&#105;&#x73;&#x69;&#x2e;&#99;&#111;&#109;">&#x6d;&#101;&#108;&#105;&#64;&#x61;&#x72;&#x74;&#x69;&#118;&#x69;&#115;&#x69;&#46;&#x63;&#111;&#x6d;</a> ></p>
+
+<p><strong>JAVA DESKTOP BASIC </strong>
+Tanggal : 23 dan 24 Oktober 2010
+Waktu : 09.00 s/d 17.00 WIB
+Trainer : Endy Muhardin, Martinus Ady H, Adi Sulistiono dan Jimmy Rengga
+Biaya : Rp 350.000,-</p>
+
+<p><strong>Hari Ke 1 - Fundamental :  </strong>
+1. Packages dan Anatomi Aplikasi<br/>
+2. Konfigurasi MySQL<br/>
+3. Konsep IoC Pada SpringFramework<br/>
+4. Autowiring<br/>
+5. Hibernate Mapping<br/>
+6. Hibernate Common Problem</p>
+
+<p><strong>Hari Ke 2 - Java Desktop  :</strong>
+1. JFC Fundamental <br/>
+2. Swing Development Using Netbeans 6 <br/>
+3. Mengenal Model Pada Swing (TableModel, ListModel, TreeModel) <br/>
+4. Pengenalan iReport dan Desain Report<br/>
+5. JasperReport Datasource<br/>
+6. Integrasi JasperReport dengan Swing</p>
+
+<p>Hm&hellip;. bagaimana all ?? :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/10/01/lowongan-junior-programmer-jp-01102010/">Lowongan Junior Programmer (JP-01102010)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-01T18:12:43+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/10/01/lowongan-junior-programmer-jp-01102010/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>DIBUTUHKAN SEGERA</strong></p>
+
+<p><a href="http://artivisi.com/">PT. ArtiVisi Intermedia</a> sebuah perusahaan IT yang bergerak di bidang IT Consultant dan Software Development membutuhkan talenta muda untuk ikut bergabung dengan kami sebagai <strong>JUNIOR PROGRAMMER (JP-01102010)</strong> sebanyak <strong>8 (delapan) orang</strong>. Beberapa kriteria yang kami butuhkan adalah sebagai berikut :</p>
+
+<ol>
+<li><p> Menguasai Java SE</p></li>
+<li><p> Menguasai Eclipse IDE</p></li>
+<li><p> Menguasai Konsep Object Oriented dengan baik</p></li>
+<li><p> Menguasai Konsep Relational Database</p></li>
+<li><p> Menguasai JasperReport</p></li>
+<li><p> Mempunyai Pengalaman Menggunakan MySQL, PostgreSQL, Oracle dan DB2</p></li>
+<li><p> Mempunyai Pengalaman Menggunakan Apache ANT *****</p></li>
+<li><p> Mempunyai Pengalaman Menggunakan Apache Maven *****</p></li>
+<li><p> Mempunyai Pengalaman Menggunakan Spring Framework *****</p></li>
+<li><p>. Mempunyai Pengalaman Menggunakan Taperstry *****</p></li>
+<li><p>. Mempunyai Pengalaman Menggunakan JSF *****</p></li>
+<li><p>. Mempunyai Pengalaman Menggunakan Hibernate *****</p></li>
+<li><p>. Mempunyai Pengalaman Menggunakan Socket API *****</p></li>
+</ol>
+
+
+<p><strong>* Merupakan Nilai Tambah</strong></p>
+
+<p>Jika tertarik, silahkan kirim CV, photo dan deskripsi aplikasi apa yang pernah teman-teman buat ke <strong>info[at]artivisi.com</strong> dengan Subject : <strong>Lamaran JP-01102010</strong>. Lowongan ini juga terbuka untuk teman-teman yang baru lulus kuliah juga loh :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/09/29/netbeans-6-9-and-eclispe-helios-shortcut-mapping/">NetBeans 6.9 and Eclispe Helios Shortcut Mapping</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-29T20:47:27+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/09/29/netbeans-6-9-and-eclispe-helios-shortcut-mapping/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Beberapa minggu ini saya sering menggunakan 2 IDE yaitu NetBeans dan Eclipse secara bergantian, karena saya adalah pengguna NetBeans selama ini. Jadinya ketika menggunakan Eclipse, saya mencari-cari apa persamaan <strong>shortcut</strong> antara NetBeans dan Eclipse. Nah dibawah ini merupakan daftar persamaan <strong>shortcut</strong> antara NetBeans dan Eclipse yang sering saya gunakan dan yang saya baru tahu :D</p>
+
+<pre><code>        Function
+        Eclipse Shortcut
+        NetBeans Shortcut
+</code></pre>
+
+<p>Move Line Up/Down</p>
+
+<p>ALT + UP/DOWN</p>
+
+<p>ALT + SHIFT + UP/DOWN</p>
+
+<p>Delete One Line</p>
+
+<p>CTRL + D</p>
+
+<p>CTRL + E</p>
+
+<p>Auto Import</p>
+
+<p>CTRL + SHIFT + O</p>
+
+<p>CTRL + SHIFT + I</p>
+
+<p>Moving to Another Active Tab</p>
+
+<p>CTRL + E</p>
+
+<p>CTRL + SHIFT + TAB</p>
+
+<p>Goto File</p>
+
+<p>CTRL + SHIFT + R</p>
+
+<p>ALT + SHIFT + O</p>
+
+<p>Rename</p>
+
+<p>ALT + SHIFT + R</p>
+
+<p>CTRL + R</p>
+
+<p>Copy One Line UP/DOWN</p>
+
+<p>CTRL + ALT + UP/DOWN</p>
+
+<p>CTRL + SHIFT + UP/DOWN</p>
+
+<p>Comment / Un Comment</p>
+
+<p>CTRL + /</p>
+
+<p>CTRL + /</p>
+
+<p>Create Method/Local Variable/Variable</p>
+
+<p>CTRL + 1</p>
+
+<p>ALT + ENTER</p>
+
+<p>Open Type/Class</p>
+
+<p>CTRL + SHIFT + T</p>
+
+<p>CTRL + O</p>
+
+<p>Autoformat</p>
+
+<p>CTRL + SHIFT + F</p>
+
+<p>ALT + SHIFT + F</p>
+
+<p>Dari daftar diatas, masih ada 1 lagi <strong>shortcut</strong> di NetBeans yang saya belum tahu persamaan-nya di Eclipse :( . <strong>Shortcut</strong> tersebut adalah <strong>ALT+SHIFT+LEFT/RIGHT</strong>, <strong>shortcut</strong> ini fungsinya untuk memindahkan <strong>baris/blok kode</strong> ke kanan atau ke kiri. Jadi dengan menggunakan <strong>shortcut</strong> ini, saya tidak perlu menekan tombol <strong>TAB</strong> agar baris/blok method saya jadi sinkron dengan kode diatas-nya :)</p>
+
+<p>Nah bagaimana dengan teman-teman ?? Apakah teman-teman mempunyai daftar persamaan <strong>shortcut</strong> antara NetBeans dan Eclipse yang belum ada di daftar saya ?</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/09/16/lowongan-technical-consultant-trainer-pentaho-dan-ms-sql-server/">Lowongan Technical Consultant / Trainer Pentaho Dan MS SQL Server</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-16T03:05:38+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/09/16/lowongan-technical-consultant-trainer-pentaho-dan-ms-sql-server/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Rekan-rekan milis Pentaho User Group, Indo-BI, ID-Nix, Migrasi Open Source, SQLServer-BI Ysh,</p>
+
+<p><strong>PT. Putera Handal Indotama / PHI-Integration</strong>, sebuah perusahaan yang bergerak di outsourcing (implementasi, konsultasi dan training) membutuhkan konsultan dan trainer dengan requirement berikut :</p>
+
+<p><strong>Persyaratan Dasar :</strong></p>
+
+<ol>
+<li><p> Telah lulus D3 / S1 dan memiliki kemampuan analisa yang baik</p></li>
+<li><p> Memiliki minat yang besar di bidang pengolahan data dari keluaran sistem ERP (Enterprise Resource Planning) terutama di area Sales, Finance dan Inventory</p></li>
+<li><p> Mampu berkomunikasi dengan baik, secara lisan maupun tulisan (bahasa Indonesia dan Inggris)</p></li>
+<li><p> Responsive terhadap setiap inquiry baik dari internal maupun client</p></li>
+<li><p> Berdisiplin tinggi</p></li>
+<li><p> Bersedia menjalani masa percobaan / training / kontrak selama 3 s/d 6 bulan atau kontrak per project</p></li>
+<li><p> Berdomisili di sekitar Jakarta</p></li>
+</ol>
+
+
+<p><strong>Persyaratan Spesialisasi :</strong></p>
+
+<ol>
+<li><p> Memiliki kemampuan administrasi Linux / Windows secara mendasar (struktur folder, filesystem I/O, services, dsbnya)</p></li>
+<li><p> Mahir menggunakan Excel / OpenOffice dengan fitur berikut : <strong>Pivot, Conditional Formatting, Filtering / Sorting</strong></p></li>
+<li><p> Mengerti dasar SQL (Structured Query Language) terutama T-SQL (Transact SQL)</p></li>
+<li><p> Memiliki kemampuan di programming dasar Java</p></li>
+<li><p> Memiliki pengalaman administrasi Apache Tomcat (Java based web application container)</p></li>
+<li><p> Mengerti komponen penyusun teknologi web secara konseptual maupun detil (html, javascript, css, svg, http, https, dsbnya)</p></li>
+</ol>
+
+
+<p>Bagi Anda yang tertarik harap kirim CV ke <a href="mailto:admin@phi-integration.com">admin@phi-integration.com</a> dan <a href="mailto:feris@phi-integration.com">feris@phi-integration.com</a>. Sebelumnya silahkan mengisi  formulir pada alamat berikut ini :</p>
+
+<p><a href="https://spreadsheets.google.com/a/phi-integration.com/embeddedform?formkey=dHZGSVFET3RGelNReHhzNGFKbmhiNnc6MQ">https://spreadsheets.google.com/a/phi-integration.com/embeddedform?formkey=dHZGSVFET3RGelNReHhzNGFKbmhiNnc6MQ</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/09/15/openindiana-announcement/">OpenIndiana Announcement</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-15T06:54:54+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/09/15/openindiana-announcement/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk teman-teman pecinta <a href="http://opensolaris.org/">OpenSolaris</a> yang mungkin kemarin sempat kecewa, sekarang mungkin sudah bisa mulai tersenyum kembali :) Yaps karena ada sebuah project yang <strong>&ldquo;benar-benar OpenSource&rdquo;</strong> yaitu <a href="http://openindiana.org/">http://openindiana.org/</a> yang akan meneruskan pengembangan <a href="http://opensolaris.org">http://opensolaris.org</a> dengan metode yang lebih terbuka pada komunitas :) Buat teman-teman yang belum tahu apa itu <strong>OpenIndiana</strong>, ini adalah cuplikan dari situs resmi <strong>Project OpenIndiana</strong></p>
+
+<blockquote><p>OpenIndiana is a continuation of the OpenSolaris operating system. It was conceived during the period of uncertainty following the Oracle takeover of Sun Microsystems, after several months passed with no binary updates made available to the public. The formation proved timely, as Oracle discontinued OpenSolaris soon after in favour of Solaris 11 Express, a binary distribution with a more closed development model to debut later this year.</p></blockquote>
+
+<p>OpenIndiana is part of the Illumos Foundation, and provides a true open source community alternative to Solaris 11 and Solaris 11 Express, with an open development model and full community participation.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/09/15/openindiana-announcement/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/09/15/google-devfest-jakarta-8-oktober-2010/">Google DevFest Jakarta 8 Oktober 2010</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-15T06:17:10+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/09/15/google-devfest-jakarta-8-oktober-2010/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk <strong>Androiders</strong> dan teman-teman lain yang tertarik dengan teknologi dari <a href="http://google.com/">Google</a>, Oktober bulan depan <strong>si mbah</strong> akan mengadakan acara <strong>DevFest</strong> yang akan diselengarakan tepatnya di <strong>Binus</strong> Beberapa topik yang akan diangkat antara lain yaitu tentang <strong>Android, Chrome/HTML2, Social API</strong> dan <strong>MAP API</strong> WOW&hellip; menarik bukan ??? Hm&hellip; penasaran ?? Jika iya, inilah detail informasi dari <strong>si mbah</strong> :)</p>
+
+<h2>JAKARTA - FRIDAY, OCTOBER 8, 2010</h2>
+
+<p>Join us for Google&rsquo;s first developer event in Indonesia! Hosted by BINUS University, it will be a day focused on product talks, coding, demos and fun, where we&rsquo;ll be covering topics such as Android, Chrome/HTML5, Social APIs and Maps API. Developer advocates and engineers will be there to show you the latest and greatest, as well as answer your questions and hear about what you&rsquo;ve been working on.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/09/15/google-devfest-jakarta-8-oktober-2010/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="10">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="8">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

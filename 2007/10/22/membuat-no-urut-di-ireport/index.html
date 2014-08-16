@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Membuat No. Urut di iReport - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sabtu siang kemarin saya ditanya sama mas dany tentang bagaimana cara membuat nomor urut di Report yang dibuat dengan iReport, berhubung saya sendiri &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2007/10/22/membuat-no-urut-di-ireport/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Membuat No. Urut Di iReport</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-10-22T15:42:07+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Sabtu siang kemarin saya ditanya sama mas <a href="http://dany.web.id/">dany</a> tentang bagaimana cara membuat nomor urut di Report yang dibuat dengan iReport, berhubung saya sendiri belum pernah coba :malu: akhirnya percakapan saya dengan  mas <a href="http://dany.web.id/">dany</a> yang berlangsung lewat chatting di YahooMessenger hanya sekedar sharing saja :D dan saya janji untuk mencoba dirumah kemudian menuliskan hasilnya di blog.</p>
+
+<p>Ok sekarang kita langsung saja ke inti permasalahannya yaitu membuat nomor urut pada report yang dibuat menggunakan iReport, sedangkan bahan latihan yang digunakan pada latihan kali ini saya menggunakan <strong>Template</strong> Report yang sama pada posting <a href="http://martinusadyh.web.id/2007/10/12/reporting-dengan-netbeans/">&ldquo;Reporting dengan NetBeans&rdquo;</a> kemarin. Karena report yang kemarin belum terdapat nomor urutnya :D jadi daripada buat baru lagi mending pakai yang lama :P</p>
+
+<!-- more -->
+
+
+<p>Sedangkan langkah-langkah untuk membuat nomor urut di report yang dihasilkan oleh iReport adalah sebagai berikut:</p>
+
+<ol>
+<li><p> Pertama-tama buka dahulu report yang telah dibuat <a href="http://martinusadyh.web.id/2007/10/12/reporting-dengan-netbeans/">kemarin</a> (kalau belum punya silahkan baca dulu posting kemaren tentang <a href="http://martinusadyh.web.id/2007/10/12/reporting-dengan-netbeans/">&ldquo;Reporting dengan NetBeans&rdquo;</a>) seperti tampilan pada gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2043/1552396758_0e705795b5_o.png"><img src="http://farm3.static.flickr.com/2043/1552396758_948e8a36cd_m.jpg" alt="report_template" /><br/>
+Click to large</a></p></li>
+<li><p> Sekarang tambahkanlah sebuah variabel baru dengan cara memilih menu <strong>View > Variable</strong>, kemudian pada jendela Variable tekanlah tombol <strong>New</strong> untuk menambahkan sebuah variabel baru. Setelah itu pada jendela <strong>Add/Modify Variable</strong> isikanlah sebagai berikut :</p>
+
+<ul>
+<li><p><strong>Variable Name</strong> NOURUT</p></li>
+<li><p><strong>Variable Class Type</strong> java.lang.Integer</p></li>
+<li><p><strong>Calculation Type</strong> count</p></li>
+<li><p><strong>Reset Type</strong> None</p></li>
+<li><p><strong>Increment Type</strong> None</p></li>
+<li><p><strong>Variable Expression</strong> $V{NOURUT}</p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>hingga tampilannya menjadi seperti berikut :
+<a href="http://www.flickr.com/photos/10243554@N02/1687212834/"><img src="http://farm3.static.flickr.com/2276/1687212834_0c19c54cfb_m.jpg" alt="isi_variabel_nourut" /><br/>
+Click to large</a>
+Setelah itu tekanlah OK untuk menutup jendela <strong>Add/Modify Variable</strong> dan tekanlah close pada jendela Variable hingga kembali ke tampilan report template.</p>
+
+<ol>
+<li><p> Sekarang pada report template tambahkanlah <strong>Static Text</strong> dan <strong>Text Field</strong> kemudian aturlah seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/1686412343/"><img src="http://farm3.static.flickr.com/2113/1686412343_79da354fc0_m.jpg" alt="tampilan_report_no" /><br/>
+Click to large</a>
+Keterangan konfigurasi <strong>Static Text</strong> dan <strong>Text Field</strong> adalah sebagai berikut:</p>
+
+<ul>
+<li><p>Untuk <strong>Static Text</strong>, klik kanan kemudian pilihlah <strong>Properties</strong> kemudian pada jendela <strong>Static Text Properties</strong> pilihlah <strong>Tab Static Text</strong> kemudian isikan <strong>No.</strong> seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/1687212904/"><img src="http://farm3.static.flickr.com/2063/1687212904_452e873e2d_m.jpg" alt="staticfieldconf" /><br/>
+Click to large</a></p></li>
+<li><p>Untuk <strong>Text Field</strong>, klik kanan kemudian pilihlah <strong>Properties</strong> kemudian pada jendela <strong>Text Field Properties</strong> pilihlah <strong>Tab Text Field</strong> kemudian isikan sebagai berikut:</p>
+
+<ul>
+<li><p><strong>Text Field Expression Class</strong> java.lang.Integer</p></li>
+<li><p><strong>Text Field Expression</strong> $V{NOURUT}</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+
+<p>sehingga tampilannya menjadi seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/1686412377/"><img src="http://farm3.static.flickr.com/2112/1686412377_eeefd7f37a_m.jpg" alt="textfieldconf" /><br/>
+Click to large</a></p>
+
+<p>Sudah selesai, sekarang coba jalankan dan jika tidak terjadi error maka tampilan report anda akan tampil seperti pada gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/1687212876/"><img src="http://farm3.static.flickr.com/2083/1687212876_4e72e363c0_m.jpg" alt="report_jadi_no" /><br/>
+Click to large</a></p>
+
+<p>Hmm&hellip; tapi koq ada yang aneh ya ? Angka pertama koq nol bukannya satu ? Ok supaya angka pertama bernilai satu dan bukannya nol, sekarang mari kita buat sebuah parameter yang mempunyai nilai awal = 1 dan akan ditambahkan pada variabel <strong>NOURUT</strong>. Mengapa ditambahkan ke variabel <strong>NOURUT</strong> ? Karena variabel <strong>NOURUT</strong> nilai awalnya = 0 dan parameter yang akan kita buat ini akan dikirimkan setiap kali kita menjalankan reportnya :D (kwkw.. kenapa saya membuat sebuah parameter baru, soalnya saya belum menemukan bagaimana cara meng-<strong>incrementkan</strong> variabel <strong>NOURUT</strong> :( )</p>
+
+<p>Ok untuk cara-cara pembuatan sebuah parameter baru yaitu :</p>
+
+<pre><code>* Pilih menu **View Parameters** kemudian pada jendela Parameters tekanlah tombol **New** untuk mulai menambahkan parameter baru. Kemudian pada jendela **Add/Modify parameter** isikanlah sebagai berikut:
+
+
+  * **Parameter Name** DEFA_VALUE
+
+
+  * **Parameter Class Type** java.lang.Integer
+
+
+  * **Default Value Expression** new Integer("1")
+</code></pre>
+
+<p>hingga tampilannya seperti dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/1687212858/"><img src="http://farm3.static.flickr.com/2252/1687212858_9ae55f2e97_m.jpg" alt="newparamter" /><br/>
+Click to large</a></p>
+
+<pre><code>* Setelah menambahkan parameter baru, sekarang editlah **Text Field** yang telah ditambahkan pada langkah ke 3 diatas dengan cara klik kanan kemudian pilihl properties setelah itu pada jendela **Text Field Properties** pilihlah **Tab Text Field** kemudian pada kolom isian **Text Field Expression** isikan seperti dibawah ini:
+
+
+
+new Integer($V{NOURUT}.intValue()+$P{DEFA_VALUE}.intValue())
+</code></pre>
+
+<p>hingga tampilannya menjadi seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/1687212818/"><img src="http://farm3.static.flickr.com/2149/1687212818_1cd7104872_m.jpg" alt="edittextfield" /><br/>
+Click to large</a></p>
+
+<p>Setelah melakukan pengeditan seperti diatas, sekarang coba jalankan lagi report anda dan jika tidak ada error maka tampilan report anda akan tampak seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/1687212890/"><img src="http://farm3.static.flickr.com/2213/1687212890_00e11bdaa3_m.jpg" alt="reportfixjadi" /><br/>
+Click to large</a></p>
+
+<p>Hmm&hellip; sekarang reportnya sudah mempunyai nomor urut dan kelihatan lebih rapi :) Mudah bukan ?? Silahkan dicoba dan kalau masih bingung silahkan ditanyakan. Kritik, saran dan komentar sangat-sangat ditunggu ;)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-10-22T15:42:07+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2007/10/22/membuat-no-urut-di-ireport/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2007/10/22/membuat-no-urut-di-ireport/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2007/10/12/reporting-dengan-netbeans/" title="Previous Post: Reporting dengan NetBeans">&laquo; Reporting dengan NetBeans</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2007/11/02/zencafe-lokal-repositori-part-2/" title="Next Post: Zencafe Lokal Repositori Part 2">Zencafe Lokal Repositori Part 2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2007/10/22/membuat-no-urut-di-ireport/';
+        var disqus_url = 'http://martinusadyh.web.id/2007/10/22/membuat-no-urut-di-ireport/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

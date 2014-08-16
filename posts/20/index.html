@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Bingung bagaimana caranya menambahkan background image ke dalam JDesktopPane di NetBeans IDE ? Nah kalau bingung, sekarang buatlah sebuah project &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/20/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/01/background-image-in-jdesktoppane/">Background Image in JDesktopPane</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-01T03:05:50+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/01/background-image-in-jdesktoppane/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Bingung bagaimana caranya menambahkan background image ke dalam <a href="http://java.sun.com/javase/6/docs/api/javax/swing/JDesktopPane.html">JDesktopPane</a> di NetBeans IDE ? Nah kalau bingung, sekarang buatlah sebuah <strong>project</strong> dahulu di NetBeans IDE kemudian buatlah 1 buah <strong>Java Class</strong> dengan nama <strong>JImageDesktopPane</strong> (nama class terserah keinginan masing-masing :) ) kemudian pastekan kode dibawah ini :</p>
+
+<pre><code>/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jdesktoppanebackground;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.JDesktopPane;
+
+/**
+ *
+ * @author Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;
+ */
+public class JImageDesktopPane extends JDesktopPane {
+
+    private Image image;
+
+    public JImageDesktopPane() {
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        try {
+            image = new javax.swing.ImageIcon(getClass().getResource("netbeans6ns0.png")).getImage();
+
+            if (g != null) {
+                g.drawImage(image,
+                        (this.getSize().width - image.getWidth(null)) / 2,
+                        (this.getSize().height - image.getHeight(null)) / 2,
+                        null);
+            }
+        } catch (NullPointerException npe) {
+            System.out.println("Can't find images !!");
+        }
+    }
+}
+</code></pre>
+
+<p>Baris paling penting diatas terdapat pada baris ke 25, karena pada baris ke 25 kita mencoba mengambil gambar yang ingin kita jadikan sebagai <strong>Background Image</strong> dan sedangkan method <strong>paintComponent(Graphics g)</strong> pada baris 23-37 ini kita gunakan jika kita ingin mengubah-ubah tampilan dari <a href="http://java.sun.com/javase/6/docs/api/javax/swing/JComponent.html">JComponent</a> di <a href="http://java.sun.com/docs/books/tutorial/uiswing/">Java Swing</a> :)</p>
+
+<p>Nah jika sudah selesai, sekarang simpan gambar dibawah ini dengan nama <strong>netbeans6ns0.png</strong> pada direktori project
+<a href="http://www.flickr.com/photos/10243554@N02/4061136331/"><img src="http://farm3.static.flickr.com/2625/4061136331_1fa9b451b0_o.png" alt="netbeans6ns0" /><br/>
+Save Image As Gambar Ini</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/01/background-image-in-jdesktoppane/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/10/31/solving-problem-in-comsuntoolsjavaccodesymbolcompletionfailure-class-file-for-javaxpersistencetemporaltype-not-found/">Solving Problem in com.sun.tools.javac.code.Symbol$CompletionFailure: Class File for javax.persistence.TemporalType Not Found</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-31T03:16:18+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/10/31/solving-problem-in-comsuntoolsjavaccodesymbolcompletionfailure-class-file-for-javaxpersistencetemporaltype-not-found/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Bingung dengan judul diatas ? Saya sendiri sebenarnya juga bingung karena kejadian yang saya alami ini juga kadang-kadang saja terjadi :( . Dan seperti-nya ini berkaitan dengan project yang menggunakan JPA (menggunakan TopLink atau Hibernate JPA di NetBeans IDE) , ceritanya saya mendapatkan pesan error seperti dibawah ini ketika melakukan proses kompilasi project :</p>
+
+<pre><code>/home/martinus/JDKBUG/project-jdkbug-gen/com.artivisi.jdkbug.domain/dist/com.artivisi.jdkbug.domain.jar(com/artivisi/jdkbug/domain/SampleDomain.class): warning: Cannot find annotation method 'name()' in type 'javax.persistence.Table': class file for javax.persistence.Table not found
+/home/martinus/JDKBUG/project-jdkbug-gen/com.artivisi.jdkbug.domain/dist/com.artivisi.jdkbug.domain.jar(com/artivisi/jdkbug/domain/SampleDomain.class): warning: Cannot find annotation method 'mappedBy()' in type 'javax.persistence.OneToMany': class file for javax.persistence.OneToMany not found
+An exception has occurred in the compiler (1.6.0_16). Please file a bug at the Java Developer Connection (http://java.sun.com/webapps/bugreport)  after checking the Bug Parade for duplicates. Include your program and the following diagnostic in your report.  Thank you.
+com.sun.tools.javac.code.Symbol$CompletionFailure: class file for javax.persistence.TemporalType not found
+/home/martinus/JDKBUG/project-jdkbug-gen/com.artivisi.jdkbug.ui/nbproject/build-impl.xml:349: The following error occurred while executing this line:
+/home/martinus/JDKBUG/project-jdkbug-gen/com.artivisi.jdkbug.service/nbproject/build-impl.xml:365: The following error occurred while executing this line:
+/home/martinus/JDKBUG/project-jdkbug-gen/com.artivisi.jdkbug.service/nbproject/build-impl.xml:168: Compile failed; see the compiler error output for details.
+BUILD FAILED (total time: 1 second)
+</code></pre>
+
+<p>Nah aneh-nya library <strong>Hibernate-JPA</strong> sudah saya tambahkan pada <strong>project-domain</strong> dan <strong>project-service-impl</strong>, kalau saya melakukan proses kompilasi di <strong>project-domain</strong> dan di<strong> project-service-impl</strong> masalah ini tidak timbul. Tapi kalau melakukan proses kompilasi dari UI, baru deh muncul itu pesan error :(</p>
+
+<p>Coba googling cuma mendapatkan 3 link saja, yang sepertinya menandakan bahwa jarang yang mendapatkan pesan error seperti di atas :( Setelah membaca <a href="http://bugs.sun.com/view_bug.do?bug_id=6550655">Bug ID 6550655</a> ternyata solusinya gampang, yaitu <strong>tambahkan library TopLink atau Hibernate JPA di setiap project yang membutuhkan project-domain </strong>:)</p>
+
+<p>Semoga berguna buat teman-teman yang mengalami kasus yang sama :D :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/10/18/mengenal-opsi-verbose-pada-perintah-java/">Mengenal Opsi Verbose Pada Perintah Java</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-18T03:32:01+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/10/18/mengenal-opsi-verbose-pada-perintah-java/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/10/10/konfigurasi-user-home-direktori-apache-di-slackware-130/">Konfigurasi User Home Direktori Apache Di Slackware 13.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-10T04:02:42+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/10/10/konfigurasi-user-home-direktori-apache-di-slackware-130/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Karena pingin ngoprek WordPress, akhirnya timbul deh kebutuhan untuk mengkonfigurasi Apache dan PHP di Slackware 13.0 (karena paket Apache dan PHP sudah ter-install secara default pada Slackware 13.0) Tulisan ini banyak yang saya ambil dari tulisan om Somat yang <a href="http://somat.web.id/2009/sep/08/slackware-dan-apache/">Slackware dan apache</a> dan <a href="http://somat.web.id/2009/sep/08/slackware-dan-php/">Slackware dan php</a> dengan beberapa perubahan yang saya sesuaikan dengan kondisi di Slackware saya :D</p>
+
+<p><strong>Konfigurasi Apache</strong>
+Langkah yang saya lakukan yaitu sama persis seperti tulisan om Somat di <a href="http://somat.web.id/2009/sep/08/slackware-dan-apache/">Slackware dan apache</a> yaitu beri akses <strong>execute</strong> pada file <strong>/etc/rc.d/rc.httpd</strong> dan jalankan apache-nya dengan perintah <strong>/usr/sbin/apachectl -k start
+</strong> seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:/etc/rc.d# chmod +x rc.httpd
+root@martinusadyh:/etc/rc.d# /usr/sbin/apachectl -k start
+</code></pre>
+
+<p><strong>Konfigurasi Apache dan PHP</strong>
+Nah pada langkah ini, yang saya lakukan sedikit berbeda dengan yang om Somat lakukan :D. Karena packages PHP sudah terinstall, maka saya tinggal menambahkan 2 baris dibawah ini pada file <strong>/etc/httpd/httpd.conf</strong> :</p>
+
+<pre><code>AddType application/x-httpd-php .php
+DirectoryIndex index.html index.php index.shtml
+</code></pre>
+
+<p><strong>Konfigurasi Apache dan User Home Directories</strong>
+Agar kita bisa tidak perlu repot-repot melakukan copy paste ke direktori <strong>/var/www/htdocs</strong>, nyalakan konfigurasi <strong>User home directories</strong> dengan meng-enable baris <strong>Include /etc/httpd/extra/httpd-userdir.conf</strong> pada file <strong>/etc/httpd/httpd.conf</strong> seperti dibawah ini:</p>
+
+<pre><code>Include /etc/httpd/extra/httpd-userdir.conf
+</code></pre>
+
+<p>Setelah selesai, buat sebuah direktori dengan nama <strong>public_html</strong> di <strong>home</strong> kemudian buatlah sebuah script php seperti dibawah ini :</p>
+
+<p>Restart apache-nya dengan menjalankan perintah berikut :</p>
+
+<pre><code>/usr/sbin/apachectl -k restart
+</code></pre>
+
+<p>Sekarang coba browsing ke <strong>localhost/~namauser/php-info.php</strong> harusnya di browser muncul informasi tentang php :)</p>
+
+<p><strong>Link-link terkait :</strong>
+- <a href="http://somat.web.id/2009/sep/08/slackware-dan-apache/">Slackware dan apache</a>
+- <a href="http://somat.web.id/2009/sep/08/slackware-dan-php/">Slackware dan php</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/10/08/installing-mysql-workbench-di-slackware-130/">Installing MySQL WorkBench Di Slackware 13.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-08T01:38:32+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/10/08/installing-mysql-workbench-di-slackware-130/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hari ini saya ada kebutuhan untuk membuat sebuah database diagram (<a href="http://en.wikipedia.org/wiki/Entity-relationship_model">ER</a>) untuk tujuan dokumentasi pribadi (maklum klo cuma ditulis dikertas, lama-lama kertas-nya sobek-sobek :( ) Karena database yang biasa saya gunakan adalah <a href="http://www.mysql.com/?bydis_dis_index=1">MySQL</a> maka pilihan saya jatuh pada <a href="http://dev.mysql.com/downloads/workbench/5.1.html">MySQL WorkBench</a> :) Mungkin untuk pengguna distro yang mempunyai package manajemen seperti DEB dan RPM tidak begitu kesulitan, karena MySQL sudah menyediakan package binary yang sudah siap untuk di install :) Sedangkan untuk pengguna distro lain seperti Slackware, mari kita bikin sendiri binary package-nya via kompilasi dari source again :D :)</p>
+
+<p>Nah untung-nya lagi saya menemukan link <a href="http://www.mail-archive.com/slackbuilds-users@slackbuilds.org/msg02040.html">ini.</a> yang menjelaskan bagaimana cara meng-install <a href="http://dev.mysql.com/downloads/workbench/5.1.html">MySQL WorkBench</a>. Dan dibawah ini cuplikan bagaimana cara installasi-nya di <a href="http://slackware.com/">Slackware 13.0</a> :</p>
+
+<blockquote><p>has anyone, or could someone made a build script for mysql-workbench?</p></blockquote>
+
+<p>I did one, you can find it here:
+<a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/</a></p>
+
+<p>But as Niels Horn has mentioned, &ldquo;it has too many dependencies&hellip; &rdquo;
+from gnome, so i installed first gnome from <a href="http://gnomeslackbuild.org">http://gnomeslackbuild.org</a>
+in slackware-13.0, then lua from SBo&rsquo;s repository and finally i
+builded mysql-workbench using my SlackBuild. But seriously&hellip; gnome
+still sucks for me. I&rsquo;m gonna reinstall slackware and then try to get
+mysql-workbench but without all the gnome thing.</p>
+
+<p>-hba</p>
+
+<p><strong>Posting asli ini bisa dibaca <a href="http://www.mail-archive.com/slackbuilds-users@slackbuilds.org/msg02100.html">disini</a></strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/10/08/installing-mysql-workbench-di-slackware-130/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/10/08/gnome-2280-in-gsb-current-for-slackware-130/">GNOME 2.28.0 in Gsb-current for Slackware 13.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-08T00:51:21+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/10/08/gnome-2280-in-gsb-current-for-slackware-130/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ihui&hellip; akhirnya GNOME SlackBuild mengabarkan bahwa GNOME 2.28.0 sudah tersedia untuk Slackware 13.0 meskipun masih versi <strong>current</strong> :) Dan ini adalah release note-nya :</p>
+
+<blockquote><p>GNOME 2.28.0 is out!</p></blockquote>
+
+<p>gsb-current is a snapshot of the active GNOME SlackBuild development tree.
+It is intended to give developers, edgy users, and other Linux gurus a
+chance to test out the latest packages for GNOME SlackBuild.  The feedback
+we get will allow us to make the next stable release better than ever.</p>
+
+<p>gsb-current is a full GNOME 2.28.0 desktop for Slackware 13.0.  Most
+things are working at the moment, but this is only an initial build.  Feel
+free to try it out and report bugs!</p>
+
+<p>WARNING: upgradepkg glib2 gtk+2 GConf before other upgrading other
+packages.  If you&rsquo;re using slapt-get:</p>
+
+<p>   $  slapt-get &ndash;install glib2 gtk+2 GConf</p>
+
+<p>Afterwards, you can safely run slapt-get to upgrade your other packages.
+Also, take care not to miss new packages that were split from old
+ones.  If upgrading manually, then &ldquo;upgradepkg &ndash;install-new&rdquo; is (as
+always) the safest approach.</p>
+
+<p>See the ChangeLog.txt for a list of changes in gsb-current.</p>
+
+<p>(Don&rsquo;t worry! The gsb64-current build is coming!)</p>
+
+<p>Cheers,</p>
+
+<ul>
+<li>The GNOME SlackBuild Team</li>
+</ul>
+
+
+<p>Do you want to try ?? :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/">Mengenal Method setHonorVisibility() Dan Replace() Pada GroupLayout</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-06T01:00:05+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman pengguna NetBeans IDE, pasti sudah tahu fitur baru di NetBeans versi 6.7 kan. Yak, adanya penambahan integrasi dengan <a href="http://kenai.com/">Project Kenai</a> :) Terus terang saya sendiri belum pernah pakai <a href="http://kenai.com/">Project Kenai</a> , tapi kemarin iseng cobain fitur <a href="http://kenai.com/">Project Kenai</a> di NetBeans IDE dan ternyata humm ada yang keren loh :) Mungkin buat yang belum tahu, coba deh lihat di status bar NetBeans versi 6.7.1, disana ada 1 tambahan icon yang tampilan-nya seperti gambar dibawah ini (tempat-nya ada di pojok kanan bawah):
+<a href="http://www.flickr.com/photos/10243554@N02/3984646214/"><img src="http://farm3.static.flickr.com/2625/3984646214_4f3785c631_o.png" alt="ToolBarKenai" /><br/>
+Tampilan Icon Project Kenai Pada StatusBar NetBeans</a></p>
+
+<p>Tidak ada yang spesial dengan icon diatas, tapi sekarang coba klik 2 kali pada icon tersebut kemudian coba deh tekan tombol login tanpa memasukkan username dan password. Dan hasil-nya adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3983879223/"><img src="http://farm4.static.flickr.com/3531/3983879223_ed802dba53_o.png" alt="Login" /><br/>
+Tampilan Awal Login Dialog</a>
+<a href="http://www.flickr.com/photos/10243554@N02/3984646204/"><img src="http://farm3.static.flickr.com/2504/3984646204_e9a747932b_o.png" alt="ProsesLogin" /><br/>
+Ketika Tombol Login Di Tekan</a>
+<a href="http://www.flickr.com/photos/10243554@N02/3984646166/"><img src="http://farm3.static.flickr.com/2674/3984646166_7c84bb4f25_o.png" alt="LoginFailed" /><br/>
+Login Failed, Pesan Kesalahan Berada Pada Posisi JProgressBar</a></p>
+
+<p>Hmm&hellip; ada yang aneh dari <strong>UI</strong> diatas ?? Klo menurut saya ada yang aneh, coba deh lihat lagi pada gambar dialog login dan proses login di atas. JToolBar-nya bisa muncul diantara label <strong>No account on Kenai.com? Sign up now.</strong> dan tombol <strong>Login</strong>. Kenapa aneh, setahu saya klo kita menggunakan <strong>GroupLayout</strong> secara standart dan kita ingin menyembunyikan komponen ditengah-tengah komponen yang lain dengan menggunakan method <strong>setVisible()</strong> hasil-nya pasti jelek :D Ok sekarang mari kita coba, bikinlah 1 project java kemudian tambahkanlah <strong>JDialog</strong> dan design seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3983879193/"><img src="http://farm3.static.flickr.com/2467/3983879193_96563de50e_o.png" alt="DesignLogin" /><br/>
+Design Login Dialog</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/09/28/konfigurasi-mysql-di-slackware-130/">Konfigurasi MySQL Di Slackware 13.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-28T05:45:01+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/09/28/konfigurasi-mysql-di-slackware-130/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tulisan kali ini sebenarnya untuk menambah archive blog saya saja :D . Setelah Wifi udah jalan dan GNOME pun udah terinstall, sekarang mari konfigurasi MySQL di Slackware 13.0 :) Pada default installasi Slackware, sebenarnya MySQL sudah ter-install dan kita tinggal melakukan proses konfigurasi saja. Sedangkan caranya yaitu, masuk ke terminal dengan menggunakan akses <strong>root</strong> kemudian jalankan perintah <strong>mysql_install_db</strong> untuk menginstall database-nya dan beri akses ke direktori <strong>/var/lib/mysql</strong> dengan perintah <strong>chown -R mysql.mysql /var/lib/mysql</strong> seperti dibawah ini :</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/09/28/konfigurasi-mysql-di-slackware-130/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/09/28/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/">Konfigurasi Broadcom BCM4312 802.11b Di Slackware 13.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-28T04:34:53+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/09/28/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Fyuh&hellip; akhirnya berhasil juga meng-enable-kan wireles dengan chipset Broadcom BCM4312 di <a href="http://slackware.com/">Slackware 13.0</a> berkat <strong>hint</strong> dari <a href="http://aryasabda.dagdigdug.com/">Om Arya Sabda</a> di <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/3d83aff7866747b0">milis id-slackware</a> :)</p>
+
+<p>Sedangkan pada tulisan kali ini hardware yang dicoba yaitu Laptop DELL Inspiron 1320 dengan spesifikasi seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:~# lspci
+...
+...
+0e:00.0 Network controller: Broadcom Corporation BCM4312 802.11b/g (rev 01)
+...
+...
+</code></pre>
+
+<p>Dan <a href="http://slackware.com/">Slackware</a> yang saya pakai yaitu <a href="http://slackware.com/">Slackware 13.0</a> dengan kernel (default kernel bawaan <a href="http://slackware.com/">Slackware 13.0</a>) sebagai berikut :</p>
+
+<pre><code>root@martinusadyh:~# uname -a
+Linux martinusadyh 2.6.29.6-smp #1 SMP Mon Aug 17 00:18:05 CDT 2009 i686 Intel(R) Core(TM)2 Duo CPU     T6500  @ 2.10GHz GenuineIntel GNU/Linux
+root@martinusadyh:~#
+</code></pre>
+
+<p>Setelah mendapatkan <strong>hint</strong> dari <a href="http://aryasabda.dagdigdug.com/">Om Arya Sabda</a>, secara otomatis tujuan utama saya yaitu melihat ke blog <a href="http://somat.web.id/">om Somat</a> yang juga mengalami kejadian yang sama di <a href="http://somat.web.id/2009/sep/08/wifi-broadcom-compaq-cq40-slackware-130/">sini</a>. Solusi Om Somat menggunakan ndiswrapper ternyata, awalnya sih saya juga ingin menggunakan ndiswrapper ngikut ke blog Om Somat :D :) . Tapi gara-gara di google nemu tulisan om Denic <a href="http://makassar-slackers.org/node/193">disini</a> akhirnya penasaran juga cobain untuk pake driver resmi dari Broadcom-nya :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/09/28/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/">GNOMESlackBuild 2.26.3 Stable Released for Slackware and Slackware64</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-27T22:30:58+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk teman-teman sesama pecinta <a href="http://www.gnome.org/">GNOME</a> untuk distribusi <a href="http://slackware.com/">Slackware</a>, akhirnya team <a href="http://gnomeslackbuild.org/">GNOME SlackBuild (GSB)</a> meluncurkan <a href="http://www.gnome.org/">GNOME  2.26.3</a> versi <strong>Stable</strong> untuk <a href="http://slackware.com/">Slackware 13.0</a> dan <a href="http://slackware.com/">Slackware64 13.0</a> . Pada rilis ini ada beberapa perubahan yang dilakukan dari rilis <a href="http://www.gnome.org/">GNOME  2.26.3</a> yang di tujukan untuk distribusi <a href="http://slackware.com/">Slackware 12.2</a>.</p>
+
+<p>Dan dibawah ini adalah pemberitahuan resmi dari situs <a href="http://gnomeslackbuild.org/">GNOME SlackBuild</a> menyangkut rilis kali ini :</p>
+
+<blockquote><p><strong>GNOMESlackBuild 2.26.3 Stable Released for Slackware and Slackware64.</strong></p></blockquote>
+
+<p>We&rsquo;ve brought our GNOME SlackBuild 2.26.3 to the latest Slackware and
+Slackware64, and it&rsquo;s working solidly.  There have been some updates over the
+previous 2.26.3 release for Slackware 12.2, so please make sure to read the
+documentation, particularly our SLACKWARE-13.0_REPLACED_PACKAGES.TXT,
+CHANGES_AND_HINTS.TXT, and the INSTALL.TXT  For those of you upgrading from
+gsb-current, please make sure to update your SOURCE lines in your slapt-getrc to
+point to the new directories.  Check out our download
+page for more information.</p>
+
+<p>The release will be filtering out to a bunch of our new mirrors, which have
+recently been added, so please check the MIRRORS.TXT to find a local copy near
+you.  You may need to wait a bit before all the mirrors are up to date.</p>
+
+<p>Many thanks to all those who helped us out by submitting suggestions or
+reporting bugs! Now onto GNOME 2.28.0!</p>
+
+<p>Sayang-nya distribusi <a href="http://gnomeslackbuild.org/">GNOME SlackBuild (GSB)</a> masih belum menyertakan file <strong>ISO</strong> yang bisa kita download dan install secara manual dan tanpa koneksi internet  :(</p>
+
+<p>Tapi ga ada salah-nya mencoba kan ?? Happy Slacking ;)</p>
+
+<p><strong>Link-link terkait : </strong>
+- <a href="http://gnomeslackbuild.org/">Situs Resmi GNOMESlackBuild</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="21">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="19">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

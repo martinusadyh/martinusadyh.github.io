@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: javascript | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cara Mudah Mendebug Widget di Dojo]]></title>
+    <link href="http://martinusadyh.web.id/2013/07/27/cara-mudah-mendebug-widget-di-dojo/"/>
+    <updated>2013-07-27T20:50:51+07:00</updated>
+    <id>http://martinusadyh.web.id/2013/07/27/cara-mudah-mendebug-widget-di-dojo</id>
+    <content type="html"><![CDATA[<p>Pernah menggunakan <a href="http://dojotoolkit.org/">Dojo Toolkit</a> sebagai UI <em>layer</em>? Pernah merasa kalau dokumentasi di Dojo itu sangat sedikit sekali ? Bingung tentang <em>function</em> apa saja yang terdapat di komponen tersebut ? Jika iya berarti sama dengan saya ketika dulu baru pertama kali baru mulai menggunakan Dojo sebagai pilihan untuk sisi UI. Sebenar-nya Dojo merupakan pilihan yang cukup <strong>&ldquo;mumpuni&rdquo;</strong> dibandingkan dengan <a href="http://www.sencha.com/products/extjs">ExtJS</a> dari sisi kelengkapan widget-widget yang disediakan, tetapi sayang-nya kelengkapan widget ini tidak didukung dengan dokumentasi yang sepadan jika dibandingkan dengan <a href="http://www.sencha.com/products/extjs">ExtJS</a> yang dokumentasi-nya cukup lengkap dari tutorial sampai ke sisi API <em>(Application Programming Interface)</em>-nya.</p>
+
+<p>Meskipun <a href="http://dojotoolkit.org/">Dojo Toolkit</a> juga mempunyai sebuah halaman <a href="http://dojotoolkit.org/api/">API Documentation</a>, tapi rasanya masih kurang lengkap menurut saya. Nah untuk mendebug sebuah widget Dojo untuk menampilkan seluruh function yang terdapat didalam-nya, maka kita memerlukan sebuah browser dan <a href="http://getfirebug.com/">Firebug</a> sebagai alat bantu kita (jika menggunakan Chrome, tidak perlu firebug lagi karena kita bisa membuka <strong>Developer Tools</strong> dengan menekan kombinasi tombol <strong>CTRL+SHIFT+J</strong>)</p>
+
+<p>Sebagai contoh misalkan kita mempunyai sebuah widget grid dengan id <code>tblSettingSegment</code> seperti gambar dibawah ini :
+<img src="/images/blog-images/javascript/cara-mudah-mendebug-widget-di-dojo/Contoh_Grid.png" title="&lsquo;Contoh Grid&rsquo;" ></p>
+
+<!-- more -->
+
+
+<p>jika grid tersebut sudah tampil di browser, maka bukalah firebug atau tekan kombinasi tombol <strong>CTRL+SHIFT+J</strong> kemudian di console ketikkan perintah <code>dijit.byId('tblSettingSegment')</code> kemudian tekan <strong>ENTER</strong> hingga Firebug tampilan-nya menjadi seperti dibawah ini :
+<img src="/images/blog-images/javascript/cara-mudah-mendebug-widget-di-dojo/Debug_Grid_Widget.png" title="&lsquo;Debug Grid Widget&rsquo;" ></p>
+
+<p>Setelah hasilnya seperti diatas, maka kita bisa melihat seluruh fungsi yang terdapat di dojo grid tersebut dengan mengklik hasil output tersebut hingga tampilan-nya seperti gambar dibawah ini :
+<img src="/images/blog-images/javascript/cara-mudah-mendebug-widget-di-dojo/Daftar_Function.png" title="&lsquo;Daftar Function&rsquo;" ></p>
+
+<p>Nah disini kita bisa melihat seluruh function yang digunakan oleh Dojo grid baik yang terdapat di halaman API Documentation maupun tidak :) Mudah bukan ?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dojo GUI Builder with Maqetta]]></title>
+    <link href="http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta/"/>
+    <updated>2012-07-22T01:54:38+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta</id>
+    <content type="html"><![CDATA[<p><img src="http://martinusadyh.web.id/wp-content/uploads/2012/07/logo-dojo.png" alt="Logo Dojo" />Apakah anda baru pertama kali mencoba <a href="http://dojotoolkit.org/">Dojo</a> ? Apakah anda juga pernah merasa kesulitan ketika men-design layout di <strong>Dojo</strong> ? Jika iya, mungkin anda perlu mencoba sebuah aplikasi yaitu <a href="http://maqetta.org/">Maqetta</a> :) Dengan menggunakan <strong>Maqetta</strong>, proses pengembangan aplikasi web menjadi lebih mudah terutama jika kita menggunakan <strong>Dojo</strong> sebagai library utama-nya. Yang lebih menggembirakan lagi adalah, <strong>Maqetta</strong> juga mendukung proses <strong><em>&ldquo;drag and drop&rdquo;</em></strong> ketika kita men-design sebuah layout. Dan fitur ini juga tersedia untuk pembuatan aplikasi berbasis <strong>Mobile</strong> yang menggunakan <strong>Dojo</strong> sebagai library javascript-nya.</p>
+
+<p>Ingin tahu fitur-fitur apa saja yang terdapat pada <strong>Maqetta</strong> ? Berdasarkan halaman web-nya, <strong>Maqetta</strong> mempunyai fitur-fitur yang kurang lebih sebagai berikut :</p>
+
+<ol>
+<li><p> Visual Page Editor</p></li>
+<li><p> States: Interactivity Without Programming</p></li>
+<li><p> Review and Commenting</p></li>
+<li><p> Designer/Developer Workflow</p></li>
+<li><p> Theme Editor</p></li>
+<li><p> Wireframing</p></li>
+<li><p> JavaScript Libraries, Widgets and Themes</p></li>
+<li><p> Mobile Authoring</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Selain bisa digunakan secara &ldquo;live&rdquo;, Maqetta juga bisa kita gunakan secara offline dan tanpa perlu melakukan proses registrasi. Nah untuk yang penasaran bagaimana tampilan Maqetta, berikut ini adalah tampilan Maqetta yang akan kita lihat ketika menjalankan aplikasi-nya.</p>
+
+<pre><code>[caption id="attachment_1749" align="alignnone" width="300"][![Tampilan Dashboard Maqetta](http://martinusadyh.web.id/wp-content/uploads/2012/07/Tampilan-Dashboard-300x168.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=172) Tampilan Dashboard Maqetta[/caption]
+
+
+
+
+[caption id="attachment_1753" align="alignnone" width="300"][![Dojo GUI Design](http://martinusadyh.web.id/wp-content/uploads/2012/07/Dojo-GUI-Design-300x168.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=173) Dojo GUI Design[/caption]
+</code></pre>
+
+<p>[caption id=&ldquo;attachment_1755&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=174"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/07/Maqetta-View-Source-Mode-300x168.png" alt="Maqetta View Source Mode" /></a> Maqetta View Source Mode[/caption]</p>
+
+<p>[caption id=&ldquo;attachment_1756&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=175"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/07/Mobile-GUI-Design-300x168.png" alt="Mobile GUI Design" /></a> Mobile GUI Design[/caption]</p>
+
+<pre><code>[caption id="attachment_1758" align="alignnone" width="300"][![Run Mobile App](http://martinusadyh.web.id/wp-content/uploads/2012/07/Run-Mobile-App-300x168.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=176) Run Mobile App[/caption]
+
+
+
+
+[caption id="attachment_1759" align="alignnone" width="300"][![Run Web App](http://martinusadyh.web.id/wp-content/uploads/2012/07/Run-Web-App-300x202.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=177) Run Web App[/caption]
+</code></pre>
+
+<p>Menarik bukan ? Untuk anda yang tertarik dan ingin mencoba Maqetta, pastikan dahulu di komputer anda sudah terinstall minimal <strong>Java versi 5</strong> supaya Maqetta bisa berjalan dengan baik. Dan jika sudah, jalankan script <code>maqetta.local.unix.sh</code> jika menggunakan GNU/Linux, atau <code>maqetta.local.win.bat</code> jika menggunakan Windows.</p>
+
+<p>Bagaimana ? Tertarik untuk mencoba Maqetta ?</p>
+
+<p><strong>Referensi-referensi</strong> :</p>
+
+<ol>
+<li><p> <a href="http://dojotoolkit.org/">Dojo Unbeatable JavaScript Tools</a></p></li>
+<li><p> <a href="http://maqetta.org/">Halaman Resmi Project Maqetta</a></p></li>
+<li><p> <a href="http://maqetta.org:55556/maqetta/">Halaman Live Demo Maqetta</a></p></li>
+<li><p> <a href="http://maqetta.org:55556/maqetta/app/docs/index.html#tutorials/tutorials">Maqetta Tutorial Resources</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Detecting Session Idle with Dojo]]></title>
+    <link href="http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo/"/>
+    <updated>2012-07-11T03:15:40+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo</id>
+    <content type="html"><![CDATA[<p>Sedang mempunyai masalah bagaimana caranya mendeteksi sesi yang sedang <strong>idle</strong> di aplikasi yang menggunakan <a href="">Dojo</a> ? Sebenarnya <strong>Dojo</strong> juga sudah mempunyai sebuah <strong>plugin</strong> yaitu <code>dojox.analytics.plugins.idle</code> yang terdapat pada package <a href="http://dojotoolkit.org/api/">dojox.analytics</a>. Sedangkan untuk cara penggunan-nya adalah kita bisa menambahkan parameter <code>idleTime</code> dan <code>analyticsUrl</code> pada <code>dojoConfig</code> yang kurang lebih seperti berikut :</p>
+
+<p>&#8220;`javascript</p>
+
+<script>
+var dojoConfig = {
+    isDebug: true,
+    idleTime: 3000,
+    sendInterval: 3000,
+    analyticsUrl: 'http://localhost:10000/monitor/idle',
+    modulePaths: {
+    app: '../../../app'
+    }
+</script>
+
+
+<p>&#8220;`</p>
+
+<p>Selain itu, import-lah juga package <code>dojox.analytics</code> dan <code>dojox.analytics.plugins.idle</code> supaya plugin <strong>idle</strong> dapat digunakan. Dengan kode seperti diatas, harusnya jika aplikasi kita tidak melakukan apapun selama 3 detik maka <strong>Dojo</strong> akan mengirimkan <code>POST</code> request ke alamat <code>http://localhost:10000/monitor/idle</code>. Nah yang jadi masalah disini adalah, sekarang bagaimana caranya menghandle jika di sisi browser sudah melewati batasan waktu 3 detik apa yang harus dilakukan di sisi client ??? :D (Karena dari sisi aplikasi, aplikasi hanya akan mengirimkan <code>POST</code> request ke server dengan informasi <code>idle</code> saja)</p>
+
+<!-- more -->
+
+
+<p>Karena kurang puas dengan library bawaan <strong>Dojo</strong> secara tidak sengaja saya menemukan script yang cara penggunaan-nya lebih sederhana dari bawaan <strong>Dojo</strong> diatas, yang kode-nya kurang lebih seperti dibawah ini :</p>
+
+<pre><code class="javascript">/*
+ * dojo idle listener
+ * version 0.1
+ * by Sean O' Shea. 
+ * http://github.com/seanoshea/dojo-idle-listener
+ * MIT license
+ *
+ * adapted from:
+ * 1. YUI idle timer by nzakas: http://github.com/nzakas/yui-misc/
+ * 2. jQuery idle timer by Paul Irish: http://paulirish.com/2009/jquery-idletimer-plugin/
+ *
+ * Copyright (c) 2009 Nicholas C. Zakas
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+dojo.declare("IdleListener", [], {
+
+    _handles: [],
+    _timeout: 30000,
+
+    isRunning: function() {
+        return this._enabled;
+    },
+
+    isIdle: function() {
+        return this._idle;
+    },
+
+    start: function(newTimeout) {
+        this._enabled = true;
+        this._idle = false;
+        if(typeof newTimeout == "number") {
+            this._timeout = newTimeout;
+        }
+
+        dojo.forEach(["onmousemove", "onkeydown", "onmousewheel", "DOMMouseScroll"], dojo.hitch(this, function(item, index, array) {
+            this._handles.push(dojo.connect(dojo.doc, item, this, "_handleUserEvent"));
+        }))
+
+        // set a timeout to toggle state
+        this._idleTimeout = setTimeout(dojo.hitch(this, "_toggleIdleState"), this._timeout);
+    },
+
+    stop: function() {
+        this._enabled = false;
+
+        // clear any pending timeouts
+        clearTimeout(this._idleTimeout);
+
+        // detach the event handlers
+        dojo.forEach([this._handles], dojo.disconnect);
+    },
+
+    _handleUserEvent: function() {
+        // clear any existing timeout
+        clearTimeout(this._idleTimeout);
+
+        if(this._enabled) {
+            // if the user is just waking us up again, toggle the idle state.
+            // otherwise, reset the timeout with a new timeout
+            this._idle ? this._toggleIdleState() : this._idleTimeout = setTimeout(dojo.hitch(this, "_toggleIdleState"), this._timeout);
+        }
+    },
+
+    _toggleIdleState: function() {
+        this._idle = !this._idle;
+        this._idle ? dojo.publish("idle", []) : dojo.publish("active", []); 
+    }
+});
+</code></pre>
+
+<p>Sedangkan cara penggunaan-nya sangat mudah sekali seperti dapat kita lihat pada potongan kode dibawah ini yang akan mendeteksi proses <strong>idle</strong> selama 30 detik tanpa ada pergerakan dilayar :</p>
+
+<pre><code class="javascript">var idleListener = new my.IdleListener();
+idleListener.start(30000);
+</code></pre>
+
+<p>Dan langkah terakhir adalah, kita dapat menangkap aksi ketika proses <strong>idle</strong> terjadi dengan menggunakan <code>dojo.subscribe</code> seperti dibawah ini :</p>
+
+<pre><code class="javascript">dojo.subscribe("idle", function() {
+    // do something here
+});
+dojo.subscribe("active", function() {
+    // do something here
+});
+</code></pre>
+
+<p>Lebih mudah dan sederhana bukan ? Seluruh kode <code>IdleListener</code> diatas tadi ditulis oleh <a href="http://whatsthepointeh.blogspot.com/">Sean O&#8217; Shea</a> dan dijelaskan pada artikel pada blognya yang berjudul <a href="http://whatsthepointeh.blogspot.com/2009/06/idle-handler-with-dojo.html">Idle Handler with Dojo</a> :)</p>
+
+<p>Bagaimana guys ?? Ada yang sudah menggunakan <code>dojox.analytics.plugins.idle</code> di aplikasi-nya ? Jika sudah, bisa di sharing cara penggunaan-nya bagaimana ? :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tambah Kategori JavaScript]]></title>
+    <link href="http://martinusadyh.web.id/2012/01/09/tambah-kategori-javascript/"/>
+    <updated>2012-01-09T01:31:50+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/01/09/tambah-kategori-javascript</id>
+    <content type="html"><![CDATA[<p>Hii all.. karena mulai akhir tahun kemarin saya mulai mengerjakan project yang berkaitan dengan <a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a> akhirnya saya putuskan untuk membuat 1 buah kategori baru lagi di blog ini untuk merekam jejak apa saja yang sudah saya pelajari tentang <strong>JavaScript</strong> :)</p>
+
+<p>Ada beberapa postingan berikut yang akan muncul di blog ini berkaitan dengan <strong>ExtJS 4</strong> dan <strong>Dojo</strong> :) Jadi harap bersabar ya, dan yang perlu di ingat <strong>&ldquo;Saya masih baru didunia JavaScript&rdquo;</strong> jadi harap maklum kalau nanti tutorialnya masih berantakan  :peace:</p>
+]]></content>
+  </entry>
+  
+</feed>

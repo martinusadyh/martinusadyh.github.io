@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Detecting Session Idle with Dojo - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sedang mempunyai masalah bagaimana caranya mendeteksi sesi yang sedang idle di aplikasi yang menggunakan Dojo ? Sebenarnya Dojo juga sudah mempunyai &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Detecting Session Idle With Dojo</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-11T03:15:40+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Sedang mempunyai masalah bagaimana caranya mendeteksi sesi yang sedang <strong>idle</strong> di aplikasi yang menggunakan <a href="">Dojo</a> ? Sebenarnya <strong>Dojo</strong> juga sudah mempunyai sebuah <strong>plugin</strong> yaitu <code>dojox.analytics.plugins.idle</code> yang terdapat pada package <a href="http://dojotoolkit.org/api/">dojox.analytics</a>. Sedangkan untuk cara penggunan-nya adalah kita bisa menambahkan parameter <code>idleTime</code> dan <code>analyticsUrl</code> pada <code>dojoConfig</code> yang kurang lebih seperti berikut :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">dojoConfig</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">isDebug</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">idleTime</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">sendInterval</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">analyticsUrl</span><span class="o">:</span> <span class="s1">&#39;http://localhost:10000/monitor/idle&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">modulePaths</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">app</span><span class="o">:</span> <span class="s1">&#39;../../../app&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Selain itu, import-lah juga package <code>dojox.analytics</code> dan <code>dojox.analytics.plugins.idle</code> supaya plugin <strong>idle</strong> dapat digunakan. Dengan kode seperti diatas, harusnya jika aplikasi kita tidak melakukan apapun selama 3 detik maka <strong>Dojo</strong> akan mengirimkan <code>POST</code> request ke alamat <code>http://localhost:10000/monitor/idle</code>. Nah yang jadi masalah disini adalah, sekarang bagaimana caranya menghandle jika di sisi browser sudah melewati batasan waktu 3 detik apa yang harus dilakukan di sisi client ??? :D (Karena dari sisi aplikasi, aplikasi hanya akan mengirimkan <code>POST</code> request ke server dengan informasi <code>idle</code> saja)</p>
+
+<!-- more -->
+
+
+<p>Karena kurang puas dengan library bawaan <strong>Dojo</strong> secara tidak sengaja saya menemukan script yang cara penggunaan-nya lebih sederhana dari bawaan <strong>Dojo</strong> diatas, yang kode-nya kurang lebih seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/*</span>
+</span><span class='line'><span class="cm"> * dojo idle listener</span>
+</span><span class='line'><span class="cm"> * version 0.1</span>
+</span><span class='line'><span class="cm"> * by Sean O&#39; Shea. </span>
+</span><span class='line'><span class="cm"> * http://github.com/seanoshea/dojo-idle-listener</span>
+</span><span class='line'><span class="cm"> * MIT license</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * adapted from:</span>
+</span><span class='line'><span class="cm"> * 1. YUI idle timer by nzakas: http://github.com/nzakas/yui-misc/</span>
+</span><span class='line'><span class="cm"> * 2. jQuery idle timer by Paul Irish: http://paulirish.com/2009/jquery-idletimer-plugin/</span>
+</span><span class='line'><span class="cm"> *</span>
+</span><span class='line'><span class="cm"> * Copyright (c) 2009 Nicholas C. Zakas</span>
+</span><span class='line'><span class="cm"> * </span>
+</span><span class='line'><span class="cm"> * Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+</span><span class='line'><span class="cm"> * of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+</span><span class='line'><span class="cm"> * in the Software without restriction, including without limitation the rights</span>
+</span><span class='line'><span class="cm"> * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+</span><span class='line'><span class="cm"> * copies of the Software, and to permit persons to whom the Software is</span>
+</span><span class='line'><span class="cm"> * furnished to do so, subject to the following conditions:</span>
+</span><span class='line'><span class="cm"> * </span>
+</span><span class='line'><span class="cm"> * The above copyright notice and this permission notice shall be included in</span>
+</span><span class='line'><span class="cm"> * all copies or substantial portions of the Software.</span>
+</span><span class='line'><span class="cm"> * </span>
+</span><span class='line'><span class="cm"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+</span><span class='line'><span class="cm"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+</span><span class='line'><span class="cm"> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+</span><span class='line'><span class="cm"> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+</span><span class='line'><span class="cm"> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+</span><span class='line'><span class="cm"> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+</span><span class='line'><span class="cm"> * THE SOFTWARE.</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="nx">dojo</span><span class="p">.</span><span class="nx">declare</span><span class="p">(</span><span class="s2">&quot;IdleListener&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">_handles</span><span class="o">:</span> <span class="p">[],</span>
+</span><span class='line'>    <span class="nx">_timeout</span><span class="o">:</span> <span class="mi">30000</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">isRunning</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_enabled</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">isIdle</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_idle</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">start</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">newTimeout</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">_enabled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">_idle</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">newTimeout</span> <span class="o">==</span> <span class="s2">&quot;number&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">_timeout</span> <span class="o">=</span> <span class="nx">newTimeout</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">dojo</span><span class="p">.</span><span class="nx">forEach</span><span class="p">([</span><span class="s2">&quot;onmousemove&quot;</span><span class="p">,</span> <span class="s2">&quot;onkeydown&quot;</span><span class="p">,</span> <span class="s2">&quot;onmousewheel&quot;</span><span class="p">,</span> <span class="s2">&quot;DOMMouseScroll&quot;</span><span class="p">],</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">hitch</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">_handles</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">dojo</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">dojo</span><span class="p">.</span><span class="nx">doc</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="s2">&quot;_handleUserEvent&quot;</span><span class="p">));</span>
+</span><span class='line'>        <span class="p">}))</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// set a timeout to toggle state</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">_idleTimeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">dojo</span><span class="p">.</span><span class="nx">hitch</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s2">&quot;_toggleIdleState&quot;</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_timeout</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">stop</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">_enabled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// clear any pending timeouts</span>
+</span><span class='line'>        <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_idleTimeout</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// detach the event handlers</span>
+</span><span class='line'>        <span class="nx">dojo</span><span class="p">.</span><span class="nx">forEach</span><span class="p">([</span><span class="k">this</span><span class="p">.</span><span class="nx">_handles</span><span class="p">],</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">_handleUserEvent</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// clear any existing timeout</span>
+</span><span class='line'>        <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_idleTimeout</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_enabled</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="c1">// if the user is just waking us up again, toggle the idle state.</span>
+</span><span class='line'>            <span class="c1">// otherwise, reset the timeout with a new timeout</span>
+</span><span class='line'>            <span class="k">this</span><span class="p">.</span><span class="nx">_idle</span> <span class="o">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">_toggleIdleState</span><span class="p">()</span> <span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_idleTimeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">dojo</span><span class="p">.</span><span class="nx">hitch</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s2">&quot;_toggleIdleState&quot;</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">_timeout</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">_toggleIdleState</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">_idle</span> <span class="o">=</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_idle</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="nx">_idle</span> <span class="o">?</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">&quot;idle&quot;</span><span class="p">,</span> <span class="p">[])</span> <span class="o">:</span> <span class="nx">dojo</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="p">[]);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Sedangkan cara penggunaan-nya sangat mudah sekali seperti dapat kita lihat pada potongan kode dibawah ini yang akan mendeteksi proses <strong>idle</strong> selama 30 detik tanpa ada pergerakan dilayar :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">idleListener</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">my</span><span class="p">.</span><span class="nx">IdleListener</span><span class="p">();</span>
+</span><span class='line'><span class="nx">idleListener</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="mi">30000</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Dan langkah terakhir adalah, kita dapat menangkap aksi ketika proses <strong>idle</strong> terjadi dengan menggunakan <code>dojo.subscribe</code> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">dojo</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;idle&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// do something here</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nx">dojo</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// do something here</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Lebih mudah dan sederhana bukan ? Seluruh kode <code>IdleListener</code> diatas tadi ditulis oleh <a href="http://whatsthepointeh.blogspot.com/">Sean O' Shea</a> dan dijelaskan pada artikel pada blognya yang berjudul <a href="http://whatsthepointeh.blogspot.com/2009/06/idle-handler-with-dojo.html">Idle Handler with Dojo</a> :)</p>
+
+<p>Bagaimana guys ?? Ada yang sudah menggunakan <code>dojox.analytics.plugins.idle</code> di aplikasi-nya ? Jika sudah, bisa di sharing cara penggunaan-nya bagaimana ? :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-11T03:15:40+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04/" title="Previous Post: Konfigurasi User Home Direktori Apache di Ubuntu 12.04">&laquo; Konfigurasi User Home Direktori Apache di Ubuntu 12.04</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2012/07/14/cara-mudah-memiliki-tabungan-emas/" title="Next Post: Cara Mudah Memiliki Tabungan Emas">Cara Mudah Memiliki Tabungan Emas &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo/';
+        var disqus_url = 'http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

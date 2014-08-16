@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Konfigurasi Modem di Linux - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Buat teman-teman yang mungkin sedang kesulitan mencari bagaimana konfigurasi modem di linux menggunakan wvdial mungkin bisa melihat konfigurasi yang &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Konfigurasi Modem Di Linux</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-03T04:13:32+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Buat teman-teman yang mungkin sedang kesulitan mencari bagaimana <strong>konfigurasi modem di linux menggunakan wvdial</strong> mungkin bisa melihat konfigurasi yang saya gunakan, kemarin sempat bermain-main dengan modem <strong>Wavecom SuperTrac</strong> menggunakan konektor <strong>serial to usb</strong> dan <strong>Huawei Vodafone USB Modem E220</strong> di Slackware 13.0. Percobaan menggunakan modem <strong>Wavecom SuperTrac</strong> menggunakan konektor <strong>serial to usb</strong> tidak berjalan dengan sukses :( dan dari hasil beberapa sumber yang saya baca sangat-sangat tidak direkomendasikan menggunakan modem <strong>Wavecom SuperTrac</strong> menggunakan konektor <strong>serial to usb</strong> :( (Maaf lupa artikel aslinya dimana), sedangkan yang berhasil berjalan dengan sukses adalah untuk modem <strong>Huawei Vodafone USB Modem E220</strong>. Sedangkan untuk teman-teman yang belum tahu bentuk dan wujud dari kedua modem diatas, mungkin bisa melihat gambar dibawah ini agar lebih jelas :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4569198814/"><img src="http://farm5.static.flickr.com/4050/4569198814_970e6c39b3.jpg" alt="huawei-vodafone-usb-modem-e220" /></a><br/>
+<strong>Modem Huawei Vodafone USB Modem</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4569198818/"><img src="http://farm4.static.flickr.com/3012/4569198818_5563ca9e1f.jpg" alt="modem-wavecom" /></a><br/>
+<strong>Modem WaveCom SuperTrac 10</strong></p>
+
+<p>Karena kemarin saya menggunakan aplikasi wvdial, maka pastikan teman-teman sudah menginstall wvdial pada sistem teman-teman. Untuk pengguna Slackware sebelum menginstall packages wvdial, pastikan dahulu packages wvstream sudah terinstall terlebih dahulu (untuk packages wvdial dan wvstream bisa teman-teman dapatkan pada <a href="http://slackbuild.org">http://slackbuild.org</a>) Setelah packages wvdial terinstall, sekarang editlah file <code>/etc/wvdial.conf</code> menjadi seperti dibawah ini (tentukan dengan operator yang teman-teman gunakan) :</p>
+
+<!-- more -->
+
+
+<p><strong>Konfigurasi Untuk Operator Telkomsel</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = ATQ0 V1 E1 S0=0 &amp;C1; &amp;D2; +FCLASS=0
+Init3 = AT+CGDCONT=1,"ip","internet"
+Modem = /dev/ttyUSB0
+Phone = *99#
+Idle Seconds = 300
+Password = ''
+Modem Type = Analog Modem
+Stupid Mode = 1
+Compuserve = 0
+Baud = 9600
+Auto DNS = 1
+Dial Command = ATDT
+Ask Password = 0
+ISDN = 0
+Username = ''
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator 3 (three)</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = AT+CGDCONT=1,"IP","3gprs"
+Modem Type = Analog Modem
+ISDN = 0
+Phone = *99***1#
+Modem = /dev/ttyUSB0
+Username = 3gprs
+Password = 3gprs
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator M3</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = AT+cgdcont=1,"IP","indosatgprs"
+Modem Type = Analog Modem
+ISDN = 0
+New PPPD = yes
+Phone = *99***1#
+Modem = /dev/ttyUSB0
+Username = gprs
+Password = im3
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator XL</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Modem Type = Analog Modem
+ISDN = 0
+Phone = *99***1#
+Modem = /dev/ttyUSB0
+Username = xlgprs
+Password = proxl
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator Axis</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = at+cgdcont=1,"IP","axis"
+Modem Type = Analog Modem
+ISDN = 0
+Phone = *99***1#
+Modem = /dev/ttyUSB0
+Username = wap
+Password = 1234
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator Flexi</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = ATQ0 V1 E1 S0=0 &amp;C1; &amp;D2; +FCLASS=0
+Modem Type = Analog Modem
+ISDN = 0
+Phone = #777
+Modem = /dev/ttyUSB0
+Username = Telkomnet@flexi
+Password = telkom
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator TNI (Telkomnet Instant)</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Modem Type = Analog Modem
+ISDN = 0
+Phone = 080989999
+Modem = /dev/ttyUSB0
+Username = telkomnet@instan
+Password = telkom
+Baud = 9600
+</code></pre>
+
+<p>Untuk konfigurasi <code>Modem = /dev/ttyUSB0</code> bisa teman-teman sesuaikan dengan modem yang teman-teman gunakan, kalau menggunakan port USB biasanya device akan otomatis dimapping ke <code>/dev/ttyUSBx</code> dimana <code>x</code> adalah nomor device teman-teman. Sedangkan untuk mengetahui letak device dari modem yang teman-teman gunakan, teman-teman bisa mengetikkan perintah <code>dmesg</code> untuk mengetahui apakah modem sudah dikenali oleh sistem atau belum. Dan untuk konfigurasi <code>Baud = 9600</code> bisa teman-teman dapatkan secara otomatis dengan mengetikkan perintah <code>wvdialconf</code> pada terminal agar file <code>/etc/wvdial.conf</code> mendapatkan konfigurasi yang tepat.</p>
+
+<p>Setelah selesai melakukan konfigurasi pada file <code>/etc/wvdial.conf</code> sekarang coba jalankan perintah <code>wvdial</code> pada terminal untuk memulai proses dial dan tunggulah sampai mendapatkan DNS, jika sudah mendapatkan DNS dari operator yang digunakan maka sekarang teman-teman sudah dapat melakukan aktifitas internet seperti biasanya :)</p>
+
+<p>Jika ada teman-teman yang mempunyai konfigurasi untuk operator yang lain, boleh dibagi donk disini agar bisa saya tambahkan ke list :) Supaya bisa dijadikan referensi bersama gitu :malu:</p>
+
+<p>Dibawah ini ada beberapa referensi penggunaan modem dan hyper terminal di Windows yang saya gunakan sebagai acuan, mungkin bisa berguna juga buat teman-teman yang masih kesulitan :</p>
+
+<ol>
+<li><p> <a href="http://www.ziddu.com/download/9687737/Wavecom_Dial_up_Connections-080625.pdf.html">Wavecom DialUp Connections</a></p></li>
+<li><p> <a href="http://www.ziddu.com/download/9687738/Wavecom_Hyper_Terminal_Connection-080702.pdf.html">Wavecom HyperTerminal Connection</a></p></li>
+</ol>
+
+
+<p>_**Update 25/06/2010 : Update konfigurasi telkomsel, resource didapat dari <a href="http://ardhitechno.blogspot.com/2009/06/setting-modem-huawei-e220-wvdial.html**_">http://ardhitechno.blogspot.com/2009/06/setting-modem-huawei-e220-wvdial.html**_</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-03T04:13:32+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/05/01/hore-akhirnya-up-lagi/" title="Previous Post: Hore Akhirnya UP Lagi">&laquo; Hore Akhirnya UP Lagi</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/05/05/di-butuhkan-2-php-programmer-2/" title="Next Post: Di butuhkan 2 PHP Programmer">Di butuhkan 2 PHP Programmer &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>DBF2MySQL with OpenOffice Base - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Pernah merasa pusing bagaimana memindahkan database dari tabel yang bertipe DBF (biasanya sih ini dari aplikasi yang berbasis Foxpro 2.6 dan Clipper &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/09/14/dbf2mysql-with-openoffice-base/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">DBF2MySQL With OpenOffice Base</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-14T12:35:50+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Pernah merasa pusing bagaimana memindahkan database dari tabel yang bertipe <strong>DBF</strong> (biasanya sih ini dari aplikasi yang berbasis Foxpro 2.6 dan Clipper yang jalan di DOS) ke <strong>MySQL</strong> ? Kalau pernah, berarti sama dengan saya ketika dulu melakukan proses <strong>porting</strong> aplikasi dari Foxpro 2.6 + Clipper + DBF + Windows ke Java Swing + MySQL + GNU/Linux :)</p>
+
+<p>Mungkin banyak aplikasi lain yang mampu melakukan proses porting dari DBF ke MySQL selain menggunakan OpenOffice, tapi setahu saya hanya OpenOffice-lah aplikasi yang dapat melakukan proses porting dari DBF ke MySQL yang sifatnya OpenSource dan jalan di Sistem Operasi GNU/Linux (Maklum dirumah saya ga punya Sistem Operasi Windows, jadi memilih aplikasi yang jalan di GNU/Linux adalah pilihan nomor satu saya).</p>
+
+<p>Sebelum mulai melakukan proses migrasi dari DBF ke MySQL menggunakan OpenOffice, tambahkanlah dahulu <strong>MySQL JDBC Driver</strong> pada classpath OpenOffice yang akan digunakan. Sedangkan langkah-langkah untuk menambahkan <strong>MySQL JDBC Driver</strong> ke dalam OpenOffice bisa dibaca pada tulisan saya di <a href="http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/#Memasang%20MySQL%20JDBC%20Driver%20di%20OpenOffice">sini</a>. Fungsi dari penambahan <strong>MySQL JDBC Driver</strong> ini adalah agar kita dapat mengakses database yang terdapat pada MySQL dari OpenOffice, nah jika kita sudah menambahkan <strong>MySQL JDBC Driver</strong> pada OpenOffice sekarang mari kita mulai proses migrasi data dari DBF ke MySQL.</p>
+
+<p>Langkah pertama yang harus kita lakukan yaitu <strong>copy</strong> lah seluruh file yang ber-ekstensi <strong>DBF</strong> ke sebuah direktori khusus seperti pada gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917613913/"><img src="http://farm3.static.flickr.com/2552/3917613913_25b4453342.jpg" alt="DBF2MYSQL_1" /></a></p>
+
+<p>Sekarang jalankan-lah OpenOffice Base kemudian pada jendela <strong>Database Wizard</strong> pilihlah opsi <strong>Connect to an existing database</strong> dan pilihlah <strong>dBase</strong> seperti gambar dibawah ini kemudian tekanlah tombol <strong>Next</strong> :
+<a href="http://www.flickr.com/photos/10243554@N02/3917613917/"><img src="http://farm3.static.flickr.com/2458/3917613917_87e3953f10.jpg" alt="DBF2MYSQL_2" /></a></p>
+
+<!-- more -->
+
+
+<p>Pada jendela berikutnya, isikanlah lokasi direktori tempat menyimpan file yang ber-ekstensi <strong>DBF</strong> (pada tulisan ini, lokasi file DBF terdapat di /home/martinus/DATABASE/RAW_DBF) pada kolom isian <strong>Path to the dBase files</strong> seperti gambar dibawah ini kemudian tekanlah tombol <strong>Next</strong> :
+<a href="http://www.flickr.com/photos/10243554@N02/3917613919/"><img src="http://farm3.static.flickr.com/2533/3917613919_eebbb9d711.jpg" alt="DBF2MYSQL_3" /></a></p>
+
+<p>Kemudian pada jendela selanjutnya pilihlah opsi <strong>No, do not register the database</strong> pada pertanyaan <strong>Do you want the wizard to register the database in OpenOffice.org ?</strong> dan pilihlah opsi <strong>Open the database for editing</strong> pada pertanyaan <strong>After the database file has been saved, what do you want to do ? </strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917613923/"><img src="http://farm4.static.flickr.com/3523/3917613923_77299a413d.jpg" alt="DBF2MYSQL_4" /></a></p>
+
+<p>Setelah menekan tombol <strong>Finish</strong> kemudian melakukan proses penyimpanan, maka tabel yang mempunyai ekstensi <strong>DBF</strong> akan tampil pada OpenOffice dan kita juga bisa melihat isi tabelnya seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917613925/"><img src="http://farm3.static.flickr.com/2595/3917613925_34c5f22685.jpg" alt="DBF2MYSQL_5" /></a></p>
+
+<p>Sampai proses ini, tabel DBF sudah siap untuk kita pindahkan ke dalam MySQL. Tapi sebelum melakukan proses per-pindahan kita harus membuat dahulu 1 buah database pada MySQL untuk menampung seluruh tabel-tabel DBF tersebut. Sekarang mari kita buat dahulu 1 buah database dengan nama <strong>porting_dbf</strong> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinus-laptop:~$ mysql -u root -padmin;
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 46
+Server version: 5.0.75-0ubuntu10.2 (Ubuntu)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql&gt; create database porting_dbf;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; quit;
+Bye
+martinus@martinus-laptop:~$
+</code></pre>
+
+<p>Pembuatan database untuk menampung tabel DBF sudah siap, nah sekarang mari kita akses database <strong>porting_dbf</strong> tersebut menggunakan OpenOffice Base dengan cara jalankan-lah dahulu OpenOffice Base kemudian pada jendela <strong>Database Wizard</strong> pilihlah opsi <strong>Connect to an existing database</strong> dan pilihlah <strong>MySQL</strong> seperti gambar dibawah ini kemudian tekanlah tombol <strong>Next</strong> :
+<a href="http://www.flickr.com/photos/10243554@N02/3917613935/"><img src="http://farm3.static.flickr.com/2574/3917613935_3ceb3a54a6.jpg" alt="DBF2MYSQL_6" /></a></p>
+
+<p>Pada jendela berikutnya, pilihlah opsi <strong>Connect using JDBC (Java Database Connectivity)</strong> pada pilihan <strong>How do you want to connect to your MySQL database ?</strong> seperti gambar dibawah ini kemudian tekanlah tombol <strong>Next</strong> :
+<a href="http://www.flickr.com/photos/10243554@N02/3917619389/"><img src="http://farm3.static.flickr.com/2636/3917619389_ca5b4de5d4.jpg" alt="DBF2MYSQL_7" /></a></p>
+
+<p>Di langkah selanjutnya, isikan <strong>porting_dbf</strong> pada kolom isian <strong>Name of the Database</strong> dan <strong>localhost</strong> pada kolom isian <strong>Server URL</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917619393/"><img src="http://farm3.static.flickr.com/2481/3917619393_b97db8be01.jpg" alt="DBF2MYSQL_8" /></a>
+Jika konfigurasi Server MySQL anda tidak default, sesuaikan konfigurasi pada langkah ini dengan konfigurasi Server MySQL anda !!</p>
+
+<p>Setelah menekan tombol <strong>Next</strong>, isikan user yang akan digunakan untuk proses koneksi ke MySQL pada kolom isian <strong>User name</strong> dan beri centang pada pilihan <strong>Password required</strong> jika user yang anda gunakan memakai password seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917619397/"><img src="http://farm4.static.flickr.com/3502/3917619397_5cf5b1aacf.jpg" alt="DBF2MYSQL_9" /></a></p>
+
+<p>Kemudian pada jendela selanjutnya pilihlah opsi <strong>No, do not register the database</strong> pada pertanyaan <strong>Do you want the wizard to register the database in OpenOffice.org ?</strong> dan pilihlah opsi <strong>Open the database for editing</strong> pada pertanyaan <strong>After the database file has been saved, what do you want to do ? </strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917619407/"><img src="http://farm3.static.flickr.com/2627/3917619407_95971b2c04.jpg" alt="DBF2MYSQL_10" /></a></p>
+
+<p>Setelah menekan tombol <strong>Finish</strong> kemudian melakukan proses penyimpanan, maka tampilan OpenOffice Base akan tampak seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917619413/"><img src="http://farm4.static.flickr.com/3531/3917619413_8f717dabaf.jpg" alt="DBF2MYSQL_11" /></a></p>
+
+<p>Akses DBF dari OpenOffice sudah selesai, akses database dari OpenOffice sudah selesai juga. Sekarang mari kita migrasikan data yang terdapat pada tabel DBF ke dalam MySQL dengan cara bukalah file OpenOffice yang mengakses ke DBF dan ke MySQL secara bersama-sama seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917619417/"><img src="http://farm3.static.flickr.com/2582/3917619417_6f950d3eaa.jpg" alt="DBF2MYSQL_12" /></a></p>
+
+<p>Pada OpenOffice yang mengakses tabel DBF, lakukan klik kanan <strong>Copy</strong> untuk melakukan proses <strong>Copy</strong> tabel seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917641885/"><img src="http://farm4.static.flickr.com/3512/3917641885_7a06ae42f0.jpg" alt="DBF2MYSQL_13" /></a></p>
+
+<p>Kemudian pindah-lah ke OpenOffice yang mengakses ke MySQL dan lakukan klik kanan <strong>Paste Special &hellip;</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917641891/"><img src="http://farm3.static.flickr.com/2442/3917641891_ecd100503f.jpg" alt="DBF2MYSQL_14" /></a></p>
+
+<p>Nah ketika kita melakukan proses <strong>Paste Special &hellip;</strong> maka akan keluar jendela yang menanyakan tentang <strong>Source</strong> dan pilihlah <strong>Data source table</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917641895/"><img src="http://farm3.static.flickr.com/2428/3917641895_b02207ff86.jpg" alt="DBF2MYSQL_15" /></a></p>
+
+<p>Setelah menekan tombol <strong>OK</strong> maka akan tampil jendela <strong>Copy table</strong> dan pastikanlah opsi <strong>Definitions and data</strong> terpilih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917641901/"><img src="http://farm3.static.flickr.com/2605/3917641901_b15868659f.jpg" alt="DBF2MYSQL_16" /></a></p>
+
+<p>Tekanlah tombol <strong>Next</strong> untuk menuju ke jendela <strong>Apply Columns</strong>, pada jendela ini pilihlah semua kolom yang ingin dimasukkan ke dalam database MySQL seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3917641905/"><img src="http://farm4.static.flickr.com/3506/3917641905_56eab06822.jpg" alt="DBF2MYSQL_17" /></a></p>
+
+<p>Setelah menekan tombol <strong>Next</strong> kita akan dibawa ke jendela <strong>Type formatting</strong> seperti gambar dibawah ini dan cek sekali lagi apakah data yang di import sudah benar atau belum.
+<a href="http://www.flickr.com/photos/10243554@N02/3917641913/"><img src="http://farm4.static.flickr.com/3443/3917641913_35abf18613.jpg" alt="DBF2MYSQL_18" /></a></p>
+
+<p>Jika kita merasa sudah benar, sekarang tekanlah tombol <strong>Create</strong> untuk memulai proses pembuatan tabel di MySQL dan jika muncul dialog yang menanyakan tentang <strong>Primary key</strong> pilihlah dengan menekan tombol <strong>Yes</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3918434378/"><img src="http://farm4.static.flickr.com/3482/3918434378_bb8052f0c9.jpg" alt="DBF2MYSQL_19" /></a></p>
+
+<p>Setelah menekan tombol <strong>Yes</strong>, proses pembuatan tabel di MySQL akan dilakukan dan kita bisa langsung melihat hasilnya seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3918434382/"><img src="http://farm3.static.flickr.com/2509/3918434382_b10751ebae.jpg" alt="DBF2MYSQL_20" /></a></p>
+
+<p>Dan sekarang mari kita cek melalui terminal apakah benar datanya sudah masuk atau belum seperti dibawah ini:</p>
+
+<pre><code>martinus@martinus-laptop:~$ mysql -u root -padmin;
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 48
+Server version: 5.0.75-0ubuntu10.2 (Ubuntu)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql&gt; use porting_dbf;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; select count(*) from TITIP;
++----------+
+| count(*) |
++----------+
+|      850 |
++----------+
+1 row in set (0.00 sec)
+
+mysql&gt; quit
+Bye
+martinus@martinus-laptop:~$
+</code></pre>
+
+<p>Hore.. datanya ternyata benar-benar sudah masuk :) Buat teman-teman yang membaca sampai akhir, maaf kalau tulisan kali ini gambarnya terlalu banyak yang efeknya membuat aksesnya jadi lambat :malu:</p>
+
+<p><strong>Tulisan ini dibuat untuk menyukseskan <a href="http://www.informatika.lipi.go.id/seminar/lombablog/">Lomba Blog Open Source</a> P2I-LIPI dan <a href="http://www.informatika.lipi.go.id/seminar/">Seminar Open Source</a> P2I-LIPI 2009. </strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-14T12:35:50+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>, <a class='category' href='/blog/categories/opensolaris/'>opensolaris</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/09/14/dbf2mysql-with-openoffice-base/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/09/14/dbf2mysql-with-openoffice-base/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/09/05/adding-license-in-netbeans-ide/" title="Previous Post: Adding License in NetBeans IDE">&laquo; Adding License in NetBeans IDE</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/09/23/installing-gnome-2263-gsb-distribution-in-slackware-130/" title="Next Post: Installing GNOME 2.26.3 (GSB Distribution) in Slackware 13.0">Installing GNOME 2.26.3 (GSB Distribution) in Slackware 13.0 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/09/14/dbf2mysql-with-openoffice-base/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/09/14/dbf2mysql-with-openoffice-base/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

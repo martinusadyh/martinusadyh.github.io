@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Reporting dengan NetBeans - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Kemaren dulu ada pertanyaan di milis netbeans-indonesia@yahoogroups tentang masalah Report di Netbeans. Inti kasusnya adalah seperti berikut: &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2007/10/12/reporting-dengan-netbeans/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Reporting Dengan NetBeans</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-10-12T20:36:52+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Kemaren dulu ada pertanyaan di milis <a href="mailto:netbeans-indonesia@yahoogroups.com/">netbeans-indonesia@yahoogroups</a> tentang masalah Report di Netbeans. Inti kasusnya adalah seperti berikut:</p>
+
+<blockquote><p>Aplikasi beserta report-nya jalan dengan sukses pada komputer si programmer, tapi ketika si programmer memindahkan aplikasi-nya ke komputer lain reportnya tidak mau jalan atau tidak mau tampil.</p></blockquote>
+
+<p>OK sekarang mari kita coba membuat sebuah latihan tentang reporting menggunakan iReport dan NetBeans IDE dan peralatan-peralatan yang perlu dipersiapkan adalah sebagai berikut :
+- NetBeans 5.5
+- iReport 1.3.1
+- MySQL Server (atau bisa juga database server yang lain)
+- JDK 1.6</p>
+
+<!-- more -->
+
+
+<p>Setelah peralatan telah siap, mari kita buat latihannya dan langkah-langkahnya adalah sebagai berikut:</p>
+
+<ol>
+<li><p> Bikinlah sebuah <strong>New Project</strong> dan berilah nama <strong>ReportingInNetBeans</strong>.</p></li>
+<li><p> Pada project inspector, klik kanan root project kemudian pilih <strong>New > JFrame Form</strong> kemudian pada jendela <strong>New JFrame</strong> isikan <strong>Frame Report</strong> pada Class Name, dan pada kolom isian <strong>Package</strong> pilihlah <strong>reportinginnetbeans</strong>. Setelah itu tambahkanlah beberapa komponen pada JFrame tersebut sehingga tampilannya menjadi seperti gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2400/1552396744_b8af4ff8d3_o.png"><img src="http://farm3.static.flickr.com/2400/1552396744_5a2d333a5d_m.jpg" alt="jframe_report" /><br/>
+Click to large</a></p></li>
+<li><p> Setelah mengatur tampilan JFrame seperti pada gambar diatas, sekarang tekanlah tombol <strong>SHIFT+F11</strong> agar NetBeans membuatkan sebuah direktori distribusi untuk kita yaitu direktori <strong>dist</strong>. Setelah itu, masuklah pada files inspector kemudian buatlah sebuah direktori yaitu direktori <strong>Report</strong> dibawah direktori <strong>dist</strong> yang berfungsi untuk menampung seluruh file template yang kita desain pada iReport dan tampilan dari langkah ke 3 ini terlihat seperti gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2109/1551445979_2192e69e45_o.png"><img src="http://farm3.static.flickr.com/2109/1551445979_cb4d4244d7_m.jpg" alt="direktori_dist_report" /><br/>
+Click to large</a></p></li>
+<li><p> Setelah membuat sebuah direktori <strong>Report</strong> sekarang waktunya untuk mengkonfigurasi file <strong>build-impl.xml</strong> agar ketika kita melakukan proses <strong>Clean</strong> direktori <strong>Report</strong> ini tidak ikut terhapus. Sekarang bukalah file <strong>build-impl.xml</strong> yang terdapat pada direktori <strong>nbproject</strong> seperti gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2057/1551618185_1bb2142e8e_o.png"><img src="http://farm3.static.flickr.com/2057/1551618185_0573964701_m.jpg" alt="build-impl-xml" /><br/>
+Click to large</a>
+Setelah file <strong>build-impl.xml</strong> terbuka, sekarang carilah <strong>CLEANUP SECTION</strong> seperti dibawah ini:</p>
+
+<pre><code> &lt;target depends="init" unless="no.deps" name="deps-clean"&gt;&lt;/target&gt;
+ &lt;target depends="init" name="-do-clean"&gt;
+     &lt;delete dir="${build.dir}"&gt;&lt;/delete&gt;
+     &lt;delete dir="${dist.dir}"&gt;&lt;/delete&gt;
+ &lt;/target&gt;
+ &lt;target name="-post-clean"&gt;
+
+
+ &lt;/target&gt;
+ &lt;target depends="init,deps-clean,-do-clean,-post-clean" name="clean" description="Clean build products."&gt;&lt;/target&gt;
+</code></pre>
+
+<p> Setelah itu editlah baris 534 sehingga hasilnya menjadi seperti dibawah ini:</p>
+
+<pre><code> &lt;target depends="init" unless="no.deps" name="deps-clean"&gt;&lt;/target&gt;
+ &lt;target depends="init" name="-do-clean"&gt;
+     &lt;delete dir="${build.dir}"&gt;&lt;/delete&gt;
+     &lt;delete file="${dist.jar}"&gt;&lt;/delete&gt;
+     &lt;delete dir="${dist.javadoc.dir}"&gt;&lt;/delete&gt;
+ &lt;/target&gt;
+ &lt;target name="-post-clean"&gt;
+
+
+ &lt;/target&gt;
+ &lt;target depends="init,deps-clean,-do-clean,-post-clean" name="clean" description="Clean build products."&gt;&lt;/target&gt;
+</code></pre></li>
+</ol>
+
+
+<p>Setelah melakukan proses pengeditan seperti diatas simpanlah file konfigurasinya dan tutuplah NetBeans-nya agar mengurangi resource CPU :D dan sekarang waktunya untuk membuat contoh report melalui iReport. :)</p>
+
+<ol>
+<li><p> Sebelum mulai menggunakan iReport, aturlah dahulu <strong>Data Source</strong> yang akan digunakan dengan cara pilih <strong>Data > Connections/Data Source</strong> dan aturlah koneksinya menjadi seperti gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2214/1551445975_589df1f276_o.png"><img src="http://farm3.static.flickr.com/2214/1551445975_c3e2916914_m.jpg" alt="SettingKoneksiIreport" /><br/>
+Click to large</a></p></li>
+<li><p> Setelah selesai mengkonfigurasi Data Source, sekarang buatlah report baru dengan cara menekan <strong>File > New Document</strong>. Setelah <strong>template</strong> report muncul, sekarang tentukanlah <strong>Report Query</strong> yang akan digunakan untuk report ini. Untuk menentukan <strong>Report Query</strong> yang akan digunakan tekanlah <strong>Data > Report Query</strong> dan masukkanlah statement SQL sehingga tampilannya menjadi seperti dibawah ini:
+<a href="http://farm3.static.flickr.com/2021/1551445965_860d8d36ff_o.png"><img src="http://farm3.static.flickr.com/2021/1551445965_9b275b3dbd_m.jpg" alt="Qry_iReport" /><br/>
+Click to large</a></p></li>
+<li><p> Setelah menentukan <strong>Report Query</strong>, sekarang design-lah report-nya hingga menjadi seperti gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2043/1552396758_0e705795b5_o.png"><img src="http://farm3.static.flickr.com/2043/1552396758_948e8a36cd_m.jpg" alt="report_template" /><br/>
+Click to large</a></p></li>
+</ol>
+
+
+<p>kemudian simpanlah dengan nama <strong>Mahasiswa_Report.jrxml</strong> pada direktori <strong>Report</strong> yang telah dibuat pada langkah ke 3 hingga struktur direktori project NetBeans kita menjadi seperti gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2330/1552396716_7e1d4ccd95_o.png"><img src="http://farm3.static.flickr.com/2330/1552396716_2f48799044_m.jpg" alt="gambar_dir_prj_Nb" /><br/>
+Click to large</a></p>
+
+<ol>
+<li><p> Setelah melakukan proses penyimpanan, sekarang coba jalankan report-nya dengan menggunakan active connection dengan cara tekan menu <strong>Build > Execute (with active connection)</strong> dan jika tidak ada masalah maka report yang telah anda design akan tampak seperti gambar dibawah ini:
+<a href="http://farm3.static.flickr.com/2126/1551445967_0a74197c32_o.png"><img src="http://farm3.static.flickr.com/2126/1551445967_0536e5e733_m.jpg" alt="Report_Jadi" /><br/>
+Click to large</a></p></li>
+<li><p> Report telah jadi, sekarang coba bukalah project <strong>ReportingInNetBeans</strong> kemudian pada tombol yang berfungsi untuk menampilkan reportnya berikanlah evet dengan cara klik kanan kemudian pilih <strong>Events > Action > actionPerformed</strong> kemudian pastekanlah kode dibawah ini:</p>
+
+<p>// TODO add your handling code here:
+        jButton1.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Connection con = null;
+        try {
+            String jdbcDriver = &ldquo;com.mysql.jdbc.Driver&rdquo;;
+            Class.forName(jdbcDriver);</p>
+
+<pre><code>        String url = "jdbc:mysql://localhost/latihanibatis";
+        String user = "root";
+        String pass = "rahasia";
+
+        con = DriverManager.getConnection(url, user, pass);
+        Statement stm = con.createStatement();
+
+        try {
+            Map&lt;string, Object&gt; prs = new HashMap&lt;string, Object&gt;();
+            JasperReport JRpt = JasperCompileManager.compileReport("./dist/Report/Mahasiswa_Report.jrxml");
+            JasperPrint JPrint = JasperFillManager.fillReport(JRpt, prs, con);
+            JasperViewer.viewReport(JPrint, false);
+        } catch (Exception rptexcpt) {
+            System.out.println("Report Can't view because : " + rptexcpt);
+        }
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+    jButton1.setCursor(Cursor.getDefaultCursor());
+</code></pre></li>
+</ol>
+
+
+<p>Setelah itu, coba tekanlah tombol F6 untuk menjalankan projectnya dan jika tidak ada masalah maka report yang telah anda design di iReport akan tampil jika tombol yang berfungsi menampilkan reportnya ditekan :)</p>
+
+<ol>
+<li>. Report sudah jalan dengan sangat sempurna di NetBeans, sekarang bagaimana jika kita ingin mencoba aplikasi ini pada komputer lain yang hanya mempunyai JRE saja ? Untuk menjawab pertanyaan ini, sekarang tekanlah tombol <strong>SHIFT+F11</strong> agar netbeans membuatkan file *.jar untuk aplikasi kita. Setelah proses CLEAN and BUILD selesai, sekarang cobalah kopikan direktori <strong>dist/</strong> ke komputer yang lain dan coba jalankan. Berhubung saya dirumah tidak mempunyai 2 komputer, maka saya kopikan ke user yang lain dan hasilnya seperti berikut :
+Ini tampilan di user anton ( Anggap saja di PC Lain :D )
+<a href="http://farm3.static.flickr.com/2176/1551445971_616727c010_o.png"><img src="http://farm3.static.flickr.com/2176/1551445971_11b8de7bd2_m.jpg" alt="Report_di_PC_LAIN" /><br/>
+Click to large</a></li>
+</ol>
+
+
+<p>Ini tampilan di user javamaniac ( Anggap saja di PC Lokal )
+<a href="http://farm3.static.flickr.com/2194/1551445973_217805f17e_o.png"><img src="http://farm3.static.flickr.com/2194/1551445973_181d0d0993_m.jpg" alt="RptDiPCLokal" /><br/>
+Click to large</a></p>
+
+<p>Silahkan dicoba dikomputer lain kalau tidak percaya, reportnya pasti akan jalan dengan sempurna seperti pada waktu  kita jalankan dari NetBeans IDE :)</p>
+
+<p>Resource :
+- <a href="http://martin-personal-project.googlecode.com/files/ReportingInNetBeans.zip">Sample Project ReportingInNetBeans.zip</a>
+- <a href="http://martin-personal-project.googlecode.com/files/Mahasiswa.sql">Mahasiswa.sql</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-10-12T20:36:52+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2007/10/12/reporting-dengan-netbeans/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2007/10/12/reporting-dengan-netbeans/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2007/10/11/zencafe-lokal-repositori/" title="Previous Post: Zencafe Lokal Repositori">&laquo; Zencafe Lokal Repositori</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2007/10/22/membuat-no-urut-di-ireport/" title="Next Post: Membuat No. Urut di iReport">Membuat No. Urut di iReport &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2007/10/12/reporting-dengan-netbeans/';
+        var disqus_url = 'http://martinusadyh.web.id/2007/10/12/reporting-dengan-netbeans/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

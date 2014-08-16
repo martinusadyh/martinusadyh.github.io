@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: centos | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/centos/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Finding Duplicate File in Linux]]></title>
+    <link href="http://martinusadyh.web.id/2012/09/01/finding-duplicate-file-in-linux/"/>
+    <updated>2012-09-01T21:12:48+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/09/01/finding-duplicate-file-in-linux</id>
+    <content type="html"><![CDATA[<p>Kemarin ada yang tanya, gimana sih caranya mencari file duplicate di <strong>GNU/Linux</strong> ? Setelah beberapa kali mencari bantuan di <a href="http://google.com">Google</a> akhirnya ketemu juga caranya yaitu dengan menjalankan perintah seperti dibawah ini :
+[plain]
+$ find /tmp -type f | rev | sort | sed -nr &lsquo;:a N;/^([^/]<em>\/).</em>\n\1/p;D;ba&rsquo; | uniq | rev
+[/plain]
+Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di inginkan.</p>
+
+<p>Tips ini saya temukan secara tidak sengeja di <a href="http://google.com">Google</a> tapi sayang-nya lupa dimana tepat-nya, jadi supaya tidak lupa saya posting sekalian di blog supaya bisa jadi referensi di kemudian hari :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How To Embedding Your Binary Files into Shell Script]]></title>
+    <link href="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/"/>
+    <updated>2012-08-04T14:47:56+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script</id>
+    <content type="html"><![CDATA[<p>Pada tulisan kali ini, kita akan membahas bagaimana membuat sebuah shell script yang berisi sebuah <strong><em>binary file</em></strong>. Apa sih sebenarnya yang bisa kita lakukan dengan sebuah shell script yang berisi file binary ? Hm.. sebenarnya banyak sih, dan salah satunya adalah membuat installer untuk sistem operasi GNU/Linux seperti installer milik <strong>NetBeans IDE</strong> yang mempunyai ekstensi <strong>*.sh</strong> :)</p>
+
+<p>Nah untuk membantu tujuan kita diatas, kita membutuhkan bantuan sebuah shell script yaitu <a href="http://megastep.org/makeself/">makeself</a>. Untuk yang belum tahu apa itu script makeself, dibawah ini adalah deskripsi singkat tentang  script makeself :</p>
+
+<blockquote><p><a href="http://megastep.org/makeself/">makeself.sh</a> is a small shell script that generates a self-extractable tar.gz archive from a directory. The resulting file appears as a shell script (many of those have a .run suffix), and can be launched as is. The archive will then uncompress itself to a temporary directory and an optional arbitrary command will be executed (for example an installation script). This is pretty similar to archives generated with WinZip Self-Extractor in the Windows world. Makeself archives also include checksums for integrity self-validation (CRC and/or MD5 checksums).</p></blockquote>
+
+<p>Dan yang menggembirakan lagi adalah, script makeself ini sudah di test dan dapat digunakan pada beberapa sistem operasi yang kurang lebih seperti berikut :</p>
+
+<ol>
+<li><p> Linux (all distributions)</p></li>
+<li><p> Sun Solaris (8 and above)</p></li>
+<li><p> HP-UX (tested on 11.0 and 11i on HPPA RISC)</p></li>
+<li><p> SCO OpenUnix and OpenServer</p></li>
+<li><p> IBM AIX 5.1L</p></li>
+<li><p> MacOS X (Darwin)</p></li>
+<li><p> SGI IRIX 6.5</p></li>
+<li><p> FreeBSD</p></li>
+<li><p> UnicOS / Cray</p></li>
+<li><p>. Cygwin (Windows)</p></li>
+</ol>
+
+
+<p>Sedangkan yang sudah menggunakan script ini sebagai installer mereka adalah :</p>
+
+<ol>
+<li><p> Game patches and installers for <a href="http://www.idsoftware.com/">Id Software games</a> like Quake 3 for Linux or Return To Castle Wolfenstien ;</p></li>
+<li><p> All game patches released by <a href="http://www.lokigames.com/products/myth2/updates.php3">Loki Software</a> for the Linux version of popular games</p></li>
+<li><p> The <a href="http://www.nvidia.com/">nVidia drivers</a> for Linux</p></li>
+<li><p> The installer for the Linux version of <a href="http://earth.google.com/">Google Earth</a></p></li>
+<li><p> The <a href="http://www.virtualbox.org/">VirtualBox</a> installers for Linux</p></li>
+<li><p> The Makeself distribution itself ;-)</p></li>
+</ol>
+
+
+<p>Menarik bukan ? Masih tertarik bagaimana caranya menggunakan script ini untuk membuat sebuah installer sendiri ?</p>
+
+<!-- more -->
+
+
+<p>Jika iya, maka sekarang downloadlah dahulu script makeself <a href="http://megastep.org/makeself/makeself-2.1.5.run">disini</a> yang pada saat tulisan ini dibuat mempunyai versi 2.1.5, atau kalau mau versi yang lebih baru bisa mengikuti timeline project ini di <a href="https://github.com/megastep/makeself">halaman github makeself</a>. Jika proses download sudah selesai, simpanlah file <code>makeself-2.1.5.run</code> pada sebuah direktori dengan nama <strong>test-makeself</strong>. Sebelum mulai menggunakan, beri hak <strong><em>execute</em></strong> dahulu pada file <code>makeself-2.1.5.run</code> dengan perintah <code>chmod +x makeself-2.1.5.run</code> dan ekstrak dengan menjalankan perintah <code>./makeself-2.1.5.run</code>. Hasil dari perintah tadi akan membuat sebuah direktori <strong>makeself-2.1.5</strong> yang berisi script makeself seluruh-nya seperti terlihat dari perintah <code>tree</code> dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[~/tmp/test-makeself]$ tree
+.
+├── makeself-2.1.5
+│   ├── COPYING
+│   ├── makeself.1
+│   ├── makeself-header.sh
+│   ├── makeself.lsm
+│   ├── makeself.sh
+│   ├── README
+│   └── TODO
+└── makeself-2.1.5.run
+
+1 directory, 8 files
+martinus@artivisi:[~/tmp/test-makeself]$ 
+</code></pre>
+
+<p>Untuk percobaan, sekarang buatlah 2 direktori <code>binary</code> dan <code>result</code> didalam direktori <code>makeself-2.1.5</code> seperti terlihat dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[~/tmp/test-makeself]$ tree
+.
+├── makeself-2.1.5
+│   ├── binary
+│   ├── COPYING
+│   ├── makeself.1
+│   ├── makeself-header.sh
+│   ├── makeself.lsm
+│   ├── makeself.sh
+│   ├── README
+│   ├── result
+│   └── TODO
+└── makeself-2.1.5.run
+martinus@artivisi:[~/tmp/test-makeself]$ 
+</code></pre>
+
+<p>Fungsi direktori <code>binary</code> diatas adalah untuk menempatkan aplikasi yang akan kita distribusikan, sedangkan direktori <code>result</code> adalah untuk menyimpan file installer yang akan dibuat oleh script <code>makeself</code> :)</p>
+
+<p>Jika sudah, masukkanlah direktori aplikasi yang ingin kita distribusikan kedalam direktori <code>binary</code> dan sebuah shell script dengan nama <code>pre-install.sh</code> (nama file <code>pre-install.sh</code> ini hanya sebagai contoh saja) sebagai launcher didalam direktori <code>binary</code> seperti dibawah ini:</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/binary]$ tree
+.
+├── app
+│   ├── lib
+│   │   ├── MartinSwingUtil-1.0.0.jar
+│   │   ├── mysql-connector-java-5.1.6-bin.jar
+│   │   └── swing-layout-1.0.4.jar
+│   ├── MenuLogin.jar
+│   └── README.TXT
+└── pre-install.sh
+
+2 directories, 6 files
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/binary]$ 
+</code></pre>
+
+<blockquote><p>Direktori <code>app/</code> beserta isinya adalah contoh aplikasi yang ingin di distribusikan, untuk penggunaan sebenar-nya kita bisa memasukkan apa saja didalam direktori <code>binary</code>.</p></blockquote>
+
+<p>File <code>pre-install.sh</code> ini dapat digunakan untuk melakukan proses-proses yang dibutuhkan sebelum mulai menginstall aplikasi yang sebenar-nya, seperti contohnya :</p>
+
+<ol>
+<li><p> Melakukan pengecekan apakah user <strong>root</strong> atau bukan yang menjalankan installer.</p></li>
+<li><p> Melakukan pengecekan apakah library yang dibutuhkan oleh aplikasi sudah tersedia atau belum.</p></li>
+<li><p> Melakukan restore database (dibutuhkan opsi untuk memasukkan username dan password mysql yang digunakan oleh user)</p></li>
+<li><p> Menempatkan file konfigurasi aplikasi pada direktori-direktori yang telah ditentukan.</p></li>
+<li><p> dan lain-lain &hellip; :)</p></li>
+</ol>
+
+
+<p>Sebelum bermain lebih lanjut dengan script <code>pre-install.sh</code>, mari kita buat dahulu skenario yang akan dijalankan oleh script <code>pre-install.sh</code> kita. Sebagai contoh, kita membuat skenario seperti dibawah ini :</p>
+
+<ol>
+<li><p> Installer hanya dapat dijalankan oleh user yang mempunyai hak akses <strong>root</strong>.</p></li>
+<li><p> Copy direktori <code>app</code> ke direktori <code>opt/</code></p></li>
+<li><p> Beri hak akses 755 pada direktori <code>/opt/app</code> beserta isinya supaya dapat dijalankan oleh user.</p></li>
+</ol>
+
+
+<p>Setelah kita mempunyai skenario seperti diatas, sekarang saatnya untuk bermain-main dengan script <code>pre-install.sh</code>, dan kode untuk skenario diatas adalah seperti berikut :</p>
+
+<pre><code class="bash   ">#!/bin/sh
+# 
+# Contoh file pre-install.sh
+
+# Langkah pertama, pengecekan apakah user root yang menjalankan installer
+# ini. Jika bukan user root, tampilkan pesan bagaimana menjalankan installer
+# dan exit.
+if [ "$(id -u)" != "0" ]; then
+    echo "Usage : sudo ./installerku.sh"
+    exit 1
+else
+    # Langkah kedua, copy direktori app/ beserta isinya kedalam direktori
+    # /opt
+    echo "Sedang menginstall aplikasi ...."
+    cp -R app /opt/app
+
+    echo "Memberi hak akses ..."
+    chmod 755 -R /opt/app
+
+    echo "Proses installasi selesai !!!"
+fi
+</code></pre>
+
+<p>Sampai disini proses yang kita lakukan sudah bisa dibilang hampir selesai, hanya tinggal 1 proses lagi yaitu membuat installer-nya. Sekarang mari kita buat sebuah installer menggunakan script <code>makeself</code> dan pastikan bahwa kita berada didalam direktori <code>makeself-2.1.5</code> :) Jika sudah, kita bisa menjalankan script <code>makeself</code> dengan perintah <code>./makeself.sh [parameter1] [parameter2] [parameter3] [parameter4]</code> dimana :</p>
+
+<ol>
+<li><p> <strong>[parameter1]</strong>, adalah tempat dimana kita meletakkan aplikasi yang ingin di distribusikan. (Dalam contoh kita, adalah direktori <code>binary</code>).</p></li>
+<li><p> <strong>[parameter2]</strong>, adalah nama file installer yang ingin kita buat. (Sebagai contoh pada tulisan ini, nama file installer yang akan kita buat bernama <code>installerku.sh</code> dan akan ditempatkan pada direktori <code>result</code>).</p></li>
+<li><p> <strong>[parameter3]</strong>, adalah label untuk installer aplikasi yang ingin kita distribusikan.</p></li>
+<li><p> <strong>[parameter4]</strong>, script yang ingin kita jalankan ketika proses installasi. (Dalam contoh kita adalah script <code>pre-install.sh</code>)</p></li>
+</ol>
+
+
+<p>Setelah mengetahui parameter-parameter yang akan digunakan, sekarang jalankan perintah <code>./makeself.sh binary/ result/installerku.sh "Aplikasi Login v1.0" ./pre-install.sh</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ ./makeself.sh binary/ result/installerku.sh "Aplikasi Login v1.0" ./pre-install.sh
+Header is 401 lines long
+
+About to compress 889 KB of data...
+Adding files to archive named "result/installerku.sh"...
+./
+./app/
+./app/lib/
+./app/lib/mysql-connector-java-5.1.6-bin.jar
+./app/lib/MartinSwingUtil-1.0.0.jar
+./app/lib/swing-layout-1.0.4.jar
+./app/README.TXT
+./app/MenuLogin.jar
+./pre-install.sh
+CRC: 677728827
+MD5: 3b84ed4eb87351a2eac8b0f235490fca
+
+Self-extractible archive "result/installerku.sh" successfully created.
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ 
+</code></pre>
+
+<p>Sekarang cek pada direktori <code>result/</code>, harusnya kita sudah mempunyai file dengan nama <code>installerku.sh</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ ls result/
+installerku.sh
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$
+</code></pre>
+
+<p>Sekarang mari kita test script <code>installerku.sh</code> dengan mencoba menjalankan-nya tanpa menggunakan akses root, apakah yang akan terjadi ?</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ ./installerku.sh 
+Verifying archive integrity... All good.
+Uncompressing Aplikasi Login v1.0.........
+Usage : sudo ./installerku.sh
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Yuuhu&hellip; proses installasi gagal dilakukan, sekarang mari kita coba menjalankan script <code>installerku.sh</code> menggunakan <code>sudo</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ sudo ./installerku.sh 
+Verifying archive integrity... All good.
+Uncompressing Aplikasi Login v1.0.........
+Sedang menginstall aplikasi ....
+Memberi hak akses ...
+Proses installasi selesai !!!
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Hore.. berhasil, sekarang mari kita check apakah direktori <code>app/</code> beserta isinya sudah masuk kedalam direktori <code>opt/</code> ?</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ ls -l /opt/app/
+total 52
+drwxr-xr-x 3 root root  4096 Jul 29 06:12 app
+drwxr-xr-x 2 root root  4096 Jul 29 05:41 lib
+-rwxr-xr-x 1 root root 38591 Jul 29 05:41 MenuLogin.jar
+-rwxr-xr-x 1 root root  1447 Jul 29 05:41 README.TXT
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Mantap&hellip; akhirnya kita bisa membuat sendiri installer di GNU/Linux seperti installer-installer dari project-project besar opensource yang lain :) Nah untuk teman-teman sesama programmer ada yang tertarik untuk mencoba-nya ??</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Training Git di Artivisi Intermedia]]></title>
+    <link href="http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia/"/>
+    <updated>2011-01-05T21:13:21+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia</id>
+    <content type="html"><![CDATA[<p>Buat yang belum tahu apa sih itu <a href="http://git-scm.com/">GIT</a> dan bagaimana cara menggunakan <a href="http://git-scm.com/">GIT</a> untuk kebutuhan <strong><em>development</em></strong> sehari-hari, kita dari Artivisi Intermedia akan membuka sebuah training tentang <a href="http://git-scm.com/">GIT</a>. Sedangkan detail apa saja yang dibahas, silahkan cek dibawah ini :</p>
+
+<p>Berikut silabusnya (1 sesi = 3 jam) :
+<a href="http://artivisi.com/?cat=28">http://artivisi.com/?cat=28</a></p>
+
+<p>Berikut jadwalnya :
+<a href="http://artivisi.com/?page_id=109">http://artivisi.com/?page_id=109</a></p>
+
+<p>Yang mau daftar silahkan langsung isi form :
+<a href="https://spreadsheets.google.com/viewform?formkey=dC0xbk9yZ2k3MzRjZGRHckpVRlRPYWc6MQ">https://spreadsheets.google.com/viewform?formkey=dC0xbk9yZ2k3MzRjZGRHckpVRlRPYWc6MQ</a></p>
+
+<p>Pertanyaan tentang training silahkan email ke <a href="mailto:info@artivisi.com">info@artivisi.com</a> atau email langsung ke saya. Pertanyaan tentang Git, bisa ditanyakan pada saat training :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kambing Menerima Public Upload]]></title>
+    <link href="http://martinusadyh.web.id/2010/05/23/kambing-menerima-public-upload/"/>
+    <updated>2010-05-23T10:07:09+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/05/23/kambing-menerima-public-upload</id>
+    <content type="html"><![CDATA[<p>Wah barusan ada email di milis <a href="mailto:id-slackware@googlegroups.com">id-slackware@googlegroups.com</a> bahwa sekarang kambing menerima upload dari luar (publik), wah mantep juga nih sepertinya dan ini adalah pengumuman yang saya baca di email tersebut :</p>
+
+<blockquote><p>DH All,</p></blockquote>
+
+<p>berhubung banyak sekali permintaan menghosting konten-konten Open Source di Indonesia, akhirnya KambiNG membuka layanan upload bebas. Segala konten yang diupload dapat dilihat di <a href="http://kambing.ui.ac.id/UPLOAD/">http://kambing.ui.ac.id/UPLOAD/</a></p>
+
+<p>Kode etik &amp; ketentuan upload adalah sebagai berikut:</p>
+
+<blockquote><ol>
+<li><p> Tidak meng-upload barang2 bajakan</p></li>
+<li><p> Tidak menggunakan layanan ini sebagai transit file</p></li>
+<li><p> Tidak diperbolehkan membuat direktori</p></li>
+<li><p> Tidak diperbolehkan menghapus file yang sudah diupload</p></li>
+<li><p> Memberitahu <a href="mailto:kontak@kambing.ui.ac.id">kontak@kambing.ui.ac.id</a> apabila konten yang sudah diupload tersebut untuk dirapihkan pada direktori-direktori tertentu di Kambing</p></li>
+<li><p> Disarankan untuk menyebarluaskan konten yang sudah diupload ke mirror-mirror lain agar konten Anda dapat disebarkan secara masal</p></li>
+<li><p> KambiNG tidak menjamin keberadaan konten tersebut selama tidak di-mirror oleh server mirror lain (kalau crash, KambiNG tidak ada kewajiban untuk
+menyediakan kembali)</p></li>
+<li><p> Apabila ada yang mengupload konten-konten yang menyalahi aturan diatas, maka KambiNG akan menutup permanen IP uploader baik untuk upload &amp; download
+dari KambiNG</p></li>
+</ol>
+</blockquote>
+
+<!-- more -->
+
+
+<p>Ini adalah layanan dengan konsep community generated content, jadi monggo untuk berkontribusi. Layanan ini diinisiasi oleh Pendayagunaan Open Source Software (POSS) UI untuk mendukung perkembangan OSS di Indonesia.</p>
+
+<p>O iya, layanan anonymous FTP tetap berlaku namun hanya read-only saja, kalau mau upload bisa menggunakan username: <strong>upload</strong> dan password: <strong>upload</strong></p>
+
+<p>thnx</p>
+
+<h1>adin</h1>
+
+<p>Karena penasaran, akhirnya iseng-iseng cobain akses ftp ke kambing melalui terminal dan seperti dibawah inilah hasilnya :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ ftp kambing.ui.ac.id
+Connected to kambing.ui.ac.id.
+220-                                                @@@@@@                                              
+220-                                              @@@@@@@@@@                                            
+220-                                             @@@@@@@@@@@@          @@                               
+220-                                            @@@@@@@@@@@@@     @@@@@@@@@@@                           
+220-                @@@@@@@@@                 @@@@@@@@@@@@@    @@@@           @@                        
+220-                @@@@@@@@@@@              @@@@@@@@@@@     @@@@              @@@                      
+220-                 @@@@@@@@@@@            @@@@@@@@@       @@@       @@@@       @@@                    
+220-                  @@@@@@@@@@.         @@@@@@@@         o@@     @@@@@@@@@       @@@8                 
+220-                    @@@@@@@@         @@@@@             @@@    @@@     @@@      @@@@@@               
+220-                      @@@@@                             @@    @@@@     @@@    @@@ @@@@              
+220-                                                @@@@@@@ @@@     @@@@   @@    @@@    @@@@            
+220-                                       @@@@@@@@@@@@@@@@   @@@@       @@@@   @@@       @@@@          
+220-                             @@@@@@@@@@@@@@@@@@@@@@@@@@    @@@@@@@@@@@@    @@@        @@@@@@        
+220-                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@O     @@              @@@      
+220-           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                @@@@@                          @@     
+220-           @@@@@@@@@@@@@@@@@@@@@@@@@@@@                                  @                   @@@    
+220-             @@@@@@@@@@@      @@@@@@@@@                                  @@                   @@    
+220-                              @@@@@@@@@                                  @@@                 @@o    
+220-                              @@@@@@@@@                                   @@@              @@@      
+220-                              @@@@@@@@@   @@@@@@@@@@@@@                     @@@@@@@@@@@@@@@@        
+220-                              @@@@@@@@@@@@@@@@@@@@@@@@@@                        @@@                 
+220-                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                        @@@                  
+220-              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                              @@@                   
+220-              @@@@@@@@@@@@@@@@@@@@@@@@@                                    @@@@                     
+220-                   @@@@@@@@@@@@@@@@@@@@                                 @@@@                        
+220-                              @@@@@@@@@                                                             
+220-                              @@@@@@@@@              @@@@@@@@                                       
+220-                              @@@@@@@@@     @@@@@@@@@@@@@@@@@@@@                                    
+220-                             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                                  
+220-          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                                 
+220-     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                                   
+220-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                                                             
+220-     @@@@@@@@@@@@@@@@@        @@@@@@@@@                                  @@@                        
+220-                              @@@@@@@@@                                  @@@                        
+220-                              @@@@@@@@@       @@  @@@  @@  @@@@@@@  @@@@@@@@ @@@   @@  @@@@@@       
+220-                              @@@@@@@@@        @@ @@@@ @@ @@@@@@@@@ @@   @@@ @@@   @@  @@@@         
+220-                              @@@@@@@@         @@@@ @@@@  @@@       @@   @@@ @@@   @@     @@@       
+220-                              @@@@@@@@          @@@  @@@   @@@@@@@  @@@@@@@@  @@@@@@@ @@@@@@@       
+220-                               @@@@@@@                                                              
+220-                               @@@@@@@        @     @      @                                        
+220-                               @@@@@@@       @@@   @@      @@                                       
+220-                               @@@@@@        @@@   @@      @@                                       
+220-                               @@@@@@        @@@   @@      @@                                       
+220-                                @@@@          @@@ @@@  @@  @@  @@                                   
+220-                                                 @                                                  
+220-
+220-Silahkan lihat-lihat konten-konten F/OSS di server ini dengan max 4 concurrent connection per IP address
+220-
+220-Anda dapat berkontribusi terhadap konten KambiNG dengan meng-upload menggunakan:
+220-Username: upload
+220-Password: upload
+220-segala konten yang sudah di-upload dapat dilihat pada:
+220-- http://kambing.ui.ac.id/UPLOAD/
+220-- ftp://kambing.ui.ac.id/UPLOAD/
+220-
+220-Segala tindak-tanduk anda diawasi oleh para KambiNG yang Galak !
+220-
+220-Layanan ini merupakan persembahan dari Universitas Indonesia, http://www.ui.ac.id/
+220-Dengan kolaborasi antara lembaga-lembaga berikut:
+220-- Pendayagunaan Open Source Software UI, http://poss.ui.ac.id/
+220-- Kantor Pengembangan dan Pelayanan Sistem Informasi UI, http://www.ppsi.ui.ac.id/
+220-
+220-tabe,
+220 
+Name (kambing.ui.ac.id:martinus): upload
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp&gt; ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+-rw-------    1 ftp      ftp           179 May 22 13:56 examples.desktop
+-rw-------    1 ftp      ftp        198488 May 22 13:12 gnulinuxsebuahpengantar.pdf
+226 Directory send OK.
+ftp&gt; 
+</code></pre>
+
+<p>Wew.. mantap euy :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Konfigurasi Modem di Linux]]></title>
+    <link href="http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux/"/>
+    <updated>2010-05-03T04:13:32+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux</id>
+    <content type="html"><![CDATA[<p>Buat teman-teman yang mungkin sedang kesulitan mencari bagaimana <strong>konfigurasi modem di linux menggunakan wvdial</strong> mungkin bisa melihat konfigurasi yang saya gunakan, kemarin sempat bermain-main dengan modem <strong>Wavecom SuperTrac</strong> menggunakan konektor <strong>serial to usb</strong> dan <strong>Huawei Vodafone USB Modem E220</strong> di Slackware 13.0. Percobaan menggunakan modem <strong>Wavecom SuperTrac</strong> menggunakan konektor <strong>serial to usb</strong> tidak berjalan dengan sukses :( dan dari hasil beberapa sumber yang saya baca sangat-sangat tidak direkomendasikan menggunakan modem <strong>Wavecom SuperTrac</strong> menggunakan konektor <strong>serial to usb</strong> :( (Maaf lupa artikel aslinya dimana), sedangkan yang berhasil berjalan dengan sukses adalah untuk modem <strong>Huawei Vodafone USB Modem E220</strong>. Sedangkan untuk teman-teman yang belum tahu bentuk dan wujud dari kedua modem diatas, mungkin bisa melihat gambar dibawah ini agar lebih jelas :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4569198814/"><img src="http://farm5.static.flickr.com/4050/4569198814_970e6c39b3.jpg" alt="huawei-vodafone-usb-modem-e220" /></a><br/>
+<strong>Modem Huawei Vodafone USB Modem</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4569198818/"><img src="http://farm4.static.flickr.com/3012/4569198818_5563ca9e1f.jpg" alt="modem-wavecom" /></a><br/>
+<strong>Modem WaveCom SuperTrac 10</strong></p>
+
+<p>Karena kemarin saya menggunakan aplikasi wvdial, maka pastikan teman-teman sudah menginstall wvdial pada sistem teman-teman. Untuk pengguna Slackware sebelum menginstall packages wvdial, pastikan dahulu packages wvstream sudah terinstall terlebih dahulu (untuk packages wvdial dan wvstream bisa teman-teman dapatkan pada <a href="http://slackbuild.org">http://slackbuild.org</a>) Setelah packages wvdial terinstall, sekarang editlah file <code>/etc/wvdial.conf</code> menjadi seperti dibawah ini (tentukan dengan operator yang teman-teman gunakan) :</p>
+
+<!-- more -->
+
+
+<p><strong>Konfigurasi Untuk Operator Telkomsel</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = ATQ0 V1 E1 S0=0 &amp;C1; &amp;D2; +FCLASS=0
+Init3 = AT+CGDCONT=1,"ip","internet"
+Modem = /dev/ttyUSB0
+Phone = *99#
+Idle Seconds = 300
+Password = ''
+Modem Type = Analog Modem
+Stupid Mode = 1
+Compuserve = 0
+Baud = 9600
+Auto DNS = 1
+Dial Command = ATDT
+Ask Password = 0
+ISDN = 0
+Username = ''
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator 3 (three)</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = AT+CGDCONT=1,"IP","3gprs"
+Modem Type = Analog Modem
+ISDN = 0
+Phone = *99***1#
+Modem = /dev/ttyUSB0
+Username = 3gprs
+Password = 3gprs
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator M3</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = AT+cgdcont=1,"IP","indosatgprs"
+Modem Type = Analog Modem
+ISDN = 0
+New PPPD = yes
+Phone = *99***1#
+Modem = /dev/ttyUSB0
+Username = gprs
+Password = im3
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator XL</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Modem Type = Analog Modem
+ISDN = 0
+Phone = *99***1#
+Modem = /dev/ttyUSB0
+Username = xlgprs
+Password = proxl
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator Axis</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = at+cgdcont=1,"IP","axis"
+Modem Type = Analog Modem
+ISDN = 0
+Phone = *99***1#
+Modem = /dev/ttyUSB0
+Username = wap
+Password = 1234
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator Flexi</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Init2 = ATQ0 V1 E1 S0=0 &amp;C1; &amp;D2; +FCLASS=0
+Modem Type = Analog Modem
+ISDN = 0
+Phone = #777
+Modem = /dev/ttyUSB0
+Username = Telkomnet@flexi
+Password = telkom
+Baud = 9600
+</code></pre>
+
+<p><strong>Konfigurasi Untuk Operator TNI (Telkomnet Instant)</strong></p>
+
+<pre><code>[Dialer Defaults]
+Init1 = ATZ
+Modem Type = Analog Modem
+ISDN = 0
+Phone = 080989999
+Modem = /dev/ttyUSB0
+Username = telkomnet@instan
+Password = telkom
+Baud = 9600
+</code></pre>
+
+<p>Untuk konfigurasi <code>Modem = /dev/ttyUSB0</code> bisa teman-teman sesuaikan dengan modem yang teman-teman gunakan, kalau menggunakan port USB biasanya device akan otomatis dimapping ke <code>/dev/ttyUSBx</code> dimana <code>x</code> adalah nomor device teman-teman. Sedangkan untuk mengetahui letak device dari modem yang teman-teman gunakan, teman-teman bisa mengetikkan perintah <code>dmesg</code> untuk mengetahui apakah modem sudah dikenali oleh sistem atau belum. Dan untuk konfigurasi <code>Baud = 9600</code> bisa teman-teman dapatkan secara otomatis dengan mengetikkan perintah <code>wvdialconf</code> pada terminal agar file <code>/etc/wvdial.conf</code> mendapatkan konfigurasi yang tepat.</p>
+
+<p>Setelah selesai melakukan konfigurasi pada file <code>/etc/wvdial.conf</code> sekarang coba jalankan perintah <code>wvdial</code> pada terminal untuk memulai proses dial dan tunggulah sampai mendapatkan DNS, jika sudah mendapatkan DNS dari operator yang digunakan maka sekarang teman-teman sudah dapat melakukan aktifitas internet seperti biasanya :)</p>
+
+<p>Jika ada teman-teman yang mempunyai konfigurasi untuk operator yang lain, boleh dibagi donk disini agar bisa saya tambahkan ke list :) Supaya bisa dijadikan referensi bersama gitu :malu:</p>
+
+<p>Dibawah ini ada beberapa referensi penggunaan modem dan hyper terminal di Windows yang saya gunakan sebagai acuan, mungkin bisa berguna juga buat teman-teman yang masih kesulitan :</p>
+
+<ol>
+<li><p> <a href="http://www.ziddu.com/download/9687737/Wavecom_Dial_up_Connections-080625.pdf.html">Wavecom DialUp Connections</a></p></li>
+<li><p> <a href="http://www.ziddu.com/download/9687738/Wavecom_Hyper_Terminal_Connection-080702.pdf.html">Wavecom HyperTerminal Connection</a></p></li>
+</ol>
+
+
+<p>_**Update 25/06/2010 : Update konfigurasi telkomsel, resource didapat dari <a href="http://ardhitechno.blogspot.com/2009/06/setting-modem-huawei-e220-wvdial.html**_">http://ardhitechno.blogspot.com/2009/06/setting-modem-huawei-e220-wvdial.html**_</a></p>
+]]></content>
+  </entry>
+  
+</feed>

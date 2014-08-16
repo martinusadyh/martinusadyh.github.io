@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Lebih Dekat Dengan Class SwingWorker - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Beberapa minggu terakhir ini, saya mendapatkan 2 pertanyaan tentang Bagaimana sih agar progress bar bisa berjalan pada saat proses Query ? dan &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Lebih Dekat Dengan Class SwingWorker</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-07T19:02:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Beberapa minggu terakhir ini, saya mendapatkan 2 pertanyaan tentang <strong>Bagaimana sih agar progress bar bisa berjalan pada saat proses Query ?</strong> dan <strong>Bagaimana sih cara membuat sebuah login dialog yang menampilkan progress bar ?</strong> Nah karena 2 pertanyaan tersebut saling berkaitan menurut saya (sama-sama ingin menjalankan Progress Bar pada saat aplikasi sedang menjalankan <strong>tugas/proses</strong> yang lain) maka akan saya jawab bersama-sama pada tulisan ini :) . Nah sebelum kita masuk ke penjelasan lebih detail, kita harus tahu dahulu dong kenapa kita tidak bisa secara langsung menjalankan progress bar di saat kita melakukan proses yang lain ? Ada yang tahu kenapa ? Ini karena semua <strong>&ldquo;Event Handling&rdquo;</strong> yang terdapat pada Java Swing dijalankan oleh Thread yang bernama <strong>Event Dispatch Thread (EDT) </strong> Waks.. Thread ? Yaps betul Thread :)</p>
+
+<p>Agar aplikasi yang kita bangun di Java Swing tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang), maka kita juga perlu tahu beberapa Thread yang terdapat di Java Swing. Thread-thread tersebut yaitu :</p>
+
+<ol>
+<li><p> <strong>Initial Thread</strong>
+Thread ini bertugas untuk menjalankan method <strong>main</strong> dari aplikasi Swing kita dan thread ini bertugas untuk menampilkan GUI (Graphical User Interface) yang sudah kita bangun diatas Swing ke layar. Setelah GUI (Graphical User Interface) tampil, maka kerja dari thread ini telah selesai dan akan dilanjutkan oleh <strong>Event Dispatch Thread</strong>.</p></li>
+<li><p> <strong>Event Dispatch Thread</strong>
+Setiap aplikasi berbasis Java Swing hanya dapat mempunyai 1 Event Dispacth Thread (EDT) saja. Setiap respon dari penekanan tombol, menu item, update tampilan komponen akan dijalankan oleh thread ini. Dan semua proses tersebut <strong><em>biasanya</em></strong> tidak membutuhkan waktu yang lama. Jadi, segala proses yang dijalankan pada thread ini harus selesai secepat mungkin agar aplikasi kita tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang) .</p></li>
+<li><p> <strong>Worker Thread</strong>
+Worker thread atau biasanya disebut dengan <strong>background thread</strong> ini berfungsi untuk menjalankan proses yang lama seperti pembacaan direktori pada file system atau proses query ke database. Gunakan thread ini untuk melakukan operasi atau proses yang kita tidak bisa menentukan kapan kira-kira proses tersebut selesai.</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Nah sekarang yang jadi pertanyaan yaitu apa hubungan-nya antara thread-thread diatas dengan class SwingWorker ? Ok untuk menjawab pertanyaan ini sekarang buatlah sebuah project di NetBeans IDE, kemudian buatlah sebuah JFrame dan design-lah JFrame tersebut seperti gambar dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/LebihDekatDenganClassSwingWorker/DesignJFrame.png" title="Design JFrame" ></p>
+
+<p>Kemudian pada tombol <strong>Tampilkan Angka</strong> tambahkan kode seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">jButton1ActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">jTextArea1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="c1">// jalankan progress bar</span>
+</span><span class='line'>    <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setIndeterminate</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">5000</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// Tampilkan angka satu persatu pada text area</span>
+</span><span class='line'>        <span class="n">jTextArea1</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;Angka ke &quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="c1">// stop progress bar</span>
+</span><span class='line'>    <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setIndeterminate</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">jTextArea1</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\nDone ...&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah selesai, sekarang coba jalankan aplikasi-nya kemudian tekanlah tombol <strong>Tampilkan Angka</strong> dan jika tidak ada kesalahan maka kita akan mendapatkan tampilan seperti 2 gambar dibawah ini:</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/LebihDekatDenganClassSwingWorker/TampilanFrameFreeze.png" title="Tampilan Frame Nge-Freeze" ></p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/LebihDekatDenganClassSwingWorker/SetelahProsesLooping.png" title="Setelah Proses Looping" ></p>
+
+<p>Pada tampilan diatas, kita bisa melihat bahwa GUI (Graphical User Interface) kita seakan-akan nge-<strong>freeze</strong> beberapa detik baru kemudian normal kembali dengan tiba-tiba menampilkan angka pada JTextArea. Hmmm koq aneh, padahal <strong>yang kita inginkan yaitu ketika proses perulangan berlangsung progress bar-nya berjalan dan angka akan ditampilkan satu persatu pada text area</strong>. Kenapa bisa seperti itu ?? Jawaban-nya adalah, karena kita melakukan proses perulangan dan meng-update tampilan (GUI) <strong>di dalam 1 thread yaitu Event Dispatch Thread (EDT)</strong>. Sedangkan proses diatas, dapat kita gambarkan sebagai berikut :</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/LebihDekatDenganClassSwingWorker/FlowEDT.jpg" title="Flow EDT Ketika Penekanan Tombol, EDT Tidak Bisa Mengupdate Komponen" ></p>
+
+<p><strong>Note: Gambar diambil dan dimodifikasi dari <a href="http://java.sun.com/developer/technicalArticles/javase/swingworker/">http://java.sun.com/developer/technicalArticles/javase/swingworker/</a></strong></p>
+
+<p>Dari gambar flow EDT diatas, pada <strong>titik A</strong> itulah saat kita melakukan proses penekanan tombol <strong>Tampilkan Angka</strong>. Nah selama proses perulangan kita juga ingin meng-update tampilan dengan menampilkan angka satu persatu ke text area. Karena proses perulangan belum selesai, maka intruksi <code>jTextArea1.append("Angka ke " + i + "\n");</code> ini tidak dapat dilakukan. Intruksi <code>jTextArea1.append("Angka ke " + i + "\n");</code> ini baru berjalan ketika EDT sudah mencapai pada <strong>titik B</strong>.</p>
+
+<p>Nah sekarang bagaimana caranya agar ketika kita melakukan per-ulangan, tampilan pada GUI juga ikut terupdate ? Solusi-nya yaitu dengan menggunakan <strong>Background Thread</strong> atau <strong>pada thread yang terpisah</strong> dari <strong>Event Dispatch Thread (EDT)</strong>. Tujuan ini yaitu agar <strong>Event Dispatch Thread (EDT)</strong> dapat terus mengupdate GUI. Dan proses menjalankan <strong>Background Thread</strong> tersebut dapat kita jalankan ketika <strong>Event Dispatch Thread (EDT)</strong> berada pada <strong>Titik A</strong> atau ketika kita menekan tombol <strong>Tampilkan Angka</strong>. Dan proses ini dapat kita gambarkan seperti dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/LebihDekatDenganClassSwingWorker/MemisahkanEDT.jpg" title="Memisahkan EDT dengan Menggunakan Background Thread" ></p>
+
+<p><strong>Note: Gambar diambil dan dimodifikasi dari <a href="http://java.sun.com/developer/technicalArticles/javase/swingworker/">http://java.sun.com/developer/technicalArticles/javase/swingworker/</a></strong></p>
+
+<h3>Mengenal SwingWorker Sebagai Solusi Background Thread</h3>
+
+<p>Untuk membuat sebuah <strong>Background Thread</strong> menggunakan class <strong>SwingWorker</strong> caranya sangat sederhana sekali yaitu buatlah sebuah class yang meng-extends class <strong>SwingWorker</strong> dan override-lah 1 buah method yaitu method <strong>doInBackground()</strong> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CobaWorker</span> <span class="kd">extends</span> <span class="n">SwingWorker</span><span class="o">&lt;</span><span class="n">T</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">doInBackground</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="o">...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Dimana <code>T</code> merupakan <strong>return type</strong> dari method <code>doInBackground</code> dan <code>V</code> adalah tipe yang akan digunakan oleh method <code>publish</code> dan <code>process</code> jika kita menggunakan method tersebut pada <strong>Background Thread</strong> kita. Sedangkan pada <code>SwingWorker</code> sendiri terdapat 3 thread yang mempengaruhi siklus kehidupan dari <code>SwingWorker</code> yaitu :</p>
+
+<ul>
+<li><p><strong>Current Thread</strong>
+Method <strong>SwingWorker.execute</strong> dipanggil dari thread ini. Thread ini mempunyai tugas untuk menjalankan <strong>&ldquo;Worker Thread&rdquo;</strong> saja.</p></li>
+<li><p><strong>Worker Thread</strong>
+Method <strong>SwingWorker.doInBackground</strong> ini dipanggil dari thread ini. Dan disini seharusnya semua <strong>Background Process</strong> dilakukan.</p></li>
+<li><p><strong>Event Dispatch Thread</strong>
+Semua aktifitas yang berkaitan dengan Java Swing dilakukan pada thread ini, thread ini juga akan memanggil method <code>SwingWorker.done()</code> dan <code>SwingWorker.process()</code></p></li>
+</ul>
+
+
+<p>Sedangkan untuk penggunaan standart-nya, kita sebenarnya hanya perlu meng-override method <code>doInBackground</code> saja. Dan jika proses yang dikerjakan oleh method <code>doInBackground</code> telah selesai maka method <code>SwingWorker.done()</code> akan dijalankan :)</p>
+
+<h3>Implementasi SwingWorker</h3>
+
+<p>Nah sekarang setelah mengetahui <strong>Basic Thread</strong> di Java Swing dan sedikit mengenal tentang <strong>SwingWorker</strong> terus sekarang bagaimana cara penggunaan-nya ? Sama seperti diatas, cara penggunaan-nya sangat sederhana sekali. Kopi-lah dahulu latihan pertama yang sudah kita buat di-awal kemudian gantilah nama filenya dengan <strong>WithBackgroundThread.java</strong> kemudian tambahkan-lah sebuah <strong>private class</strong> dengan nama <strong>WorkerLookup</strong> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kd">class</span> <span class="nc">WorkerLoop</span> <span class="kd">extends</span> <span class="n">SwingWorker</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Void</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">done</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">get</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">jTextArea1</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">get</span><span class="o">());</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>            <span class="c1">// stop progress bar</span>
+</span><span class='line'>            <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setIndeterminate</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">WithBackgroundThread</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ExecutionException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">WithBackgroundThread</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="n">String</span> <span class="nf">doInBackground</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">5000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="c1">// Tampilkan angka satu persatu pada text area</span>
+</span><span class='line'>            <span class="n">jTextArea1</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;Angka ke &quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="s">&quot;\nDone ...&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p></p>
+
+<p><strong>Penjelasan kode diatas yaitu</strong> :</p>
+
+<ul>
+<li><p>Pada baris 102, kita membuat sebuah class dengan nama <strong>WorkerLoop</strong> yang meng-extends SwingWorker dengan parameter &lt;string, Void>. Dimana <strong>String</strong> ini digunakan untuk menjelaskan tipe data apa yang akan dikembalikan oleh method <strong>doInBackground</strong>, karena pada class <strong>WorkerLoop</strong> ini tidak meng-override method <strong>proces</strong> maka kita bisa menggunakan tipe <code>Void</code> saja :)</p></li>
+<li><p>Pada baris 120 inilah proses yang dijalankan pada <strong>Background Thread</strong> dilakukan, dan setelah method <strong>doInBackground</strong> ini selesai dijalankan maka kita akan mengirimkan pesan bertipe String ke method <strong>done()</strong></p></li>
+<li><p>Pada baris 105-117 ini kita gunakan untuk mengupdate GUI yang menandakan bahwa <strong>Background Process</strong> telah selesai dilakukan, dan kita dapat mengambil nilai yang dikirmkan oleh method <strong>doInBackground</strong> dengan menggunakan method <strong>get()</strong></p></li>
+</ul>
+
+
+<p>Setelah pembuatan <strong>WorkerLoop</strong> selesai, sekarang deklarasikan class <strong>WorkerLoop</strong> tersebut seperti dibawah ini:</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WithBackgroundThread</span> <span class="kd">extends</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">JFrame</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Deklarasikan WorkerLoop</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">WorkerLoop</span> <span class="n">workerLoop</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/** Creates new form OnEdtThread */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">WithBackgroundThread</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">initComponents</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="o">...</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Kemudian langkah terakhir yaitu editlah kode yang terdapat pada tombol <strong>Tampilkan Angka</strong> hingga menjadi seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">jButton1ActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">jTextArea1</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="c1">// jalankan progress bar</span>
+</span><span class='line'>    <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setIndeterminate</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">workerLoop</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">WorkerLoop</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">workerLoop</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Sekarang coba jalankan dan tekanlah tombol <strong>Tampilkan Angka</strong>, seharusnya sekarang GUI kita sudah tidak nge-<strong>freeze</strong> ketika sedang melakukan perulangan dan progress bar-nya pun sudah bisa jalan dengan baik :) Mudah bukan ? Tapi yang perlu kita perhatikan ketika membangun aplikasi yang menggunakan Thread yaitu adalah <strong>berhati-hati</strong>lah dalam menggunakan-nya, karena sekali saja aplikasi terjadi kesalahan maka proses <strong>debugging-nya</strong> susah sekali :D</p>
+
+<p>Dan dibawah ini adalah halaman-halaman referensi yang saya gunakan dan mohon maaf kalau ada salah kata/penyampaian :) :D</p>
+
+<p><strong>Link-link terkait : </strong></p>
+
+<ul>
+<li><a href="http://java.sun.com/javase/6/docs/api/javax/swing/SwingWorker.html">SwingWorker API JDK 1.6</a></li>
+<li><a href="http://java.sun.com/docs/books/tutorial/uiswing/concurrency/index.html">Tutorial Concurrency di Java Swing</a></li>
+<li><a href="http://java.sun.com/developer/technicalArticles/javase/swingworker/">Improve Application Performance With SwingWorker in Java SE 6</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Thread_%28computer_science%29">Penjelasan Tentang Thread (WIKI)</a></li>
+<li><a href="mailto:netbeans-indonesia@yahoogroups.com">Milis NetBeans Indonesia</a></li>
+<li><a href="http://code.google.com/p/martin-personal-project/source/browse/#svn/trunk/java/MengenalSwingWorker">Sample Project</a></li>
+<li><a href="http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/">SubVersion Mudah Dengan RabbitVCS</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-07T19:02:04+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/11/06/editing-your-pdf-with-openoffice/" title="Previous Post: Editing Your PDF With OpenOffice">&laquo; Editing Your PDF With OpenOffice</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/11/09/di-butuhkan-2-php-programmer/" title="Next Post: Di butuhkan 2 PHP Programmer">Di butuhkan 2 PHP Programmer &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

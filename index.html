@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Pernah menggunakan Dojo Toolkit sebagai UI layer? Pernah merasa kalau dokumentasi di Dojo itu sangat sedikit sekali ? Bingung tentang function apa &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-27T20:50:51+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pernah menggunakan <a href="http://dojotoolkit.org/">Dojo Toolkit</a> sebagai UI <em>layer</em>? Pernah merasa kalau dokumentasi di Dojo itu sangat sedikit sekali ? Bingung tentang <em>function</em> apa saja yang terdapat di komponen tersebut ? Jika iya berarti sama dengan saya ketika dulu baru pertama kali baru mulai menggunakan Dojo sebagai pilihan untuk sisi UI. Sebenar-nya Dojo merupakan pilihan yang cukup <strong>&ldquo;mumpuni&rdquo;</strong> dibandingkan dengan <a href="http://www.sencha.com/products/extjs">ExtJS</a> dari sisi kelengkapan widget-widget yang disediakan, tetapi sayang-nya kelengkapan widget ini tidak didukung dengan dokumentasi yang sepadan jika dibandingkan dengan <a href="http://www.sencha.com/products/extjs">ExtJS</a> yang dokumentasi-nya cukup lengkap dari tutorial sampai ke sisi API <em>(Application Programming Interface)</em>-nya.</p>
+
+<p>Meskipun <a href="http://dojotoolkit.org/">Dojo Toolkit</a> juga mempunyai sebuah halaman <a href="http://dojotoolkit.org/api/">API Documentation</a>, tapi rasanya masih kurang lengkap menurut saya. Nah untuk mendebug sebuah widget Dojo untuk menampilkan seluruh function yang terdapat didalam-nya, maka kita memerlukan sebuah browser dan <a href="http://getfirebug.com/">Firebug</a> sebagai alat bantu kita (jika menggunakan Chrome, tidak perlu firebug lagi karena kita bisa membuka <strong>Developer Tools</strong> dengan menekan kombinasi tombol <strong>CTRL+SHIFT+J</strong>)</p>
+
+<p>Sebagai contoh misalkan kita mempunyai sebuah widget grid dengan id <code>tblSettingSegment</code> seperti gambar dibawah ini :
+<img src="/images/blog-images/javascript/cara-mudah-mendebug-widget-di-dojo/Contoh_Grid.png" title="'Contoh Grid'" ></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-21T04:46:30+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah mengalami pertimbangan yang cukup lama, akhirnya saya putuskan juga untuk mem-publish tulisan ini :D Tulisan ini ditujukan untuk teman-teman yang masih baru mulai menyukai dunia pendakian gunung dan juga bukan bertujuan untuk menggurui, karena saya sendiri juga termasuk <strong>&ldquo;anak kemarin sore&rdquo;</strong> dalam dunia pendakian gunung. Sedangkan isi tulisan ini merupakan rangkuman dari saran-saran yang saya baca di forum (khususnya <a href="http://www.kaskus.co.id/forum/98/outdoor-adventure--nature-clubs">forum OANC kaskus</a>), groups pendakian gunung di FaceBook dan beberapa tambahan pengalaman pribadi sebelum melakukan pendakian :D Tulisan ini sebenarnya berdasarkan kejadian kemarin ketika saya melakukan <a href="martinusadyh.web.id/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">pendakian ke gunung sindoro</a> yang ternyata lupa membawa kopi :( yang mana merupakan menu wajib menurut saya. Karena kejadian tersebut, akhirnya muncul-lah ide untuk menuliskan hal-hal yang harus dilakukan sebelum melakukan pendakian :D</p>
+
+<p>Karena kegiatan pendakian gunung ini bisa dikatakan kegiatan yang &ldquo;cukup berbahaya&rdquo;, maka persiapan yang matang sebelum memulai pendakian sangat perlu dilakukan sebelum-nya. Beberapa persiapan yang perlu dilakukan menurut saya bisa dibagi menjadi 3 hal besar (tidak termasuk dana loh ya, asumsinya dana yang dibutuhkan mencukupi :D ) yang kurang lebih adalah :</p>
+
+<ul>
+<li><strong>Persiapan Fisik,</strong>
+Karena kegiatan pendakian gunung ini sebagian besar dilakukan dengan berjalan kaki dengan membawa beban yang cukup berat, maka pastinya dibutuhkan fisik yang cukup prima. Nah untuk menghindari kejadian yang tidak di inginkan, maka sebaiknya sebelum melakukan pendakian ada baiknya latihan fisik dahulu. Sedangkan latihan fisik yang biasa saya lakukan adalah lari pagi :D</li>
+</ul>
+
+
+<p>  Karena kegiatan ini termasuk bagus untuk kesehatan, sebaiknya dilakukan setiap hari kalau bisa biar jika ada tawaran sewaktu-waktu untuk melakukan pendakian kita sudah tidak repot untuk mencari waktu buat latihan fisik :)</p>
+
+<p>  </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-27T22:04:35+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/blog-images/Adventure/pendakian/pendakian-gunung-sindoro-3153-mdpl/Mt_Sindoro_view_from_Mt_Sikunir.jpg" title="'Mt. Sindoro view from Mt. Sikunir'" ></p>
+
+<p>Setelah pendakian yang gagal ke <strong>Cikuray</strong> <a href="http://martinusadyh.web.id/2013/03/17/puncak-cikuray-yang-tertunda/">kemarin</a> ditambah dengan racun foto-foto susasana <strong>Semeru</strong> ketika <a href="https://www.facebook.com/jimmy.rengga">Jimmy</a> melakukan pendakian bulan Mei kemarin, akhirnya ada kesempatan juga untuk melakukan pendakian lagi di bulan Juni ini dan target yang dipilih adalah <a href="http://id.wikipedia.org/wiki/Gunung_Sindara">Gunung Sindoro/Sindara</a> :)</p>
+
+<p>Sedikit gambaran tentang <strong>Gunung Sindoro</strong> ini adalah sebuah gunung volkano akftif yang terletak di Temanggung - Jawa Tengah, gunung ini juga berdekatan dengan <a href="http://id.wikipedia.org/wiki/Gunung_Sumbing">Gunung Sumbing</a>. Selain letaknya yang berdekatan, serta memiliki bentuk dan tinggi yang hampir sama. Tinggi Gunung Sumbing sekitar 3.340 m dari permukaan laut (dpl), sedikit lebih tinggi daripada Sindoro (3.153 mdpl). Jika dipetakan, Sumbing berada disebelah barat daya kota Temanggung dan sebelah Timur kota Wonosobo. Sedangkan Sindoro disebelah barat laut Temanggung danTimur laut Wonosobo. Masyarakat dikedua daerah itu menyebut Sindoro-Sumbing sebagai Gunung kembar. Keduanya menyimpan potensi wisata yang sangat besar, meskipun belum semuanya bisa dikelola secara maksimal.</p>
+
+<p>Sedangkan untuk jalur pendakian, gunung Sindoro mempunyai 2 buah jalur pendakian yaitu melalui desa <strong>Kledung</strong> dan <strong>Tambi</strong>. Sedangkan untuk pendakian yang kita lakukan kali ini, kita memilih menggunakan jalur <strong>Kledung</strong> karena dari informasi yang terkumpul banyak yang menyarankan melalui jalur ini :) Seperti biasa sebelum mulai pendakian kita juga harus mengumpulkan berbagai macam informasi yang terkait dengan gunung Sindoro, baik mencari melalui <a href="http://google.com/">Google</a>, tulisan teman-teman pendaki di blog-nya masing-masing, catper teman-teman di forum OANC kaskus dan beberapa groups pendaki di FB saya rasa sangat cukup membantu untuk mengumpulkan informasi yang diperlukan tentang Gunung Sindoro ini. Dari hasil pencarian dan pengumpulan informasi tersebut, akhirnya kita dapat beberapa poin penting tentang gunung Sindoro yaitu :</p>
+
+<ul>
+<li>Gunung Sindoro merupakan tipe gunung gersang, tidak ada mata air disepanjang jalur pendakian.</li>
+<li>Kondisi jalur pendakian menuju puncak Sindoro berbatu-batu</li>
+<li>Terdapat 5 pos pendakian dari basecamp</li>
+<li>Jarak antar pos, basecamp ke pos 1 ~+ 1.5 jam</li>
+<li>Pos 1 - Pos 2 ~+ 1.5 jam</li>
+<li>Pos 2 - Pos 3 ~+ 2 jam</li>
+<li>Pos 3 - Pos 4 ~+ 2 jam</li>
+<li>Pos 4 - Pos 5 (puncak) ~+ 2 jam</li>
+<li>Pos yang bisa di buat nge-camp ada di pos 3 yang tempatnya cukup luas</li>
+<li>Pos 4 tidak bisa dibuat nge-camp, dikarenakan kondisi medan yang miring</li>
+<li>Pos 5 adalah puncak Sindoro</li>
+<li>Sebaiknya tidak meninggalkan barang bawaan di pos 3 baik baju, matras, sleeping bag atau carrier karena banyak kasus kehilangan barang yang terjadi di pos 3</li>
+</ul>
+
+
+<p>(Karena pengalaman di Cikuray yang buta tentang jarak antar pos, untuk pendakian kali ini patokan jarak antar pos harus dimasukkan ke <strong>TODO List</strong> :D )</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-22T15:21:07+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/06/22/howto-disable-individual-jetpack-module/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Gara-gara sering kelupaan bagaimana cara-nya men-disable sebuah modul di <a href="http://wordpress.org/plugins/jetpack/">Jetpack</a>, akhirnya saya buatkan posting sekalian biar besok-besok tidak lupa lagi :D Postingan ini ditulis gara-gara saya tidak puas dengan module <strong>Likes</strong> di Jetpack. Karena sudah terlanjur di aktifkan dan tidak puas, jadi beginilah step by step untuk mendisable-nya :)</p>
+
+<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/TampilanModuleLikesyangAktif.png" width="300" height="183" title="Tampilan Module Likes yang Aktif" ></p>
+
+<p>Jika sudah, sekarang tekanlah tombol <strong>Learn More</strong> di module yang ingin di disable untuk menampilkan tombol <strong>Deactive</strong> seperti gambar dibawah ini (lihat tombol yang dibulatin) :</p>
+
+<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/KlikTombolDeactive.png" width="300" height="196" title="Klik Tombol Deactive" ></p>
+
+<p>Kalau tampilan sudah seperti gambar diatas, maka sekarang tekanlah tombol <strong>Deactive</strong> untuk mendisable module yang dimaksud. Dan harusnya jika tidak ada masalah, maka kita akan melihat tampilan seperti gambar dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/ProsesDeactiveBerhasil.png" width="300" height="181" title="Proses Deactive Berhasil" ></p>
+
+<p>Sebenarnya gampang bukan ? Mungkin memang karena faktor <strong>&ldquo;U&rdquo;</strong> nih yang bikin jadi sering lupa :(</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-14T11:16:10+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://martinusadyh.web.id/2013/04/09/nusantaride-event-ride-and-roast/"><strong>&ldquo;Ride and Roast&rdquo;</strong></a> itulah tema kumpul-kumpul teman-teman <a href="http://www.nusantaride.com/Forums/">Nusantaride</a> yang diselenggarakan pada tanggal 20 April 2013 kemarin dan bertempat di koordinat <strong>-6.73921, 107.00591</strong> yang ternyata lokasi-nya adalah di daerah Cibodas (tepatnya sih di <strong>Camping Ground</strong> Cibodas - depan kantor Taman Nasional Gede Pangrango - TNGP) :D Rencana awal perjalanan ini sebenarnya adalah <strong>&ldquo;solo riding&rdquo;</strong> dikarenakan navigator yang saya ajak di event <a href="http://martinusadyh.web.id/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Ride, Lunch and Laugh</a> kemarin tidak bisa ikut, tanpa disangka-sangka <a href="https://www.facebook.com/herri.herrie">Om Herri</a> dan <a href="https://www.facebook.com/ar.farid.79">Om Farid</a> mengajak untuk riding bareng. Tapi sayang-nya om Herri mengusulkan tikum di daerah pancoran sedangkan om Farid tikum di cibinong, setelah berdiskusi akhirnya di putuskan saya akan tikum dulu dengan om Herri di daerah pancoran tepat jam 08:00 baru kemudian menuju ke Cibinong untuk ketemu dengan om Farid tepat jam 09:00 lalu meluncur bareng-bareng menuju lokasi acara :)</p>
+
+<p>Hari Sabtu itu tanggal 20/04/2013 tepat jam 07:30 saya mulai meluncur ke daerah pancoran untuk bertemu dengan om Herri, kondisi jalanan menuju ke pancoran sangat lenggang waktu itu  tidak seperti hari-hari biasanya dan setengah jam kemudian akhirnya saya bertemu dengan om Herri :) Tanpa banyak bicara, akhirnya kita berdua mulai perjalanan menuju ke Cibodas dengan sebelum-nya melipir kesuatu tempat yang kata om Herri terdapat sebuah setu yang katanya ada pemandangan bagus dan cocok buat foto-foto :D (meskipun pada akhir cerita setu-nya juga masih belum ketemu :( ).</p>
+
+<p>Ternyata kondisi jalanan yang lenggang hanya saya nikmati dari kalimalang sampai pancoran saja, sebaliknya perjalanan dari pancoran - pasar minggu - depok - cibinong di beberapa titik cukup padat :( Dan entah bagaimana ceritanya, saya juga lupa ngasih tahu ke om Herri lokasi om Farid menunggu kita :( yang menyebabkan kita tetap melanjutkan perjalanan menuju ke citeureup. Setelah melewati sebuah pasar di daerah pintu tol Citeureup, akhirnya kita bisa menjumpai hijau-nya pemandangan alam pedesaan setelah beberapa jam <em>riding</em> hanya melihat rumah-rumah saja.</p>
+
+<p><img class="left" src="/images/blog-images/Adventure/TOURING/BercengkramadenganNusantariderdiEventRidenRoast/AkhirnyaMeilhatIndahnyaAlam.jpg" width="300" height="225" title="Akhirnya Meilhat Indahnya Alam" ></p>
+
+<p><img class="center" src="/images/blog-images/Adventure/TOURING/BercengkramadenganNusantariderdiEventRidenRoast/KondisiJalananSetelahCiteureup.jpg" width="300" height="225" title="Kondisi Jalanan Setelah Citeureup" ></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-13T01:05:00+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Perjalanan kali ini sebenarnya merupakan perjalanan balas dendam gara-gara rencana tahun kemarin batal :( , karena tidak ingin gagal untuk kedua kali-nya akhirnya untuk perjalanan kali ini kita mengajak teman-teman kantor dari divisi lain selain divisi IT tempat dimana saya bersemayam :D Dan akhirnya kita putuskan untuk <strong>&ldquo;Rafting di Citarik&rdquo;</strong> awal bulan April tepatnya tanggal 07/04/2013 :)</p>
+
+<p>Rafting kita kali ini menggunakan jasa dari pihak <a href="http://www.kakilangitcamp.com/">Kaki Langit Adventure</a> yang menurut kita tidak terlalu mahal, sedangkan semua urusan booking membooking di urus langsung oleh <a href="https://www.facebook.com/idhi.baee">Mas Idhi</a>. Setelah berdiskusi dengan teman-teman yang lain, akhirnya kita putuskan untuk mengambil paket arung jeram yang 9 KM supaya bisa lebih lama bermain-main airnya :) Setelah semua urusan dengan pihak <a href="http://www.kakilangitcamp.com/">Kaki Langit Adventure</a> selesai, akhirnya kitapun sepakat untuk berkumpul di kantor hari Sabtu 06/04/2013 jam 22:00.</p>
+
+<p>Akhirnya tepat jam 23:00 kita semua berangkat menuju basecamp <strong>Kaki Langit Adventure</strong> sebagai <strong>EO</strong> yang kita sewa, dan tim kita dalam perjalanan kali ini berjumlah 11 orang dengan komposisi 4 cewek dan 7 cowok :) Karena diantara kita belum ada yang pernah ke tempat <strong>Kaki Langit Adventure</strong>, sedangkan peta lokasi yang diberikan juga kurang jelas. Akhirnya kitapun menggunakan bantuan dari <a href="https://maps.google.com/">Google Maps</a> yang akhirnya didapatlah rute menuju lokasi seperti dibawah ini :</p>
+
+<p><a href="https://maps.google.com/maps?saddr=Lebak+Bulus,+Jakarta&amp;daddr=Kaki+Langit+Adventure+Camp,+Jl.Raya+Cikidang+desa+Cikiray.+Kec.+Cikidang,+Sukabumi+40115&amp;hl=en&amp;sll=-6.30538,106.788342&amp;sspn=0.03,0.03&amp;geocode=FZzJn_8d9nVdBin59GH2Ju5pLjEQMNUt6MUABQ%3BFdawlv8dndZaBiHb3tH_BMlAPilvTI8cIyloLjHb3tH_BMlAPg&amp;dirflg=d&amp;t=m&amp;ie=UTF8&amp;ll=-6.603198,106.754417&amp;spn=0.622384,0.288337&amp;source=embed">View Larger Map</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-29T17:08:58+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/blog-images/Adventure/TOURING/BerburuSunsetdiPantaiRancaBuayadanPantaiSantolo/SunsetyangterhalangawandiPantaiSantolo.jpg" title="'Sunset yang terhalang awan di Pantai Santolo'" ></p>
+
+<p>Sebenarnya perjalanan kali ini terinspirasi dari <strong>Ride Report</strong> om Debian di forum <strong>Nusantaride</strong> dengan judul <a href="http://www.nusantaride.com/Forums/showthread.php?t=544">Ekspedisi Menyingkap Keindahan 8 Pantai Tersembuyi di Garut</a>, nah karena tergiur dengan pemandangan yang terdapat pada tulisan om Debian akhirnya sayapun berusaha meracuni beberapa teman untuk ikutan jalan menuju ke Pantai Ranca Buaya di akhir maret nanti tepatnya waktu <em>long weekend</em> di tanggal 29-31 Maret 2013 :) Dan ternyata, respon teman-teman cukup baik juga dengan menyatakan bahwa mereka tertarik untuk ikutan <em>riding</em> bareng menuju ke Pantai Ranca Buaya :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-23T12:22:15+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sedang bingung bagaimana mengaktifkan fitur <strong>SSL <em>(Secure Sockets Layer)</em></strong> pada <a href="http://tomcat.apache.org/">Apache Tomcat</a> ? Jika iya, pada tulisan kali ini mari kita bahas bagaimana mengkonfigurasi <strong>Apache Tomcat</strong> yang kita gunakan agar bisa mendukung fitur <strong>SSL</strong> ini. Pada tulisan kali ini sistem operasi yang digunakan adalah <strong>GNU/Linux Ubuntu 12.04</strong> sehingga semua proses konfigurasi dan installasi aplikasi akan mengikuti cara kerja dan struktur direktori milik Ubuntu :) Supaya lebih memudahkan, maka tulisan kali ini akan dibagi menjadi beberapa tahapan yang kurang lebih sebagai berikut :</p>
+
+<ol>
+<li> <strong>Installasi Java Development Kit</strong>,
+Sebelum melakukan installasi <strong>JDK</strong>, ada baiknya kita mengecek dahulu apakah di sistem kita sebelumnya sudah terinstall <strong>java (baik JRE maupun JDK)</strong> dengan versi yang lain. Pastikan bahwa kita hanya mempunyai 1 versi <strong>java</strong> saja yang terinstall, jalankan perintah dibawah ini untuk melakukan pengecekan versi <strong>Java</strong> yang terinstall pada sistem kita :</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>server@pangrango# dpkg --get-selections | grep jdk</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Catatan</strong>: Jika ditemukan, hapus semua dengan menggunakan perintah sudo apt-get remove <em>nama-package</em></p>
+
+<p>Dan pastikan juga didalam direktori <code>/usr/lib/jvm/</code> kosong, semua proses ini kita lakukan supaya kita tidak bingung apakah certificate kita terbaca atau tidak oleh <strong>Apache Tomcat</strong>. Jika sudah sekarang lakukan installasi java dengan mengetikkan perintah <code>sudo apt-get install openjdk-7-jdk</code>, dan kalau sudah lakukan pengecekkan dengan mengetikkan perintah <code>java -version</code> atau <code>javac -version</code>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-14T22:25:37+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>&ldquo;Ride, Lunch and Laugh @ Waduk Jatiluhur&rdquo;</strong> ini adalah sebuah event yang diselenggarakan oleh komunitas <a href="http://www.nusantaride.com/Forums">Nusantaride</a> yang bertujuan untuk saling mengakrabkan diri diantara para pecinta <strong>petualang menggunakan roda dua</strong>, dan event ini merupakan pengalaman pertama saya bertemu, berkenalan dan bercanda mesra dengan para rider yang mempunyai jam terbang tinggi dalam dunia petualangan menggunakan roda dua :)</p>
+
+<p>Ciri khas dari komunitas <a href="http://www.nusantaride.com/Forums">Nusantaride</a> ini jika mengadakan sebuah event adalah hanya memberikan koordinat GPS <em>(Global Positioning System)</em> saja sebagai tikum-nya, dan tidak ada informasi lain seperti jam berapa acara akan dimulai. Pokoknya datang saja ke lokasi dimana koordinat diberikan, jika kita sampai di lokasi yang sudah diberikan dan ternyata sudah tidak ada orang berarti ada 2 kemungkinan yaitu <strong>&ldquo;acara sudah selesai&rdquo;</strong> atau <strong>&ldquo;kita kesasar&rdquo;.</strong> Nah kalau sudah begini, semuanya terserah kepada kita mau jalan kemana :D</p>
+
+<p>Karena makin penasaran bagaimana rasanya naik motor dengan tujuan hanya sebuah koordinat yang saya sendiri tidak tahu tempatnya nanti seperti apa dan kondisi jalannya bagaimana, akhirnya dengan bersusah payah saya mencoba mengutak-atik koordinat yang diberikan oleh pantia menggunakan bantuan <a href="http://maps.google.com/">Google Maps</a>. 10 menit kemudian akhirnya dengan senyum bahagia penuh kemenangan saya berhasil juga menemukan lokasi koordinat untuk event <strong>&ldquo;Ride, Lunch and Laugh&rdquo;</strong>. Setelah menemukan lokasi tikum yang dimaksud, sekarang tibalah saatnya untuk mencari rute menuju ke tikum acara dengan menggunakan fasilitas <strong>Get Directions</strong> milik <a href="http://maps.google.com/">Google Maps</a> yang akhirnya <strong>Google</strong> dengan senang hati memilihkan rute kepada saya seperti yang terlihat dibawah ini :</p>
+
+<p><a href="https://maps.google.com/maps?saddr=Jalan+Pangkalan+Jati+2,+13620&amp;daddr=Unknown+road&amp;geocode=Fb6moP8dvUVfBimPKoYiLPNpLjEMEyexwkYyBg%3BFUs-nP8doThlBg&amp;sll=-6.391395,107.101809&amp;sspn=0.378719,0.676346&amp;dirflg=ht&amp;hl=en&amp;ie=UTF8&amp;ll=-6.391395,107.101809&amp;spn=0.288852,0.389882&amp;t=m&amp;source=embed">View Larger Map</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-09T22:07:41+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2013/04/09/nusantaride-event-ride-and-roast/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Woaaaaa&hellip;.. <strong>RR (Ride Report)</strong> event <a href="http://martinusadyh.web.id/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Ride, Lunch and Laugh</a> masih ditulis, temen-temen <a href="http://www.nusantaride.com/Forums">Nusantaride</a> sudah mengadakan event lagi di bulan April ini sodara-sodara. Dan kali ini, seperti biasanya titik kumpul hanya merupakan sebuah koordinat saja  :) Oh iya, event kali ini saya teruskan ulang dari forum <strong>Nusantaride</strong> yang bisa dilihat <a href="http://www.nusantaride.com/Forums/showthread.php?t=967&amp;page=1">disini</a>.</p>
+
+<p><img src="/images/blog-images/Adventure/TOURING/NusantarideEventRIDEandROAST/RideandRoast-300x211.jpg" width="300" height="211" title="Ride and Roast @ Cibodas" ></p>
+
+<p>Bagaimana teman-teman ? Apakah kalian akan ikut ??</p>
+
+<p><strong>Remember There is no stranger on Nusantaride, only friends you have not met yet. Let&rsquo;s do it again on Ride and Roast !</strong></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="2">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

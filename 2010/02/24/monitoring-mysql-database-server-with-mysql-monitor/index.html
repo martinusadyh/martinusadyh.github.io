@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Monitoring MySQL DataBase Server with MySQL Monitor - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Beberapa minggu terakhir ini, saya kebagian tugas melakukan installasi MySQL Enterprise Server beserta peralatan pendukung untuk melakukan monitoring &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Monitoring MySQL DataBase Server With MySQL Monitor</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-24T07:28:19+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Beberapa minggu terakhir ini, saya kebagian tugas melakukan installasi <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> beserta peralatan pendukung untuk melakukan monitoring-nya sekalian :) Secara kebetulan juga di minggu yang sama, di milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan yang ditanyakan oleh <a href="http://budigunawan.wordpress.com/">Pak Budi</a> tentang <a href="http://tech.groups.yahoo.com/group/netbeans-indonesia/message/8066">Table Index Pada Hibernate</a>. Diskusi berjalan sangat hangat dan akhir-nya pembahasan secara perlahan namun pasti mengarah ke topik bagaimana melakukan <strong>tunning</strong> pada  database server yang kebetulan juga pakai <a href="http://www.mysql.com/downloads/">MySQL Community Server</a> yang notabene bisa kita download secara gratis :)</p>
+
+<p>Nah pada tulisan kali ini, saya cuma ingin berbagi pengalaman bagaimana cara meng-install dan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> untuk keperluan <strong>monitoring</strong> terhadap <a href="http://www.mysql.com/downloads/">MySQL Server</a> kita (Maklum meskipun sudah jelas dibahas pada halaman manual-nya, saya masih sering salah langkah juga :( ). Saya juga tahu bahwa <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> ini tidak gratis melainkan sebuah aplikasi yang berbayar. Tapi jangan kuatir, <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> ini tersedia secara <strong>gratis</strong> selama <strong>30 hari</strong> dan semua fitur tidak ada yang dipangkas :) Ok kita sudahi dulu basa-basi-nya, sekarang mari kita masuk ke inti masalah-nya yaitu bagaimana meng-install dan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a>. Sebelum membaca lebih lanjut, yang perlu kita lakukan pertama kali yaitu melakukan registrasi pada situs <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> dahulu untuk mendapatkan <strong>link</strong> download-nya baru kemudian mari kita download file-file yang kita perlukan :D :) (<strong>Note: Proses registrasi pada situs <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> ini hanya bisa digunakan untuk 1 account email saja</strong>)</p>
+
+<p>Sudah siap untuk melakukan proses <strong>download</strong> ? Jika sudah, silahkan download file-file dibawah ini :</p>
+
+<ol>
+<li><p> <strong>mysql_monitoring_service.key</strong>
+File ini digunakan untuk aktivasi ketika akan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a></p></li>
+<li><p> <strong>AdvisorScript-Trial-2.1.0.1093.jar</strong>
+File ini digunakan untuk aktivasi ketika akan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a></p></li>
+<li><p> <strong>mysql-enterprise-gpl-5.1.40sp1-0.rhel5.i386.tar</strong>
+File ini adalah versi <strong>Enterprise</strong> dari <a href="http://www.mysql.com/downloads/">MySQL Community Server</a>, kalau ingin coba-coba download saja. Tapi kalau menurut saya, koq seperti-nya tidak ada beda-nya ya antara versi <strong>Community</strong> sama yang <strong>Enterprise</strong> (Ini murni berdasarkan pengalaman <strong>ngoprek</strong> selama beberapa minggu terakhir ini, jadi belum sempat <strong>explore</strong> lebih dalam lagi :D )</p></li>
+<li><p> <strong>mysqlmonitor-2.1.1.1141-linux-x86-installer.bin</strong>
+File ini merupakan server untuk melakukan proses <strong>monitoring</strong>, nanti-nya yang akan kita akses adalah hasil proses installasi dari file ini. Didalam file ini juga sudah terdapat <a href="http://tomcat.apache.org/">Apache Tomcat</a> dan <a href="http://www.mysql.com/downloads/">MySQL Server</a> untuk menjalankan <strong>Dashboard</strong> dan menyimpan data hasil monitoring yang kita lakukan.
+<strong>Note: Download-lah dengan file yang sesuai dengan spesifikasi server yang teman-teman gunakan</strong></p></li>
+<li><p> <strong>mysqlmonitoragent-2.1.1.1144-linux-glibc2.3-x86-32bit-installer.bin</strong>
+File ini fungsi-nya adalah sebagai reporter ke <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor Server</a>, agar <strong>Dashboard</strong> dapat berfungsi dengan baik maka semua proses koneksi ke <strong>MySQL Server</strong> harus melalui <strong>MySQL Monitor Agent</strong> ini dahulu baru kemudian diteruskan ke <strong>MySQL Server</strong> sebenar-nya :)
+<strong>Note: Download-lah dengan file yang sesuai dengan spesifikasi server yang teman-teman gunakan</strong></p></li>
+<li><p> <strong>mysql-monitor-html.tar.gz</strong>
+Dan yang terakhir adalah jangan lupa untuk sekalian mendownload halaman manual-nya juga, karena didalam file ini banyak sekali konfigurasi yang diterangkan secara <strong>jelas, padat dan terpercaya</strong> :D :) Untuk teman-teman yang ingin bermain-main dengan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a>, file ini <strong>WAJIB</strong> hukum-nya untuk didownload.</p></li>
+</ol>
+
+
+<p>Nah setelah semua selesai di download, sekarang tiba saat-nya untuk proses installasi. Karena ini pengalaman pertama saya, maka pilihan <strong>Sistem Operasi</strong> yang saya pilih yaitu <a href="http://centos.org/">CentOS</a>. Pilihan ini dikarenakan agar kita tidak perlu melakukan perubahan pada <strong>init script</strong> yang dibawa oleh <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> :) Jadi untuk teman-teman, silahkan siapkan dahulu <strong>environment</strong> yang akan digunakan yah :) (Untuk Sistem Operasi yang lain, jika saya ada waktu akan saya tulis bagaimana integrasi pada masing-masing karakteristik <strong>init script</strong>-nya dan yang pasti bukan pada Sistem Operasi Microsoft Windows :) )</p>
+
+<p>Sekarang pastikan dahulu bahwa teman-teman sudah meng-install <a href="http://mysql.com/">MySQL</a> pada server yang ingin kita <strong>monitor</strong>, sedangkan pada tulisan ini <a href="http://mysql.com/">MySQL</a> yang digunakan adalah <a href="http://www.mysql.com/downloads/">MySQL Community Server</a> bawaan dari distro <a href="http://centos.org/">CentOS</a> yang cara installasi dan konfigurasi-nya bisa teman-teman lihat pada <a href="http://martinusadyh.web.id/2010/02/23/installing-mysql-in-centos-5-4/">tutorial kemarin</a> :)</p>
+
+<!-- more -->
+
+
+<blockquote><p>Karena pada tulisan ini <a href="http://mysql.com/">MySQL</a> yang digunakan yaitu <a href="http://www.mysql.com/downloads/">MySQL Community Server</a> dan bukan-nya <a href="http://mysql.com/trials/">MySQL Enterprise Server</a>, maka jika teman-teman ingin menggunakan versi <a href="http://mysql.com/trials/">MySQL Enterprise Server</a>, pastikan dahulu bahwa teman-teman sudah <strong>meng-uninstall</strong> <a href="http://www.mysql.com/downloads/">MySQL Community Server</a> setelah itu baru mulai melakukan proses installasi versi <strong>Enterprise</strong>-nya dengan cara sebagai berikut :</p>
+
+<ol>
+<li><p> <strong>Ekstrak File mysql-enterprise-gpl-5.1.40sp1-0.rhel5.i386.tar</strong>
+Proses ekstrak bisa dilakukan dengan cara sebagai berikut melalui terminal :</p>
+
+<p>  [root@localhost ~]# tar xvf mysql-enterprise-gpl-5.1.40sp1-0.rhel5.i386.tar
+  MySQL-test-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  MySQL-enterprise-gpl-debuginfo-5.1.40sp1-0.rhel5.i386.rpm
+  MySQL-devel-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  MySQL-embedded-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  MySQL-server-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  MySQL-shared-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  MySQL-client-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  MySQL-shared-compat-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  [root@localhost ~]#</p>
+
+<ol>
+<li><strong>Proses Installasi</strong>
+Proses installasi dapat dilakukan dengan mengetikkan perintah seperti dibawah ini :</li>
+</ol>
+
+
+<p>  [root@localhost ~]# rpm -i MySQL-client-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  [root@localhost ~]# rpm -i MySQL-devel-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  [root@localhost ~]# rpm -i MySQL-embedded-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  [root@localhost ~]# rpm -i MySQL-enterprise-gpl-debuginfo-5.1.40sp1-0.rhel5.i386.rpm
+  [root@localhost ~]# rpm -i MySQL-shared-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  [root@localhost ~]# rpm -i MySQL-test-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm
+  [root@localhost ~]# rpm -i MySQL-server-enterprise-gpl-5.1.40sp1-0.rhel5.i386.rpm</p>
+
+<p>  PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+  To do so, start the server, then issue the following commands:</p>
+
+<p>  /usr/bin/mysqladmin -u root password &lsquo;new-password&rsquo;
+  /usr/bin/mysqladmin -u root -h localhost.localdomain password &lsquo;new-password&rsquo;</p>
+
+<p>  Alternatively you can run:
+  /usr/bin/mysql_secure_installation</p>
+
+<p>  which will also give you the option of removing the test
+  databases and anonymous user created by default.  This is
+  strongly recommended for production servers.</p>
+
+<p>  See the manual for more instructions.</p>
+
+<p>  Please report any problems with the /usr/bin/mysqlbug script!</p>
+
+<p>  The latest information about MySQL is available at <a href="http://www.mysql.com/">http://www.mysql.com/</a>
+  Support MySQL by buying support/licenses from <a href="http://shop.mysql.com/">http://shop.mysql.com/</a></p>
+
+<p>  Starting MySQL..[  OK  ]
+  Giving mysqld 2 seconds to start
+  [root@localhost ~]#</p>
+
+<ol>
+<li><strong>Konfigurasi Password dan Testing</strong>
+Setelah proses installasi selesai, sekarang mari kita konfigurasi password yang akan digunakan oleh user <strong>root</strong> dan jika sudah selesai mari kita test dengan cara login menggunakan user <strong>root</strong> tersebut dengan cara seperti dibawah ini :</li>
+</ol>
+
+
+<p>  [root@localhost MySQL]# /usr/bin/mysqladmin -u root password &lsquo;admin&rsquo;
+  [root@localhost MySQL]# mysql -u root -padmin
+  Welcome to the MySQL monitor.  Commands end with ; or \g.
+  Your MySQL connection id is 2
+  Server version: 5.1.40sp1-enterprise-gpl-pro MySQL Enterprise Server - Pro Edition (GPL)</p>
+
+<p>  Type &lsquo;help;&rsquo; or &lsquo;\h&rsquo; for help. Type &lsquo;\c&rsquo; to clear the current input statement.</p>
+
+<p>  mysql></p></li>
+</ol>
+</blockquote>
+
+<p>Jika semua proses diatas sudah dilakukan, maka kita sudah dapat menggunakan <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> yang ber-umur <strong>30 hari</strong> saja. Dan jika teman-teman tertarik, mungkin teman-teman juga dapat membeli <strong>subscription</strong>-nya pada situs <a href="http://mysql.com/">MySQL</a> :D :)</p>
+
+<p>Kalau semua persiapan sudah selesai, sekarang mari kita mulai melakukan installasi dan konfigurasi <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> beserta <strong>Monitor Agent</strong>-nya. Supaya lebih mudah, proses installasi dan konfigurasi ini dibagi menjadi beberapa bagian yang kurang lebih seperti berikut :</p>
+
+<ol>
+<li><p> Installasi MySQL Monitor Server</p></li>
+<li><p> Pembuatan User MySQL Untuk Monitor Agent</p></li>
+<li><p> Installasi MySQL Monitor Agent</p></li>
+<li><p> Testing Konfigurasi Menggunakan Skenario Strest Test</p></li>
+</ol>
+
+
+<p>OK sudah jelas kan kira-kira langkah apa saja yang akan kita lakukan ?? Kalau sudah jelas, sekarang mari kita mulai :)</p>
+
+<ol>
+<li><p> <strong>Installasi MySQL Monitor Server</strong>
+<strong>MySQL Monitor Server</strong> atau bisa disebut dengan <strong>Service Manager</strong> ini adalah merupakan jantung dari <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a>, dan pada proses installasi ini <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> membawa beberapa komponen-komponen tambahan secara default yaitu :</p>
+
+<ul>
+<li><p>Apache Tomcat</p></li>
+<li><p>MySQL Server</p></li>
+<li><p>Java VM</p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>Untuk memulai proses installasi-nya, gantilah dahulu hak akses teman-teman menjadi <strong>super user</strong> atau <strong>root</strong> kemudian berilah hak akses <strong>executable</strong> pada file <strong>mysqlmonitor-2.1.1.1141-linux-x86-installer.bin</strong> dan memulai proses installasi-nya dengan mengetikkan perintah <strong>./mysqlmonitor-2.1.1.1141-linux-x86-installer.bin &ndash;mode text</strong> seperti dibawah ini :</p>
+
+<pre><code>[root@localhost MySQL]# chmod +x mysqlmonitor-2.1.1.1141-linux-x86-installer.bin 
+[root@localhost MySQL]# ./mysqlmonitor-2.1.1.1141-linux-x86-installer.bin --mode text
+</code></pre>
+
+<p>Setelah menjalankan perintah seperti diatas, maka pada layar terminal akan muncul pemilihan bahasa yang akan digunakan. Pilihlah nomor 1 dengan mengetikkan angka 1 atau bisa menekan tombol <strong>ENTER</strong> seperti dibawah ini :</p>
+
+<pre><code>Language Selection
+
+Please select the installation language
+[1] English - English
+[2] Japanese - 日本語
+Please choose an option [1] : 1
+</code></pre>
+
+<p>Pada menu selanjut-nya, layar terminal kita akan muncul sambutan selamat datang dan menanyakan ingin di install di direktori mana <strong>Service Manager</strong> ini. Tekanlah tombol <strong>ENTER</strong> untuk menyetujui bahwa kita ingin menginstall pada direktori <strong>/opt/mysql/enterprise/monitor</strong> seperti dibawah ini :</p>
+
+<pre><code>----------------------------------------------------------------------------
+Welcome to the setup wizard for the MySQL Enterprise Monitor
+
+You will need a product key to complete installation. When the Monitor first starts, provide your existing MySQL Enterprise subscription or Trial credentials to obtain a key. Need an account? Go to http://www.mysql.com/trials/ to register for a trial subscription.
+
+----------------------------------------------------------------------------
+Please specify the directory where the MySQL Enterprise Monitor will be installed
+
+Installation directory [/opt/mysql/enterprise/monitor]: 
+</code></pre>
+
+<p>Langkah selanjut-nya yaitu adalah menentukan port yang ingin digunakan oleh <a href="http://tomcat.apache.org/">Apache Tomcat</a>, jika kita tidak ingin merubah konfigurasi <strong>default</strong> tekanlah tombol <strong>ENTER</strong> pada setiap pertanyaan yang diajukan seperti dibawah ini :</p>
+
+<pre><code>----------------------------------------------------------------------------
+Tomcat Server Options
+
+Please specify the following parameters for the bundled Tomcat Server
+
+Tomcat Server Port [18080]: 
+
+Tomcat Shutdown Port [18005]: 
+
+Tomcat SSL Port [18443]: 
+
+
+
+Is SSL support required?           [y/N]: 
+</code></pre>
+
+<p>Langkah terakhir untuk konfigurasi yang perlu kita lakukan yaitu melakukan konfigurasi pada <strong>Repository</strong> yang akan digunakan. Pada langkah ini, konfigurasi yang penulis pakai adalah seperti berikut :</p>
+
+<pre><code>* Repository Username = **service_manager**
+
+
+* Password = **admin**
+
+
+* Repository Username = **service_manager**
+
+
+* Bundled MySQL Database Port = **13306**
+</code></pre>
+
+<p>Semua konfigurasi ini akan disimpan dalam bentuk <strong>plain text</strong> tanpa enskripsi sama sekali pada file <strong>/opt/mysql/enterprise/monitor/configuration_report.txt</strong>, jadi pastikan benar-benar bahwa direktori <strong>/opt</strong> ini aman dari <strong>tangan-tangan jahil</strong> :D Karena semua konfigurasi menggunakan nilai default, jadi tekanlah tombol <strong>ENTER</strong> untuk setiap pertanyaan seperti dibawah ini :</p>
+
+<pre><code>----------------------------------------------------------------------------
+Repository Configuration
+
+Please specify the following parameters for the bundled MySQL server
+
+Repository Username [service_manager]: 
+
+Password :
+Re-enter :
+Bundled MySQL Database Port [13306]: 
+
+----------------------------------------------------------------------------
+Configuration Report
+
+
+
+Note:
+
+The settings you specified will be saved here:
+/opt/mysql/enterprise/monitor/configuration_report.txt
+
+IMPORTANT: This configuration report includes passwords stored in plain text; it 
+is intended to help you install and configure your agents. We strongly advise 
+you to secure or delete this text file immediately after installation
+Press [Enter] to continue : 
+</code></pre>
+
+<p>Untuk memulai proses installasi tekanlah tombol <strong>ENTER</strong> pada pertanyaan <strong>Do you want to continue? [Y/n]: </strong> dan tekanlah tombol <strong>n</strong> kemudian <strong>ENTER</strong> pada pertanyaan <strong>View Readme File [Y/n]:</strong> seperti dibawah ini :</p>
+
+<pre><code>----------------------------------------------------------------------------
+Setup is now ready to install MySQL Enterprise Monitor on your computer.
+
+Do you want to continue? [Y/n]: 
+
+----------------------------------------------------------------------------
+Please wait while Setup installs MySQL Enterprise Monitor on your computer.
+
+ Installing
+ 0% ______________ 50% ______________ 100%
+ #########################################
+
+----------------------------------------------------------------------------
+Completed installing files
+
+
+
+Setup has completed installing the MySQL Enterprise Monitor files on your 
+computer
+
+Uninstalling the MySQL Enterprise Monitor files can be done by invoking:
+/opt/mysql/enterprise/monitor/uninstall
+
+To complete the installation, launch the MySQL Enterprise Dashboard and complete 
+the initial setup and product activation information. Refer to the readme file 
+for additional information and a list of known issues.
+
+
+Press [Enter] to continue : 
+
+----------------------------------------------------------------------------
+Setup has finished installing MySQL Enterprise Monitor on your computer.
+
+View Readme File [Y/n]: n
+
+Info: To configure the MySQL Enterprise Monitor please visit the following page: 
+http://localhost:18080
+Press [Enter] to continue : 
+[root@localhost MySQL]# 
+</code></pre>
+
+<p>Proses installasi <strong>Service Manager</strong> sudah selesai, sekarang mari kita coba dengan membuka sebuah browser dan masukkan alamat <strong><a href="http://localhost:18080**">http://localhost:18080**</a> kemudian tekanlah tombol </strong>ENTER**. Pada halaman awal ini, ada beberapa hal yang perlu kita lakukan yaitu :</p>
+
+<pre><code>* Tambahkan file **mysql_monitoring_service.key** pada kolom isian **MySQL Enterprise Product Key**
+
+
+* Tambahkan file **AdvisorScript-Trial-2.1.0.1093.jar** pada kolom isian **Advisor Jar File**
+
+
+* Buat user **admin** dengan password **admin**
+
+
+* Buat user **agent** dengan password **admin**
+</code></pre>
+
+<p>Hasil dari konfigurasi diatas adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4382562171/"><img src="http://farm5.static.flickr.com/4043/4382562171_384fe90f2e.jpg" alt="AddKey" /><br/>
+Konfigurasi dan Aktivasi MySQL Enterprise Monitor</a></p>
+
+<p>Jika sudah tekanlah tombol <strong>Complete Setup</strong> dan kita akan dibawa ke halaman <strong>Enterprise Dashboard</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4382562179/"><img src="http://farm5.static.flickr.com/4064/4382562179_9b8d8f86c5.jpg" alt="after_login" /><br/>
+Tampilan Awal Enterprise Dashboard Milik MySQL Monitor</a></p>
+
+<p>Sampai disini proses installasi sudah selesai, gampang bukan :)</p>
+
+<ol>
+<li> <strong>Pembuatan User MySQL Untuk Monitor Agent</strong>
+Setelah selesai melakukan installasi <strong>Service Manager</strong> ini, langkah selanut-nya yaitu meng-install <strong>Agent</strong>-nya. Tapi sebelum menginstall <strong>MySQL Monitor Agent</strong> ini, kita harus membuat dahulu sebuah user yang akan digunakan oleh <strong>MySQL Monitor Agent</strong> ini untuk mengakses ke server target kita (<strong>Catatan: server target disini maksud-nya adalah DataBase Server kita, bukan DataBase Server Bundled yang dibawa oleh MySQL Monitor Server</strong>).</li>
+</ol>
+
+
+<p>Untuk user MySQL yang akan dibuat ini harus mempunyai <strong>privileges</strong> terhadap server MySQL kita, sedangkan penentuan <strong>privileges</strong> ini tergantung kepada informasi yang akan diambil atau ditampilkan oleh <strong>MySQL Monitor Agent</strong> ke <strong>Enterprise Dashboard</strong>. Sedangkan <strong>privileges</strong> dibawah ini mengijinkan <strong>MySQL Monitor Agent</strong> melakukan tugas-nya tanpa ada batasan, beberapa <strong>privileges</strong> tersebut antara lain :</p>
+
+<pre><code>* **SHOW DATABASES** : Privileges ini mengijinkan **Monitor Agent** untuk mengambil informasi tentang MySQL Server
+
+
+* **REPLICATION CLIENT** : Privileges ini mengijinkan **Monitor Agent** untuk mengambil informasi tentang status Replication master/slave.
+
+
+* **SELECT** : Privileges ini mengijinkan **Monitor Agent** untuk mengambil informasi tentang statistik tabel
+
+
+* **SUPER** : Privileges ini mengijinkan **Monitor Agent** untuk mengeksekusi perintah **SHOW ENGINE INNODB STATUS** yang digunakan untuk mengumpulkan data tentang tabel bertipe InnoDB
+
+
+* **PROCESS** : Ketika melakukan monitoring pada MySQL versi 5.1.24 atau diatas-nya yang menggunakan **InnoDB**, **privileges** ini diperlukan untuk menjalankan perintah **SHOW ENGINE INNODB STATUS**
+
+
+* **INSERT** : Untuk membbuat UUID yang dibutuhkan oleh **Monitor Agent**
+
+
+* **CREATE** : Mengijinkan **Monitor Agent** untuk membuat tabel
+</code></pre>
+
+<p>Setelah mengetahui <strong>privileges</strong> yang dibutuhkan oleh <strong>Monitor Agent</strong> sekarang mari kita buat user-nya dengan cara loginlah dahulu ke MySQL Server yang ingin dimonitor kemudian jalankanlah perintah <strong>grant create, insert, select, replication client, show databases, super, process on <em>.</em> to &lsquo;admin&rsquo;@&lsquo;localhost&rsquo; identified by &lsquo;admin&rsquo;;</strong> seperti dibawah ini :</p>
+
+<pre><code>[root@localhost MySQL]# mysql -u root -padmin
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.0.77 Source distribution
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql&gt; grant create, insert, select, replication client, show databases, super, process on *.* to 'admin'@'localhost' identified by 'admin';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; show grants for 'admin'@'localhost';
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Grants for admin@localhost                                                                                                                               |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| GRANT SELECT, INSERT, CREATE, PROCESS, SHOW DATABASES, SUPER, REPLICATION CLIENT ON *.* TO 'admin'@'localhost' IDENTIFIED BY PASSWORD '43e9a4ab75570f5b' | 
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql&gt; quit
+Bye
+[root@localhost MySQL]# 
+</code></pre>
+
+<p><strong>Note: User yang nanti-nya akan dipakai oleh Monitor Agent yaitu admin dan password yang digunakan yaitu admin</strong></p>
+
+<p>Sampai disini, proses pembuatan User MySQL untuk <strong>Monitor Agent</strong> sudah selesai. Sekarang kita bisa lanjut pada tahapan selanjut-nya yaitu melakukan installasi <strong>Monitor Agent</strong>-nya :)</p>
+
+<ol>
+<li><p> <strong>Installasi MySQL Monitor Agent</strong>
+Untuk menginstall <strong>MySQL Monitor Agent</strong> caranya tidak jauh berbeda dengan cara installasi <strong>MySQL Monitor Server</strong> atau <strong>Service Manager</strong> yaitu pertama-tama kita harus memberi akses executable kemudian menjalankan dengan perintah <strong>./mysqlmonitoragent-2.1.1.1144-linux-glibc2.3-x86-32bit-installer.bin &ndash;mode text</strong> seperti dibawah ini :</p>
+
+<p>  [root@localhost MySQL]# chmod +x mysqlmonitoragent-2.1.1.1144-linux-glibc2.3-x86-32bit-installer.bin
+  [root@localhost MySQL]# ./mysqlmonitoragent-2.1.1.1144-linux-glibc2.3-x86-32bit-installer.bin &ndash;mode text</p></li>
+</ol>
+
+
+<p>Pada pertanyaan pertama yaitu pilihan bahasa, tekanlah tombol <strong>ENTER</strong> untuk menerima nilai <strong>default</strong> seperti dibawah ini :</p>
+
+<pre><code>Language Selection
+
+Please select the installation language
+[1] English - English
+[2] Japanese - 日本語
+Please choose an option [1] : 
+</code></pre>
+
+<p>Pada pertanyaan selanjut-nya, layar terminal kita akan muncul sambutan selamat datang dan menanyakan ingin di install di direktori mana MySQL Monitor Agent ini. Tekanlah tombol <strong>ENTER</strong> untuk menyetujui bahwa kita ingin menginstall pada direktori <strong>/opt/mysql/enterprise/agent</strong> seperti dibawah ini :</p>
+
+<pre><code>----------------------------------------------------------------------------
+Welcome to the MySQL Enterprise Monitor Agent Setup Wizard.
+
+----------------------------------------------------------------------------
+Installation directory
+
+
+Please specify the directory where MySQL Enterprise Monitor Agent will be installed
+
+
+Installation directory [/opt/mysql/enterprise/agent]: 
+</code></pre>
+
+<p>Pertanyaan selanjut-nya yaitu masalah koneksi, pilih yang teman-teman gunaakan. Apakah <strong>Monitor Agent</strong> ini koneksi-nya menggunakan <strong>TCP/IP</strong> atau melalui <strong>Socket</strong>. Jika menggunakan <strong>TCP/IP</strong>, maka tekanlah tombol <strong>ENTER</strong> seperti dibawah ini :</p>
+
+<pre><code>How will the agent connect to the database it is monitoring?
+
+
+[1] TCP/IP
+[2] Socket
+Please choose an option [1] : 
+</code></pre>
+
+<p>Setelah pertanyaan tentang koneksi yang digunakan ke DataBase Server yang dimonitor, pada pertanyaan ini kita akan ditanya tentang alamat dari DataBase Server tersebut. Pada pertanyaan <strong>Monitored Database Information</strong> ini, konfigurasi yang digunakan adalah seperti berikut :</p>
+
+<pre><code>* MySQL hostname or IP address = **127.0.0.1** (Sesuaikan dengan kondisi di lapangan, biasanya sih antara database yang dimonitor dan **Monitor Agent** ini berada dalam 1 server. Jadi kita bisa menggunakan nilai default)
+
+
+* Validate MySQL hostname or IP address = **Y** (Pilih saja nilai default, agar di cek sekalian apakah sudah benar atau belum informasi **hostname** atau **IP** yang kita berikan)
+
+
+* MySQL Port = **3306** (Sesuaikan dengan kondisi di Server, ganti nilai ini jika port DataBase yang ingin di monnitor berbeda)
+
+
+* MySQL Username = **admin** (Isi dengan user yang telah dibuat pada langkah [Pembuatan User MySQL Untuk Monitor Agent](PembuatanUserDiDataBaseTarget))
+
+
+* MySQL Password = **admin** (Isi dengan password yang telah dibuat pada langkah [Pembuatan User MySQL Untuk Monitor Agent](PembuatanUserDiDataBaseTarget))
+</code></pre>
+
+<p>Jika tidak ada perubahan, maka kurang lebih tampilan pada layar terminal akan tampak seperti dibawah ini :</p>
+
+<pre><code>----------------------------------------------------------------------------
+Monitored Database Information
+
+IMPORTANT: The agent user account specified below requires special MySQL privileges.
+
+Visit the following URL for more information:
+https://enterprise.mysql.com/docs/monitor/2.1/en/mem-install.html#mem-agent-rights
+
+MySQL hostname or IP address [127.0.0.1]: 
+
+
+
+Validate MySQL hostname or IP address [Y/n]:  
+
+
+MySQL Port [3306]: 
+
+MySQL Username []: admin
+
+MySQL Password :
+Re-enter :
+</code></pre>
+
+<p>Langkah selanjutnya yaitu mengkonfigurasi <strong>Query Analyzer</strong>, konfigurasi ini akan berfungsi untuk melihat semua proses query yang dilakukan pada DataBase yang kita monitor. Agar <strong>Query Analyzer</strong> ini dapat befungsi, maka kita <strong>harus mengubah koneksi di client yang biasanya menggunakan port 3306 agar mengarah ke port yang dibuka oleh Query Analyzer ini</strong>. Sedangkan konfigurasi yang digunakan untuk <strong>Query Analyzer</strong> ini yaitu :</p>
+
+<pre><code>* HEnable Proxy (recommended) = **Y** (Pilih Y jika kita menginginkan fitur Query Analyzer)
+
+
+* Proxy Port = **6446** (Pilih saja nilai default, jika port 6446 sudah digunakan ganti dengan port lain :D :) )
+
+
+* Hostname or IP address = **localhost** (Masukkan alamat dimana MySQL Enterprise Monitor terinstall)
+
+
+* Tomcat Server Port = **18080** (Masukkan port yang digunakan oleh server tomcat, pilih nilai default saja jika pada waktu proses installasi MySQL Enterprise Monitor tidak melakukan perubahan)
+
+
+* Tomcat SSL Port = **18443** (Masukkan port SSL yang digunakan oleh sever tomcat, pilih nilai default saja jika pada waktu proses installasi MySQL Enterprise Monitor tidak melakukan perubahan)
+
+
+* Use SSL = **N** (Pilih nilai default saja jika pada waktu proses installasi MySQL Enterprise Monitor tidak melakukan perubahan)
+
+
+* Agent Username = **agent** (Masukkan username untuk agent yang dibuat pada proses installasi MySQL Enterprise Monitor, default agent)
+
+
+* Agent Password = **admin**(Masukkan password yang digunakan oleh agent yang dibuat pada proses installasi MySQL Enterprise Monitor)
+
+
+* User Account = **root** (Pilih default saja)
+</code></pre>
+
+<p>Setelah melakukan konfigurasi seperti diatas, maka tampilan pada layar terminal kira-kira kurang lebih seperti dibawah ini :</p>
+
+<pre><code>----------------------------------------------------------------------------
+Query Analyzer Configuration
+
+MySQL Proxy enables Query Analyzer by listening on the port specified below for client connections that are then passed through to a backend MySQL database server. It is not needed for basic monitoring functionality, but is required for Query Analyzer.
+
+IMPORTANT UPDATE: The default value for the proxy port has changed.  See the README file for important information if you have previously used the Query Analyzer.
+
+Visit the following URL for more information:
+https://enterprise.mysql.com/docs/monitor/2.1/en/mem-query-analyzer.html
+
+
+
+Enable Proxy (recommended) [Y/n]: 
+
+
+Proxy Port [6446]: 
+
+Backend Host: 127.0.0.1   (cannot be changed)
+
+Backend Port: 3306   (cannot be changed)
+
+----------------------------------------------------------------------------
+MySQL Enterprise Monitor Options
+
+Hostname or IP address []: localhost
+
+Tomcat Server Port [18080]: 
+
+Tomcat SSL Port [18443]: 
+
+
+
+Use SSL? [y/N]: 
+
+
+Agent Username [agent]: 
+
+Agent Password :
+Re-enter :
+----------------------------------------------------------------------------
+User Account
+
+The agent does not need to run with root user privileges. The agent will switch to the user account provided below when started by the root user.
+
+User Account [root]: 
+
+----------------------------------------------------------------------------
+</code></pre>
+
+<p>Fyuh&hellip;. akhir-nya hampir selesai juga, nah sekarang untuk mulai proses installasi tekanlah tombol <strong>ENTER</strong> sekali lagi dan  jika ada pertanyaan <strong>View Readme File</strong> jawab saja dengan menekan tombol <strong>n</strong> kemudian <strong>ENTER</strong> :D seperti dibawah ini :</p>
+
+<pre><code>----------------------------------------------------------------------------
+Configuration Report
+
+
+
+Here are the settings you specified:
+
+Installation directory: /opt/mysql/enterprise/agent
+
+Monitored MySQL Database:
+-------------------------
+Hostname or IP address: 127.0.0.1
+Port: 3306
+MySQL username: admin
+MySQL password: admin
+
+Query Analyzer Configuration
+-------------------------
+Proxy Enabled: yes
+Proxy Port: 6446
+Proxy User: root
+
+MySQL Enterprise Monitor:
+-------------------------
+Hostname or IP address: localhost
+Tomcat Server Port: 18080
+Press [Enter] to continue : 
+Tomcat SSL Port: 18443
+Use SSL: 0
+Agent username: agent
+
+Press [Enter] to continue : 
+
+----------------------------------------------------------------------------
+Setup is now ready to begin installing MySQL Enterprise Monitor Agent on your computer.
+
+Do you want to continue? [Y/n]: 
+
+----------------------------------------------------------------------------
+Please wait while Setup installs MySQL Enterprise Monitor Agent on your computer.
+
+ Installing
+ 0% ______________ 50% ______________ 100%
+ #########################################
+
+----------------------------------------------------------------------------
+Start MySQL Enterprise Monitor Agent
+
+Info to start MySQL Enterprise Monitor Agent
+
+The MySQL Monitor Agent was successfully installed. To start the MySQL Agent 
+please invoke:
+/opt/mysql/enterprise/agent/etc/init.d/mysql-monitor-agent start
+Press [Enter] to continue : 
+
+----------------------------------------------------------------------------
+Setup has finished installing MySQL Enterprise Monitor Agent on your computer.
+
+View Readme File [Y/n]: n
+
+[root@localhost MySQL]# 
+</code></pre>
+
+<p>Hm&hellip;. udah pusing dan bingung ? :D Saya juga awal-nya gitu koq, jadi santai aja, hayuuuk kita lanjut ke tahap testing :)</p>
+
+<ol>
+<li><p> <strong>Testing Konfigurasi Menggunakan Skenario Strest Test</strong>
+Horee&hellip;. gimana teman-teman ?? :) Lumayan yah :) Ok, setelah semua proses intallasi selesai mari sekarang kita coba dengan menjalankan <strong>Monitor Agent</strong>-nya dengan perintah seperti dibawah ini :</p>
+
+<p>  [root@localhost MySQL]# /opt/mysql/enterprise/agent/etc/init.d/mysql-monitor-agent start /opt/mysql/enterprise/agent/etc/mysql-monitor-agent.ini  &amp;&amp; tail -f /opt/mysql/enterprise/agent/mysql-monitor-agent.log
+  Starting MySQL Enterprise agent service&hellip;                 [  OK  ]</p>
+
+<p>  2010-02-24 13:50:57: (critical) MySQL Monitor Agent 2.1.1.1144 started.
+  2010-02-24 13:50:58: (critical) network-io.c:317: successfully reconnected to dashboard at <a href="http://agent:admin@localhost:18080/heartbeat">http://agent:admin@localhost:18080/heartbeat</a>
+  2010-02-24 13:50:58: (critical) agent_mysqld.c:707: successfully connected to database at 127.0.0.1:3306 as user admin (with password: YES)</p></li>
+</ol>
+
+
+<p>Jika sudah, sekarang mari kita lihat tampilan pada <strong>MySQL Monitor Server</strong> atau <strong>Service Manager</strong> dengan mengetikkan alamat <strong><a href="http://localhost:18080/**">http://localhost:18080/**</a> kemudian loginlah dengan username </strong>admin<strong> dan password </strong>admin<strong>, dan jika konfigurasi yang dilakukan selama ini sudah benar maka kita akan melihat tampilan </strong>Enterprise Dashboard** seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4382809165/"><img src="http://farm5.static.flickr.com/4055/4382809165_66ebb9853f.jpg" alt="TampilanAwal" /><br/>
+Tampilan Awal Enterprise Dashboard Yang Menampilkan 1 Agent :) </a></p>
+
+<p>Nah sekarang mari kita coba dengan menggunakan <strong>Skenario Stress Test</strong>, skenario ini bisa dibuat atau dijalankan dengan berbagai macam cara dan metode. Inti-nya sih, kita akan mencoba tembak DataBase Server yang di monitor dengan jumlah <strong>HIT</strong> yang &hellip;.. (terserah deh, sampai server Sistem Operasi-nya tewas juga gpp :D Inti-nya sih lakukan <strong><em>Flood Attack</em></strong> ke DataBase Server-nya :D ) Dan dibawah ini adalah hasil yang saya dapatkan ketika melakukan perintah <strong>select * from nama_table;</strong> yang jumlah kolom-nya ada 23 buah dan jumlah data-nya sendiri cuma sekitar 5618 record :) Memang kecil, kalau kita lihat dari jumlah record-nya untuk data sekelas <strong>production</strong> ini tidak ada apa-apanya :D Tapi server saya kan ada di VirtualBox :) Jadi ya wajar :D :P (Peace :) )</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4382809169/"><img src="http://farm5.static.flickr.com/4069/4382809169_27936cb364.jpg" alt="TampilanKetikaPeakTinggi" /><br/>
+Tampilan Pada Enterprise Dashboard Ketika Terjadi Proses Flood Query</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4382809171/"><img src="http://farm5.static.flickr.com/4071/4382809171_e2774a880a.jpg" alt="TampilanKetikaPeakTinggi2" /><br/>
+Tampilan Pada Enterprise Dashboard Tab Event Ketika Terjadi Proses Flood Query 2</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4382842081/"><img src="http://farm5.static.flickr.com/4027/4382842081_865d4fe692.jpg" alt="TampilanLoadAverage" /><br/>
+Tampilan Grafik Load Average Ketika Terjadi Flood Query</a></p>
+
+<p>Fyuh&hellip;. akhir-nya selesai juga tulisan-nya, dan maaf loh teman-teman kalau jadi <strong>ngantuk</strong> gara-gara baca tulisan saya. Nah sekarang bagaimana menurut pendapat teman-teman sendiri ? Ada yang mau mencoba dan men-<strong>sharing</strong>-kan pengalaman sekaligus <strong>tips dan trik</strong> bermain-main dengan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> ini ? :) Atau mungkin teman-teman mempunyai <strong>tool</strong> atau apapun itu yang tujuan-nya untuk monitoring, manajemen dan tunning DataBase MySQL Server ? Kalau ada, <strong>sharing</strong> ya :D:)</p>
+
+<p>Dan akhir kata dari saya, selamat menikmati dan mohon maaf kalau didalam tulisan ini terjadi salah <strong>arti</strong> atau salah ketik. ;)</p>
+
+<p><strong>Link-link terkait : </strong></p>
+
+<ol>
+<li><p> <a href="http://mysql.com/trials/">MySQL Enterprise Server</a></p></li>
+<li><p> <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a></p></li>
+<li><p> <a href="http://www.mysql.com/downloads/">MySQL Community Server</a></p></li>
+<li><p> <a href="http://tomcat.apache.org/">Apache Tomcat</a></p></li>
+<li><p> <a href="mailto:netbeans-indonesia@yahoogroups.com">Milis NetBeans Bahasa Indonesia</a></p></li>
+<li><p> <a href="http://centos.org/">CentOS</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-24T07:28:19+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/database/'>database</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/02/24/installing-mysql-in-centos-5-4/" title="Previous Post: Installing MySQL in CentOS 5.4">&laquo; Installing MySQL in CentOS 5.4</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/03/01/installing-postgresql-8-4-2-on-slackware-13-0/" title="Next Post: Installing PostgreSQL 8.4.2 on Slackware 13.0">Installing PostgreSQL 8.4.2 on Slackware 13.0 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1034 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Membuat Menu Login Di Java Swing dengan Animasi Progress Bar - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Setelah kita mengerti tentang Thread-thread dasar yang terdapat pada Java Swing dan mengetahui bagaimana cara menggunakan Background Thread dengan &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Membuat Menu Login Di Java Swing Dengan Animasi Progress Bar</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-09T19:02:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Setelah kita mengerti tentang <strong>Thread-thread</strong> dasar yang terdapat pada Java Swing dan mengetahui bagaimana cara menggunakan <strong>Background Thread</strong> dengan <strong>SwingWorker</strong> (pembahasan tentang SwingWorker bisa dilihat pada tulisan <a href="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a>), sekarang mari kita coba membuat sebuah <strong>Project</strong> yang menggunakan Menu Login yang proses otentikasinya kita lakukan langsung ke database :)</p>
+
+<p>Sebelum memulai latihan kali ini, ada beberapa hal yang harus dipersiapkan terlebih dahulu yaitu :</p>
+
+<ul>
+<li>Inisialisasi Master Data Pada DataBase</li>
+<li>Pembuatan Project Menu Login</li>
+<li>Hasil Akhir</li>
+</ul>
+
+
+<p>Pada tulisan kali ini saya tidak akan memberikan penjelasan source code dari baris ke baris seperti pada tulisan-tulisan sebelumnya, tetapi sebagai gantinya penjelasan dapat dilihat pada komentar yang terdapat pada source code yang bersangkutan supaya lebih mudah di ingat-ingat nantinya :)</p>
+
+<!-- more -->
+
+
+<h3>Inisialisasi Master Data Pada DataBase</h3>
+
+<p>Sebelum mulai membuat sebuah <strong>Project</strong> buatlah dahulu database dan tabel yang akan kita akses dari aplikasi Java, untuk membuat sebuah database dan tabel yang akan kita gunakan secara otomatis simpanlah <strong>schema</strong> database dibawah ini dengan nama <strong>MenuLoginSchema.sql</strong> :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="c1">-- DataBase Schema Untuk Contoh MenuLogin</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">`</span><span class="n">menulogin</span><span class="o">`</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">USE</span> <span class="o">`</span><span class="n">menulogin</span><span class="o">`</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">--</span>
+</span><span class='line'><span class="c1">-- Table structure for table `T_USER`</span>
+</span><span class='line'><span class="c1">--</span>
+</span><span class='line'><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">T_USER</span><span class="o">`</span><span class="p">;</span>
+</span><span class='line'><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">T_USER</span><span class="o">`</span> <span class="p">(</span>
+</span><span class='line'>  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span> <span class="n">auto_increment</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+</span><span class='line'>  <span class="o">`</span><span class="n">username</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">default</span> <span class="k">NULL</span><span class="p">,</span>
+</span><span class='line'>  <span class="o">`</span><span class="n">password</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">default</span> <span class="k">NULL</span><span class="p">,</span>
+</span><span class='line'>  <span class="k">PRIMARY</span> <span class="k">KEY</span>  <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">latin1</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">--</span>
+</span><span class='line'><span class="c1">-- Dumping data for table `T_USER`</span>
+</span><span class='line'><span class="c1">--</span>
+</span><span class='line'><span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">T_USER</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">username</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">password</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
+</span><span class='line'><span class="p">(</span><span class="s1">&#39;martin&#39;</span><span class="p">,</span> <span class="s1">&#39;menulogin&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;ahmad&#39;</span><span class="p">,</span><span class="s1">&#39;ganteng&#39;</span><span class="p">),(</span><span class="s1">&#39;slackware&#39;</span><span class="p">,</span><span class="s1">&#39;linux&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Note: DataBase yang digunakan pada tulisan ini yaitu MySQL</strong></p>
+
+<p>Setelah file <strong>MenuLoginSchema.sql</strong> tersimpan pada komputer, sekarang bukalah terminal atau command prompt kemudian masuklah kedalam direktori tempat dimana kita menyimpan file <strong>MenuLoginSchema.sql</strong> tersebut kemudian jalankanlah perintah seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:~/Downloads$ mysql -u root -padmin &lt; MenuLoginSchema.sql
+</code></pre>
+
+<p>Jika tidak ada pesan error, maka seharusnya kita akan mempunyai 1 database dengan nama <strong>menulogin</strong> dan 1  tabel dengan nama <strong>T_USER</strong> beserta isinya seperti dibawah ini :</p>
+
+<pre><code>mysql&gt; show tables;
++---------------------+
+| Tables_in_menulogin |
++---------------------+
+| T_USER              | 
++---------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; select * from T_USER;
++----+-----------+-----------+
+| id | username  | password  |
++----+-----------+-----------+
+|  1 | martin    | menulogin | 
+|  2 | ahmad     | ganteng   | 
+|  3 | slackware | linux     | 
++----+-----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql&gt; 
+</code></pre>
+
+<p>Jika tampilan pada terminal atau command prompt kita sudah seperti diatas, maka proses Inisialisasi bisa dikatan sudah selesai dan kita siap untuk membuat sebuah <strong>Project</strong> :)</p>
+
+<h3>Pembuatan Project Menu Login</h3>
+
+<p>Sekarang buatlah sebuah <strong>Project</strong> dengan nama <strong>MenuLogin</strong> dari NetBeans IDE, kemudian buatlah <strong>Domain</strong> classnya terlebih dahulu pada packages <strong>domain</strong> dengan nama <strong>UserApp</strong> yang isinya adalah sebagai berikut :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserApp</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">userName</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Generate Getter n Setter</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Note: Klik <a href="http://code.google.com/p/martin-personal-project/source/browse/trunk/java/MenuLogin/src/id/web/martinusadyh/menulogin/domain/UserApp.java">UserApp.java</a> untuk melihat source code lengkap</strong></p>
+
+<p>Urusan dengan <strong>Domain Class</strong> sudah selesai, sekarang mari kita buatkan <strong>Service</strong> layer-nya dengan membuat sebuah packages <strong>service</strong> kemudian buatlah sebuah <strong>java interface</strong> dengan nama <strong>LoginService</strong> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">LoginService</span> <span class="o">{</span>
+</span><span class='line'>    <span class="cm">/** Method ini akan mengecek apakah &lt;code&gt;username&lt;/code&gt; dengan &lt;code&gt;password&lt;/code&gt;</span>
+</span><span class='line'><span class="cm">     * ada atau tidak di database</span>
+</span><span class='line'><span class="cm">     * @param username user yang ingin di cek di database</span>
+</span><span class='line'><span class="cm">     * @param password password untuk user</span>
+</span><span class='line'><span class="cm">     * @return UserApp null jika tidak ditemukan</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">UserApp</span> <span class="nf">login</span><span class="o">(</span><span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">String</span> <span class="n">password</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Note: Klik <a href="http://code.google.com/p/martin-personal-project/source/browse/trunk/java/MenuLogin/src/id/web/martinusadyh/menulogin/service/LoginService.java">LoginService.java</a> untuk melihat source code lengkap</strong></p>
+
+<p>Sebelum membuat implementasi dari <strong>LoginService</strong> diatas, tambahkanlah dahulu library <strong>MySQL JDBC Driver</strong> kedalam <strong>Project</strong> hingga tampilan <strong>Node Libraries</strong> kita menjadi seperti gambar dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/AddJDBCDriver.png" title="Adding JDBC Driver" ></p>
+
+<p>Tetap pada packages <strong>service</strong> sekarang buatlah implementasi dari <strong>LoginService</strong> diatas dengan nama <strong>LoginServiceImpl</strong> yang isinya kurang lebih seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginServiceImpl</span> <span class="kd">implements</span> <span class="n">LoginService</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Connection</span> <span class="n">connection</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">PreparedStatement</span> <span class="n">findUserByUserAndPassword</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">QRY_LOGIN</span> <span class="o">=</span> <span class="s">&quot;select * from T_USER where&quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="s">&quot; T_USER.username = ? and T_USER.password = ?&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">LoginServiceImpl</span><span class="o">(</span><span class="n">Connection</span> <span class="n">connection</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="o">.</span><span class="na">connection</span> <span class="o">=</span> <span class="n">connection</span><span class="o">;</span>
+</span><span class='line'>            <span class="n">findUserByUserAndPassword</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">connection</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">QRY_LOGIN</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LoginServiceImpl</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">UserApp</span> <span class="nf">login</span><span class="o">(</span><span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="cm">/* Lakukan pencarian berdasarkan username dan password */</span>
+</span><span class='line'>            <span class="n">findUserByUserAndPassword</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">username</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">findUserByUserAndPassword</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="cm">/* Ambil resultset-nya */</span>
+</span><span class='line'>            <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">findUserByUserAndPassword</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+</span><span class='line'>            <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">UserApp</span> <span class="n">userApp</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">UserApp</span><span class="o">();</span>
+</span><span class='line'>                <span class="n">userApp</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">));</span>
+</span><span class='line'>                <span class="n">userApp</span><span class="o">.</span><span class="na">setUserName</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;username&quot;</span><span class="o">));</span>
+</span><span class='line'>                <span class="n">userApp</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;password&quot;</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="k">return</span> <span class="n">userApp</span><span class="o">;</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LoginServiceImpl</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p><strong>Note: Klik <a href="http://code.google.com/p/martin-personal-project/source/browse/trunk/java/MenuLogin/src/id/web/martinusadyh/menulogin/service/LoginServiceImpl.java">LoginServiceImpl.java</a> untuk melihat source code lengkap</strong></p>
+
+<p>Hmm.. urusan <strong>domain</strong> dan <strong>service</strong> layer sudah beres, sekarang waktu yang paling menyenangkan yaitu membuat <strong>UI</strong> layer-nya :) Ok, sekarang mari kita buat sebuah <strong>Login Dialog</strong> dengan menggunakan class JDialog dan simpanlah pada packages <strong>ui</strong>. Setelah itu, design-lah <strong>Login Dialog</strong> tersebut hingga seperti gambar dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/DesignLoginDialog.png" title="Design Login Dialog" ></p>
+
+<p>Sekarang tambahkan sebuah label untuk pesan error dengan cara masuk ke menu <strong>Inspector</strong> dan pada node <strong>Other Components</strong> tambahkanlah sebuah <code>JLabel</code> seperti gambar dibawah ini:</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/AddErrorLabel.png" title="Menambahkan Error Label" ></p>
+
+<p>Setelah selesai men-design <strong>Login Dialog</strong>, sekarang masuklah ke mode <strong>Source</strong> dan tambahkan 1 buah variabel bertipe boolean dan 1 buah method yaitu <strong>showDialog()</strong> tidak lupa hilangkan juga method <strong>main</strong>. Dan hasil akhir yang kita dapatkan kurang lebih isinya seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginDialog</span> <span class="kd">extends</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">JDialog</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">notLogin</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">GroupLayout</span> <span class="n">gl</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/** Creates new form LoginDialog */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">LoginDialog</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Frame</span> <span class="n">parent</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">modal</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kd">super</span><span class="o">(</span><span class="n">parent</span><span class="o">,</span> <span class="n">modal</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">initComponents</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* Mendeteksi penekanan icon close, jika di close keluar dari aplikasi */</span>
+</span><span class='line'>        <span class="n">addWindowListener</span><span class="o">(</span><span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">WindowAdapter</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nd">@Override</span>
+</span><span class='line'>            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">windowClosing</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">WindowEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">});</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* Membuat space progress bar tidak di *wrap* oleh button */</span>
+</span><span class='line'>        <span class="n">gl</span> <span class="o">=</span> <span class="o">(</span><span class="n">GroupLayout</span><span class="o">)</span> <span class="n">getContentPane</span><span class="o">().</span><span class="na">getLayout</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">gl</span><span class="o">.</span><span class="na">setHonorsVisibility</span><span class="o">(</span><span class="n">jProgressBar1</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* Beri fokus ke txtUsername ketika dialog tampil */</span>
+</span><span class='line'>        <span class="n">txtUserName</span><span class="o">.</span><span class="na">requestFocusInWindow</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="cm">/* Posisikan dialog seakan-akan berada di tengah-2x layar */</span>
+</span><span class='line'>        <span class="n">setLocationRelativeTo</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/** This method is called from within the constructor to</span>
+</span><span class='line'><span class="cm">     * initialize the form.</span>
+</span><span class='line'><span class="cm">     * WARNING: Do NOT modify this code. The content of this method is</span>
+</span><span class='line'><span class="cm">     * always regenerated by the Form Editor.</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&quot;unchecked&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="c1">// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Generated Code &quot;&gt;                          </span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initComponents</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>         <span class="o">....</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="c1">// &lt;/editor-fold&gt;                        </span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">showDialog</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">notLogin</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Variables declaration - do not modify  </span>
+</span><span class='line'>    <span class="o">...</span>
+</span><span class='line'>    <span class="c1">// End of variables declaration                   </span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Tetap pada packages yang sama yaitu packages <strong>ui</strong> sekarang buatlah sebuah <strong>Menu Utama</strong> dengan menggunakan class JFrame dan simpanlah dengan nama <strong>MainForm</strong>. Sedangkan pada <strong>MainForm</strong> ini, tambahkanlah sebuah JMenuBar dan tambahkanlah 3 JMenuItem pada <strong>File</strong> atau <strong>jMenu1</strong> hingga tampilannya seperti gambar dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/DesignMainForm.png" title="Design Main Form Dengan Menu Login dan Logout" ></p>
+
+<p>Setelah semua selesai, sekarang editlah file <strong>Main.java</strong> menjadi seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">MainForm</span> <span class="n">mainForm</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="n">LoginService</span> <span class="n">loginService</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">MainForm</span> <span class="nf">getMainForm</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">mainForm</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">LoginService</span> <span class="nf">getLoginService</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">loginService</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/** Method ini akan menginisialisassi Form Utama kemudian akan melakukan</span>
+</span><span class='line'><span class="cm">     * proses &lt;code&gt;loop&lt;/code&gt; untuk menampilkan login dialog sampai nilai</span>
+</span><span class='line'><span class="cm">     * notLogin = FALSE baru menampilkan Menu Utama */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">initLogin</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">mainForm</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="n">mainForm</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">MainForm</span><span class="o">();</span>
+</span><span class='line'>        <span class="kt">boolean</span> <span class="n">notLogin</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">TRUE</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">while</span> <span class="o">(</span><span class="n">notLogin</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">notLogin</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">LoginDialog</span><span class="o">().</span><span class="na">showDialog</span><span class="o">();</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">mainForm</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">MainForm</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">mainForm</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/** Method ini akan menginisialisasi object koneksi ke database yang akan </span>
+</span><span class='line'><span class="cm">     * digunakan di seluruh aplikasi. */</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">initDataBaseConnection</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">MysqlDataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">MysqlDataSource</span><span class="o">();</span>
+</span><span class='line'>            <span class="cm">/* Setting koneksi ke database */</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="s">&quot;root&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">&quot;admin&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setDatabaseName</span><span class="o">(</span><span class="s">&quot;menulogin&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setServerName</span><span class="o">(</span><span class="s">&quot;localhost&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">dataSource</span><span class="o">.</span><span class="na">setPortNumber</span><span class="o">(</span><span class="mi">3306</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">loginService</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">LoginServiceImpl</span><span class="o">(</span><span class="n">dataSource</span><span class="o">.</span><span class="na">getConnection</span><span class="o">());</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Main</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * @param args the command line arguments</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">initDataBaseConnection</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">EventQueue</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(</span><span class="k">new</span> <span class="nf">Runnable</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>                    <span class="n">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="s">&quot;com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel&quot;</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ClassNotFoundException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                    <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Main</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InstantiationException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                    <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Main</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IllegalAccessException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                    <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Main</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedLookAndFeelException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                    <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">Main</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>                <span class="n">initLogin</span><span class="o">();</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">});</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Dengan kode yang sudah kita tulis, aplikasi harusnya  sudah bisa berjalan tanpa mengalami kesalahan sama sekali. Tapi sayangnya kita belum mengimplementasikan proses login yang sebenarnya, untuk mengimplementasikan proses login yang sebenarnya sekarang tambahkanlah sebuah private class dengan nama <strong>WorkerLogin</strong> pada <strong>LoginDialog</strong> yang isinya kurang lebih seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kd">class</span> <span class="nc">WorkerLogin</span> <span class="kd">extends</span> <span class="n">SwingWorker</span><span class="o">&lt;</span><span class="n">UserApp</span><span class="o">,</span> <span class="n">Void</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">done</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">get</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">notLogin</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span><span class='line'>                <span class="n">closeLoginDialog</span><span class="o">();</span>
+</span><span class='line'>            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">gl</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="n">jProgressBar1</span><span class="o">,</span> <span class="n">lblError</span><span class="o">);</span>
+</span><span class='line'>                <span class="n">txtUserName</span><span class="o">.</span><span class="na">requestFocusInWindow</span><span class="o">();</span>
+</span><span class='line'>                <span class="n">txtUserName</span><span class="o">.</span><span class="na">selectAll</span><span class="o">();</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>            <span class="n">btnLogin</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setIndeterminate</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LoginDialog</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ExecutionException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LoginDialog</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">log</span><span class="o">(</span><span class="n">Level</span><span class="o">.</span><span class="na">SEVERE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="n">UserApp</span> <span class="nf">doInBackground</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="cm">/* Hilangkan ini jika digunakan pada production */</span>
+</span><span class='line'>        <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">Main</span><span class="o">.</span><span class="na">getLoginService</span><span class="o">().</span><span class="na">login</span><span class="o">(</span><span class="n">txtUserName</span><span class="o">.</span><span class="na">getText</span><span class="o">(),</span>
+</span><span class='line'>                <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">txtPassword</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Dan tambahkan method <strong>closeLoginDialog()</strong> dibawah method <strong>showDialog()</strong> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">closeLoginDialog</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah selesai membuat sebuah <strong>WorkerLogin</strong> sekarang deklarasikanlah class <strong>WorkerLogin</strong> agar menjadi class variabel dan modifikasilah konstruktor dari <strong>LoginDialog</strong> hingga menjadi seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">...</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">WorkerLogin</span> <span class="n">workerLogin</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/** Creates new form LoginDialog */</span>
+</span><span class='line'><span class="kd">public</span> <span class="nf">LoginDialog</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">super</span><span class="o">(</span><span class="n">Main</span><span class="o">.</span><span class="na">getMainForm</span><span class="o">(),</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">TRUE</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">initComponents</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">...</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Agar proses login berjalan ketika kita menekan tombol <strong>Login</strong>, sekarang berilah <strong>Action Listener</strong> pada tombol <strong>Login</strong> dengan cara klik kanan kemudian pilihlah menu <strong>Event > Action > actionPerformed[btnLoginActionPerformed]</strong> dan pastekan kode seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnLoginActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="cm">/* Cek dahulu apakah workerLogin masih berjalan, kalau masih jalan</span>
+</span><span class='line'><span class="cm">     * cancel dan set ke null */</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">workerLogin</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">workerLogin</span><span class="o">.</span><span class="na">isDone</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">workerLogin</span><span class="o">.</span><span class="na">cancel</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">workerLogin</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//TODO: cek untuk mengembalikan state lblError ke Progress Bar, </span>
+</span><span class='line'>    <span class="c1">// bagaimana cara mengecek apakah lblError sudah ditambahkan atau belum ?</span>
+</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">gl</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="n">lblError</span><span class="o">,</span> <span class="n">jProgressBar1</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">IllegalArgumentException</span> <span class="n">ae</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// Do nothing here</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">workerLogin</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">WorkerLogin</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">workerLogin</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* Disable tombol LOGIN, tampilkan dan jalankan PROGRESS BAR */</span>
+</span><span class='line'>    <span class="n">btnLogin</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">jProgressBar1</span><span class="o">.</span><span class="na">setIndeterminate</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Sedangkan untuk tombol <strong>Cancel</strong>-nya, berikan <strong>Action Listener</strong> seperti kode dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnCancelActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Konfigurasi pada <strong>Login Dialog</strong> sepenuhnya sudah selesai, sekarang mari kita modifikasi file <strong>MainForm</strong> agar ketika menu <strong>Logout</strong> ditekan, maka akan menampilkan <strong>Login Dialog</strong>. Sekarang berilah <strong>Action Event</strong> pada menu <strong>Logout</strong> dengan cara klik kanan pada menu Logout kemudian pilihlah menu <strong>Event > Action > actionPerformed[jMenuItem2ActionPerformed]</strong> dan pastekan kode seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">jMenuItem2ActionPerformed</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">ActionEvent</span> <span class="n">evt</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="cm">/* Tutup form utama */</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/* Tampilkan LoginDialog-nya */</span>
+</span><span class='line'>    <span class="n">Main</span><span class="o">.</span><span class="na">initLogin</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Sampai disini semua proses pembuatan <strong>Project Menu Login</strong> telah selesai, dan tampilan struktur <strong>Project</strong> kita kurang lebih seperti gambar dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/StrukturProjectMenuLogin.png" title="Struktur Project Menu Login" ></p>
+
+<h3>Hasil Akhir</h3>
+
+<p>Jika sudah selesai, sekarang mari kita jalankan <strong>Project Menu Login</strong> tersebut dengan menekan tombol <strong>F6</strong> dan jika tidak ada kesalahan maka kita akan mendapatkan tampilan dari <strong>Login Dialog</strong> seperti gambar-gambar dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/LoginDialog.png" title="Tampilan Awal Login Dialog" ></p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/ProsesLogin.png" title="Proses Pengecekan Username dan Password ke DataBase" ></p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/LoginSalah.png" title="Tampilan Ketika Proses Login Gagal" ></p>
+
+<p><img class="center" src="/images/blog-images/Java_NetBeans/MembuatMenuLoginDiJavaSwingdenganAnimasiProgressBar/LoginSukses.png" title="Menu Utama DiTampilkan Ketika Login Sukses" ></p>
+
+<p>Akhirnya selesai juga latihannya, bagaimana menurut teman-teman ?? Kalau ada yang bingung dengan penjelasan diatas, jangan sungkan-sungkan untuk tanya yah. Mari kita bahas bareng-bareng, sapa tau ada cara yang lebih baik dan elegan dari cara yang saya jelaskan disini :) :D</p>
+
+<p>Akhir kata, happy coding all :)</p>
+
+<p><strong>Link-link terkait:</strong></p>
+
+<ul>
+<li><a href="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a></li>
+<li><a href="http://martin-personal-project.googlecode.com/files/MenuLogin.zip">Download MenuLogin.zip</a></li>
+<li><a href="http://code.google.com/p/martin-personal-project/source/browse/#svn/trunk/java/MenuLogin">Source Code Lengkap Project Menu Login</a></li>
+<li><a href="mailto:netbeans-indonesia@yahoogroups.com">Milis NetBeans Indonesia</a></li>
+<li><a href="http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/">SubVersion Mudah Dengan RabbitVCS</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-09T19:02:04+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/11/09/di-butuhkan-2-php-programmer/" title="Previous Post: Di butuhkan 2 PHP Programmer">&laquo; Di butuhkan 2 PHP Programmer</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/11/13/the-best-of-xandria/" title="Next Post: The Best Of Xandria">The Best Of Xandria &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

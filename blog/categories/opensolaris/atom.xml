@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: opensolaris | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/opensolaris/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How To Embedding Your Binary Files into Shell Script]]></title>
+    <link href="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/"/>
+    <updated>2012-08-04T14:47:56+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script</id>
+    <content type="html"><![CDATA[<p>Pada tulisan kali ini, kita akan membahas bagaimana membuat sebuah shell script yang berisi sebuah <strong><em>binary file</em></strong>. Apa sih sebenarnya yang bisa kita lakukan dengan sebuah shell script yang berisi file binary ? Hm.. sebenarnya banyak sih, dan salah satunya adalah membuat installer untuk sistem operasi GNU/Linux seperti installer milik <strong>NetBeans IDE</strong> yang mempunyai ekstensi <strong>*.sh</strong> :)</p>
+
+<p>Nah untuk membantu tujuan kita diatas, kita membutuhkan bantuan sebuah shell script yaitu <a href="http://megastep.org/makeself/">makeself</a>. Untuk yang belum tahu apa itu script makeself, dibawah ini adalah deskripsi singkat tentang  script makeself :</p>
+
+<blockquote><p><a href="http://megastep.org/makeself/">makeself.sh</a> is a small shell script that generates a self-extractable tar.gz archive from a directory. The resulting file appears as a shell script (many of those have a .run suffix), and can be launched as is. The archive will then uncompress itself to a temporary directory and an optional arbitrary command will be executed (for example an installation script). This is pretty similar to archives generated with WinZip Self-Extractor in the Windows world. Makeself archives also include checksums for integrity self-validation (CRC and/or MD5 checksums).</p></blockquote>
+
+<p>Dan yang menggembirakan lagi adalah, script makeself ini sudah di test dan dapat digunakan pada beberapa sistem operasi yang kurang lebih seperti berikut :</p>
+
+<ol>
+<li><p> Linux (all distributions)</p></li>
+<li><p> Sun Solaris (8 and above)</p></li>
+<li><p> HP-UX (tested on 11.0 and 11i on HPPA RISC)</p></li>
+<li><p> SCO OpenUnix and OpenServer</p></li>
+<li><p> IBM AIX 5.1L</p></li>
+<li><p> MacOS X (Darwin)</p></li>
+<li><p> SGI IRIX 6.5</p></li>
+<li><p> FreeBSD</p></li>
+<li><p> UnicOS / Cray</p></li>
+<li><p>. Cygwin (Windows)</p></li>
+</ol>
+
+
+<p>Sedangkan yang sudah menggunakan script ini sebagai installer mereka adalah :</p>
+
+<ol>
+<li><p> Game patches and installers for <a href="http://www.idsoftware.com/">Id Software games</a> like Quake 3 for Linux or Return To Castle Wolfenstien ;</p></li>
+<li><p> All game patches released by <a href="http://www.lokigames.com/products/myth2/updates.php3">Loki Software</a> for the Linux version of popular games</p></li>
+<li><p> The <a href="http://www.nvidia.com/">nVidia drivers</a> for Linux</p></li>
+<li><p> The installer for the Linux version of <a href="http://earth.google.com/">Google Earth</a></p></li>
+<li><p> The <a href="http://www.virtualbox.org/">VirtualBox</a> installers for Linux</p></li>
+<li><p> The Makeself distribution itself ;-)</p></li>
+</ol>
+
+
+<p>Menarik bukan ? Masih tertarik bagaimana caranya menggunakan script ini untuk membuat sebuah installer sendiri ?</p>
+
+<!-- more -->
+
+
+<p>Jika iya, maka sekarang downloadlah dahulu script makeself <a href="http://megastep.org/makeself/makeself-2.1.5.run">disini</a> yang pada saat tulisan ini dibuat mempunyai versi 2.1.5, atau kalau mau versi yang lebih baru bisa mengikuti timeline project ini di <a href="https://github.com/megastep/makeself">halaman github makeself</a>. Jika proses download sudah selesai, simpanlah file <code>makeself-2.1.5.run</code> pada sebuah direktori dengan nama <strong>test-makeself</strong>. Sebelum mulai menggunakan, beri hak <strong><em>execute</em></strong> dahulu pada file <code>makeself-2.1.5.run</code> dengan perintah <code>chmod +x makeself-2.1.5.run</code> dan ekstrak dengan menjalankan perintah <code>./makeself-2.1.5.run</code>. Hasil dari perintah tadi akan membuat sebuah direktori <strong>makeself-2.1.5</strong> yang berisi script makeself seluruh-nya seperti terlihat dari perintah <code>tree</code> dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[~/tmp/test-makeself]$ tree
+.
+├── makeself-2.1.5
+│   ├── COPYING
+│   ├── makeself.1
+│   ├── makeself-header.sh
+│   ├── makeself.lsm
+│   ├── makeself.sh
+│   ├── README
+│   └── TODO
+└── makeself-2.1.5.run
+
+1 directory, 8 files
+martinus@artivisi:[~/tmp/test-makeself]$ 
+</code></pre>
+
+<p>Untuk percobaan, sekarang buatlah 2 direktori <code>binary</code> dan <code>result</code> didalam direktori <code>makeself-2.1.5</code> seperti terlihat dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[~/tmp/test-makeself]$ tree
+.
+├── makeself-2.1.5
+│   ├── binary
+│   ├── COPYING
+│   ├── makeself.1
+│   ├── makeself-header.sh
+│   ├── makeself.lsm
+│   ├── makeself.sh
+│   ├── README
+│   ├── result
+│   └── TODO
+└── makeself-2.1.5.run
+martinus@artivisi:[~/tmp/test-makeself]$ 
+</code></pre>
+
+<p>Fungsi direktori <code>binary</code> diatas adalah untuk menempatkan aplikasi yang akan kita distribusikan, sedangkan direktori <code>result</code> adalah untuk menyimpan file installer yang akan dibuat oleh script <code>makeself</code> :)</p>
+
+<p>Jika sudah, masukkanlah direktori aplikasi yang ingin kita distribusikan kedalam direktori <code>binary</code> dan sebuah shell script dengan nama <code>pre-install.sh</code> (nama file <code>pre-install.sh</code> ini hanya sebagai contoh saja) sebagai launcher didalam direktori <code>binary</code> seperti dibawah ini:</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/binary]$ tree
+.
+├── app
+│   ├── lib
+│   │   ├── MartinSwingUtil-1.0.0.jar
+│   │   ├── mysql-connector-java-5.1.6-bin.jar
+│   │   └── swing-layout-1.0.4.jar
+│   ├── MenuLogin.jar
+│   └── README.TXT
+└── pre-install.sh
+
+2 directories, 6 files
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/binary]$ 
+</code></pre>
+
+<blockquote><p>Direktori <code>app/</code> beserta isinya adalah contoh aplikasi yang ingin di distribusikan, untuk penggunaan sebenar-nya kita bisa memasukkan apa saja didalam direktori <code>binary</code>.</p></blockquote>
+
+<p>File <code>pre-install.sh</code> ini dapat digunakan untuk melakukan proses-proses yang dibutuhkan sebelum mulai menginstall aplikasi yang sebenar-nya, seperti contohnya :</p>
+
+<ol>
+<li><p> Melakukan pengecekan apakah user <strong>root</strong> atau bukan yang menjalankan installer.</p></li>
+<li><p> Melakukan pengecekan apakah library yang dibutuhkan oleh aplikasi sudah tersedia atau belum.</p></li>
+<li><p> Melakukan restore database (dibutuhkan opsi untuk memasukkan username dan password mysql yang digunakan oleh user)</p></li>
+<li><p> Menempatkan file konfigurasi aplikasi pada direktori-direktori yang telah ditentukan.</p></li>
+<li><p> dan lain-lain &hellip; :)</p></li>
+</ol>
+
+
+<p>Sebelum bermain lebih lanjut dengan script <code>pre-install.sh</code>, mari kita buat dahulu skenario yang akan dijalankan oleh script <code>pre-install.sh</code> kita. Sebagai contoh, kita membuat skenario seperti dibawah ini :</p>
+
+<ol>
+<li><p> Installer hanya dapat dijalankan oleh user yang mempunyai hak akses <strong>root</strong>.</p></li>
+<li><p> Copy direktori <code>app</code> ke direktori <code>opt/</code></p></li>
+<li><p> Beri hak akses 755 pada direktori <code>/opt/app</code> beserta isinya supaya dapat dijalankan oleh user.</p></li>
+</ol>
+
+
+<p>Setelah kita mempunyai skenario seperti diatas, sekarang saatnya untuk bermain-main dengan script <code>pre-install.sh</code>, dan kode untuk skenario diatas adalah seperti berikut :</p>
+
+<pre><code class="bash   ">#!/bin/sh
+# 
+# Contoh file pre-install.sh
+
+# Langkah pertama, pengecekan apakah user root yang menjalankan installer
+# ini. Jika bukan user root, tampilkan pesan bagaimana menjalankan installer
+# dan exit.
+if [ "$(id -u)" != "0" ]; then
+    echo "Usage : sudo ./installerku.sh"
+    exit 1
+else
+    # Langkah kedua, copy direktori app/ beserta isinya kedalam direktori
+    # /opt
+    echo "Sedang menginstall aplikasi ...."
+    cp -R app /opt/app
+
+    echo "Memberi hak akses ..."
+    chmod 755 -R /opt/app
+
+    echo "Proses installasi selesai !!!"
+fi
+</code></pre>
+
+<p>Sampai disini proses yang kita lakukan sudah bisa dibilang hampir selesai, hanya tinggal 1 proses lagi yaitu membuat installer-nya. Sekarang mari kita buat sebuah installer menggunakan script <code>makeself</code> dan pastikan bahwa kita berada didalam direktori <code>makeself-2.1.5</code> :) Jika sudah, kita bisa menjalankan script <code>makeself</code> dengan perintah <code>./makeself.sh [parameter1] [parameter2] [parameter3] [parameter4]</code> dimana :</p>
+
+<ol>
+<li><p> <strong>[parameter1]</strong>, adalah tempat dimana kita meletakkan aplikasi yang ingin di distribusikan. (Dalam contoh kita, adalah direktori <code>binary</code>).</p></li>
+<li><p> <strong>[parameter2]</strong>, adalah nama file installer yang ingin kita buat. (Sebagai contoh pada tulisan ini, nama file installer yang akan kita buat bernama <code>installerku.sh</code> dan akan ditempatkan pada direktori <code>result</code>).</p></li>
+<li><p> <strong>[parameter3]</strong>, adalah label untuk installer aplikasi yang ingin kita distribusikan.</p></li>
+<li><p> <strong>[parameter4]</strong>, script yang ingin kita jalankan ketika proses installasi. (Dalam contoh kita adalah script <code>pre-install.sh</code>)</p></li>
+</ol>
+
+
+<p>Setelah mengetahui parameter-parameter yang akan digunakan, sekarang jalankan perintah <code>./makeself.sh binary/ result/installerku.sh "Aplikasi Login v1.0" ./pre-install.sh</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ ./makeself.sh binary/ result/installerku.sh "Aplikasi Login v1.0" ./pre-install.sh
+Header is 401 lines long
+
+About to compress 889 KB of data...
+Adding files to archive named "result/installerku.sh"...
+./
+./app/
+./app/lib/
+./app/lib/mysql-connector-java-5.1.6-bin.jar
+./app/lib/MartinSwingUtil-1.0.0.jar
+./app/lib/swing-layout-1.0.4.jar
+./app/README.TXT
+./app/MenuLogin.jar
+./pre-install.sh
+CRC: 677728827
+MD5: 3b84ed4eb87351a2eac8b0f235490fca
+
+Self-extractible archive "result/installerku.sh" successfully created.
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ 
+</code></pre>
+
+<p>Sekarang cek pada direktori <code>result/</code>, harusnya kita sudah mempunyai file dengan nama <code>installerku.sh</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ ls result/
+installerku.sh
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$
+</code></pre>
+
+<p>Sekarang mari kita test script <code>installerku.sh</code> dengan mencoba menjalankan-nya tanpa menggunakan akses root, apakah yang akan terjadi ?</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ ./installerku.sh 
+Verifying archive integrity... All good.
+Uncompressing Aplikasi Login v1.0.........
+Usage : sudo ./installerku.sh
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Yuuhu&hellip; proses installasi gagal dilakukan, sekarang mari kita coba menjalankan script <code>installerku.sh</code> menggunakan <code>sudo</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ sudo ./installerku.sh 
+Verifying archive integrity... All good.
+Uncompressing Aplikasi Login v1.0.........
+Sedang menginstall aplikasi ....
+Memberi hak akses ...
+Proses installasi selesai !!!
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Hore.. berhasil, sekarang mari kita check apakah direktori <code>app/</code> beserta isinya sudah masuk kedalam direktori <code>opt/</code> ?</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ ls -l /opt/app/
+total 52
+drwxr-xr-x 3 root root  4096 Jul 29 06:12 app
+drwxr-xr-x 2 root root  4096 Jul 29 05:41 lib
+-rwxr-xr-x 1 root root 38591 Jul 29 05:41 MenuLogin.jar
+-rwxr-xr-x 1 root root  1447 Jul 29 05:41 README.TXT
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Mantap&hellip; akhirnya kita bisa membuat sendiri installer di GNU/Linux seperti installer-installer dari project-project besar opensource yang lain :) Nah untuk teman-teman sesama programmer ada yang tertarik untuk mencoba-nya ??</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[DocBook Style On WordPress]]></title>
+    <link href="http://martinusadyh.web.id/2011/02/19/docbook-style-on-wordpress/"/>
+    <updated>2011-02-19T17:02:15+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/02/19/docbook-style-on-wordpress</id>
+    <content type="html"><![CDATA[<p>Sebenarnya sudah sejak lama ingin menulis sebuah tulisan atau buku mengikuti gaya penulisan yang terdapat pada <a href="http://www.docbook.org/">DocBook</a>, tapi apa daya sampai sekarang masih belum ada waktu untuk <strong>&ldquo;ngoprek&rdquo;</strong> format yang tersedia di <strong>DocBook</strong> :D Keinginan saya yang lain yaitu bagaimana meng-integrasikan antara <a href="http://wordpress.org/download/">WordPress</a> yang sudah terbukti sebagai CMS (Content Management System) blogging yang paling populer dengan <strong>DocBook</strong> yang sudah dikenal luas sebagai alat untuk penulisan dokumentasi sebuah software.</p>
+
+<p>Kombinasi struktur buku yang terdapat di <strong>DocBook</strong> dengan banyak-nya plugin yang tersedia untuk <strong>WordPress</strong> plus adanya fasilitas komentar, bagi saya ini merupakan sebuah kombinasi yang pas bagi seoarang penulis untuk mem-<em>publish</em> tulisan-nya di Internet :) Plus-nya sebagai penulis yaitu kita bisa langsung mendapatkan respon pembaca melalui fasilitas komentar yang sudah terdapat pada <strong>WordPress</strong> :D</p>
+
+<p>Nah untuk merealisasikan ide diatas, kemarin saya juga sudah coba iseng-iseng untuk mengimplementasikan-nya pada blog ini. Dan hasilnya bisa teman-teman lihat pada tulisan <a href="http://martinusadyh.web.id/tulisanku/berkenalan-dengan-iso-8583-menggunakan-java/">Berkenalan dengan ISO 8583 Menggunakan Java</a> :) Masih sangat-sangat sederhana sih, tapi setidaknya sudah bisa mencukupi kebutuhan saya saat ini yaitu menulis buku layaknya menulis blog :D plus dapat fasilitas komentar langsung pada bab yang dibahas :)</p>
+
+<p>Nah untuk teman-teman yang ingin mencoba konsep serupa dan ingin tahu apa yang dibutuhkan agar blog kita mempunyai halaman seperti itu, langkah pertama copy paste beberapa script dibawah ini dan simpanlah pada direktori <strong>themes</strong> yang teman-teman gunakan. Script-script yang diperlukan yaitu :</p>
+
+<ol>
+<li><p> <strong>docbook-archive.php</strong></p>
+
+<p>/docbook-archive.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)</li>
+<li></li>
+<li>Template Name: DocBookArchive
+*/
+?></li>
+</ul>
+
+
+<p><div id="content" class="narrowcolumn"></p>
+
+<pre><code>    &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+        &lt;h2&gt;&lt;/h2&gt;
+        &lt;div class="entry"&gt;
+            Read the rest of this page »&lt;/p&gt;'); ?&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+
+    ', '&lt;/p&gt;'); ?&gt;
+</code></pre>
+
+<p></div></p></li>
+</ol>
+
+
+<p>File <strong>docbook-archive.php</strong> ini berfungsi sebagai halaman depan untuk semua tulisan yang kita publish :) Sedangkan bagaimana cara pakainya yaitu buatlah sebuah halaman baru dengan nama misalkan <strong>Tulisanku</strong> kemudian pada opsi <strong>Page Attributes</strong> pilihlah <strong>(no parent)</strong> pada opsi <strong>Parent</strong> dan <strong>DocBookArchive</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458157556/"><img src="http://farm6.static.flickr.com/5176/5458157556_23499a1ea6.jpg" alt="TulisankuEdit" /></a><br/>
+<strong>Cara Penggunaan Template DocBook Archive</strong></p>
+
+<p>Sedangkan tampilan live-nya adalah seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458157552/"><img src="http://farm6.static.flickr.com/5016/5458157552_6f0759b2c5.jpg" alt="DocBookArchiveLive" /></a><br/>
+<strong>Tampilan Halaman Dengan Template DocBook Archive</strong></p>
+
+<!-- more -->
+
+
+<ol>
+<li><p> <strong>docbook-toc.php</strong></p>
+
+<p>/docbook-toc.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)
+*</li>
+<li><p>Template Name: DocBookTOC
+*/
+?></p>
+
+<p>  <div id="content" class="widecolumn_single"></p>
+
+<pre><code>  &lt;div class="navigation"&gt;
+      &lt;div class="alignleft"&gt;&lt;/div&gt;
+      &lt;div class="alignright"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;div class="entry"&gt;
+          Read the rest of this entry »&lt;/p&gt;'); ?&gt;
+
+          &lt;h2&gt;License&lt;/h2&gt;
+          &lt;p&gt;Redistribution and use in textual and binary forms, with or without modification, are permitted provided that the following conditions are met:&lt;br&gt;&lt;/br&gt;
+          1. Redistributions of this book must retain the above copyright notice, this list of conditions and the following disclaimer.&lt;br&gt;&lt;/br&gt;
+          2. The names of the authors may not be used to endorse or promote products derived from this book without specific prior written permission.&lt;/p&gt;
+          &lt;p&gt;THIS BOOK IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS BOOK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. &lt;/p&gt;&lt;br&gt;&lt;/br&gt;
+
+          &lt;small&gt;Published by  on &lt;/small&gt;
+          &lt;hr&gt;
+          &lt;h2&gt;Daftar Isi&lt;/h2&gt;
+
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p&gt;
+          ID;
+              }
+
+              $current = array_search($post-&gt;ID, $pages);
+              $prevID = $pages[$current-1];
+              $nextID = $pages[$current+1];
+          ?&gt;
+
+          &lt;div class="navigation"&gt;
+
+
+                  &lt;div class="alignright"&gt;&lt;a href="&lt;?php echo get_permalink($nextID); ?&gt;" title="&lt;?php echo get_the_title($nextID); ?&gt;"&gt;&lt;/a&gt;&lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;/p&gt;
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p class="postmetadata alt"&gt;
+              &lt;small&gt;                    
+
+                   for this entry.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Both Comments and Pings are open ?&gt;
+                      &lt;a href="#respond"&gt;Leave a response&lt;/a&gt;, or &lt;a href="&lt;?php trackback_url(); ?&gt;" rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Only Pings are Open ?&gt;
+                      Responses are currently closed, but you can &lt;a href="&lt;?php trackback_url(); ?&gt; " rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Comments are open, Pings are not ?&gt;
+                      You can skip to the end and leave a response. Pinging is currently not allowed.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Neither Comments, nor Pings are open ?&gt;
+                      Both comments and pings are currently closed.
+
+
+
+              &lt;/small&gt;
+          &lt;/p&gt;
+
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+
+
+
+
+  &lt;p&gt;Sorry, no posts matched your criteria.&lt;/p&gt;
+</code></pre>
+
+<p>  </div></p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>Sedangkan file <strong>docbook-toc.php</strong> ini digunakan sebagai halaman <strong>Daftar Isi</strong> atau <strong>Table Of Content</strong> untuk tulisan kita, di file ini juga akan secara otomatis memberi sebuah lisensi untuk semua tulisan kita yang menggunakan template <strong>DocBookTOC</strong>. Jika kita ingin merubah lisensi yang akan digunakan, maka ganti atau hapuslah baris dibawah ini agar sesuai dengan keinginan kita :</p>
+
+<pre><code>                &lt;h2&gt;License&lt;/h2&gt;
+                &lt;p&gt;Redistribution and use in textual and binary forms, with or without modification, are permitted provided that the following conditions are met:&lt;br&gt;&lt;/br&gt;
+                1. Redistributions of this book must retain the above copyright notice, this list of conditions and the following disclaimer.&lt;br&gt;&lt;/br&gt;
+                2. The names of the authors may not be used to endorse or promote products derived from this book without specific prior written permission.&lt;/p&gt;
+                &lt;p&gt;THIS BOOK IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS BOOK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. &lt;/p&gt;&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Sedangkan cara penggunaan-nya adalah, buatlah sebuah halaman baru dengan nama tulisan yang akan dipublish dan pada opsi <strong>Page Attributes</strong> pilihlah <strong>Tulisanku</strong> (Halaman Tulisanku ini adalah halaman yang telah dibuat pada langkah nomor #1 diatas) pada opsi <strong>Parent</strong> dan <strong>DocBookTOC</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458184122/"><img src="http://farm6.static.flickr.com/5177/5458184122_5c46398d40.jpg" alt="TOCNoImage" /></a><br/>
+<strong>Cara Penggunaan Template DocBook TOC</strong></p>
+
+<p>Dan tampilan live-nya kurang lebih seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458184120/"><img src="http://farm6.static.flickr.com/5052/5458184120_36c2a1713c.jpg" alt="TOCLive" /></a><br/>
+<strong>Tampilan Halaman Dengan Template DocBook TOC</strong></p>
+
+<p>Jika kita ingin menggunakan gambar untuk sampul depan tulisan kita, pasangkan gambar tersebut seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458184110/"><img src="http://farm6.static.flickr.com/5254/5458184110_1f5e05f3f7.jpg" alt="EditTOC" /></a><br/>
+<strong>Cara Penggunaan Template DocBook TOC Menggunakan Gambar Sampul</strong></p>
+
+<ol>
+<li><p> <strong>docbook-toc-content.php</strong></p>
+
+<p>/docbook-toc-content.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)
+*</li>
+<li><p>Template Name: DocBookTOCContent
+*/
+?></p>
+
+<p>  <div id="content" class="widecolumn_single"></p>
+
+<pre><code>  &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;div class="entry"&gt;
+          Read the rest of this entry »&lt;/p&gt;'); ?&gt;
+
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p&gt;
+          ID;
+              }
+
+              $current = array_search($post-&gt;ID, $pages);
+              $prevID = $pages[$current-1];
+              $nextID = $pages[$current+1];
+          ?&gt;
+
+          &lt;div class="navigation"&gt;
+
+
+                  &lt;div class="alignright"&gt;&lt;a href="&lt;?php echo get_permalink($nextID); ?&gt;" title="&lt;?php echo get_the_title($nextID); ?&gt;"&gt;&lt;/a&gt;&lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;/p&gt;
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p class="postmetadata alt"&gt;
+              &lt;small&gt;                    
+
+                   for this entry.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Both Comments and Pings are open ?&gt;
+                      &lt;a href="#respond"&gt;Leave a response&lt;/a&gt;, or &lt;a href="&lt;?php trackback_url(); ?&gt;" rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Only Pings are Open ?&gt;
+                      Responses are currently closed, but you can &lt;a href="&lt;?php trackback_url(); ?&gt; " rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Comments are open, Pings are not ?&gt;
+                      You can skip to the end and leave a response. Pinging is currently not allowed.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Neither Comments, nor Pings are open ?&gt;
+                      Both comments and pings are currently closed.
+
+
+
+              &lt;/small&gt;
+          &lt;/p&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+
+  &lt;p&gt;Sorry, no posts matched your criteria.&lt;/p&gt;
+</code></pre>
+
+<p>  </div></p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>File <strong>docbook-toc-content.php</strong> ini digunakan sebagai template untuk <strong>bab (chapter)</strong> yang terdapat pada tulisan kita, cara penggunaan-nya adalah buatlah sebuah halaman baru dengan judul bab (chapter) yang akan dipublish dan pada opsi <strong>Page Attributes</strong> pilihlah parent yang menggunakan template <strong>DocBookTOC</strong> (dalam contoh ini parent page-nya adalah <strong>Berkenalan dengan ISO 8583 Menggunakan Java</strong>) pada opsi <strong>Parent</strong> dan <strong>DocBookTOCContent</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5457599263/"><img src="http://farm6.static.flickr.com/5018/5457599263_3cddaf9266.jpg" alt="DocBookTOCContentEdit" /></a><br/>
+<strong>Cara Penggunaan Template DocBook TOC Content (Template Untuk Bab / Chapter)</strong></p>
+
+<p>Sedangkan tampilan livenya adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5457599265/"><img src="http://farm6.static.flickr.com/5295/5457599265_eb114d1690.jpg" alt="DocBookTOCContentLive" /></a><br/>
+<strong>Tampilan Live  Template DocBook TOC Content (Template Untuk Bab / Chapter)</strong></p>
+
+<ol>
+<li><p> <strong>docbook-content.php</strong></p>
+
+<p>/docbook-content.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)
+*</li>
+<li><p>Template Name: DocBookContent
+*/
+?></p>
+
+<p>  <div id="content" class="widecolumn_single"></p>
+
+<pre><code>  &lt;div class="navigation"&gt;
+      &lt;div class="alignleft"&gt;&lt;/div&gt;
+      &lt;div class="alignright"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;div class="entry"&gt;
+          Read the rest of this entry »&lt;/p&gt;'); ?&gt;
+
+           '&lt;p&gt;&lt;strong&gt;Pages:&lt;/strong&gt; ', 'after' =&gt; '&lt;/p&gt;', 'next_or_number' =&gt; 'number')); ?&gt;
+
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p&gt;
+
+          ID;
+              }
+
+              $current = array_search($post-&gt;ID, $pages);
+              $prevID = $pages[$current-1];
+              $nextID = $pages[$current+1];
+          ?&gt;
+
+          &lt;div class="navigation"&gt;
+
+                  &lt;div class="alignleft"&gt;&lt;a href="&lt;?php echo get_permalink($prevID); ?&gt;" title="&lt;?php echo get_the_title($prevID); ?&gt;"&gt;&lt;/a&gt;&lt;/div&gt;
+
+                  &lt;div class="alignright"&gt;&lt;a href="&lt;?php echo get_permalink($nextID); ?&gt;" title="&lt;?php echo get_the_title($nextID); ?&gt;"&gt;&lt;/a&gt;&lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;/p&gt;
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p class="postmetadata alt"&gt;
+              &lt;small&gt;                    
+
+                   for this entry.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Both Comments and Pings are open ?&gt;
+                      &lt;a href="#respond"&gt;Leave a response&lt;/a&gt;, or &lt;a href="&lt;?php trackback_url(); ?&gt;" rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Only Pings are Open ?&gt;
+                      Responses are currently closed, but you can &lt;a href="&lt;?php trackback_url(); ?&gt; " rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Comments are open, Pings are not ?&gt;
+                      You can skip to the end and leave a response. Pinging is currently not allowed.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Neither Comments, nor Pings are open ?&gt;
+                      Both comments and pings are currently closed.
+
+
+              &lt;/small&gt;
+          &lt;/p&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+
+
+  &lt;p&gt;Sorry, no posts matched your criteria.&lt;/p&gt;
+</code></pre>
+
+<p>  </div></p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>Sedangkan file yang terakhir ini yaitu <strong>docbook-content.php</strong> digunakan untuk bagian <strong>Sub Bab</strong> pada tulisan kita, cara penggunaan-nya yaitu  buatlah sebuah halaman baru dengan judul <strong>sub bab</strong> yang akan dipublish dan pada opsi <strong>Page Attributes</strong> pilihlah parent yang menggunakan template <strong>DocBookTOCContent</strong> (dalam contoh ini parent page-nya adalah <strong>Pendahuluan</strong>) pada opsi <strong>Parent</strong> dan <strong>DocBookContent</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5457613225/"><img src="http://farm6.static.flickr.com/5174/5457613225_6b9f039dec.jpg" alt="DocBookContentEdit" /></a><br/>
+<strong>Cara Penggunaan Template DocBook Content (Template Untuk SubBab)</strong></p>
+
+<p>Sedangkan tampilan live-nya kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5457613227/"><img src="http://farm6.static.flickr.com/5296/5457613227_ff70da3681.jpg" alt="DocBookContentLive" /></a><br/>
+<strong>Tampilan Template DocBook Content (Template Untuk SubBab)</strong></p>
+
+<p>Dengan sedikit modifikasi yang sudah kita lakukan diatas, sekarang blog kita sudah bisa mendukung tampilan seperti <strong>DocBook</strong> dengan tambahan fasilitas komentar seperti yang dimiliki oleh halaman manual <a href="http://dev.mysql.com/doc/refman/5.1/en/date-and-time-functions.html">MySQL</a> :) Alasan saya pribadi tertarik dengan model seperti ini yaitu <strong>supaya komunikasi antara penulis dan pembaca bisa 2 arah</strong> :D Jika pembaca tidak mengerti pada bab yang dibaca, bisa langsung konsultasi melalui kolom komentar yang sudah terdapat pada <strong>WordPress</strong> dan penulis bisa langsung menjawab pertanyaan tersebut secara langsung dan tentunya menggunakan fasilitas komentar juga :)</p>
+
+<p>Nah sekarang bagaimana pendapat teman-teman ? Ada ide yang lain ? :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OpenIndiana Announcement]]></title>
+    <link href="http://martinusadyh.web.id/2010/09/15/openindiana-announcement/"/>
+    <updated>2010-09-15T06:54:54+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/09/15/openindiana-announcement</id>
+    <content type="html"><![CDATA[<p>Untuk teman-teman pecinta <a href="http://opensolaris.org/">OpenSolaris</a> yang mungkin kemarin sempat kecewa, sekarang mungkin sudah bisa mulai tersenyum kembali :) Yaps karena ada sebuah project yang <strong>&ldquo;benar-benar OpenSource&rdquo;</strong> yaitu <a href="http://openindiana.org/">http://openindiana.org/</a> yang akan meneruskan pengembangan <a href="http://opensolaris.org">http://opensolaris.org</a> dengan metode yang lebih terbuka pada komunitas :) Buat teman-teman yang belum tahu apa itu <strong>OpenIndiana</strong>, ini adalah cuplikan dari situs resmi <strong>Project OpenIndiana</strong></p>
+
+<blockquote><p>OpenIndiana is a continuation of the OpenSolaris operating system. It was conceived during the period of uncertainty following the Oracle takeover of Sun Microsystems, after several months passed with no binary updates made available to the public. The formation proved timely, as Oracle discontinued OpenSolaris soon after in favour of Solaris 11 Express, a binary distribution with a more closed development model to debut later this year.</p></blockquote>
+
+<p>OpenIndiana is part of the Illumos Foundation, and provides a true open source community alternative to Solaris 11 and Solaris 11 Express, with an open development model and full community participation.</p>
+
+<!-- more -->
+
+
+<p>Untuk teman-teman yang sudah tidak sabar lagi untuk mulai mencoba <strong>Sistem Operasi OpenIndiana</strong> ini, silahkan download dahulu file <strong>ISO</strong>-nya pada <a href="http://dlc-origin.openindiana.org/isos/147/">http://dlc-origin.openindiana.org/isos/147/</a>. Sedangkan untuk teman-teman yang masih penasaran berbasis pada apakah <strong>OpenIndiana</strong> ini ? <strong>OpenIndiana</strong> adalah clone dari <strong>OpenSolaris</strong> dan ini bisa teman-teman baca di halaman <a href="http://wiki.openindiana.org:8080/display/oi/Frequently+Asked+Questions">FAQ OpenIndiana</a> pada bagian <strong>Is OpenIndiana a desktop or a server operating system?</strong> yang isinya adalah sebagai berikut :</p>
+
+<blockquote><p>As a clone of OpenSolaris, the answer is both. However OpenSolaris contains some amazing enterprise server features, including the ZFS filesystem, COMSTAR iSCSI Framework, Crossbow Networking stack, SMF Service management framework, Fault Management system, etc. We intend to make OpenIndiana more suitable for use on servers, for example by introducing a minimal/server install option to the Caiman installer.</p></blockquote>
+
+<p>Bagaimana teman-teman ? Tertarik untuk mencoba ?? Jika iya, mungkin informasi yang terkait dengan <strong>Project OpenIndiana</strong> dibawah ini berguna untuk teman-teman :</p>
+
+<ol>
+<li><p> <a href="http://openindiana.org/">Project Home OpenIndiana</a></p></li>
+<li><p> <a href="http://wiki.openindiana.org:8080/display/oi/Frequently+Asked+Questions">FAQ OpenIndiana</a></p></li>
+<li><p> <a href="http://wiki.openindiana.org/">Wiki OpenIndiana</a></p></li>
+<li><p> <a href="http://openindiana.org/mailman">Mailing List OpenIndiana</a></p></li>
+<li><p> <strong>#openindiana _at_irc.freenode.net</strong></p></li>
+<li><p> <a href="http://dlc-origin.openindiana.org/isos/">Download Page OpenIndiana ISO</a></p></li>
+</ol>
+
+
+<p>Masih penasaran bagaimana tampilan <strong>OpenIndiana</strong> ??? Jika iya, sabar yach teman-teman nanti kalau sudah selesai install pasti di posting koq ;) Sementara ini proses download masih tampak seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ wget -c http://dlc-origin.openindiana.org/isos/147/oi-dev-147-x86.iso
+--2010-09-15 06:12:38--  http://dlc-origin.openindiana.org/isos/147/oi-dev-147-x86.iso
+Resolving dlc-origin.openindiana.org... 91.194.74.66
+Connecting to dlc-origin.openindiana.org|91.194.74.66|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 912422912 (870M) [application/octet-stream]
+Saving to: `oi-dev-147-x86.iso'
+
+62% [===============================================================================&gt;                                                 ] 566,831,064  218K/s  eta 28m 9s  
+</code></pre>
+
+<p>Masih <strong>28 menit</strong> lagi untuk segera merasakan <strong>OpenIndiana</strong>  :peace:  :manja:  :gembira:</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OpenSolaris Project is Dead ???]]></title>
+    <link href="http://martinusadyh.web.id/2010/08/14/opensolaris-project-is-dead/"/>
+    <updated>2010-08-14T22:31:10+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/08/14/opensolaris-project-is-dead</id>
+    <content type="html"><![CDATA[<p>Waw.. bulan-bulan ini merupakan bulan yang bisa dikatakan sangat menyedihkan untuk perkembangan dunia OpenSource :( , setelah kasus <a href="http://news.cnet.com/8301-30684_3-20013546-265.html">Oracle vs Google</a> tentang Android, sekarang timbul <strong>memo</strong> pada milis <a href="mailto:opensolaris-discuss@opensolaris.org">osol-discuss</a> yang menyatakan bahwa project <strong>OpenSolaris</strong> tidak akan dikembangkan lagi oleh Oracle dan diganti dengan Solaris 11 Express :( Setelah berbulan-bulan Oracle sunyi-senyap tanpa kabar tentang Project OpenSolaris akhirnya setelah timbul <strong>memo</strong> dibawah ini jelas sudah nasib OpenSolaris kedepan-nya :( , Dan dibawah ini adalah detail dari <strong>memo</strong> yang di posting ke milis <a href="mailto:opensolaris-discuss@opensolaris.org">osol-discuss</a> dengan Subject <strong>OpenSolaris cancelled, to be replaced with Solaris 11 Express</strong> :</p>
+
+<!-- more -->
+
+
+<blockquote><p>From : Alasdair Lumsden
+To : <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#111;&#x70;&#101;&#110;&#115;&#111;&#x6c;&#x61;&#114;&#x69;&#115;&#45;&#100;&#x69;&#x73;&#x63;&#117;&#x73;&#115;&#64;&#111;&#112;&#x65;&#x6e;&#115;&#111;&#x6c;&#x61;&#114;&#105;&#115;&#46;&#111;&#114;&#103;">&#111;&#112;&#x65;&#x6e;&#115;&#x6f;&#x6c;&#97;&#x72;&#105;&#x73;&#45;&#100;&#x69;&#115;&#99;&#x75;&#x73;&#x73;&#64;&#x6f;&#x70;&#x65;&#110;&#115;&#111;&#108;&#97;&#114;&#105;&#x73;&#46;&#111;&#114;&#x67;</a>
+Subject : <strong>OpenSolaris cancelled, to be replaced with Solaris 11 Express</strong></p></blockquote>
+
+<p>Hi All,</p>
+
+<p>This memo was circulated internally within Oracle (and subsequently leaked). Basically, the open source development model has now been
+axed and OpenSolaris is officially now dead. A very sad day indeed.</p>
+
+<p><strong>Solaris Engineering,</strong></p>
+
+<p>Today we are announcing a set of decisions regarding the path to Solaris 11, and answering key pending questions on open source, open
+development, software and binary licenses, and how developers and early adopters will be able to use Solaris 11 technology before its release in 2011.</p>
+
+<p>As you all know, the term “OpenSolaris” has been used colloquially to refer to any or all of a collection of source code, a development
+model, a web site, a logo, a binary release, a source license, a community, and many other related things. So it’s taken a while to go
+over each issue from an organizational and business perspective, and align on the correct next step. Therefore, please take the time to
+read all of the detail here carefully. We’ll discuss our strategy first, and then the decisions and changes to our policies and processes that implement that strategy.</p>
+
+<p><strong>Solaris Strategy</strong>
+———————-</p>
+
+<p>Solaris is the #1 Enterprise Operating System. We have the leading share of business applications on Solaris today, including both SPARC
+and x64. We have more than twice the application base of AIX and HP-UX combined. We have a brand that stands for innovation, quality,
+security, and trust, built on our 20-year investment in Solaris operating system engineering.</p>
+
+<blockquote><p>From a business perspective, the purpose of our investment in Solaris engineering is to drive our overall server business, including both
+SPARC and x64, and to drive business advantages resulting from integration of multiple components in the Oracle portfolio. This
+includes combining our servers with our storage, our servers with our switches, Oracle applications with Solaris, and the effectiveness of
+the service experience resulting from these combinations. All together, Solaris drives aggregate business measured in many billions of dollars, with significant growth potential.</p></blockquote>
+
+<p>We are increasing investment in Solaris, including hiring operating system expertise from throughout the industry, as a sign of our commitment to these goals. Solaris is not something we outsource to others, it is not the assembly of someone else’s technology, and it is not a sustaining-only product. We expect the top operating systems engineers in the industry, i.e. all of you, to be creating and delivering innovations that continue to make Solaris unique, differentiated, and valuable to our customers, and a unique asset of our business.</p>
+
+<p>Solaris must stand alone as a best-of-breed technology for Oracle’s enterprise customers. We want all of them to think “If this has to work, then it runs on Solaris.” That’s the Solaris brand. That is where our scalability to more than a few sockets of CPU and gigabytes of DRAM matters. That is why we reliably deliver millions of IOPS of storage, networking, and Infiniband. That is why we have unique properties around file and data management, security and namespace isolation, fault management, and observability. And we also want our customers to know that Solaris is and continues to be a source of new ideas and new technologies– ones that simplify their business and optimize their applications. That’s what made Solaris 10 the most innovative operating system release ever. And that is the same focus that will drive a new set of innovations in Solaris 11.</p>
+
+<p>For Solaris to stand alone as the best-of-breed operating system in Oracle’s complete and open portfolio, it must run well on other server hardware and execute everyone’s applications, while delivering unique optimizations for our hardware and our applications. That is the central value proposition of Oracle’s complete, open, and integrated strategy. And these are complementary and not contradictory goals that we will achieve through proper design and engineering.</p>
+
+<p>The growth opportunity for Solaris has never been greater. As one example, Solaris is used by about 40% of Oracle’s enterprise customers, which means we have a 60% growth opportunity in our top customers alone. In absolute numbers, there are 130,000 Oracle
+customers in North America alone who don’t use our servers and storage yet, and a global customer base of 350,000 (the prior Sun base was ~35,000). That’s a huge opportunity we can go attack as a combined company that will increase Solaris adoption and the overall Hardware server revenue. Our success will also increase the amount of effort ISVs exert optimizing their applications for Solaris.</p>
+
+<p>We will continue to grow a vibrant developer and system administrator community for Solaris. Delivery of binary releases, delivery of APIs in source or binary form, delivery of open source code, delivery of technical documentation, and engineering of upstream contributions to common industry technologies (such as Apache, Perl, OFED, and many, many others) will be part of that activity. But we will also make
+specific decisions about why and when we do those things, following two core principles: (1) We can’t do everything. The limiting factor
+is our engineering bandwidth measured in people and time. So we have to ensure our top priority is driving delivery of the #1 Enterprise Operating System, Solaris 11, to grow our systems business; and (2) We want the adoption of our technology and intellectual property to accelerate our overall goals, yet not permit competitors to derive business advantage (or FUD) from our innovations before we do.
+We are using our investment in core Solaris innovation and engineering to drive multiple businesses, through multiple product lines. This
+already includes our Solaris operating system for Enterprise, and our ZFS Storage product line, and will soon include other Oracle  products.</p>
+
+<p>This strategy is all about creating more value from a set of common software investments: it makes everything you do more valuable and used by more people worldwide. It also means you as an individual engineer or manager have an even greater responsibility to
+understand the broader business and technical contexts in which your engineering is deployed.</p>
+
+<p><strong>Solaris Decisions</strong>
+————————</p>
+
+<p>We will continue to use the CDDL license statement in nearly all Solaris source code files. We will not remove the CDDL from any files
+in Solaris to which it already applies, and new source code files that are created will follow the current policy regarding applying the CDDL (simply, that usr/src files will have the CDDL, and the very small minority of files in usr/closed might not have it). Use of other open
+licenses in non-ON consolidations (e.g. GPL in the Desktop area) will also continue. As before, requests to change the license associated
+with source code are case-by-case decisions.</p>
+
+<p>We will distribute updates to approved CDDL or other open source-licensed code following full releases of our enterprise Solaris operating system. In this manner, new technology innovations will show up in our releases before anywhere else. We will no longer
+distribute source code for the entirety of the Solaris operating system in real-time while it is developed, on a nightly basis.</p>
+
+<p>Anyone who is consuming Solaris code using the CDDL, whether in pieces or as a part of the OpenSolaris source distribution or a derivative thereof, would therefore be able to consume any updates we release at that time, under the terms of the CDDL, LGPL, or whatever license applies.</p>
+
+<p>We will have a technology partner program to permit our industry partners full access to the in-development Solaris source code through
+the Oracle Technology Network (OTN). This will include both early access to code and binaries, as well as contributions to us where that
+is appropriate. All such partnerships will be evaluated on a case-by-case basis, but certainly our core, existing technology partnerships, such as the one with Intel, are examples of valued participation.</p>
+
+<p>We will encourage and listen to any and all license requests for Solaris technology, either in part or in whole. All such requests will be evaluated on a case-by-case basis, but we believe there are many complementary areas where new partnership opportunities exist to
+expand use of our IP.</p>
+
+<p>We will continue active open development, including upstream contributions, in specific areas that accelerate our overall Solaris goals. Examples include our activities around Gnome and X11, IPS packaging, and our work to optimize ecosystems like Apache, OpenSSL, and Perl on Solaris.</p>
+
+<p>We will deliver technical design information, in the form of documentation, design documents, and source code descriptions, through our OTN presence for Solaris. We will no longer post advance technical descriptions of every single ARC case by default, indicating what technical innovations might be present in future Solaris releases. We can at any time make a specific decision to post advance technical information for any project, when it serves a particular useful need to do so.</p>
+
+<p>We will have a Solaris 11 binary distribution, called Solaris 11 Express, that will have a free developer RTU license, and an optional support plan. Solaris 11 Express will debut by the end of this calendar year, and we will issue updates to it, leading to the full release of Solaris 11 in 2011.</p>
+
+<p>All of Oracle’s efforts on binary distributions of Solaris technology will be focused on Solaris 11. We will not release any other binary distributions, such as nightly or bi-weekly builds of Solaris binaries, or an OpenSolaris 2010.05 or later distribution. We will determine a simple, cost-effective means of getting enterprise users of prior OpenSolaris binary releases to migrate to S11 Express.</p>
+
+<p>We will have a Solaris 11 Platinum Customer Program, including direct engineering involvement and feedback, for customers using our Solaris 11 technology. We will be asking all of you to participate in this endeavor, bringing with us the benefit of previous Sun Platinum
+programs, while utilizing the much larger megaphone that is available to us now as a combined company.</p>
+
+<p>We look forward to everyone’s continued work on Solaris 11. Our goal is simply to make it the best and most important release of Solaris
+ever.</p>
+
+<p>-Mike Shapiro, Bill Nesheim, Chris Armes</p>
+
+<hr />
+
+<p>opensolaris-discuss mailing list
+<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x6f;&#112;&#101;&#x6e;&#115;&#x6f;&#108;&#97;&#114;&#x69;&#x73;&#x2d;&#100;&#x69;&#x73;&#99;&#117;&#x73;&#x73;&#x40;&#x6f;&#x70;&#x65;&#x6e;&#115;&#x6f;&#108;&#97;&#x72;&#x69;&#x73;&#46;&#x6f;&#x72;&#103;">&#111;&#112;&#101;&#110;&#115;&#111;&#x6c;&#97;&#114;&#x69;&#x73;&#45;&#x64;&#x69;&#x73;&#99;&#117;&#x73;&#x73;&#x40;&#x6f;&#112;&#x65;&#x6e;&#115;&#x6f;&#108;&#97;&#114;&#x69;&#115;&#46;&#111;&#x72;&#103;</a></p>
+
+<p>Sebelum <strong>memo</strong> ini muncul, ada beberapa <strong>&ldquo;pendekar&rdquo;</strong> dari OpenSolaris yang membuat sebuah project bernama <strong>Illumos</strong> yang halaman project-nya bisa teman-teman lihat <a href="http://www.illumos.org/announce">disini.</a></p>
+
+<p>Sepertinya sudah saat-nya untuk melihat-lihat <a href="http://www.freebsd.org/">FreeBSD</a> yang &ldquo;katanya&rdquo; sudah menerapkan ZFS dan DTrace di System Operasi-nya.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[VMWare Technology Day 2010]]></title>
+    <link href="http://martinusadyh.web.id/2010/04/21/vmware-technology-day-2010/"/>
+    <updated>2010-04-21T19:34:16+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/04/21/vmware-technology-day-2010</id>
+    <content type="html"><![CDATA[<p>Hii all sudah tahu tentang <a href="www.vmware.com">VMWare</a> kan ? :) Tahun ini ada Seminar loh tentang <a href="www.vmware.com">VMWare</a> yaitu <a href="http://app.connect.vmware.com/e/es.aspx?s=524&amp;e=13809817&amp;elq=5feac15458234447b85d79b9e37ca722">VMWare Technology Day 2010</a>. Hm&hellip; tidak percaya ? Sama, saya barusan di invite oleh se-seorang bernama Digit Oktavianto (hii friends ;) ) dan ternyata <strong>Waw &hellip; it&rsquo;s true man</strong> :D Mantap-mantap euy, nah kalau ingin lihat detail-nya silahkan cek dibawah ini :</p>
+
+<h1>VMWare Technology Day 2010</h1>
+
+<h2>Indonesia - 18 May 2010</h2>
+
+<p><strong>Your Invitation to Attend VMware Technology Day - 2010</strong></p>
+
+<p>Join us at VMware’s Technology Day to find out how VMware and our Partners are enabling organizations to dramatically reduce the complexity of their infrastructure with flexible, agile and reliable virtualization solutions – from the Desktop to the Datacentre and to the Cloud.</p>
+
+<p>Technology Day is a complimentary one day technical deep-dive designed for individuals and organizations looking to maximize technology infrastructure efficiency and optimization. In 2010, Technology Day will focus on Desktop Virtualization, Infrastructure Management &amp; Automation and Cloud Computing.</p>
+
+<h2>Technology Day - Deep Dive</h2>
+
+<p>Technology Day will provide you with a deep dive into the following:</p>
+
+<ol>
+<li><p> Transforming Infrastructure to Deliver IT as a Service</p></li>
+<li><p> Simplifying &amp; Controlling Your Desktop Infrastructure with View</p></li>
+<li><p> Application Migration &amp; Virtualization with ThinApp</p></li>
+<li><p> Building and Managing Security With vShield Zones and VMsafe</p></li>
+<li><p> Guaranteeing SLA Performance Delivery vCentre AppSpeed</p></li>
+<li><p> Automating Capacity Management with CapacityIQ</p></li>
+<li><p> Integrating Services For Seamless Virtualization Project Plan, Design and Implementation</p></li>
+</ol>
+
+
+<h2>Who Should Attend</h2>
+
+<p>Technology Day 2010 has been designed for end-users, implementers, influencers and decision makers of Desktop, Datacentre and Application infrastructure within their organization.</p>
+
+<p>Register now to reserve you seat!</p>
+
+<h2>Event Venue:</h2>
+
+<p>Hotel Mulia
+Jl. Asia Afrika
+Senayan-Jakarta 10270
+Indonesia</p>
+
+<h2>Date :</h2>
+
+<p>Tuesday, 18 May 2010</p>
+
+<h2>Time :</h2>
+
+<p>8:00 am to 4:00 pm</p>
+
+<p>Nah bagaimana teman-teman ? Tertarik ikutan ?? Kalau iya, cepetan registrasi <a href="http://app.connect.vmware.com/e/es.aspx?s=524&amp;e=13809817&amp;elq=5feac15458234447b85d79b9e37ca722"> disini</a> biar  ga kehabisan kursi :) Btw ada hadiah-nya juga loh :)</p>
+]]></content>
+  </entry>
+  
+</feed>

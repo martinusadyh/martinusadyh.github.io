@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Installasi Android SDK Untuk Pengembangan Aplikasi Android - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Ingin membuat sebuah aplikasi untuk Android ? Jika iya, maka langkah pertama yang harus kita lakukan yaitu mempersiapkan lingkungan pengembangan pada &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/08/29/installasi-android-sdk-untuk-pengembangan-aplikasi-android/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Installasi Android SDK Untuk Pengembangan Aplikasi Android</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-29T09:30:23+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Ingin membuat sebuah aplikasi untuk Android ? Jika iya, maka langkah pertama yang harus kita lakukan yaitu mempersiapkan lingkungan pengembangan pada komputer kita. Sebelum mulai menginstall Android SDK dan teman-teman-nya, pastikan dahulu bahwa SUN JDK 1.6 sudah terinstall pada komputer kita dan pastikan juga variabel <strong>$JAVA_HOME</strong> mengarah pada direktori SUN JDK yang sebenarnya. Jika sudah, sekarang mari kita bahas satu persatu mempersiapkan lingkungan pengembangan Android yang kurang lebih seperti dibawah ini :</p>
+
+<ol>
+<li> Installasi Android SDK</li>
+<li> Installasi Plugin Android Development Tools (ADT) Pada Eclipse 3.5.2 (Galileo) Classic</li>
+<li> Konfigurasi Plugin ADT Pada Eclipse 3.5.2 (Galileo)</li>
+</ol>
+
+
+<p>Masih tertarik ingin membuat sebuah aplikasi untuk Android ? Jika iya, mari kita lanjutkan pembahasan-nya lebih detail lagi seperti dibawah ini :</p>
+
+<!-- more -->
+
+
+<ol>
+<li> <strong>Installasi Android SDK</strong></li>
+</ol>
+
+
+<p>Untuk menginstall Android SDK, silahkan mengunjungi alamat <a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a> dan download-lah yang sesuai dengan sistem operasi yang digunakan. Jika menggunakan GNU/Linux, caranya adalah sebagai berikut :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ wget -c http://dl.google.com/android/android-sdk_r06-linux_86.tgz
+--2010-08-29 05:23:06--  http://dl.google.com/android/android-sdk_r06-linux_86.tgz
+Resolving dl.google.com... 64.233.181.190, 64.233.181.91, 64.233.181.93, ...
+Connecting to dl.google.com|64.233.181.190|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 16971139 (16M) [application/x-tar]
+Saving to: `android-sdk_r06-linux_86.tgz'
+
+100%[================================================================================================================================&gt;] 16,971,139  73.5K/s   in 4m 16s  
+
+2010-08-29 05:27:23 (64.8 KB/s) - `android-sdk_r06-linux_86.tgz' saved [16971139/16971139]
+
+martinus@martinusadyh:[~]$
+</code></pre>
+
+<p>Proses download sudah selesai, sekarang ekstrak pada direktori yang diinginkan (jika menggunakan windows bisa diekstrak pada <code>C:\&gt;</code> atau <code>/home/[nama-user]</code> jika menggunakan GNU/Linux) yang nantinya akan membuat sebuah direktori seperti <code>C:\android-sdk-windows_86</code> di Windows atau <code>/home/[nama-user]/android-sdk-linux_86</code> jika menggunakan GNU/Linux.</p>
+
+<p>Jika proses ekstrak sudah selesai, sekarang downloadlah Android Component dengan cara masuklah pada direktori <code>/home/[nama-user]/android-sdk-linux_86/tools</code> melalui terminal dan jalankan perintah <code>android</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ cd android-sdk-linux_86/tools/
+martinus@martinusadyh:[~/android-sdk-linux_86/tools]$ android 
+Starting Android SDK and AVD Manager
+No command line parameters provided, launching UI.
+See 'android --help' for operations from the command line.
+</code></pre>
+
+<p>Setelah kita mengetikkan <code>android</code> pada terminal, maka tidak lama akan muncul <strong>Android SDK and AVD Manager</strong>. Untuk menginstall dan menambahkan komponen, sekarang pilihlah menu <strong>Available Packages</strong> dan pilihlah semua opsi yang terdapat pada menu sebelah kanan seperti gambar dibawah ini :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/AndroidComponent.png" title="Menambahkan Android Component" >
+<strong>Menambahkan Android Component</strong></p>
+
+<p>Kemudian tekanlah tombol <strong>Install Selected</strong> dan pilihlah opsi <strong>Accept All</strong> pada dialog <strong>Choose Packages to Install</strong> setelah itu baru tekan tombol <strong>Install</strong> seperti dibawah ini :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/ChoosePackagesToInstall.png" title="ChoosePackagesToInstall" >
+<strong>Menambahkan Android Component</strong></p>
+
+<p>Tunggu sampai proses download selesai dan jika sudah proses installasi Android SDK ini bisa dikatakan sudah selesai. Sekarang mari kita lanjut ke tahapan selanjut-nya ;)</p>
+
+<ol>
+<li> <strong>Installasi Plugin Android Development Tools (ADT) Pada Eclipse 3.5.2 (Galileo) Classic</strong></li>
+</ol>
+
+
+<p>Karena ADT ini merupakan sebuah plugin pada Eclipse, maka pastikan dahulu anda menginstall Eclipse yang sesuai yaitu <strong>Eclipse 3.5.2 (Galileo) Classic</strong> yang bisa kita download dari <a href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a>. (Aneh kenapa plugin ADT ini tidak jalan ya di Eclipse Helios versi EE ??? Ada yang sudah pernah mencoba di Helios ???) Jika proses installasi Eclipse sudah selesai, sekarang installah plugin ADT ini dengan cara pilihlah menu <strong>Help > Install New Software</strong> dan masukkanlah alamat <a href="https://dl-ssl.google.com/android/eclipse/">https://dl-ssl.google.com/android/eclipse/</a> pada field <strong>Work with</strong> kemudian tekan <strong>ENTER</strong> dan tunggulah beberapa saat sampai muncul plugin <strong>Developer Tools</strong> dan berilah tanda centang seperti dibawah ini :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/AndroidDevelopmentTools.png" title="Installasi Plugin ADT Pada Eclipse" >
+<strong>Installasi Plugin ADT Pada Eclipse</strong></p>
+
+<p>Tekanlah tombol <strong>Next</strong> hingga plugin <strong>Android Development Tools</strong> ter-install pada Eclipse kemudian restartlah Eclipse agar plugin <strong>Android Development Tools</strong> dapat segera digunakan :)</p>
+
+<blockquote><p>Jika proses installasi plugin ADT diatas mengalami masalah seperti dibawah ini :</p>
+
+<blockquote><p>Cannot complete the install because one or more required items could not be found.
+Software being installed: Android Development Tools 0.9.7.v201005071157-36220 (com.android.ide.eclipse.adt.feature.group 0.9.7.v201005071157-36220)
+Missing requirement: Android Development Tools 0.9.7.v201005071157-36220 (com.android.ide.eclipse.adt.feature.group 0.9.7.v201005071157-36220) requires &lsquo;org.eclipse.gef 0.0.0&rsquo; but it could not be found</p></blockquote></blockquote>
+
+<p>Maka cara pemecahan-nya yaitu install-lah dahulu plugin <strong>WST Server Adapters</strong> dengan cara pilihlah menu <strong>Help > Install New Software</strong> dan masukkanlah alamat <a href="http://download.eclipse.org/releases/galileo/">http://download.eclipse.org/releases/galileo/</a> pada field <strong>Work with</strong> kemudian tekan <strong>ENTER</strong> tunggu sampai menampilkan daftar plugin lalu ketikkan <strong>WST Server Adapters</strong> pada field <strong>Type Filter Text</strong> seperti dibawah ini :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/InstallWST.png" title="Installasi Plugin WST Server Adapters Pada Eclipse" >
+<strong>Installasi Plugin WST Server Adapters Pada Eclipse</strong></p>
+
+<p>Jika sudah selesai, restartlah Eclipse-nya dan lanjutkan untuk menginstall plugin ADT :)</p>
+
+<p>Sampai disini proses installasi Plugin sudah bisa dikatakan selesai :)</p>
+
+<ol>
+<li> <strong>Konfigurasi Plugin ADT Pada Eclipse 3.5.2 (Galileo)</strong></li>
+</ol>
+
+
+<p>Jika proses installasi plugin ADT berjalan dengan lancar, maka langkah selanjutnya yaitu menentukan lokasi <strong>Android SDK</strong> dengan cara pilihlah menu <strong>Window > Preferences</strong> dan pilihlah menu <strong>Android</strong> pada panel sebelah kiri seperti gambar dibawah ini :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/PreferencesAndroid.png" title="Konfigurasi Plugin ADT" >
+<strong>Konfigurasi Plugin ADT</strong></p>
+
+<p>Pada jendela <strong>Preferences</strong> diatas, tekanlah tombol <strong>Browse</strong> dan arahkan pada tempat dimana kita menginstall <strong>Android SDK</strong> kemudian tekanlah tombol <strong>Apply</strong> hingga tampilannya seperti gambar dibawah ini :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/gambar_preferences_android2.png" title="gambar_preferences_android2" ><br/>
+<strong>Tampilan Android SDK Yang Sudah Dikenali</strong></p>
+
+<p>Jika sudah sekarang mari kita konfigurasi <strong>Android Virtual Device (ADV)</strong> melalui menu <strong>Window > Android SDK and ADV Manager</strong> seperti gambar dibawah ini :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/JendelaADV.png" title="Dialog Konfigurasi Android Virtual Device" >
+<strong>Dialog Konfigurasi Android Virtual Device</strong></p>
+
+<p>Pada dialog <strong>Android SDK and ADV Manager</strong> tekanlah tombol <strong>New</strong> pada panel sebelah kanan dan isikan Nama Virtual Device serta pilihlah versi Android yang ingin di simulasikan pada field Target seperti dibawah ini setelah itu tekanlah tombol <strong>Create AVD</strong> :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/AndroidVD.png" title="Konfigurasi Android Virtual Device" >
+<strong>Konfigurasi Android Virtual Device</strong></p>
+
+<p>Proses installasi Android SDK dan konfigurasi plugin ADT pada Eclipse sudah selesai, nah sekarang untuk mengetest apakah hasil installasi ini berjalan dengan sukses atau tidak. Cobalah untuk membuat sebuah project baru yang berbasis pada direktori <strong>[android-sdk-home]/samples/</strong>, dan jika tidak ada masalah maka kita akan dapat menjalankan salah satu project samples seperti dibawah ini :
+<img src="/images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/SnakeAndroidSampleProject.png" title="Android Emulator Menjalankan Sample Project Snake" >
+<strong>Android Emulator Menjalankan Sample Project Snake</strong></p>
+
+<p>Nah setelah perlengkapan perang kita sudah siap, sekarang waktu-nya untuk mempelajari lebih dalam lagi bagaimana membuat sebuah aplikasi untuk Android :D Sekarang, waktu-nya untuk belajar dahulu ya teman-teman  :senyum:</p>
+
+<p><strong>Referensi-referensi terkait :</strong></p>
+
+<ol>
+<li> <a href="http://blog.tobsen.de/2009/12/android-sdk-installationsprobleme.html">Android Installation Problem</a></li>
+<li> <a href="http://developer.android.com/">http://developer.android.com/</a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-29T09:30:23+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>android</a>, <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/08/29/installasi-android-sdk-untuk-pengembangan-aplikasi-android/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/08/29/installasi-android-sdk-untuk-pengembangan-aplikasi-android/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/08/17/simulasi-slow-network-dengan-lagfactory/" title="Previous Post: Simulasi Slow Network Dengan LagFactory">&laquo; Simulasi Slow Network Dengan LagFactory</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/09/07/selamat-idul-fitri-1431-h/" title="Next Post: Selamat Idul Fitri 1431 H">Selamat Idul Fitri 1431 H &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/08/29/installasi-android-sdk-untuk-pengembangan-aplikasi-android/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/08/29/installasi-android-sdk-untuk-pengembangan-aplikasi-android/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

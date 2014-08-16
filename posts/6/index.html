@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sejak menggunakan GNOME 3, saya jarang sekali menggunakan pidgin sebagai pengganti YM (yahoo messenger). Masalahnya yaitu pidgin belum dapat &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/6/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/09/05/pidgin-and-gnome-3/">Pidgin and GNOME 3</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-05T01:40:59+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/09/05/pidgin-and-gnome-3/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sejak menggunakan GNOME 3, saya jarang sekali menggunakan pidgin sebagai pengganti YM (yahoo messenger). Masalahnya yaitu pidgin belum dapat menampilkan notification layaknya Empathy yang sudah ter-integrasi dengan baik di GNOME 3. Nah sebagai gantinya, saya selalu menggunakan Gtalk selama ini sebagai solusi IM :)</p>
+
+<p>Kemarin secara tidak sengaja, saya menemukan sebuah <strong>Pidgin GNOME Shell Extension</strong> yang bisa dilihat <a href="http://blog.kagesenshi.org/2011/04/pidgin-and-gnome3.html">disini</a>, setelah membaca panduan tersebut ternyata caranya sangat mudah yaitu buatlah dahulu direktori <code>pidgin@gnome-shell-extensions.gnome.org</code> didalam direktori <code>~/.local/share/gnome-shell/extensions</code>. Kemudian simpanlah file <a href="https://github.com/kagesenshi/gnome-shell-extensions-pidgin/blob/master/metadata.json">metadata.json</a> dan <a href="https://github.com/kagesenshi/gnome-shell-extensions-pidgin/blob/master/extension.js">extension.js</a> ke direktori <code>pidgin@gnome-shell-extensions.gnome.org</code>.</p>
+
+<p>Jika sudah, sekarang restartlah GNOME Shell dengan menekan tombol <code>ALT+F2</code> kemudian ketik <code>r+ENTER</code>. Setelah melakukan langkah ini, maka harusnya ketika ada seorang teman yang mengajak chatting GNOME akan menampilkan notification-nya seperti gambar dibawah ini :</p>
+
+<p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=146"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/pidgin.png" alt="Tampilan Notification Pidgin di GNOME 3" /></a><br/>
+Tampilan Notification Pidgin di GNOME 3</p>
+
+<p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=147"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/pidgin_0.png" alt="Tampilan Notification Pidgin di GNOME 3" /></a><br/>
+Tampilan Notification Pidgin di GNOME 3</p>
+
+<p>Nah dengan begini, gtalk akan saya akses menggunakan pidgin saja :) Dikarenakan fitur utama pidgin yang tidak bisa saya tinggal yaitu adalah fasilitas <strong>logchat</strong>-nya :) Bagaimana dengan teman-teman yang lain, apakah ada fitur bagus di GNOME yang bisa di sharing ? :)</p>
+
+<p><strong>Referensi terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://blog.kagesenshi.org/2011/04/pidgin-and-gnome3.html">Pidgin and GNOME 3</a></p></li>
+<li><p> <a href="https://github.com/kagesenshi/gnome-shell-extensions-pidgin">gnome-shell-extensions-pidgin</a></p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/08/29/selamat-idul-fitri-1432-h/">Selamat Idul Fitri 1432 H</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-29T21:32:06+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/08/29/selamat-idul-fitri-1432-h/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk teman-teman yang beragama Islam, selamat <strong>Hari Raya Idul Fitri 1432 H</strong> ya, mohon maaf lahir bathin kalau selama ini saya ada salah selama ini ama teman-teman :)</p>
+
+<p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=142"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/kartu-cuapan-lebaran-1432-h.jpg" alt="Selamat Idul Fitri 1432 H" /></a><br/>
+Selamat Idul Fitri 1432 H
+Gambar kartu lebaran diambil dari <a href="http://kaskus-us.blogspot.com/2011/08/kartu-lebaran-1432-h-kartu-ucapan-idul.html">Kartu Lebaran 1432 H</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/08/22/installing-tora-on-slackware-13-37/">Installing Tora on Slackware 13.37</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-22T23:37:45+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/08/22/installing-tora-on-slackware-13-37/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ingin mencari database tool yang mempunyai fitur yang mirip dengan <a href="http://www.questsoftware.com.sg/toad/">Toad</a> di GNU/Linux ? Jika iya, silahkan mencoba <a href="http://torasql.com/about">TOra</a> :) Nah yang lebih bagus lagi yaitu, <strong>TOra</strong> mendukung database <strong>MySQL</strong>, <strong>PostgreSQL</strong> dan <strong>Oracle</strong> sekaligus. (Tapi kalau untuk <strong>PostgreSQL</strong> saya lebih senang menggunakan <a href="http://martinusadyh.web.id/2010/03/04/installing-pgadmin3-1-10-1-on-slackware-13-0/">PgAdmin</a> :) )</p>
+
+<p>Beberapa fitur yang terdapat pada <strong>TOra</strong> kurang lebih yaitu :</p>
+
+<ol>
+<li><p> Handles multiple connections.</p></li>
+<li><p> SQL syntax highlighting</p></li>
+<li><p> Chart visualization of result.</p></li>
+<li><p> Schema browser.</p></li>
+<li><p> References &amp; dependencies.</p></li>
+<li><p> Tab &amp; tree based browsing.</p></li>
+</ol>
+
+
+<p>Untuk daftar lebih lengkap silahkan melihat langsung pada halaman <a href="http://torasql.com/about">Daftar Fitur TOra</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/08/22/installing-tora-on-slackware-13-37/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/08/20/0ad-game-pengganti-aoe-di-linux/">0AD Game Pengganti AoE Di Linux</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-20T01:01:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/08/20/0ad-game-pengganti-aoe-di-linux/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[caption id=&ldquo;attachment_1479&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;150&rdquo; caption=&ldquo;0AD Game Logo&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/08/0AD_gamelogo.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/08/0AD_gamelogo-150x150.png" alt="0AD Game Logo" /></a>[/caption]</p>
+
+<p>Gara-gara nonton film <a href="http://www.imdb.com/title/tt0346491/">Alexander</a>, akhirnya jadi teringat dengan game yang membawa nuansa jaman kerajaan-kerajaan di abad dahulu, yaps game yang sedang saya bicarakan adalah <a href="http://en.wikipedia.org/wiki/Age_of_Empires">Age of Empire</a> yang dulu saya pernah mainkan ketika masih menggunakan Ms. Windows :)</p>
+
+<p>Nah sekarang, buat para pecinta game <a href="http://en.wikipedia.org/wiki/Age_of_Empires">Age of Empire</a> dan menggunakan sistem operasi GNU/Linux, pasti sudah tahu kan jika game <strong>Age of Empire</strong> dapat kita jalankan di GNU/Linux dengan menggunakan bantuan aplikasi <a href="http://www.winehq.org/">WINE</a>.  Nah bagi yang ingin bermain game yang mirip dengan <strong>Age of Empire</strong> tapi berjalan secara native mungkin bisa mencoba menginstall game <a href="http://www.wildfiregames.com/0ad/">0AD</a> di sistem operasi GNU/Linux kesayangan-nya :)</p>
+
+<p>Game <strong>0AD</strong> ini dikembangkan oleh <a href="http://wildfiregames.com/">http://wildfiregames.com/</a> yang ternyata juga mempunyai pengalaman dalam pengembangan game <strong>Age of Empires II: The Age of Kings.</strong>, dan yang lebih menyenangkan lagi di game <strong>0AD</strong> ini adalah semua shortcut (atau kontrol)-nya sama persis dengan game <strong>Age of Empires</strong>. Jadi buat yang sudah pernah main <strong>Age of Empires</strong> saya rasa tidak akan mengalami kesulitan yang berarti ketika mencoba <strong>0AD</strong> :)</p>
+
+<p>Meskipun game ini masih berstatus <strong>Alpha</strong>, tapi berdasarkan percobaan yang sudah dilakukan kita masih bisa bermain game <strong>0AD</strong> ini dengan nyaman (meskipun belum bisa bermain dalam mode <strong>Campaign</strong> dan menu <strong>Options</strong>-nya masih di disable) :). Jika masih penasaran dengan tampilan game <strong>0AD</strong>, dibawah ini adalah beberapa screenshot game <strong>0AD</strong> yang berhasil saya install di GNU/Linux Slackware saya :)</p>
+
+<p>Setelah berhasil menginstall game <strong>0AD</strong>, kita akan menjumpai tampilan <strong>Home Screen</strong> dibawah ini ketika dijalankan :</p>
+
+<p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=124"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/0ad-homescreen.png" alt="Tampilan Home Screen Game 0AD" /></a><br/>
+Tampilan Home Screen Game 0AD</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/08/20/0ad-game-pengganti-aoe-di-linux/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/07/10/jcombobox-with-database/">JComboBox With DataBase</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-10T17:20:31+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/07/10/jcombobox-with-database/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=116"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/netbeans-stamp-69-70.png" alt="netbeans-stamp-69-70" /></a>Minggu kemarin di milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan tentang bagaimana mengisi JComboBox dari DataBase yang kutipan pertanyaan-nya kurang lebih seperti berikut :</p>
+
+<blockquote><p>From: <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x62;&#x61;&#106;&#42;&#x2a;&#42;&#64;&#121;&#97;&#x68;&#111;&#111;&#46;&#99;&#111;&#x6d;">&#98;&#97;&#106;&#42;&#42;&#42;&#x40;&#121;&#97;&#x68;&#x6f;&#111;&#x2e;&#x63;&#111;&#109;</a> Fakhrurozi M Nur
+To: <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x6e;&#101;&#x74;&#x62;&#101;&#x61;&#x6e;&#x73;&#x2d;&#x69;&#x6e;&#x64;&#111;&#110;&#x65;&#115;&#105;&#97;&#64;&#121;&#x61;&#x68;&#x6f;&#x6f;&#x67;&#114;&#111;&#x75;&#x70;&#x73;&#46;&#99;&#x6f;&#109;">&#x6e;&#x65;&#x74;&#98;&#101;&#x61;&#x6e;&#115;&#45;&#x69;&#110;&#x64;&#111;&#110;&#x65;&#115;&#105;&#97;&#x40;&#x79;&#97;&#104;&#x6f;&#111;&#x67;&#114;&#x6f;&#117;&#112;&#115;&#46;&#x63;&#x6f;&#x6d;</a> <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x6e;&#101;&#116;&#x62;&#101;&#97;&#110;&#115;&#x2d;&#x69;&#110;&#100;&#x6f;&#110;&#x65;&#x73;&#x69;&#x61;&#64;&#x79;&#x61;&#x68;&#111;&#x6f;&#x67;&#114;&#x6f;&#117;&#x70;&#115;&#46;&#x63;&#x6f;&#x6d;">&#110;&#x65;&#x74;&#98;&#x65;&#x61;&#110;&#115;&#x2d;&#x69;&#110;&#100;&#111;&#110;&#101;&#115;&#x69;&#x61;&#64;&#121;&#97;&#x68;&#111;&#111;&#x67;&#x72;&#111;&#x75;&#112;&#x73;&#46;&#x63;&#111;&#109;</a>
+Date: Tue, 5 Jul 2011 00:18:56 +0700
+Subject: [netbeans-indonesia] [TANYA] meload kode pada JComboBox tanpa harus me restart aplikasi</p></blockquote>
+
+<p>mas-mas saya mau tanya,,,
+mas untuk meload noInduk_Siswa di JComboBox dari database trus Di JTextField muncul otomatis nama_Siswa gimana ya? tanpa harus me restart aplikasi,
+disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JTextField tidak mau muncul Di bawah ini source code :</p>
+
+<blockquote><pre><code>private void comboIndukPendaftaranPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+  // TODO add your handling code here:
+  comboIndukPendaftaran.removeAllItems();
+  Statement statement = null;
+  ResultSet result = null;
+  try {
+      statement = DataBaseSkripsi.getConnection().createStatement();
+      result = statement.executeQuery("SELECT NO_INDUKPENDAFTARAN FROM PENDAFTARAN");
+      while(result.next()) {
+          String kode = result.getString("NO_INDUKPENDAFTARAN");
+          comboIndukPendaftaran.addItem(kode);
+          txtNama.setText(result.getString("NAMA"));
+      }
+  } catch (SQLException e) {
+  }finally{
+      if(result!=null) {
+          try {
+              result.close();
+          } catch (SQLException ex) {
+          }
+      }
+  } 
+
+  if(statement!=null) {
+      try {
+          statement.close();
+      } catch (SQLException ex) {
+      }
+  }
+}
+</code></pre></blockquote>
+
+<p>Sebenarnya caranya sangat mudah sekali dan gampang, dan tulisan kali ini saya khususkan untuk menjawab pertanyaan Fakhrurozi M Nur sekalian sebagai arsip jika dikemudian hari ada pertanyaan yang serupa :) Ok masih tertarik mengikuti tutorial-nya ? Jika iya, mari kita persiapkan dulu alat-alat yang diperlukan :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/07/10/jcombobox-with-database/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/07/01/kesan-pertama-mencoba-google/">Kesan Pertama Mencoba Google+</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-01T23:48:42+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/07/01/kesan-pertama-mencoba-google/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[caption id=&ldquo;attachment_1395&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;119&rdquo; caption=&ldquo;Google Plus Logo&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/google-logo-plus.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/google-logo-plus.png" alt="Google Plus Logo" /></a>[/caption]Setelah kemarin minta invite ke teman-teman di <a href="mailto:id-android@googlegroups.com">id-android@googlegroups.com</a>, akhirnya malam ini kesampaian juga mencoba <strong>Facebook Killer</strong> milik Google yaitu <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a> :)</p>
+
+<p>Kesan pertama waktu menggunakan sih tidak jauh berbeda dengan <a href="http://facebook.com/">Facebook</a>, cuma ada beberapa perbedaan di <strong>Google+</strong> ini. Nah untuk yang penasaran seperti apa isinya  <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a> ini, silahkan melihat-lihat beberapa screenshot yang ada dibawah ini :</p>
+
+<p>Dibawah ini merupakan tampilan halaman profile di <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a>, tidak jauh berbeda dengan <a href="http://facebook.com/">Facebook</a> :)
+[caption id=&ldquo;attachment_1401&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo; caption=&ldquo;Halaman Profile Google+&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/Profile.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/Profile-300x155.png" alt="Google+ Profile" /></a>[/caption]</p>
+
+<p>Sedangkan fitur <strong>&ldquo;wall&rdquo;</strong> mirip dengan <strong>&ldquo;Stream&rdquo;</strong> seperti dibawah ini :
+[caption id=&ldquo;attachment_1402&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo; caption=&ldquo;Tampilan Halaman Stream Google+&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/Stream.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/Stream-300x155.png" alt="Google+ Stream" /></a>[/caption]</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/07/01/kesan-pertama-mencoba-google/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/06/24/slackbuild-script-for-gitg/">SlackBuild Script for Gitg</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-24T00:01:38+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/06/24/slackbuild-script-for-gitg/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Karena mencari di SlackBuild ternyata tidak ada, maka saya posting kesini aja sekalian :) Nah untuk teman-teman yang ingin menginstall aplikasi <a href="http://trac.novowork.com/git">gitg</a> bisa menggunakan SlackBuild script yang sudah saya siapkan dan sebelum menggunakan-nya, pastikan bahwa kita sudah menginstall <a href="http://projects.gnome.org/gtksourceview/">gtksourceview</a> dahulu yang SlackBuild script-nya bisa di download di <a href="http://slackbuilds.org/repository/13.37/libraries/gtksourceview/">sini</a></p>
+
+<p>Untuk sementara ini, dependencies yang baru saya temukan baru <a href="http://projects.gnome.org/gtksourceview/">gtksourceview</a> di Slackware64 + GSB 3.0.0. Bagi teman-teman yang tidak menggunakan GNOME sebagai Desktop Manager-nya, jika mengetahui ada dependencies yang kurang tolong di infokan disini sekalian biar saya bisa update file <code>slack-required</code> dengan info dependencies yang terbaru :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/06/24/slackbuild-script-for-gitg/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/06/22/security-info-backdoor-pada-wordpress-plugin/">Security Info Backdoor Pada WordPress Plugin</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-22T22:08:05+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/06/22/security-info-backdoor-pada-wordpress-plugin/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Barusan saya menerima informasi di milis <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/1a329bee0859df69">id-slackware@googlegroups.com</a> yang menyebutkan ada backdoor pada tiga plugin popular WordPress yaitu <strong>Add This, WPTouch</strong> dan <strong>W3Total Cache</strong>. Kutipan resmi dari team WordPress adalah kurang lebih seperti dibawah ini :</p>
+
+<blockquote><h1>Passwords Reset</h1></blockquote>
+
+<p>Posted June 21, 2011 by Matt Mullenweg. Filed under Security.</p>
+
+<p>Earlier today the WordPress team noticed suspicious commits to several popular plugins (AddThis, WPtouch, and W3 Total Cache) containing cleverly disguised backdoors. We determined the commits were not from the authors, rolled them back, pushed updates to the plugins, and shut down access to the plugin repository while we looked for anything else unsavory.</p>
+
+<p>We’re still investigating what happened, but as a prophylactic measure we’ve decided to force-reset all passwords on WordPress.org. To use the forums, trac, or commit to a plugin or theme, you’ll need to reset your password to a new one. (Same for bbPress.org and BuddyPress.org.)</p>
+
+<p>As a user, make sure to never use the same password for two different services, and we encourage you not to reset your password to be the same as your old one.</p>
+
+<p>Second, if you use AddThis, WPtouch, or W3 Total Cache and there’s a possibility you could have updated in the past day, make sure to visit your updates page and upgrade each to the latest version.</p>
+
+<p>Tulisan asli bisa dibaca <a href="https://wordpress.org/news/2011/06/passwords-reset/">disini</a></p>
+
+<p>Nah untuk teman-teman yang menggunakan WordPress sebagai mesin utama blog-nya silahkan di-uninstall dahulu plugin-plugin tersebut jika memang menggunakan-nya, jika sudah di uninstall silahkan ganti password blog anda :)</p>
+
+<p><strong>Referensi-referensi terkait :</strong></p>
+
+<ol>
+<li><p> <a href="https://wordpress.org/news/2011/06/passwords-reset/">Password Reset</a></p></li>
+<li><p> <a href="http://www.h-online.com/security/news/item/Backdoor-in-popular-WordPress-plug-ins-1265289.html">Backdoor In Popular WordPress Plugins</a></p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/06/19/enabling-multilib-on-slackware64-13-37/">Enabling Multilib on Slackware64 13.37</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-19T23:32:06+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/06/19/enabling-multilib-on-slackware64-13-37/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah webcam terdeteksi di Slackware melalui bantuan aplikasi Cheese, sekarang waktunya untuk mencoba menginstall googletalk-plugin dari google :) Kenapa tidak menggunakan Skype ? Karena menurut pendapat saya Skype itu lebih berat daripada Google Talk :D Nah minggu kemarin ketika menginstall googletalk-plugin di Slackware64, ternyata googletalk-plugin ini membutuhkan library untuk arsitektur 32 bit dan ini bisa kita lihat dengan perintah <code>file /opt/google/talkplugin/*</code> seperti dibawah ini :</p>
+
+<pre><code>root@artivisi:/mnt/DATA/SLACKBUILDS/googletalk-plugin# file /opt/google/talkplugin/*
+/opt/google/talkplugin/GoogleTalkPlugin:         ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), stripped
+/opt/google/talkplugin/cron:                     directory
+/opt/google/talkplugin/lib:                      directory
+/opt/google/talkplugin/libnpgoogletalk64.so:     ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped
+/opt/google/talkplugin/libnpgtpo3dautoplugin.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped
+/opt/google/talkplugin/openssl.txt:              ASCII English text
+/opt/google/talkplugin/windowpicker.glade:       XML document text
+</code></pre>
+
+<p>Dari hasil perintah diatas, kita bisa melihat bahwa file <code>/opt/google/talkplugin/GoogleTalkPlugin</code> ternyata merupakan file executable untuk arsitektur 32bit, nah untung-nya di Slackware64 sudah mendukung penggunaan multilib yang maksudnya kita bisa menggunakan aplikasi berbasis 32bit di arsitektur 64bit :) Dengan mengaktifkan dukungan multilib pada Slackware64, maka kita akan dapat menggunakan aplikasi seperti Skype, Wine atau aplikasi 32bit lain-nya yang belum terdapat di arsitektur 64 bit :)</p>
+
+<p>Nah tulisan ini murni merupakan langkah-langkah yang sudah dijelaskan pada halaman <a href="http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib">Multilib Slackware for x86_64</a>, dan saya posting ulang disini supaya <strong>saya tidak lupa apa yang saya lakukan sekarang</strong> :D</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/06/19/enabling-multilib-on-slackware64-13-37/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix/">June Issue of BSD Magazine NanoBSD and ALIX</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-03T01:14:24+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://martinusadyh.web.id/wp-content/uploads/2011/06/NanoBSD_and_ALIX_BSD_06_201.jpg"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/06/NanoBSD_and_ALIX_BSD_06_201.jpg" alt="NanoBSD_and_ALIX_BSD_06_201" /></a>Here it is!</p>
+
+<p>We are back and present you with the June issue of BSD magazine. As you may have noticed, this month’s issue is a little bit thicker than usual and we hope you enjoy all the content!</p>
+
+<p>We get started with Ivan Rambius Ivanov and his „Introduction to OpenSSL: Command line Tool” article followed by the What’s New sectionwhere you will find a short summary of the BSDCan 2011 conference written by Josh Paetzel, and Dru Lavigne who will introduce us to the recently released FreeNAS 8.0.</p>
+
+<p>In the Developers Corner we will meet Antoine Jacoutot describing an OpenBSD success story, Justin C. Sherrill sharing news about the DragonflyBSD project, and Kris Moore who shows us how to install FreeBSD with the PC-BSD installer – PC-SYSINSTALL.</p>
+
+<p>In this months How-Tos Rob Somerville introduces us to GIS in what seems to be a promise of another series of his. Then you will find Sufyan bin Uzayr’s article teaching how to deploy a Cloud OS on BSD, and the third part of the Mutt series written by Michael Hernandez. Also in How-Tos you will find a cover story – „NanoBSD and ALIX” written by Erwin Kooi.</p>
+
+<p>In the Let’s Talk section we have articles from Girish Venkatachalam and Mohammed Farrag, as well as a First of BSD Certification articles written by Jim Brown.</p>
+
+<p>In the end we prepared an Interview with Rafał Jaworowski from Semihalf – an embedded hardware and software developing company which makes great use of BSD in their work.</p>
+
+<p>I wish you have a good read and feedback is always welcome!</p>
+
+<p><strong>Table of Content of this issue is :</strong>
+<strong>Introduction to OpenSSL: Command-line Tool</strong>
+<em>Ivan &lsquo;Rambius&rsquo; Ivanov</em>
+The article describes the command-line utility of openssl. It is a tool that supports encryption and decryption, message digests, key generation and exchange and ssl channel manipulations.</p>
+
+<p><strong>BSDCan</strong>
+<em>Josh Paetzel</em>
+Josh has prepared a short summary of BSDCan 2011 conference.</p>
+
+<p><strong>Introducing FreeNAS 8.0</strong>
+<em>Dru Lavigne</em>
+On May 2, 2011 the much anticipated redesign of FreeNAS was released. This article introduces FreeNAS 8.0, describing the reasons for its redesign, the current and upcoming features, the graphical administrative interface, and where you can find additional information.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="7">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="5">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Violeted Constraints When Installing Packages in OpenSolaris - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Pernah mendapatkan pesan pkg: the following package(s) violated constraints: ketika ingin menginstall sebuah packages di OpenSolaris ?? Yaps saya &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Violeted Constraints When Installing Packages in OpenSolaris</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-31T14:09:42+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Pernah mendapatkan pesan <strong>pkg: the following package(s) violated constraints:</strong> ketika ingin menginstall sebuah packages di OpenSolaris ?? Yaps saya pernah :D dan ini berkali-kali saya alamin, kejadian ini terjadi kalau kita mempunyai lebih dari 1 mirror repositori selain yang terdapat di <a href="http://pkg.opensolaris.org/release/">http://pkg.opensolaris.org/release/</a>. Masalah ini saya alami ketika saya ingin menginstall packages amp di OpenSolaris yang saya gunakan, sedangkan konfigurasi repository yang saya pakai adalah sebagai berikut :</p>
+
+<pre><code>[martin@opensolarisbox:~]# pkg authority
+AUTHORITY                           URL
+Development                         http://pkg.opensolaris.org/dev/
+Blastwave                           http://blastwave.network.com:10000/
+OpenSolaris (preferred)             http://pkg.opensolaris.org/release/
+
+[martin@opensolarisbox:~]#
+</code></pre>
+
+<p>Sedangkan untuk menginstall packages amp, saya gunakan perintah pkg install amp dan akhirnya saya dengan sukses mendapatkan pesan error seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~]# pkg install amp
+Creating Plan -
+pkg: the following package(s) violated constraints:
+    Package pkg:/SUNWcsl@0.5.11,5.11-0.111 conflicts with constraint in installed pkg:/entire:
+            Pkg SUNWcsl: Optional min_version: 0.5.11,5.11-0.101 max version: 0.5.11,5.11-0.101 defined by: pkg:/entire
+[martin@opensolarisbox:~]#
+</code></pre>
+
+<!-- more -->
+
+
+<p>Dan secara kebetulan juga di milis <strong>opensolaris-help@opensolaris.org</strong> ada kejadian serupa dan dibawah ini adalah potongan emailnya beserta solusi yang dianjurkan :</p>
+
+<blockquote><p>Hemantha Holla wrote:
+Matt Harrington wrote:</p>
+
+<blockquote><p>I had this working towards the end of 2008, but I&rsquo;m reinstalling
+2008.11 on a new system and can&rsquo;t seem to install Flash from the extra
+repository.  PackageManager gives me this error:</p>
+
+<p>pkg: the following package(s) violated constraints:
+    Package pkg:/SUNWcsl@0.5.11,5.11-0.111 conflicts with constraint in
+installed pkg:/entire:
+            Pkg SUNWcsl: Optional min_version: 0.5.11,5.11-0.101 max
+version: 0.5.11,5.11-0.101 defined by: pkg:/entire</p>
+
+<p>Since there is a flash pkg for 111 in extra, it is being picked up,
+which in turn depends on 111 packages. Specifying the full fmri of the
+package for build 101 to pkg install like
+&lsquo;pkg install flash@10.0.22.87,5.11-0.101:20090402T232732Z&rsquo; may work.</p></blockquote>
+
+<p>HTH
+Hemantha</p>
+
+<blockquote><p>Some other info:</p>
+
+<p>$ uname -a
+SunOS osol-desktop 5.11 snv_101b i86pc i386 i86pc Solaris</p>
+
+<p>$ pkg authority
+AUTHORITY                           URL
+contrib                             <a href="http://pkg.opensolaris.org/contrib/">http://pkg.opensolaris.org/contrib/</a>
+opensolaris.org (preferred)         <a href="http://pkg.opensolaris.org/release/">http://pkg.opensolaris.org/release/</a>
+extra.opensolaris.org
+<a href="https://pkg.sun.com/opensolaris/extra/">https://pkg.sun.com/opensolaris/extra/</a></p>
+
+<p>Any ideas?</p>
+
+<p>&ndash;Matt</p>
+
+<hr />
+
+<p>opensolaris-help mailing list
+<a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#x6f;&#x70;&#x65;&#110;&#x73;&#x6f;&#x6c;&#97;&#114;&#x69;&#115;&#x2d;&#104;&#101;&#108;&#x70;&#x40;&#x6f;&#x70;&#x65;&#x6e;&#x73;&#x6f;&#108;&#x61;&#114;&#x69;&#115;&#46;&#x6f;&#114;&#x67;">&#111;&#x70;&#101;&#x6e;&#115;&#x6f;&#108;&#97;&#114;&#105;&#x73;&#45;&#x68;&#x65;&#x6c;&#112;&#64;&#x6f;&#x70;&#x65;&#110;&#115;&#111;&#108;&#97;&#x72;&#105;&#115;&#46;&#111;&#x72;&#x67;</a></p></blockquote></blockquote>
+
+<p>Hm&hellip; ternyata begitu toh, ok sekarang saya coba lagi dengan mengetikkan perintah dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~]# pkg install amp@0.5.11,5.11-0.101
+DOWNLOAD                                    PKGS       FILES     XFER (MB)
+SUNWphp52                                    2/9       5/661     0.17/9.69
+</code></pre>
+
+<p>Weee jalan euy, senangnya hatiku sekarang ;) :D
+<strong>Tiada rasa yang paling menyenangkan ketika kita berhasil memecahkan sebuah masalah</strong> :D:P</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-31T14:09:42+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/opensolaris/'>opensolaris</a>, <a class='category' href='/blog/categories/other/'>other</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/" title="Previous Post: Membuat dan Menambahkan Swing Custom Component Ke NetBeans Pallete">&laquo; Membuat dan Menambahkan Swing Custom Component Ke NetBeans Pallete</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/06/20/view-your-database-schema-with-openoffice-301/" title="Next Post: View Your DataBase Schema with OpenOffice 3.0.1">View Your DataBase Schema with OpenOffice 3.0.1 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: database | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/database/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Howto Change Default Editor Font in MySQL Workbench]]></title>
+    <link href="http://martinusadyh.web.id/2013/03/16/howto-change-default-editor-font-in-mysql-workbench/"/>
+    <updated>2013-03-16T20:57:54+07:00</updated>
+    <id>http://martinusadyh.web.id/2013/03/16/howto-change-default-editor-font-in-mysql-workbench</id>
+    <content type="html"><![CDATA[<p>Pernah merasa bahwa font yang digunakan oleh aplikasi <a href="http://dev.mysql.com/downloads/workbench/">MySQL Workbench</a> kurang nikmat dipandang mata ? Pernah merasa ingin mengganti font yang digunakan oleh <strong>MySQL Workbench</strong> melalui menu <strong>Edit > Preferences</strong> tapi masih saja tidak berubah  ? Jika iya, berarti kita mempunyai masalah yang sama :D Setelah kemarin iseng-iseng bertanya ke paman <a href="http://google.com">Google</a>, akhirnya saya menemukan juga bagaimana mengganti font untuk SQL Editor di <strong>MySQL Workbench</strong> :) Jika kita menggunakan linux, maka carilah file dengan nama <code>/home/namauser/.mysql/workbench</code> (catatan: <strong>namauser</strong> diganti dengan nama user anda) dan jika di Windows maka carilah file <code>C:\Users\User\AppData\Roaming\MySQL\Workbench\wb_options.xml</code> Jika sudah, sekarang carilah entri seperti dibawah ini :</p>
+
+<pre><code>&lt;value type="string" key="workbench.general.Editor:Font"&gt;Bitstream Vera Sans Mono 11&lt;/value&gt;
+</code></pre>
+
+<p>Gantilah entrian font dengan font yang anda inginkan, jika sudah tutup dan jalankan lagi <strong>MySQL Workbench</strong> maka kita akan mendapatkan hasil kurang lebih seperti gambar dibawah ini :)</p>
+
+<p><img class="center" src="/images/blog-images/DataBase/HowtoChangeDefaultEditorFontinMySQLWorkbench/TampilanEditordenganFontMonaco.png" title="Tampilan Editor dengan Font Monaco" ></p>
+
+<p>Nah dengan begini, jadi makin betah bukan berlama-lama menggunakan <strong>MySQL Workbench</strong> :)</p>
+
+<p><strong>Referensi:</strong></p>
+
+<ol>
+<li> <a href="http://starikovs.com/2011/02/20/change-font-mysql-workbench-editor/">Change Font MySQL Workbench</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Create Auto Increment In JavaDB]]></title>
+    <link href="http://martinusadyh.web.id/2012/10/27/create-auto-increment-in-javadb/"/>
+    <updated>2012-10-27T21:33:42+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/10/27/create-auto-increment-in-javadb</id>
+    <content type="html"><![CDATA[<p>[caption id=&ldquo;attachment_1883&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;110&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png" alt="JavaDB" /></a>JavaDB[/caption]Kemarin sempat bermain-main sebentar dengan <a href="http://www.oracle.com/technetwork/java/javadb/index.html">JavaDB</a> dan ternyata baru tahu, kalau editor SQL di NetBeans ternyata tidak (belum) ada fitur untuk membuat kolom <strong>auto increment</strong> untuk <strong>JavaDB</strong> :( Nah untuk teman-teman yang ingin membuat kolom <strong>auto increment</strong> di <strong>JavaDB</strong> mungkin bisa menambahkan perintah <code>ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)</code> pada script <code>create table</code> di JavaDB seperti terlihat pada script dibawah ini :</p>
+
+<pre><code>create table M_BARANG
+(
+    ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
+    HARGA NUMERIC(19),
+    ISEDITABLE SMALLINT,
+    KETERANGAN VARCHAR(255),
+    KODE_BARANG VARCHAR(255) not null
+)
+</code></pre>
+
+<!-- more -->
+
+
+<p>Script diatas jika dijalankan akan membuat sebuah tabel dengan nama <code>M_BARANG</code> dengan kolom <code>ID</code> sebagai primary key dan auto increment :) Untuk mengetest apakah kolom auto_increment kita berjalan dengan benar, sekarang mari kita coba meng-entri 1 record kedalam tabel <code>M_BARANG</code> dengan perintah seperti berikut :</p>
+
+<pre><code>insert into M_BARANG(KODE_BARANG, KETERANGAN, HARGA, ISEDITABLE) 
+VALUES ('BRG01', 'BARANG TEST', 1200, 1);
+</code></pre>
+
+<p>dan langsung lakukan test, untuk melihat apakah data yang kita insert sudah masuk kedalam tabel <code>M_BARANG</code> dengan perintah :</p>
+
+<pre><code>select  *
+from    M_BARANG;
+</code></pre>
+
+<p>Jika tidak ada error, maka harusnya akan tampak seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_1923&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2012/08/HasilTestAutoIncrement.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/HasilTestAutoIncrement-300x218.png" alt="HasilTestAutoIncrement" /></a> HasilTestAutoIncrement[/caption]</p>
+
+<p>Nah mudah bukan caranya ? Jadi sekarang, happy coding guys.. :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[LiquiBase XML Generator]]></title>
+    <link href="http://martinusadyh.web.id/2011/12/14/liquibase-xml-generator/"/>
+    <updated>2011-12-14T01:17:35+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/12/14/liquibase-xml-generator</id>
+    <content type="html"><![CDATA[<p>Beberapa terakhir ini, di project yang sedang saya kerjakan ada beberapa mainan yang baru buat saya. Nah yang pertama yaitu <a href="http://www.liquibase.org/">Liquibase</a>. Untuk yang belum tahu, <strong>Liquibase</strong> ini adalah sebuah database independent library open source (lisensi yang digunakan adalah Apache 2.0) yang dapat digunakan untuk tracking, managing dan applying perubahan terhadap database. Dan semua konfigurasi di <strong>Liquibase</strong> ini tersimpan pada sebuah file <strong>XML</strong> yang nantinya dapat disimpan kedalam <strong>version control</strong>.</p>
+
+<p>Beberapa fitur dari <strong>Liquibase</strong> ini adalah :</p>
+
+<ol>
+<li><p> Merging changes from multiple developers</p></li>
+<li><p> Code branches</p></li>
+<li><p> Database &ldquo;diff&rdquo;</p></li>
+<li><p> Managing production data as well as various test datasets</p></li>
+<li><p> Generating database change documentation</p></li>
+<li><p> Cluster-safe database upgrades</p></li>
+<li><p> Automated updates or generation of SQL scripts that can be approved and applied by a DBA</p></li>
+<li><p> Generating starting change logs from existing databases</p></li>
+</ol>
+
+
+<p>Pada tulisan ini, saya tidak akan membahas tentang bagaimana menggunakan <strong>tag-tag</strong> yang dikenali oleh <strong>Liquibase</strong>. Jika ingin tahu <strong>tag</strong> apa saja yang di dukung oleh <strong>Liquibase</strong> bisa langsung menuju ke halaman <a href="http://www.liquibase.org/quickstart">Liquibase QuickStart</a>. Dibalik fitur-fitur keren yang dibawa oleh <strong>Liquibase</strong>, sekarang mari kita lihat bagaimana tampilan konfigurasi database yang harus kita tulis supaya bisa dikenali dan digunakan oleh <strong>Liquibase</strong>. Dibawah ini adalah contoh konfigurasi database yang harus kita tulis agar bisa digunakan oleh <strong>Liquibase</strong> :</p>
+
+<pre><code>&lt;databasechangelog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.0" xsi:schemalocation="http://www.liquibase.org/xml/ns/dbchangelog/1.0 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.0.xsd"&gt;
+    &lt;preconditions&gt;
+            &lt;dbms type="mysql"&gt;&lt;/dbms&gt;
+    &lt;/preconditions&gt;
+
+    &lt;changeset id="1" author="nvoxland"&gt;
+        &lt;createtable tablename="person"&gt;
+            &lt;column autoincrement="true" type="int" name="id"&gt;
+                &lt;constraints primarykey="true" nullable="false"&gt;&lt;/constraints&gt;
+            &lt;/column&gt;
+            &lt;column type="varchar(50)" name="firstname"&gt;&lt;/column&gt;
+            &lt;column type="varchar(50)" name="lastname"&gt;
+                &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+            &lt;/column&gt;
+        &lt;/createtable&gt;
+    &lt;/changeset&gt;
+    &lt;changeset id="2" author="nvoxland"&gt;
+        &lt;comment&gt;Add a username column so we can use "person" for authentication&lt;/comment&gt;
+        &lt;addcolumn tablename="person"&gt;
+            &lt;column type="varchar(8)" name="usernae"&gt;&lt;/column&gt;
+        &lt;/addcolumn&gt;
+    &lt;/changeset&gt;
+&lt;/databasechangelog&gt;
+</code></pre>
+
+<p><strong>Source code lengkap bisa dilihat ke <a href="http://www.liquibase.org/samples/changelogs/mysql.changelog.xml">http://www.liquibase.org/samples/changelogs/mysql.changelog.xml</a></strong></p>
+
+<p>Nah bisa dibayangkan bukan, jika misalkan kita punya tabel kurang lebih sekitar 100 buah plus dengan tambahan relasi antar tabel (kalau ini tidak mungkin tidak :D), komen dan index kolom-nya segala? :D</p>
+
+<!-- more -->
+
+
+<p>Untung-nya juga, ternyata ada aplikasi yang dapat kita gunakan untuk membantu membuatkan konfigurasi seperti diatas asalkan kita mempunyai schema database yang live :D Nama aplikasi tersebut adalah <a href="http://www.sqlpower.ca/page/architect">SQL Power Architect</a>, aplikasi ini secara default sudah mendukung file XML milik <strong>LiquiBase</strong>. <strong>Dan jika kita men-design ER</strong> menggunakan <strong>SQL Power Architect</strong> ini, hasilnya juga bisa langsung disimpan menjadi konfigurasi XML milik <strong>LiquiBase</strong> mudah bukan ?</p>
+
+<p>Masalahnya sekarang adalah bagaimana jika kita hanya mempunyai schema yang sudah terdapat di database, dan kita ingin membuatkan file konfigurasi XML untuk <strong>Liquibase</strong> ? Sebagai contoh, kita sudah mempunyai database dengan nama <strong>petsdb</strong> yang schema-nya terdiri dari 2 tabel seperti berikut :
+[plain]
+mysql> show create table category\G
+<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em> 1. row </em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>
+       Table: category
+Create Table: CREATE TABLE <code>category</code> (
+  <code>ID</code> bigint(20) NOT NULL,
+  <code>NAME</code> varchar(20) DEFAULT NULL,
+  PRIMARY KEY (<code>ID</code>)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.00 sec)</p>
+
+<p>mysql> show create table item\G
+<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em> 1. row </em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>
+       Table: item
+Create Table: CREATE TABLE <code>item</code> (
+  <code>ID</code> bigint(20) NOT NULL,
+  <code>CATEGORY_ID_FK</code> bigint(20) NOT NULL,
+  <code>NAME</code> varchar(20) NOT NULL,
+  <code>DESCRIPTION</code> text,
+  PRIMARY KEY (<code>ID</code>),
+  KEY <code>FK317B13E61327CF</code> (<code>CATEGORY_ID_FK</code>),
+  CONSTRAINT <code>FK317B13E61327CF</code> FOREIGN KEY (<code>CATEGORY_ID_FK</code>) REFERENCES <code>category</code> (<code>ID</code>)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.00 sec)
+[/plain]</p>
+
+<p>Nah sebelum melanjutkan, sekarang download-lah dahulu <a href="http://www.sqlpower.ca/page/architect">SQL Power Architect</a> dan installah java karena <strong>SQL Power Architect</strong> ini merupakan aplikasi berbasis Java. Jika sudah, buatlah dahulu database baru dengan nama <strong>petsdb2</strong> di MySQL seperti berikut ini :
+[plain]
+mysql> create database petsdb2;
+Query OK, 1 row affected (0.03 sec)</p>
+
+<p>mysql>
+[/plain]</p>
+
+<p>Setelah membuat database <strong>petsdb2</strong> diatas, sekarang ekstrak dan jalankan <strong>SQL Power Architect</strong> dengan perintah <code>java -jar architect.jar</code>. Tunggu-lah beberapa saat hingga dashboard Power Architect muncul seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=148"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/dashboard_power_architect.png" alt="dashboard_power_architect" /></a></p>
+
+<p>Pertama-tama yang harus dilakukan sebelum mulai bekerja dengan <strong>SQL Power Architect</strong> adalah melakukan konfigurasi koneksi database, untuk melakukan hal ini pilihlah menu <strong>Connections > Database Connection Manager</strong> untuk menampilkan jendela <strong>Database Connection Manager</strong> seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=149"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/database_connection_manager.png" alt="database_connection_manager" /></a></p>
+
+<p>Tekanlah tombol <strong>Add</strong> untuk mulai menambah koneksi ke database, dan lakukan konfigurasi seperti gambar dibawah ini untuk koneksi ke database <strong>petsdb</strong> :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=151"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/petsdb1.png" alt="petsdb" /></a></p>
+
+<p>Ulangi langkah diatas untuk koneksi ke database <strong>petsdb2</strong>, dan hasil akhir nanti-nya adalah kurang lebih seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=150"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/hasil_tambah_koneksi.png" alt="hasil_tambah_koneksi" /></a></p>
+
+<p>Jika sudah, sekarang tambahkan semua koneksi database tersebut ke dashboard <strong>SQL Power Architect</strong> dengan cara klik kanan pada <strong>PlayPen Database</strong> kemudian pilih menu <strong>Add Source Connection</strong> dan pilihlah nama koneksi <strong>petsdb</strong> dan <strong>petsdb2</strong> hingga hasil akhirnya seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=155"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/tambah_koneksi_dashboard.png" alt="tambah_koneksi_dashboard" /></a></p>
+
+<p>Untuk membuat file XML Liquibase, kita akan menggunakan fitur <strong>Compare DM</strong> yang dapat diakses pada menu <strong>Tools > Compare DM</strong> yang akan menampilkan jendela <strong>Compare Data Model</strong> seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=152"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/compare_data_model.png" alt="compare_data_model" /></a></p>
+
+<p>Sekarang lakukan konfigurasi seperti terlihat pada gambar dibawah ini agar proses <strong>Compare Data Model</strong> dapat menghasilkan file XML Liquibase :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=154"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/konfigurasi_compare_dm.png" alt="konfigurasi_compare_dm" /></a></p>
+
+<p>Setelah itu, sekarang tekan tombol <strong>Start</strong> dan tunggu beberapa saat sampai <strong>SQL Power Architect</strong> menampilkan hasil pembuatan file XML Liquibase seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=153"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/contoh_hasil_generate_xml_liquibase.png" alt="contoh_hasil_generate_xml_liquibase" /></a></p>
+
+<p>Sampai disini simpan-lah hasil tersebut dengan menekan tombol <strong>Save</strong>, dan hasil dari proses diatas akan membentuk sebuah file XML yang dikenali oleh Liquibase seperti dibawah ini :</p>
+
+<pre><code>&lt;changeset id="1" author="martinus"&gt;
+    &lt;createtable tablename="category"&gt;
+        &lt;column type="BIGINT" name="ID"&gt;
+            &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+        &lt;/column&gt;
+        &lt;column type="VARCHAR(20)" name="NAME"&gt;&lt;/column&gt;
+    &lt;/createtable&gt;
+&lt;/changeset&gt;
+
+&lt;changeset id="2" author="martinus"&gt;
+    &lt;addprimarykey columnnames="ID" constraintname="category_PK" tablename="category"&gt;&lt;/addprimarykey&gt;
+&lt;/changeset&gt;
+
+&lt;changeset id="3" author="martinus"&gt;
+    &lt;createtable tablename="item"&gt;
+        &lt;column type="BIGINT" name="ID"&gt;
+            &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+        &lt;/column&gt;
+        &lt;column type="BIGINT" name="CATEGORY_ID_FK"&gt;
+            &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+        &lt;/column&gt;
+        &lt;column type="VARCHAR(20)" name="NAME"&gt;
+            &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+        &lt;/column&gt;
+        &lt;column type="LONGVARCHAR(65535)" name="DESCRIPTION"&gt;&lt;/column&gt;
+    &lt;/createtable&gt;
+&lt;/changeset&gt;
+
+&lt;changeset id="4" author="martinus"&gt;
+    &lt;addprimarykey columnnames="ID" constraintname="item_PK" tablename="item"&gt;&lt;/addprimarykey&gt;
+&lt;/changeset&gt;
+
+&lt;changeset id="5" author="martinus"&gt;
+    &lt;addforeignkeyconstraint basecolumnnames="CATEGORY_ID_FK" basetablename="item" constraintname="FK317B13E61327CF" referencedcolumnnames="ID" referencedtablename="category"&gt;&lt;/addforeignkeyconstraint&gt;
+&lt;/changeset&gt;
+</code></pre>
+
+<p>Sampai disini proses yang kita lakukan adalah tinggal mengecek sekali lagi, apakah konfigurasi diatas sudah benar-benar cocok atau tidak. Jika sudah merasa siap, maka kita bisa langsung menambahkan-nya kedalam project kita :) Bagaimana, mudah bukan ? Mimpi buruk menulis file xml satu persatu sudah hilang sekarang :)</p>
+
+<p>Sebenarnya inti dari tulisan ini hanya ingin menunjukkan ternyata ada tool opensource yang dapat kita gunakan untuk melakukan konfigurasi XML secara otomatis saja, karena ketika saya mencoba mencari plugin / generator untuk pembuatan file XML Liquibase ini tidak pernah menunjukkan hasil yang menggembirakan. :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://www.liquibase.org/">Liquibase Library</a></p></li>
+<li><p> <a href="http://www.sqlpower.ca/page/architect">SQL Power Architect</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing Tora On Slackware 13.37]]></title>
+    <link href="http://martinusadyh.web.id/2011/08/22/installing-tora-on-slackware-13-37/"/>
+    <updated>2011-08-22T23:37:45+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/08/22/installing-tora-on-slackware-13-37</id>
+    <content type="html"><![CDATA[<p>Ingin mencari database tool yang mempunyai fitur yang mirip dengan <a href="http://www.questsoftware.com.sg/toad/">Toad</a> di GNU/Linux ? Jika iya, silahkan mencoba <a href="http://torasql.com/about">TOra</a> :) Nah yang lebih bagus lagi yaitu, <strong>TOra</strong> mendukung database <strong>MySQL</strong>, <strong>PostgreSQL</strong> dan <strong>Oracle</strong> sekaligus. (Tapi kalau untuk <strong>PostgreSQL</strong> saya lebih senang menggunakan <a href="http://martinusadyh.web.id/2010/03/04/installing-pgadmin3-1-10-1-on-slackware-13-0/">PgAdmin</a> :) )</p>
+
+<p>Beberapa fitur yang terdapat pada <strong>TOra</strong> kurang lebih yaitu :</p>
+
+<ol>
+<li><p> Handles multiple connections.</p></li>
+<li><p> SQL syntax highlighting</p></li>
+<li><p> Chart visualization of result.</p></li>
+<li><p> Schema browser.</p></li>
+<li><p> References &amp; dependencies.</p></li>
+<li><p> Tab &amp; tree based browsing.</p></li>
+</ol>
+
+
+<p>Untuk daftar lebih lengkap silahkan melihat langsung pada halaman <a href="http://torasql.com/about">Daftar Fitur TOra</a></p>
+
+<!-- more -->
+
+
+<p>Nah untuk pengguna GNU/Linux Slackware yang tertarik untuk mencoba <strong>TOra</strong>, installah dahulu <a href="http://www.riverbankcomputing.co.uk/software/qscintilla/download">QScintilla2</a> jika belum terinstall dan gunakan SlackBuild dari <strong>Robby Workman</strong> yang bisa didownload <a href="http://repo.ukdw.ac.id/alien-kde/4.6.5/source/deps/QScintilla/">disini</a>. Jika <strong>QScintilla</strong> telah terinstall, sekarang download-lah source code <strong>TOra</strong> pada alamat <a href="http://sourceforge.net/projects/tora/files/tora/2.1.3/tora-2.1.3.tar.bz2/download">ini</a> dan sekalian jangan lupa file SlackBuild untuk <strong>TOra</strong>-nya yang bisa di download <a href="https://github.com/aclemons/slackbuilds/tree/master/tora">disini</a>.</p>
+
+<p>Sebelum menjalankan <strong>TOra</strong>, buatlah <strong>symbolic link</strong> untuk library <code>libqscintilla2.so.6.1.0</code> dengan menjalankan perintah <code>ln -s /usr/lib64/qt/lib/libqscintilla2.so.6.1.0 /usr/lib64/libqscintilla2.so.6</code> pada terminal dengan akses <strong>root</strong>. Jika sudah, ketikkan perintah <code>tora</code> pada terminal dengan akses user dan jika sukses kita akan melihat tampilan <strong>Connection Manager</strong> pada <strong>TOra</strong> :)</p>
+
+<p>Dan dibawah ini adalah beberapa screenshot <strong>TOra</strong> yang sudah berhasil kita install pada Slackware 13.37 :)</p>
+
+<pre><code>[![TOra Connection Manager](http://martinusadyh.web.id/wp-content/gallery/tutorial/tora-connection-manager.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=139)  
+</code></pre>
+
+<p>TOra Connection Manager</p>
+
+<pre><code>[![TOra Schema Browser](http://martinusadyh.web.id/wp-content/gallery/tutorial/tora-schema-browser.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=141)  
+</code></pre>
+
+<p>TOra Schema Browser</p>
+
+<pre><code>[![TOra In Action](http://martinusadyh.web.id/wp-content/gallery/tutorial/tora-in-action.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=140)  
+</code></pre>
+
+<p>TOra In Action</p>
+
+<pre><code>[![TOra Error Window](http://martinusadyh.web.id/wp-content/gallery/tutorial/error.png)](http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=138)  
+</code></pre>
+
+<p>TOra Error Window</p>
+
+<p>Untuk gambar terakhir, saya tidak tahu kenapa bisa error  :swt:  :swt:  apa karena ini dicoba pada <strong>MySQL</strong> ?? Meskipun masih terdapat error, <strong>TOra</strong> masih layak koq untuk dicoba  :silau: Terlebih lagi, SQL Editor-nya bisa dikonfigurasi :)</p>
+
+<p>Bagaimana tertarik untuk mencoba <strong>TOra</strong> ?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Paging On JTable]]></title>
+    <link href="http://martinusadyh.web.id/2011/01/31/paging-on-jtable/"/>
+    <updated>2011-01-31T02:43:45+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/01/31/paging-on-jtable</id>
+    <content type="html"><![CDATA[<p>Sedang mencari solusi <strong>Paging di JTable</strong> ? Jika iya, pada posting kali ini kita akan mencoba membuat supaya <strong>JTable</strong> pada aplikasi kita mendukung <strong>pagination</strong> :D Niat awal sih sebenarnya ingin menjadikan <strong>Table Paging</strong> ini menjadi sebuah komponen yang tinggal <strong>&ldquo;drag and drop&rdquo;</strong> saja untuk menggunakan-nya, tapi apa daya sampai sekarang juga belum jadi-jadi komponen-nya :D</p>
+
+<p>Pembuatan <strong>Table Paging</strong> ini semuanya terinspirasi dari komponen javascript untuk jQuery bernama <a href="http://www.flexigrid.info/">Flexigrid</a> yang tampilan-nya kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5400874631/"><img src="http://farm6.static.flickr.com/5052/5400874631_7bfb733fcf.jpg" alt="flexigrid" /></a><br/>
+<strong>Tampilan Paging Flexigrid</strong></p>
+
+<p>Sedangkan tampilan <strong>JTable</strong> yang akan kita buat kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5400874633/"><img src="http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg" alt="Screenshot" /></a><br/>
+<strong>Tampilan Paging on JTable</strong></p>
+
+<p>Pada posting kali ini, kita akan coba meng-implementasikan <strong>Table Paging</strong> ini menggunakan <strong>JDBC</strong> dan <strong>Hibernate</strong>. Untuk yang tidak menggunakan <strong>JDBC</strong> maupun <strong>Hibernate</strong>, saya rasa juga tidak akan begitu kesulitan karena tinggal mengganti sintaks query-nya saja :D Dan database yang digunakan pada posting kali ini adalah MySQL :)</p>
+
+<!-- more -->
+
+
+<p>Ok sebelum mulai latihan-nya, sekarang downloadlah dahulu contoh database-nya. Contoh database ini hanya mempunyai 1 table yaitu <strong>wp_comments</strong> dan mempunyai record sejumlah 1303 baris. Untuk contoh database beserta tabelnya bisa didownload <a href="http://martin-personal-project.googlecode.com/files/table_paging.sql">disini</a>, dan jika sudah selesai sekarang restore dengan cara jalankan perintah dibawah ini pada <strong>Command Prompt</strong> ataupun <strong>Console</strong> :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ mysql -u root -padmin &lt; table_paging.sql
+martinus@martinusadyh:[~]$ 
+</code></pre>
+
+<p>Nah jika sudah, sekarang bukalah NetBeans IDE dan buatlah 4 buah project yaitu <strong>domain,service,service.impl dan ui</strong> kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5401141101/"><img src="http://farm6.static.flickr.com/5299/5401141101_59a8e445f1.jpg" alt="StrukturProject" /></a><br/>
+<strong>Contoh Struktur Project</strong></p>
+
+<p>Sebelum mulai lebih lanjut, sekarang tambahkanlah dahulu beberapa library yang diperlukan oleh ke empat project diatas seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5401949258/"><img src="http://farm6.static.flickr.com/5133/5401949258_c80289c9b4.jpg" alt="LibraryDomain" /></a><br/>
+<strong>Library Project Domain</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5401949260/"><img src="http://farm6.static.flickr.com/5172/5401949260_fc9941c546.jpg" alt="LibraryService" /></a><br/>
+<strong>Library Project Service</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5401949264/"><img src="http://farm6.static.flickr.com/5094/5401949264_dfa27ae237.jpg" alt="LibraryServiceImpl" /></a><br/>
+<strong>Library Project Service Impl</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5401949266/"><img src="http://farm6.static.flickr.com/5051/5401949266_b4f56e6cdd.jpg" alt="LibraryUI1" /></a><br/>
+<strong>Library Project UI</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5401949268/"><img src="http://farm6.static.flickr.com/5217/5401949268_2045053900.jpg" alt="LibraryUI2" /></a><br/>
+<strong>Lanjutan Library Project UI</strong></p>
+
+<p>Jika library yang diperlukan sudah ditambahkan seperti gambar diatas, sekarang buatlah sebuah <strong>domain class</strong> dengan nama <code>WPComment.java</code> pada project <code>com.artivisi.sample.tablepaging.domain</code> dengan isi kurang lebih seperti berikut :</p>
+
+<pre><code class="java">package com.artivisi.sample.tablepaging.domain.hibernate;
+
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+
+/**
+ *
+ * @author Martinus Ady H &lt;martinus@artivisi.com&gt;
+ */
+@Entity
+@Table(name="wp_comments")
+public class WPComment implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id @Column(name="comment_ID")
+    private Integer commentID;
+    @Column(name="comment_author")
+    private String commentAuthor;
+
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Column(name="comment_date")
+    private Date commentDate;
+
+    @Column(name="comment_content")
+    private String commentContent;
+
+    // auto generate getter and setter
+}
+</code></pre>
+
+<p><strong>Note: Klik <a href="https://github.com/martinusadyh/artivisi-farm-server/blob/master/table-paging/com.artivisi.sample.tablepaging.domain/src/com/artivisi/sample/tablepaging/domain/hibernate/WPComment.java">WPComment.java</a> untuk melihat source code lengkap.</strong></p>
+
+<p>Setelah selesai dengan masalah <strong>domain class</strong>, sekarang buatlah sebuah interface dengan nama <code>TablePagingService.java</code> pada project <code>com.artivisi.sample.tablepaging.service</code> yang berfungsi sebagai service layer kita. Sedangkan kode-nya kurang lebih seperti dibawah ini :</p>
+
+<pre><code class="java">package com.artivisi.sample.tablepaging.service;
+
+import com.artivisi.sample.tablepaging.domain.hibernate.WPComment;
+import java.util.List;
+
+/**
+ *
+ * @author Martinus Ady H &lt;martinus@artivisi.com&gt;
+ */
+public interface TablePagingService {
+
+    public List&lt;wpcomment&gt; findAllComment(Integer pageNumber, Integer rowsPerPage);
+
+    public Integer countComments();
+}
+</code></pre>
+
+<p><strong>Note: Klik <a href="https://github.com/martinusadyh/artivisi-farm-server/blob/master/table-paging/com.artivisi.sample.tablepaging.service/src/com/artivisi/sample/tablepaging/service/TablePagingService.java">TablePagingService.java</a> untuk melihat source code lengkap.</strong></p>
+
+<p>Karena pada tulisan ini kita akan menggunakan <strong>JDBC</strong> dan <strong>Hibernate</strong>, maka kita harus membuat 2 buah implementasi pada project <code>com.artivisi.sample.tablepaging.service.impl</code> untuk <strong>JDBC</strong> dan <strong>Hibernate</strong>. Dibawah ini adalah contoh implementasi untuk <strong>JDBC</strong> yang kodenya kurang lebih seperti berikut :</p>
+
+<pre><code class="java">package com.artivisi.sample.tablepaging.service.impl.jdbc;
+
+import com.artivisi.sample.tablepaging.domain.hibernate.WPComment;
+import com.artivisi.sample.tablepaging.service.TablePagingService;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author Martinus Ady H &lt;martinus@artivisi.com&gt;
+ */
+public class TablePagingServiceJDBC implements TablePagingService {
+
+    private final String COUNT_QRY = "select count(*) from wp_comments";
+    private final String FIND_ALL_QRY = "select * from wp_comments limit ?,?";
+
+    private PreparedStatement preparedCount;
+    private PreparedStatement preparedFindAll;
+
+    private Connection connection;
+
+    public TablePagingServiceJDBC(Connection con) throws SQLException {
+        this.connection = con;
+        preparedCount = connection.prepareStatement(COUNT_QRY);
+        preparedFindAll = connection.prepareStatement(FIND_ALL_QRY);
+    }
+
+    public List&lt;wpcomment&gt; findAllComment(Integer pageNumber, Integer rowsPerPage) {
+        try {
+            List&lt;wpcomment&gt; listWP = new ArrayList&lt;wpcomment&gt;();
+            preparedFindAll.setInt(1, (rowsPerPage*(pageNumber-1)));
+            preparedFindAll.setInt(2, rowsPerPage);
+            ResultSet rs = preparedFindAll.executeQuery();
+            while (rs.next()) {
+                WPComment comment = new WPComment();
+                comment.setCommentID(rs.getInt("comment_ID"));
+                comment.setCommentAuthor(rs.getString("comment_author"));
+                comment.setCommentDate(rs.getDate("comment_date"));
+                comment.setCommentContent(rs.getString("comment_content"));
+                listWP.add(comment);
+            }
+            return listWP;
+        } catch (SQLException ex) {
+            Logger.getLogger(TablePagingServiceJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+    public Integer countComments() {
+        try {
+            Integer totalRows = 0;
+            ResultSet rs = preparedCount.executeQuery();
+            while (rs.next()) {
+                totalRows = rs.getInt("count(*)");
+            }
+            return totalRows;
+        } catch (SQLException ex) {
+            Logger.getLogger(TablePagingServiceJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
+    }
+}
+</code></pre>
+
+<p><strong>Note: Klik <a href="https://github.com/martinusadyh/artivisi-farm-server/blob/master/table-paging/com.artivisi.sample.tablepaging.service.impl/src/com/artivisi/sample/tablepaging/service/impl/jdbc/TablePagingServiceJDBC.java">TablePagingServiceJDBC.java</a> untuk melihat source code lengkap.</strong></p>
+
+<p>Sedangkan implementasi untuk <strong>Hibernate</strong> kurang lebih seperti berikut :</p>
+
+<pre><code class="java">package com.artivisi.sample.tablepaging.service.impl;
+
+import com.artivisi.sample.tablepaging.domain.hibernate.WPComment;
+import com.artivisi.sample.tablepaging.service.TablePagingService;
+import java.util.List;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ *
+ * @author Martinus Ady H &lt;martinus@artivisi.com&gt;
+ */
+@Service("tablePagingService")
+@Transactional
+public class TablePagingServiceHibernate implements TablePagingService {
+
+    @Autowired private SessionFactory sessionFactory;
+
+    public List&lt;wpcomment&gt; findAllComment(Integer pageNumber, Integer rowsPerPage) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from WPComment wp")
+                .setFirstResult(rowsPerPage*(pageNumber-1))
+                .setMaxResults(rowsPerPage)
+                .list();
+    }
+
+    public Integer countComments() {
+        Long totalRow = (Long) sessionFactory.getCurrentSession()
+                .createQuery("select count(*) from WPComment wp")
+                .uniqueResult();
+
+        return totalRow.intValue();
+    }
+}
+</code></pre>
+
+<p><strong>Note: Klik <a href="https://github.com/martinusadyh/artivisi-farm-server/blob/master/table-paging/com.artivisi.sample.tablepaging.service.impl/src/com/artivisi/sample/tablepaging/service/impl/TablePagingServiceHibernate.java">TablePagingServiceHibernate.java</a> untuk melihat source code lengkap.</strong></p>
+
+<p>Setelah urusan dengan <strong>backend</strong> selesai, sekarang mari kita fokus pada masalah di sisi UI :) Pada proejct <code>com.artivisi.sample.tablepaging.ui</code>, buatlah dahulu 3 buah file untuk inisialisasi <strong>Spring Framework</strong> dan <strong>Hibernate</strong>-nya. Ketiga buah file tersebut yaitu <code>applicationContext.xml</code> yang isinya kurang lebih seperti berikut :</p>
+
+<pre><code class="xml">&lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+"&gt;
+    &lt;context:component-scan base-package="com.artivisi.sample.tablepaging.service"&gt;&lt;/context:component-scan&gt;
+    &lt;context:property-placeholder location="classpath:jdbc.properties"&gt;&lt;/context:property-placeholder&gt;
+    &lt;context:annotation-config&gt;&lt;/context:annotation-config&gt;
+    &lt;tx:annotation-driven&gt;&lt;/tx:annotation-driven&gt;
+
+    &lt;bean p:driverclassname="${jdbc.driver}" class="org.apache.commons.dbcp.BasicDataSource" p:url="${jdbc.url}" p:username="${jdbc.username}" p:password="${jdbc.password}" id="dataSource"&gt;&lt;/bean&gt;
+
+    &lt;bean p:datasource-ref="dataSource" p:configlocation="classpath:hibernate.cfg.xml" id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"&gt;
+        &lt;property name="hibernateProperties"&gt;
+            &lt;props&gt;
+                &lt;prop key="hibernate.dialect"&gt;
+                    ${hibernate.dialect}
+                &lt;/prop&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+
+    &lt;bean p:sessionfactory-ref="sessionFactory" id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"&gt;&lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>yang kedua yaitu file <code>hibernate.cfg.xml</code> yang isinya kurang lebih seperti dibawah ini :</p>
+
+<pre><code class="xml    ">&lt;hibernate-configuration&gt;
+  &lt;session-factory&gt;
+    &lt;property name="hibernate.dialect"&gt;org.hibernate.dialect.MySQLInnoDBDialect&lt;/property&gt;
+    &lt;property name="hibernate.hbm2ddl.auto"&gt;update&lt;/property&gt;
+    &lt;property name="hibernate.show_sql"&gt;true&lt;/property&gt;
+    &lt;property name="hibernate.format_sql"&gt;true&lt;/property&gt;
+
+
+    &lt;mapping class="com.artivisi.sample.tablepaging.domain.hibernate.WPComment"&gt;&lt;/mapping&gt;
+  &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+</code></pre>
+
+<p>dan yang terakhir adalah file <code>jdbc.properties</code> yang isinya kurang lebih seperti dibawah ini :</p>
+
+<pre><code class="properties"># To change this template, choose Tools | Templates
+# and open the template in the editor.
+jdbc.username=root
+jdbc.password=admin
+jdbc.url=jdbc:mysql://localhost:3306/table_paging
+jdbc.driver=com.mysql.jdbc.Driver
+hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+</code></pre>
+
+<p>Simpan ke 3 file tersebut pada project <code>com.artivisi.sample.tablepaging.ui</code> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5402028584/"><img src="http://farm6.static.flickr.com/5053/5402028584_2e872dc9a9.jpg" alt="FileKonfigurasiSpringHibernate" /></a><br/>
+<strong>Simpan file applicationContext.xml, hibernate.cfg.xml dan jdbc.properties pada root direktori src</strong></p>
+
+<p>Jika sudah, sekarang buatlah sebuah <strong>Main class</strong> yang mempunyai fungsi sebagai inisialisasi awal aplikasi kita yang isinya kurang lebih seperti kode dibawah ini :</p>
+
+<pre><code class="java    ">package com.artivisi.sample.tablepaging.ui;
+
+import com.artivisi.sample.tablepaging.service.TablePagingService;
+import com.artivisi.sample.tablepaging.service.impl.jdbc.TablePagingServiceJDBC;
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import java.sql.SQLException;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ *
+ * @author Martinus Ady H &lt;martinus@artivisi.com&gt;
+ */
+public class Main {
+
+    private static TablePagingService tablePagingService;
+    private static Boolean jdbcMode = Boolean.FALSE;
+
+    public static TablePagingService getTablePagingService() {
+        return tablePagingService;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) throws SQLException {
+        if (!jdbcMode) {
+            ApplicationContext appCtx = new ClassPathXmlApplicationContext(
+                    "classpath:applicationContext.xml");
+
+            tablePagingService = (TablePagingService) appCtx.getBean("tablePagingService");
+        } else {
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setUser("root");
+            dataSource.setPassword("admin");
+            dataSource.setDatabaseName("table_paging");
+            dataSource.setServerName("localhost");
+            dataSource.setPortNumber(3306);
+
+            tablePagingService = new TablePagingServiceJDBC(dataSource.getConnection());
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException ex) {
+                } catch (InstantiationException ex) {
+                } catch (IllegalAccessException ex) {
+                } catch (UnsupportedLookAndFeelException ex) {
+                }
+            }
+        });
+    }
+}
+</code></pre>
+
+<p>Setelah selesai membuat sebuah <strong>Main class</strong>, sekarang buatlah dahulu sebuah table model dengan nama <code>CommentTableModel.java</code> yang berfungsi untuk menampung data yang berasal dari database yang kodenya kurang lebih seperti dibawah ini :</p>
+
+<pre><code class="java">package com.artivisi.sample.tablepaging.ui;
+
+import com.artivisi.sample.tablepaging.domain.hibernate.WPComment;
+import java.util.List;
+import javax.swing.table.AbstractTableModel;
+
+/**
+ *
+ * @author Martinus Ady H &lt;martinus@artivisi.com&gt;
+ */
+public class CommentTableModel extends AbstractTableModel {
+    private static final long serialVersionUID = 1L;
+
+    private final String[] HEADER = new String[] {
+        "#", "ID", "AUTHOR", "DATE", "CONTENT"
+    };
+
+    private List&lt;wpcomment&gt; wPComments;
+
+    public CommentTableModel(List&lt;wpcomment&gt; wPComments) {
+        this.wPComments = wPComments;
+    }
+
+    public int getRowCount() {
+        return wPComments.size();
+    }
+
+    public int getColumnCount() {
+        return HEADER.length;
+    }
+
+    @Override
+    public String getColumnName(int column) {
+        return HEADER[column];
+    }
+
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        WPComment comment = wPComments.get(rowIndex);
+        switch (columnIndex) {
+            case 0: return rowIndex+1;
+            case 1: return comment.getCommentID();
+            case 2: return comment.getCommentAuthor();
+            case 3: return comment.getCommentDate();
+            case 4: return comment.getCommentContent();
+            default: return "";
+        }
+    }
+}
+</code></pre>
+
+<p>Setelah membuat sebuah table model, sekarang buatlah sebuah <strong>JFrame</strong> dengan nama <code>MainForm.java</code> yang mempunyai tampilan seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5401313671/"><img src="http://farm6.static.flickr.com/5098/5401313671_7217162b8a.jpg" alt="DesignForm" /></a><br/>
+<strong>Design Form</strong></p>
+
+<p>Pada design form diatas terdapat 5 buah tombol yaitu <code>btnFirst, btnPrevious, btnNext, btnLast</code> dan <code>btnRefresh</code>. Sebelum menambahkan event pada setiap tombol diatas, sekarang buatlah 4 buah variable yaitu <code>totalRows, pageNumber, totalPage</code> dan <code>rowsPerPage</code> pada <code>MainForm.java</code> seperti dibawah ini :</p>
+
+<pre><code class="java    ">public class MainForm extends javax.swing.JFrame {
+    private static final long serialVersionUID = 1L;
+
+    // paging utility
+    private Integer totalRows = 0;
+    private Integer pageNumber = 1;
+    private Integer totalPage = 1;
+    private Integer rowsPerPage = 15;
+
+    /** Creates new form MainForm */
+    public MainForm() {
+        initComponents();
+        setLocationRelativeTo(null);
+    }
+    ....
+    ....
+}
+</code></pre>
+
+<p>Jika sudah, sekarang buatlah sebuah method dengan nama <code>autoResizeColumn(JTable jTable1)</code> pada <code>MainForm.java</code> yang fungsinya untuk melebarkan kolom sesuai dengan isi pada tabel yang kurang lebih kode-nya seperti dibawah ini :</p>
+
+<pre><code class="java">....
+....
+private void autoResizeColumn(JTable jTable1) {
+    JTableHeader header = jTable1.getTableHeader();
+    int rowCount = jTable1.getRowCount();
+
+    final Enumeration columns = jTable1.getColumnModel().getColumns();
+    while(columns.hasMoreElements()){
+        TableColumn column = (TableColumn)columns.nextElement();
+        int col = header.getColumnModel().getColumnIndex(column.getIdentifier());
+        int width = (int)jTable1.getTableHeader().getDefaultRenderer()
+                .getTableCellRendererComponent(jTable1, column.getIdentifier()
+                        , false, false, -1, col).getPreferredSize().getWidth();
+
+        for(int row = 0; row&lt;rowCount; row++){
+            int preferedWidth = (int)jTable1.getCellRenderer(row, col).getTableCellRendererComponent(jTable1,
+                    jTable1.getValueAt(row, col), false, false, row, col).getPreferredSize().getWidth();
+            width = Math.max(width, preferedWidth);
+        }
+        header.setResizingColumn(column); // this line is very important
+        column.setWidth(width+jTable1.getIntercellSpacing().width);
+    }
+}
+....
+....
+</code></pre>
+
+<p>Setelah membuat sebuah method untuk konfigurasi lebar kolom pada <code>JTable</code> diatas, sekarang buatlah sebuah method dengan nama <code>initDefaultValue()</code> tepat dibawah method <code>autoResizeColumn(JTable jTable1)</code> yang mempunyai fungsi untuk mengambil data ke database yang kodenya kurang lebih seperti dibawah ini :</p>
+
+<pre><code class="java">....
+....
+private void initDefaultValue() {
+    rowsPerPage = Integer.valueOf(cmbPageSize.getSelectedItem().toString());
+    totalRows = Main.getTablePagingService().countComments();
+    Double dblTotPage = Math.ceil(totalRows.doubleValue()/rowsPerPage.doubleValue());
+    totalPage = dblTotPage.intValue();
+    if (pageNumber == 1) {
+        btnFirst.setEnabled(false);
+        btnPrevious.setEnabled(false);
+    } else {
+        btnFirst.setEnabled(true);
+        btnPrevious.setEnabled(true);
+    }
+
+    if (pageNumber.equals(totalPage)) {
+        btnNext.setEnabled(false);
+        btnLast.setEnabled(false);
+    } else {
+        btnNext.setEnabled(true);
+        btnLast.setEnabled(true);
+    }
+
+    txtPageNumber.setText(String.valueOf(pageNumber));
+    lblPageOf.setText(" of " + totalPage + " ");
+    lblTotalRecord.setText("Total Record " + totalRows + " rows.");
+
+    List&lt;wpcomment&gt; wPComments = Main.getTablePagingService().findAllComment(pageNumber, rowsPerPage);
+    jTable1.setModel(new CommentTableModel(wPComments));
+    autoResizeColumn(jTable1);
+}
+....
+....
+</code></pre>
+
+<p>Setelah selesai, sekarang waktunya untuk menambahkan event pada ke 5 buah tombol yang sebelumnya sudah kita buat. Sedangkan event untuk ke 5 buah tombol diatas kodenya kurang lebih seperti potongan kode dibawah ini :</p>
+
+<pre><code class="java    ">....
+....
+private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    pageNumber = 1;
+    initDefaultValue();
+}
+
+private void btnPreviousActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    if (pageNumber &gt; 1) {
+        pageNumber -= 1;
+        initDefaultValue();
+    }
+}   
+
+private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    if (pageNumber &lt; totalPage) {
+        pageNumber += 1;
+        initDefaultValue();
+    }
+}
+
+private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    pageNumber = totalPage;
+    initDefaultValue();
+}                                       
+
+private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    initDefaultValue();
+}   
+....
+....
+</code></pre>
+
+<p>Sampai disini proses pembuatan UI sudah hampir selesai, langkah terakhir yang perlu kita lakukan yaitu menambahkan launcher pada class <code>Main.java</code> agar memanggil class <code>MainForm.java</code>. Untuk melakukan hal ini, sekarang tambahkanlah <strong>statement</strong> <code>new MainForm().setVisible(true);</code> pada file <code>Main.java</code> hingga kode kita menjadi seperti dibawah ini :</p>
+
+<pre><code class="java">package com.artivisi.sample.tablepaging.ui;
+
+import com.artivisi.sample.tablepaging.service.TablePagingService;
+import com.artivisi.sample.tablepaging.service.impl.jdbc.TablePagingServiceJDBC;
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import java.sql.SQLException;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ *
+ * @author Martinus Ady H &lt;martinus@artivisi.com&gt;
+ */
+public class Main {
+
+    private static TablePagingService tablePagingService;
+    private static Boolean jdbcMode = Boolean.FALSE;
+
+    public static TablePagingService getTablePagingService() {
+        return tablePagingService;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) throws SQLException {
+        if (!jdbcMode) {
+            ApplicationContext appCtx = new ClassPathXmlApplicationContext(
+                    "classpath:applicationContext.xml");
+
+            tablePagingService = (TablePagingService) appCtx.getBean("tablePagingService");
+        } else {
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setUser("root");
+            dataSource.setPassword("admin");
+            dataSource.setDatabaseName("table_paging");
+            dataSource.setServerName("localhost");
+            dataSource.setPortNumber(3306);
+
+            tablePagingService = new TablePagingServiceJDBC(dataSource.getConnection());
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException ex) {
+                } catch (InstantiationException ex) {
+                } catch (IllegalAccessException ex) {
+                } catch (UnsupportedLookAndFeelException ex) {
+                }
+                new MainForm().setVisible(true);
+            }
+        });
+    }
+}
+</code></pre>
+
+<p>Nah sampai disini sekarang kita tinggal menjalankan projectnya dengan cara menekan tombol <strong>F6</strong> dan jika tidak ada pesan kesalahan maka harusnya kita sudah bisa melihat tampilan table kita seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5400874633/"><img src="http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg" alt="Screenshot" /></a><br/>
+<strong>Tampilan Paging on JTable</strong></p>
+
+<p>Bagaimana ? Mudah bukan ? :D Mungkin solusi ini masih kurang elegan, tapi ya mari di diskusikan bagaimana baiknya :D :) Jika ada yang ingin bertanya, silahkan langsung tanya saja pada kolom komentar ya :)</p>
+
+<p><strong>Referensi-referensi :</strong></p>
+
+<ul>
+<li><p><a href="http://martinusadyh.web.id/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/">Membuat Menu Login di Java Swing Dengan Animasi Progress Bar</a></p></li>
+<li><p><a href="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a></p></li>
+<li><p><a href="http://martinusadyh.web.id/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Swing Component Focus Handler Using KeyStroke Editor</a></p></li>
+<li><p><a href="http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/">DropDown Button di Java Swing</a></p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

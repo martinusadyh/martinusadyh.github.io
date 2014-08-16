@@ -1,0 +1,732 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Installasi File tar.gz dan tar.bz2 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Bingung bagaimana caranya menginstall file yang mempunya ekstensi tar.gz atau tar.bz2 ? Apasih sebenarnya file tar.gz atau tar.bz2 ini ? Buat teman- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Installasi File tar.gz Dan tar.bz2</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-27T05:42:06+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Bingung bagaimana caranya menginstall file yang mempunya ekstensi <strong>tar.gz</strong> atau <strong>tar.bz2</strong> ? Apasih sebenarnya file <strong>tar.gz</strong> atau <strong>tar.bz2</strong> ini ? Buat teman-teman yang belum tahu, file dengan ekstensi <strong>tar.gz</strong> atau <strong>tar.bz2</strong> ini biasanya adalah sebuah <strong>source code</strong> dari sebuah aplikasi. Masih bingung juga dengan penjelasan barusan ? Kalau iya, sebenarnya distribusi GNU/Linux itu terdapat 2 macam model distribusi packages ? 2 macam model distribusi ? Yups.. 2 macam model distribusi tersebut yaitu :</p>
+
+<ol>
+<li><p> <strong>Binary Packages</strong>, ini dibuat untuk tujuan penggunaan secara umum, maksudnya penggunaan secara umum disini adalah agar dapat dijalankan di semua tipe dan arsitektur komputer. Dan biasanya distribusi ini juga tidak menggunakan opsi-opsi khusus yang terdapat di salah satu tipe atau arsitektur komputer tertentu. Sedangkan yang bisa dikategorikan dengan <strong>Binary Packages</strong> ini adalah semua packages yang ber-ekstensi <strong><em>.deb, </em>.rpm, <em>.tgz dan </em>.txz</strong>, jadi jika menginstall sebuah aplikasi menggunakan repository maka itu berarti kita menginstall dari <strong>Binary Packages</strong> yang memang sudah disediakan untuk kebutuhan komputer kita. :)</p></li>
+<li><p> <strong>Source Packages</strong>, seperti pada namanya :D distribusi ini menyertakan file <strong>source code</strong> asli dari aplikasi-nya. Biasanya pihak pengembang pasti menyertakan atau menyediakan distribusi model ini untuk di download. Sedangkan untuk <strong>end-user</strong>, bisa menggunakan <strong>source code</strong> ini jika para pengembang tidak menyertakan <strong>Binary Packages</strong> untuk distribusi GNU/Linux yang digunakan :) Coba bayangkan jika teman-teman membuat sebuah aplikasi yang targetnya adalah Sistem Operasi GNU/Linux, installer model gimana yang akan teman-teman pilih dengan banyak-nya distribusi GNU/Linux ? Mau buat satu-persatu untuk tiap distribusi ? Ya pasti capek kan :D Cara paling gampang yaitu, sediakan-lah <strong>source code</strong> dari aplikasi teman-teman dan kemudian biarkan komunitas GNU/Linux sendiri yang membuatkan <strong>binary packages</strong> untuk aplikasi kita :D Lebih gampang kan ? :D</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Nah kalau sudah tahu, sekarang bagaimana sih cara install file tersebut ? Cara-nya sih sebenarnya mudah, kita tinggal ekstrak file dengan ekstensi <strong>tar.gz</strong> atau <strong>tar.bz2</strong> tersebut kemudian jalankan perintah <strong>./configure &amp;&amp; make &amp;&amp; make install</strong> :) Eits&hellip;.tapi apa betul caranya cuma seperti itu saja ? Emang betul sih caranya cuma seperti diatas, tapi kalau ingin berhasil dan sukses menjalankan perintah <strong>./configure</strong> dengan sukses ada beberapa langkah lagi yang harus diketahui :D Sebelum mulai melakukan installasi file <strong>tar.gz</strong> atau <strong>tar.bz2</strong>, keperluan dasar yang harus teman-teman sediakan di distribusi GNU/Linux yang teman-teman gunakan adalah <strong>installah paket development</strong> dahulu (teman-teman bisa mengacu ke distro yang teman-teman bagaimana cara menginstall paket development ini). Kalau sudah, mari kita ambil satu contoh aplikasi yang ber-ekstensi <strong>tar.gz</strong> atau <strong>tar.bz2</strong> yaitu <a href="http://www.geany.org/">Geany IDE</a> :) Sekarang coba download-lah dahulu file source dari <a href="http://www.geany.org/">Geany IDE</a> kemudian simpan pada direktori yang sudah teman-teman persiapkan. Jika sudah, langkah pertama yang harus dilakukan yaitu ekstrak-lah file <strong>geany-0.18.1.tar.bz2</strong> dengan perintah <code>tar -xjf geany-0.18.1.tar.bz2</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany]$ tar -xjf geany-0.18.1.tar.bz2 
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany]$ 
+</code></pre>
+
+<p><strong>Jika mempunyai ekstensi tar.gz, ekstrak-lah dengan menggunakan perintah tar -zxf geany-0.18.1.tar.gz. Silahkan tambah opsi v jika ingin melihat proses ekstrak sedang berjalan</strong></p>
+
+<p>Hasil dari perintah diatas kita akan mendapatkan sebuah direktori dengan nama <strong>geany-0.18.1</strong>, sekarang masuk-lah kedalam direktori dengan mengetikkan perintah <code>cd geany-0.18.1</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany]$  ls
+geany-0.18.1.tar.bz2 geany-0.18.1
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany]$  cd geany-0.18.1
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$   
+</code></pre>
+
+<p>Sebelum mulai mengetikkan perintah <code>./configure</code>, coba buka dan bacalah file <strong>README dan INSTALL</strong> untuk mengetahui kira-kira library apa saja yang dibutuhkan oleh <a href="http://www.geany.org/">Geany</a> agar dapat di install dengan sukses pada komputer kita. Dari kedua file <strong>README dan INSTALL</strong> yang kita dapatkan dari <a href="http://www.geany.org/">Geany</a>, kebutuhan yang harus dipenuhi agar <a href="http://www.geany.org/">Geany</a> bisa terinstall dengan sukses dapat dilihat pada file <strong>README</strong> pada bagian <strong>Requirement</strong> yang isinya kurang lebih seperti dibawah ini :</p>
+
+<pre><code>Requirements
+------------
+For compiling Geany yourself, you will need the GTK (&gt;= 2.8.0) libraries
+and header files. You will also need its dependency libraries and header
+files, such as Pango, Glib and ATK. All these files are available at
+http://www.gtk.org.
+
+Furthermore you need, of course, a C compiler and the Make tool; a C++
+compiler is also needed for the required Scintilla library included. The
+GNU versions of these tools are recommended.
+</code></pre>
+
+<p>Seperti kita lihat, ternyata <a href="http://www.geany.org/">Geany</a> membutuhkan library <strong>GTK v2.8.0 keatas, Pango, Glib dan ATK</strong> sebelum kita bisa mengetikkan perintah <code>./configure</code>. Jadi pastikan dahulu semua library tersebut sudah terinstall pada distribusi GNU/Linux yang teman-teman gunakan :D Setelah yakin semua library yang dibutuhkan sudah ter-install dengan baik, sekarang mari kita lihat opsi-opsi apa saja yang didukung oleh <a href="http://www.geany.org/">Geany</a>  dengan mengetikkan perintah <code>./configure --help</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$ ./configure --help
+`configure' configures this package to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+  -q, --quiet, --silent   do not print `checking...' messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for `--cache-file=config.cache'
+  -n, --no-create         do not create output files
+    --srcdir=DIR        find the sources in DIR [configure dir or `..']
+
+Installation directories:
+--prefix=PREFIX         install architecture-independent files in PREFIX
+                        [/usr/local]
+--exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+                        [PREFIX]
+
+By default, `make install' will install all the files in
+`/usr/local/bin', `/usr/local/lib' etc.  You can specify
+an installation prefix other than `/usr/local' using `--prefix',
+for instance `--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --bindir=DIR            user executables [EPREFIX/bin]
+  --sbindir=DIR           system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR        program executables [EPREFIX/libexec]
+  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --libdir=DIR            object code libraries [EPREFIX/lib]
+  --includedir=DIR        C header files [PREFIX/include]
+  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+  --infodir=DIR           info documentation [DATAROOTDIR/info]
+  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]
+  --mandir=DIR            man documentation [DATAROOTDIR/man]
+  --docdir=DIR            documentation root [DATAROOTDIR/doc/PACKAGE]
+  --htmldir=DIR           html documentation [DOCDIR]
+  --dvidir=DIR            dvi documentation [DOCDIR]
+  --pdfdir=DIR            pdf documentation [DOCDIR]
+  --psdir=DIR             ps documentation [DOCDIR]
+
+Program names:
+  --program-prefix=PREFIX            prepend PREFIX to installed program names
+  --program-suffix=SUFFIX            append SUFFIX to installed program names
+  --program-transform-name=PROGRAM   run sed PROGRAM on installed program names
+
+System types:
+  --build=BUILD     configure for building on BUILD [guessed]
+  --host=HOST       cross-compile to build programs to run on HOST [BUILD]
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --disable-dependency-tracking  speeds up one-time build
+  --enable-dependency-tracking   do not reject slow dependency extractors
+  --disable-nls           do not use Native Language Support
+  --enable-static[=PKGS]  build static libraries [default=no]
+  --enable-shared[=PKGS]  build shared libraries [default=yes]
+  --enable-fast-install[=PKGS]
+                          optimize for fast installation [default=yes]
+  --disable-libtool-lock  avoid locking (might break parallel builds)
+  --enable-binreloc       compile with binary relocation support
+  --disable-deprecated    Disable deprecated GTK functions.
+  --disable-plugins       compile without plugin support [default=no]
+  --enable-gnu-regex      compile with included GNU regex library [default=no]
+  --enable-socket         enable if you want to detect a running instance
+                          [[default=yes]]
+  --enable-vte            enable if you want virtual terminal support
+                          [[default=yes]]
+  --enable-the-force      enable if you are Luke Skywalker and the force is
+                          with you [[default=no]]
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-pic              try to use only PIC/non-PIC objects [default=use
+                          both]
+  --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
+  --with-vte-module-path=PATH
+                      Path to a loadable libvte [[default=None]]
+
+Some influential environment variables:
+   CC          C compiler command
+   CFLAGS      C compiler flags
+   LDFLAGS     linker flags, e.g. -L if you have libraries in a
+               nonstandard directory 
+   LIBS        libraries to pass to the linker, e.g. -l
+   CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I if
+               you have headers in a nonstandard directory 
+   CPP         C preprocessor
+   CXX         C++ compiler command
+   CXXFLAGS    C++ compiler flags
+   CXXCPP      C++ preprocessor
+   PKG_CONFIG  path to pkg-config utility
+   GTK_CFLAGS  C compiler flags for GTK, overriding pkg-config
+   GTK_LIBS    linker flags for GTK, overriding pkg-config
+   GIO_CFLAGS  C compiler flags for GIO, overriding pkg-config
+   GIO_LIBS    linker flags for GIO, overriding pkg-config
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to the package provider.
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$  
+</code></pre>
+
+<p>Waw&hellip; banyak banget yah, tapi disinilah enaknya kalau kita melakukan installasi melalui <strong>source code</strong>. Kita bisa bermain-main dengan opsi-opsi yang terdapat pada aplikasi yang ingin kita install :) Nah jika teman-teman hanya menjalankan perintah <code>./configure</code> tanpa diikuti dengan parameter dibelakangnya, maka berarti teman-teman menggunakan opsi standart yang disediakan oleh pengembang <a href="http://www.geany.org/">Geany</a>. Wah rugi dong kalau kita pakai opsi yang biasa-biasa saja :D Sedangkan opsi-opsi apa saja yang harus digunakan ini tergantung dengan teman-teman :D Jadi silahkan ber-eksperimen disini (silahkan dicoba-coba saja :) ) Sekarang bagaimana cara-nya untuk menggunakan opsi-opsi tambahan tersebut ? Cara-nya gampang koq, kita tinggal ketik <code>./configure [nama-opsi]</code> kemudian tekan <strong>ENTER</strong> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$ ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --build=i486-slackware-linux 
+checking for a BSD-compatible install... /usr/bin/ginstall -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for style of include used by make... GNU
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking dependency style of gcc... gcc3
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking minix/config.h usability... no
+checking minix/config.h presence... no
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking dependency style of gcc... (cached) gcc3
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking dependency style of g++... gcc3
+checking for g++... /usr/bin/g++
+checking whether ln -s works... yes
+checking whether NLS is requested... yes
+checking for intltool-update... /usr/bin/intltool-update
+checking for intltool-merge... /usr/bin/intltool-merge
+checking for intltool-extract... /usr/bin/intltool-extract
+checking for xgettext... /usr/bin/xgettext
+checking for msgmerge... /usr/bin/msgmerge
+checking for msgfmt... /usr/bin/msgfmt
+checking for gmsgfmt... /usr/bin/msgfmt
+checking for perl... /usr/bin/perl
+checking for perl &gt;= 5.8.1... 5.10.0
+checking for XML::Parser... ok
+checking build system type... i486-slackware-linux-gnu
+checking host system type... i486-slackware-linux-gnu
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/i486-slackware-linux/bin/ld
+checking if the linker (/usr/i486-slackware-linux/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking the maximum length of command line arguments... 1572864
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking for /usr/i486-slackware-linux/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for ar... ar
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for dlfcn.h... yes
+checking whether we are using the GNU C++ compiler... (cached) yes
+checking whether g++ accepts -g... (cached) yes
+checking dependency style of g++... (cached) gcc3
+checking how to run the C++ preprocessor... g++ -E
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/i486-slackware-linux/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking for ld used by g++... /usr/i486-slackware-linux/bin/ld
+checking if the linker (/usr/i486-slackware-linux/bin/ld) is GNU ld... yes
+checking whether the g++ linker (/usr/i486-slackware-linux/bin/ld) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/i486-slackware-linux/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking fnmatch.h usability... yes
+checking fnmatch.h presence... yes
+checking for fnmatch.h... yes
+checking glob.h usability... yes
+checking glob.h presence... yes
+checking for glob.h... yes
+checking regex.h usability... yes
+checking regex.h presence... yes
+checking for regex.h... yes
+checking for stdlib.h... (cached) yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for off_t... yes
+checking for size_t... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for gethostname... yes
+checking for ftruncate... yes
+checking for fgetpos... yes
+checking for mkstemp... yes
+checking for regcomp... yes
+checking for strerror... yes
+checking for strstr... yes
+checking for git... /usr/bin/git
+checking for svn... /usr/bin/svn
+checking whether binary relocation support should be enabled... no
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for GTK... yes
+checking for GIO... yes
+checking for library containing connect... none required
+checking whether the force is with you... no
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking for LC_MESSAGES... yes
+checking libintl.h usability... yes
+checking libintl.h presence... yes
+checking for libintl.h... yes
+checking for ngettext in libc... yes
+checking for dgettext in libc... yes
+checking for bind_textdomain_codeset... yes
+checking for msgfmt... (cached) /usr/bin/msgfmt
+checking for dcgettext... yes
+checking if msgfmt accepts -c... yes
+checking for gmsgfmt... (cached) /usr/bin/msgfmt
+checking for xgettext... (cached) /usr/bin/xgettext
+checking for catalogs to be installed...  be bg ca cs de el en_GB es fi fr gl hu it ja ko lb nl pl pt pt_BR ro ru sl sv tr uk vi zh_CN zh_TW
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating icons/Makefile
+config.status: creating icons/16x16/Makefile
+config.status: creating icons/48x48/Makefile
+config.status: creating icons/scalable/Makefile
+config.status: creating tagmanager/Makefile
+config.status: creating tagmanager/include/Makefile
+config.status: creating scintilla/Makefile
+config.status: creating scintilla/include/Makefile
+config.status: creating src/Makefile
+config.status: creating plugins/Makefile
+config.status: creating po/Makefile.in
+config.status: creating doc/Makefile
+config.status: creating doc/geany.1
+config.status: creating geany.spec
+config.status: creating geany.pc
+config.status: creating doc/Doxyfile
+config.status: creating config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+config.status: executing default-1 commands
+config.status: executing po/stamp-it commands
+----------------------------------------
+Install Geany in                   : /usr
+Using GTK version                  : 2.16.6
+Build with GTK printing support    : yes
+Build with plugin support          : yes
+Use virtual terminal support       : yes
+Use (UNIX domain) socket support   : yes
+
+Configuration is done OK.
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$
+</code></pre>
+
+<p>Jika proses <code>./configure</code> diatas telah selesai, sekarang kita bisa langsung menjalankan perintah <code>make &amp;&amp; make install</code> dengan menggunakan akses <strong>super user</strong> atau <strong>root</strong> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$ su -
+Password:
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]# make &amp;&amp; make install
+.................
+.................
+.................
+make[2]: Nothing to be done for `install-exec-am'.
+/bin/sh ./mkinstalldirs /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/c99.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/php.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/python.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/pascal.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/latex.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/html_entities.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./COPYING /tmp/id-slack/package-geany/usr/share/geany/GPL-2; \
+    for file in ./data/*; do \
+      if test -f $file; then \
+        /usr/bin/ginstall -c -m 644 $file /tmp/id-slack/package-geany/usr/share/geany/; \
+      fi \
+    done
+mkdir -p -- /tmp/id-slack/package-geany/usr/share/geany
+test -z "/usr/share/applications" || /usr/bin/mkdir -p "/tmp/id-slack/package-geany/usr/share/applications"
+ /usr/bin/ginstall -c -m 644 geany.desktop '/tmp/id-slack/package-geany/usr/share/applications'
+test -z "/usr/lib/pkgconfig" || /usr/bin/mkdir -p "/tmp/id-slack/package-geany/usr/lib/pkgconfig"
+ /usr/bin/ginstall -c -m 644 geany.pc '/tmp/id-slack/package-geany/usr/lib/pkgconfig'
+make[2]: Leaving directory `/tmp/id-slack/geany-0.18.1'
+make[1]: Leaving directory `/tmp/id-slack/geany-0.18.1'
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]# 
+</code></pre>
+
+<p>Nah selesai sudah proses installasi file <strong>tar.gz</strong> atau <strong>tar.bz2</strong> , dan sekarang kita sudah bisa menggunakan <a href="http://www.geany.org/">Geany</a> untuk keperluan <em>membuat surat cinta</em> :) Mudah bukan? Sebenarnya installasi dari source code tidak sesulit seperti yang dibayangkan, tetapi kita tetap perlu ketelitian tingkat tinggi untuk mengumpulkan library yang dibutuhkan :D Biasanya pula, kita udah terlanjur <strong>blank mood</strong> (baca malas) :D kalau ternyata library yang dibutuhkan itu banyak sekali :D (capek nyari library soalnya) Terlepas dari semua itu, proses installasi dari source membuat kita <strong>sedikit lebih dalam</strong> bermain-main dengan GNU/Linux :D</p>
+
+<p>Akhir kata, tulisan ini adalah murni asumsi dari pengalaman saya pribadi loh ya selama saya bermain-main dengan GNU/Linux. Jadi kalau misalkan teman-teman melihat ada yang salah, silahkan di kritik harusnya bagimana :D Maklum saya juga bukan programmer GNU C/C++ :D, saya juga sedang belajar menjadi <strong>pembuat binary packages</strong> yang benar :D Dan oh iya, buat teman-teman yang ingin tahu lebih dalam tentang semua proses dibalik layar sebelum kita bisa menjalankan perintah-perintah diatas, dibawah ini ada beberapa link dari wikipedia yang sudah saya kumpulkan untuk keperluan pribadi :D Jadi kalau kurang jelas, monggo dilihat referensi yang saya gunakan ya :D</p>
+
+<p>Happy slacking all :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li> <a href="http://www.geany.org/">Geany IDE</a></li>
+<li> <a href="http://www.google.co.id/search?hl=id&amp;client=firefox-a&amp;hs=9iw&amp;rls=org.mozilla:en-US:official&amp;ei=9iKtS-WtO4K8rAfs5fymAQ&amp;sa=X&amp;oi=spell&amp;resnum=0&amp;ct=result&amp;cd=1&amp;ved=0CAUQBSgA&amp;q=Instalasi+File+tar.gz+dan+tar.bz2&amp;spell=1">Installasi tar.gz dan tar.bz2 by Mbah Google</a></li>
+<li> <a href="http://en.wikipedia.org/wiki/Autoconf">Wikipedia Autoconf</a></li>
+<li> <a href="http://en.wikipedia.org/wiki/Make_%28software%29">Wikipedia Make (software)</a></li>
+<li> <a href="http://en.wikipedia.org/wiki/Configure_script">Wikipedia Configure Script</a></li>
+<li> <a href="http://en.wikipedia.org/wiki/Autotools">Wikipedia Autotools</a></li>
+<li> <a href="http://www.openismus.com/documents/linux/automake/automake.shtml">Tutorial Automake</a></li>
+<li> <a href="http://www.amath.washington.edu/~lf/tutorials/autoconf/toolsmanual_toc.html#TOC34">Developing software with GNU</a></li>
+<li> <a href="http://www.eng.hawaii.edu/Tutor/Make/">Tutorial Make</a></li>
+<li>. <a href="http://www.freebsd.org/doc/handbook/ports-overview.html">FreeBSD Port Overview</a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-27T05:42:06+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/shell-script/'>shell script</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/03/25/building-netbeans-6-9-from-source/" title="Previous Post: Building NetBeans 6.9 From Source">&laquo; Building NetBeans 6.9 From Source</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/03/29/solaris-10-is-not-free-anymore/" title="Next Post: Solaris 10 Is Not Free Anymore">Solaris 10 Is Not Free Anymore &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

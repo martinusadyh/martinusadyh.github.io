@@ -1,0 +1,678 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Step By Step Building OpenJDK on Slackware - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk OpenJDK yang tinggal install &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2011/05/24/step-by-step-building-openjdk-on-slackware/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Step by Step Building OpenJDK on Slackware</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-24T22:27:16+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p><img class="center" src="/images/blog-images/linux/StepByStepBuildingOpenJDK/openjdk.png" title="OpenJDK" ></p>
+
+<p>Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk <a href="http://openjdk.java.net/">OpenJDK</a> yang tinggal install menggunakan perintah <code>installpkg</code> ataupun tutorial bagaimana membuat sebuah binary packages untuk Slackware. Nah pada posting kali ini, kita akan mencoba untuk melakukan proses kompilasi source code <a href="http://openjdk.java.net/">OpenJDK</a> langsung dari repository-nya. Dan sekedar catatan, proses yang akan dijelaskan disini hanya sampai mendapatkan <strong>JDK</strong> maupun <strong>JRE</strong> yang siap digunakan dalam bentuk direktori saja bukan dalam bentuk binary Slackware yang ber-ekstensi <em><strong>.tgz</strong> atau </em><strong>.txz</strong> :)</p>
+
+<p>Sebelum mulai, persiapkan dahulu beberapa alat yang dibutuhkan yaitu :</p>
+
+<ul>
+<li><p><strong>Apache ANT,</strong> versi <a href="http://ant.apache.org/">Apache ANT</a> yang dibutuhkan untuk melakukan proses kompilasi pada OpenJDK adalah versi 7, jadi pastikan versi Apache ANT yang terinstall di sistem kita mempunyai versi yang sama atau lebih tinggi. Untuk melakukan installasi Apache ANT di Slackware, downloadlah SlackBuild Script Apache ANT <a href="http://slackbuilds.org/slackbuilds/13.37/development/apache-ant.tar.gz">disini</a> dan source Apache ANT-nya bisa didownload <a href="http://www.carfab.com/apachesoftware/ant/binaries/apache-ant-1.8.2-bin.tar.bz2">disini</a>.</p></li>
+<li><p><strong>JDK 1.6.0_25</strong>, untuk menginstall JDK kita bisa menggunakan package binary JDK bawaan Slackware yang terdapat di direktori <code>/extra/jdk-6/</code>. Installah dengan menggunakan perintah <code>installpkg jdk-6u25-x86_64-1.txz</code> agar segera dapat digunakan :)</p></li>
+</ul>
+
+
+<p>Setelah 2 kebutuhan dasar tersebut terinstall, sekarang mari kita persiapkan konfigurasi <strong>&ldquo;environment variable&rdquo;</strong> yang dibutuhkan oleh <a href="http://openjdk.java.net/">OpenJDK</a>. Beberapa konfigurasi <strong>&ldquo;environment variable&rdquo;</strong> yang dibutuhkan adalah (lakukan konfigurasi dibawah ini menggunakan akses super user / root) :</p>
+
+<ul>
+<li><p><strong>JAVA_HOME</strong>,
+lakukan pengecekan apakah variabel <strong>JAVA_HOME</strong> sudah terkonfigurasi pada sistem anda atau belum dengan mengetikkan <code>echo $JAVA_HOME</code> dan jika benar, maka hasil perintah tersebut akan menampilkan dimana letak direktori <strong>jdk</strong> berada seperti dibawah ini :</p>
+
+<p>  root@artivisi:~# echo $JAVA_HOME
+  /usr/lib64/java
+  root@artivisi:~#</p>
+
+<p>Jika perintah <code>echo $JAVA_HOME</code> tidak mengeluarkan apa-apa, sekarang jalankan perintah <code>export JAVA_HOME=/usr/lib64/java</code> dan kemudian lagi cek dengan perintah <code>echo $JAVA_HOME</code>.</p>
+
+<ul>
+<li><p><strong>LANG</strong>, ketikkan <code>export LANG="C"</code> untuk mengkonfigurasi dan cek dengan mengetikkan perintah <code>echo $LANG</code> seperti dibawah ini :</p>
+
+<p>root@artivisi:~# export LANG=&ldquo;C&rdquo;
+root@artivisi:~# echo $LANG
+C
+root@artivisi:~#</p></li>
+<li><p><strong>ALT_BOOTDIR</strong>, untuk konfigurasi <strong>ALT_BOOTDIR</strong> ini isinya samakan dengan isi variabel <strong>$JAVA_HOME</strong> yang terdapat pada komputer / laptop kita masing-masing. Sebagai contoh di laptop yang digunakan pada tulisan kali ini, isi variabel <strong>$JAVA_HOME</strong> mengarah ke <code>/usr/lib64/java/</code> maka jalankan perintah <code>export ALT_BOOTDIR="/usr/lib64/java/"</code> dan cek menggunakan perintah <code>echo $ALT_BOOTDIR</code> seperti dibawah ini :</p>
+
+<p>root@artivisi:~# export ALT_BOOTDIR=&ldquo;/usr/lib64/java/&rdquo;
+root@artivisi:~# echo $ALT_BOOTDIR
+/usr/lib64/java/
+root@artivisi:~#</p></li>
+<li><p><strong>ANT_HOME</strong>, dan langkah terakhir yaitu mengkonfigurasi variabel <strong>$ANT_HOME</strong>. Jalankan perintah <code>export ANT_HOME=/usr/share/ant</code> dan cek menggunakan perintah <code>echo $ANT_HOME</code> seperti dibawah ini :</p>
+
+<p>root@artivisi:~# export ANT_HOME=/usr/share/ant
+root@artivisi:~# echo $ANT_HOME
+/usr/share/ant
+root@artivisi:~#</p></li>
+</ul>
+</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Jika sudah, sekarang mari kita download source code <a href="http://openjdk.java.net/">OpenJDK 7</a> dari repository mercurial dengan mengetikkan perintah <code>hg clone http://hg.openjdk.java.net/jdk7/jdk7 open-jdk7</code> dan jika sudah harusnya akan tampak seperti dibawah ini :</p>
+
+<pre><code>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ hg clone http://hg.openjdk.java.net/jdk7/jdk7 open-jdk7
+requesting all changes
+adding changesets
+adding manifests
+adding file changes
+added 340 changesets with 340 changes to 33 files
+updating to branch default
+32 files updated, 0 files merged, 0 files removed, 0 files unresolved
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$
+</code></pre>
+
+<p>Setelah menjalankan perintah diatas, kita akan mendapatkan sebuah direktori baru dengan nama <strong>open-jdk7</strong>. Masuklah kedalam direktori tersebut dan tambahkanlah akses <strong>execute</strong> pada file <code>get_source.sh</code> dan ambil source code <a href="http://openjdk.java.net/">OpenJDK</a> dengan menjalankan perintah <code>./get_source.sh</code> seperti dibawah ini :</p>
+
+<pre><code>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ cd open-jdk7/
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ls
+ASSEMBLY_EXCEPTION  LICENSE  Makefile  README  README-builds.html  THIRD_PARTY_README  get_source.sh  make  test
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ chmod +x get_source.sh 
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ./get_source.sh 
+No repositories to process.
+# Repos:  . ./corba ./hotspot ./jaxp ./jaxws ./jdk ./langtools
+Starting on .
+Starting on ./corba
+Starting on ./hotspot
+Starting on ./jaxp
+Starting on ./jaxws
+Starting on ./jdk
+Starting on ./langtools
+# cd ./jaxp &amp;&amp; hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxp
+searching for changes
+no changes found
+# exit code 0
+# cd ./jaxws &amp;&amp; hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxws
+searching for changes
+no changes found
+# exit code 0
+# cd ./langtools &amp;&amp; hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/langtools
+searching for changes
+no changes found
+# exit code 0
+# cd ./jdk &amp;&amp; hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/jdk
+searching for changes
+no changes found
+# exit code 0
+# cd ./hotspot &amp;&amp; hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/hotspot
+searching for changes
+no changes found
+# exit code 0
+# cd ./corba &amp;&amp; hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/corba
+searching for changes
+no changes found
+# exit code 0
+# cd . &amp;&amp; hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7
+searching for changes
+no changes found
+# exit code 0
+</code></pre>
+
+<p>Ketika kita sudah mendapatkan semua source code yang diperlukan, <strong>unset</strong> dahulu variabel <strong>JAVA_HOME</strong> dengan mengetikkan perintah <code>unset JAVA_HOME</code> setelah itu jalankan proses pengecekan sekali lagi dengan mengetikkan perintah <code>gmake sanity</code> seperti dibawah ini :</p>
+
+<pre><code>root@artivisi:/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7# unset JAVA_HOME
+root@artivisi:/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7# gmake sanity
+( cd  ./jdk/make &amp;&amp; \
+  gmake sanity HOTSPOT_IMPORT_CHECK=false JDK_TOPDIR=/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/jdk JDK_MAKE_SHARED_DIR=/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/jdk/make/common/shared EXTERNALSANITYCONTROL=true SOURCE_LANGUAGE_VERSION=7 TARGET_CLASS_VERSION=7 MILESTONE=internal BUILD_NUMBER=b00 JDK_BUILD_NUMBER=b00 FULL_VERSION=1.7.0-internal-root_2011_05_22_11_02-b00 PREVIOUS_JDK_VERSION=1.6.0 JDK_VERSION=1.7.0 JDK_MKTG_VERSION=7 JDK_MAJOR_VERSION=1 JDK_MINOR_VERSION=7 JDK_MICRO_VERSION=0 PREVIOUS_MAJOR_VERSION=1 PREVIOUS_MINOR_VERSION=6 PREVIOUS_MICRO_VERSION=0 ARCH_DATA_MODEL=64 COOKED_BUILD_NUMBER=0 ANT_HOME="/usr/share/ant" ALT_OUTPUTDIR=/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64 ALT_LANGTOOLS_DIST=/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/langtools/dist ALT_CORBA_DIST=/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/corba/dist ALT_JAXP_DIST=/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/jaxp/dist ALT_JAXWS_DIST=/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/jaxws/dist ALT_HOTSPOT_IMPORT_PATH=/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/hotspot/import BUILD_HOTSPOT=true ; )
+gmake[1]: Entering directory `/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/jdk/make'
+gmake[1]: Leaving directory `/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/jdk/make'
+
+Build Machine Information:
+   build machine = artivisi.artivisi.com
+
+Build Directory Structure:
+   CWD = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7
+   TOPDIR = .
+   LANGTOOLS_TOPDIR = ./langtools
+   JAXP_TOPDIR = ./jaxp
+   JAXWS_TOPDIR = ./jaxws
+   CORBA_TOPDIR = ./corba
+   HOTSPOT_TOPDIR = ./hotspot
+   JDK_TOPDIR = ./jdk
+
+Build Directives:
+   BUILD_LANGTOOLS = true 
+   BUILD_JAXP = true 
+   BUILD_JAXWS = true 
+   BUILD_CORBA = true 
+   BUILD_HOTSPOT = true 
+   BUILD_JDK    = true 
+   DEBUG_CLASSFILES =  
+   DEBUG_BINARIES =  
+
+Hotspot Settings: 
+      HOTSPOT_BUILD_JOBS  =  
+      HOTSPOT_OUTPUTDIR   = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/hotspot/outputdir 
+      HOTSPOT_EXPORT_PATH = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/hotspot/import 
+
+
+Bootstrap Settings:
+  BOOTDIR = /usr/lib64/java/
+    ALT_BOOTDIR = /usr/lib64/java/
+  BOOT_VER = 1.6.0 [requires at least 1.6]
+  OUTPUTDIR = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64
+    ALT_OUTPUTDIR = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64
+  ABS_OUTPUTDIR = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64
+
+Build Tool Settings:
+  SLASH_JAVA = /NOT-SET
+    ALT_SLASH_JAVA = 
+  VARIANT = OPT
+  JDK_DEVTOOLS_DIR = /NOT-SET/devtools
+    ALT_JDK_DEVTOOLS_DIR = 
+  ANT_HOME = /usr/share/ant
+  UNIXCOMMAND_PATH = /bin/
+    ALT_UNIXCOMMAND_PATH = 
+  COMPILER_PATH = /usr/bin/
+    ALT_COMPILER_PATH = 
+  DEVTOOLS_PATH = /usr/bin/
+    ALT_DEVTOOLS_PATH = 
+  UNIXCCS_PATH = /usr/ccs/bin/
+    ALT_UNIXCCS_PATH = 
+  USRBIN_PATH = /usr/bin/
+    ALT_USRBIN_PATH = 
+  COMPILER_NAME = GCC4
+  COMPILER_VERSION = GCC4
+  CC_VER = 4.5.2 [requires at least 4.3.0]
+  ZIP_VER = 3.0 [requires at least 2.2]
+  UNZIP_VER = 6.00 [requires at least 5.12]
+  ANT_VER = 1.8.2 [requires at least 1.7.1]
+  TEMPDIR = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/tmp
+
+Build Directives:
+  OPENJDK = true
+  USE_HOTSPOT_INTERPRETER_MODE = 
+  PEDANTIC = 
+  DEV_ONLY = 
+  NO_DOCS = 
+  NO_IMAGES = 
+  TOOLS_ONLY = 
+  INSANE = 
+  COMPILE_APPROACH = parallel
+  PARALLEL_COMPILE_JOBS = 2
+    ALT_PARALLEL_COMPILE_JOBS = 
+  FASTDEBUG = 
+  COMPILER_WARNINGS_FATAL = false
+  COMPILER_WARNING_LEVEL = 
+  SHOW_ALL_WARNINGS = 
+  INCREMENTAL_BUILD = false
+  CC_HIGHEST_OPT = 
+  CC_HIGHER_OPT = 
+  CC_LOWER_OPT = 
+  CXXFLAGS =  -O2 -fPIC -DCC_NOEX -W -Wall  -Wno-unused -Wno-parentheses -fno-omit-frame-pointer -D_LITTLE_ENDIAN  
+  CFLAGS =  -O2   -fno-strict-aliasing -fPIC -W -Wall  -Wno-unused -Wno-parentheses -pipe -fno-omit-frame-pointer -D_LITTLE_ENDIAN  
+  BOOT_JAVA_CMD = /usr/lib64/java//bin/java -XX:-PrintVMOptions -XX:+UnlockDiagnosticVMOptions -XX:-LogVMOutput -Xmx512m -Xms512m -XX:PermSize=32m -XX:MaxPermSize=160m
+  BOOT_JAVAC_CMD = /usr/lib64/java//bin/javac  -J-XX:ThreadStackSize=1536 -J-XX:-PrintVMOptions -J-XX:+UnlockDiagnosticVMOptions -J-XX:-LogVMOutput -J-Xmx512m -J-Xms512m -J-XX:PermSize=32m -J-XX:MaxPermSize=160m -encoding ascii -source 6 -target 6 -XDignore.symbol.file=true
+  BOOT_JAR_CMD = /usr/lib64/java//bin/jar
+  BOOT_JARSIGNER_CMD = /usr/lib64/java//bin/jarsigner
+  JAVAC_CMD = /NOT-SET/re/jdk/1.7.0/promoted/latest/binaries/linux-amd64/bin/javac  -J-XX:ThreadStackSize=1536 -J-XX:-PrintVMOptions -J-XX:+UnlockDiagnosticVMOptions -J-XX:-LogVMOutput -J-Xmx512m -J-Xms512m -J-XX:PermSize=32m -J-XX:MaxPermSize=160m  -source 7 -target 7 -encoding ascii -Xbootclasspath:/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/classes 
+  JAVAH_CMD = /NOT-SET/re/jdk/1.7.0/promoted/latest/binaries/linux-amd64/bin/javah -bootclasspath /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/classes
+  JAVADOC_CMD = /NOT-SET/re/jdk/1.7.0/promoted/latest/binaries/linux-amd64/bin/javadoc -J-XX:-PrintVMOptions -J-XX:+UnlockDiagnosticVMOptions -J-XX:-LogVMOutput -J-Xmx512m -J-Xms512m -J-XX:PermSize=32m -J-XX:MaxPermSize=160m -bootclasspath /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/classes
+
+Build Platform Settings:
+  USER = root
+  PLATFORM = linux
+  ARCH = amd64
+  LIBARCH = amd64
+  ARCH_FAMILY = amd64
+  ARCH_DATA_MODEL = 64
+  ARCHPROP = amd64
+  ALSA_VERSION = 1.0.24.1
+  OS_VERSION = 2.6.37.6 [requires at least 2.6]
+  OS_VARIANT_NAME = Unknown
+  OS_VARIANT_VERSION = 
+  MB_OF_MEMORY = 1961
+
+GNU Make Settings:
+  MAKE = gmake
+  MAKE_VER = 3.82 [requires at least 3.81]
+  MAKECMDGOALS = sanity
+  MAKEFLAGS = w
+  SHELL = /bin/sh
+
+Target Build Versions:
+  JDK_VERSION = 1.7.0
+  MILESTONE = internal
+  RELEASE = 1.7.0-internal
+  FULL_VERSION = 1.7.0-internal-root_2011_05_22_11_02-b00
+  BUILD_NUMBER = b00
+
+External File/Binary Locations:
+  USRJDKINSTANCES_PATH = /opt/java
+  BUILD_JDK_IMPORT_PATH = /NOT-SET/re/jdk/1.7.0/promoted/latest/binaries
+    ALT_BUILD_JDK_IMPORT_PATH = 
+  JDK_IMPORT_PATH = /NOT-SET/re/jdk/1.7.0/promoted/latest/binaries/linux-amd64
+    ALT_JDK_IMPORT_PATH = 
+  LANGTOOLS_DIST = 
+    ALT_LANGTOOLS_DIST = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/langtools/dist
+  CORBA_DIST = 
+    ALT_CORBA_DIST = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/corba/dist
+  JAXP_DIST = 
+    ALT_JAXP_DIST = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/jaxp/dist
+  JAXWS_DIST = 
+    ALT_JAXWS_DIST = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/jaxws/dist
+  HOTSPOT_DOCS_IMPORT_PATH = /NO_DOCS_DIR
+    ALT_HOTSPOT_DOCS_IMPORT_PATH = 
+  HOTSPOT_IMPORT_PATH = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/hotspot/import
+    ALT_HOTSPOT_IMPORT_PATH = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/hotspot/import
+  HOTSPOT_SERVER_PATH = /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/hotspot/import/jre/lib/amd64/server
+    ALT_HOTSPOT_SERVER_PATH = 
+  CACERTS_FILE = ./../src/share/lib/security/cacerts
+    ALT_CACERTS_FILE = 
+  CUPS_HEADERS_PATH = /usr/include
+    ALT_CUPS_HEADERS_PATH = 
+
+OpenJDK-specific settings:
+  FREETYPE_HEADERS_PATH = /usr/include
+    ALT_FREETYPE_HEADERS_PATH = 
+  FREETYPE_LIB_PATH = /usr/lib
+    ALT_FREETYPE_LIB_PATH = 
+
+Previous JDK Settings:
+  PREVIOUS_RELEASE_PATH = USING-PREVIOUS_RELEASE_IMAGE
+    ALT_PREVIOUS_RELEASE_PATH = 
+  PREVIOUS_JDK_VERSION = 1.6.0
+    ALT_PREVIOUS_JDK_VERSION = 
+  PREVIOUS_JDK_FILE = 
+    ALT_PREVIOUS_JDK_FILE = 
+  PREVIOUS_JRE_FILE = 
+    ALT_PREVIOUS_JRE_FILE = 
+  PREVIOUS_RELEASE_IMAGE = /usr/lib64/java/
+    ALT_PREVIOUS_RELEASE_IMAGE = 
+
+
+Sanity check passed.
+root@artivisi:/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7# 
+</code></pre>
+
+<p>Jika perintah diatas sukses, maka kita bisa langsung melakukan proses kompilasi dengan mengetikkan perintah <code>gmake ALLOW_DOWNLOADS=true</code> seperti dibawah ini :</p>
+
+<blockquote><ol>
+<li><p> Opsi <code>ALLOW_DOWNLOADS=true</code> ini akan menginstruksikan agar Apache ANT otomatis mendownload source code <code>JAXP</code> dan <code>JAX-WS</code> secara otomatis.</p></li>
+<li><p> Proses kompilasi ini memakan waktu sangat lama (di laptop core2duo dengan koneksi internet menggunakan Speedy memakan waktu ~+ 3 jam), jadi siapkan cemilan, kopi dan rokok. Atau kalau bisa ditinggal main-main dulu :)</p></li>
+<li><p> Proses ini juga memakan <strong>CPU Usage</strong> yang lumayan, jadi sebaiknya tinggalkan aktifitas berkomputer ria ketika melakukan proses kompilasi ini :)</p></li>
+</ol>
+</blockquote>
+
+<pre><code>root@artivisi:/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7# gmake ALLOW_DOWNLOADS=true
+....
+....
+....
+&gt;&gt;&gt;Making sec-files @ Sun May 22 14:33:37 WIT 2011 ...
+/bin/mkdir -p .
+rm -f sec-files
+rm -f /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/tmp/sec-bin.zip
+cd  /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64 &amp;&amp; \
+    /usr/bin/zip -rq9 /mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/build/linux-amd64/tmp/sec-bin.zip classes/javax/net classes/javax/security/cert classes/com/sun/net/ssl classes/com/sun/security/cert classes/sun/net/www/protocol/https classes/sun/security/pkcs12 classes/sun/security/ssl classes/sun/security/krb5/*.class classes/sun/security/krb5/internal/*.class classes/sun/security/krb5/internal/ccache classes/sun/security/krb5/internal/crypto classes/sun/security/krb5/internal/ktab classes/sun/security/krb5/internal/rcache classes/sun/security/krb5/internal/util classes/sun/security/jgss/spi/GSSContextSpi.class
+&gt;&gt;&gt;Making sec-files-win @ Sun May 22 14:33:37 WIT 2011 ...
+&gt;&gt;&gt;Making jgss-files @ Sun May 22 14:33:37 WIT 2011 ...
+&gt;&gt;&gt;Finished making images @ Sun May 22 14:33:37 WIT 2011 ...
+gmake[2]: Leaving directory `/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7/jdk/make'
+########################################################################
+##### Leaving jdk for target(s) sanity all docs images             #####
+########################################################################
+##### Build time 02:52:56 jdk for target(s) sanity all docs images #####
+########################################################################
+
+-- Build times ----------
+Target all_product_build
+Start 2011-05-22 11:22:21
+End   2011-05-22 14:33:37
+00:00:06 corba
+00:10:55 hotspot
+00:02:18 jaxp
+00:04:55 jaxws
+02:52:56 jdk
+00:00:06 langtools
+03:11:16 TOTAL
+-------------------------
+gmake[1]: Leaving directory `/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7'
+root@artivisi:/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7#
+</code></pre>
+
+<p>Sampai disini proses kompilasi sudah selesai dilakukan dan <strong>&ldquo;image&rdquo;</strong> untuk <strong>JDK</strong> dapat diambil pada direktori <code>open-jdk7/build/linux-amd64/j2sdk-image</code> sedangkan untuk <strong>JRE</strong>-nya dapat diambil pada direktori <code>open-jdk7/build/linux-amd64/j2re-image</code>  :)</p>
+
+<p>Nah bagaimana mudah bukan ? Kenapa saya tidak membuatkan sekalian binary packages untuk Slackware-nya ? alasan-nya yaitu saya menginginkan aplikasi seperti <a href="http://overlays.gentoo.org/proj/java/wiki/java-config">Gentoo Java Config</a> atau <a href="https://help.ubuntu.com/community/Java">update-alternatives &ndash;config java</a> milik ubuntu terdapat di Slackware supaya kita gampang berpindah versi java dari Oracle JDK ke OpenJDK maupun sebaliknya :)</p>
+
+<p>Adakah teman-teman slacker&rsquo;s lain yang tertarik masalah Java di Slackware ? Bagaimana kalau kita sama-sama membawa Java ke sistem native Slackware ? Maksud saya native disini yaitu seperti yang teman-teman pengguna Gentoo, Ubuntu dan Fedora lakukan dengan project <a href="http://www.gentoo.org/proj/en/java/">Gentoo Java</a>, <a href="https://help.ubuntu.com/community/Java">Ubuntu Java</a> dan <a href="http://fedoraproject.org/wiki/Java">Fedora Java</a> :)</p>
+
+<p>Jika ada yang tertarik, saya sangat-sangat tertarik untuk mendiskusikan dan merealisasikan bersama-sama :)</p>
+
+<p><strong>Referensi :</strong></p>
+
+<ol>
+<li> <a href="http://hg.openjdk.java.net/jdk7/build/raw-file/tip/README-builds.html#linux">Readme Building OpenJDK Linux</a></li>
+<li> <a href="http://www.gentoo.org/proj/en/java/">Gentoo Java</a></li>
+<li> <a href="https://help.ubuntu.com/community/Java">Ubuntu Java</a></li>
+<li> <a href="http://fedoraproject.org/wiki/Java">Fedora Java</a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-24T22:27:16+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2011/05/24/step-by-step-building-openjdk-on-slackware/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2011/05/24/step-by-step-building-openjdk-on-slackware/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/" title="Previous Post: Installasi Slackware64 13.37 dan GNOME 3.0">&laquo; Installasi Slackware64 13.37 dan GNOME 3.0</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix/" title="Next Post: June issue of BSD magazine NanoBSD and ALIX">June issue of BSD magazine NanoBSD and ALIX &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2011/05/24/step-by-step-building-openjdk-on-slackware/';
+        var disqus_url = 'http://martinusadyh.web.id/2011/05/24/step-by-step-building-openjdk-on-slackware/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

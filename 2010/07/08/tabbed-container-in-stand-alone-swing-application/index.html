@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Tabbed Container In Stand Alone Swing Application - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Buat teman-teman yang sudah tahu teknik ini, mungkin tulisan ini bisa dikatakan ketinggalan jaman :D Sebenarnya apa sih maksud tulisan ini ? Tulisan &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/07/08/tabbed-container-in-stand-alone-swing-application/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Tabbed Container in Stand Alone Swing Application</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-08T03:40:36+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Buat teman-teman yang sudah tahu teknik ini, mungkin tulisan ini bisa dikatakan ketinggalan jaman :D Sebenarnya apa sih maksud tulisan ini ? Tulisan ini cuma ingin menunjukkan pada teman-teman yang belum tahu bagaimana sih <strong>menggunakan Tabbed Pane milik NetBeans (TabbedContainer) pada Aplikasi Swing</strong> kita :) Kenapa saya bilang tulisan ini ketinggalan jaman ? Karena ternyata, sudah ada yang pernah melakukan hal serupa sejak tahun 2004 lalu :( ( NetBeans versi 4.0, detail artikel bisa dibaca <a href="http://www.javalobby.org/java/forums/t13337.html?start=0">disini</a> ). Kenapa saya posting lagi disini, karena cari tutorialnya ternyata susah juga :D . Jadi harapan saya agar, semoga teman-teman yang belum tahu bisa dengan mudah mencoba dan tidak perlu berlama-lama bermain dengan paman <a href="http://google.com">Google</a> :) Ok sudah siap?? Kalau iya, mari kita lanjutkan :)</p>
+
+<p>Seperti teman-teman ketahui bersama, class <strong>JTabbedPane</strong> pada Swing mempunyai sedikit sekali fitur dan juga <strong>JTabbedPane</strong> hanya mempunyai 2 buah mode tampilan yaitu <strong>SCROLL_TAB_LAYOUT</strong> dan <strong>WRAP_TAB_LAYOUT</strong> yang bisa kita konfigurasi melalui metode <code>setTabLayoutPolicy()</code> (<strong>WRAP_TAB_LAYOUT</strong> merupakan konfigurasi standart dari <strong>JTabbedPane</strong> jadi tidak perlu dikonfigurasi lagi agar tampilan tab menjadi mode <em>&ldquo;wrapping&rdquo;</em>) Nah sekarang yang menjadi pertanyaan saya yaitu, apakah teman-teman pernah membuat sebuah aplikasi yang mempunyai jumlah tab yang banyak (anggap saja sampai 10 atau 20 tab lebih) dalam 1 form ? Bagaimanakah tampilan tab teman-teman ? Kemudian bagaimana navigasi antar tab ? Dengan menggunakan <strong>JTabedPane</strong> yang hanya membawa 2 buah mode tampilan akan terasa sangat kurang dan proses navigasi menjadi &ldquo;susah&rdquo;. Jika menggunakan tampilan <strong>WRAP_TAB_LAYOUT</strong> navigasi antar tab memang mudah, tapi dari tampilan akan terlihat sedikit <strong>&ldquo;kurang pas dimata&rdquo;</strong>. Sedangkan jika kita menggunakan tampilan <strong>SCROLL_TAB_LAYOUT</strong>, dari sisi tampilan bagus (tidak berubah) tapi dari sisi navigasi terasa sangat susah :( (Bayangkan jika kita ingin pindah secara cepat dari tab 20 ke tab 1, dengan menggunakan tampilan <strong>SCROLL_TAB_LAYOUT</strong> kita harus melakukan klik 1-1 dari tab 20 sampai tab 1 tampil. Hm.. bukan proses yang menyenangkan saya rasa :D ). Untuk menjelaskan ilustrasi saya diatas, mari kita sama-sama melihat screenshot tampilan <strong>JTabbedPane</strong> dalam 2 mode yaitu <strong>SCROLL_TAB_LAYOUT</strong> dan <strong>WRAP_TAB_LAYOUT</strong> dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4771484937/"><img src="http://farm5.static.flickr.com/4075/4771484937_26627527f4.jpg" alt="StandartTabbedPane" /></a><br/>
+<strong>Tampilan WRAP_TAB_LAYOUT (atas) dan SCROLL_TAB_LAYOUT (bawah)</strong></p>
+
+<!-- more -->
+
+
+<p>Nah setelah melihat tampilan standart dari <strong>JTabbedPane</strong> diatas, sekarang mari kita bandingkan apa yang ditawarkan oleh <strong>TabbedContainer</strong> atau NetBeans TabbedPane :) Untuk masalah tampilan <strong>TabbedContainer</strong> membawa lebih banyak mode (tipe) yaitu <strong>TabbedContainer.TYPE_EDITOR, TabbedContainer.TYPE_TOOLBAR, TabbedContainer.TYPE_SLIDING</strong> dan <strong>TabbedContainer.TYPE_VIEW</strong> yang bisa kita lihat pada gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4772179700/"><img src="http://farm5.static.flickr.com/4076/4772179700_2745404a6f.jpg" alt="TabbedContainer_Editor" /></a><br/>
+<strong>Type Editor</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4772179688/"><img src="http://farm5.static.flickr.com/4080/4772179688_152c18467c.jpg" alt="TabbedContainerToolBar" /></a><br/>
+<strong>Type ToolBar</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4772179682/"><img src="http://farm5.static.flickr.com/4082/4772179682_1312019e72.jpg" alt="TabbedContainerSliding" /></a><br/>
+<strong>Type Sliding</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4772179698/"><img src="http://farm5.static.flickr.com/4078/4772179698_522286e726.jpg" alt="TabbedContainerView" /></a><br/>
+<strong>Type View</strong></p>
+
+<p>Waaw&hellip; lebih mantap bukan ? Selain dengan tampilan lebih banyak kita juga dapat bonus yaitu adanya tombol <strong>&ldquo;close&rdquo;</strong> yang secara otomatis terdapat pada setiap panel yang kita tambahkan ke dalam <strong>TabbedContainer</strong> :)</p>
+
+<p>Ok-ok cukup sudah preview-nya :) Sekarang bagaimana agar aplikasi Swing kita bisa mempunyai tab seperti diatas ? Caranya sangat mudah yaitu, silahkan ambil library-library dibawah ini pada direktori <strong>$NETBEANS_HOME/platform/modules</strong> (dimana <strong>$NETBEANS_HOME</strong> adalah tempat dimana NetBeans di install) :</p>
+
+<ol>
+<li><p> org-netbeans-swing-tabcontrol.jar</p></li>
+<li><p> org-openide-awt.jar</p></li>
+<li><p> org-openide-util-lookup.jar</p></li>
+<li><p> org-openide-util.jar</p></li>
+<li><p> org-openide-windows.jar</p></li>
+</ol>
+
+
+<p>Setelah mengamankan ke 5 library diatas, sekarang buatlah sebuah project baru dengan nama <strong>TabbedContainer</strong> kemudian tambahkan library tersebut. Setelah menambahkan ke 5 library diatas pada project yang telah kita buat, sekarang tambahkanlah komponen <strong>TabbedContainer</strong> yang terdapat pada library <strong>org-netbeans-swing-tabcontrol.jar</strong> ke NetBeans Pallete dengan mengikuti tulisan <a href="http://martinusadyh.web.id/2009/05/25/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/">Menambahkan Komponen Ke NetBeans Pallete</a> hingga tampilan NetBeans Pallete kita menjadi seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4772236888/"><img src="http://farm5.static.flickr.com/4073/4772236888_8bb5256ca9.jpg" alt="TampilanPallete" /></a><br/>
+<strong>Tampilan Komponen TabbedContainer Pada NetBeans Pallete</strong></p>
+
+<p>Jika sudah, sekarang buatlah 1 buah <strong>JFrame</strong> dan pasanglah komponen <strong>TabbedContainer</strong> yang baru ditambahkan tersebut ke dalam <strong>JFrame</strong>. Nah yang perlu diperhatikan disini adalah <strong>TabbedContainer ini menggunakan konsep DataModel seperti JTable dengan TableModelnya</strong>, jadi sebelum menampilkan tab kita harus mengkonfigurasi dahulu <strong>DataModel</strong> untuk <strong>TabbedContainer</strong> ini. Sedangkan model yang terdapat pada <strong>TabbedContainer</strong> ini ada 2 yaitu :</p>
+
+<ol>
+<li><p> TabDataModel dan</p></li>
+<li><p> DefaultTabDataModel</p></li>
+</ol>
+
+
+<p>Karena saya bingung bagaimana cara menggunakan <strong>TabDataModel</strong>, maka pada tulisan ini kita akan menggunakan <strong>DefaultTabDataModel</strong> saja ya :D</p>
+
+<p>Nah didalam DataModel (<strong>DefaultTabDataModel</strong> atau <strong>TabDataModel</strong>) ini, kita bisa menambahkan sebuah <strong>TabData</strong> yang dapat kita isi dengan komponen yang akan ditampilkan pada tab melalui constructor <code>TabData(Object userObject, Icon i, String caption, String tooltip)</code>. Setelah <strong>TabData</strong> terisi dengan komponen yang ingin kita tampilkan, maka kita dapat menambahkan-nya kedalam <strong>DefaultTabDataModel</strong> melalui method <code>addTab(int index, TabData tabData)</code> seperti contoh dibawah ini :</p>
+
+<pre><code>        DefaultTabDataModel tabDataModel = new DefaultTabDataModel();
+        tabDataModel.addTab(0, new TabData(new MyPanel(), null,  "First Tab", "First Tab"));
+</code></pre>
+
+<p>Proses inisialisasi model telah selesai sampai disini dan siap untuk digunakan, sekarang mari kita tambahkan model yang sudah berisi <strong>TabData</strong> beserta komponen kita kedalam <strong>TabbedContainer</strong> sekalian menentukan mode yang akan digunakan dengan cara seperti dibawah ini :</p>
+
+<pre><code>    ....
+    TabbedContainer tabbedContainer1 = new TabbedContainer(tabDataModel, TabbedContainer.TYPE_EDITOR);
+    ....
+</code></pre>
+
+<p>Diatas kita sudah mengetahui bagaimana cara menggunakan <strong>DefaultTabDataModel, TabData</strong> dan memasangnya kedalam <strong>TabbedContainer</strong>, sekarang bagaimana implementasi-nya pada project yang telah dibuat sebelumnya ? Sama seperti pada langkah yang sudah dijelaskan diatas, sekarang buatlah sebuah variabel global untuk <strong>DefaultTabDataModel</strong> dan inisialisasi-lah pada constructor JFrame tepat diatas method <code>initComponent()</code> dan tambahkanlah sebuah <strong>TabData</strong> seperti dibawah ini :</p>
+
+<pre><code>public class TabbedContainerFrame extends javax.swing.JFrame {
+
+    private DefaultTabDataModel tabDataModel;
+
+    /** Creates new form TabbedContainerFrame */
+    public TabbedContainerFrame() {
+        tabDataModel = new DefaultTabDataModel();
+        tabDataModel.addTab(0, new TabData(new MyPanel(), null,
+                "First Tab", "First Tab"));
+        initComponents();
+        setLocationRelativeTo(null);
+    }
+}
+</code></pre>
+
+<p>Jika sudah sekarang masuk-lah pada mode <strong>design</strong> kemudian klik kanan pada komponen <strong>TabbedContainer</strong> dan pilih <strong>Customize Code</strong> dan edit constructor <strong>TabbedContainer</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4771744319/"><img src="http://farm5.static.flickr.com/4115/4771744319_4b22bd532a.jpg" alt="CustomizeCode" /></a><br/>
+<strong>Tampilan Customize Code</strong></p>
+
+<p>Sekarang coba jalankanlah project-nya dengan menekan tombol <strong>F6</strong> dan jika tidak ada error yang terjadi maka seharusnya kita akan melihat tampilan seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4771781065/"><img src="http://farm5.static.flickr.com/4115/4771781065_4907357738.jpg" alt="Sukses" /></a><br/>
+<strong>Sukses Menjalankan TabbedContainer</strong></p>
+
+<p>Hore sudah jadi :) Tapi eits&hellip; tunggu dulu ini belum selesai :D Sekarang bagaimana jika kita ingin menggunakan <strong>System Look And Feel</strong> dan tampilan-nya akan sebagus NetBeans ? Ok sekarang mari kita coba tambahkan kode untuk memasang <strong>System Look And Feel</strong> pada method <strong>Main</strong> hingga menjadi seperti dibawah ini :</p>
+
+<pre><code>    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                new TabbedContainerFrame().setVisible(true);
+            }
+        });
+    }
+</code></pre>
+
+<p>Dan hasilnya adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4771781069/"><img src="http://farm5.static.flickr.com/4121/4771781069_2b7d0e28d2.jpg" alt="TampilanLAFKacau" /></a><br/>
+<strong>Tampilan Look And Feel Yang Kacau</strong></p>
+
+<blockquote><p>Tampilan TabbedContainer jadi kacau seperti ini terjadi ketika menggunakan Look And Feel GTK dan Nimbus, sedangkan pada Windows Look And Feel tampilan tidak mengalami perubahan yang signifikan alias baik-baik saja !!</p></blockquote>
+
+<p>Berdasarkan <a href="http://bits.netbeans.org/dev/javadoc/org-netbeans-swing-plaf/org/netbeans/swing/plaf/package-summary.html">JavaDoc LookAndFeel NetBeans</a>, seluruh proses <em>&ldquo;rendering&rdquo;</em> pada NetBeans dan NetBeans Platform terdapat pada package <strong>org.netbeans.swing.plaf</strong>. Dan jika ingin tampilan yang sesuai dengan Look And Feel yang berjalan, kita harus memanggil method <code>org.netbeans.swing.plaf.Startup.run()</code> pada saat startup. Sekarang carilah library <strong>org-netbeans-swing-plaf.jar</strong> pada direktori <strong>$NETBEANS_HOME/platform/modules</strong> dan tambahkanlah pada project, setelah itu sekarang modifikasilah method <strong>Main</strong> menjadi seperti dibawah ini :</p>
+
+<pre><code>    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                Startup.run(null, 1, null);
+                new TabbedContainerFrame().setVisible(true);
+            }
+        });
+    }
+</code></pre>
+
+<p>Dan sekarang coba jalankan lagi projectnya dengan menekan tombol <strong>F6</strong> dan bagaimana hasilnya ??? :)</p>
+
+<blockquote><p>Penambahan kode pada baris 16 diatas jangan dilakukan jika menggunakan Windows LookAndFeel, penggunaan 1 baris kode diatas pada Windows Look And Feel akan menyebabkan tampilan tabcontrol menjadi kacau !!!</p></blockquote>
+
+<p>Fyuh.. akhirnya selesai juga tulisan-nya :) dan semoga bisa membantu teman-teman yang masih merasa penasaran bagaimana menggunakan <strong>TabbedContainer</strong> ini pada aplikasi Swingnya !! <strong>Sekedar catatan saja, penggunaan <code>Startup.run()</code> masih belum dicoba di Nimbus LAF hasilnya memuaskan atau tidak. Dan untuk penggunaan beda OS mungkin bisa di bedakan jika LookAndFeel yang dipakai adalah GTK maka panggil method <code>Startup.run()</code>, jika tidak maka abaikan :D</strong></p>
+
+<p>Semua bahan-bahan yang saya jadikan sebagai referensi dan hasil percobaan bisa teman-teman lihat pada link-link dibawah dan akhir kata selamat ber-eksperimen teman-teman dan mohon maaf klo ada yang salah dengan pembahasan-nya (jika ada salah, mari direvisi bersama-sama) :)</p>
+
+<p>Happy Hacking Guys !! :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://bits.netbeans.org/dev/javadoc/org-netbeans-swing-tabcontrol/org/netbeans/swing/tabcontrol/TabbedContainer.html">TabbedContainer API</a></p></li>
+<li><p> <a href="http://bits.nbextras.org/dev/javadoc/org-netbeans-swing-tabcontrol/org/netbeans/swing/tabcontrol/TabData.html">TabData API</a></p></li>
+<li><p> <a href="http://bits.nbextras.org/dev/javadoc/org-netbeans-swing-tabcontrol/org/netbeans/swing/tabcontrol/TabDataModel.html">TabDataModel API</a></p></li>
+<li><p> <a href="http://bits.nbextras.org/dev/javadoc/org-netbeans-swing-tabcontrol/org/netbeans/swing/tabcontrol/DefaultTabDataModel.html">DefaultTabDataModel API</a></p></li>
+<li><p> <a href="http://bits.netbeans.org/dev/javadoc/org-netbeans-swing-plaf/org/netbeans/swing/plaf/package-summary.html">Package org.netbeans.swing.plaf Description</a></p></li>
+<li><p> <a href="http://bits.netbeans.org/dev/javadoc/org-netbeans-swing-plaf/architecture-summary.html">NetBeans Architecture Answers for Look &amp; Feel Customization Library module</a></p></li>
+<li><p> <a href="http://www.javalobby.org/java/forums/t13337.html?start=15">TabContainer better JTabbedPane (JavaLobby Forum)</a></p></li>
+<li><p> <a href="http://martinusadyh.web.id/2009/05/25/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/">Menambahkan Komponen Ke NetBeans Pallete</a></p></li>
+<li><p> <a href="http://martinusadyh.web.id/2010/03/11/cara-checkout-contoh-aplikasi-martin-personal-project/">Cara Checkout Contoh Aplikasi Martin Personal Project</a></p></li>
+<li><p>. <a href="http://code.google.com/p/martin-personal-project/source/browse/#svn/trunk/java/TabbedContainer">Source Code TabbedContainer Project</a></p></li>
+<li><p>. [Project TabbedContainer.zip</p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-08T03:40:36+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/07/08/tabbed-container-in-stand-alone-swing-application/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/07/08/tabbed-container-in-stand-alone-swing-application/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/06/28/tnx-invitation-code/" title="Previous Post: TNX Invitation Code">&laquo; TNX Invitation Code</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/07/25/using-git-on-netbeans-with-nbgit-plugin/" title="Next Post: Using Git On NetBeans with nbgit Plugin">Using Git On NetBeans with nbgit Plugin &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/07/08/tabbed-container-in-stand-alone-swing-application/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/07/08/tabbed-container-in-stand-alone-swing-application/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

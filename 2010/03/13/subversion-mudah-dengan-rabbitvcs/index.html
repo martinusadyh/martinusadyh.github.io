@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Subversion Mudah Dengan RabbitVCS - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Masih merasa susah dan bingung bagaimana menggunakan SubVersion ? Atau masih belum terbiasa menggunakan SubVersion melalui terminal atau konsole di &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Subversion Mudah Dengan RabbitVCS</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-13T07:00:15+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Masih merasa susah dan bingung bagaimana menggunakan <a href="http://subversion.tigris.org/">SubVersion</a> ? Atau masih belum terbiasa menggunakan <a href="http://subversion.tigris.org/">SubVersion</a> melalui terminal atau konsole di GNU/Linux, karena sudah terbiasa dan merasa nyaman menggunakan <a href="http://tortoisesvn.tigris.org/">Tortoise SVN</a> di Windows ? Buat teman-teman yang masih beranggapan bahwa menggunakan <a href="http://subversion.tigris.org/">SubVersion</a> di GNU/Linux tidak bisa semudah di Windows mungkin bisa berpikir dahulu sebelum mengatakan hal tersebut ke teman-teman yang lain :) Pingin tahu alasan-nya ? Kalau iya, apakah teman-teman sudah pernah mendengar sebuah project bernama <a href="http://rabbitvcs.org/">RabbitVCS</a> ? Apasih <a href="http://rabbitvcs.org/">RabbitVCS</a> ini ??? <a href="http://rabbitvcs.org/">RabbitVCS</a> adalah sebuah aplikasi berbasis GUI (Graphical User Interface) yang berfungsi untuk mempermudah kita mengakses dan menggunakan <a href="http://subversion.tigris.org/">SubVersion</a>, pengembangan <a href="http://rabbitvcs.org/">RabbitVCS</a> ini terinspirasi oleh <a href="http://tortoisesvn.tigris.org/">Tortoise SVN</a>. Jadi tidak heran kan kalau <a href="http://rabbitvcs.org/">RabbitVCS</a> ini fungsi dan fiturnya mirip dengan <a href="http://tortoisesvn.tigris.org/">Tortoise SVN</a>  :)</p>
+
+<p>Nah setelah kita mengetahui apa itu <a href="http://rabbitvcs.org/">RabbitVCS</a>, sekarang kita akan coba untuk mulai menginstall <a href="http://rabbitvcs.org/">RabbitVCS</a> ini pada sistem operasi GNU/Linux tercinta. Sedangkan distribusi yang digunakan pada tulisan kali ini adalah <a href="http://www.ubuntu.com/">Ubuntu 9.04</a> :) Sebelum melakukan proses installasi, kita perlu menambahkan dahulu PPA <a href="http://rabbitvcs.org/">RabbitVCS</a> pada file daftar repository <a href="http://www.ubuntu.com/">Ubuntu 9.04</a> yang kita gunakan. Untuk menambahkan PPA <a href="http://rabbitvcs.org/">RabbitVCS</a>, jalankan perintah <code>sudo add-apt-repository ppa:rabbitvcs</code> pada terminal seperti dibawah ini :</p>
+
+<pre><code>martinvirtual@martinvirtual-laptop:~$ sudo add-apt-repository ppa:rabbitvcs
+Executing: gpg --ignore-time-conflict --no-options --no-default-keyring --secret-keyring /etc/apt/secring.gpg --trustdb-name /etc/apt/trustdb.gpg --keyring /etc/apt/trusted.gpg --keyserver keyserver.ubuntu.com --recv D11D2DD360FFA0359731ECD52EE5793634EF4A35
+gpg: requesting key 34EF4A35 from hkp server keyserver.ubuntu.com
+gpg: key 34EF4A35: public key "Launchpad RabbitVCS" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+martinvirtual@martinvirtual-laptop:~$ 
+</code></pre>
+
+<!-- more -->
+
+
+<p>Setelah selesai menambahkan PPA <a href="http://rabbitvcs.org/">RabbitVCS</a>, update dahulu <code>cache apt</code> kita dengan menjalankan perintah <code>sudo apt-get update</code> seperti dibawah ini :</p>
+
+<pre><code>martinvirtual@martinvirtual-laptop:~$ sudo apt-get update
+........
+........     
+Get:1 http://dl2.foss-id.web.id karmic-updates Release.gpg [189B]                               
+Ign http://dl2.foss-id.web.id karmic-updates/main Translation-en_US                             
+Get:2 http://ppa.launchpad.net karmic Release.gpg [307B]                    
+........
+........     
+Reading package lists... Done
+martinvirtual@martinvirtual-laptop:~$ 
+</code></pre>
+
+<p>Setelah proses <code>update</code> selesai, sekarang mari kita lihat dahulu apa saja yang dibawa oleh <a href="http://rabbitvcs.org/">RabbitVCS</a> dengan mengetikkan perintah <code>sudo apt-cache search rabbit</code> seperti dibawah ini :</p>
+
+<pre><code>martinvirtual@martinvirtual-laptop:~$ sudo apt-cache search rabbit
+........
+........     
+rabbitvcs-core - Easy version control
+rabbitvcs-thunar - Thunar extension for RabbitVCS
+rabbitvcs-gedit - Gedit extension for RabbitVCS
+rabbitvcs-cli - Command line interface for RabbitVCS
+rabbitvcs-nautilus - Nautilus extension for RabbitVCS
+martinvirtual@martinvirtual-laptop:~$ 
+</code></pre>
+
+<p>Daripada bingung, install aja semuanya dengan mengetikkan perintah <code>sudo apt-get install rabbitvcs-core rabbitvcs-gedit rabbitvcs-cli rabbitvcs-nautilus -y</code> seperti dibawah ini :</p>
+
+<pre><code>martinvirtual@martinvirtual-laptop:~$ sudo apt-get install rabbitvcs-core rabbitvcs-gedit rabbitvcs-cli rabbitvcs-nautilus -y
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following extra packages will be installed:
+  global ipython libapr1 libaprutil1 libsvn1 meld python-configobj python-foolscap
+  python-nautilus python-pexpect python-svn python-wxgtk2.8 python-wxversion subversion
+Suggested packages:
+  doxygen apache httpd id-utils python-profiler python-numpy python-matplotlib python-qt3
+  python-qt4 python-svn-dbg wx2.8-doc wx2.8-examples python-wxtools ruby tcsh csh octave3.0
+  mksh pdksh subversion-tools db4.7-util patch
+The following NEW packages will be installed:
+  global ipython libapr1 libaprutil1 libsvn1 meld python-configobj python-foolscap
+  python-nautilus python-pexpect python-svn python-wxgtk2.8 python-wxversion rabbitvcs-cli
+  rabbitvcs-core rabbitvcs-gedit rabbitvcs-nautilus subversion
+0 upgraded, 18 newly installed, 0 to remove and 267 not upgraded.
+Need to get 19.4MB of archives.
+
+...........
+...........
+...........
+
+Processing triggers for python-support ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+martinvirtual@martinvirtual-laptop:~$ 
+</code></pre>
+
+<p>Jika proses installasi sudah selesai, sekarang <code>logout</code>-lah dahulu sebelum bisa menggunakan <a href="http://rabbitvcs.org/">RabbitVCS</a>. Setelah proses <code>logout</code>, sekarang coba cek dengan membuka <code>nautilus browser</code> kemudian klik kanan pada area yang koosong. Dan jika tidak ada kesalahan, maka harusnya kita sudah melihat menu <code>Checkout</code> dan <code>RabbitVCS</code> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4419640339/"><img src="http://farm5.static.flickr.com/4072/4419640339_06dd5b524e.jpg" alt="MenuNautilusRabbitVCS" /><br/>
+Integrasi RabbitVCS dengan Nautilus</a></p>
+
+<p>Untuk mencoba apakah <a href="http://rabbitvcs.org/">RabbitVCS</a> ini sudah terinstall dengan benar atau belum, sekarang coba lakukan proses <code>checkout</code> seperti pada gambar dibawah ini:</p>
+
+<pre><code>    [![CheckoutFromNautilus](http://farm5.static.flickr.com/4033/4419635617_870742310d.jpg)  
+</code></pre>
+
+<p>Pilih Menu Checkout](<a href="http://www.flickr.com/photos/10243554@N02/4419635617/">http://www.flickr.com/photos/10243554@N02/4419635617/</a>)</p>
+
+<pre><code>    [![EntriRepository](http://farm5.static.flickr.com/4061/4419635627_0032a4d4ee.jpg)  
+</code></pre>
+
+<p>Masukkan Alamat Repository](<a href="http://www.flickr.com/photos/10243554@N02/4419635627/">http://www.flickr.com/photos/10243554@N02/4419635627/</a>)</p>
+
+<pre><code>    [![ProsesCheckout](http://farm3.static.flickr.com/2760/4419640361_b8a8239558.jpg)  
+</code></pre>
+
+<p>Proses Checkout Selesai](<a href="http://www.flickr.com/photos/10243554@N02/4419640361/">http://www.flickr.com/photos/10243554@N02/4419640361/</a>)</p>
+
+<pre><code>    [![HasilCheckout](http://farm5.static.flickr.com/4024/4419635633_c0a6df6239.jpg)  
+</code></pre>
+
+<p>Hasil Akhir Proses Checkout (Sama Dengan TortoiseSVN di Windows Explorer Kan ? :) )](<a href="http://www.flickr.com/photos/10243554@N02/4419635633/">http://www.flickr.com/photos/10243554@N02/4419635633/</a>)</p>
+
+<p>Karena sebelum-nya kita melakukan installasi secara <code>full</code>, sekarang coba bukalah satu buah file <code>source code</code> yang sudah kita <code>checkout</code> dengan menggunakan <code>Gedit</code>. Harusnya menu <a href="http://rabbitvcs.org/">RabbitVCS</a> sudah terintegrasi dengan <code>Gedit</code> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4419635631/"><img src="http://farm5.static.flickr.com/4069/4419635631_6cc0db7d36.jpg" alt="GeditRabbitVCS" /><br/>
+Integrasi RabbitVCS dengan Gedit</a></p>
+
+<p>Dan bagaimana jika kita telah melakukan proses edit pada sebuah file ? Jangan kuatir teman-teman, kita bisa tahu dengan melihat <code>icon</code> yang berbeda pada <code>nautilus</code> yang berwarna merah seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4419640351/"><img src="http://farm3.static.flickr.com/2681/4419640351_82c0f7668a.jpg" alt="Perubahan" /><br/>
+Hasil Perubahan Terlihat Di Nautilus Dengan Warna Icon Yang Berbeda</a></p>
+
+<p>Bagaimana teman-teman, masih menganggap bahwa menggunakan <a href="http://subversion.tigris.org/">SubVersion</a> di GNU/Linux itu susah ? Tertarik mencoba aplikasi ini ? :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://martinusadyh.web.id/2010/03/11/cara-checkout-contoh-aplikasi-martin-personal-project/">Cara Checkout Contoh Aplikasi martin-personal-project</a></p></li>
+<li><p> <a href="http://ifnubima.googlepages.com/subversion.pdf">Tutorial Version Control Menggunakan TortoiseSVN</a></p></li>
+<li><p> <a href="http://subversion.tigris.org/">Project SubVersion</a></p></li>
+<li><p> <a href="http://rabbitvcs.org/">Project RabbitVCS</a></p></li>
+<li><p> <a href="http://www.ubuntu.com/">Ubuntu</a></p></li>
+<li><p> <a href="http://tortoisesvn.tigris.org/">Project Tortoise SVN</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-13T07:00:15+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/03/11/cara-checkout-contoh-aplikasi-martin-personal-project/" title="Previous Post: Cara Checkout Contoh Aplikasi Martin Personal Project">&laquo; Cara Checkout Contoh Aplikasi Martin Personal Project</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/03/15/fixing-midnight-commander-mc-failed-to-display-zip-content/" title="Next Post: Fixing Midnight Commander (mc) Failed To Display Zip Content">Fixing Midnight Commander (mc) Failed To Display Zip Content &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

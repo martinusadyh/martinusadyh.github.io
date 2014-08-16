@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Membaca System Properties dari Spring ApplicationContext - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Apakah pernah punya pengalaman ingin membaca Java System Properties dari aplikasi yang kita buat menggunakan Spring Framework tetapi kesulitan ? Jika &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Membaca System Properties Dari Spring ApplicationContext</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-15T17:18:05+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Apakah pernah punya pengalaman ingin membaca <a href="http://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html">Java System Properties</a> dari aplikasi yang kita buat menggunakan <a href="http://www.springsource.org/">Spring Framework</a> tetapi kesulitan ? Jika pernah, ternyata Spring Framework sejak versi 3 telah menambahkan fitur baru yaitu <strong>Spring Expression Language (SpEL)</strong> yang informasi-nya ternyata bisa kita baca pada halaman <a href="http://static.springsource.org/spring/docs/3.0.5.RELEASE/reference/new-in-3.html">fitur-fitur pada SpringFramework 3.0</a>. Dengan adanya penambahan fitur ini, kita bisa membuat sebuah konfigurasi yang benar-benar sangat flexible :)</p>
+
+<p>Bagi yang belum tahu apa itu <strong>Java System Properties</strong> ini adalah merupakan sebuah kumpulan nilai konfigurasi pada sistem kita yang digunakan oleh Java. Nah sedangkan untuk mengetahui properties apa saja yang terdapat pada sistem kita, sekarang buatlah 1 buah class sederhana yang isinya kurang lebih seperti ini :</p>
+
+<pre><code>public class TestSystemProperties {
+    public static void main(String[] args) {
+        for (String propertyName : System.getProperties().stringPropertyNames()) {
+            System.out.println("Nama Properties [" + propertyName + "] Value ["+System.getProperty(propertyName) + "]");
+        }
+    }
+}
+</code></pre>
+
+<p>Simpan, lakukan proses kompilasi dan coba jalankan. Jika tidak ada pesan kesalahan, maka kita akan melihat daftar sistem properties yang kurang lebih seperti dibawah ini :
+[plain]
+Nama Properties [java.runtime.name] Value [Java&trade; SE Runtime Environment]
+Nama Properties [sun.boot.library.path] Value [/usr/lib/java/jre/lib/i386]
+Nama Properties [java.vm.version] Value [20.1-b02]
+Nama Properties [java.vm.vendor] Value [Sun Microsystems Inc.]
+Nama Properties [java.vendor.url] Value [<a href="http://java.sun.com/">http://java.sun.com/</a>]
+Nama Properties [path.separator] Value [:]
+Nama Properties [java.vm.name] Value [Java HotSpot&trade; Server VM]
+Nama Properties [file.encoding.pkg] Value [sun.io]
+Nama Properties [user.country] Value [US]
+Nama Properties [sun.java.launcher] Value [SUN_STANDARD]
+Nama Properties [sun.os.patch.level] Value [unknown]
+Nama Properties [java.vm.specification.name] Value [Java Virtual Machine Specification]
+Nama Properties [user.dir] Value [/home/martinus/Latihan/Java]
+Nama Properties [java.runtime.version] Value [1.6.0_26-b03]
+Nama Properties [java.awt.graphicsenv] Value [sun.awt.X11GraphicsEnvironment]
+Nama Properties [java.endorsed.dirs] Value [/usr/lib/java/jre/lib/endorsed]
+Nama Properties [os.arch] Value [i386]
+&hellip;
+&hellip;
+[/plain]</p>
+
+<!-- more -->
+
+
+<p>Sekarang pertanyaan-nya adalah, apakah kita bisa menambah properties sendiri dan nantinya diakses dari aplikasi yang kita buat ? Jawaban-nya tentu bisa dong, cara yang paling gampang adalah tambahkan opsi <code>-DnamaProperties=value</code> pada perintah <code>java</code> ketika menjalankan aplikasi kita :) Sedangkan untuk mengambil properties-nya, kita bisa menggunakan statement <code>System.getProperty("namaProperties");</code>. Untuk melakukan pengujian, edit-lah kode <code>TestSystemProperties.java</code> diatas menjadi seperti dibawah ini :</p>
+
+<pre><code>public class TestSystemProperties {
+    public static void main(String[] args) {
+        for (String propertyName : System.getProperties().stringPropertyNames()) {
+            System.out.println("Nama Properties [" + propertyName + "] Value ["+System.getProperty(propertyName) + "]");
+        }
+        System.out.println("=========================================");
+        // nama properties yang harus di setting adalah java.tutorial
+        System.out.println("Ambil properties " + System.getProperty("java.tutorial"));
+        System.out.println("=========================================");
+    }
+}
+</code></pre>
+
+<p>Sekarang lakukan proses kompilasi kemudian jalankan dengan perintah <code>java -Djava.tutorial="halo ini test loh" TestSystemProperties</code>, jika tidak ada pesan kesalahan maka kita akan dapat melihat tulisan <strong>halo ini test loh</strong> ini muncul pada standart output seperti dibawah ini :
+[plain]
+&hellip;</p>
+
+<h1>&hellip;</h1>
+
+<h1>Ambil properties halo ini test loh</h1>
+
+<p>[/plain]</p>
+
+<p>Terus sekarang apa hubungan-nya antara <strong>Java System Properties</strong> dengan <strong>Spring Expression Language (SpEL)</strong> ? Ada dong :) saya dari dulu ingin sekali membuat aplikasi yang mudah dikonfigurasi, baik koneksi database-nya maupun konfigurasi lain-lain yang nantinya akan diperlukan:) Biasa-nya ketika membuat sebuah aplikasi yang menggunakan <strong>Spring Framework</strong>, konfigurasi untuk koneksi database saya simpan pada sebuah file dengan nama <code>jdbc.properties</code> yang isinya seperti berikut ini :</p>
+
+<pre><code>hibernate.dialect = org.hibernate.dialect.MySQLInnoDBDialect
+jdbc.driver = com.mysql.jdbc.Driver
+jdbc.url = jdbc:mysql://localhost/belajar
+jdbc.username = root
+jdbc.password = admin
+</code></pre>
+
+<p>Kemudian file konfigurasi diatas akan dibaca oleh <strong>Spring Framework</strong> dari file <code>applicationContext.xml</code> yang isinya seperti dibawah ini :</p>
+
+<pre><code>&lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"&gt;
+
+    ...
+    &lt;context:property-placeholder location="classpath*:jdbc.properties"&gt;&lt;/context:property-placeholder&gt;
+    ...
+
+    &lt;bean p:maxwait="4000" p:maxactive="80" p:driverclassname="${jdbc.driver}" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource" p:url="${jdbc.url}" p:username="${jdbc.username}" p:maxidle="20" p:password="${jdbc.password}" id="dataSource"&gt;&lt;/bean&gt;
+
+    ...
+    ...
+&lt;/beans&gt;
+</code></pre>
+
+<p>Kedua file diatas (<code>jdbc.properties</code> dan <code>applicationContext.xml</code>) akan dimasukkan kedalam sebuah file dengan ekstensi <strong>jar</strong> kemudian file ini ditambahkan ke dalam <code>CLASSPATH</code> aplikasi supaya bisa digunakan. Nah permasalahan dengan cara seperti ini adalah, bagaimana jika client ingin merubah alamat database server-nya (meskipun hal ini kecil sekali kemungkinan-nya jika kita menggunakan database seperti MySQL dan PostgreSQL, tapi bagaimana jika ternyata yang digunakan adalah <strong>Embedded Database</strong> yang lokasi database-nya bisa dipindah-pindah sesuai dengan keinginan)?</p>
+
+<p>Jika kita masih menggunakan metode diatas, maka cara satu-satunya yang masuk akal adalah, client harus menghubungi kita dan memberitahu kita berapa alamat IP yang baru. Sedangkan kita dibelakang meja hanya akan merubah 1 baris kode pada file <code>jdbc.properties</code> kemudian membuat ulang file <strong>jar</strong> kemudian hasil terbaru ini akan kita kirim ke client sebagai update. Kejadian ini akan terus berulang-ulang kita lakukan kalau client-nya sering gonta-ganti lokasi server-nya :D</p>
+
+<p>Nah supaya kegiatan diatas tidak terjadi lagi, kita harus mengeluarkan konfigurasi alamat server database-nya keluar dari file <strong>jar</strong> dan mengijinkan supaya user bisa langsung mengedit alamat server tersebut. Cara yang saya tempuh adalah menjadikan alamat server database-nya menjadi sebuah system property dan <code>applicationContext.xml</code> akan membaca property tersebut dengan bantuan <strong>Spring Expression Language (SpEL)</strong>.</p>
+
+<p>Untuk mengimplementasikan hal diatas, kita cukup mengedit 1 file saja yaitu file <code>jdbc.properties</code> menjadi seperti dibawah ini :</p>
+
+<pre><code>hibernate.dialect = org.hibernate.dialect.MySQLInnoDBDialect
+jdbc.driver = com.mysql.jdbc.Driver
+jdbc.url = jdbc:mysql://#{ systemProperties['hostDB'] }/belajar
+jdbc.username = root
+jdbc.password = admin
+</code></pre>
+
+<p>Contoh konfigurasi file jdbc.properties yang menggunakan <strong>SpEL</strong> (Perhatikan syntax #{ systemProperties[&lsquo;hostDB&rsquo;] })</p>
+
+<p>Setelah melakukan perubah konfigurasi seperti diatas, sekarang kita bisa menjalankan aplikasi dengan menggunakan perintah <code>java -DhostDB=localhost -jar dist/Aplikasi.jar</code> saja :) Bagaimana mudah bukan ? Jika model aplikasi kita seperti ini, maka kita bisa tenang jika client mau gonta-ganti konfigurasi alamat database servernya :D :)</p>
+
+<p><strong>Referensi terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://static.springsource.org/spring/docs/3.0.5.RELEASE/reference/new-in-3.html">Fitur-fitur baru pada SpringFramework 3.0</a></p></li>
+<li><p> <a href="http://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html">Daftar Java System Properties</a></p></li>
+<li><p> <a href="http://www.springsource.org/">Spring Framework</a></p></li>
+<li><p> <a href="http://static.springsource.org/spring/docs/3.0.5.RELEASE/reference/expressions.html">Dokumentasi Spring Expression Language</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-15T17:18:05+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2012/01/09/tambah-kategori-javascript/" title="Previous Post: Tambah Kategori JavaScript">&laquo; Tambah Kategori JavaScript</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2012/01/18/sopa-dan-pipa-yang-menghebohkan-dunia-internet/" title="Next Post: SOPA dan PIPA Yang Menghebohkan Dunia Internet">SOPA dan PIPA Yang Menghebohkan Dunia Internet &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/';
+        var disqus_url = 'http://martinusadyh.web.id/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: project management | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/project-management/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Scrum Indonesia Meetup #2]]></title>
+    <link href="http://martinusadyh.web.id/2012/02/07/scrum-indonesia-meetup-2/"/>
+    <updated>2012-02-07T21:27:39+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/02/07/scrum-indonesia-meetup-2</id>
+    <content type="html"><![CDATA[<p>Hii all&hellip;</p>
+
+<p>Minggu ini, komunitas <strong>Scrum Indonesia</strong> akan mengadakan meetup ke 2, dan topik yang akan dibahas adalah <strong>&ldquo;Piloting Scrum in your organization. Learn about techniques how you can pilot Scrum in your organization from the people that has done it before.&rdquo;</strong>.</p>
+
+<p>Untuk yang ingin ikutan dan mumpung ini <strong>gratis</strong>, buruan daftar di <a href="http://www.eventbrite.com/event/2852685459">Formulir Pendaftaran Scrum Meetup #2</a> yang pada saat tulisan ini dibuat tinggal 3 quota lagi.</p>
+
+<p>Sedangkan untuk detail acara-nya kurang lebih adalah sebagai berikut :</p>
+
+<h2>Scrum Indonesia Meetup #2</h2>
+
+<h3>Friday, February 10, 2012 from 6:00 PM to 9:00 PM (GMT+0700)</h3>
+
+<p>Dki Jakarta, Indonesia</p>
+
+<h3>Event Detalis:</h3>
+
+<p>Scrum Meetup Indonesia is where Scrum enthusiasts in Indonesia network and discuss how  to make a better software development ecosystem in Indonesia. This will be our second meetup. Managers and software developers from Jakarta come and share their experience with Scrum in this meeting. Eventhough you haven&rsquo;t used Scrum in your organization, come and learn how others have already succeed with Scrum</p>
+
+<h3>Topic:</h3>
+
+<p>Piloting Scrum in your organization. Learn about techniques how you can pilot Scrum in your organization from the people that has done it before.</p>
+
+<h3>Speaker:</h3>
+
+<ol>
+<li><p> <strong>Joshua Partogi</strong> from ScrumWay Indonesia</p></li>
+<li><p> <strong>Aqomy Fauzan Fanany</strong> from PT. Adira Dinamika Multi Finance Tbk.</p></li>
+</ol>
+
+
+<p>Untuk diskusi tentang <strong>Scrum</strong> teman-teman bisa join ke milis scrum yang beralamat di <a href="http://groups.google.com/group/scrum-indonesia">http://groups.google.com/group/scrum-indonesia</a></p>
+
+<p>Nah untuk yang belum tahu, atau mau tahu makanan apa ini. Hayuuuk ikutan bareng-bareng, lumayan kan selain gratis kita juga dapat tambahan ilmu disini  :silau:</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SlackBuild Script For Gitg]]></title>
+    <link href="http://martinusadyh.web.id/2011/06/24/slackbuild-script-for-gitg/"/>
+    <updated>2011-06-24T00:01:38+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/06/24/slackbuild-script-for-gitg</id>
+    <content type="html"><![CDATA[<p>Karena mencari di SlackBuild ternyata tidak ada, maka saya posting kesini aja sekalian :) Nah untuk teman-teman yang ingin menginstall aplikasi <a href="http://trac.novowork.com/git">gitg</a> bisa menggunakan SlackBuild script yang sudah saya siapkan dan sebelum menggunakan-nya, pastikan bahwa kita sudah menginstall <a href="http://projects.gnome.org/gtksourceview/">gtksourceview</a> dahulu yang SlackBuild script-nya bisa di download di <a href="http://slackbuilds.org/repository/13.37/libraries/gtksourceview/">sini</a></p>
+
+<p>Untuk sementara ini, dependencies yang baru saya temukan baru <a href="http://projects.gnome.org/gtksourceview/">gtksourceview</a> di Slackware64 + GSB 3.0.0. Bagi teman-teman yang tidak menggunakan GNOME sebagai Desktop Manager-nya, jika mengetahui ada dependencies yang kurang tolong di infokan disini sekalian biar saya bisa update file <code>slack-required</code> dengan info dependencies yang terbaru :)</p>
+
+<!-- more -->
+
+
+<p>Dan dibawah ini adalah file SlackBuild utama dari gitg yang saya gunakan, silahkan di copy paste :)</p>
+
+<pre><code>#!/bin/sh
+
+# Slackware build script for gitg
+
+# Copyright 2008-2009  Martinus Ady H &lt;martinus@artivisi.com&gt;
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ''AS IS'' AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+PRGNAM=gitg
+VERSION=0.0.8
+ARCH=${ARCH:-x86_64}
+BUILD=${BUILD:-2}
+TAG=${TAG:-_SBo}
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i486" ]; then
+  SLKCFLAGS="-O2 -march=i486 -mtune=i686"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-O2 -march=i686 -mtune=i686"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
+fi
+
+set -e
+
+rm -rf $TMP/$PRGNAM-$VERSION $PKG
+mkdir -p $TMP $PKG $OUTPUT 
+cd $TMP
+tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
+cd $PRGNAM-$VERSION
+chown -R root:root .
+chmod -R u+w,go+r-w,a-s .
+
+# Your application will probably need different configure flags;
+# these are provided as an example only. 
+# Be sure to build only shared libraries unless there's some need for
+# static.
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+./configure \
+  --prefix=/usr \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --build=$ARCH-slackware-linux \
+  2&gt;&amp;1 | tee $PKGLOG/configure-$PKGNAM-$VERSION.log     # Log configure process.
+
+# Compile the application and install it into the $PKG directory
+make 2&gt;&amp;1 | tee $PKGLOG/make-$PKGNAM-$VERSION.log       # Log make process.
+make install DESTDIR=$PKG 2&gt;&amp;1 | tee $PKGLOG/make-install-$PKGNAM-$VERSION.log # Log make install process.
+
+# Creating symlink for executable makensis
+mkdir -p $PKG/usr/bin
+( cd $PKG/usr/bin ; ln -sf ../lib${LIBDIRSUFFIX}/nsis-2.46/makensis makensis )
+
+( cd $PKG
+  find . | xargs file | grep "executable" | grep ELF | cut -f 1 -d : | \
+    xargs strip --strip-unneeded 2&gt; /dev/null || true
+  find . | xargs file | grep "shared object" | grep ELF | cut -f 1 -d : | \
+    xargs strip --strip-unneeded 2&gt; /dev/null || true
+)
+
+# Compress man pages if they exist
+if [ -d $PKG/usr/man ] ; then
+    ( cd $PKG/usr/man
+        find . -type f -exec gzip -9 {} \;
+        for i in $(find . -type 1) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i; done
+    ) 
+fi
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a \
+  AUTHORS COPYING ChangeLog INSTALL README \
+  $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild &gt; $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc &gt; $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+</code></pre>
+
+<p>Jika mau file lengkap-nya (sekalian beserta file <code>slack-desc, slack-required, gitg.info</code> dan <code>README</code>), silahkan merujuk langsung ke repository <a href="https://github.com/martinusadyh/martin-slackbuild/tree/development">https://github.com/martinusadyh/martin-slackbuild/tree/development</a></p>
+
+<p>Dan dibawah ini adalah hasil dari aplikasi gitg yang sudah berjalan pada Slackware64 + GSB 3.0.0 di laptop yang saya gunakan :)
+[caption id=&ldquo;attachment_1382&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;150&rdquo; caption=&ldquo;Gitg&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/06/Gitg.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/06/Gitg-150x150.png" alt="Gitg" /></a>[/caption]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Training Git di Artivisi Intermedia]]></title>
+    <link href="http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia/"/>
+    <updated>2011-01-05T21:13:21+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia</id>
+    <content type="html"><![CDATA[<p>Buat yang belum tahu apa sih itu <a href="http://git-scm.com/">GIT</a> dan bagaimana cara menggunakan <a href="http://git-scm.com/">GIT</a> untuk kebutuhan <strong><em>development</em></strong> sehari-hari, kita dari Artivisi Intermedia akan membuka sebuah training tentang <a href="http://git-scm.com/">GIT</a>. Sedangkan detail apa saja yang dibahas, silahkan cek dibawah ini :</p>
+
+<p>Berikut silabusnya (1 sesi = 3 jam) :
+<a href="http://artivisi.com/?cat=28">http://artivisi.com/?cat=28</a></p>
+
+<p>Berikut jadwalnya :
+<a href="http://artivisi.com/?page_id=109">http://artivisi.com/?page_id=109</a></p>
+
+<p>Yang mau daftar silahkan langsung isi form :
+<a href="https://spreadsheets.google.com/viewform?formkey=dC0xbk9yZ2k3MzRjZGRHckpVRlRPYWc6MQ">https://spreadsheets.google.com/viewform?formkey=dC0xbk9yZ2k3MzRjZGRHckpVRlRPYWc6MQ</a></p>
+
+<p>Pertanyaan tentang training silahkan email ke <a href="mailto:info@artivisi.com">info@artivisi.com</a> atau email langsung ke saya. Pertanyaan tentang Git, bisa ditanyakan pada saat training :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HowTo Become Good Technical Team Leader]]></title>
+    <link href="http://martinusadyh.web.id/2010/06/06/howto-become-good-technical-team-leader/"/>
+    <updated>2010-06-06T02:56:03+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/06/06/howto-become-good-technical-team-leader</id>
+    <content type="html"><![CDATA[<p>Menjadi seorang &ldquo;team leader&rdquo; yang baik bukan merupakan pekerjaan yang mudah ternyata, selain kemampuan teknis (skill) yang baik ternyata ada aspek-aspek lain yang diperlukan (ini juga sudah pernah dibahas pada milis <a href="mailto:it-project-indonesia@googlegroups.com">it-project-indonesia@googlegroups.com</a> dan juga mas <a href="http://ifnu.artivisi.com/">Ifnu</a> sudah pernah menjelaskan panjang lebar kepada saya :D ). Nah kebetulan kemarin saya membaca artikel bagus di dzone dengan judul <a href="http://agile.dzone.com/news/good-technical-team-leader-%E2%80%A6?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed:+javalobby/frontpage+(Javalobby+/+Java+Zone">Good Technical Team Leader …?</a>&amp;utm_content=Google+Reader) yang ternyata juga tidak jauh berbeda :D</p>
+
+<p>Buat teman-teman yang ingin tahu kemampuan apa saja yang harus dimiliki oleh seorang &ldquo;team leader&rdquo; yang baik, dibawah ini adalah beberapa aspek yang harus teman-teman perhatikan untuk menjadi seorang &ldquo;team leader&rdquo; yang baik (daftar dibawah ini murni diambil dari artikel <a href="http://agile.dzone.com/news/good-technical-team-leader-%E2%80%A6?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed:+javalobby/frontpage+(Javalobby+/+Java+Zone">Good Technical Team Leader …?</a>&amp;utm_content=Google+Reader) dan ditampilkan dengan sedikit modifikasi) :</p>
+
+<ol>
+<li><p> Solid Technical.</p></li>
+<li><p> Ability to break down tasks.</p></li>
+<li><p> As John Maxwell said <strong>“Leaders must be close enough to relate to others, but far enough ahead to motivate them.”</strong></p></li>
+<li><p> Sorround himself with smart people..</p></li>
+<li><p> He needs to believe that the big credit for his team not for himself.</p></li>
+<li><p> Humble</p></li>
+<li><p> Learn from his team… they have a lot .. specially juniours :)</p></li>
+<li><p> He needs to trust his team.</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<ol>
+<li><p> Consistent with all team members.</p></li>
+<li><p>. Good Communication Skills.</p></li>
+<li><p>. Concerned about applying best practices.</p></li>
+<li><p>. Keep his team excited… and in continous challenge.</p></li>
+<li><p>. Able to distribute task fairly</p></li>
+<li><p>. Ensure the team unity</p></li>
+<li><p>. Keep calm, try not to loose patience and not raise your voice ( when things are getting hot )</p></li>
+<li><p>. Do not let your ego come in the way</p></li>
+<li><p>. He needs to keep hands dirty with code !</p></li>
+<li><p>. Able to coach/train team mates</p></li>
+<li><p>. He needs to know his soldiers, Based on my experience I do beleive that Developers are 3 types:</p>
+
+<ol>
+<li><p><strong>Good Starter:</strong>
+They like to start with new technlogy,framework, tool,but they hate reading books,best practices,… !! because of that &ldquo;team leader&rdquo; cannot depend on them totally all the time after the project started… but he can get a great benifit by utilizing there skills in the early stages from the project and POC tasks. &ldquo;Team leader&rdquo; needs to help him to be good finisher.</p></li>
+<li><p> <strong>Good Finisher:</strong>
+They like reading books, best practices..and they always says we cannot start before reading couple of chapters about this new topic! &ldquo;Team Leader&rdquo; can depend on them after starting project to deliver and keep project stable. &ldquo;Team Leader&rdquo; needs to help him to be good starter.</p></li>
+<li><p> <strong>GOLDEN Developer:</strong>
+GOLDEN Developer = Good Starter + Good Finisher :D</p></li>
+</ol>
+</li>
+</ol>
+
+
+<p>Bagaimana teman-teman, bukan pekerjaan yang mudah bukan ? :) Bagaimana menurut pendapat teman-teman sendiri :D ???? :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Apa Itu Pair Programming]]></title>
+    <link href="http://martinusadyh.web.id/2010/04/18/apa-itu-pair-programming/"/>
+    <updated>2010-04-18T15:50:29+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/04/18/apa-itu-pair-programming</id>
+    <content type="html"><![CDATA[<p>Bingung dengan apa yang disebut dengan <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ? <strong>Pair Programming</strong> ini sebenarnya adalah salah satu teknik yang terdapat dalam metodologi <strong>eXtreme Programming</strong> atau yang biasa disingkat dengan <strong>XP Programming</strong>, sedangkan <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> sendiri itu adalah sebuah proses <strong>knowledge transfer</strong> yang terjadi didalam sebuah team <strong>software development</strong>.</p>
+
+<p>Cara kerja <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ini adalah dua orang programmer bekerja bersama memecahkan sebuah masalah dalam 1 komputer atau laptop, biasanya sih gabungan dari kombinasi <strong>junior programmer dan senior programmer</strong>. Nah proses <strong>knowledge transfer</strong> yang terjadi biasanya <strong>junior programmer</strong> yang menulis source code dan <strong>senior programmer</strong> yang melakukan <strong>review</strong> terhadap apa yang dilulis oleh <strong>junior</strong>-nya ini sudah benar atau belum. Si penulis source code didalam <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ini bisa disebut sebagai <strong>Driver</strong> dan yang melakukan <strong>review</strong> bisa disebut sebagai <strong>Observer</strong> atau <strong>Navigator</strong>.</p>
+
+<p>Sudah bisa menangkap maksud dan tujuan dari topik pembahasan-nya ? Untuk lebih jelas-nya bagaimana sih teknik <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ini dilakukan, mungkin teman-teman bisa melihat beberapa gambar dibawah ini yang saya ambil dari berbagai sumber juga :D untuk memberi sedikit gambaran pada tulisan ini.</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4529069470/"><img src="http://farm5.static.flickr.com/4054/4529069470_239e46bc5d.jpg" alt="Pair_programming_1" /></a><br/>
+<strong>Pair Programming 1</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4529069480/"><img src="http://farm5.static.flickr.com/4059/4529069480_53c1b7e1bd_o.png" alt="xp_pairprogramming_pic2" /></a><br/>
+<strong>Pair Programming 2</strong></p>
+
+<!-- more -->
+
+
+<p>Setelah melihat gambar diatas, mungkin akan timbul beberapa pertanyaan <strong>&ldquo;Apakah bisa melakukan teknik ini jika lokasi team-nya saling berjauhan ???&rdquo;</strong> Jawaban-nya adalah bisa :D Yaps dengan kemajuan teknologi sekarang, kita bisa menggunakan fasilitas <strong>remote desktop</strong> menggunakan VNC plus <strong>Yahoo Messenger</strong> atau bisa juga menggunakan <strong>Skype</strong> yang sudah mempunyai fasilitas <strong>desktop sharing</strong> :)</p>
+
+<p>Bagaimana teman-teman ? Tertarik menggunakan teknik <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> didalam team teman-teman ? Hm.. meskipun kelihatan-nya bagus, tapi ada beberapa pendapat yang menyatakan bahwa teknik <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ini gagal diterapkan atau kurang efisien. Bagaimana menurut teman-teman sendiri ? Kombinasi apakah yang kira-kira cocok untuk diterapkan ?</p>
+
+<p><strong>Referensi-referensi terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming by WikiPedia</a></p></li>
+<li><p> <a href="mailto:it-project-indonesia@googlegroups.com">Milis IT Project Indonesia</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

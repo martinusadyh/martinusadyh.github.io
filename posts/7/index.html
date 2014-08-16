@@ -1,0 +1,845 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk OpenJDK yang tinggal install &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/7/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/05/24/step-by-step-building-openjdk-on-slackware/">Step by Step Building OpenJDK on Slackware</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-24T22:27:16+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/05/24/step-by-step-building-openjdk-on-slackware/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/blog-images/linux/StepByStepBuildingOpenJDK/openjdk.png" title="OpenJDK" ></p>
+
+<p>Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk <a href="http://openjdk.java.net/">OpenJDK</a> yang tinggal install menggunakan perintah <code>installpkg</code> ataupun tutorial bagaimana membuat sebuah binary packages untuk Slackware. Nah pada posting kali ini, kita akan mencoba untuk melakukan proses kompilasi source code <a href="http://openjdk.java.net/">OpenJDK</a> langsung dari repository-nya. Dan sekedar catatan, proses yang akan dijelaskan disini hanya sampai mendapatkan <strong>JDK</strong> maupun <strong>JRE</strong> yang siap digunakan dalam bentuk direktori saja bukan dalam bentuk binary Slackware yang ber-ekstensi <em><strong>.tgz</strong> atau </em><strong>.txz</strong> :)</p>
+
+<p>Sebelum mulai, persiapkan dahulu beberapa alat yang dibutuhkan yaitu :</p>
+
+<ul>
+<li><p><strong>Apache ANT,</strong> versi <a href="http://ant.apache.org/">Apache ANT</a> yang dibutuhkan untuk melakukan proses kompilasi pada OpenJDK adalah versi 7, jadi pastikan versi Apache ANT yang terinstall di sistem kita mempunyai versi yang sama atau lebih tinggi. Untuk melakukan installasi Apache ANT di Slackware, downloadlah SlackBuild Script Apache ANT <a href="http://slackbuilds.org/slackbuilds/13.37/development/apache-ant.tar.gz">disini</a> dan source Apache ANT-nya bisa didownload <a href="http://www.carfab.com/apachesoftware/ant/binaries/apache-ant-1.8.2-bin.tar.bz2">disini</a>.</p></li>
+<li><p><strong>JDK 1.6.0_25</strong>, untuk menginstall JDK kita bisa menggunakan package binary JDK bawaan Slackware yang terdapat di direktori <code>/extra/jdk-6/</code>. Installah dengan menggunakan perintah <code>installpkg jdk-6u25-x86_64-1.txz</code> agar segera dapat digunakan :)</p></li>
+</ul>
+
+
+<p>Setelah 2 kebutuhan dasar tersebut terinstall, sekarang mari kita persiapkan konfigurasi <strong>&ldquo;environment variable&rdquo;</strong> yang dibutuhkan oleh <a href="http://openjdk.java.net/">OpenJDK</a>. Beberapa konfigurasi <strong>&ldquo;environment variable&rdquo;</strong> yang dibutuhkan adalah (lakukan konfigurasi dibawah ini menggunakan akses super user / root) :</p>
+
+<ul>
+<li><p><strong>JAVA_HOME</strong>,
+lakukan pengecekan apakah variabel <strong>JAVA_HOME</strong> sudah terkonfigurasi pada sistem anda atau belum dengan mengetikkan <code>echo $JAVA_HOME</code> dan jika benar, maka hasil perintah tersebut akan menampilkan dimana letak direktori <strong>jdk</strong> berada seperti dibawah ini :</p>
+
+<p>  root@artivisi:~# echo $JAVA_HOME
+  /usr/lib64/java
+  root@artivisi:~#</p>
+
+<p>Jika perintah <code>echo $JAVA_HOME</code> tidak mengeluarkan apa-apa, sekarang jalankan perintah <code>export JAVA_HOME=/usr/lib64/java</code> dan kemudian lagi cek dengan perintah <code>echo $JAVA_HOME</code>.</p>
+
+<ul>
+<li><p><strong>LANG</strong>, ketikkan <code>export LANG="C"</code> untuk mengkonfigurasi dan cek dengan mengetikkan perintah <code>echo $LANG</code> seperti dibawah ini :</p>
+
+<p>root@artivisi:~# export LANG=&ldquo;C&rdquo;
+root@artivisi:~# echo $LANG
+C
+root@artivisi:~#</p></li>
+<li><p><strong>ALT_BOOTDIR</strong>, untuk konfigurasi <strong>ALT_BOOTDIR</strong> ini isinya samakan dengan isi variabel <strong>$JAVA_HOME</strong> yang terdapat pada komputer / laptop kita masing-masing. Sebagai contoh di laptop yang digunakan pada tulisan kali ini, isi variabel <strong>$JAVA_HOME</strong> mengarah ke <code>/usr/lib64/java/</code> maka jalankan perintah <code>export ALT_BOOTDIR="/usr/lib64/java/"</code> dan cek menggunakan perintah <code>echo $ALT_BOOTDIR</code> seperti dibawah ini :</p>
+
+<p>root@artivisi:~# export ALT_BOOTDIR=&ldquo;/usr/lib64/java/&rdquo;
+root@artivisi:~# echo $ALT_BOOTDIR
+/usr/lib64/java/
+root@artivisi:~#</p></li>
+<li><p><strong>ANT_HOME</strong>, dan langkah terakhir yaitu mengkonfigurasi variabel <strong>$ANT_HOME</strong>. Jalankan perintah <code>export ANT_HOME=/usr/share/ant</code> dan cek menggunakan perintah <code>echo $ANT_HOME</code> seperti dibawah ini :</p>
+
+<p>root@artivisi:~# export ANT_HOME=/usr/share/ant
+root@artivisi:~# echo $ANT_HOME
+/usr/share/ant
+root@artivisi:~#</p></li>
+</ul>
+</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/05/24/step-by-step-building-openjdk-on-slackware/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/">Installasi Slackware64 13.37 Dan GNOME 3.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-22T02:30:27+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sudah lama sekali rasanya saya tidak posting apapun tentang Slackware :D Nah untuk kali ini, berhubung <a href="http://martinusadyh.web.id/2011/04/28/slackware-13-37-is-released/">Slackware 13.37</a> juga barusan dirilis akhirnya kesampaian juga untuk melakukan <em>&ldquo;clean format&rdquo;</em> pada harddisk agar menggunakan Slackware saja sebagai Sistem Operasi utama saya :D Kali ini saya menginstall Slackware64 dan menggunakan kernel default yaitu 2.6.37, sedangkan untuk pilihan Desktop Manager-nya pilihan saya jatuh pada GNOME 3.0 yang diambil dari <a href="http://gnomeslackbuild.org/">GNOME Slackbuild</a> sekalian mencoba suasana baru :)</p>
+
+<p>Proses installasi ini berjalan seperti biasa tidak ada yang berubah, setelah selesai menginstall Slackware64 langkah selanjut-nya yaitu menginstall GNOME 3.0 dari <a href="http://gnomeslackbuild.org/">GNOME Slackbuild</a> Setelah selesai menginstall GNOME 3.0, langkah selanjutnya yang saya lakukan adalah konfigurasi driver <a href="http://martinusadyh.web.id/2009/09/27/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/">Broadcom BCM4312 802.11b</a> agar wifi saya bisa berjalan dengan normal :) Untuk drivernya sendiri bisa didownload di halaman <a href="http://www.broadcom.com/support/802.11/linux_sta.php">802.11 Linux STA driver</a>. Nah masalah mulai muncul ketika menjalankan perintah <code>make clean</code> yang hasilnya adalah seperti berikut :
+[plain]
+CC [M]  /home/martinus/driver_broadcom/src/wl/sys/wl_linux.o
+/home/martinus/driver_broadcom/src/wl/sys/wl_linux.c: In function &lsquo;wl_attach&rsquo;:
+/home/martinus/driver_broadcom/src/wl/sys/wl_linux.c:485:3: error: implicit declaration of function &lsquo;init_MUTEX&rsquo;
+make[2]: <strong><em> [/home/martinus/driver_broadcom/src/wl/sys/wl_linux.o] Error 1
+make[1]: </em></strong> [<em>module</em>/home/martinus/driver_broadcom] Error 2
+make[1]: Leaving directory `/usr/src/linux-2.6.37&#8217;
+make: *** [all] Error 2
+[/plain]</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/05/16/perlukah-suami-istri-memiliki-rekening-bersama/">Perlukah Suami Istri Memiliki Rekening Bersama ?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-16T22:00:36+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/05/16/perlukah-suami-istri-memiliki-rekening-bersama/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Oleh: Safir Senduk
+Dikutip dari <a href="http://www.tabloidnova.com/">Tabloid NOVA No. 662/XIII</a></p>
+
+<p>Rekening bersama adalah rekening yang dimiliki atas nama dua orang, di mana biasanya kedua orang pemilik itu sama-sama memiliki hak untuk menarik uang tersebut. Dalam keluarga, Rekening bersama biasanya dimiliki oleh suami istri.</p>
+
+<p>Namun ada kalanya rekening bersama hanya jadi sebutan belaka. Ada suami-istri yang memiliki rekening untuk digunakan bersama, tapi atas namanya hanya pada satu orang saja. Ini &ndash;secara tidak resmi&ndash; bisa juga kita sebut sebagai rekening bersama.</p>
+
+<p>Sebagai pasangan suami-istri, mungkin sering timbul pertanyaan apakah Anda berdua perlu menyatukan uang Anda dalam satu rekening atau tidak. Nah, sebelum Anda memutuskan untuk menyatukan uang Anda dalam satu rekening, perlu diketahui bahwa ada banyak efek positif maupun negatif yang akan terjadi. Dan juga yang paling penting, apa motivasi terbesar Anda menyatukan uang Anda berdua dalam satu rekening.</p>
+
+<p>Motivasi terbesar pasangan suami-istri ketika menyatukan uang mereka dalam satu rekening biasanya adalah karena mereka ingin mempunyai sesuatu yang dimiliki bersama (dan kalau perlu atas nama bersama), sehingga pada akhirnya akan meningkatkan rasa kebersamaan di antara mereka.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/05/16/perlukah-suami-istri-memiliki-rekening-bersama/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/05/13/emas-sebagai-penangkal-inflasi/">Emas Sebagai Penangkal Inflasi</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-13T21:45:27+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/05/13/emas-sebagai-penangkal-inflasi/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Oleh: Safir Senduk
+Dikutip dari <a href="http://detik.com">detik.com</a></p>
+
+<p>Banyak orang percaya emas adalah produk investasi yang bisa menangkal inflasi. Dan memang, sejarah membuktikan emas akan diborong orang apabila terjadi kepanikan yang bisa membahayakan ekonomi negara, seperti inflasi tinggi, krisis keuangan, atau perang.</p>
+
+<p>Inflasi merupakan kenaikan harga barang dan jasa secara umum. Inflasi bisa menggerogoti uang Anda. Kalau asumsi inflasi 15 persen/tahun, maka harga barang &amp; jasa yang sekarang bernilai Rp 5 juta, akan menjadi Rp 10,06 juta atau dua kali lipat pada tahun ke-6, dan Rp 15,3 juta atau tiga kali lipat pada tahun ke-9, dan seterusnya.</p>
+
+<p>Menurut keparahannya, ada tiga tipe inflasi:</p>
+
+<ol>
+<li><p> <strong>Inflasi Moderat,</strong> yaitu apabila laju inflasi hanya berada di bawah dua digit per tahun (di bawah 10 persen)</p></li>
+<li><p> <strong>Inflasi Ganas,</strong> yaitu apabila laju inflasi berada pada dua digit per tahun (10 persen - 99 persen)</p></li>
+<li><p> <strong>Inflasi Hiper,</strong> yaitu apabila laju inflasi berada pada tiga digit per tahun (100 persen atau lebih)</p></li>
+</ol>
+
+
+<p>Tulisan ini akan membahas tentang apa yang bisa Anda lakukan agar bisa menghadapi inflasi. Bila Anda bukan termasuk pengambil keputusan di pemerintahan, Anda mungkin tidak bisa ikut menurunkan tingkat inflasi. Yang bisa Anda lakukan sebagai individu, hanyalah bagaimana agar Anda bisa mengambil &lsquo;keuntungan&rsquo; dari terjadinya inflasi tersebut. Bagaimana caranya? Saya menyarankan agar Anda melakukan investasi pada instrumen yang akan naik pesat apabila terjadi inflasi tinggi. Apa itu? Emas.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/05/13/emas-sebagai-penangkal-inflasi/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/05/09/3-resiko-investasi-yang-paling-ditakuti/">3 Resiko Investasi Yang Paling Ditakuti</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-09T21:39:54+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/05/09/3-resiko-investasi-yang-paling-ditakuti/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dikutip dari <a href="http://www.tabloidnova.com/articles.asp?cat=010818">Tabloid NOVA No. 746/XIV</a>
+Oleh : Safir Senduk</p>
+
+<p>&ldquo;Beranikah saya mengambil risiko dalam berinvestasi?&rdquo; Pertanyaan ini mungkin sering terlontar bila Anda sedang menimbang-nimbang untuk melakukan investasi. Katakan Anda punya uang Rp 10 juta, dan Anda bingung apakah akan menaruhnya di bank atau di tempat lain. Kalau ditaruh di bank, Anda mungkin merasa aman. Tetapi kadang-kadang, tawaran investasi di tempat lain seringkali cukup besar dan sangat menggoda, sehingga ini kadang-kadang menakutkan Anda.</p>
+
+<p>Yang namanya investasi pasti ada risikonya. Nah, dari pengalaman saya selama ini, biasanya hanya ada tiga (3) risiko yang paling ditakutkan orang ketika mereka berinvestasi:</p>
+
+<ol>
+<li> <strong>Turunnya Nilai Investasi</strong>
+Risiko yang paling ditakuti orang ketika berinvestasi umumnya adalah &ldquo;Apakah uang saya akan hilang?&rdquo; Kebanyakan orang mungkin menjawab &ldquo;tidak&rdquo; kalau ditanya seperti itu. Iyalah, mana ada, sih orang yang mau kehilangan uangnya? Akan tetapi, masalahnya, yang namanya risiko pasti ada dalam setiap investasi. Hanya bedanya adalah di ukurannya. Ada produk investasi yang risikonya cukup besar, ada yang sedang, ada yang kecil. Itu mungkin butuh pembahasan yang khusus di NOVA nomor-nomor mendatang. Yang jelas, satu hal yang paling ditakuti orang, sekali lagi adalah: &ldquo;Apakah uang saya akan hilang?&rdquo;</li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/05/09/3-resiko-investasi-yang-paling-ditakuti/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/05/07/pahami-siklus-hidup-finansial-anda/">Pahami Siklus Hidup Finansial Anda</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T21:32:01+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/05/07/pahami-siklus-hidup-finansial-anda/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Artikel oleh : Mike Rini
+Dikutip Dari : Danareksa.com</p>
+
+<p>Sejalan dengan berjalannya siklus kehidupan manusia mulai dari bayi, balita, anak-anak, remaja, dewasa, orang tua sampai tua renta, maka berbagai pandangan dan kebutuhan finansial kita juga selalu berubah-rubah sesuai kondisinya. Contohnya, saat seseorang berada di usia 30-an, kemungkinan sedang sangat menikmati masa mudanya, bekerja dengan giat dan agresif namun berkejaran dengan gaya hidup konsumtif yang bergulat dengan tagihan kartu kredit Menjelang pensiun di usia sekitar 50-an, seseorang biasanya sedang berusaha keras memastikan sudah punya cukup uang untuk bisa melanjutkan hidupnya setelah tidak bekerja, cari aman deh !</p>
+
+<p>Dalam kesempatan kali ini, marilah kita pelajari beberapa kunci-kunci keputusan finansial dalam tiap tahapan kehidupan manusia - yang saya kira perlu kita pahami dengan seksama. Mempelajari hal ini bertujuan untuk memudahkan pengambilan keputusan finansial, apa yang perlu kita lakukan dan apa yang sebaiknya tidak kita lakukan berkaitan dengan uang dari tiap tahapan kehidupan kita. Lebih dari, manfaatnya bukan sekedar hanya untuk menambah pengetahuan kita sendiri, namun juga membantu memahami kebutuhan dan pandangan orang lain secara finansial, sesuai dengan usianya juga.</p>
+
+<p>Karena penting sekali bagi kita untuk bisa sesekali menempatkan diri pada posisi orang lain secara finansial. Sebab suatu keputusan keuangan jarang sekali yang bisa berdiri sendiri, baik Anda yang masih lajang maupun sudah menikah, atau Anda punya tanggungan atau justru Anda yang ditanggung. Selalu saja ada pengaruh serta kepentingan orang lain didalamnya.</p>
+
+<p><strong>Usia Sekolah Dasar sampai dengan dengan lulus Perguruan Tinggi S1 di usia 20-an</strong></p>
+
+<ol>
+<li><p> Pada usia 0 sampai 18 tahun, umumnya orang masih berada di bangku sekolah pendidikan dasar dan seluruh biaya hidup ditanggung oleh orang tua. “Life is beautiful, with no responsibilities what so ever.. “ kira-kira begitulah gambaran hidup seseorang pada masa kanak-kanak dan remajanya. Hanya saja memang tidak seindah kenyataannya jika berkaitan dengan uang. Anda tahu kan bagaimana pada jaman sekolah dulu, sulitnya meminta uang pada orang tua. Tidak.</p></li>
+<li><p> Saat di Perguruan Tinggi, kebanyakan dari Anda mungkin masih di biayai orang tua, tapi pengaruh teman-teman, mengikuti trend atau mungkian memang terpaksa banyak juga dari Anda bahkan harus bekerja paruh waktu mencari penghasilan tambahan untuk tambahan ongkos kuliah. Dengan naiknya ongkos kuliah, transport dan buku-buku, memang agak sulit jika harus mengandalkan orang tua.</p></li>
+</ol>
+
+
+<p>Lagipula mempunyai uang sendiri, kedengaran lebih cool &amp; gaul. Lebih bebas menntukan pilihan dalam membelanjakan uang, juga sesekali mentraktir orang tua dan teman bisa jadi kebanggaan tersendiri. Asalkan bisa membagi waktu dengan jadwal kuliah yang harus segera diselesaikan, maka bekerja paruh waktu atau berusaha mendapatkan uang sendiri sambil kuliah tentunya bisa dilakukan. Bekerja sambil kuliah memang memanfaatkan waktu luang dengan positif, tentunya kita sedikit banyak bisa mempraktekkan apa yang dipelajari selama ini di sekolah.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/05/07/pahami-siklus-hidup-finansial-anda/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/04/28/slackware-13-37-is-released/">Slackware 13.37 Is Released!</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-28T10:24:23+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/04/28/slackware-13-37-is-released/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://slackware.com/"><img src="http://slackware.com/grfx/shared/slackware1337.gif" alt="Slackware Logo" /></a> It&rsquo;s true! Slackware 13.37 has been released. Nearly a year in the making, you will appreciate the performance and stability that can only come with careful and rigorous testing. Slackware 13.37 uses the 2.6.37.6 Linux kernel (hence our new <strong>$SLACKWARE_VERSION.$KERNEL_VERSION</strong> naming system used for this release ;-), and also ships with <strong>2.6.38.4 kernels</strong> for those who want to run the latest (and also includes configuration files for 2.6.35.12 and 2.6.39-rc4). The long-awaited <strong>Firefox 4.0 web browser</strong> is included, the X Window System has been upgraded (and includes the open source nouveau driver for nVidia cards). The venerable Slackware installer has been improved as well, with support for installing to btrfs (for those who would like to try a new copy on write filesystem), a one-package-per-line display mode option, and alienBOB&rsquo;s big surprise: an easy to set up PXE install server that runs right off the DVD!</p>
+
+<p>More details may by found in the <a href="http://slackware.com/announce/13.37.php">official announcement</a> and in the <a href="http://slackware.com/releasenotes/13.37.php">release notes</a>. For a complete list of included packages, see <a href="http://slackware.com/releasenotes/packages13.37.php">the package list</a>.</p>
+
+<p>Please consider supporting the Slackware project by picking up a copy of the Slackware 13.37 release from the <a href="http://store.slackware.com/">Slackware Store</a>. The discs are off to replication, but we&rsquo;re accepting pre-orders for the official 6 CD set and the DVD. The CD set is the 32-bit x86 release, while the DVD is a dual-sided disc with the 32-bit x86 release on one side and the 64-bit x86_64 release on the other. And, we still have T-shirts (coming soon, a limited edition 13.37 release commemorative black T-shirt with the classic Slackware logo on the front, and a &ldquo;leet&rdquo; LILO bootscreen on the back) and other Slackware stuff there, so have a look around. Thanks to our subscribers and supporters for keeping Slackware going all these years.</p>
+
+<p>Thanks are again due to the Slackware crew, the developers of <a href="http://slackbuilds.org/">slackbuilds.org</a>, the community on <a href="http://www.linuxquestions.org/questions/slackware-14/">linuxquestions.org</a>, Slackware IRC channels, and everyone else who helped out with this release.</p>
+
+<p>Have fun, and enjoy the new stable release!</p>
+
+<p>Pat and the Slackware crew</p>
+
+<p>Oh, in case our web server that&rsquo;s rather short of RAM goes down, try this link: <a href="http://connie.slackware.com">http://connie.slackware.com</a></p>
+
+<p>+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+</p>
+
+<p>This space intentionally left blank.</p>
+
+<p>Hyip&hellip;hyip&hellip; huray&hellip;.. :gembira:  :gembira:  :gembira:  akhirnya Slackware 13.37 release juga :silau:, nah diatas itu adalah cuplikan dari situs <a href="http://slackware.com/">Slackware</a> yang memberitahukan bahwa pagi ini Slackware versi 13.37 sudah di release ke publik dan siap untuk di download  :silau:</p>
+
+<p>Sedangkan untuk ISO-nya bisa didownload pada alamat dibawah ini :</p>
+
+<ol>
+<li><p> <a href="ftp://slackware.osuosl.org/pub/slackware/slackware-13.37/">ftp://slackware.osuosl.org/pub/slackware/slackware-13.37/</a></p></li>
+<li><p> <a href="ftp://ftp.slackware.com/pub/slackware/slackware-13.37/">ftp://ftp.slackware.com/pub/slackware/slackware-13.37/</a></p></li>
+<li><p> <a href="http://slackware.com/getslack/">http://slackware.com/getslack/</a></p></li>
+</ol>
+
+
+<p>Dan untuk mirror lokal bisa didownload disini :</p>
+
+<ol>
+<li><p> <a href="http://ftp.paudni.kemdiknas.go.id/slackware/slackware-13.37-iso/">http://ftp.paudni.kemdiknas.go.id/slackware/slackware-13.37-iso/</a></p></li>
+<li><p> <a href="http://repo.ukdw.ac.id/slackware/slackware-13.37/">http://repo.ukdw.ac.id/slackware/slackware-13.37/</a></p></li>
+<li><p> <a href="http://kambing.ui.ac.id/slackware/slackware64-13.37/">http://kambing.ui.ac.id/slackware/slackware64-13.37/</a></p></li>
+<li><p> <a href="http://kambing.ui.ac.id/slackware/slackware-13.37/">http://kambing.ui.ac.id/slackware/slackware-13.37/</a></p></li>
+<li><p> <a href="http://kambing.ui.ac.id/iso/slackware/slackware64-13.37-iso/">http://kambing.ui.ac.id/iso/slackware/slackware64-13.37-iso/</a></p></li>
+<li><p> <a href="http://kambing.ui.ac.id/iso/slackware/slackware-13.37-iso/">http://kambing.ui.ac.id/iso/slackware/slackware-13.37-iso/</a></p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/04/24/android-logo-font-download/">Android Logo Font Download</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-24T11:55:19+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/04/24/android-logo-font-download/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ingin membuat sebuah tulisan seperti gambar dibawah ini ?
+<img src="http://www.android.com/images/android2-logo.gif" alt="Android Logo" /></p>
+
+<p>Bingung cari font seperti gambar diatas ? Jika iya, untungnya <a href="http://forum.xda-developers.com/member.php?s=0f675a49486cff1ca2337d5b2cdc240c&amp;u=1554093">ei8htohms</a> seorang member dari forum xda-developers berbaik hati membuatkan untuk kita-kita :) Nama font buatan <a href="http://forum.xda-developers.com/member.php?s=0f675a49486cff1ca2337d5b2cdc240c&amp;u=1554093">ei8htohms</a> ini adalah <strong>Droid Logo</strong> yang tampilan demo-nya kurang lebih seperti tampilan dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5648606296/"><img src="http://farm6.static.flickr.com/5028/5648606296_07c3a2d975.jpg" alt="DroidLogo-sample" /></a></p>
+
+<p>Jika tertarik untuk men-download dan belum sempat untuk registrasi ke <a href="http://forum.xda-developers.com/">forum xda-developers</a>, saya sudah me-mirrorkan-nya dari forum xda dan hasilnya bisa di download pada alamat dibawah ini :</p>
+
+<ol>
+<li><p> <a href="http://www.ziddu.com/download/14724176/Droid_Logo_Font_6-13-09.zip.html">Droid_Logo_Font_6-13-09.zip.html</a></p></li>
+<li><p> <a href="http://www.ziddu.com/download/14724177/DroidLogo_fonts_6-13-09_update.zip.html">DroidLogo_fonts_6-13-09_update.zip</a></p></li>
+<li><p> <a href="http://www.ziddu.com/download/14724178/DroidLogo_Font_031211.zip.html">DroidLogo_Font_031211.zip</a></p></li>
+</ol>
+
+
+<p><strong>Referensi :</strong></p>
+
+<ol>
+<li><p> <a href="http://forum.xda-developers.com/showpost.php?p=3771562">Android Logo (inspired) font (updated 6-13-09)</a></p></li>
+<li><p> <a href="http://forum.xda-developers.com/">Forum xda-developers</a></p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/04/09/dosa-dosa-usd-terhadap-emas/">Dosa-Dosa USD Terhadap Emas</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-09T15:49:51+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/04/09/dosa-dosa-usd-terhadap-emas/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah kemarin saya mengutip thread yang membahas tentang <a href="http://martinusadyh.web.id/2011/03/13/fundamental-reksadana/">Fundamental ReksaDana</a> dan <a href="http://martinusadyh.web.id/2011/03/13/pemilihan-reksadana/">Bagaimana cara memilih Reksa Dana</a> dari <a href="http://www.kaskus.us/showthread.php?t=5128677">KasKus</a>, sekarang yuuk mari kita bergeser ke <strong>Investasi EMAS</strong> :)</p>
+
+<p>Sebelum mulai membaca, sebaiknya siapkan dulu kopi, rokok dan cemilan disamping anda, karena tulisan ini sangat panjang dan mungkin akan bikin mata anda mengantuk :D Karena postingan merupakan gabungan dari 2 artikel yang dijadikan satu :) Jika sudah siap, artikel dibawah ini akan mencoba menjelaskan kenapa mata uang <strong>USD</strong> sangat dominan di pasar internasional sekarang ini, dibalik semua-nya itu ternyata ada yang jebakan-jebakan yang ternyata memang sengaja diciptakan. </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/04/09/dosa-dosa-usd-terhadap-emas/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/03/13/pemilihan-reksadana/">Pemilihan ReksaDana</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-13T18:20:32+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/03/13/pemilihan-reksadana/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Dasar Pemilihan ReksaDana Untuk Kebanyakan Orang</strong></p>
+
+<ol>
+<li><p> Pilihlah yang terbukti 10 besar utk jangka waktu minimal 1 tahun dan 3 tahun.</p></li>
+<li><p> Pilihlah produk RD yang kapitalisasi dana kelolaannya minimal 100 milyar rupiah.</p></li>
+<li><p> Carilah produk RD yang besarnya Minimal Investasi, Minimal Subscription / Top Up, Kemudahan Melakukan Redemption / Top Up, serta Redemption dan Top Up Fee-nya, sesuai kekuatan finansial kita.</p></li>
+<li><p> Sedapat mungkin cari tahu kekuatan MI-nya dari kemungkinan kolaps.</p></li>
+</ol>
+
+
+<blockquote><p>Informasi mendetail tentang detail berbagai produk reksadana di tanah air bisa dilihat di tabloid <strong>&ldquo;Bisnis Indonesia&rdquo;</strong>.</p></blockquote>
+
+<p><strong>Cara Berinvestasi Di ReksaDana Saham</strong></p>
+
+<ol>
+<li><p> Pertama, Anda dan nasabah lainnya di seluruh Indonesia menyetorkan sejumlah uang kepada pihak <strong>MI (Manajer Investasi).</strong></p></li>
+<li><p> Kedua, pihak <strong>MI (Manajer Investasi).</strong> akan memutar uang tadi ke berbagai saham yang ada.</p></li>
+<li><p> Katakanlah dari hasil bermain saham tersebut, maka pihak <strong>MI (Manajer Investasi).</strong> berhasil mendapatkan untung.</p></li>
+<li><p> Karena <strong>MI (Manajer Investasi).</strong> mendapat untung, maka <strong>NAB (Nilai Aktiva Bersih)</strong> reksadana akan naik.</p></li>
+<li><p> Karena harga <strong>NAB (Nilai Aktiva Bersih)</strong> naik, apabila kini Anda menjual RD Anda, Anda akan menerima laba.</p></li>
+<li><p> Pendek kata, secara sederhana bermain RD Saham mirip berdagang emas. Kita beli di harga murah, kita jual di harga mahal.</p></li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/03/13/pemilihan-reksadana/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="8">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="6">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

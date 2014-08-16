@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>MySQL Tips n Trik - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Bagi teman-teman yang sudah sering sekali menggunakan MySQL sebagai database server-nya mungkin sudah tidak asing lagi dengan beberapa tips dan trik &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/08/31/mysql-tips-n-trik/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">MySQL Tips N Trik</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-31T11:17:07+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Bagi teman-teman yang sudah sering sekali menggunakan <a href="http://www.mysql.com/">MySQL</a> sebagai database server-nya mungkin sudah tidak asing lagi dengan beberapa tips dan trik yang ada pada tulisan kali ini :) Tapi kenapa saya menulis ini, karena saya sendiri sering lupa dan membuat saya sering <strong>googling</strong> lagi untuk kasus yang sama :malu: Beberapa perintah atau tips dan trik yang sering membuat saya lupa yaitu :</p>
+
+<ul>
+<li>Mengganti Password Root di MySQL</li>
+<li>Mereset Password Root MySQL</li>
+<li>Melihat DataBase Engine yang Terinstall</li>
+<li>Backup Data dengan Menggunakan Perintah <code>mysqldump</code></li>
+<li>Restore Data Pada MySQL</li>
+<li>Backup Per Tabel Menggunakan Perintah <code>SELECT INTO OUTFILE</code></li>
+<li>Insert Data Menggunakan Perintah <code>LOAD DATA INFILE</code></li>
+<li>Melihat Struktur Tabel di MySQL</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Mengganti Password Root di MySQL</h3>
+
+<p>Ada kalanya kita merasa bahwa password untuk user <strong>root</strong> <a href="http://www.mysql.com/">MySQL</a> kita susah untuk di ingat, nah untuk mengganti password <em>root</em> tersebut kita dapat menggunakan perintah <code>mysqladmin -u root -p'password_sekarang' password 'password_baru'</code> dimana <code>'password_sekarang'</code> adalah password user <em>root</em> sebelum dirubah dan <em>&lsquo;password_baru&rsquo;</em> adalah password baru yang ingin digunakan. Dan jika kita menjalankannya dari terminal, maka hasilnya akan seperti tampilan dibawah ini :</p>
+
+<pre><code>martinus@martinus-laptop:~$ mysqladmin -u root -p'admin' password 'password_baru'
+martinus@martinus-laptop:~$ mysql -u root -ppassword_baru
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 33
+Server version: 5.0.75-0ubuntu10.2 (Ubuntu)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql&gt;
+</code></pre>
+
+<h3>Mereset Password Root MySQL</h3>
+
+<p>Nah jika pada langkah pertama diatas, kita diasumsikan telah mengetahui password root mysql. Sekarang bagaimana jika kita kelupaan dengan password root mysql tersebut ? Wah merupakan bencana dong ? Hm.. jangan panik dahulu, untuk <strong>mereset password root mysql</strong> langkah pertama yang harus kita lakukan yaitu matikan dahulu service mysqld-nya. Kalau di Slackware, kita bisa gunakan perintah <code>/etc/rc.d/rc.mysqld stop</code> dengan menggunakan akses <strong>root</strong> seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[~]# /etc/rc.d/rc.mysqld stop
+STOPPING server from pid file /var/run/mysql/mysql.pid
+100418 11:38:21  mysqld ended
+
+root@martinusadyh:[~]#
+</code></pre>
+
+<p>Untuk mengecek apakah service mysqld masih berjalan atau tidak, sekarang jalankan perintah <code>ps aux | grep mysqld</code> dan pastikan tidak ada output mysqld seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[~]# ps aux | grep mysqld
+root@martinusadyh:[~]#
+</code></pre>
+
+<p>Sekarang mari jalankan lagi service mysqld dengan menggunakan opsi <code>--skip-grant-tables</code> seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[~]# /usr/bin/mysqld_safe --skip-grant-tables
+nohup: ignoring input and redirecting stderr to stdout
+Starting mysqld daemon with databases from /var/lib/mysql
+</code></pre>
+
+<p>Bukalah terminal baru dengan menggunakan kombinasi tombol <code>CTRL+SHIFT+TAB</code> kemudian login-lah ke mysql dengan menggunakan user root tanpa password seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/]$ mysql -u root mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.0.84 Source distribution
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt;
+</code></pre>
+
+<p>Setelah berhasil login dengan menggunakan user root tanpa password, sekarang <strong>reset-lah password root mysql</strong> dengan menjalankan perintah <code>update user set password=PASSWORD('_password-baru_') where user='root';</code> dimana <em>password-baru</em> adalah password baru yang ingin anda ganti seperti dibawah ini :</p>
+
+<pre><code>mysql&gt; update user set Password=PASSWORD('123') where user='root';
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+</code></pre>
+
+<p>Password root mysql berhasil direset, sekarang coba matikan lagi service mysqld-nya dengan menggunakan perintah kill dan jalankan lagi service mysqld-nya secara normal, setelah service mysqld berjalan dengan normal maka coba loginlah dengan menggunakan user root dan password yang telah diganti seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/]$ mysql -u root -p123
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.0.84 Source distribution
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; 
+</code></pre>
+
+<h3>Melihat DataBase Engine yang Terinstall</h3>
+
+<p>Sebelum membuat sebuah tabel yang menggunakan <strong>engine</strong> tertentu, sebaiknya mari kita cek dahulu apakah server <a href="http://www.mysql.com/">MySQL</a> kita sudah mempunyai dukungan atau belum pada <strong>engine</strong> yang akan kita gunakan. Sedangkan untuk melihat <strong>engine</strong> apa saja yang sudah didukung pada server <a href="http://www.mysql.com/">MySQL</a>, kita dapat menggunakan perintah <code>show engines\G</code> seperti dibawah ini :
+<strong>Pastikan dahulu bahwa anda sudah login pada server <a href="http://www.mysql.com/">MySQL</a> anda !!</strong></p>
+
+<pre><code>mysql&gt; show engines\g
++------------+----------+----------------------------------------------------------------+
+| Engine     | Support  | Comment                                                        |
++------------+----------+----------------------------------------------------------------+
+| MyISAM     | DEFAULT  | Default engine as of MySQL 3.23 with great performance         |
+| MEMORY     | YES      | Hash based, stored in memory, useful for temporary tables      |
+| InnoDB     | YES      | Supports transactions, row-level locking, and foreign keys     |
+| BerkeleyDB | NO       | Supports transactions and page-level locking                   |
+| BLACKHOLE  | YES      | /dev/null storage engine (anything you write to it disappears) |
+| EXAMPLE    | NO       | Example storage engine                                         |
+| ARCHIVE    | YES      | Archive storage engine                                         |
+| CSV        | YES      | CSV storage engine                                             |
+| ndbcluster | DISABLED | Clustered, fault-tolerant, memory-based tables                 |
+| FEDERATED  | DISABLED | Federated MySQL storage engine                                 |
+| MRG_MYISAM | YES      | Collection of identical MyISAM tables                          |
+| ISAM       | NO       | Obsolete storage engine                                        |
++------------+----------+----------------------------------------------------------------+
+12 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre>
+
+<h3>Backup Data dengan Menggunakan Perintah <code>mysqldump</code></h3>
+
+<p>Proses backup database merupakan sebuah proses yang sangat penting sekali, maka sebaiknya kita berteman dekat dengan perintah <code>mysqldump</code> :) Untuk proses backup ini sendiri ada berbagai cara yaitu :</p>
+
+<ul>
+<li>Backup Standart</li>
+</ul>
+
+
+<p>  Untuk melakukan proses backup standart, kita bisa menggunakan perintah <code>mysqldump -B nama_database -u root -p &gt; hasil_backup.sql</code> dimana <code>-B nama_database</code> ini adalah nama database yang ingin anda backup. Hasil dari perintah ini adalah kita akan mendapatkan seluruh database schema (struktur table) beserta isinya seperti dibawah ini :</p>
+
+<pre><code>martinus@martinus-laptop:~$ mysqldump -B latibatis -u root -padmin &gt; cb.sql
+martinus@martinus-laptop:~$ more cb.sql
+--
+-- Current Database: `latibatis`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `latibatis` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `latibatis`;
+
+--
+-- Table structure for table `LAT`
+--
+
+DROP TABLE IF EXISTS `LAT`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `LAT` (
+  `id` int(11) NOT NULL auto_increment,
+  `item_cd` varchar(15) default NULL,
+  `name` varchar(15) default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `item_cd_2` (`item_cd`),
+  KEY `item_cd` (`item_cd`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `LAT`
+--
+
+LOCK TABLES `LAT` WRITE;
+/*!40000 ALTER TABLE `LAT` DISABLE KEYS */;
+INSERT INTO `LAT` VALUES (1,'003.01','BESI BETON'),(2,'003.02','BESI BAJA'),(3,'003.03','BESI TUA');
+/*!40000 ALTER TABLE `LAT` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+--
+Dump completed on 2009-08-28 19:16:48
+martinus@martinus-laptop:~$
+</code></pre>
+
+<ul>
+<li>Backup Schema DataBase-nya saja</li>
+</ul>
+
+
+<p>  Jika kita ingin hanya struktur tabelnya saja (schema database) nya saja yang dibackup, anda dapat menggunakan perintah <code>mysqldump -B nama_database -u root -p -d &gt; schema_backup.sql</code> dimana opsi <code>-d</code> adalah opsi untuk mengambil statement <code>CREATE TABLE</code> saja. Dan hasilnya adalah seperti dibawah ini :</p>
+
+<pre><code>martinus@martinus-laptop:~$ mysqldump -B latibatis -u root -padmin -d &gt; schmea_cb.sql
+martinus@martinus-laptop:~$ more schmea_cb.sql
+--
+-- Current Database: `latibatis`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `latibatis` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `latibatis`;
+
+--
+-- Table structure for table `LAT`
+--
+
+DROP TABLE IF EXISTS `LAT`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `LAT` (
+  `id` int(11) NOT NULL auto_increment,
+  `item_cd` varchar(15) default NULL,
+  `name` varchar(15) default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `item_cd_2` (`item_cd`),
+  KEY `item_cd` (`item_cd`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+martinus@martinus-laptop:~$
+</code></pre>
+
+<ul>
+<li>Backup Isi DataBase-nya saja</li>
+</ul>
+
+
+<p>  Sedangkan kalau kita hanya ingin mengambil isi tabelnya saja, kita bisa menggunakan perintah <code>mysqldump -B nama_database -u root -p -t &gt; isitable_cb.sql</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinus-laptop:~$ mysqldump -B latibatis -u root -padmin -t &gt; isitable_cb.sql
+martinus@martinus-laptop:~$ more isitable_cb.sql
+--
+-- Current Database: `latibatis`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `latibatis` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `latibatis`;
+
+--
+-- Dumping data for table `LAT`
+--
+
+LOCK TABLES `LAT` WRITE;
+/*!40000 ALTER TABLE `LAT` DISABLE KEYS */;
+INSERT INTO `LAT` VALUES (1,'003.01','BESI BETON'),(2,'003.02','BESI BAJA'),(3,'003.03','BESI TUA');
+/*!40000 ALTER TABLE `LAT` ENABLE KEYS */;
+UNLOCK TABLES;
+-- Dump completed on 2009-08-28 19:30:00
+martinus@martinus-laptop:~$
+</code></pre>
+
+<ul>
+<li>Backup Isi DataBase Sesuai Kolom</li>
+</ul>
+
+
+<p>  Jika kita ingin mengambil isi tabel sesuai kolomnya, kita dapat menambahkan opsi <code>--complete-insert</code> pada perintah <code>mysqldump</code> menjadi seperti dibawah ini:</p>
+
+<pre><code>martinus@martinus-laptop:~$ mysqldump -B latibatis -u root -padmin -t --complete-insert &gt; isitable_complete_insert_cb.sql
+martinus@martinus-laptop:~$ more isitable_complete_insert_cb.sql
+--
+-- Current Database: `latibatis`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `latibatis` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `latibatis`;
+
+--
+-- Dumping data for table `LAT`
+--
+
+LOCK TABLES `LAT` WRITE;
+/*!40000 ALTER TABLE `LAT` DISABLE KEYS */;
+INSERT INTO `LAT` (`id`, `item_cd`, `name`) VALUES (1,'003.01','BESI BETON'),(2,'003.02','BESI BAJA'),(3,'003.03','BESI TUA');
+/*!40000 ALTER TABLE `LAT` ENABLE KEYS */;
+UNLOCK TABLES;
+
+-- Dump completed on 2009-08-28 20:00:42
+martinus@martinus-laptop:~$
+</code></pre>
+
+<h3>Restore Data Pada MySQL</h3>
+
+<p>Pada tips dan trik nomor 3 diatas, kita sudah belajar bagaimana cara backup database menggunakan perintah <code>mysqldump</code>. Nah sekarang setelah mendapatkan hasil backup dari database, maka kita perlu juga untuk melakukan proses <code>restore</code>. Sedangkan untuk me-restore hasil backup yang telah dilakukan pada langkah nomor 3 di atas, kita dapat menggunakan perintah seperti dibawah ini :</p>
+
+<pre><code>martinus@martinus-laptop:~$ mysql -u root -padmin &lt; cb.sql
+martinus@martinus-laptop:~$
+</code></pre>
+
+<h3>Backup Per Tabel Menggunakan Perintah <code>SELECT INTO OUTFILE</code></h3>
+
+<p>Ada kalanya kita hanya ingin membackup tidak 1 database penuh, tetapi hanya pada tabel-tabel tertentu saja. Untuk keperluan ini, kita juga dapat menggunakan perintah <code>select * from tabel_name into outfile '/path/file/backup.sql';</code> seperti contoh dibawah ini:</p>
+
+<pre><code>mysql&gt; select * from LAT into outfile '/tmp/DATA_LAT.sql' FIELDS TERMINATED BY ',';
+Query OK, 3 rows affected (0.00 sec)
+
+mysql&gt; quit;
+martinus@martinus-laptop:~$ more /tmp/DATA_LAT.sql
+1,003.01,BESI BETON
+2,003.02,BESI BAJA
+3,003.03,BESI TUA
+</code></pre>
+
+<h3>Insert Data Per Tabel Menggunakan Perintah <code>LOAD DATA INFILE</code></h3>
+
+<p>Sedangkan untuk menginsert data, kita juga dapat menggunakan perintah <code>LOAD DATA INFILE</code> seperti dibawah ini :</p>
+
+<pre><code>mysql&gt; LOAD DATA INFILE '/tmp/DATA_LAT.sql' INTO TABLE LAT FIELDS TERMINATED BY ',';
+mysql&gt; select * from LAT;
++----+---------+------------+
+| id | item_cd | name       |
++----+---------+------------+
+|  1 | 003.01  | BESI BETON |
+|  2 | 003.02  | BESI BAJA  |
+|  3 | 003.03  | BESI TUA   |
++----+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre>
+
+<h3>Melihat Struktur Tabel di MySQL</h3>
+
+<p>Untuk melihat struktur tabel yang telah kita buat pada <a href="http://www.mysql.com/">MySQL</a>, kita dapat menggunakan perintah <code>show create table _table_name_\G</code> dimana <code>table_name</code> adalah nama tabel yang ingin dilihat. Sedangkan contohnya adalah sebagai berikut :</p>
+
+<pre><code>mysql&gt; show create table LAT\G
+*************************** 1. row ***************************
+       Table: LAT
+CREATE TABLE `LAT` (
+  `id` int(11) NOT NULL auto_increment,
+  `item_cd` varchar(15) default NULL,
+  `name` varchar(15) default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `item_cd_2` (`item_cd`),
+  KEY `item_cd` (`item_cd`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1
+1 row in set (0.00 sec)
+
+mysql&gt;
+</code></pre>
+
+<p>Langkah-langkah yang ditulis disini memang sangat sederhana dan mungkin masih ada cara yang lebih canggih dan lebih elegan lagi :D Untuk lebih jelas dan lebih detailnya, halaman manual <a href="http://www.mysql.com/">MySQL</a> sangat-sangat dianjurkan untuk selalu dibaca :D :) Nah jika sudah menemukan cara yang lebih elegan, mungkin ada ketertarikan untuk membuat semuanya menjadi <strong>sedikit</strong> lebih otomatis dengan bantuan berbagai macam script seperti disini dan disana :) Nah klo sudah membuat script otomatis, boleh donk di bagi-bagi disini :malu:</p>
+
+<p><strong>Link-link terkait:</strong></p>
+
+<ul>
+<li><a href="http://dev.mysql.com/doc/mysql/en/">Halaman manual MySQL</a></li>
+<li><a href="http://martinusadyh.web.id/2009/04/09/membuat-database-user-dan-password-di-mysql-berbasis-username-system/">membuat-database-user-dan-password-di-mysql-berbasis-username-system</a></li>
+<li><a href="http://endy.artivisi.com/blog/lain/backup-mysql/">Backup MySQL</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-31T11:17:07+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>, <a class='category' href='/blog/categories/opensolaris/'>opensolaris</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/08/31/mysql-tips-n-trik/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/08/31/mysql-tips-n-trik/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/08/28/slackware-130-released/" title="Previous Post: Slackware 13.0 Released">&laquo; Slackware 13.0 Released</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/09/05/find-cpu-architecture-on-gnulinux/" title="Next Post: Find CPU Architecture on GNU/Linux">Find CPU Architecture on GNU/Linux &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/08/31/mysql-tips-n-trik/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/08/31/mysql-tips-n-trik/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

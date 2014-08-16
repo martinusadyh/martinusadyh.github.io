@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>DropDownButton di Java Swing - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Wuuuuuuuuuuuah udah lama ga ngisi blog maklum sekarang udah ga kerja di warnet lagi :( , berhubung sekarang sudah dapat akses internet and udah dapat &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">DropDownButton Di Java Swing</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-09T23:31:01+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Wuuuuuuuuuuuah udah lama ga ngisi blog maklum sekarang udah ga kerja di warnet lagi :( , berhubung sekarang sudah dapat akses internet and udah dapat kerja lagi ditempat <a href="http://artivisi.com/">&ldquo;idaman&rdquo;</a> :) Sekarang kegiatan nge-blogging bakalan jalan lancar lagi :)</p>
+
+<p>Untuk teman-teman yang senang bermain di <a href="http://java.sun.com/docs/books/tutorial/uiswing/TOC.html">Java Swing</a>, mungkin pernah punya keinginan untuk membuat atau mencari sebuah button yang mempunyai karakteristik seperti button milik <a href="http://netbeans.org">NetBeans</a> dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/2840294036/"><img src="http://farm4.static.flickr.com/3128/2840294036_d482509750_o.png" alt="NB_DropDownBtn" /><br/>
+Click to View Large Image</a></p>
+
+<!-- more -->
+
+
+<p>Jika teman-teman mempunyai keinginan tersebut tetapi belum tahu bagaimana caranya atau belum menemukannya, mungkin tulisan sederhana saya ini bisa sedikit membantu permasalahan teman-teman :) Komponen ini saya beri nama <strong>MDropDownButton</strong> (eh bener ga ya namanya dropdown button ? :malu: ) dan tampilan dari <strong>MDropDownButton</strong> tersebut adalah seperti ini :
+<a href="http://www.flickr.com/photos/10243554@N02/2840295730/"><img src="http://farm4.static.flickr.com/3136/2840295730_7de782fe64_m.jpg" alt="MDropDownBtn" /><br/>
+Click to View Large Image</a></p>
+
+<p><strong>MDropDownButton</strong> diatas merupakan subclass dari <strong>JToggleButton</strong> (supaya tampilan button-nya tidak jauh berbeda di semua LAF yang sudah di support oleh <a href="http://java.sun.com/docs/books/tutorial/uiswing/TOC.html">Java Swing</a>) dan menggunakan <strong>JPopupMenu</strong> untuk menu drop down-nya, dan jika teman-teman ingin menggunakan komponen tersebut di project-nya silahkan kopi paste kode <strong>MDropDownButton.java</strong> dibawah ini :</p>
+
+<pre><code>/*
+ * MDropDownButton.java
+ *
+ * Created on Jun 25, 2008, 1:41:42 AM
+ *
+ * Copyright (c) 2008 Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *  o Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ *  o Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ *  o The name of the author may not be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package id.web.martinusadyh.button;
+
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.Icon;
+import javax.swing.JPopupMenu;
+import javax.swing.SwingConstants;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
+
+/** MDropDownButton provide standart button with add feature drop down.
+ * @author javamaniac &lt;mrt.itnewbies@gmail.com&gt;
+ */
+public class MDropDownButton extends javax.swing.JToggleButton
+        implements MouseListener {
+
+    private javax.swing.JLabel      lblIcon;
+    private javax.swing.JLabel      btnLabel;
+    private javax.swing.JPopupMenu  popUpMenu;
+    private Icon                    disabledIcon;
+    private Icon                    enabledIcon;
+
+    public MDropDownButton() {
+        this(null, null);
+    }
+
+    public MDropDownButton(javax.swing.JPopupMenu popUpMenu) {
+        this(null, null, popUpMenu);
+    }
+
+    public MDropDownButton(String text, Icon icon) {
+        this(text, icon, null);
+    }
+
+    public MDropDownButton(String text, Icon icon,
+            javax.swing.JPopupMenu popUpMenu) {
+        super();
+        this.popUpMenu = popUpMenu;
+
+        initLayout();
+        setText(text);
+        setIcon(icon);
+        setComponentPopupMenu(popUpMenu);
+    }
+
+    @Override
+    public void setDisabledIcon(Icon disabledIcon) {
+        this.disabledIcon = disabledIcon;
+    }
+
+    @Override
+    public void setEnabled(boolean enabledState) {
+        lblIcon.setEnabled(enabledState);
+        btnLabel.setEnabled(enabledState);
+        super.setEnabled(enabledState);
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return super.isEnabled();
+    }
+
+    /** Override method setText from parent, this method will put text in JLabel
+     * then add to this button via &lt;code&gt;JLabel.setText(newText)&lt;/code&gt;.
+     * @param text  text for this button */
+    @Override
+    public void setText(String text) {
+        btnLabel.setText(text);
+    }
+
+    /** Override method setIcon from parent, this method will put Icon in JLabel
+     * then add to this button via &lt;code&gt;JLabel.setIcon(newIcon)&lt;/code&gt;.
+     * @param icon  icon for this button */
+    @Override
+    public void setIcon(Icon icon) {
+        this.enabledIcon = icon;
+        btnLabel.setIcon(enabledIcon);
+    }
+
+    @Override
+    public void setComponentPopupMenu(JPopupMenu popup) {
+        this.popUpMenu = popup;
+    }
+
+    /** Method initLayout ini berfungsi untuk mengatur tampilan dari
+     * MDropDownButton. MDropDownButton ini menggunakan layout GridBagLayout dan
+     * menggunakan 2 buah component JLabel sebagai tampilannya. JLabel pertama
+     * digunakan untuk menampilkan text dan icon yang biasa terdapat pada button
+     * standart java, sedangkan JLabel yang kedua digunakan untuk menampung icon
+     * expand. Tampilan MDropDownButton ini kurang lebih adalah sebagai berikut :
+     * &lt;code&gt;
+     *  +-----------------+
+     *  | (Icon) (Text) V |
+     *  +-----------------+
+     * &lt;/code&gt;
+     */
+    protected void initLayout() {
+        lblIcon     = new javax.swing.JLabel();
+        btnLabel    = new javax.swing.JLabel();
+
+        lblIcon.setName("lblIcon");
+        btnLabel.setName("btnLabel");
+        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/id/web/martinusadyh/images/popuparrow.gif"))); // NOI18N
+
+        //removeAll();
+        setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        // Set Position for btnLabel
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 1, 0, 1);
+        add(btnLabel, gridBagConstraints);
+
+        // Set Position for lblIcon
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.weighty = 1.0;
+        add(lblIcon, gridBagConstraints);
+
+        setMargin(new java.awt.Insets(2, 0, 2, 0));
+
+        setFocusPainted(false);
+        setHorizontalAlignment(CENTER);
+        lblIcon.addMouseListener(this);
+    }
+
+    public void mouseClicked(MouseEvent e) {
+        if (popUpMenu != null &amp;&amp; this.isEnabled()) {
+            Point pt = getLocationOnScreen();
+            pt.translate(0, getHeight());
+            popUpMenu.setLocation(pt);
+            popUpMenu.show(this, 0, getHeight());
+            setSelected(true);
+
+            // Make this button unselected if popUpMenu close
+            popUpMenu.addPopupMenuListener(new PopupMenuListener() {
+                public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+                    setSelected(false);
+                }
+
+                public void popupMenuCanceled(PopupMenuEvent e){}
+                public void popupMenuWillBecomeVisible(PopupMenuEvent e){}
+            });
+        }
+    }
+
+    public void mousePressed(MouseEvent e) { }
+    public void mouseReleased(MouseEvent e) { }
+    public void mouseEntered(MouseEvent e) { }
+    public void mouseExited(MouseEvent e) { }
+}
+}
+</code></pre>
+
+<p>Penjelasan kode diatas adalah sebagai berikut :</p>
+
+<ol>
+<li><p>Agar <strong>MDropDownButton</strong> ini mempunyai efek selected ketika menampilkan menu drop down-nya, maka membuat subclass dari <strong>JToggleButton</strong> merupakan pilihan yang cocok dan ini bisa dilihat pada baris ke 48. Mengapa menggunakan <strong>JToggleButton</strong> ? Karena kalau kita menggunakan <strong>JButton</strong>, ketika user menekan button tersebut maka efek selected-nya hanya tampil sekejap.</p></li>
+<li><p>Pada baris 51-55 kita mempersiapkan beberapa komponen yang kita perlukan untuk tampilan <strong>MDropDownButton</strong> tersebut, salah satunya yaitu <strong>JPopupMenu</strong>.</p></li>
+<li><p>Sedangkan pada baris 57-78 ini berfungsi agar class <strong>MDropDownButton</strong> ini dapat digunakan tanpa melalui IDE, maksud-nya yaitu agar kita dapat langsung menambahkan <strong>MDropDownButton</strong> ini langsung dengan cara sebagai berikut :</p>
+
+<p>  &hellip;.
+  JPopupMenu popUpMenu = new JPopupMenu();
+  ImageIcon iconKu = new ImageIcon(&ldquo;icon.gif&rdquo;);
+  popUpMenu.add(new JMenuItem(&ldquo;Menu Item 1&rdquo;));
+  popupMenu.add(new JMenuItem(&ldquo;Menu Item 2&rdquo;));</p>
+
+<p>  // Kalau ingin Button-nya tidak ada text-nya + no icon
+  MDropDownButton dropButton = new MDropDownButton(popupMenu);</p>
+
+<p>  // Kalau penggunaan spt ini, sama saja kayak JButton biasa :D
+  MDropDownButton dropButton = new MDropDownButton(&ldquo;Print&rdquo;, iconKu);</p>
+
+<p>  // Pakai Icon button , text dan Popupmenu
+  MDropDownButton dropButton = new MDropDownButton(&ldquo;Print&rdquo;, iconKu,
+      popupMenu);</p>
+
+<ol>
+<li><p>Pada baris 80-112 ini berfungsi agar button ini dapat di set enabled / disabled :D</p></li>
+<li><p>Pada baris 115 ini berfungsi untuk menambahkan <strong>JPopupMenu</strong> yang akan ditampilkan, method ini meg-overide dari <strong>JToggleButton</strong>.</p></li>
+<li><p>Pada baris 131-164 ini adalah method yang berfungsi untuk mengatur penempatan 2 buah <strong>JLabel</strong> saja, selain itu pada method ini juga dipasang event <strong>MouseListener</strong> pada <strong>lblIcon</strong> agar ketika pengguna menekan <strong>lblIcon</strong> tersebut (icon expand-nya) maka popup menu akan ditampilkan :)</p></li>
+<li><p>Sedangkan pada method pada baris 166-184 ini befungsi untuk menampilkan <strong>popupMenu</strong> yang telah ditambahkan dan menampilkan-nya pada posisi tepat dibawah lokasi <strong>MDropDownButton</strong> ditampilkan dilayar.</p></li>
+<li><p>Sedangkan pada baris 186-189 ini tidak digunakan, karena yang dibutuhkan cuman method <strong>mouseClicked</strong> ajah :)</p></li>
+</ol>
+</li>
+</ol>
+
+
+<p>Asyik bukan bisa bikin button sendiri, button mau-mau kita :) Saran dan kritik dari teman-teman saya tunggu juga loh, ayo rame-rame bikin custom component di <a href="http://java.sun.com/docs/books/tutorial/uiswing/TOC.html">Java Swing</a> sapa tahu nanti dilirik ama <a href="http://swinglabs.org/">SwingX</a> terus dimasukin ke API-nya cool kan :P (halah ngimpi mode ON)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-09-09T23:31:01+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2008/05/14/binary-packages-and-slackbuild-script-nimbus-gtk-themes-for-slackware-120/" title="Previous Post: Binary Packages and SlackBuild Script Nimbus GTK Themes for Slackware 12.0">&laquo; Binary Packages and SlackBuild Script Nimbus GTK Themes for Slackware 12.0</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2008/10/01/release-cd-forum-linux-810/" title="Next Post: Release CD Forum Linux 8.10">Release CD Forum Linux 8.10 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/';
+        var disqus_url = 'http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

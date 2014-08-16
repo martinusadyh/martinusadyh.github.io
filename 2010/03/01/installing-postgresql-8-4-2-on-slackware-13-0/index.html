@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Installing PostgreSQL 8.4.2 on Slackware 13.0 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Akhirnya kesampaian juga saat-nya bermain-main dengan PostgreSQL setelah sekian lama bercengkrama dengan MySQL :) Nah karena client ada yang &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2010/03/01/installing-postgresql-8-4-2-on-slackware-13-0/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Installing PostgreSQL 8.4.2 on Slackware 13.0</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-01T00:38:24+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Akhirnya kesampaian juga saat-nya bermain-main dengan <a href="">PostgreSQL</a> setelah sekian lama bercengkrama dengan <a href="http://mysql.com">MySQL</a>  :) Nah karena client ada yang menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> sebagai database server-nya, sekarang tidak ada alasan lagi untuk mulai terjun secara penuh <strong>menyelami</strong> ada apa sih dibalik <a href="http://www.postgresql.org/">PostgreSQL</a> :D :) (Sebenar-nya ini bukan alasan utama kenapa saya menginstall <a href="http://www.postgresql.org/">PostgreSQL</a>, karena di Java pun masalah perbedaan DataBase sudah sepenuh-nya diatasi oleh hadir-nya beberapa framework <a href="http://jonasbandi.net/wiki/index.php/ORM_Solutions_for_Java">ORM di Java</a>. Nah tapi apa dengan kehadiran <a href="http://jonasbandi.net/wiki/index.php/ORM_Solutions_for_Java">ORM di Java</a> ini membuat saya harus berserah sepenuh-nya pada <a href="http://jonasbandi.net/wiki/index.php/ORM_Solutions_for_Java">ORM</a> ? Saya rasa tidak :D Karena ada <a href="http://tech.groups.yahoo.com/group/netbeans-indonesia/message/8066">beberapa hal</a> yang ternyata harus kita lakukan secara manual di level database-nya :) ) Sedangkan alasan utama saya tetep <strong>keukeuh</strong> menginstall <a href="http://www.postgresql.org/">PostgreSQL</a> ini adalah <strong>saya pingin tahu, bisa dan paham</strong> bagaimana menggunakan <a href="http://www.postgresql.org/">PostgreSQL</a> sebagai database server utama saya :D , dan sebagai seorang <strong>junior programmer</strong> tentunya pengetahuan tentang berbagai macam produk Database server pasti-nya jadi nilai tambah donk untuk ngasih solusi ke client kita tercinta :)</p>
+
+<!-- more -->
+
+
+<p>Nah untuk proses installasi kali ini, saya menggunakan <strong>SlackBuild Script</strong> dari <a href="http://slackbuild.org">SlackBuild.org</a> yang bisa di download <a href="http://slackbuilds.org/repository/13.0/system/postgresql/">disini</a>. Sekarang mari kita download semua file <strong>SlackBuild Script</strong> tersebut beserta <strong>source code</strong> <a href="http://www.postgresql.org/">PostgreSQL</a> kemudian simpan pada direktori <strong>postgresql</strong>. Setelah itu, agar proses <strong>building script</strong>-nya berjalan dengan sempurna, buatlah dahulu sebuah <strong>user</strong> dan <strong>group</strong> dengan nama <strong>postgres</strong> (user dan group ini nantinya akan digunakan untuk meng-inisialisasi dan mengakses database server yang akan kita buat) dengan menggunakan akses <strong>root</strong> seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# groupadd -g 209 postgres
+root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# useradd -u 209 -g 209 -d /var/lib/pgsql postgres
+</code></pre>
+
+<p>Setelah proses pembuatan <strong>user</strong> dan <strong>group</strong> selesai, sekarang tambahkanlah akses <strong>execute</strong> pada file <strong>postgresql.SlackBuild</strong> dengan mengetikkan <strong>chmod +x postgresql.SlackBuild</strong> kemudian jalankan-lah script-nya dengan perintah <strong>./postgresql.SlackBuild</strong> dan tunggu hingga proses pembuatan file <strong>binary packages</strong>-nya selesai seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# chmod +x postgresql.SlackBuild
+root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# ./postgresql.SlackBuild
+............
+............
+usr/include/postgresql/server/postgres_fe.h
+usr/include/postgresql/server/bootstrap/
+usr/include/postgresql/server/bootstrap/bootstrap.h
+usr/include/postgresql/informix/
+usr/include/postgresql/informix/esql/
+usr/include/postgresql/informix/esql/decimal.h
+usr/include/postgresql/informix/esql/sqlda.h
+usr/include/postgresql/informix/esql/datetime.h
+usr/include/postgresql/informix/esql/sqltypes.h
+usr/include/postgresql/internal/
+usr/include/postgresql/internal/c.h
+usr/include/postgresql/internal/pqexpbuffer.h
+usr/include/postgresql/internal/libpq/
+usr/include/postgresql/internal/libpq/pqcomm.h
+usr/include/postgresql/internal/libpq-int.h
+usr/include/postgresql/internal/port.h
+usr/include/postgresql/internal/postgres_fe.h
+usr/include/sql3types.h
+install/
+install/doinst.sh
+install/slack-desc
+
+Slackware package /tmp/postgresql-8.4.2-i486-1_SBo.tgz created.
+
+root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]#
+</code></pre>
+
+<p>Jika proses diatas tidak terjadi kesalahan sama sekali, sekarang mari kita lanjutkan dengan menginstall <strong>binary packages</strong> tersebut dengan menjalankan perintah <strong>installpkg /tmp//postgresql-8.4.2-i486-1_SBo.tgz</strong> seperti perintah dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# installpkg /tmp/postgresql-8.4.2-i486-1_SBo.tgz 
+Verifying package postgresql-8.4.2-i486-1_SBo.tgz.
+Installing package postgresql-8.4.2-i486-1_SBo.tgz:
+PACKAGE DESCRIPTION:
+# PostgreSQL (object-relational database management system)
+#
+# PostgreSQL is an advanced object-relational database management
+# system (ORDBMS) based on POSTGRES. With more than 15 years of
+# development history, it is quickly becoming the de facto
+# database for enterprise level open source solutions.
+#
+# Homepage: http://www.postgresql.org
+#
+Executing install script for postgresql-8.4.2-i486-1_SBo.tgz.
+Package postgresql-8.4.2-i486-1_SBo.tgz installed.
+
+root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]#
+</code></pre>
+
+<p>Jika sudah, sekarang mari kita buat dahulu database-nya pada direktori <strong>/var/lib/pgsql/data</strong> dengan menggunakan user <strong>postgres</strong> yang telah kita buat pada langkah sebelum-nya dengan cara seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# su postgres -c "initdb -D /var/lib/pgsql/data"
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locales
+  COLLATE:  C
+  CTYPE:    en_US
+  MESSAGES: en_US
+  MONETARY: en_US
+  NUMERIC:  en_US
+  TIME:     en_US
+The default database encoding has accordingly been set to LATIN1.
+The default text search configuration will be set to "english".
+
+fixing permissions on existing directory /var/lib/pgsql/data ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 28MB
+creating configuration files ... ok
+creating template1 database in /var/lib/pgsql/data/base/1 ... ok
+initializing pg_authid ... ok
+initializing dependencies ... ok
+creating system views ... ok
+loading system objects' descriptions ... ok
+creating conversions ... ok
+creating dictionaries ... ok
+setting privileges on built-in objects ... ok
+creating information schema ... ok
+vacuuming database template1 ... ok
+copying template1 to template0 ... ok
+copying template1 to postgres ... ok
+
+WARNING: enabling "trust" authentication for local connections
+You can change this by editing pg_hba.conf or using the -A option the
+next time you run initdb.
+
+Success. You can now start the database server using:
+
+    postgres -D /var/lib/pgsql/data
+or
+    pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# 
+</code></pre>
+
+<p>Proses pembuatan database sudah selesai, sebelum menjalankan <a href="http://www.postgresql.org/">PostgreSQL</a>-nya jangan lupa edit dahulu file <strong>/etc/rc.d/rc.local_shutdown</strong> dan tambahkan baris dibawah ini :</p>
+
+<pre><code># Stop postgres
+if [ -x /etc/rc.d/rc.postgresql ]; then
+  /etc/rc.d/rc.postgresql stop
+fi
+</code></pre>
+
+<p>Setelah melakukan proses penyimpanan, sekarang beri akses <strong>executable</strong> pada file <strong>/etc/rc.d/rc.postgresql</strong> dengan perintah <strong>chmod +x /etc/rc.d/rc.postgresql</strong> kemudian jalankan <a href="http://www.postgresql.org/">PostgreSQL</a>-nya dengan mengetikkan perintah <strong>/etc/rc.d/rc.postgresql start</strong> seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# chmod +x /etc/rc.d/rc.postgresql 
+root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# /etc/rc.d/rc.postgresql start
+Starting PostgreSQL
+waiting for server to start.... done
+server started
+root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]#
+</code></pre>
+
+<p>Ok server sudah berjalan, sekarang mari kita cek <strong>port</strong> berapa yang dibuka oleh <a href="http://www.postgresql.org/">PostgreSQL</a> dengan mengetikkkan perintah seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# netstat -planet | grep post
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      209        12922       3566/postgres   
+root@martinusadyh:[/media/data/SLACKBUILDS/postgresql]# 
+</code></pre>
+
+<p>Sekarang kita tahu bahwa default <strong>port</strong> yang dibuka oleh <a href="http://www.postgresql.org/">PostgreSQL</a> adalah <strong>5432</strong> :D</p>
+
+<p>Setelah semua-nya selesai, sekarang mari kita coba untuk login ke <a href="http://www.postgresql.org/">PostgreSQL</a> menggunakan user <strong>postgres</strong> dengan mengetikkan perintah <strong>psql -U postgres</strong> dan coba melihat database-nya dengan mengetikkan perintah <strong>\l</strong> pada <strong>PostgreSQL prompt</strong> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ psql -U postgres
+psql (8.4.2)
+Type "help" for help.
+
+postgres=#
+postgres=# \l
+                              List of databases
+   Name    |  Owner   | Encoding | Collation | Ctype |   Access privileges   
+-----------+----------+----------+-----------+-------+-----------------------
+ postgres  | postgres | LATIN1   | C         | en_US | 
+ template0 | postgres | LATIN1   | C         | en_US | =c/postgres
+                                                     : postgres=CTc/postgres
+ template1 | postgres | LATIN1   | C         | en_US | =c/postgres
+                                                     : postgres=CTc/postgres
+(3 rows)
+
+postgres=#
+</code></pre>
+
+<p>Horeeeeeeee&hellip; <a href="http://www.postgresql.org/">PostgreSQL</a>-nya sekarang sudah berjalan :) Hmm&hellip; dengan sukses-nya <a href="http://www.postgresql.org/">PostgreSQL</a> ini ter-install, sekarang jadi banyak <strong>pekerjaan rumah</strong> yang harus diselesaikan :D :) Bagaiman teman-teman ? :D Maklum saya juga masih <strong>new</strong> kalau di <a href="http://www.postgresql.org/">PostgreSQL</a> , kalau ada info yang bagus tentang <a href="http://www.postgresql.org/">PostgreSQL</a> jangan lupa di <strong>sharing</strong> yah :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://www.postgresql.org/">PostgreSQL</a></p></li>
+<li><p> <a href="http://mysql.com">MySQL</a></p></li>
+<li><p> <a href="http://slackbuild.org">SlackBuild.org</a></p></li>
+<li><p> <a href="http://slackbuilds.org/repository/13.0/system/postgresql/">PostgreSQL SlackBuild Script</a></p></li>
+<li><p> <a href="http://jonasbandi.net/wiki/index.php/ORM_Solutions_for_Java">Solusi ORM di Java</a></p></li>
+<li><p> <a href="http://tech.groups.yahoo.com/group/netbeans-indonesia/message/8066">Table Index Pada Hibernate</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-01T00:38:24+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2010/03/01/installing-postgresql-8-4-2-on-slackware-13-0/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2010/03/01/installing-postgresql-8-4-2-on-slackware-13-0/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/" title="Previous Post: Monitoring MySQL DataBase Server with MySQL Monitor">&laquo; Monitoring MySQL DataBase Server with MySQL Monitor</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2010/03/04/beberapa-persamaan-antara-mysql-dan-postgresql/" title="Next Post: Beberapa Persamaan Antara MySQL dan PostgreSQL">Beberapa Persamaan Antara MySQL dan PostgreSQL &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2010/03/01/installing-postgresql-8-4-2-on-slackware-13-0/';
+        var disqus_url = 'http://martinusadyh.web.id/2010/03/01/installing-postgresql-8-4-2-on-slackware-13-0/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

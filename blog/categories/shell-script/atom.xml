@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: shell script | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/shell-script/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How To Embedding Your Binary Files into Shell Script]]></title>
+    <link href="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/"/>
+    <updated>2012-08-04T14:47:56+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script</id>
+    <content type="html"><![CDATA[<p>Pada tulisan kali ini, kita akan membahas bagaimana membuat sebuah shell script yang berisi sebuah <strong><em>binary file</em></strong>. Apa sih sebenarnya yang bisa kita lakukan dengan sebuah shell script yang berisi file binary ? Hm.. sebenarnya banyak sih, dan salah satunya adalah membuat installer untuk sistem operasi GNU/Linux seperti installer milik <strong>NetBeans IDE</strong> yang mempunyai ekstensi <strong>*.sh</strong> :)</p>
+
+<p>Nah untuk membantu tujuan kita diatas, kita membutuhkan bantuan sebuah shell script yaitu <a href="http://megastep.org/makeself/">makeself</a>. Untuk yang belum tahu apa itu script makeself, dibawah ini adalah deskripsi singkat tentang  script makeself :</p>
+
+<blockquote><p><a href="http://megastep.org/makeself/">makeself.sh</a> is a small shell script that generates a self-extractable tar.gz archive from a directory. The resulting file appears as a shell script (many of those have a .run suffix), and can be launched as is. The archive will then uncompress itself to a temporary directory and an optional arbitrary command will be executed (for example an installation script). This is pretty similar to archives generated with WinZip Self-Extractor in the Windows world. Makeself archives also include checksums for integrity self-validation (CRC and/or MD5 checksums).</p></blockquote>
+
+<p>Dan yang menggembirakan lagi adalah, script makeself ini sudah di test dan dapat digunakan pada beberapa sistem operasi yang kurang lebih seperti berikut :</p>
+
+<ol>
+<li><p> Linux (all distributions)</p></li>
+<li><p> Sun Solaris (8 and above)</p></li>
+<li><p> HP-UX (tested on 11.0 and 11i on HPPA RISC)</p></li>
+<li><p> SCO OpenUnix and OpenServer</p></li>
+<li><p> IBM AIX 5.1L</p></li>
+<li><p> MacOS X (Darwin)</p></li>
+<li><p> SGI IRIX 6.5</p></li>
+<li><p> FreeBSD</p></li>
+<li><p> UnicOS / Cray</p></li>
+<li><p>. Cygwin (Windows)</p></li>
+</ol>
+
+
+<p>Sedangkan yang sudah menggunakan script ini sebagai installer mereka adalah :</p>
+
+<ol>
+<li><p> Game patches and installers for <a href="http://www.idsoftware.com/">Id Software games</a> like Quake 3 for Linux or Return To Castle Wolfenstien ;</p></li>
+<li><p> All game patches released by <a href="http://www.lokigames.com/products/myth2/updates.php3">Loki Software</a> for the Linux version of popular games</p></li>
+<li><p> The <a href="http://www.nvidia.com/">nVidia drivers</a> for Linux</p></li>
+<li><p> The installer for the Linux version of <a href="http://earth.google.com/">Google Earth</a></p></li>
+<li><p> The <a href="http://www.virtualbox.org/">VirtualBox</a> installers for Linux</p></li>
+<li><p> The Makeself distribution itself ;-)</p></li>
+</ol>
+
+
+<p>Menarik bukan ? Masih tertarik bagaimana caranya menggunakan script ini untuk membuat sebuah installer sendiri ?</p>
+
+<!-- more -->
+
+
+<p>Jika iya, maka sekarang downloadlah dahulu script makeself <a href="http://megastep.org/makeself/makeself-2.1.5.run">disini</a> yang pada saat tulisan ini dibuat mempunyai versi 2.1.5, atau kalau mau versi yang lebih baru bisa mengikuti timeline project ini di <a href="https://github.com/megastep/makeself">halaman github makeself</a>. Jika proses download sudah selesai, simpanlah file <code>makeself-2.1.5.run</code> pada sebuah direktori dengan nama <strong>test-makeself</strong>. Sebelum mulai menggunakan, beri hak <strong><em>execute</em></strong> dahulu pada file <code>makeself-2.1.5.run</code> dengan perintah <code>chmod +x makeself-2.1.5.run</code> dan ekstrak dengan menjalankan perintah <code>./makeself-2.1.5.run</code>. Hasil dari perintah tadi akan membuat sebuah direktori <strong>makeself-2.1.5</strong> yang berisi script makeself seluruh-nya seperti terlihat dari perintah <code>tree</code> dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[~/tmp/test-makeself]$ tree
+.
+├── makeself-2.1.5
+│   ├── COPYING
+│   ├── makeself.1
+│   ├── makeself-header.sh
+│   ├── makeself.lsm
+│   ├── makeself.sh
+│   ├── README
+│   └── TODO
+└── makeself-2.1.5.run
+
+1 directory, 8 files
+martinus@artivisi:[~/tmp/test-makeself]$ 
+</code></pre>
+
+<p>Untuk percobaan, sekarang buatlah 2 direktori <code>binary</code> dan <code>result</code> didalam direktori <code>makeself-2.1.5</code> seperti terlihat dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[~/tmp/test-makeself]$ tree
+.
+├── makeself-2.1.5
+│   ├── binary
+│   ├── COPYING
+│   ├── makeself.1
+│   ├── makeself-header.sh
+│   ├── makeself.lsm
+│   ├── makeself.sh
+│   ├── README
+│   ├── result
+│   └── TODO
+└── makeself-2.1.5.run
+martinus@artivisi:[~/tmp/test-makeself]$ 
+</code></pre>
+
+<p>Fungsi direktori <code>binary</code> diatas adalah untuk menempatkan aplikasi yang akan kita distribusikan, sedangkan direktori <code>result</code> adalah untuk menyimpan file installer yang akan dibuat oleh script <code>makeself</code> :)</p>
+
+<p>Jika sudah, masukkanlah direktori aplikasi yang ingin kita distribusikan kedalam direktori <code>binary</code> dan sebuah shell script dengan nama <code>pre-install.sh</code> (nama file <code>pre-install.sh</code> ini hanya sebagai contoh saja) sebagai launcher didalam direktori <code>binary</code> seperti dibawah ini:</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/binary]$ tree
+.
+├── app
+│   ├── lib
+│   │   ├── MartinSwingUtil-1.0.0.jar
+│   │   ├── mysql-connector-java-5.1.6-bin.jar
+│   │   └── swing-layout-1.0.4.jar
+│   ├── MenuLogin.jar
+│   └── README.TXT
+└── pre-install.sh
+
+2 directories, 6 files
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/binary]$ 
+</code></pre>
+
+<blockquote><p>Direktori <code>app/</code> beserta isinya adalah contoh aplikasi yang ingin di distribusikan, untuk penggunaan sebenar-nya kita bisa memasukkan apa saja didalam direktori <code>binary</code>.</p></blockquote>
+
+<p>File <code>pre-install.sh</code> ini dapat digunakan untuk melakukan proses-proses yang dibutuhkan sebelum mulai menginstall aplikasi yang sebenar-nya, seperti contohnya :</p>
+
+<ol>
+<li><p> Melakukan pengecekan apakah user <strong>root</strong> atau bukan yang menjalankan installer.</p></li>
+<li><p> Melakukan pengecekan apakah library yang dibutuhkan oleh aplikasi sudah tersedia atau belum.</p></li>
+<li><p> Melakukan restore database (dibutuhkan opsi untuk memasukkan username dan password mysql yang digunakan oleh user)</p></li>
+<li><p> Menempatkan file konfigurasi aplikasi pada direktori-direktori yang telah ditentukan.</p></li>
+<li><p> dan lain-lain &hellip; :)</p></li>
+</ol>
+
+
+<p>Sebelum bermain lebih lanjut dengan script <code>pre-install.sh</code>, mari kita buat dahulu skenario yang akan dijalankan oleh script <code>pre-install.sh</code> kita. Sebagai contoh, kita membuat skenario seperti dibawah ini :</p>
+
+<ol>
+<li><p> Installer hanya dapat dijalankan oleh user yang mempunyai hak akses <strong>root</strong>.</p></li>
+<li><p> Copy direktori <code>app</code> ke direktori <code>opt/</code></p></li>
+<li><p> Beri hak akses 755 pada direktori <code>/opt/app</code> beserta isinya supaya dapat dijalankan oleh user.</p></li>
+</ol>
+
+
+<p>Setelah kita mempunyai skenario seperti diatas, sekarang saatnya untuk bermain-main dengan script <code>pre-install.sh</code>, dan kode untuk skenario diatas adalah seperti berikut :</p>
+
+<pre><code class="bash   ">#!/bin/sh
+# 
+# Contoh file pre-install.sh
+
+# Langkah pertama, pengecekan apakah user root yang menjalankan installer
+# ini. Jika bukan user root, tampilkan pesan bagaimana menjalankan installer
+# dan exit.
+if [ "$(id -u)" != "0" ]; then
+    echo "Usage : sudo ./installerku.sh"
+    exit 1
+else
+    # Langkah kedua, copy direktori app/ beserta isinya kedalam direktori
+    # /opt
+    echo "Sedang menginstall aplikasi ...."
+    cp -R app /opt/app
+
+    echo "Memberi hak akses ..."
+    chmod 755 -R /opt/app
+
+    echo "Proses installasi selesai !!!"
+fi
+</code></pre>
+
+<p>Sampai disini proses yang kita lakukan sudah bisa dibilang hampir selesai, hanya tinggal 1 proses lagi yaitu membuat installer-nya. Sekarang mari kita buat sebuah installer menggunakan script <code>makeself</code> dan pastikan bahwa kita berada didalam direktori <code>makeself-2.1.5</code> :) Jika sudah, kita bisa menjalankan script <code>makeself</code> dengan perintah <code>./makeself.sh [parameter1] [parameter2] [parameter3] [parameter4]</code> dimana :</p>
+
+<ol>
+<li><p> <strong>[parameter1]</strong>, adalah tempat dimana kita meletakkan aplikasi yang ingin di distribusikan. (Dalam contoh kita, adalah direktori <code>binary</code>).</p></li>
+<li><p> <strong>[parameter2]</strong>, adalah nama file installer yang ingin kita buat. (Sebagai contoh pada tulisan ini, nama file installer yang akan kita buat bernama <code>installerku.sh</code> dan akan ditempatkan pada direktori <code>result</code>).</p></li>
+<li><p> <strong>[parameter3]</strong>, adalah label untuk installer aplikasi yang ingin kita distribusikan.</p></li>
+<li><p> <strong>[parameter4]</strong>, script yang ingin kita jalankan ketika proses installasi. (Dalam contoh kita adalah script <code>pre-install.sh</code>)</p></li>
+</ol>
+
+
+<p>Setelah mengetahui parameter-parameter yang akan digunakan, sekarang jalankan perintah <code>./makeself.sh binary/ result/installerku.sh "Aplikasi Login v1.0" ./pre-install.sh</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ ./makeself.sh binary/ result/installerku.sh "Aplikasi Login v1.0" ./pre-install.sh
+Header is 401 lines long
+
+About to compress 889 KB of data...
+Adding files to archive named "result/installerku.sh"...
+./
+./app/
+./app/lib/
+./app/lib/mysql-connector-java-5.1.6-bin.jar
+./app/lib/MartinSwingUtil-1.0.0.jar
+./app/lib/swing-layout-1.0.4.jar
+./app/README.TXT
+./app/MenuLogin.jar
+./pre-install.sh
+CRC: 677728827
+MD5: 3b84ed4eb87351a2eac8b0f235490fca
+
+Self-extractible archive "result/installerku.sh" successfully created.
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ 
+</code></pre>
+
+<p>Sekarang cek pada direktori <code>result/</code>, harusnya kita sudah mempunyai file dengan nama <code>installerku.sh</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$ ls result/
+installerku.sh
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5]$
+</code></pre>
+
+<p>Sekarang mari kita test script <code>installerku.sh</code> dengan mencoba menjalankan-nya tanpa menggunakan akses root, apakah yang akan terjadi ?</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ ./installerku.sh 
+Verifying archive integrity... All good.
+Uncompressing Aplikasi Login v1.0.........
+Usage : sudo ./installerku.sh
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Yuuhu&hellip; proses installasi gagal dilakukan, sekarang mari kita coba menjalankan script <code>installerku.sh</code> menggunakan <code>sudo</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ sudo ./installerku.sh 
+Verifying archive integrity... All good.
+Uncompressing Aplikasi Login v1.0.........
+Sedang menginstall aplikasi ....
+Memberi hak akses ...
+Proses installasi selesai !!!
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Hore.. berhasil, sekarang mari kita check apakah direktori <code>app/</code> beserta isinya sudah masuk kedalam direktori <code>opt/</code> ?</p>
+
+<pre><code>martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ ls -l /opt/app/
+total 52
+drwxr-xr-x 3 root root  4096 Jul 29 06:12 app
+drwxr-xr-x 2 root root  4096 Jul 29 05:41 lib
+-rwxr-xr-x 1 root root 38591 Jul 29 05:41 MenuLogin.jar
+-rwxr-xr-x 1 root root  1447 Jul 29 05:41 README.TXT
+martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$ 
+</code></pre>
+
+<p>Mantap&hellip; akhirnya kita bisa membuat sendiri installer di GNU/Linux seperti installer-installer dari project-project besar opensource yang lain :) Nah untuk teman-teman sesama programmer ada yang tertarik untuk mencoba-nya ??</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Batch Rename with Shell Script]]></title>
+    <link href="http://martinusadyh.web.id/2011/09/09/batch-rename-with-shell-script/"/>
+    <updated>2011-09-09T19:50:09+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/09/09/batch-rename-with-shell-script</id>
+    <content type="html"><![CDATA[<p>Kemarin di tempat saya bekerja ada kejadian bagaimana caranya me-rename nama file yang mempunyai akhiran <strong>&ldquo;S&rdquo;</strong> menjadi <strong>&ldquo;R&rdquo;</strong>, masalahnya adalah semua file tersebut tidak mempunyai pattern yang sama kecuali 3 huruf di depan dan 1 huruf dibelakang yaitu huruf <strong>&ldquo;S&rdquo;</strong> yang harus dirubah menjadi <strong>&ldquo;R&rdquo;</strong> :D Contoh nama file yang akan direname kurang lebih seperti terlihat dibawah ini :
+<code>
+martinus@artivisi:[~]$ ls
+EDW980012011S   EDW980T22011S
+EDW980G32011S   EDWSUBS42011S
+martinus@artivisi:[~]$
+</code></p>
+
+<p>Pada kasus diatas, kita tidak bisa secara langsung melakukan kegiatan <strong>find and replace</strong> biasa. Karena ternyata huruf <strong>&ldquo;S&rdquo;</strong> juga terdapat ditengah-tengah nama file tersebut seperti terlihat pada tampilan diatas :( Setelah bertanya ke paman <a href="http://google.com/">Google</a> sebentar, akhirnya saya menemukan pattern untuk menghapus karakter terakhir dari sebuah string menggunakan command <code>sed</code>. Dan pattern tersebut adalah <code>sed 's/\(.*\)./\1/'</code> :D akhirnya setelah dikombinasikan dengan sedikit kemampuan di shell script jadilah script yang isinya adalah sebagai berikut :</p>
+
+<pre><code class="bash    ">#!/bin/sh
+
+ls EDW* &gt; file.txt
+
+find_file() {
+   cat file.txt | sort | cut -d " " -f1
+}
+
+for f in $(find_file) ; do
+   echo "Original filename $f"
+   # tampung nama file yang baru (remove last character)
+   newfilename=`echo $f | sed 's/\(.*\)./\1/'`
+   echo "After delete last character $newfilename"
+   r=R
+   newfile1=$newfilename$r
+   echo "New filename is $newfile1"
+   mv $f $newfile1
+done
+</code></pre>
+
+<p>Simpan script diatas dengan nama terserah (misalkan <code>batch_rename.sh</code>), kemudian beri akses execute dan jalankan. Jika tidak ada error, harusnya jika dijalankan akan merename semua file menjadi seperti dibawah ini :
+<code>
+martinus@artivisi:[~]$ ls
+EDW980012011R   EDW980T22011R
+EDW980G32011R   EDWSUBS42011R
+martinus@artivisi:[~]$
+</code></p>
+
+<p>Untuk penjelasan <code>sed</code> dan <code>regex</code>-nya, saya masih belum bisa menjelaskan :D Maklum saya juga masih belajar :D Semoga script diatas bisa berguna juga buat teman-teman yang mempunyai masalah yang sama :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Call For Paper Programming Tutorial on SlackID Ezine]]></title>
+    <link href="http://martinusadyh.web.id/2010/05/25/call-for-paper-programming-tutorial-on-slackid-ezine/"/>
+    <updated>2010-05-25T00:36:47+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/05/25/call-for-paper-programming-tutorial-on-slackid-ezine</id>
+    <content type="html"><![CDATA[<p>Hii slacker&rsquo;s, suka menulis tentang bahasa pemrograman ? Berprofesi sebagai programmer dan kebetulan menggunakan Slackware sebagai sistem operasi utama-nya ? Jika iya, apakah teman-teman mau berbagi pengalaman dengan pengguna Slackware yang lain bagaimana menyiapkan segala keperluan yang dibutuhkan agar kegiatan koding kita menjadi nyaman menggunakan Slackware ? Tidak dapat dipungkiri, menyiapkan <strong>&ldquo;alat perang untuk koding&rdquo;</strong> di Slackware benar-benar merupakan sebuah tantangan tersendiri :) Terutama jika ketergantungan <strong>&ldquo;library&rdquo;</strong> yang digunakan oleh IDE atau bahasa pemrograman-nya sendiri banyak sekali, bisa-bisa kita tidak <strong>&ldquo;produktif&rdquo;</strong> karena terlalu sibuk untuk menyiapkan <strong>&ldquo;alat perang&rdquo;</strong> dahulu :) Dan kalau sudah begini biasanya pindah ke distro yang lebih mudah :D</p>
+
+<p>Untuk teman-teman ketahui, SlackID edisi ke 2 yang akan terbit mendatang akan memasukkan kategori <strong>Programming</strong> dalam rubriknya :) Nah kira-kira menurut teman-teman slacker&rsquo;s sendiri, topik apa yang ingin dibahas pada Edisi ke 2 ini ?? Beberapa ide yang muncul pada rapat kemarin adalah membahas bahasa pemrograman dibawah ini :</p>
+
+<ol>
+<li><p> Shell Script / Bash</p></li>
+<li><p> Java</p></li>
+<li><p> Perl</p></li>
+<li><p> Python</p></li>
+<li><p> GNU C/C++</p></li>
+<li><p> FreePascal</p></li>
+<li><p> Linux Kernel Programming</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Bahasa pemrograman favorit teman-teman tidak masuk didalam daftar ? Jika iya, segera kirim email ke <a href="mailto:mrt.itnewbies@gmail.com">mrt.itnewbies@gmail.com</a> agar bisa segera ditambahkan ke dalam daftar diatas dan di vote oleh teman-teman slacker&rsquo;s yang lain :)</p>
+
+<p>Sudah mempunyai tulisan yang ingin di muat dalam SlackID ? Segera kirimkan tutorial tersebut ke <a href="mailto:mrt.itnewbies@gmail.com">mrt.itnewbies@gmail.com</a> dengan subyek <strong>[PROGRAMING TUTORIAL]&ldquo;</strong> beserta nama lengkap :) Pengiriman tutorial ini selambat-lambatnya sampai tanggal <strong>31 Mei 2010</strong>, untuk pengiriman diatas tanggal tersebut akan masuk ke edisi SlackID selanjutnya :D</p>
+
+<p>Berdasarkan hasil diskusi dari teman-teman kemarin di <strong>##id-slackware@freenode</strong> yang akan dibahas pertama kali adalah <strong>Shell Script/Bash Programming</strong>, bagaimana menurut teman-teman sendiri ?? :)</p>
+
+<p><strong>Note: Jika tidak kiriman artikel, berarti rubrik programming ini akan sepenuhnya diisi oleh koordinator dan tentunya berdasarkan bahasa yang dikuasai oleh koordinator juga :) :D</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Diskusi Manajemen Proyek]]></title>
+    <link href="http://martinusadyh.web.id/2010/03/31/diskusi-manajemen-proyek/"/>
+    <updated>2010-03-31T22:25:24+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/03/31/diskusi-manajemen-proyek</id>
+    <content type="html"><![CDATA[<p>Pingin tahu bagaimana tips dan trik mengelola proyek IT ? Atau mungkin, pingin tahu bagaimana sih dapur-nya sebuah <em><strong>Software House</strong></em> itu ? Atau ingin tahu bagaimana sih penerapan <a href="http://en.wikipedia.org/wiki/Extreme_Programming">Extreme Programming</a>, <a href="http://en.wikipedia.org/wiki/Agile_software_development">Agile Metodologi</a>, dan berbagai macam metodologi keren yang lain. Kalau iya dan teman-teman ingin tahu, mungkin teman-teman bisa bergabung ke milis <a href="http://groups.google.com/group/it-project-indonesia">Manajemen Proyek IT</a> yang terdapat di <a href="http://groups.google.com/">GoogleGroups</a> :) Untuk teman-teman yang bertanya-tanya, apa sih isi dan yang dibahas di komunitas <a href="http://groups.google.com/group/it-project-indonesia">Manajemen Proyek IT</a> ini ? Hm.. ini yang ada dihalaman depan groups-nya :</p>
+
+<blockquote><p>Di komunitas ini, kita membahas :</p></blockquote>
+
+<p>Berbagai aspek tentang manajemen proyek IT, misalnya:</p>
+
+<blockquote><ol>
+<li><p> Estimasi Biaya Proyek</p></li>
+<li><p> Estimasi Durasi Proyek</p></li>
+<li><p> Cara membuat Project Plan</p></li>
+<li><p> Cara mengelola project yang sedang berjalan</p></li>
+<li><p> Metodologi, seperti Scrum, XP, Waterfall, Agile, Kanban.</p></li>
+<li><p> Manajemen Resiko</p></li>
+<li><p> Manajemen Personel</p></li>
+<li><p> Manajemen Dokumen</p></li>
+</ol>
+</blockquote>
+
+<p>Tools atau alat bantu yang digunakan untuk mengelola project, misalnya:</p>
+
+<blockquote><ol>
+<li><p> Issue/Task tracking, seperti Trac, Redmine, dotProject, dsb</p></li>
+<li><p> Kanban Board</p></li>
+</ol>
+</blockquote>
+
+<p>Standar dan sertifikasi internasional, seperti :</p>
+
+<blockquote><ol>
+<li><p> <a href="http://en.wikipedia.org/wiki/Capability_Maturity_Model_Integration">CMMI</a></p></li>
+<li><p> <a href="http://en.wikipedia.org/wiki/Project_Management_Professional">PMP</a></p></li>
+<li><p> ISO</p></li>
+</ol>
+</blockquote>
+
+<p>Dengan mengimplementasikan prinsip manajemen proyek yang baik, diharapkan perusahaan dapat mengelola project IT dengan lebih efisien, predictable, dan profitable.</p>
+
+<p>Untuk bergabung, kirimkan email ke <a href="mailto:it-project-indonesia-subscribe@googlegroups.com">it-project-indonesia-subscribe@googlegroups.com</a></p>
+
+<p>Moderator :</p>
+
+<blockquote><ol>
+<li><p> <a href="http://endy.artivisi.com/">Endy Muhardin</a></p></li>
+<li><p> <a href="http://ifnu.artivisi.com/">Ifnu Bima</a></p></li>
+</ol>
+</blockquote>
+
+<p>Nah bagaimana teman-teman ? Tertarik bergabung ? Yuuk sharing-sharing yuuuuk, diskusi bareng-bareng bagaimana sih mengatur sebuah proyek di <strong>&ldquo;Jalan Yang Benar&rdquo;</strong> :D Omong-omong, beberapa thread terakhir lumayan bagus-bagus loh isinya :) ;)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installasi File tar.gz dan tar.bz2]]></title>
+    <link href="http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2/"/>
+    <updated>2010-03-27T05:42:06+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2</id>
+    <content type="html"><![CDATA[<p>Bingung bagaimana caranya menginstall file yang mempunya ekstensi <strong>tar.gz</strong> atau <strong>tar.bz2</strong> ? Apasih sebenarnya file <strong>tar.gz</strong> atau <strong>tar.bz2</strong> ini ? Buat teman-teman yang belum tahu, file dengan ekstensi <strong>tar.gz</strong> atau <strong>tar.bz2</strong> ini biasanya adalah sebuah <strong>source code</strong> dari sebuah aplikasi. Masih bingung juga dengan penjelasan barusan ? Kalau iya, sebenarnya distribusi GNU/Linux itu terdapat 2 macam model distribusi packages ? 2 macam model distribusi ? Yups.. 2 macam model distribusi tersebut yaitu :</p>
+
+<ol>
+<li><p> <strong>Binary Packages</strong>, ini dibuat untuk tujuan penggunaan secara umum, maksudnya penggunaan secara umum disini adalah agar dapat dijalankan di semua tipe dan arsitektur komputer. Dan biasanya distribusi ini juga tidak menggunakan opsi-opsi khusus yang terdapat di salah satu tipe atau arsitektur komputer tertentu. Sedangkan yang bisa dikategorikan dengan <strong>Binary Packages</strong> ini adalah semua packages yang ber-ekstensi <strong><em>.deb, </em>.rpm, <em>.tgz dan </em>.txz</strong>, jadi jika menginstall sebuah aplikasi menggunakan repository maka itu berarti kita menginstall dari <strong>Binary Packages</strong> yang memang sudah disediakan untuk kebutuhan komputer kita. :)</p></li>
+<li><p> <strong>Source Packages</strong>, seperti pada namanya :D distribusi ini menyertakan file <strong>source code</strong> asli dari aplikasi-nya. Biasanya pihak pengembang pasti menyertakan atau menyediakan distribusi model ini untuk di download. Sedangkan untuk <strong>end-user</strong>, bisa menggunakan <strong>source code</strong> ini jika para pengembang tidak menyertakan <strong>Binary Packages</strong> untuk distribusi GNU/Linux yang digunakan :) Coba bayangkan jika teman-teman membuat sebuah aplikasi yang targetnya adalah Sistem Operasi GNU/Linux, installer model gimana yang akan teman-teman pilih dengan banyak-nya distribusi GNU/Linux ? Mau buat satu-persatu untuk tiap distribusi ? Ya pasti capek kan :D Cara paling gampang yaitu, sediakan-lah <strong>source code</strong> dari aplikasi teman-teman dan kemudian biarkan komunitas GNU/Linux sendiri yang membuatkan <strong>binary packages</strong> untuk aplikasi kita :D Lebih gampang kan ? :D</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Nah kalau sudah tahu, sekarang bagaimana sih cara install file tersebut ? Cara-nya sih sebenarnya mudah, kita tinggal ekstrak file dengan ekstensi <strong>tar.gz</strong> atau <strong>tar.bz2</strong> tersebut kemudian jalankan perintah <strong>./configure &amp;&amp; make &amp;&amp; make install</strong> :) Eits&hellip;.tapi apa betul caranya cuma seperti itu saja ? Emang betul sih caranya cuma seperti diatas, tapi kalau ingin berhasil dan sukses menjalankan perintah <strong>./configure</strong> dengan sukses ada beberapa langkah lagi yang harus diketahui :D Sebelum mulai melakukan installasi file <strong>tar.gz</strong> atau <strong>tar.bz2</strong>, keperluan dasar yang harus teman-teman sediakan di distribusi GNU/Linux yang teman-teman gunakan adalah <strong>installah paket development</strong> dahulu (teman-teman bisa mengacu ke distro yang teman-teman bagaimana cara menginstall paket development ini). Kalau sudah, mari kita ambil satu contoh aplikasi yang ber-ekstensi <strong>tar.gz</strong> atau <strong>tar.bz2</strong> yaitu <a href="http://www.geany.org/">Geany IDE</a> :) Sekarang coba download-lah dahulu file source dari <a href="http://www.geany.org/">Geany IDE</a> kemudian simpan pada direktori yang sudah teman-teman persiapkan. Jika sudah, langkah pertama yang harus dilakukan yaitu ekstrak-lah file <strong>geany-0.18.1.tar.bz2</strong> dengan perintah <code>tar -xjf geany-0.18.1.tar.bz2</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany]$ tar -xjf geany-0.18.1.tar.bz2 
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany]$ 
+</code></pre>
+
+<p><strong>Jika mempunyai ekstensi tar.gz, ekstrak-lah dengan menggunakan perintah tar -zxf geany-0.18.1.tar.gz. Silahkan tambah opsi v jika ingin melihat proses ekstrak sedang berjalan</strong></p>
+
+<p>Hasil dari perintah diatas kita akan mendapatkan sebuah direktori dengan nama <strong>geany-0.18.1</strong>, sekarang masuk-lah kedalam direktori dengan mengetikkan perintah <code>cd geany-0.18.1</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany]$  ls
+geany-0.18.1.tar.bz2 geany-0.18.1
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany]$  cd geany-0.18.1
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$   
+</code></pre>
+
+<p>Sebelum mulai mengetikkan perintah <code>./configure</code>, coba buka dan bacalah file <strong>README dan INSTALL</strong> untuk mengetahui kira-kira library apa saja yang dibutuhkan oleh <a href="http://www.geany.org/">Geany</a> agar dapat di install dengan sukses pada komputer kita. Dari kedua file <strong>README dan INSTALL</strong> yang kita dapatkan dari <a href="http://www.geany.org/">Geany</a>, kebutuhan yang harus dipenuhi agar <a href="http://www.geany.org/">Geany</a> bisa terinstall dengan sukses dapat dilihat pada file <strong>README</strong> pada bagian <strong>Requirement</strong> yang isinya kurang lebih seperti dibawah ini :</p>
+
+<pre><code>Requirements
+------------
+For compiling Geany yourself, you will need the GTK (&gt;= 2.8.0) libraries
+and header files. You will also need its dependency libraries and header
+files, such as Pango, Glib and ATK. All these files are available at
+http://www.gtk.org.
+
+Furthermore you need, of course, a C compiler and the Make tool; a C++
+compiler is also needed for the required Scintilla library included. The
+GNU versions of these tools are recommended.
+</code></pre>
+
+<p>Seperti kita lihat, ternyata <a href="http://www.geany.org/">Geany</a> membutuhkan library <strong>GTK v2.8.0 keatas, Pango, Glib dan ATK</strong> sebelum kita bisa mengetikkan perintah <code>./configure</code>. Jadi pastikan dahulu semua library tersebut sudah terinstall pada distribusi GNU/Linux yang teman-teman gunakan :D Setelah yakin semua library yang dibutuhkan sudah ter-install dengan baik, sekarang mari kita lihat opsi-opsi apa saja yang didukung oleh <a href="http://www.geany.org/">Geany</a>  dengan mengetikkan perintah <code>./configure --help</code> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$ ./configure --help
+`configure' configures this package to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+  -q, --quiet, --silent   do not print `checking...' messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for `--cache-file=config.cache'
+  -n, --no-create         do not create output files
+    --srcdir=DIR        find the sources in DIR [configure dir or `..']
+
+Installation directories:
+--prefix=PREFIX         install architecture-independent files in PREFIX
+                        [/usr/local]
+--exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+                        [PREFIX]
+
+By default, `make install' will install all the files in
+`/usr/local/bin', `/usr/local/lib' etc.  You can specify
+an installation prefix other than `/usr/local' using `--prefix',
+for instance `--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --bindir=DIR            user executables [EPREFIX/bin]
+  --sbindir=DIR           system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR        program executables [EPREFIX/libexec]
+  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --libdir=DIR            object code libraries [EPREFIX/lib]
+  --includedir=DIR        C header files [PREFIX/include]
+  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+  --infodir=DIR           info documentation [DATAROOTDIR/info]
+  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]
+  --mandir=DIR            man documentation [DATAROOTDIR/man]
+  --docdir=DIR            documentation root [DATAROOTDIR/doc/PACKAGE]
+  --htmldir=DIR           html documentation [DOCDIR]
+  --dvidir=DIR            dvi documentation [DOCDIR]
+  --pdfdir=DIR            pdf documentation [DOCDIR]
+  --psdir=DIR             ps documentation [DOCDIR]
+
+Program names:
+  --program-prefix=PREFIX            prepend PREFIX to installed program names
+  --program-suffix=SUFFIX            append SUFFIX to installed program names
+  --program-transform-name=PROGRAM   run sed PROGRAM on installed program names
+
+System types:
+  --build=BUILD     configure for building on BUILD [guessed]
+  --host=HOST       cross-compile to build programs to run on HOST [BUILD]
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --disable-dependency-tracking  speeds up one-time build
+  --enable-dependency-tracking   do not reject slow dependency extractors
+  --disable-nls           do not use Native Language Support
+  --enable-static[=PKGS]  build static libraries [default=no]
+  --enable-shared[=PKGS]  build shared libraries [default=yes]
+  --enable-fast-install[=PKGS]
+                          optimize for fast installation [default=yes]
+  --disable-libtool-lock  avoid locking (might break parallel builds)
+  --enable-binreloc       compile with binary relocation support
+  --disable-deprecated    Disable deprecated GTK functions.
+  --disable-plugins       compile without plugin support [default=no]
+  --enable-gnu-regex      compile with included GNU regex library [default=no]
+  --enable-socket         enable if you want to detect a running instance
+                          [[default=yes]]
+  --enable-vte            enable if you want virtual terminal support
+                          [[default=yes]]
+  --enable-the-force      enable if you are Luke Skywalker and the force is
+                          with you [[default=no]]
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-pic              try to use only PIC/non-PIC objects [default=use
+                          both]
+  --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
+  --with-vte-module-path=PATH
+                      Path to a loadable libvte [[default=None]]
+
+Some influential environment variables:
+   CC          C compiler command
+   CFLAGS      C compiler flags
+   LDFLAGS     linker flags, e.g. -L if you have libraries in a
+               nonstandard directory 
+   LIBS        libraries to pass to the linker, e.g. -l
+   CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I if
+               you have headers in a nonstandard directory 
+   CPP         C preprocessor
+   CXX         C++ compiler command
+   CXXFLAGS    C++ compiler flags
+   CXXCPP      C++ preprocessor
+   PKG_CONFIG  path to pkg-config utility
+   GTK_CFLAGS  C compiler flags for GTK, overriding pkg-config
+   GTK_LIBS    linker flags for GTK, overriding pkg-config
+   GIO_CFLAGS  C compiler flags for GIO, overriding pkg-config
+   GIO_LIBS    linker flags for GIO, overriding pkg-config
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to the package provider.
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$  
+</code></pre>
+
+<p>Waw&hellip; banyak banget yah, tapi disinilah enaknya kalau kita melakukan installasi melalui <strong>source code</strong>. Kita bisa bermain-main dengan opsi-opsi yang terdapat pada aplikasi yang ingin kita install :) Nah jika teman-teman hanya menjalankan perintah <code>./configure</code> tanpa diikuti dengan parameter dibelakangnya, maka berarti teman-teman menggunakan opsi standart yang disediakan oleh pengembang <a href="http://www.geany.org/">Geany</a>. Wah rugi dong kalau kita pakai opsi yang biasa-biasa saja :D Sedangkan opsi-opsi apa saja yang harus digunakan ini tergantung dengan teman-teman :D Jadi silahkan ber-eksperimen disini (silahkan dicoba-coba saja :) ) Sekarang bagaimana cara-nya untuk menggunakan opsi-opsi tambahan tersebut ? Cara-nya gampang koq, kita tinggal ketik <code>./configure [nama-opsi]</code> kemudian tekan <strong>ENTER</strong> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$ ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --build=i486-slackware-linux 
+checking for a BSD-compatible install... /usr/bin/ginstall -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for style of include used by make... GNU
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking dependency style of gcc... gcc3
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking minix/config.h usability... no
+checking minix/config.h presence... no
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking dependency style of gcc... (cached) gcc3
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking dependency style of g++... gcc3
+checking for g++... /usr/bin/g++
+checking whether ln -s works... yes
+checking whether NLS is requested... yes
+checking for intltool-update... /usr/bin/intltool-update
+checking for intltool-merge... /usr/bin/intltool-merge
+checking for intltool-extract... /usr/bin/intltool-extract
+checking for xgettext... /usr/bin/xgettext
+checking for msgmerge... /usr/bin/msgmerge
+checking for msgfmt... /usr/bin/msgfmt
+checking for gmsgfmt... /usr/bin/msgfmt
+checking for perl... /usr/bin/perl
+checking for perl &gt;= 5.8.1... 5.10.0
+checking for XML::Parser... ok
+checking build system type... i486-slackware-linux-gnu
+checking host system type... i486-slackware-linux-gnu
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/i486-slackware-linux/bin/ld
+checking if the linker (/usr/i486-slackware-linux/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking the maximum length of command line arguments... 1572864
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking for /usr/i486-slackware-linux/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for ar... ar
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for dlfcn.h... yes
+checking whether we are using the GNU C++ compiler... (cached) yes
+checking whether g++ accepts -g... (cached) yes
+checking dependency style of g++... (cached) gcc3
+checking how to run the C++ preprocessor... g++ -E
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/i486-slackware-linux/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking for ld used by g++... /usr/i486-slackware-linux/bin/ld
+checking if the linker (/usr/i486-slackware-linux/bin/ld) is GNU ld... yes
+checking whether the g++ linker (/usr/i486-slackware-linux/bin/ld) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/i486-slackware-linux/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking fnmatch.h usability... yes
+checking fnmatch.h presence... yes
+checking for fnmatch.h... yes
+checking glob.h usability... yes
+checking glob.h presence... yes
+checking for glob.h... yes
+checking regex.h usability... yes
+checking regex.h presence... yes
+checking for regex.h... yes
+checking for stdlib.h... (cached) yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for off_t... yes
+checking for size_t... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for gethostname... yes
+checking for ftruncate... yes
+checking for fgetpos... yes
+checking for mkstemp... yes
+checking for regcomp... yes
+checking for strerror... yes
+checking for strstr... yes
+checking for git... /usr/bin/git
+checking for svn... /usr/bin/svn
+checking whether binary relocation support should be enabled... no
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for GTK... yes
+checking for GIO... yes
+checking for library containing connect... none required
+checking whether the force is with you... no
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking for LC_MESSAGES... yes
+checking libintl.h usability... yes
+checking libintl.h presence... yes
+checking for libintl.h... yes
+checking for ngettext in libc... yes
+checking for dgettext in libc... yes
+checking for bind_textdomain_codeset... yes
+checking for msgfmt... (cached) /usr/bin/msgfmt
+checking for dcgettext... yes
+checking if msgfmt accepts -c... yes
+checking for gmsgfmt... (cached) /usr/bin/msgfmt
+checking for xgettext... (cached) /usr/bin/xgettext
+checking for catalogs to be installed...  be bg ca cs de el en_GB es fi fr gl hu it ja ko lb nl pl pt pt_BR ro ru sl sv tr uk vi zh_CN zh_TW
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating icons/Makefile
+config.status: creating icons/16x16/Makefile
+config.status: creating icons/48x48/Makefile
+config.status: creating icons/scalable/Makefile
+config.status: creating tagmanager/Makefile
+config.status: creating tagmanager/include/Makefile
+config.status: creating scintilla/Makefile
+config.status: creating scintilla/include/Makefile
+config.status: creating src/Makefile
+config.status: creating plugins/Makefile
+config.status: creating po/Makefile.in
+config.status: creating doc/Makefile
+config.status: creating doc/geany.1
+config.status: creating geany.spec
+config.status: creating geany.pc
+config.status: creating doc/Doxyfile
+config.status: creating config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+config.status: executing default-1 commands
+config.status: executing po/stamp-it commands
+----------------------------------------
+Install Geany in                   : /usr
+Using GTK version                  : 2.16.6
+Build with GTK printing support    : yes
+Build with plugin support          : yes
+Use virtual terminal support       : yes
+Use (UNIX domain) socket support   : yes
+
+Configuration is done OK.
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$
+</code></pre>
+
+<p>Jika proses <code>./configure</code> diatas telah selesai, sekarang kita bisa langsung menjalankan perintah <code>make &amp;&amp; make install</code> dengan menggunakan akses <strong>super user</strong> atau <strong>root</strong> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]$ su -
+Password:
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]# make &amp;&amp; make install
+.................
+.................
+.................
+make[2]: Nothing to be done for `install-exec-am'.
+/bin/sh ./mkinstalldirs /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/c99.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/php.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/python.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/pascal.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/latex.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./data/html_entities.tags /tmp/id-slack/package-geany/usr/share/geany; \
+    /usr/bin/ginstall -c -m 644 ./COPYING /tmp/id-slack/package-geany/usr/share/geany/GPL-2; \
+    for file in ./data/*; do \
+      if test -f $file; then \
+        /usr/bin/ginstall -c -m 644 $file /tmp/id-slack/package-geany/usr/share/geany/; \
+      fi \
+    done
+mkdir -p -- /tmp/id-slack/package-geany/usr/share/geany
+test -z "/usr/share/applications" || /usr/bin/mkdir -p "/tmp/id-slack/package-geany/usr/share/applications"
+ /usr/bin/ginstall -c -m 644 geany.desktop '/tmp/id-slack/package-geany/usr/share/applications'
+test -z "/usr/lib/pkgconfig" || /usr/bin/mkdir -p "/tmp/id-slack/package-geany/usr/lib/pkgconfig"
+ /usr/bin/ginstall -c -m 644 geany.pc '/tmp/id-slack/package-geany/usr/lib/pkgconfig'
+make[2]: Leaving directory `/tmp/id-slack/geany-0.18.1'
+make[1]: Leaving directory `/tmp/id-slack/geany-0.18.1'
+martinus@martinusadyh:[/media/data/DOWNLOADS/geany/geany-0.18.1]# 
+</code></pre>
+
+<p>Nah selesai sudah proses installasi file <strong>tar.gz</strong> atau <strong>tar.bz2</strong> , dan sekarang kita sudah bisa menggunakan <a href="http://www.geany.org/">Geany</a> untuk keperluan <em>membuat surat cinta</em> :) Mudah bukan? Sebenarnya installasi dari source code tidak sesulit seperti yang dibayangkan, tetapi kita tetap perlu ketelitian tingkat tinggi untuk mengumpulkan library yang dibutuhkan :D Biasanya pula, kita udah terlanjur <strong>blank mood</strong> (baca malas) :D kalau ternyata library yang dibutuhkan itu banyak sekali :D (capek nyari library soalnya) Terlepas dari semua itu, proses installasi dari source membuat kita <strong>sedikit lebih dalam</strong> bermain-main dengan GNU/Linux :D</p>
+
+<p>Akhir kata, tulisan ini adalah murni asumsi dari pengalaman saya pribadi loh ya selama saya bermain-main dengan GNU/Linux. Jadi kalau misalkan teman-teman melihat ada yang salah, silahkan di kritik harusnya bagimana :D Maklum saya juga bukan programmer GNU C/C++ :D, saya juga sedang belajar menjadi <strong>pembuat binary packages</strong> yang benar :D Dan oh iya, buat teman-teman yang ingin tahu lebih dalam tentang semua proses dibalik layar sebelum kita bisa menjalankan perintah-perintah diatas, dibawah ini ada beberapa link dari wikipedia yang sudah saya kumpulkan untuk keperluan pribadi :D Jadi kalau kurang jelas, monggo dilihat referensi yang saya gunakan ya :D</p>
+
+<p>Happy slacking all :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li> <a href="http://www.geany.org/">Geany IDE</a></li>
+<li> <a href="http://www.google.co.id/search?hl=id&amp;client=firefox-a&amp;hs=9iw&amp;rls=org.mozilla:en-US:official&amp;ei=9iKtS-WtO4K8rAfs5fymAQ&amp;sa=X&amp;oi=spell&amp;resnum=0&amp;ct=result&amp;cd=1&amp;ved=0CAUQBSgA&amp;q=Instalasi+File+tar.gz+dan+tar.bz2&amp;spell=1">Installasi tar.gz dan tar.bz2 by Mbah Google</a></li>
+<li> <a href="http://en.wikipedia.org/wiki/Autoconf">Wikipedia Autoconf</a></li>
+<li> <a href="http://en.wikipedia.org/wiki/Make_%28software%29">Wikipedia Make (software)</a></li>
+<li> <a href="http://en.wikipedia.org/wiki/Configure_script">Wikipedia Configure Script</a></li>
+<li> <a href="http://en.wikipedia.org/wiki/Autotools">Wikipedia Autotools</a></li>
+<li> <a href="http://www.openismus.com/documents/linux/automake/automake.shtml">Tutorial Automake</a></li>
+<li> <a href="http://www.amath.washington.edu/~lf/tutorials/autoconf/toolsmanual_toc.html#TOC34">Developing software with GNU</a></li>
+<li> <a href="http://www.eng.hawaii.edu/Tutor/Make/">Tutorial Make</a></li>
+<li>. <a href="http://www.freebsd.org/doc/handbook/ports-overview.html">FreeBSD Port Overview</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

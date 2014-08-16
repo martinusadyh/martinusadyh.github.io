@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: java | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Step by step Apache Tomcat SSL Configuration]]></title>
+    <link href="http://martinusadyh.web.id/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/"/>
+    <updated>2013-04-23T12:22:15+07:00</updated>
+    <id>http://martinusadyh.web.id/2013/04/23/step-by-step-apache-tomcat-ssl-configuration</id>
+    <content type="html"><![CDATA[<p>Sedang bingung bagaimana mengaktifkan fitur <strong>SSL <em>(Secure Sockets Layer)</em></strong> pada <a href="http://tomcat.apache.org/">Apache Tomcat</a> ? Jika iya, pada tulisan kali ini mari kita bahas bagaimana mengkonfigurasi <strong>Apache Tomcat</strong> yang kita gunakan agar bisa mendukung fitur <strong>SSL</strong> ini. Pada tulisan kali ini sistem operasi yang digunakan adalah <strong>GNU/Linux Ubuntu 12.04</strong> sehingga semua proses konfigurasi dan installasi aplikasi akan mengikuti cara kerja dan struktur direktori milik Ubuntu :) Supaya lebih memudahkan, maka tulisan kali ini akan dibagi menjadi beberapa tahapan yang kurang lebih sebagai berikut :</p>
+
+<ol>
+<li> <strong>Installasi Java Development Kit</strong>,
+Sebelum melakukan installasi <strong>JDK</strong>, ada baiknya kita mengecek dahulu apakah di sistem kita sebelumnya sudah terinstall <strong>java (baik JRE maupun JDK)</strong> dengan versi yang lain. Pastikan bahwa kita hanya mempunyai 1 versi <strong>java</strong> saja yang terinstall, jalankan perintah dibawah ini untuk melakukan pengecekan versi <strong>Java</strong> yang terinstall pada sistem kita :
+<code>
+server@pangrango# dpkg --get-selections | grep jdk
+</code>
+<strong>Catatan</strong>: Jika ditemukan, hapus semua dengan menggunakan perintah sudo apt-get remove <em>nama-package</em></li>
+</ol>
+
+
+<p>Dan pastikan juga didalam direktori <code>/usr/lib/jvm/</code> kosong, semua proses ini kita lakukan supaya kita tidak bingung apakah certificate kita terbaca atau tidak oleh <strong>Apache Tomcat</strong>. Jika sudah sekarang lakukan installasi java dengan mengetikkan perintah <code>sudo apt-get install openjdk-7-jdk</code>, dan kalau sudah lakukan pengecekkan dengan mengetikkan perintah <code>java -version</code> atau <code>javac -version</code>.</p>
+
+<!-- more -->
+
+
+<ol>
+<li> <strong>Pembuatan Certificate</strong>
+Untuk membuat <strong>certificate</strong> kita bisa menggunakan perintah <code>keytool</code>, yang perlu diperhatikan pada langkah ini adalah isikan kolom isian <strong>What is your first and last name?</strong> dengan <strong>hostname</strong> tempat <strong>Apache Tomcat</strong> di install. Cara paling mudah untuk mengetahui <strong>hostname</strong> adalah dengan mengetikkan perintah <code>hostname</code> seperti dibawah ini :
+<code>
+server@pangrango:~$ hostname
+pangrango
+server@pangrango:~$
+</code></li>
+</ol>
+
+
+<p>Setelah mengetahui <strong>hostname</strong> kita, sekarang mari kita buat sebuah certificate dengan menjalankan perintah <code>keytool -genkey -alias tomcat -keypass changeit -keyalg RSA -validity 730</code> seperti dibawah ini :
+<code>
+server@pangrango:~$ keytool -genkey -alias tomcat -keypass changeit -keyalg RSA -validity 730
+Enter keystore password:  
+Re-enter new password:
+What is your first and last name?
+What is the name of your organizational unit?
+What is the name of your organization?
+What is the name of your City or Locality?
+What is the name of your State or Province?
+What is the two-letter country code for this unit?
+Is CN=pangrango, OU=s2gis-dev, O=S2GIS, L=Jakarta, ST=Jakarta, C=ID correct?
+server@pangrango:~$
+</code>
+<strong>Catatan</strong>: Kolom isian keystore password dan keypass harus sama</p>
+
+<p>Proses pembuatan certificate sudah selesai, sekarang mari kita import dengan menjalankan perintah seperti dibawah ini :
+<code>
+server@pangrango:~$ keytool -export -alias tomcat -keypass changeit -file /tmp/server.crt
+Enter keystore password:  
+Certificate stored in file
+server@pangrango:~$
+</code></p>
+
+<p>Dan langkah terakhir yang harus kita lakukan adalah menambahkan certificate yang sudah kita buat kedalam <strong>keystore</strong> di <strong>java</strong> dengan mengetikkan perintah seperti dibawah ini :
+&#8220;`
+server@pangrango:~$ sudo keytool -import -file /tmp/server.crt -keypass changeit -keystore /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/cacerts
+Enter keystore password:<br/>
+Owner: CN=pangrango, OU=s2gis-dev, O=S2GIS, L=Jakarta, ST=Jakarta, C=ID
+Issuer: CN=pangrango, OU=s2gis-dev, O=S2GIS, L=Jakarta, ST=Jakarta, C=ID
+Serial number: 4299a11a
+Valid from: Tue Apr 23 09:41:00 WIT 2013 until: Thu Apr 23 09:41:00 WIT 2015
+Certificate fingerprints:
+     MD5:  B5:C9:09:67:8C:F0:31:DE:C2:66:94:CA:7E:E7:94:43
+     SHA1: E4:4A:BD:A3:90:C5:10:C6:6B:88:64:5C:C8:FA:E6:9F:29:31:51:A9
+     SHA256: 80:FA:D2:9F:CC:FF:25:79:1A:4D:16:31:72:98:40:F8:D3:72:B5:C8:4A:65:08:0E:52:CE:36:3B:C5:DF:4C:F6
+     Signature algorithm name: SHA256withRSA
+     Version: 3</p>
+
+<p>Extensions:</p>
+
+<h1>1: ObjectId: 2.5.29.14 Criticality=false</h1>
+
+<p>SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 24 82 41 37 6B 3E 76 F7   FE C2 89 35 02 44 F1 37  $.A7k>v&hellip;.5.D.7
+0010: 08 68 F1 EE                                        .h..
+]
+]</p>
+
+<p>Trust this certificate? <a href="yes">no</a>:  yes
+Certificate was added to keystore
+server@pangrango:~$
+&#8220;`</p>
+
+<ol>
+<li> <strong>Installasi dan Konfigurasi SSL Apache Tomcat</strong>
+Installasi Java dan pembuatan certificate sudah selesai, sekarang mari kita install <strong>Apache Tomcat</strong>-nya dengan mengetikkan perintah <code>sudo apt-get install tomcat7</code>. Tunggulah beberapa saat hingga proses installasi selesai, jika sudah selesai matikan service tomcatnya dengan perintah <code>sudo /etc/init.d/tomcat7 stop</code> kemudian copy-lah file <code>.keystore</code> ke direktori <code>/usr/share/tomcat7/</code> dengan perintah seperti berikut :</li>
+</ol>
+
+
+<pre><code>server@pangrango:~$ sudo cp .keystore /usr/share/tomcat7/
+server@pangrango:~$ ls -al /usr/share/tomcat7
+total 36
+drwxr-xr-x   4 root root  4096 Mar 27 15:52 .
+drwxr-xr-x 275 root root 12288 Mar 27 13:49 ..
+drwxr-xr-x   2 root root  4096 Mar 27 13:49 bin
+-rw-r--r--   1 root root    39 Jul 13  2012 defaults.md5sum
+-rw-r--r--   1 root root  1960 Jul 13  2012 defaults.template
+-rw-r--r--   1 root root  2247 Mar 27 15:52 .keystore
+drwxr-xr-x   2 root root  4096 Mar 27 13:49 lib 
+</code></pre>
+
+<p>Jika sudah sekarang editlah file <code>/var/lib/tomcat7/conf/server.xml</code> dan carilah baris dibawah ini :</p>
+
+<p>&#8220;`xml</p>
+
+<!-- 
+    <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+               maxThreads="150" scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS" />
+&#8211;>
+
+
+<pre><code>
+kemudian edit hingga menjadi seperti dibawah ini :
+</code></pre>
+
+<pre><code>&lt;Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" SSLEnabled="true"
+           maxThreads="150" scheme="https" secure="true"
+           clientAuth="false" sslProtocol="TLS" 
+           keystoreFile="/usr/share/tomcat7/.keystore"
+           keystorePass="changeit" /&gt;
+</code></pre>
+
+<pre><code>
+
+Setelah melakukan perubahan diatas, simpan dan jalankan **Apache Tomcat**-nya dengan mengetikkan perintah `sudo /etc/init.d/tomcat7 start &amp;&amp; tail -f /var/log/tomcat7/catalina.out` seperti dibawah ini :
+</code></pre>
+
+<p>server@pangrango:~$ sudo /etc/init.d/tomcat7 start &amp;&amp; tail -f /var/log/tomcat7/catalina.out
+ * Starting Tomcat servlet engine tomcat7                                                                                                                        [ OK ]
+Mar 27, 2013 4:01:36 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Mar 27, 2013 4:01:36 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.26
+Mar 27, 2013 4:01:36 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /var/lib/tomcat7/webapps/ROOT
+Mar 27, 2013 4:01:37 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler [&ldquo;http-bio-8080&rdquo;]
+Mar 27, 2013 4:01:37 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 1040 ms
+&#8220;`</p>
+
+<p>Dan sekarang bukalah sebuah browser dan arahkan ke alamat <code>https://localhost:8443</code>, jika tidak ada kesalahan maka kita akan melihat tampilan seperti screenshot dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/blog-images/Java_NetBeans/StepbystepApacheTomcatSSLConfiguration/TampilanAwalHTTPS.png' width='300' height='168' title='Tampilan Awal Ketika Membuka Halaman Https'><span class='caption-text'>Tampilan Awal Ketika Membuka Halaman Https</span></span></p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/blog-images/Java_NetBeans/StepbystepApacheTomcatSSLConfiguration/TambahkanSecurityException.png' width='300' height='168' title='Tambahkan Security Exception'><span class='caption-text'>Tambahkan Security Exception</span></span></p>
+
+<p><span class='caption-wrapper'><img class='caption' src='/images/blog-images/Java_NetBeans/StepbystepApacheTomcatSSLConfiguration/SSLSukses.png' width='300' height='168' title='Konfigurasi SSL Berhasil'><span class='caption-text'>Konfigurasi SSL Berhasil</span></span></p>
+
+<p>Bagaimana mudah bukan ? :)</p>
+
+<p><strong>Referensi-referensi:</strong></p>
+
+<ol>
+<li><p> <a href="http://tomcat.apache.org/tomcat-6.0-doc/ssl-howto.html">SSL Configuration How-To</a></p></li>
+<li><p> <a href="http://java.dzone.com/articles/setting-ssl-tomcat-5-minutes">Setting SSL Tomcat 5 minutes</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Bermain dengan Apache Solr dan Nutch]]></title>
+    <link href="http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch/"/>
+    <updated>2013-03-02T00:38:10+07:00</updated>
+    <id>http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch</id>
+    <content type="html"><![CDATA[<p>Sudah lama saya tidak menulis hal-hal yang berkaitan dengan dunia TI, dan akhirnya setelah cukup lama beristirahat akhirnya malam ini saya mencoba menuliskan pengalaman bermain-main dengan <a href="http://lucene.apache.org/solr/">Apache SOLR</a> dan <a href="http://nutch.apache.org/">Apache Nutch</a>. Sebenarnya kedua mainan ini merupakan barang lama, tapi bagi saya merupakan barang baru dikarenakan ada teman yang minta tolong dikonfigurasikan menggunakan kedua mainan ini dan ternyata mengkombinasikan 2 mainan ini tidak semudah seperti yang dibayangkan, maka akhirnya saya jadikan sebuah catatan tersendiri hanya sebagai pengingat saja :D</p>
+
+<p>Nah untuk yang belum tahu apasih sebenarnya <a href="http://lucene.apache.org/solr/">Apache SOLR</a> ini, bahasa mudahnya <strong>SOLR</strong> ini adalah sebuah aplikasi mesin pencari seperti <a href="http://google.com">Google</a> yang ditulis menggunakan bahasa pemrograman java. Dan berikut ini adalah penjelasan yang lebih lengkap diambil dari web resmi-nya <a href="http://lucene.apache.org/solr/">Apache SOLR</a>:</p>
+
+<blockquote><p>SolrTM is the popular, blazing fast open source enterprise search platform from the Apache LuceneTM project. Its major features include powerful full-text search, hit highlighting, faceted search, near real-time indexing, dynamic clustering, database integration, rich document (e.g., Word, PDF) handling, and geospatial search. Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world&rsquo;s largest internet sites.
+Solr is written in Java and runs as a standalone full-text search server within a servlet container such as Tomcat. Solr uses the Lucene Java search library at its core for full-text indexing and search, and has REST-like HTTP/XML and JSON APIs that make it easy to use from virtually any programming language. Solr&rsquo;s powerful external configuration allows it to be tailored to almost any type of application without Java coding, and it has an extensive plugin architecture when more advanced customization is required.</p></blockquote>
+
+<p>Sedangkan <a href="http://nutch.apache.org/">Apache Nutch</a> adalah sebuah aplikasi <strong>web-crawler</strong> yang ditulis menggunakan bahasa pemrograman java juga, dan penjelasan lengkapnya adalah seperti berikut ini :</p>
+
+<blockquote><p>Apache Nutch is an open source web-search software project. Stemming from <a href="http://lucene.apache.org/java/">Apache Lucene</a>, it now builds on Apache Solr adding web-specifics, such as a crawler, a link-graph database and parsing support handled by Apache Tika for HTML and and array other document formats.</p></blockquote>
+
+<p>Apache Nutch can run on a single machine, but gains a lot of its strength from running in a <a href="http://hadoop.apache.org/">Hadoop cluster</a></p>
+
+<p>The system can be enhanced (eg other document formats can be parsed) using a highly flexible, easily extensible and thoroughly maintained plugin infrastructure.</p>
+
+<p>Pada tulisan kali ini, kita akan mencoba membangun sebuah mesin pencari menggunakan <a href="http://lucene.apache.org/solr/">Apache SOLR</a> dan untuk <strong>web-crawler</strong>-nya menggunakan <a href="http://nutch.apache.org/">Apache Nutch</a>. Dikarenakan percobaan menggunakan versi terbaru dari kedua aplikasi ini bermasalah, maka pada tulisan kali ini kita akan menggunakan :</p>
+
+<ol>
+<li><p> <a href="http://apache.mirrors.tds.net/lucene/solr/3.6.2/apache-solr-3.6.2.tgz">Apache Solr 3.6.2</a> dan</p></li>
+<li><p> <a href="http://mirror.cc.columbia.edu/pub/software/apache/nutch/1.6/apache-nutch-1.6-bin.zip">Apache Nutch 1.6</a></p></li>
+</ol>
+
+
+<p>Langkah pertama yang perlu dilakukan adalah pastikan bahwa Java telah terinstall pada komputer atau laptop anda, jika sudah konfigurasilah <code>environment variable JAVA_HOME</code> dahulu. Untuk mengecek apakah <code>JAVA_HOME</code> sudah terkonfigurasi dengan benar atau tidak, jalankan perintah <code>echo $JAVA_HOME</code> di terminal. Jika menampilkan direktori tempat dimana java terinstall, maka konfigurasi <code>JAVA_HOME</code> sudah benar. Selanjutnya adalah downloadlah <a href="http://lucene.apache.org/solr/">Apache Solr</a> dari link diatas, kemudian ekstrak ke sebuah direktori hingga kita mendapatkan direktori <strong>apache-solr-3.6.2</strong> Sekarang masuklah kedalam direktori <code>apache-solr-3.6.2/example</code> dan jalankan perintah <code>java -jar start.jar</code> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp/apache-solr-3.6.2/example$ java -jar start.jar
+&hellip;
+&hellip;
+&hellip;
+Mar 01, 2013 10:23:43 PM org.apache.solr.servlet.SolrUpdateServlet init
+INFO: SolrUpdateServlet.init() done
+2013-03-01 22:23:43.638:INFO::Started SocketConnector@0.0.0.0:8983
+[/plain]</p>
+
+<!-- more -->
+
+
+<p>Jika sudah, sekarang bukalah alamat <a href="http://localhost:8983/solr/admin/">http://localhost:8983/solr/admin/</a> dan jika tidak ada masalah, maka kita akan melihat tampilan seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_2418&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=389"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/HalamanDepanApacheSolr-300x113.png" alt="Halaman Depan Apache Solr" /></a> Halaman Depan Apache Solr[/caption]</p>
+
+<p>Setelah <a href="http://lucene.apache.org/solr/">Apache Solr</a> berhasil kita jalankan, sekarang waktunya bermain-main dengan <a href="http://nutch.apache.org/">Apache Nutch</a>. Downloadlah <strong>Apache Nutch</strong> pada link diatas kemudian ekstraklah hingga kita mendapatkan sebuah direktori <strong>apache-nutch-1.6</strong>, sekarang editlah file <code>apache-nutch-1.6/conf/nuch-site.xml</code> menjadi seperti dibawah ini :</p>
+
+<pre><code>&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;http.agent.name&lt;/name&gt;
+        &lt;value&gt;SSG Web Crawler&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p><strong>Konfigurasi ini bertujuan untuk memberi nama crawler yang akan kita gunakan nanti-nya.</strong></p>
+
+<p>Untuk memberi tahu <a href="http://nutch.apache.org/">Apache Nutch</a> url mana saja yang harus di <strong>crawling</strong>, sekarang buatlah sebuah direktori dengan nama <strong>urls</strong> didalam direktori <strong>apache-nutch-1.6</strong> kemudian buatlah sebuah file dengan nama <code>seed.txt</code> dan daftarkan url apa saja yang ingin di crawling seperti contohnya adalah :</p>
+
+<pre><code>http://kompas.com/
+http://detik.com/
+http://goal.com/
+</code></pre>
+
+<p>Jika sudah, masih ada 1 konfigurasi file yang perlu kita edit yaitu file <code>apache-nutch-1.6/conf/regex-urlfilter.txt</code>. Bukalah file tersebut dan editlah baris paling bawah sendiri menjadi seperti dibawah ini :</p>
+
+<pre><code># accept anything else
++^http://([a-z0-9]*\.)*kompas.com/
++^http://([a-z0-9]*\.)*detik.com/
++^http://([a-z0-9]*\.)*goal.com/
+</code></pre>
+
+<p>Sekarang mari kita test apakah semua url yang sudah kita daftarkan berhasil di <strong>crawling</strong> oleh <a href="http://nutch.apache.org/">Apache Nutch</a> dengan menjalankan perintah <code>bin/nutch crawl urls -dir crawl -depth 3 -topN 5</code> pada direktori <strong>apache-nutch-1.6</strong> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp/apache-nutch-1.6$ bin/nutch crawl urls -dir crawl -depth 3 -topN 5
+solrUrl is not set, indexing will be skipped&hellip;
+crawl started in: crawl
+rootUrlDir = urls
+threads = 10
+depth = 3
+solrUrl=null
+topN = 5
+Injector: starting at 2013-03-01 23:34:15
+Injector: crawlDb: crawl/crawldb
+Injector: urlDir: urls
+Injector: Converting injected urls to crawl db entries.
+Injector: total number of urls rejected by filters: 0
+Injector: total number of urls injected after normalization and filtering: 3
+Injector: Merging injected urls into crawl db.
+&hellip;
+&hellip;
+&hellip;
+[/plain]</p>
+
+<p>Tunggulah beberapa saat, proses <strong>crawling</strong> ini bisa sangat lama tergantung dengan banyak-nya url yang ingin di <strong>crawling</strong> dan cepatnya koneksi internet yang kita gunakan :D Sampai disini <a href="http://lucene.apache.org/solr/">Apache Solr</a> dan <a href="http://nutch.apache.org/">Apache Nutch</a> berjalan sesuai dengan harapan kita, dan sekarang waktunya untuk melakukan integrasi untuk kedua-nya. Jadi apa yang akan di <strong>crawling</strong> oleh <a href="http://nutch.apache.org/">Apache Nutch</a> bisa kita cari di <a href="http://lucene.apache.org/solr/">Apache Solr</a>.</p>
+
+<p>Nah untuk mulai proses integrasi ini, sekarang copykanlah dahulu file <code>apache-nutch-1.6/conf/schema.xml</code> ke direktori <code>apache-solr-3.6.2/example/solr/conf</code> dengan menggunakan perintah <code>cp</code> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp$ cp apache-nutch-1.6/conf/schema.xml apache-solr-3.6.2/example/solr/conf/
+martinusadyh@artivisi:/tmp$
+[/plain]</p>
+
+<p>Jika sudah sekarang editlah file <code>apache-solr-3.6.2/example/solr/conf/solrconfig.xml</code> dan kemudian editlah baris dibawah ini :</p>
+
+<pre><code>  &lt;requesthandler name="/select" class="solr.SearchHandler"&gt;
+
+     &lt;lst name="defaults"&gt;
+       &lt;str name="echoParams"&gt;explicit&lt;/str&gt;
+       &lt;int name="rows"&gt;10&lt;/int&gt;
+       &lt;str name="df"&gt;text&lt;/str&gt;
+     &lt;/lst&gt;
+</code></pre>
+
+<p>menjadi seperti dibawah ini :</p>
+
+<pre><code>  &lt;requesthandler name="/select" class="solr.SearchHandler"&gt;
+
+     &lt;lst name="defaults"&gt;
+       &lt;str name="echoParams"&gt;explicit&lt;/str&gt;
+       &lt;int name="rows"&gt;10&lt;/int&gt;
+       &lt;str name="df"&gt;content&lt;/str&gt; 
+     &lt;/lst&gt;
+</code></pre>
+
+<p>Setelah mengedit file <code>apache-solr-3.6.2/example/solr/conf/solrconfig.xml</code> sekarang editlah juga file <code>apache-solr-3.6.2/example/solr/conf/schema.xml</code> dan carilah baris seperti dibawah ini :</p>
+
+<pre><code>        &lt;field indexed="true" stored="false" type="string" name="host"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="true" type="url" name="url" required="true"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="false" type="text" name="content"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="true" type="text" name="title"&gt;&lt;/field&gt;
+        &lt;field indexed="false" stored="true" type="string" name="cache"&gt;&lt;/field&gt;
+        &lt;field indexed="false" stored="true" type="date" name="tstamp"&gt;&lt;/field&gt;
+</code></pre>
+
+<p>Dan kemudian editlah menjadi seperti dibawah ini :</p>
+
+<pre><code>        &lt;field indexed="true" stored="false" type="string" name="host"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="true" type="url" name="url" required="true"&gt;&lt;/field&gt;
+        &lt;field indexed="true" stored="true" type="text" name="content"&gt;&lt;/field&gt; 
+        &lt;field indexed="true" stored="true" type="text" name="title"&gt;&lt;/field&gt;
+        &lt;field indexed="false" stored="true" type="string" name="cache"&gt;&lt;/field&gt;
+        &lt;field indexed="false" stored="true" type="date" name="tstamp"&gt;&lt;/field&gt;
+</code></pre>
+
+<p>Jika sudah, sekarang waktunya kita untuk melakukan pengetesan apakah hasil <strong>crawling</strong> dari <a href="http://nutch.apache.org/">Apache Nutch</a> bisa ke index oleh <a href="http://lucene.apache.org/solr/">Apache Solr</a>. Yang pertama perlu lakukan adalah menjalankan <strong>Solr</strong>-nya dahulu dengan perintah <code>java -jar start.jar</code> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp/apache-solr-3.6.2/example$ java -jar start.jar
+&hellip;.
+&hellip;.
+&hellip;.
+INFO: JNDI not configured for solr (NoInitialContextEx)
+Mar 02, 2013 12:14:30 AM org.apache.solr.core.SolrResourceLoader locateSolrHome
+INFO: solr home defaulted to &lsquo;solr/&rsquo; (could not find system property or JNDI)
+Mar 02, 2013 12:14:30 AM org.apache.solr.servlet.SolrUpdateServlet init
+INFO: SolrUpdateServlet.init() done
+2013-03-02 00:14:30.581:INFO::Started SocketConnector@0.0.0.0:8983
+[/plain]</p>
+
+<p>Setelah <a href="http://lucene.apache.org/solr/">Apache Solr</a>-nya berjalan, sekarang masuk ke dalam direktori <strong>apache-nutch-1.6</strong> dan jalankan perintah <code>bin/nutch solrindex http://127.0.0.1:8983/solr/ crawl/crawldb -linkdb crawl/linkdb crawl/segments/*</code> seperti dibawah ini :
+[plain]
+martinusadyh@artivisi:/tmp/apache-nutch-1.6$ bin/nutch solrindex <a href="http://127.0.0.1:8983/solr/">http://127.0.0.1:8983/solr/</a> crawl/crawldb -linkdb crawl/linkdb crawl/segments/*
+SolrIndexer: starting at 2013-03-02 00:23:17
+SolrIndexer: deleting gone documents: false
+SolrIndexer: URL filtering: false
+SolrIndexer: URL normalizing: false
+Indexing 11 documents
+SolrIndexer: finished at 2013-03-02 00:24:04, elapsed: 00:00:47
+martinusadyh@artivisi:/tmp/apache-nutch-1.6$
+[/plain]</p>
+
+<p>Jika sudah, mari kita mengecek-nya dengan memasukkan <strong>query string</strong> seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_2433&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=390"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/Coba-Search-Dari-File-Seed-300x140.png" alt="Coba Search Dari File Seed" /></a> Coba Search Dari File Seed[/caption]</p>
+
+<p>Dan inilah hasil pencarian yang kita lakukan :
+[caption id=&ldquo;attachment_2434&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=391"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/Hasil-Pencarian-Dari-Nutch-300x173.png" alt="Hasil Pencarian Dari Nutch" /></a> Hasil Pencarian Dari Nutch[/caption]</p>
+
+<p>Hmm&hellip; bagaimana, mudah bukan ? :)</p>
+
+<p><strong>Referensi-referensi:</strong></p>
+
+<ol>
+<li><p> <a href="http://lucene.apache.org/solr/">Apache Solr</a></p></li>
+<li><p> <a href="http://nutch.apache.org/">Apache Nutch</a></p></li>
+<li><p> <a href="http://blog.building-blocks.com/building-a-search-engine-with-nutch-and-solr-in-10-minutes">Building a Search Engine with Nutch and Solr in 10 Minutes</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Konfigurasi User Web Applications Pada Apache Tomcat]]></title>
+    <link href="http://martinusadyh.web.id/2012/12/18/konfigurasi-user-web-applications-pada-apache-tomcat/"/>
+    <updated>2012-12-18T23:27:09+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/12/18/konfigurasi-user-web-applications-pada-apache-tomcat</id>
+    <content type="html"><![CDATA[<p>Untuk yang sering bermain dengan <a href="http://httpd.apache.org/">Apache HTTPD</a> mungkin sudah tidak asing dengan <a href="http://httpd.apache.org/docs/2.2/mod/mod_userdir.html">module mod_userdir</a>, modul ini berfungsi supaya aplikasi web kita tidak perlu di simpan di direktori <code>/var/www</code> sesuai konfigurasi standart milik <strong>Apache</strong>, melainkan di direktori <code>~/public_html</code>. Keuntungan yang kita dapat adalah, kita tidak perlu merubah hak akses direktori <code>/var/www</code> ataupun menambahkan user kita kedalam group milik <strong>Apache</strong>. Dengan model seperti ini, proses <em>development</em> kita menjadi lebih mudah karena semuanya dilakukan pada direktori <code>/home</code> kita sendiri :)</p>
+
+<p>Nah tahukah kalian bahwa ternyata <a href="http://tomcat.apache.org/">Apache Tomcat</a> juga memiliki fitur yang sama seperti saudara-nya <strong>Apache HTTPD</strong> ? Jika di <strong>Apache HTTPD</strong> nama module-nya adalah <a href="http://httpd.apache.org/docs/2.2/mod/mod_userdir.html">mod_userdir</a>, maka pada <strong>Apache Tomcat</strong> dikenal dengan nama <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/host.html#User_Web_Applications">User Web Applications</a>.</p>
+
+<p>Untuk mencoba-nya installah dahulu <a href="http://tomcat.apache.org/">Apache Tomcat</a> pada komputer/laptop anda, dan konfigurasikan supaya setiap kali komputer/laptop restart <strong>Apache Tomcat</strong> bisa langsung berjalan. Untuk pengguna distribusi <strong>Ubuntu</strong> kita bisa menginstall dengan mengetikkan perintah :
+[plain]
+martinusadyh@artivisi:~$ sudo apt-get install tomcat7
+[/plain]</p>
+
+<!-- more -->
+
+
+<p>Sebelum melakukan pengeditan, mari kita stop dahulu service tomcat yang secara otomatis dijalankan ketika kita melakukan proses installasi dengan perintah seperti berikut :
+[plain]
+martinusadyh@artivisi:~$ sudo /etc/init.d/tomcat7 stop
+[/plain]</p>
+
+<p>Jika sudah, sekarang bukalah file <code>/etc/tomcat7/server.xml</code> dan carilah baris kode seperti dibawah ini :</p>
+
+<pre><code>      &lt;host unpackwars="true" name="localhost" autodeploy="true" appbase="webapps"&gt;
+</code></pre>
+
+<p>Kemudian edit-lah hingga menjadi seperti dibawah ini :</p>
+
+<pre><code>      &lt;host unpackwars="true" name="localhost" autodeploy="true" appbase="webapps"&gt;
+
+      &lt;listener classname="org.apache.catalina.startup.UserConfig" userclass="org.apache.catalina.startup.PasswdUserDatabase" directoryname="public_webapps" homebase="/home"&gt;&lt;/listener&gt;
+</code></pre>
+
+<p>Sekarang buatlah direktori <code>public_webapps</code> di <code>home</code> dengan mengetikkan perintah <code>mkdir ~/public_webapps</code>, untuk mengetest-nya buatlah sebuah file dengan nama <code>index.jsp</code> dan pastekan kode dibawah ini :</p>
+
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Hello World !!&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;h1&gt;Hello World !!&lt;/h1&gt;
+        Today is : &lt;%= new java.util.Date().toString() %&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Jika sudah, sekarang jalankan tomcat-nya dengan mengetikkan perintah :
+[plain]
+martinusadyh@artivisi:~$ sudo /etc/init.d/tomcat7 start
+[/plain]</p>
+
+<p>Dan bila tidak ada pesan kesalahan, maka coba buka browser dan arahkan pada alamat <code>http://localhost:8080/~namauser</code> kemudian tekan <code>ENTER</code>. Jika tidak ada kesalahan, maka kita akan melihat tampilan seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_2094&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/2012/12/18/konfigurasi-user-web-applications-pada-apache-tomcat/tomcat-user-web-applications/"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/12/Tomcat-User-Web-Applications-300x246.png" alt="Tomcat User Web Applications" /></a> Tomcat User Web Applications[/caption]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Column Selection Mode In NetBeans IDE]]></title>
+    <link href="http://martinusadyh.web.id/2012/12/02/column-selection-mode-in-netbeans-ide/"/>
+    <updated>2012-12-02T07:23:08+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/12/02/column-selection-mode-in-netbeans-ide</id>
+    <content type="html"><![CDATA[<p>Karena dikomporin teman yang menunjukkan dukungan <strong>Column Selection</strong> di text editor <strong>Sublime</strong>, akhirnya iseng-iseng apakah <a href="http://netbeans.org/">NetBeans IDE</a> mempunyai fitur yang sama dan ternyata ada loh :) Untuk mengaktifkan <strong>Column Mode Selection</strong> di <strong>NetBeans</strong>, tekanlah kombinasi tombol <code>CTRL+SHIFT+R</code> atau tekanlah tombol dengan gambar <a href="http://martinusadyh.web.id/wp-content/uploads/2012/12/ClickToEnableColumnModeEditing.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/12/ClickToEnableColumnModeEditing.png" alt="" /></a> di <code>source mode</code>. Dan dibawah ini adalah tampilan <strong>Column Selection</strong> di NetBeans IDE.</p>
+
+<p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=188"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/12/ColumnModeSelectionInAction.png" alt="" /></a></p>
+
+<p>Fitur ini baru saya coba di <strong>NetBeans IDE v7.2</strong> :) Jadi untuk versi dibawah ini, saya belum tahu :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Create Auto Increment In JavaDB]]></title>
+    <link href="http://martinusadyh.web.id/2012/10/27/create-auto-increment-in-javadb/"/>
+    <updated>2012-10-27T21:33:42+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/10/27/create-auto-increment-in-javadb</id>
+    <content type="html"><![CDATA[<p>[caption id=&ldquo;attachment_1883&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;110&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png" alt="JavaDB" /></a>JavaDB[/caption]Kemarin sempat bermain-main sebentar dengan <a href="http://www.oracle.com/technetwork/java/javadb/index.html">JavaDB</a> dan ternyata baru tahu, kalau editor SQL di NetBeans ternyata tidak (belum) ada fitur untuk membuat kolom <strong>auto increment</strong> untuk <strong>JavaDB</strong> :( Nah untuk teman-teman yang ingin membuat kolom <strong>auto increment</strong> di <strong>JavaDB</strong> mungkin bisa menambahkan perintah <code>ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)</code> pada script <code>create table</code> di JavaDB seperti terlihat pada script dibawah ini :</p>
+
+<pre><code>create table M_BARANG
+(
+    ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
+    HARGA NUMERIC(19),
+    ISEDITABLE SMALLINT,
+    KETERANGAN VARCHAR(255),
+    KODE_BARANG VARCHAR(255) not null
+)
+</code></pre>
+
+<!-- more -->
+
+
+<p>Script diatas jika dijalankan akan membuat sebuah tabel dengan nama <code>M_BARANG</code> dengan kolom <code>ID</code> sebagai primary key dan auto increment :) Untuk mengetest apakah kolom auto_increment kita berjalan dengan benar, sekarang mari kita coba meng-entri 1 record kedalam tabel <code>M_BARANG</code> dengan perintah seperti berikut :</p>
+
+<pre><code>insert into M_BARANG(KODE_BARANG, KETERANGAN, HARGA, ISEDITABLE) 
+VALUES ('BRG01', 'BARANG TEST', 1200, 1);
+</code></pre>
+
+<p>dan langsung lakukan test, untuk melihat apakah data yang kita insert sudah masuk kedalam tabel <code>M_BARANG</code> dengan perintah :</p>
+
+<pre><code>select  *
+from    M_BARANG;
+</code></pre>
+
+<p>Jika tidak ada error, maka harusnya akan tampak seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_1923&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2012/08/HasilTestAutoIncrement.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/HasilTestAutoIncrement-300x218.png" alt="HasilTestAutoIncrement" /></a> HasilTestAutoIncrement[/caption]</p>
+
+<p>Nah mudah bukan caranya ? Jadi sekarang, happy coding guys.. :)</p>
+]]></content>
+  </entry>
+  
+</feed>

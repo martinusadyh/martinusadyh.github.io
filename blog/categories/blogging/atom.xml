@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: blogging | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/blogging/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Howto Disable Individual Jetpack Module]]></title>
+    <link href="http://martinusadyh.web.id/2013/06/22/howto-disable-individual-jetpack-module/"/>
+    <updated>2013-06-22T15:21:07+07:00</updated>
+    <id>http://martinusadyh.web.id/2013/06/22/howto-disable-individual-jetpack-module</id>
+    <content type="html"><![CDATA[<p>Gara-gara sering kelupaan bagaimana cara-nya men-disable sebuah modul di <a href="http://wordpress.org/plugins/jetpack/">Jetpack</a>, akhirnya saya buatkan posting sekalian biar besok-besok tidak lupa lagi :D Postingan ini ditulis gara-gara saya tidak puas dengan module <strong>Likes</strong> di Jetpack. Karena sudah terlanjur di aktifkan dan tidak puas, jadi beginilah step by step untuk mendisable-nya :)</p>
+
+<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/TampilanModuleLikesyangAktif.png" width="300" height="183" title="Tampilan Module Likes yang Aktif" ></p>
+
+<p>Jika sudah, sekarang tekanlah tombol <strong>Learn More</strong> di module yang ingin di disable untuk menampilkan tombol <strong>Deactive</strong> seperti gambar dibawah ini (lihat tombol yang dibulatin) :</p>
+
+<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/KlikTombolDeactive.png" width="300" height="196" title="Klik Tombol Deactive" ></p>
+
+<p>Kalau tampilan sudah seperti gambar diatas, maka sekarang tekanlah tombol <strong>Deactive</strong> untuk mendisable module yang dimaksud. Dan harusnya jika tidak ada masalah, maka kita akan melihat tampilan seperti gambar dibawah ini :</p>
+
+<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/ProsesDeactiveBerhasil.png" width="300" height="181" title="Proses Deactive Berhasil" ></p>
+
+<p>Sebenarnya gampang bukan ? Mungkin memang karena faktor <strong>&ldquo;U&rdquo;</strong> nih yang bikin jadi sering lupa :(</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PUAS INTERNETAN DENGAN PAKET 3G TELKOMSEL]]></title>
+    <link href="http://martinusadyh.web.id/2012/11/21/puas-internetan-dengan-paket-3g-telkomsel/"/>
+    <updated>2012-11-21T16:01:52+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/11/21/puas-internetan-dengan-paket-3g-telkomsel</id>
+    <content type="html"><![CDATA[<p>Apakah anda tipe yang ingin…..
+Selalu eksis?? Selalu up to date pada setiap perkembangan?
+Kalau begitu Internet adalah sahabat terbaik anda. Dengan internet anda bisa mengakses segala macam informasi dari berbagai belahan dunia, bisa bersahabat dengan semua orang melalui jejaring sosial, dan masih banyak lagi. saat ini banyak sekali operator telpon seluler yang menawarkan berbagai paket untuk akses internet secara cepat dan murah. Namun anda harus berhati-hati karena tidak semua yang ditawarkan adalah kenyataan dan berjalan seperti yang anda harapkan. Anda harus memiliki berbagai pertimbangan sebelum memilih paket internet yang ditawarkan, pertimbangan tidak hanya pada harga namun juga kualitas. Salah satu operator terpopuler yang menawarkan <a href="http://www.telkomsel.com/halo">paket internet</a> sampai puas adalah Telkomsel.</p>
+
+<p><a href="http://www.telkomsel.com">Telkomsel</a> menawarkan fasilitas untuk dapat berinternet hingga puas melalui Telkomsel Flash Unlimited berbasis 3G. Pengguna produk ini dapat mengakses internet tanpa batasan waktu, batasan kapasitas, atau pengenaan biaya kelebihan pemakaian yang umumnya digunakan. Tentu saja sangat cocok bagi anda yang memiliki kebutuhan untuk selalu On Line , selain itu kecepatan yang ditawarkan pun cukup memuaskan, dari 256 kbps hingga lebih dari 3,6 Mbps.</p>
+
+<p>Berikut syarat dan ketentuan Telkomsel Flash Unlimited:</p>
+
+<ol>
+<li><p> Berlaku untuk pelanggan pasca bayar (kartuHALO) KECUALI paket HALOHybrid</p></li>
+<li><p> Kecepatan maksimal berlaku sampai batas pemakaian internet secara wajar sebesar 3GB. Setelah 3GB, kecepatan akses akan disesuaikan / diturunkan menjadi up to 64 kbps (untuk paket Basic dan Advance) dan up to 128 kbps (untuk paket Pro)</p></li>
+<li><p> Pendaftaran dan aktivasi layanan dilakukan di graPARI TELKOMSEL</p></li>
+<li><p> Menggunakan APN (Access Point Name): internet atau telkomsel (sharing)</p></li>
+<li><p> Harga belum termasuk PPn</p></li>
+<li><p> Paket data ini akan otomatis diperpanjang setiap bulan (setiap Billing Cycle) sebelum ada permintaan berhenti dari pelanggan.</p></li>
+<li><p> Pelanggan dapat melakukan pergantian paket sekali dalam satu bulan melalui graPARI di awal periode Billing Cycle . Paket data yang terakhir dipilih adalah paket yang akan ditagihkan dan akan menjadi paket yang teridentifikasi untuk diperpanjang pada masa aktif berikutnya.</p></li>
+<li><p> Unit terkecil adalah per kB (Untuk fair usage 3GB)</p></li>
+<li><p> Tidak ada kontrak, pelanggan bisa berhenti berlangganan kapan saja melalui graPARI</p></li>
+<li><p>. Berlaku hanya untuk pemakaian domestik (tidak berlaku untuk International Roaming, hal ini akan ditagihkan secara terpisah menggunakan volume based)</p></li>
+</ol>
+
+
+<p>Untuk lebih memudahkan anda, pergunakan kartu perdana flash unlimited. Kartu perdana telkomsel Flash Unlimited merupakan inovasi terbaru telkomsel. Tidak ada alasan lagi untuk tidak memilih Perdana Flash Unlimited sebagai kartu broadband Anda, karena dengan kartu tersebut, apapun modemnya, Anda bisa langsung menikmati internet broadband dengan mudah dan cepat.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SOPA dan PIPA Yang Menghebohkan Dunia Internet]]></title>
+    <link href="http://martinusadyh.web.id/2012/01/18/sopa-dan-pipa-yang-menghebohkan-dunia-internet/"/>
+    <updated>2012-01-18T23:26:01+07:00</updated>
+    <id>http://martinusadyh.web.id/2012/01/18/sopa-dan-pipa-yang-menghebohkan-dunia-internet</id>
+    <content type="html"><![CDATA[<p>Hari ini, <strong>Rabu 18 Januari 2012</strong> benar-benar hari yang sangat menghebohkan dunia persilatan di ranah Internet. Ini dikarenakan ada-nya undang-undang yang sedang digodok yaitu SOPA <a href="https://en.wikipedia.org/wiki/Stop_Online_Piracy_Act">(Stop Online Piracy Act)</a> dan PIPA <a href="https://en.wikipedia.org/wiki/PROTECT_IP_Act">(Protect IP Act)</a>. Karena 2 RUU ini, ada banyak situs-situs besar melakukan aksi <strong>blackout</strong> untuk menolak-nya. Dari banyak-nya situs yang melakukan <strong>blackout</strong>, dibawah ini merupakan beberapa tampilan situs yang melakukan <strong>blackout</strong> yang sempat saya lihat sendiri :</p>
+
+<ol>
+<li><p> <strong>Wikipedia</strong>
+<a href="http://martinusadyh.web.id/wp-content/uploads/2012/01/Wikipedia.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/01/Wikipedia-300x168.png" alt="" /></a>
+<a href="http://en.wikipedia.org/wiki/Main_Page">Aksi Blackout Wikipedia</a></p></li>
+<li><p> <strong>GNU</strong>
+<a href="http://martinusadyh.web.id/wp-content/uploads/2012/01/gnu.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/01/gnu-300x168.png" alt="" /></a>
+<a href="http://gnu.org/">Aksi Blackout GNU</a></p></li>
+<li><p> <strong>WordPress</strong>
+<a href="http://martinusadyh.web.id/wp-content/uploads/2012/01/wp.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/01/wp-300x168.png" alt="" /></a>
+<a href="http://wordpress.com/">Aksi Blackout WordPress</a></p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<p>Nah untuk yang masih bingung apasih SOPA dan PIPA itu ? Ini saya paste-kan penjelasan dari thread <a href="http://www.kaskus.us/showthread.php?t=12540718">Internet Terancam Oleh SOPA dan PIPA</a> dari Kaskus.</p>
+
+<h2>Internet terancam oleh PIPA dan SOPA</h2>
+
+<p>PIPA (Protect IP Act) dan SOPA (Stop Online Privacy Act) menjadi perbincangan hangat di Amerika beberapa pekan ini. Bagi Anda yang tidak tahu, PIPA dan SOPA adalah undang-undang yang sedang diajukan dengan tujuan untuk melindungi hak cipta materi Internet seperti video, musik, software dan semua barang digital dari pembajakan. Tentunya undang-undang ini tidak sederhana itu, banyak hal dari undang-undang ini akan mengubah cara kerja Internet saat ini.</p>
+
+<h2>Sejarah</h2>
+
+<p>Urusan online piracy atau pembajakan konten online memang telah menjadi bagian sehari-hari di internet. Mengapa ini bisa terjadi? Ini dikarenakan oleh sifat dari data digital yang sangat mudah dan cepat untuk digandakan. Di Amerika sendiri, banyak perusahaan-perusahaan media hiburan &amp; software seperti Hollywood, Microsoft, Assosiasi Rekaman Musik Amerika selalu mencari cara untuk menghentikan pembajakan online ini. Tentunya, ini adalah reaksi yang masuk akal, karena semua orang tidak mau jika hasil kerja keras mereka dapat dicuri oleh orang lain dan digunakan secara gratis.</p>
+
+<h2>PIPA &amp; SOPA</h2>
+
+<p>Jadi apakah PIPA dan SOPA ini? PIPA dan SOPA diajukan tahun lalu oleh senator dan pejabat tinggi Amerika Serikat untuk menghentikan pembajakan konten di Internet. Secara singkat PIPA dan SOPA menyatakan beberapa hal berikut:</p>
+
+<p>Pemerintah AS dan organisasi perusahaan pemilik hak cipta dapat meminta penyedia layanan Internet untuk memblokir akses ke situs web dianggap sebagai penyedia tempat pelanggaran hak cipta.
+Pemerintah AS dan organisasi perusahaan pemilik hak cipta dapat mengambil tindakan hukum untuk menggugat mesin pencari, situs blog, direktori, atau situs secara umum yang memiliki situs-situs terdaftar hitam untuk dihapus dari situs web mereka.</p>
+
+<p>Jaksa Agung AS dapat membawa kasus ke pengadilan yang akan memaksa mesin pencari, pengiklan, penyedia DNS, server, dan prosesor pembayaran dari memiliki kontak apapun dengan situs yang diduga melanggar.
+Prosesor pembayaran akan dapat memutuskan hubungan kerjasama dengan situs, dengan catatan mereka dapat memberikan alasan kuat bahwa situs tersebut melanggar hak cipta.</p>
+
+<h2>Dampak PIPA &amp; SOPA secara global</h2>
+
+<p>Tentunya, banyak aspek dari Internet yang akan berubah, salah satu implementasi yang akan dilakukan oleh PIPA dan SOPA terhadap Internet adalah DNS Filtering dan DNSSEC yang diyakini oleh para ahli internet dan salah satunya, Mozilla, bahwa hal-hal tersebut akan mengakibatkan masalah keamanan pada Internet dan juga melambatkan kinerja Internet saat ini. Ada juga dampak-dampak lain yang akan terjadi pada internet:</p>
+
+<p>Banyak blog atau situs-situs kecil yang akan ditutup dikarenakan penggunaan misalnya logo, foto ataupun media lain yang diklaim oleh sang pemilik.
+Situs-situs web service dan sosial media seperti Facebook, YouTube, rapid*share, Twitter, Vimeo, Flickr akan mengalami banyak masalah dan dituntut karena konten-konten yang dikontribusi oleh publik akan disaring dan disensor secara ketat.</p>
+
+<p>Inovasi dan perkembangan teknologi dari Internet akan melambat karena perusahaan-perusahaan baru harus dapat memenuhi standar dari PIPA dan SOPA.</p>
+
+<h2>Dampak PIPA &amp; SOPA di Indonesia</h2>
+
+<p>Secara garis besar, PIPA dan SOPA jika disetujui hanya akan berlaku di Amerika Serikat dan tidak di negara lain. Tetapi, jika ada yang menggunakan server-server di Amerika Serikat untuk hosting website, tentunya konten-konten website tersebut akan masuk ke dalam juridiksi hukum di sana. Memang secara langsung, PIPA dan SOPA ini tidak mempengaruhi jaringan Internet di Indonesia. Namun, bisa dibayangkan untuk kita yang sehari-hari menggunakan service-service sosial media seperti Facebook, Google, Twitter, YouTube, dan lain-lain; kebanyakan website-website ini akan menjadi target sasaran dari PIPA dan SOPA. Penggunaan Internet bisa dipastikan akan berubah jika PIPA dan SOPA diluluskan.</p>
+
+<h2>Video Tentang SOPA dan PIPA</h2>
+
+<p>Dan dibawah ini ada beberapa video juga tentang apa itu SOPA dan PIPA yang bisa kita lihat seperti dibawah ini :</p>
+
+<p><a href="http://vimeo.com/31100268">PROTECT IP / SOPA Breaks The Internet</a> from <a href="http://vimeo.com/fightforthefuture">Fight for the Future</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+
+<p><strong>Referensi-referensi terkait:</strong></p>
+
+<ol>
+<li><p> <a href="https://en.wikipedia.org/wiki/Wikipedia:SOPA_initiative/Learn_more">SOPA and PIPA Learn more</a></p></li>
+<li><p> <a href="http://wordpress.org/extend/plugins/tags/sopa">Daftar Plugin WP Tentang SOPA dan PIPA</a></p></li>
+<li><p> <a href="http://www.kaskus.us/showthread.php?t=12540718">Internet Terancam Oleh SOPA dan PIPA</a></p></li>
+<li><p> <a href="http://www.kaskus.us/showthread.php?t=12606849">Kenali dan Lawan SOPA / PIPA sebelum 24 Januari 2012</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Selamat Idul Fitri 1432 H]]></title>
+    <link href="http://martinusadyh.web.id/2011/08/29/selamat-idul-fitri-1432-h/"/>
+    <updated>2011-08-29T21:32:06+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/08/29/selamat-idul-fitri-1432-h</id>
+    <content type="html"><![CDATA[<p>Untuk teman-teman yang beragama Islam, selamat <strong>Hari Raya Idul Fitri 1432 H</strong> ya, mohon maaf lahir bathin kalau selama ini saya ada salah selama ini ama teman-teman :)</p>
+
+<p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=142"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/kartu-cuapan-lebaran-1432-h.jpg" alt="Selamat Idul Fitri 1432 H" /></a><br/>
+Selamat Idul Fitri 1432 H
+Gambar kartu lebaran diambil dari <a href="http://kaskus-us.blogspot.com/2011/08/kartu-lebaran-1432-h-kartu-ucapan-idul.html">Kartu Lebaran 1432 H</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kesan Pertama Mencoba Google+]]></title>
+    <link href="http://martinusadyh.web.id/2011/07/01/kesan-pertama-mencoba-google/"/>
+    <updated>2011-07-01T23:48:42+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/07/01/kesan-pertama-mencoba-google</id>
+    <content type="html"><![CDATA[<p>[caption id=&ldquo;attachment_1395&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;119&rdquo; caption=&ldquo;Google Plus Logo&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/google-logo-plus.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/google-logo-plus.png" alt="Google Plus Logo" /></a>[/caption]Setelah kemarin minta invite ke teman-teman di <a href="mailto:id-android@googlegroups.com">id-android@googlegroups.com</a>, akhirnya malam ini kesampaian juga mencoba <strong>Facebook Killer</strong> milik Google yaitu <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a> :)</p>
+
+<p>Kesan pertama waktu menggunakan sih tidak jauh berbeda dengan <a href="http://facebook.com/">Facebook</a>, cuma ada beberapa perbedaan di <strong>Google+</strong> ini. Nah untuk yang penasaran seperti apa isinya  <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a> ini, silahkan melihat-lihat beberapa screenshot yang ada dibawah ini :</p>
+
+<p>Dibawah ini merupakan tampilan halaman profile di <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a>, tidak jauh berbeda dengan <a href="http://facebook.com/">Facebook</a> :)
+[caption id=&ldquo;attachment_1401&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo; caption=&ldquo;Halaman Profile Google+&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/Profile.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/Profile-300x155.png" alt="Google+ Profile" /></a>[/caption]</p>
+
+<p>Sedangkan fitur <strong>&ldquo;wall&rdquo;</strong> mirip dengan <strong>&ldquo;Stream&rdquo;</strong> seperti dibawah ini :
+[caption id=&ldquo;attachment_1402&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo; caption=&ldquo;Tampilan Halaman Stream Google+&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/Stream.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/Stream-300x155.png" alt="Google+ Stream" /></a>[/caption]</p>
+
+<!-- more -->
+
+
+<p>Untuk semua notification, <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a> menampilkan-nya pada halaman seperti dibawah ini :
+[caption id=&ldquo;attachment_1399&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo; caption=&ldquo;Halaman Notification Google+&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/Notification.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/Notification-300x155.png" alt="Google+ Notification" /></a>[/caption]</p>
+
+<p>Halaman <strong>&ldquo;Potho Sharing&rdquo;</strong> di <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a> sepintas tidak jauh berbeda seperti di <a href="http://facebook.com">Facebook</a>
+[caption id=&ldquo;attachment_1400&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo; caption=&ldquo;Halaman Potho Sharing Google+&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/Poto.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/Poto-300x155.png" alt="Google+ Poto" /></a>[/caption]</p>
+
+<p>Untuk mengelompokkan teman, di <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a> dapat menggunakan fitur <strong>&ldquo;Circles&rdquo;</strong> seperti gambar dibawah ini :)
+[caption id=&ldquo;attachment_1397&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo; caption=&ldquo;Halaman Circles Google+&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/Circles.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/Circles-300x155.png" alt="Google+ Circles" /></a>[/caption]</p>
+
+<p>Dan sepertinya dibawah ini merupakan fitur yang paling menarik dari <a href="https://plus.google.com/up/start/?continue=https://plus.google.com/&amp;type=st&amp;gpcaz=c2f1064b">Google+</a>, kita bisa ramai-ramai sharing webcam dan sekaligus chatting loh :) Selain itu, jika ada salah satu yang membuka <a href="http://www.youtube.com/">youtube</a> maka sepertinya semua user akan dapat notification-nya. Nah makanya, persiapkan headsetnya, biar bisa rame-rame <strong>&ldquo;sharing webcam&rdquo;</strong> :)
+[caption id=&ldquo;attachment_1398&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo; caption=&ldquo;Halaman Google+ Hangout&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2011/07/Hangout.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/07/Hangout-300x277.png" alt="Google+ Hangout" /></a>[/caption]</p>
+
+<p>Sebenarnya masih banyak lagi fitur-fitur yang belum sempat untuk dicoba, untuk sementara ini baru ini saja yang bisa dilaporkan :) Dan untuk <strong>invite</strong>-nya bagaimana ya? :D Masih belum nemu caranya :(  Untuk teman-teman yang mau di <strong>invite</strong>, silahkan kontak saya melalui menu <a href="http://martinusadyh.web.id/contact-me/">Contact Me</a>. Jika sudah ketemu menu-nya, akan langsung saya invite :)</p>
+]]></content>
+  </entry>
+  
+</feed>

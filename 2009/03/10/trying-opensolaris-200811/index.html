@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Trying OpenSolaris 2008.11 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Fyuh akhirnya setelah sekian lama pingin cobain themes GTK Nimbus, akhirnya kesampaian juga kemarin install OpenSolaris 2008.11 di laptop kantor ( &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/03/10/trying-opensolaris-200811/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Trying OpenSolaris 2008.11</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-10T22:25:36+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Fyuh akhirnya setelah sekian lama pingin cobain themes GTK Nimbus, akhirnya kesampaian juga kemarin install OpenSolaris 2008.11 di laptop kantor (Acer Aspire 5500Z ) :) (Tepatnya laptopnya <a href="http://ifnu.artivisi.com/">mas Ifnu</a> :D ).</p>
+
+<p>Proses instal sebenarnya juga ga begitu mulus sih, sehabis boot via CD ternyata berhenti di proses probing device :( luaaaaaaaama banget. Setelah tanya-tanya ke paman google, akhirnya dapat link <a href="http://blogs.sun.com/danasblog/entry/configuring_solaris_acpi_at_boot">disini</a>. Akhirnya dengan modal tekad dan nekat, coba lagi dah dengan menambahkan opsi <strong>acpi-user-options=0x8</strong> akhirnya tampil deh GNOME 2.24.0 dengan themes Nimbus idaman saya :)</p>
+
+<p>Proses instalasi OpenSolaris ga begitu sulit ternyata, cukup mudah dan tinggal ikutin langkah-langkah yang udah dijelasin ama om Rachmat <a href="http://w3hol.wordpress.com/2009/02/14/install-opensolaris-itu-mudah/">disini</a>. Seperti yang udah om Rachmat katakan, proses instalasi yang saya lakukan juga ga begitu sulit koq tinggal Next, Next dan Done :)</p>
+
+<p>Tapi setelah proses instalasi selesai ternyata timbul masalah baru lagi, saya lupa backup grub Ubuntu 8.10 yang saya pakai tiap hari :(( . Yah akhirnya mau ga mau cari LiveCD Ubuntu kemudian copy file menu.lst punya Ubuntu dan paste ke grub-nya OpenSolaris yang terdapat di <strong>/rpool/boot/grub</strong> dan hasil akhir menu.lst saya adalah sebagai berikut :</p>
+
+<pre><code>splashimage /boot/grub/splash.xpm.gz
+background 215ECA
+timeout 30
+default 0
+#---------- ADDED BY BOOTADM - DO NOT EDIT ----------
+title OpenSolaris 2008.11 snv_101b_rc2 X86
+findroot (pool_rpool,3,a)
+splashimage /boot/solaris.xpm
+foreground d25f00
+background 115d93
+bootfs rpool/ROOT/opensolaris
+kernel$ /platform/i86pc/kernel/$ISADIR/unix -B $ZFS-BOOTFS,console=graphics,acpi-user-options=0x8
+module$ /platform/i86pc/$ISADIR/boot_archive
+#---------------------END BOOTADM--------------------
+
+# Unknown partition of type 131 found on /dev/rdsk/c3d0p0 partition: 1
+# It maps to the GRUB device: (hd0,0) .
+
+# Unknown partition of type 5 found on /dev/rdsk/c3d0p0 partition: 2
+# It maps to the GRUB device: (hd0,1) .
+
+# Unknown partition of type 131 found on /dev/rdsk/c3d0p0 partition: 3
+# It maps to the GRUB device: (hd0,2) .
+
+title OpenSolaris 2008.11 snv_101b_rc2 X86 text boot
+findroot (pool_rpool,3,a)
+bootfs rpool/ROOT/opensolaris
+kernel$ /platform/i86pc/kernel/$ISADIR/unix -B $ZFS-BOOTFS,acpi-user-options=0x8
+module$ /platform/i86pc/$ISADIR/boot_archive
+
+#--------------- UBUNTU -------------------------------------
+title       Ubuntu 8.10, kernel 2.6.27-7-generic
+uuid        1ddb05f1-298e-4d0e-a308-fc7d31279eb0
+root            (hd0,0)
+kernel      /boot/vmlinuz-2.6.27-7-generic root=UUID=1ddb05f1-298e-4d0e-a308-fc7d31279eb0 ro quiet splash
+initrd      /boot/initrd.img-2.6.27-7-generic
+quiet
+
+title       Ubuntu 8.10, kernel 2.6.27-7-generic (recovery mode)
+uuid        1ddb05f1-298e-4d0e-a308-fc7d31279eb0
+root            (hd0,0)
+kernel      /boot/vmlinuz-2.6.27-7-generic root=UUID=1ddb05f1-298e-4d0e-a308-fc7d31279eb0 ro  single
+initrd      /boot/initrd.img-2.6.27-7-generic
+#--------------- END UBUNTU -------------------------------------
+</code></pre>
+
+<!-- more -->
+
+
+<p>Setelah mengedit file <strong>/rpool/boot/grub</strong> akhirnya saya coba restart, dan inilah hasilnya :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/3344693484/"><img src="http://farm4.static.flickr.com/3595/3344693484_64086d62a5.jpg" alt="Screenshot" /><br/>
+Tampilan Clean Desktop</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/3344693492/"><img src="http://farm4.static.flickr.com/3538/3344693492_2a0a8f591f.jpg" alt="Screenshot-3" /><br/>
+Tampilan Quick Help OpenSolaris</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/3344693488/"><img src="http://farm4.static.flickr.com/3620/3344693488_ee724e1de6.jpg" alt="Screenshot-1" /><br/>
+Icon file type java cakep yah di Nimbus :* </a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/3344693498/"><img src="http://farm4.static.flickr.com/3620/3344693498_439caf137f.jpg" alt="Screenshot-4" /><br/>
+Tampilan IPS-nya OpenSolaris, ga jauh beda ama punya Ubuntu ternyata :) </a></p>
+
+<p>Puas banget bisa pake OS <strong>idaman</strong> apalagi dengan Nimbus-nya :) , tapi sayangnya masih ada 1 kendala lagi nih iks&hellip; :(( Lan card ma Wifi-nya masih belum dikenali :( ketika di coba dilihat di <strong>Device Driver Utility</strong> hasilnya seperti ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3344693490/"><img src="http://farm4.static.flickr.com/3570/3344693490_2e2e61b1c0.jpg" alt="Screenshot-2" /><br/>
+Iks.. :(( Cinta emang butuh pengorbanan </a></p>
+
+<p>Hmm&hellip; masih perlu belajar dan menimba ilmu yang banyak nih dari para sesepuh yang ada di <a href="http://groups.google.com/group/OSUG-Indonesia">OSUG-ID</a>, supaya bisa naklukin hati si OpenSolaris-nya :) . Nah kalau masalah jaringan-nya udah selesai, saatnya say goodbye ama Ubuntu buat digantiin ama Slackware :) Maklum Slackware kan cinta pertama saya :malu: , sekalian mau submit2x Slackbuild lagi ke <a href="http://slackware.linux.or.id/">Slackware Linux Indonesia</a></p>
+
+<p>Rencana kedepan, OS yang bakalan dipakai yaitu OpenSolaris sebagai default OS dan Slackware buat ngoprek :) , akhirnya setelah menunggu sekian lama bisa juga cobain Nimbus di rumahnya sendiri :)</p>
+
+<p><strong>Note : </strong>
+Buat yang mau download file iso-nya, bisa download disini (IIX loch, make space kantor :D ) :
+- <a href="http://www.artivisi.com/~martinus/downloads/osol-0811.iso">osol-0811.iso</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-10T22:25:36+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/opensolaris/'>opensolaris</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/03/10/trying-opensolaris-200811/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/03/10/trying-opensolaris-200811/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2008/10/24/i-walk-alone-tarja-turunen/" title="Previous Post: I Walk Alone (Tarja Turunen)">&laquo; I Walk Alone (Tarja Turunen)</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/03/14/top-10-netbeans-api-video-local-mirror/" title="Next Post: Top 10 NetBeans API Video (Local Mirror)">Top 10 NetBeans API Video (Local Mirror) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/03/10/trying-opensolaris-200811/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/03/10/trying-opensolaris-200811/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

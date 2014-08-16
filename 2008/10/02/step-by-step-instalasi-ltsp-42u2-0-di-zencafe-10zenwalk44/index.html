@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Step By Step Instalasi LTSP 4.2u2-0 di Zencafe 1.0/Zenwalk4.4 - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sebenarnya tulisan ini udah lama saya posting di blog yang lama, tetapi berhubung Om Anjar minta agar saya reposting lagi di blog yang baru ya &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Step by Step Instalasi LTSP 4.2u2-0 Di Zencafe 1.0/Zenwalk4.4</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-02T21:39:21+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Sebenarnya tulisan ini udah lama saya posting di blog yang <a href="pemula.blogsome.com">lama</a>, tetapi berhubung <a href="http://ahardiena.uni.cc/">Om Anjar</a> minta agar saya reposting lagi di blog yang baru ya akhirnya saya posting lagi disini :)</p>
+
+<!-- more -->
+
+
+<p>Untuk menginstal LTSP di Zencafe atau Zenwalk, langkah pertama yang harus dilakukan adalah menginstal file ltsp-utils yang bisa didownload pada situs
+<a href="http://wiki.ltsp.org/twiki/bin/view/Ltsp/DownLoads">http://wiki.ltsp.org/twiki/bin/view/Ltsp/DownLoads</a></p>
+
+<p>Berhubung distribusi Zencafe/Zenwalk merupakan distribusi turunan dari Slackware, maka downloadlah paket khusus untuk distribusi Slackware. Setelah mendownload kemudian install paket ltsp-utils tersebut dengan perintah installpkg.</p>
+
+<pre><code>root[LTSP]# wget -c http://www.tna.nl/ltsp/ltsp-utils-0.25.0-noarch-1TnA.tgz
+root[LTSP]# ls
+ltsp-utils-0.25.0-noarch-1TnA.tgz
+root[LTSP]# installpkg ltsp-utils-0.25.0-noarch-1TnA.tgz
+Installing package ltsp-utils-0.25.0-noarch-1TnA…
+PACKAGE DESCRIPTION:
+ltsp-utils: Linux Terminal Server Project utilities - ltsp-utils 0.25-0
+ltsp-utils: This package includes the following utilities for LTSP server:
+ltsp-utils:
+ltsp-utils:   ltspadmin   For installing and managing the packages
+ltsp-utils:               on an LTSP server.
+ltsp-utils:   ltspcfg     For configuring the services on an LTSP server.
+ltsp-utils:   ltspinfo    For querying the workstation, to learn things,
+ltsp-utils:               such as which sound daemon is being used.
+ltsp-utils:
+ltsp-utils: Homepage: http://www.ltsp.org/
+ltsp-utils: (Packaged by mdekker@tna.nl on 23-May-2006)
+root[LTSP]#
+</code></pre>
+
+<p>Untuk mengecek apakah paket tersebut sudah terinstal atau belum, berikan perintah seperti dibawah ini:</p>
+
+<pre><code>root[LTSP]# ls /var/log/packages | grep ltsp-utils
+ltsp-utils-0.25.0-noarch-1TnA
+root[LTSP]#
+</code></pre>
+
+<p>Setelah paket ltsp-utils terinstal, ada beberapa paket lagi yang diperlukan oleh Zencafe/Zenwalk untuk bisa dijadikan sebagai LTSP server, dan ini tidak terdapat pada default instalasi maupun di repository dari Zenwalk
+sendiri. Tetapi untungnya, kita masih bisa memakai paket dari distribusi Slackware (karena Zencafe/Zenwalk adalah turunan dari distribusi Slackware).
+NB:
+- Untuk Zencafe 1.0 dan Zenwalk 4.4 silahkan download paket dari Slackware 11 :)
+(Thx buat om anjar yang udah beritahu masalah ini ^^ )</p>
+
+<p>Oh iya, paket-paket yang dibutuhkan yaitu:</p>
+
+<ul>
+<li><p>DHCPD (Ini tidak terdapat di mirror zenwalk, ambil dari distro Slackware)</p></li>
+<li><p>perl-libwww-perl (Ini juga tidak ada, ambil dari Slackware juga) :D</p></li>
+</ul>
+
+
+<p>Berhubung Zencafe / Zenwalk adalah turunan Slackware, ada beberapa paket lainnya yang tidak disediakan pada waktu default instalasinya. Beberapa paket tersebut adalah:</p>
+
+<ol>
+<li><p> Paket DHCPD</p></li>
+<li><p> Paket libwww-perl. (Untuk menjalankan ltspadmin ? )</p></li>
+</ol>
+
+
+<p>Setelah mengetahui paket-paket apa saja yang dibutuhkan, sekarang waktu untuk download dan menginstal paket-paket tersebut dengan cara sebagai berikut:</p>
+
+<pre><code>root[LTSP]# wget -c http://ftp.riken.jp/linux/slackware/slackware-current/slackware/n/dhcp-3.0.5-i486-1.tgz
+root[LTSP]# installpkg dhcp-3.0.5-i486-1.tgz
+Installing package dhcp-3.0.5-i486-1…
+PACKAGE DESCRIPTION:
+dhcp: dhcp (DHCP server and client utilities)
+dhcp:
+dhcp: This package provides the ISC’s DHCP utilities, including both a
+dhcp: server and client.  The DHCP protocol allows a host to contact a
+dhcp: central server which maintains a list of IP addresses which may be
+dhcp: assigned on one or more subnets.   A DHCP client may request an
+dhcp: address from this pool, and then use it temporarily for communication
+dhcp: on the network.   The DHCP protocol also provides a mechanism whereby
+dhcp: a client can learn important details about the network to which it is
+dhcp: attached, such as the location of a default router or name server.
+dhcp:
+Executing install script for dhcp-3.0.5-i486-1…
+
+root[LTSP]# wget -c http://ftp.naist.jp/pub/Linux/linuxpackages/Slackware-11.0/jay/perl-libwww-perl/perl-libwww-perl-5.805-noarch-1.tgz
+root[LTSP]# installpkg perl-libwww-perl-5.805-noarch-1.tgz
+Installing package perl-libwww-perl-5.805-noarch-1…
+PACKAGE DESCRIPTION:
+perl-libwww-perl: perl-libwww-perl 5.805 (Perl module)
+perl-libwww-perl:
+perl-libwww-perl:  Packaged by cpan2tgz
+perl-libwww-perl:  cpan2tgz by Jason Woodward
+perl-libwww-perl:  http://software.jaos.org/
+perl-libwww-perl:
+Executing install script for perl-libwww-perl-5.805-noarch-1…
+root[LTSP]#
+</code></pre>
+
+<p>Nah klo semua paket dah terinstall, untuk mengeceknya silahkan ketik perintah sebagai berikut:</p>
+
+<pre><code>root[LTSP]# ls /var/log/packages | grep dhcp
+dhcp-3.0.5-i486-1
+dhcpcd-2.0.4-i486-2
+root[LTSP]# ls /var/log/packages | grep libwww
+perl-libwww-perl-5.805-noarch-1
+root[LTSP]#
+</code></pre>
+
+<p>Nah setelah semua persiapan selesai, sekarang waktunya download file iso dan md5sum dari <a href="http://ltsp.mirrors.tds.net/pub/ltsp/isos/">http://ltsp.mirrors.tds.net/pub/ltsp/isos/</a> dengan cara sebagai berikut:</p>
+
+<pre><code>root[LTSP]# wget -cb http://ltsp.mirrors.tds.net/pub/ltsp/isos/ltsp-4.2u2-0.iso
+root[LTSP]# wget -c http://ltsp.mirrors.tds.net/pub/ltsp/isos/ltsp-4.2u2-0.md5sum
+–07:45:02–  http://ltsp.mirrors.tds.net/pub/ltsp/isos/ltsp-4.2u2-0.md5sum
+           =&gt; `ltsp-4.2u2-0.md5sum’
+Resolving ltsp.mirrors.tds.net… 216.165.129.141
+Connecting to ltsp.mirrors.tds.net|216.165.129.141|:80… connected.
+HTTP request sent, awaiting response… 200 OK
+Length: 51 [text/plain]
+
+100%[=============================================&gt;] 51            –.–K/s
+
+07:45:03 (2.95 MB/s) - `ltsp-4.2u2-0.md5sum’ saved [51/51]
+
+root[LTSP]#
+</code></pre>
+
+<p>Nah klo sudah selesai download file ltsp isonya, cek dulu md5sumnya, buat jaga-jaga saja :D</p>
+
+<pre><code>root[LTSP]# md5sum ltsp-4.2u2-0.iso
+e09b1fd6cc20d4632699a2a53c0fca21  ltsp-4.2u2-0.iso
+root[LTSP]# more ltsp-4.2u2-0.md5sum
+e09b1fd6cc20d4632699a2a53c0fca21  ltsp-4.2u2-0.iso
+</code></pre>
+
+<p>Setelah selesai, sekarang mount file ltsp-4.2u2-0.iso. Tapi sebelumnya bikin dulu direktori mount point di <strong>/mnt </strong>dulu dengan cara sebagai berikut:</p>
+
+<pre><code>root[LTSP]# mdkir /mnt/cdrom
+root[LTSP]# mount -t iso9660 -o loop ltsp-4.2u2-0.iso /mnt/cdrom/
+</code></pre>
+
+<p>Nah klo sudah, sekarang waktu untuk konfigurasi LTSP servernya. Ketikkan perintah seperti dibawah ini untuk masuk kedalam menu konfigurasi LTSP.</p>
+
+<pre><code>root[LTSP]# ltspadmin
+
+/usr/sbin/ltspadmin: Must be run as root
+
+   If you used ’su’ to become the SuperUser, make sure
+   you include the hyphen ‘-’ as an argument to su.
+   that is:
+
+       su -
+
+   That will ensure that the proper environment is setup.
+
+root[LTSP]# su -
+root[~]# ltspadmin
+</code></pre>
+
+<p>Nah klo sudah nanti akan ada tampilan sebagai berikut:</p>
+
+<p><img src="http://www.geocities.com/thundherbolth/LTSP_Zencafe/Gambar1.jpg" alt="" /></p>
+
+<p>Untuk pertama kali install, pada menu LTSP Administration Utility pilihlah menu Configure the installer options seperti gambar dibawah ini:</p>
+
+<p><img src="http://www.geocities.com/thundherbolth/LTSP_Zencafe/Gambar2.jpg" alt="" /></p>
+
+<p>Setelah meng-konfigurasi installer optionnya. Sekarang pilihlah menu Install/Update LTSP Package, sehingga tampilannya seperti gambar dibawah ini:</p>
+
+<p><img src="http://www.geocities.com/thundherbolth/LTSP_Zencafe/Gambar3.jpg" alt="" /></p>
+
+<p>NB: Tekan A untuk memilih semua paket-paketnya dan Q untuk mulai proses intalasi.</p>
+
+<p>Nah setelah semua paket LTSP nya sudah terinstal, sekarang waktunya untuk mengkonfigurasi LTSP servernya. Ketikkan perintah ltspcfg diterminal atau console, setelah itu tekan tombol enter sehingga muncul tampilan seperti berikut:</p>
+
+<pre><code>ltspcfg v0.16            The Linux Terminal Server Project (http://www.LTSP.org)
+
+  S - Show the status of all services
+  C - Configure the services manually
+
+  Q - Quit
+
+Make a selection: c
+</code></pre>
+
+<p>Kemudian tekan C terus enter untuk mulai mengkonfigurasi seluruh service-service yang diperlukan oleh LTSP, tampilan menu konfigurasi tersebut adalah sebagai berikut:</p>
+
+<pre><code>ltspcfg v0.16            The Linux Terminal Server Project (http://www.LTSP.org)
+
+  1 - Runlevel
+  2 - Interface selection
+  3 - DHCP configuration
+  4 - TFTP configuration
+  5 - Portmapper configuration
+  6 - NFS configuration
+  7 - XDMCP configuration
+  8 - Create /etc/hosts entries
+  9 - Create /etc/hosts.allow entries
+  10 - Create /etc/exports entries
+  11 - Create lts.conf file
+
+  R - Return to previous menu
+  Q - Quit
+
+Make a selection:
+</code></pre>
+
+<p>Setelah menemui tampilan seperti diatas, enable kan semua service-service tersebut.
+Catatan untuk Run Level:
+- Karena Zencafe/Zenwalk adalah turunan dari Slackware, maka run level untuk GUI adalah run level 4.</p>
+
+<p>Setelah semua selesai dikonfigurasi, tekan tombol R kemudian enter untuk kembali ke menu utama LTSP Admin Utility. Tekan S untuk melihat konfigurasi-konfigurasi yang telah dilakukan pada langkah sebelumnya. Jika langkah yang dilakukan benar, maka tampilannya kurang lebih seperti dibawah ini:</p>
+
+<pre><code>Service    Installed   Enabled   Running   Notes
+dhcpd      Yes         no        no
+tftpd      Yes         Yes       Yes       Has ‘-s’ flag
+portmapper Yes         no        Yes
+nfs        Yes         no        Yes
+xdmcp      Yes         no        Yes       xdm, gdm   Using: gdm
+
+File                                Configured  Notes
+/etc/hosts                          Yes
+/etc/hosts.allow                    Yes
+/etc/exports                        Yes
+/opt/ltsp/i386/etc/lts.conf         Yes
+
+Configured runlevel: 4         (value of initdefault in /etc/inittab)
+   Current runlevel: 4         (output of the ‘runlevel’ command)
+
+Installation dir…: /opt/ltsp
+
+Press [enter] to return to the main menu…
+</code></pre>
+
+<p>Wah service DHCPD nya koq belum jalan ? Gimana cara menjalankannya ?</p>
+
+<p>Untuk menjalankan service DHCPD pada Zencafe/Zenwalk, tambahkan baris berikut pada file /etc/rc.d/rc.local hingga seperti dibawah ini:</p>
+
+<pre><code>#!/bin/sh
+#
+# /etc/rc.d/rc.local:  Local system initialization script.
+#
+# Put any local setup commands in here:
+
+# Jalankan service dhcpd di Zencafe
+/usr/sbin/dhcpd
+</code></pre>
+
+<p>Setelah menambahkan baris tersebut di file /etc/rc.d/rc.local, jangan reboot dulu. Editlah file /etc/dhcpd.conf. Cari baris seperti ini:</p>
+
+<pre><code>if substring (option vendor-class-identifier, 0, 9) = "PXEClient" {
+        filename "/lts/2.6.16.1-ltsp-1/pxelinux.0";
+    }
+    else{
+        filename "/lts/vmlinuz-2.6.16.1-ltsp-1";
+    }
+</code></pre>
+
+<p>menjadi seperti dibawah ini :</p>
+
+<pre><code>if substring (option vendor-class-identifier, 0, 9) = "PXEClient" {
+        filename "/lts/2.6.17.3-ltsp-1/pxelinux.0";
+    }
+    else{
+        filename "/lts/vmlinuz-2.6.16.1-ltsp-1";
+    }
+</code></pre>
+
+<p>NB:
+- ganti filename “/lts/2.6.16.1-ltsp-1/pxelinux.0″; dengan filename “/lts/2.6.17.3-ltsp-1/pxelinux.0″;</p>
+
+<p>Kalau sudah, silahkan simpan kemudian reboot untuk melihat hasilnya.</p>
+
+<p>Untuk mengecek apakah service-service yang diperlukan sudah berjalan atau belum, ikuti langkah-langkah berikut:</p>
+
+<ul>
+<li><p>Cek DHCPD</p>
+
+<p>  root[~]# netstat -an | grep ”:67”
+  udp        0      0 0.0.0.0:67              0.0.0.0:*
+  root[~]# ps aux | grep dhcpd
+  root     1509  0.0  0.9   1876   604 pts/0    R+   23:48   0:00 grep dhcpd
+  root     3519  0.0  1.9   2516  1196 ?        Ss   23:17   0:00 /usr/sbin/dhcpd
+  root[~]#</p>
+
+<ul>
+<li><p>Cek TFTPD</p>
+
+<p>root[~]# ls /tftpboot/
+lts/
+root[~]# touch /tftpboot/tes
+root[~]# ls /tftpboot/
+lts/  tes
+root[~]# tftp localhost
+tftp> verbose
+Verbose mode on.
+tftp> get tes
+getting from localhost:tes to tes [netascii]
+tftp> quit
+root[~]#</p></li>
+<li><p>Cek NFS, Portmap ama mount daemon.</p>
+
+<p>root[~]# ps -e | grep portmap
+2321 ?        00:00:00 rpc.portmap
+root[~]# netstat -an | grep â€:111 â€
+tcp        0      0 0.0.0.0:111             0.0.0.0:<em>               LISTEN
+udp        0      0 0.0.0.0:111             0.0.0.0:</em>
+root[~]# ps -e | grep nfs
+ 433 ?        00:00:00 nfsd
+ 434 ?        00:00:00 nfsd
+ 435 ?        00:00:00 nfsd
+ 436 ?        00:00:00 nfsd
+ 437 ?        00:00:00 nfsd
+ 438 ?        00:00:00 nfsd
+ 439 ?        00:00:00 nfsd
+ 440 ?        00:00:00 nfsd
+root[~]# ps -e | grep mountd
+ 442 ?        00:00:00 rpc.mountd
+root[~]# rpcinfo -p localhost
+   program vers proto   port
+    100000    2   tcp    111  portmapper
+    100000    2   udp    111  portmapper
+    100024    1   udp    813  status</p>
+
+<pre><code>100024    1   tcp    816  status
+100021    1   udp   1024  nlockmgr
+100021    3   udp   1024  nlockmgr
+100021    4   udp   1024  nlockmgr
+100003    2   udp   2049  nfs
+100003    3   udp   2049  nfs
+100021    1   tcp   4772  nlockmgr
+100021    3   tcp   4772  nlockmgr
+100021    4   tcp   4772  nlockmgr
+100003    2   tcp   2049  nfs
+100003    3   tcp   2049  nfs
+100005    1   udp    618  mountd
+100005    1   tcp    621  mountd
+100005    2   udp    618  mountd
+100005    2   tcp    621  mountd
+100005    3   udp    618  mountd
+100005    3   tcp    621  mountd
+</code></pre>
+
+<p>root[~]#</p></li>
+</ul>
+</li>
+</ul>
+
+
+<p>Wah kayaknya semua service dah berjalan normal, dan dilihat di status servicenya dah ok nih.</p>
+
+<pre><code>The Linux Terminal Server Project (http://www.LTSP.org)
+
+Interface IP Address      Netmask         Network         Broadcast        Used
+eth0      192.168.1.7     255.255.255.0   192.168.1.0     192.168.1.255   &lt; -----
+
+Service    Installed   Enabled   Running   Notes
+dhcpd      Yes         no        Yes       Version 3
+tftpd      Yes         Yes       Yes       Has '-s' flag
+portmapper Yes         no        Yes
+nfs        Yes         no        Yes
+xdmcp      Yes         no        Yes       xdm, gdm   Using: gdm
+
+File                                Configured  Notes
+/etc/hosts                          Yes
+/etc/hosts.allow                    Yes
+/etc/exports                        Yes
+/opt/ltsp/i386/etc/lts.conf         Yes
+
+Configured runlevel: 4         (value of initdefault in /etc/inittab)
+   Current runlevel: 4         (output of the 'runlevel' command)
+
+Installation dir...: /opt/ltsp
+
+Press [enter] to return to the main menu...
+</code></pre>
+
+<p>Semua udah running, sekarang coba booting dari client.</p>
+
+<p>Weeeeekkkkzz…..
+koq ga keluar guinya ??? Koq keluarnya cuman cursor silang doank di client ? Gimana supaya clientya bisa masuk ke XWindow ??</p>
+
+<p>Caranya sebagai berikut:</p>
+
+<p>Zencafe/Zenwalk memakai gdm untuk login managernya. Mungkin ada sedikit kesalahan di “gdm/login managernya” :D</p>
+
+<p>Sekarang login coba login di PC yang ingin dijadikan sebagai LTSP server dengan akses root. Kemdian buka terminal dan jalankan perintah gdmsetup seperti berikut:</p>
+
+<pre><code>root[~]# gdmsetup
+</code></pre>
+
+<p>Setelah menjalankan perintah diatas, akan tampil window seperti gambar dibawah ini:
+<a href="http://pemula.blogsome.com/go.php?http://www.flickr.com/photos/10243554@N02/852659826/"><img src="http://farm2.static.flickr.com/1331/852659826_d80ab612de_m.jpg" alt="Gambar7" /></a></p>
+
+<p><a href="http://farm2.static.flickr.com/1331/852659826_d80ab612de_m.jpg"><br/>
+View Large</a></p>
+
+<p>Pada kolom isian Style, ganti isinya dengan Same As Local, klo sudah silahkan di close terus reboot servernya.</p>
+
+<p>Coba akses dari client, gimana hasilnya ??? :)</p>
+
+<p>Oh iya untuk percobaan ini di pc client memakai PXE. Untuk teman-teman yang ingin cobain LTSP dengan Zencafe sebagai distronya, mungkin bisa saling sharing di <strong>#awali[at]DALnet</strong>. :)</p>
+
+<p><strong>Referensi-referensi :</strong>
+<a href="http://ltsp.mirrors.tds.net/pub/ltsp/docs/ltsp-4.1-en.html">http://ltsp.mirrors.tds.net/pub/ltsp/docs/ltsp-4.1-en.html</a>
+<a href="http://www.ltsp.or.id/dokument6_ver3.htm">http://www.ltsp.or.id/dokument6_ver3.htm</a></p>
+
+<p>Maap klo bahasa-nya masih acak-adut, soalnya baru bisa install LTSP :D
+Thx buat aa[N] buat tahu gorengnya :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-02T21:39:21+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2008/10/02/the-poet-and-the-pendulum-nightwish/" title="Previous Post: The Poet and the Pendulum - Nightwish">&laquo; The Poet and the Pendulum - Nightwish</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2008/10/24/i-walk-alone-tarja-turunen/" title="Next Post: I Walk Alone (Tarja Turunen)">I Walk Alone (Tarja Turunen) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/';
+        var disqus_url = 'http://martinusadyh.web.id/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

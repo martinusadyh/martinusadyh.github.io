@@ -1,0 +1,879 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Wuah akhirnya, setelah berjam-jam melelahkan menginstall MySQL via IPS (lamanya karena belum ada mirror lokal dan waktu proses download sempat mati &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/23/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/29/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/">Installasi Dan Konfigurasi MySQL Di OpenSolaris 2008.11</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-29T03:30:40+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/29/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Wuah akhirnya, setelah berjam-jam melelahkan menginstall MySQL via IPS (lamanya karena belum ada mirror lokal dan waktu proses download sempat mati lampu :( ) akhirnya selesai juga proses installasi MySQL-nya :) Proses installasi MySQL nya sendiri sangat mudah, tinggal cari saja packages <strong>SUNWmysql5</strong> di IPS yang terdapat di OpenSolaris 2008.11 kemudian kasih centang dan tekan tombol <strong>Install/Update</strong> maka IPS akan dengan senang hati mendownload dan melakukan proses installasinya untuk anda :)</p>
+
+<p>Setelah proses installasi selesai, sekarang berilah akses read dan execute untuk group pada direktori /var/mysql dengan mengetikkan perintah <strong>pfexec chmod 750 /var/mysql</strong> seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~$ pfexec chmod 750 /var/mysql/
+martin@opensolarisbox:~$ pfexec ls -l /var/
+total 60
+drwxrwxr-x   9 root   sys      17 2009-03-22 03:10 adm
+drwxr-xr-x   2 root   sys       2 2008-11-20 07:13 audit
+drwxr-xr-x   3 root   root      3 2008-11-20 07:38 cache
+drwxr-xr-x   2 root   sys       2 2008-11-20 07:13 cores
+drwxr-xr-x   2 root   sys       3 2009-03-02 04:04 cron
+drwxr-xr-x   3 root   sys       3 2008-11-20 07:29 db
+drwxr-xr-x   3 root   sys       3 2008-11-20 07:29 fm
+drwxr-xr-x   2 root   bin       2 2008-11-20 07:13 games
+drwxr-xr-x   2 daemon daemon    2 2008-11-20 07:13 idmap
+drwxr-xr-x   2 root   sys       2 2008-11-20 07:13 inet
+drwxr-xr-x   3 root   sys       3 2008-11-20 07:29 krb5
+drwxr-xr-x   3 root   bin       5 2009-03-02 03:57 ld
+drwxr-xr-x   2 root   sys       2 2008-11-20 07:29 ldap
+drwxr-xr-x   6 root   other     6 2008-11-20 07:29 lib
+drwxr-xr-x   4 root   sys      11 2009-03-27 18:18 log
+drwxrwxr-x   5 lp     lp        5 2008-11-20 07:29 lp
+drwxrwxrwt   3 root   mail      4 2009-03-27 15:28 mail
+drwxr-x---   3 mysql  mysql     4 2009-03-22 15:58 mysql
+drwxr-xr-x   2 root   bin       2 2008-11-20 07:13 news
+drwxr-xr-x   4 root   bin       4 2008-11-20 07:29 nfs
+drwxr-xr-x   2 root   sys       3 2008-11-20 07:35 nis
+drwxr-xr-x   3 root   sys       3 2008-11-20 07:29 ntp
+drwxr-xr-x   2 root   sys       2 2008-11-20 07:13 opt
+drwxr-xr-x   9 root   root     10 2009-03-22 03:56 pkg
+drwxrwxrwt   2 root   bin       2 2008-11-20 07:13 preserve
+drwxr-xr-x  10 root   sys    1323 2009-03-27 18:24 run
+drwxr-xr-x   9 root   sys      10 2009-03-02 03:57 sadm
+drwxr-xr-x   3 root   bin       4 2008-11-20 07:13 saf
+drwx------   2 root   root      3 2009-03-28 00:49 sma_snmp
+drwxr-xr-x  11 root   bin      11 2009-03-02 04:10 spool
+drwxr-xr-x   5 root   sys       5 2008-11-20 07:13 svc
+drwxrwxrwt 253 root   sys     260 2009-03-27 18:45 tmp
+drwxr-xr-x   3 root   bin       5 2008-11-20 07:35 yp
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/29/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/29/setting-vim-color-di-opensolaris-200811/">Setting VIM Color Di OpenSolaris 2008.11</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-29T01:56:33+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/29/setting-vim-color-di-opensolaris-200811/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman yang seneng bermain di Terminal atau Console, pasti sudah tidak asing lagi kan ama yang namanya <a href="http://www.vim.org/">Vim</a> :) Yups, <a href="http://www.vim.org/">Vim</a> adalah text editor yang berjalan di mode teks sedangkan di mode GUI temen-teman bisa pakai yang namanya GVim.</p>
+
+<p>Nah yang paling saya sukai di <a href="http://www.vim.org/">Vim</a> yaitu syntax hightlighting-nya yang sangat bagus dan tiap-tiap file type beda-beda warna-nya :) :D (keren banget). Mungkin teman-teman juga sudah tahu kalau untuk meng-enable pewarnaan kita bisa pakai perintah <strong>:syntax on</strong> pada mode command di <a href="http://www.vim.org/">Vim</a>, tapi apa yang terjadi ketika saya mencoba memberikan perintah tersebut di <a href="http://www.vim.org/">Vim</a> yang berjalan di OpenSolaris ? Hasilnya adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3393046556/"><img src="http://farm4.static.flickr.com/3560/3393046556_cfeba3b2f0.jpg" alt="SyntaxOn" /><br/>
+Tampilannya koq cuma bold aja yah ???</a></p>
+
+<p>dan ketika saya mencoba meng-enable line number dengan memberikan perintah <strong>:set nu</strong> hasilnya menjadi seperti ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3393046562/"><img src="http://farm4.static.flickr.com/3443/3393046562_431dfdb67f.jpg" alt="setnu" /><br/>
+Wah tambah parah, koq malah dikasih underline :( </a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/29/setting-vim-color-di-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/28/themes-nimbus-for-slackware-masuk-ke-linuxsoftpediacom/">Themes Nimbus for Slackware Masuk Ke linux.softpedia.com</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-28T19:43:17+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/28/themes-nimbus-for-slackware-masuk-ke-linuxsoftpediacom/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tulisan ini sebenarnya dari hasil ga sengaja search di google dan saya sendiri juga ga tau koq bisa themes Nimbus yang saya build dulu bisa masuk ke <a href="http://linux.softpedia.com/get/Desktop-Environment/Themes/Nimbus-For-Slackware-37916.shtml">linux.softpedia.com</a> :)</p>
+
+<p>Dan ini tampilan web-nya ketika saya buka :)
+<a href="http://www.flickr.com/photos/10243554@N02/3392254394/"><img src="http://farm4.static.flickr.com/3606/3392254394_6994d14268.jpg" alt="Screenshot-3" /><br/>
+Narsis MODE ON :P</a></p>
+
+<p>Tapi keren juga, yang download themesnya udah 300&#8217;an user :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/28/installing-flash-player-10-di-opensolaris-200811/">Installing Flash Player 10 Di OpenSolaris 2008.11</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-28T19:20:40+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/28/installing-flash-player-10-di-opensolaris-200811/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pertama-tama download dulu Flash Player 10 nya dari situs <a href="http://get.adobe.com/flashplayer/">Adobe</a> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3391388667/"><img src="http://farm4.static.flickr.com/3433/3391388667_a4cb6d8ff5.jpg" alt="Screenshot" /><br/>
+Download Flash Player</a></p>
+
+<p>Setelah proses download selesai, ekstrak dengan perintah seperti dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]$ tar xvf flash_player_10_solaris_x86.tar.bz2
+flash_player_10_solaris_r22_87_x86/
+flash_player_10_solaris_r22_87_x86/libflashplayer.so
+[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]$
+</code></pre>
+
+<p>Ganti akses user anda ke root dengan perintah <strong>su</strong> kemudian copykan file <strong>libflashplayer.so</strong> ke direktori <strong>/usr/lib/firefox/plugins/</strong> seperti dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]$ ls
+flash_player_10_solaris_r22_87_x86  flash_player_10_solaris_x86.tar.bz2
+[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]$ su
+Password:
+[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]# cp flash_player_10_solaris_r22_87_x86/libflashplayer.so /usr/lib/firefox/plugins/
+</code></pre>
+
+<p>Jalankan firefox dan cek apakah plugin sudah terinstall atau belum dengan mengetikkan <strong>about:plugins</strong> pada firefox seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3391388669/"><img src="http://farm4.static.flickr.com/3544/3391388669_486c226ebf.jpg" alt="Screenshot-1" /><br/>
+Plugin Flash Player Sudah Terinstall</a></p>
+
+<p>Sekarang kita sudah bisa bermain-main dengan file flash di OpenSolaris :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/28/instalasi-openoffice-301-di-opensolaris-200811/">Instalasi OpenOffice 3.0.1 Di OpenSolaris 2008.11</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-28T16:24:31+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/28/instalasi-openoffice-301-di-opensolaris-200811/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman yang ingin menginstall OpenOffice tapi tidak mempunyai koneksi internet untuk melakukan proses installasi via IPS (Image Packaging System)-nya OpenSolaris, bisa melakukan proses installasi secara manual yaitu dengan mendownload source codenya langsung dari situs OpenOffice dan prosesnya juga mudah koq :) Sebelum mulai menginstall OpenOffice-nya, install dulu JRE (Java Runtime Enviroment) nah baru kemudian download-lah installer OpenOffice dari <a href="http://download.openoffice.org/other.html#en-US">sini</a></p>
+
+<p>Nah kalau proses download sudah selesai, sekarang ektrak dengan perintah seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~/Desktop/OpenOffice$ tar zxvf OOo_3.0.1_Solarisx86_install_wJRE_en-US.tar.gz
+............
+............
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/pkginfo
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/archive/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/archive/none.bz2
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/pkgmap
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/licenses/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/share/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/share/readme/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/program/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/program/resource/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/readmes/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/install/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/install/copyright
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/install/depend
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/install/i.none
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/pkgmap
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/pkginfo
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/reloc/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/reloc/opt/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/reloc/opt/openoffice.org3/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/reloc/opt/openoffice.org3/program/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/install/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/install/i.none
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/install/copyright
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/install/depend
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/archive/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/archive/none.bz2
+OOO300_m15_native_packed-1_en-US.9379/licenses/
+OOO300_m15_native_packed-1_en-US.9379/licenses/LICENSE_en-US
+OOO300_m15_native_packed-1_en-US.9379/licenses/LICENSE_en-US.html
+OOO300_m15_native_packed-1_en-US.9379/update
+OOO300_m15_native_packed-1_en-US.9379/readmes/
+OOO300_m15_native_packed-1_en-US.9379/readmes/README_en-US
+OOO300_m15_native_packed-1_en-US.9379/readmes/README_en-US.html
+OOO300_m15_native_packed-1_en-US.9379/JavaSetup.jar
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/28/instalasi-openoffice-301-di-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/26/playing-mp3-di-opensolaris-200811/">Playing MP3 Di OpenSolaris 2008.11</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-26T00:23:56+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/26/playing-mp3-di-opensolaris-200811/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah beberapa hari kencan dengan OpenSolaris cuma ditemanin ama suara jangkrik dan kodok di sawah, akhirnya malam ini kesampaian juga install codec MP3 di OpenSolaris :)  Codec MP3 untuk OpenSolaris bisa didownload dari situs <a href="https://shop.fluendo.com/">Fluendo Web Shop</a> tapi kita harus register dahulu sebelum mulai mendownload codecnya (proses registrasinya free koq, cuma sayangnya codec-nya koq cuma berlaku 1 thn yah ?? emang bener 1 thn ? :D ) :)</p>
+
+<p>Setelah proses registrasi selesai, sekarang download dan simpan di hard disk lokal kemudian ekstrak dengan perintah seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~/Desktop$ tar xjvf fluendo-mp3-7.solaris-intel.tar.bz2
+codecs/
+codecs/libgstflump3dec.so
+README.txt
+LICENSE.txt
+martin@opensolarisbox:~/Desktop$
+</code></pre>
+
+<p>Kemudian copy-kan file <strong>libgstflump3dec.so</strong> ke direktori <strong>/usr/lib/gstreamer-0.10/</strong> seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~/Desktop$ pfexec cp codecs/libgstflump3dec.so /usr/lib/gstreamer-0.10/
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/26/playing-mp3-di-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/20/installasi-driver-bcm4401-opensolaris-200811-di-acer-aspire-5500z/">Installasi Driver BCM4401 OpenSolaris 2008.11 Di Acer Aspire 5500Z</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-20T04:00:29+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/20/installasi-driver-bcm4401-opensolaris-200811-di-acer-aspire-5500z/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Fyuh akhirnya berhasil juga nih konfigurasi Lan Card di OpenSolaris 2008.11 pada Laptop Acer Aspire 5500Z :) sedangkan untuk wifi-nya masih belum ketemu cara konfigurasinya :malu: (Apa wifinya ga enable gara-gara waktu boot saya pakai opsi <strong>acpi-user-options=0x8</strong> yach ?? Tapi gpp lah, yang penting dah bisa konek ke internet dulu :) )</p>
+
+<p>Nah karena yang masalah yang sedang saya hadapi adalah LanCard di laptop yang saya pakai tidak terdeteksi, maka cara paling gampang yaitu masuk ke Linux dan kemudian kita lihat dengan perintah <strong>lspci</strong> yang akan dengan baik hati memberi tahu device apa saja yang tertancap pada laptop yang saya pakai ini. Dan output dari perintah <strong>lspci</strong> di laptop yang saya pakai adalah sebagai berikut :</p>
+
+<pre><code>00:00.0 Host bridge: Intel Corporation Mobile 915GM/PM/GMS/910GML Express Processor to DRAM Controller (rev 04)
+00:02.0 VGA compatible controller: Intel Corporation Mobile 915GM/GMS/910GML Express Graphics Controller (rev 04)
+00:02.1 Display controller: Intel Corporation Mobile 915GM/GMS/910GML Express Graphics Controller (rev 04)
+00:1c.0 PCI bridge: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) PCI Express Port 1 (rev 04)
+00:1c.1 PCI bridge: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) PCI Express Port 2 (rev 04)
+00:1d.0 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #1 (rev 04)
+00:1d.1 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #2 (rev 04)
+00:1d.2 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #3 (rev 04)
+00:1d.3 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #4 (rev 04)
+00:1d.7 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB2 EHCI Controller (rev 04)
+00:1e.0 PCI bridge: Intel Corporation 82801 Mobile PCI Bridge (rev d4)
+00:1e.2 Multimedia audio controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) AC'97 Audio Controller (rev 04)
+00:1e.3 Modem: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) AC'97 Modem Controller (rev 04)
+00:1f.0 ISA bridge: Intel Corporation 82801FBM (ICH6M) LPC Interface Bridge (rev 04)
+00:1f.1 IDE interface: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) IDE Controller (rev 04)
+00:1f.3 SMBus: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) SMBus Controller (rev 04)
+05:01.0 Ethernet controller: Broadcom Corporation BCM4401-B0 100Base-TX (rev 02)
+05:02.0 Network controller: Intel Corporation PRO/Wireless 2200BG [Calexico2] Network Connection (rev 05)
+05:04.0 CardBus bridge: ENE Technology Inc CB1410 Cardbus Controller (rev 01)
+</code></pre>
+
+<p>Nah ketahuan tuh informasi tentang Lan Card yang dipakai di laptop saya, nah akhirnya iseng-iseng cari di google dengan keyword <strong>BCM4401-B0 100Base-TX open solaris</strong> dan menemukan beberapa petunjuk yang dapat dilihat <a href="http://homepage2.nifty.com/mrym3/taiyodo/eng/">disini</a> dan <a href="http://echelog.matzon.dk/logs/browse/opensolaris/1228258800">disana</a> :) Dari hasil <a href="http://echelog.matzon.dk/logs/browse/opensolaris/1228258800">chatting</a> yang saya baca diatas, kita tinggal mengikuti panduan manual yang terdapat pada driver bfe yang dapat didownload <a href="http://homepage2.nifty.com/mrym3/taiyodo/eng/">disini</a>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/20/installasi-driver-bcm4401-opensolaris-200811-di-acer-aspire-5500z/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/14/top-10-netbeans-api-video-local-mirror/">Top 10 NetBeans API Video (Local Mirror)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-14T21:13:17+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/14/top-10-netbeans-api-video-local-mirror/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hii all, buat teman-teman yang ingin atau sedang mempelajari tentang <a href="http://platform.netbeans.org/">NetBeans RCP</a> sekarang jadi lebih mudah loch. Soalnya sekarang kita bisa belajar <a href="http://platform.netbeans.org/">NetBeans RCP</a> melalui video yang udah dibuat oleh <a href="http://blogs.sun.com/geertjan/">Pakde Geertjan</a> dan bisa didownload <a href="http://platform.netbeans.org/tutorials/nbm-10-top-apis.html">disini</a> .
+Nah untuk teman-teman yang mempunyai koneksi internet kencang tidak begitu masalah untuk mulai mendownload seluruh seri dari video diatas, tapi bagaimana nasib teman-teman yang lagi <strong>&ldquo;fakir bandwith&rdquo;</strong> ? (Saya dulu pernah merasakan bagaimana tidak enaknya menjadi seorang fakir bandwith :( ) Nah berhubung saya mendapatkan &ldquo;jatah&rdquo; dari <a href="http://artivisi.com/">kantor</a> yang menggunakan bandwith lokal (<a href="http://id.wikipedia.org/wiki/Indonesia_Internet_Exchange">IIX</a>) maka buat teman-teman yang merasa download dari link aslinya berat, mungkin bisa coba download dari link dibawah ini (lumayanlah untuk sedikit menghemat devisa negara #$&amp;#% Halah ngomong paan sech, ga nyambung blass #&amp;$%$ ):</p>
+
+<p><b>Part 1: Runtime Container API</a></b>
+<a href="http://www.flickr.com/photos/10243554@N02/3352999037/" title="NetBeans_API_Part1 by thundherbolth, on Flickr"><img src="http://farm2.static.flickr.com/1198/3352999037_8c812d137a.jpg" width="500" height="345" alt="NetBeans_API_Part1" /></a><br />
+Download Link Lokal : <a href="http://www.artivisi.com/~martinus/downloads/NetBeansAPI/top10-netbeans-apis-part1.flv">top10-netbeans-apis-part1.flv</a>
+FileSize : 42.5 MB</p>
+
+<p><b>Part 2: Lookup API</a></b>
+<a href="http://www.flickr.com/photos/10243554@N02/3353773080/" title="NetBeans_API_Part2 by thundherbolth, on Flickr"><img src="http://farm2.static.flickr.com/1289/3353773080_64cd45203f.jpg" width="500" height="357" alt="NetBeans_API_Part2" /></a><br />
+Download Link Lokal : <a href="http://www.artivisi.com/~martinus/downloads/NetBeansAPI/Top10NetBeansAPIsPart2.flv">Top10NetBeansAPIsPart2.flv</a>
+FileSize : 96.8 MB</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/14/top-10-netbeans-api-video-local-mirror/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/10/trying-opensolaris-200811/">Trying OpenSolaris 2008.11</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-10T22:25:36+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/10/trying-opensolaris-200811/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Fyuh akhirnya setelah sekian lama pingin cobain themes GTK Nimbus, akhirnya kesampaian juga kemarin install OpenSolaris 2008.11 di laptop kantor (Acer Aspire 5500Z ) :) (Tepatnya laptopnya <a href="http://ifnu.artivisi.com/">mas Ifnu</a> :D ).</p>
+
+<p>Proses instal sebenarnya juga ga begitu mulus sih, sehabis boot via CD ternyata berhenti di proses probing device :( luaaaaaaaama banget. Setelah tanya-tanya ke paman google, akhirnya dapat link <a href="http://blogs.sun.com/danasblog/entry/configuring_solaris_acpi_at_boot">disini</a>. Akhirnya dengan modal tekad dan nekat, coba lagi dah dengan menambahkan opsi <strong>acpi-user-options=0x8</strong> akhirnya tampil deh GNOME 2.24.0 dengan themes Nimbus idaman saya :)</p>
+
+<p>Proses instalasi OpenSolaris ga begitu sulit ternyata, cukup mudah dan tinggal ikutin langkah-langkah yang udah dijelasin ama om Rachmat <a href="http://w3hol.wordpress.com/2009/02/14/install-opensolaris-itu-mudah/">disini</a>. Seperti yang udah om Rachmat katakan, proses instalasi yang saya lakukan juga ga begitu sulit koq tinggal Next, Next dan Done :)</p>
+
+<p>Tapi setelah proses instalasi selesai ternyata timbul masalah baru lagi, saya lupa backup grub Ubuntu 8.10 yang saya pakai tiap hari :(( . Yah akhirnya mau ga mau cari LiveCD Ubuntu kemudian copy file menu.lst punya Ubuntu dan paste ke grub-nya OpenSolaris yang terdapat di <strong>/rpool/boot/grub</strong> dan hasil akhir menu.lst saya adalah sebagai berikut :</p>
+
+<pre><code>splashimage /boot/grub/splash.xpm.gz
+background 215ECA
+timeout 30
+default 0
+#---------- ADDED BY BOOTADM - DO NOT EDIT ----------
+title OpenSolaris 2008.11 snv_101b_rc2 X86
+findroot (pool_rpool,3,a)
+splashimage /boot/solaris.xpm
+foreground d25f00
+background 115d93
+bootfs rpool/ROOT/opensolaris
+kernel$ /platform/i86pc/kernel/$ISADIR/unix -B $ZFS-BOOTFS,console=graphics,acpi-user-options=0x8
+module$ /platform/i86pc/$ISADIR/boot_archive
+#---------------------END BOOTADM--------------------
+
+# Unknown partition of type 131 found on /dev/rdsk/c3d0p0 partition: 1
+# It maps to the GRUB device: (hd0,0) .
+
+# Unknown partition of type 5 found on /dev/rdsk/c3d0p0 partition: 2
+# It maps to the GRUB device: (hd0,1) .
+
+# Unknown partition of type 131 found on /dev/rdsk/c3d0p0 partition: 3
+# It maps to the GRUB device: (hd0,2) .
+
+title OpenSolaris 2008.11 snv_101b_rc2 X86 text boot
+findroot (pool_rpool,3,a)
+bootfs rpool/ROOT/opensolaris
+kernel$ /platform/i86pc/kernel/$ISADIR/unix -B $ZFS-BOOTFS,acpi-user-options=0x8
+module$ /platform/i86pc/$ISADIR/boot_archive
+
+#--------------- UBUNTU -------------------------------------
+title       Ubuntu 8.10, kernel 2.6.27-7-generic
+uuid        1ddb05f1-298e-4d0e-a308-fc7d31279eb0
+root            (hd0,0)
+kernel      /boot/vmlinuz-2.6.27-7-generic root=UUID=1ddb05f1-298e-4d0e-a308-fc7d31279eb0 ro quiet splash
+initrd      /boot/initrd.img-2.6.27-7-generic
+quiet
+
+title       Ubuntu 8.10, kernel 2.6.27-7-generic (recovery mode)
+uuid        1ddb05f1-298e-4d0e-a308-fc7d31279eb0
+root            (hd0,0)
+kernel      /boot/vmlinuz-2.6.27-7-generic root=UUID=1ddb05f1-298e-4d0e-a308-fc7d31279eb0 ro  single
+initrd      /boot/initrd.img-2.6.27-7-generic
+#--------------- END UBUNTU -------------------------------------
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/10/trying-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2008/10/24/i-walk-alone-tarja-turunen/">I Walk Alone (Tarja Turunen)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-24T23:45:51+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2008/10/24/i-walk-alone-tarja-turunen/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Silahkan di dengerin nih buat yang belum tahu, lagu dari mantan vokalisnya <a href="http://en.wikipedia.org/wiki/Nightwish">Nigtwish</a> udah gitu cakep lagi :malu: sayangnya sih udah nikah :(</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2008/10/24/i-walk-alone-tarja-turunen/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="24">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="22">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

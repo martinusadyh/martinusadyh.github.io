@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Membuat MasterDetail Report dengan iReport - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Minggu kemarin, pada milis netbeans-indonesia@yahoogroups.com terjadi diskusi yang cukup menarik tentang masalah Java+iReport+SubReport. Pertanyaan &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Membuat MasterDetail Report Dengan iReport</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-24T22:59:20+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Minggu kemarin, pada milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> terjadi diskusi yang cukup menarik tentang masalah Java+iReport+SubReport. Pertanyaan yang diajukan adalah sebagai berikut :</p>
+
+<blockquote><p>Arie Linuxx wrote:
+saya telah buat report dengan iReport, anggaplah saya
+buat report dengan nama report1. dan didalam report1
+itu terdapat subreport yg saya beri nama subreport1.</p></blockquote>
+
+<p>Pada saat saya ingin menampilkan dari java, terdapat
+error &hellip;
+8<------ CUT ------>8</p>
+
+<p>8<------ CUT ------>8
+dan error nya adalah :
+init:
+deps-jar:
+compile-single:
+run-single:
+net.sf.jasperreports.engine.JRException: Could not
+load object from location : subreport1.jasper</p>
+
+<p>Dimana yah salahnya&hellip; mungkin teman2 ada yg bisa
+bantu&hellip;</p>
+
+<p>Mkasih ya&hellip;</p>
+
+<p>Nah setelah beberapa kali diskusi, ternyata mas Arie Linuxx sudah bisa menjalankan sub-reportnya dengan menggunakan solusi full path untuk parameter sub-reportnya seperti kata mas Arie Linuxx dibawah ini:</p>
+
+<blockquote><p>Arie Linuxx wrote:
+maaf mas.. ternyata udh bs&hellip;
+di tab SubReport(Other) SubReport Expression Class tetep java.lang.String dan untuk Subreport Expression pke full path &ldquo;G:/MyJava/Inventori/laporan/rptTransaksiDtl_back.jasper&rdquo; dan sy compile netbeans lagi.. berhasill&hellip;.</p></blockquote>
+
+<p>mkasih ya.. kawan2&hellip;</p>
+
+<p>Kapan2 boleh tanya lagi ya&hellip;</p>
+
+<p>Mkasih&hellip;&hellip;&hellip;&hellip;.</p>
+
+<p>Tetapi ada satu yang sedikit mengganjal yaitu mas Arie Linuxx menggunakan full path untuk parameter sub-reportnya. Yah memang berhasil sih dijalankan, tetapi bagaimana jadinya kalau dijalankan di lain komputer atau dilain Sistem Operasi ? Tentunya solusi full path bukan solusi yang bagus :D</p>
+
+<!-- more -->
+
+
+<p>Sekarang mari kita buat sebuah latihan tentang pembuatan Report Master Detail menggunakan iReport kemudian kita panggil dari program Java yang telah kita buat menggunakan IDE NetBeans. Sedangkan alat-alat yang perlu dipersiapkan untuk latihan kali ini adalah :
+1. iReport 2.0.2
+2. MySQL Server.
+3. NetBeans 6.0 ( Sekalian coba-coba menggunakan NetBeans veri baru :D )
+4. JDK 1.6.0 atau yang lebih baru.</p>
+
+<p>Supaya lebih rapi (sekalian belajar nulis) pada latihan kali ini akan dibagi menjadi 4 bagian yaitu :
+1. Membuat DataBase dan Table-tablenya.
+2. Membuat New Project dari NetBeans.
+3. Membuat Master Report dan Detail Report Menggunakan iReport.
+4. Memanggil Master-Detail Report Dari Program Java.</p>
+
+<p>Pada latihan kali ini setiap langkah-langkah yang dilakukan akan dijelaskan secara mendetail (sekaligus sebagai bahan bacaan bagi teman-teman yang belum pernah membuat Report Master-Detail menggunakan iReport), dan buat teman-teman yang mengalami masalah seperti Mas Arie Linuxxx mungkin dapat langsung melihat ke langkah nomor 4 yaitu &ldquo;Memanggil Master-Detail Report Dari Program Java&rdquo;.</p>
+
+<ol>
+<li> <strong>Membuat DataBase dan Table-tablenya.</strong></li>
+</ol>
+
+
+<p>Sebagai contoh kasus, disini saya menggunakan hanya 2 table saja yaitu Table Kategori Barang ( T_KATEGORI ) dan Table Barang ( T_BARANG ) saja. Nah pada setiap barang yang terdapat pada T_BARANG pasti mempunyai kategori barang yang terdapat pada T_KATEGORI, sedangkan hubungan antar tablenya kurang lebih sebagai berikut :
+<a href="http://www.flickr.com/photos/10243554@N02/2133340402/"><img src="http://farm3.static.flickr.com/2343/2133340402_9e4c775d24_m.jpg" alt="DB_Design" /><br/>
+Click to View Large Image</a></p>
+
+<p>Sekarang mari kita buat table-table tersebut dengan cara membuat sebuah script *.sql yang isinya kurang lebih sebagai berikut :</p>
+
+<pre><code>-- Database untuk latihan pembuatan report Master-Detail
+
+drop database if exists rptmasterdetail;
+create database rptmasterdetail;
+use rptmasterdetail;
+
+drop table if exists T_BARANG;
+drop table if exists T_KATEGORI;
+
+-- Bikin table Master
+create table T_KATEGORI(
+    kd_Kategori varchar(5) not null primary key,
+    nm_Kategori varchar(30) not null,
+    index kd_Kategori(kd_Kategori)
+) type = innodb;
+
+-- Bikin table Detail
+create table T_BARANG(
+    id_Barang integer auto_increment primary key,
+    kd_Barang varchar(10) not null,
+    kd_Kategori varchar(5) not null,
+    nm_Barang varchar(50) not null,
+    index (kd_Kategori),
+    foreign key(kd_Kategori) references T_KATEGORI(kd_Kategori) on update cascade
+) type = innodb;
+
+/* Proses Insert Data Table Master */
+insert into T_KATEGORI(kd_Kategori, nm_Kategori) values("HAAP", "Home Application");
+insert into T_KATEGORI(kd_Kategori, nm_Kategori) values("AUD", "Audio");
+insert into T_KATEGORI(kd_Kategori, nm_Kategori) values("VID", "Video");
+
+/* Proses Insert Data Table Detail */
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("1", "AUD", "MP3 Player");
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("2", "VID", "VCD Player");
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("3", "HAAP", "Kulkas");
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("4", "HAAP", "Rice Cooker");
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("5", "AUD", "iPod");
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("6", "HAAP", "Blender");
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("7", "VID", "DVD Player");
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("8", "AUD", "USB MP3 Player");
+insert into T_BARANG(kd_Barang, kd_Kategori, nm_Barang) values("9", "AUD", "MP4 Player");
+</code></pre>
+
+<p>Copy dan simpan script diatas dengan nama <strong>RptMasterDetail.sql</strong>, setelah tersimpan di komputer anda, sekarang jalankan perintah dibawah ini agar seluruh table dan database yang diperlukan siap untuk digunakan:</p>
+
+<pre><code>[javamaniac@pemula:~/Desktop/MembuatRptMasterDetail]$ mysql -u root -p &lt; RptMasterDetail.sql
+Enter password: [masukkan password root pada mysql anda]
+[javamaniac@pemula:~/Desktop/MembuatRptMasterDetail]$
+</code></pre>
+
+<p>Ok sekarang langkah pertama telah selesai dilakukan, sekarang DataBase dan table sudah siap untuk digunakan :) Mari lanjut pada langkah ke 2.</p>
+
+<ol>
+<li> <strong>Membuat New Project dari NetBeans</strong></li>
+</ol>
+
+
+<p>Setelah langkah pertama selesai, sekarang buatlah sebuah project baru dari NetBeans dengan cara sebagai berikut :</p>
+
+<p>Buatlah New Project dan beri nama <strong>RptMasterDetail</strong> untuk isian <strong>Project Name</strong>, kemudian tekanlah tombol Finish. Setelah menekan tombol Finish, sekarang klik kanan root project yang terdapat pada Projects Inspector kemudian pilih <strong>New > Folder</strong>. Pada jendela New Folder isikan <strong>Report</strong> pada Folder Name seperti pada gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133340398/"><img src="http://farm3.static.flickr.com/2407/2133340398_d56059091f_m.jpg" alt="BuatFolder" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah proses diatas, maka sekarang struktur direktori Project kita adalah seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132607017/"><img src="http://farm3.static.flickr.com/2224/2132607017_9b4c23680e_m.jpg" alt="StrukturPrj" /><br/>
+Click to View Large Image</a></p>
+
+<p>Fungsi dari direktori / Folder Report tersebut adalah sebagai tempat menyimpan report yang akan kita buat melalui iReport. Ok, sekarang lanjut ke langkah ke 3.</p>
+
+<ol>
+<li> <strong>Membuat Master Report dan Detail Report Menggunakan iReport.</strong></li>
+</ol>
+
+
+<p>Sebelum mulai membuat Master dan Detail Report-nya, jangan lupa buatlah dahulu <strong>Connection/Data Source</strong> yang mengarah ke database <strong>rptmasterdetail</strong> yang telah kita buat pada langkah pertama diatas. Pada proses pembuatan Master dan Detail Report ini, proses pembuatan Reportnya dimulai dari Detail Report dahulu baru kemudian membuat Master Reportnya.</p>
+
+<pre><code>* **Proses Pembuatan Detail Report.**
+</code></pre>
+
+<p>Buatlah New Report dengan cara klik <strong>File > New Document</strong>, kemudian pada Report Name isikan <strong>RptDetail</strong> sedangkan pada Preset Sizes isikan <strong>NOTE</strong> dan pada Page Margin isikan <strong>nilai 0 (nol) untuk Top, Bottom, Left dan Right</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/2132579613/"><img src="http://farm3.static.flickr.com/2395/2132579613_b9849682de_m.jpg" alt="NewRptDetail" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah itu, simpanlah <strong>RptDetail</strong> ini pada direktori <strong>Report/</strong> yang telah dibuat pada langkah 2 diatas. Karena Detail Report ini akan digunakan untuk menampilkan data barang berdasarkan kode kategori, maka sekarang masukkanlah query yang akan mengambil data barang berdasarkan kode kategori yang diinginkan tersebut dan syntax sql untuk melakukan proses diatas adalah sebagai berikut :</p>
+
+<pre><code>SELECT T_BARANG.kd_Barang, T_BARANG.nm_Barang FROM T_BARANG, T_KATEGORI WHERE T_BARANG.kd_Kategori = 'HAAP' GROUP BY T_BARANG.kd_Barang
+</code></pre>
+
+<p>Pada syntax sql diatas, kita membutuhkan 1 parameter supaya query ini berjalan dengan baik yaitu parameter kd_Kategori. Sekarang mari kita buat sebuah parameter di iReport yang berfungsi untuk menampung kd_Kategori tersebut dengan cara memilih menu <strong>View > Parameters</strong>, kemudian pada jendela Parameters tekanlah tombol New untuk menambahkan sebuah parameter baru. Setelah itu pada jendela <strong>Add/Modify Parameters </strong>isikanlah sebagai berikut :</p>
+
+<pre><code>  * Parameter Name **PRM_DETAIL_KDKATEGORI**
+
+
+  * Parameter Class Type **java.lang.String**
+
+
+  * Beri centang pada pilihan Use as a Prompt
+</code></pre>
+
+<p>seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132579617/"><img src="http://farm3.static.flickr.com/2078/2132579617_82284392eb_m.jpg" alt="PrmDetail" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah menambahkan parameter seperti diatas, sekarang masukkanlah query yang akan mengambil seluruh data barang berdasarkan kode kategori yang kita inginkan dengan cara pilihlah menu <strong>Data > Report Query</strong> kemudian isikan seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133348814/"><img src="http://farm3.static.flickr.com/2116/2133348814_4f8e8c5c2b_m.jpg" alt="DetailRptQry" /><br/>
+Click to View Large Image</a></p>
+
+<p>Seluruh konfigurasi untuk Detail Report telah selesai, sekarang design-lah tampilan Detail Reportnya seperti dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133340416/"><img src="http://farm3.static.flickr.com/2017/2133340416_cb4df110e4_m.jpg" alt="DesignDetailRpt" /><br/>
+Click to View Large Image</a></p>
+
+<p>Jika telah selesai, sekarang Compile-lah Detail Report-nya dengan cara memilih menu <strong>Build > Compile</strong> dan jika tidak ada kesalahan sekarang jalankanlah Detail Reportnya dengan menggunakan <strong>Active Connection</strong> yang bisa diakses di menu <strong>Build > Execute (with active connection)</strong>. Dan jika tidak ada kesalahan, maka tampilan Detail Report akan muncul seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132607015/"><img src="http://farm3.static.flickr.com/2186/2132607015_c36b4c47f8_m.jpg" alt="RptDetailSukses" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah memastikan bawha Detail Report sukses dijalankan, sekarang hilangkanlah tanda centang pada parameter <strong>PRM_DETAIL_KDKATEGORI</strong> seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133340408/"><img src="http://farm3.static.flickr.com/2010/2133340408_f26713f24e_m.jpg" alt="DelCentangRptDetail" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah menghilangkan tanda centang, simpanlah Detail Reportnya kemudian Compile lagi dengan cara memilih <strong>Build > Compile</strong>.</p>
+
+<p>Pembuatan detail report telah selesai, sekarang mari kita buat master reportnya :)</p>
+
+<pre><code>* **Proses Pembuatan Master Report.**
+</code></pre>
+
+<p>Sekarang buatlah Master Reportnya dengan cara memilih menu <strong>File > New Documents</strong> kemudian pada Report Name isikan <strong>RptMaster</strong> kemudian tekan OK.</p>
+
+<p>Setelah itu, simpanlah <strong>RptMaster</strong> ini pada direktori <strong>Report/</strong> yang telah dibuat pada langkah 2 diatas. Karena Master Report ini akan digunakan untuk menampilkan data kategori barang berdasarkan kode kategori yang diinputkan oleh user melalui program java yang kita buat, maka sekarang masukkanlah query yang akan mengambil data barang berdasarkan kode kategori tersebut dan syntax sql untuk melakukan proses diatas adalah sebagai berikut :</p>
+
+<pre><code>SELECT * FROM `T_KATEGORI` T_KATEGORI WHERE kd_Kategori = 'VID'
+</code></pre>
+
+<p>Pada syntax sql diatas, kita membutuhkan 1 parameter supaya query ini berjalan dengan baik yaitu parameter <strong>kd_Kategori</strong>. Sekarang mari kita buat sebuah parameter di iReport yang berfungsi untuk menampung <strong>kd_Kategori</strong> tersebut dengan cara memilih menu <strong>View > Parameters</strong>, kemudian pada jendela Parameters tekanlah tombol New untuk menambahkan sebuah parameter baru. Setelah itu pada jendela <strong>Add/Modify Parameters</strong> isikanlah sebagai berikut :</p>
+
+<pre><code>  * Parameter Name **PRM_KD_KATEGORI**
+
+
+  * Parameter Class Type **java.lang.String**
+
+
+  * Beri centang pada pilihan Use as a Prompt
+</code></pre>
+
+<p>seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132607009/"><img src="http://farm3.static.flickr.com/2025/2132607009_481667b9f0_m.jpg" alt="PrmMasterkdKat" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah menambahkan parameter seperti diatas, sekarang masukkanlah query yang akan mengambil seluruh data kategori barang berdasarkan kode kategori yang kita inputkan dengan cara pilihlah menu <strong>Data > Report Query</strong> kemudian isikan seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132607011/"><img src="http://farm3.static.flickr.com/2238/2132607011_d567e29323_m.jpg" alt="QryMaster" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah itu, sekarang design-lah Master Report-nya seperti dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133348810/"><img src="http://farm3.static.flickr.com/2264/2133348810_bfb25dd0f4_m.jpg" alt="DesignMasterRpt" /><br/>
+Click to View Large Image</a></p>
+
+<p>Jika telah selesai sekarang coba jalankan dengan menggunakan <strong>Active Connection</strong>, dan jika tidak ada kesalahan maka Master Report akan tampil seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132579611/"><img src="http://farm3.static.flickr.com/2061/2132579611_0267095962_m.jpg" alt="MasterRptOK1" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah Master Report berjalan dengan baik, sekarang waktunya untuk mulai menambahkan Sub-Report atau Detail Report yang telah kita buat pada langkah sebelumnya kedalam Master Report. Untuk menambahkan Sub-Report, tekanlah tombol yang terdapat pada Toolbar seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133326486/"><img src="http://farm3.static.flickr.com/2277/2133326486_2cc58f3da4.jpg" alt="AddSubRpt" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah menekan tombol Add SubReport, sekarang klik dan geretlah mouse kedalam detail area pada master report. Setelah selesai mengatur tempat dimana SubReport akan ditempatkan, maka secara otomatis akan muncul sebuah jendela pertanyaan yang menanyakan apakah kita ingin membuat report baru, menggunakan report yang sudah ada atau hanya membuat sebuah element subreport saja.</p>
+
+<p>Pada jendela pertanyaan tersebut, pilihlah pilihan nomor 2 yaitu <strong>Use an existing report</strong>, kemudian tekanlah tombol <strong>Browse</strong> dan arahkan ke tempat dimana kita menyimpan Detail Report kita (RptDetail.jasper) seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133326488/"><img src="http://farm3.static.flickr.com/2357/2133326488_93a934e02c_m.jpg" alt="AddSubRpt1" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah itu tekanlah tombol OK hingga tampilannya seperti dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133326492/"><img src="http://farm3.static.flickr.com/2233/2133326492_c7543bf91a_m.jpg" alt="AddSubRpt2" /><br/>
+Click to View Large Image</a></p>
+
+<p>Kemudian tekanlah tombol Next, kemudian pada jendela <strong>Connection / DataSource parameters</strong> pilihlah opsi <strong>Use the same connection to fill the master &hellip;</strong> seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133326496/"><img src="http://farm3.static.flickr.com/2003/2133326496_bfd61c8b2e_m.jpg" alt="AddSubRpt3" /><br/>
+Click to View Large Image</a></p>
+
+<p>Pada jendela Subreport parameters, tekanlah Next karena parameter yang terdapat pada Detail Report akan otomatis terdeteksi. Setelah menekan tombol Next, maka jendela selanjutnya yang akan tampil adalah jendela <strong>Subreport expression</strong>. Pada jendela <strong>SubReport expression</strong> ini, pilihlah opsi yang pertama yaitu <strong>Store the directory name in a parameter. </strong> seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133326502/"><img src="http://farm3.static.flickr.com/2229/2133326502_ed8efd60bf_m.jpg" alt="AddSubRpt4" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah menekan tombol Finish, sekarang design-lah tampilan Master Report-nya hingga menjadi seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133348808/"><img src="http://farm3.static.flickr.com/2217/2133348808_955d3a0890_m.jpg" alt="DesignMasterDetailRpt" /><br/>
+Click to View Large Image</a></p>
+
+<p>Sebelum mulai menjalankan Master Reportnya, sekarang editlah dahulu <strong>Default Value Expression</strong> dari parameter <strong>SUBREPORT_DIR</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/2133348820/"><img src="http://farm3.static.flickr.com/2241/2133348820_da9489859e_m.jpg" alt="EditPrmSubRptDir1" /><br/>
+Click to View Large Image</a></p>
+
+<p>menjadi seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133348824/"><img src="http://farm3.static.flickr.com/2326/2133348824_b6ea39738c_m.jpg" alt="EditPrmSubRptDir2" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah meng-edit parameter <strong>SUBREPORT_DIR</strong> menjadi seperti diatas, sekarang tambahkanlah sebuah parameter untuk Detail Report-nya. Parameter yang akan dikirim ke Detail Report ini adalah parameter kode kategori hasil dari proses query pada Master Report, mengapa kita perlu mengirimkan kode kategori ke Detail Report ? Karena Detail Report ini berfungsi untuk menampilkan data barang berdasarkan kode kategori yang telah ditampilkan di Master Report.</p>
+
+<p>Karena pada proses pembuatan Detail Report diatas, kita sudah membuat sebuah parameter dengan nama <strong>PRM_DETAIL_KDKATEGORI</strong>. Maka sekarang tambahkanlah sebuah parameter yang akan diterima oleh Detail Report dengan cara klik kanan Sub-Report, kemudian pilihlah properties. Setelah jendela SubReport properties muncul, masuklah pada tab <strong>Subreport (Other)</strong> kemudian pada tab Subreport parameters isikanlah nilai seperti dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133326498/"><img src="http://farm3.static.flickr.com/2288/2133326498_a27f2af500_m.jpg" alt="AddSubRptParam" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah menambahkan parameter untuk sub-reportnya, sekarang cobalah untuk menjalankannya dengan menggunakan <strong>Active Connection</strong>. Jika tidak ada langkah yang terlewati, seharusnya Master Detail Report anda akan tampil seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132579609/"><img src="http://farm3.static.flickr.com/2026/2132579609_c999b9a505_m.jpg" alt="MasterDetailJadi" /><br/>
+Click to View Large Image</a></p>
+
+<p>Jika tampilan report yang ada dihadapan anda sudah seperti gambar diatas, sekarang waktunya untuk mulai memanggil report yang telah kita buat menggunakan iReport ini dari IDE NetBeans dan lanjut ke langkah ke 4 :)</p>
+
+<ol>
+<li> <strong>Memanggil Master-Detail Report Dari Program Java.</strong></li>
+</ol>
+
+
+<p>Sebelum melangkah ke tahapan selanjutnya, tambahkanlah dahulu library-library yang diperlukan untuk dapat menjalankan Report yang telah kita buat dengan iReport. Beberapa library yang dibutuhkan terlihat seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132579605/"><img src="http://farm3.static.flickr.com/2107/2132579605_2b80ced413_m.jpg" alt="LibraryReport" /><br/>
+Click to View Large Image</a>
+Note : Semua library tersebut, dapat diambil dari direktori lib/ tempat anda menginstal iReport.</p>
+
+<p>Setelah menambahkan library-library yang dibutuhkan, sekarang buatlah sebuah JFrame baru dan tambahkanlah beberapa komponen sehingga nampak seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133340418/"><img src="http://farm3.static.flickr.com/2096/2133340418_d48882fb38_m.jpg" alt="DesignFrame" /><br/>
+Click to View Large Image</a></p>
+
+<p>Sedangkan untuk JComboBox, gantilah modelnya dengan cara klik kanan komponen JComboBox kemudian pada panel Properties pilihlah model. Setelah itu untuk isian Item, gantilah seluruh nilai default dengan AUD, HAAP dan VID hingga seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2132579603/"><img src="http://farm3.static.flickr.com/2106/2132579603_92bee74593_m.jpg" alt="JComboBoxModel" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah mengganti model JComboBox, sekarang beri ActionEvent pada JButton yang berfungsi untuk menampilkan Reportnya dengan cara klik kanan pada JButton kemudian pilih Action > actionPerformed kemudian pastekan kode dibawah ini:</p>
+
+<pre><code>        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        Properties systemProp = System.getProperties();
+
+        // Ambil current dir
+        String currentDir = systemProp.getProperty("user.dir");
+
+        File dir = new File(currentDir);
+        String reportName = "RptMaster.jrxml";
+        String reportDirName = "Report";
+
+        File fileRpt;
+        String fullPath = "";
+        if (dir.isDirectory()) {
+            String[] isiDir = dir.list();
+            for (int i = 0; i &lt; isiDir.length; i++) {
+                fileRpt = new File(currentDir + File.separatorChar + isiDir[i] + File.separatorChar +
+                        reportDirName + File.separatorChar + reportName);
+
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                    fullPath = fileRpt.toString();
+                    System.out.println("Found Report File at : " + fullPath);
+                } // end if
+            } // end for i
+        } // end if
+
+        // Ambil Direktori tempat file RptMaster.jrxml berada
+        String[] subRptDir = fullPath.split(reportName);
+        String reportDir = subRptDir[0];
+        System.out.println("Report Directory at : " + reportDir);
+
+        // Ambil Kode Kategori
+        final String paramKdKategori = jComboBox1.getSelectedItem().toString();
+        Connection con = null;
+        try {
+            String jdbcDriver = "com.mysql.jdbc.Driver";
+            Class.forName(jdbcDriver);
+            String url = "jdbc:mysql://localhost/rptmasterdetail";
+            String user = "root";
+            String pass = "rahasia";
+
+            con = (Connection) DriverManager.getConnection(url, user, pass);
+            Statement stm = (Statement) con.createStatement();
+
+            // Persiapkan parameter untuk Report
+            Map&lt;string, Object&gt; parameters = new HashMap&lt;string, Object&gt;();
+            parameters.put("PRM_KD_KATEGORI", paramKdKategori);
+            parameters.put("SUBREPORT_DIR", reportDir);
+
+            try {
+                JasperReport JRpt = JasperCompileManager.compileReport(fullPath);
+                JasperPrint JPrint = JasperFillManager.fillReport(JRpt, parameters, con);
+                JasperViewer.viewReport(JPrint, false);
+            } catch (Exception rptexcpt) {
+                System.out.println("Report Can't view because : " + rptexcpt);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+</code></pre>
+
+<p>Setelah menambahkan ActionEvent pada JButton, ada 1 langkah lagi yang harus dilakukan yaitu kopikan <strong>file <em>.jrxml dan file </em>.jasper</strong> yang terdapat pada direktori Report/ kedalam direkotri build/ dan dist/. Sedangkan cara untuk meng-kopikan secara otomatis yaitu dengan meng-edit file build.xml, untuk mengedit file build.xml bukalah menu Files Inspector kemudian klik kanan pada file build.xml seperti gambar dibawah ini:
+<a href="http://www.flickr.com/photos/10243554@N02/2133348818/"><img src="http://farm3.static.flickr.com/2396/2133348818_fb5defb7a9_m.jpg" alt="EditBuildxml" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah file build.xml terbuka, sekarang pastekanlah kode dibawah ini pada baris ke 68 :</p>
+
+<pre><code>&lt;target name="-post-compile"&gt;
+        &lt;mkdir dir="${build.dir}/Report"&gt;&lt;/mkdir&gt;
+        &lt;copy todir="${build.dir}/Report"&gt;
+            &lt;fileset dir="Report/" includes="**/*.jrxml, **/*.jasper, **/*.gif"&gt;&lt;/fileset&gt;
+        &lt;/copy&gt;
+    &lt;/target&gt;
+
+    &lt;target name="-post-jar"&gt;
+        &lt;mkdir dir="${dist.dir}/Report"&gt;&lt;/mkdir&gt;
+        &lt;copy todir="${dist.dir}/Report"&gt;
+            &lt;fileset dir="Report/" includes="**/*.jrxml, **/*.jasper"&gt;&lt;/fileset&gt;
+        &lt;/copy&gt;
+    &lt;/target&gt;
+</code></pre>
+
+<p>Setelah itu simpan kemudian coba jalankan dengan menekan tombol F6, dan jika tidak ada masalah maka Report yang telah kita buat akan ditampilkan dari program java kita seperti gambar dibawah ini:</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/2132607019/"><img src="http://farm3.static.flickr.com/2163/2132607019_66bbb89eb1_m.jpg" alt="hasilAkhirRpt" /><br/>
+Click to View Large Image</a></p>
+
+<p>Akhirnya berhasil juga memanggil Report yang mempunyai SubReport dari program Java yang kita buat dan yang lebih menyenangkan lagi kita sudah tidak perlu menyertakan full path dimana letak file Report berada.  :)</p>
+
+<p>Resource :
+- <a href="http://martin-personal-project.googlecode.com/files/RptMasterDetail.zip">Download sample project RptMasterDetail.zip</a>
+- <a href="http://martin-personal-project.googlecode.com/files/RptMasterDetail.sql">Download RptMasterDetail.sql</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-24T22:59:20+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2007/12/06/livecd-forum-linux-offline-version/" title="Previous Post: LiveCD Forum Linux Offline Version">&laquo; LiveCD Forum Linux Offline Version</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2007/12/27/whats-wrong-with-my-slackware/" title="Next Post: What’s Wrong With My Slackware ?">What’s Wrong With My Slackware ? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/';
+        var disqus_url = 'http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Membuat dan Menambahkan Swing Custom Component Ke NetBeans Pallete - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Mungkin ada diantara teman-teman yang sudah pernah membikin sebuah custom komponen di Java Swing, nah ada baiknya juga kalau custom komponen tersebut &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Membuat Dan Menambahkan Swing Custom Component Ke NetBeans Pallete</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-26T01:47:02+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Mungkin ada diantara teman-teman yang sudah pernah membikin sebuah custom komponen di Java Swing, nah ada baiknya juga kalau custom komponen tersebut bisa kita pakai secara berulang-ulang dan kita tinggal melakukan proses <strong>drag-n-drop</strong> saja dari NetBeans Pallete ketika kita ingin menggunakannya. Tentunya lebih mudah bukan dengan proses seperti itu, daripada kita harus manual menulis kode untuk komponen yang sudah kita bikin :)</p>
+
+<p>Sedangkan untuk mulai membuat sebuah Swing komponen yang bisa ditampilkan pada NetBeans Pallete, ada beberapa langkah yang harus kita lakukan yaitu :
+1. Konfigurasi Project. (Pembuatan custom komponen memerlukan setting project <strong>khusus</strong> menurut saya loh ini :D )
+2. Menulis Kode Yang Ingin Di Jadikan Sebagai Custom Komponen.
+3. Konfigurasi Icon dan Membuat Class BeanInfo
+4. Edit File Manifest.mf
+5. Build dan sebarkan :)
+6. Menambahkan Ke NetBeans Pallete</p>
+
+<p>Nah setelah kita tahu langkah-langkah yang harus kita lakukan, maka siapkan dahulu sebungkus Marlboro Putih dan segelas susu coklat untuk menemani perjalanan ke planet Java dan mari kita mulai dari langkah pertama :)</p>
+
+<!-- more -->
+
+
+<ol>
+<li> <strong>Konfigurasi Project</strong>.
+Sekarang buatlah sebuah project Java dengan nama project <strong>MartinSwingUtil</strong> (nama project terserah sesuai dengan keinginan masing-masing pembaca, tetapi dalam contoh ini nama project yang digunakan adalah <strong>MartinSwingUtil</strong>) hingga tampilannya seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562842167/"><img src="http://farm4.static.flickr.com/3303/3562842167_589c36240a.jpg" alt="Project1" /><br/>
+Click to View Large Image</a></li>
+</ol>
+
+
+<p>Dari tampilan diatas, memang tidak ada yang spesial karena hanya menampilkan <strong>New Project</strong> biasa. Sekarang bukalah pallete <strong>File Explorer</strong> kemudian buatlah 2 buah direktori yaitu <strong>beaninfo</strong> dan <strong>component</strong> didalam direktori <strong>src</strong> hingga tampilannya menjadi seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562842173/"><img src="http://farm4.static.flickr.com/3640/3562842173_83f5a9cc2e.jpg" alt="Project2" /><br/>
+Click to View Large Image</a></p>
+
+<p>Tujuan utama kita membuat 2 buah direktori diatas adalah sebagai berikut :
+- Direktori <strong>beaninfo</strong> ini digunakan untuk menyimpan seluruh informasi bean dari seluruh custom komponen yang kita buat.
+- Direktori <strong>component</strong> ini digunakan untuk menyimpan seluruh class custom komponen kita</p>
+
+<p>Setelah membuat 2 buah direktori, sekarang kembalilah ke <strong>Project Explorer</strong> kemudian klik kanan pada <strong>Project Node</strong> dan pilihlah <strong>Properties</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562842177/"><img src="http://farm4.static.flickr.com/3553/3562842177_b05a5452c3.jpg" alt="Project3" /><br/>
+Click to View Large Image</a></p>
+
+<p>Sekarang hapuslah isi dari tabel <strong>Source Package Folders</strong> kemudian tambahkanlah direktori <strong>beaninfo</strong> dan <strong>component</strong> yang terdapat didalam direktori <strong>src</strong> hingga menjadi seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562842183/"><img src="http://farm4.static.flickr.com/3366/3562842183_2e4d4e00ca.jpg" alt="Project4" /><br/>
+Click to View Large Image</a></p>
+
+<p>Sampai langkah ini, proses konfigurasi project sudah selesai sekarang mari kita lanjutkan pada langkah ke 2 yaitu Menulis Kode Yang Ingin Di Jadikan Sebagai Custom Komponen.</p>
+
+<ol>
+<li> <strong> Menulis Kode Yang Ingin Di Jadikan Sebagai Custom Komponen</strong>
+Pada posting saya yang <a href="http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/">kemarin</a>, saya pernah menulis bagaimana cara membuat sebuah <a href="http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/">DropDownButton</a> pada Java Swing dan class tersebut saya beri nama <strong>MDropDownButton</strong>. Nah pada tulisan ini, kita akan menggunakan kode tersebut untuk contohnya. Karena custom komponen yang saya posting kemarin termasuk dalam kategori <strong>Button</strong>, sekarang buatlah sebuah packages <strong>id.web.martinusadyh.button</strong> (untuk nama packages terserah sesuai dengan keinginan masing-masing pembaca) pada direktori <strong>src/component</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562874601/"><img src="http://farm4.static.flickr.com/3360/3562874601_a23c0fe61c.jpg" alt="Project5" /><br/>
+Click to View Large Image</a></li>
+</ol>
+
+
+<p>Setelah membuat sebuah packages, sekarang buatlah sebuah <strong>Java Class</strong> kemudian pastekanlah kode yang terdapat pada posting <a href="http://martinusadyh.web.id/2008/09/09/dropdownbutton-di-java-swing/">kemarin</a> hingga tampilannya menjadi seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562874603/"><img src="http://farm3.static.flickr.com/2465/3562874603_d3e7cb41b5.jpg" alt="Project6" /><br/>
+Click to View Large Image</a></p>
+
+<p>Karena class <strong>MDropDownButton</strong> membutuhkan sebuah icon, simpanlah dahulu gambar <strong>popuparrow.gif</strong> dibawah ini :
+<img src="http://farm4.static.flickr.com/3367/3562842159_64993ed7b1_o.gif" alt="popuparrow" /></p>
+
+<p>Setelah menyimpan gambar diatas, sekarang buatlah sebuah packages <strong>id.web.martinusadyh.images</strong> kemudian pastekanlah gambar <strong>popuparrow.gif</strong> pada packages yang telah dibuat hingga menjadi seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562874609/"><img src="http://farm4.static.flickr.com/3417/3562874609_45a02cd159.jpg" alt="Project7" /><br/>
+Click to View Large Image</a></p>
+
+<p>Ok custom komponen kita sekarang sudah siap untuk digunakan, cuma masih belum mempunyai icon ketika kita tambahkan ke dalam NetBeans Pallete. Sekarang mari kita lanjutkan ke langkah berikutnya.</p>
+
+<ol>
+<li> <strong>Konfigurasi Icon dan Membuat Class BeanInfo</strong>
+Agar custom komponen kita mempunyai icon ketika kita tambahkan ke dalam NetBeans Pallete, kita harus membuat dahulu sebuah class yang merupakan turunan dari class <strong>java.beans.SimpleBeanInfo</strong> . Sekarang buatlah 2 buah packages pada direktori <strong>src/beaninfo</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562874611/"><img src="http://farm4.static.flickr.com/3623/3562874611_0d8c166d57.jpg" alt="Project8" /></a></li>
+</ol>
+
+
+<p>Sekarang carilah icon untuk custom komponen kita, sedangkan untuk ukurannya sebaiknya gunakan yang 16X16 pixel. Dan sebagai contoh simpanlah gambar <strong>MDropDownButton.gif</strong> dibawah ini :
+<img src="http://farm4.static.flickr.com/3617/3562842145_100c6bd9dc_o.gif" alt="MDropDownButton" /></p>
+
+<p>kemudian pastekanlah gambar <strong>MDropDownButton.gif</strong> pada packages <strong>id.web.martinusadyh.images</strong> hingga tampilannya seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562874619/"><img src="http://farm4.static.flickr.com/3621/3562874619_bcd2bf8382.jpg" alt="Project9" /></a></p>
+
+<p>Setelah selesai dengan icon, sekarang buatlah sebuah class dengan nama <strong>MDropDownButtonBeanInfo</strong> pada packages <strong>id.web.martinusadyh.button</strong> yang merupakan turunan dari <strong>java.beans.SimpleBeanInfo</strong> kemudian pastekanlah kode dibawah ini :</p>
+
+<pre><code> */
+public class MDropDownButtonBeanInfo extends java.beans.SimpleBeanInfo {
+
+    @Override
+    public java.awt.Image getIcon(int iconKind) {
+        return loadImage("/id/web/martinusadyh/images/MDropDownButton.gif");
+    }
+}
+</code></pre>
+
+<p>Nah hasil akhir dari semua proses yang sudah kita lewati adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3562874625/"><img src="http://farm3.static.flickr.com/2437/3562874625_163258b3f0.jpg" alt="Project10" /></a></p>
+
+<ol>
+<li><p> <strong> Edit File Manifest.mf</strong>
+Agar custom komponen yang sudah kita buat di kenal sebagai <strong>Java Beans</strong> kita harus mendaftarkan-nya pada file <strong>Manifest.mf</strong>, dan sekarang bukalah <strong>File Explorer</strong> dan double klik pada file <strong>Manifest.mf</strong> kemudian editlah menjadi seperti dibawah ini :</p>
+
+<p>  Manifest-Version: 1.0
+  X-COMMENT: Main-Class will be added automatically by build</p>
+
+<p>  Name: id/web/martinusadyh/button/MDropDownButton.class
+  Java-Beans: True</p>
+
+<p>  Name: id/web/martinusadyh/button/MDropDownButtonBeanInfo.class
+  Java-Bean: False</p>
+
+<ol>
+<li><p><strong>Build dan sebarkan :)</strong>
+Selesai, sekarang coba lakukan proses <strong>Clean and Build</strong> dengan menekan kombinasi tombol <strong>SHIFT+F11</strong> untuk mendapatkan file jar yang siap di distribusikan :)</p></li>
+<li><p><strong>Menambahkan ke NetBeans Pallete</strong>
+Setelah selesai membuat custom komponen, sekarang mari kita coba dengan menambahkannya ke NetBeans Pallete. Dan untuk mengetesnya buatlah sebuah project baru kemudian tambahkanlah sebuah <strong>Main Form</strong> dan bukalah <strong>Main Form</strong> tersebut pada <strong>Design Mode</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3563853708/"><img src="http://farm4.static.flickr.com/3651/3563853708_8795f9fa13.jpg" alt="Project11" /><br/>
+Click to View Large Image</a></p></li>
+</ol>
+</li>
+</ol>
+
+
+<p>Masuklah ke <strong>Pallete Manager</strong> dengan cara klik kanan pada <strong>Pallete</strong> kemudian pilihlah <strong>Pallete Manager</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3563853718/"><img src="http://farm4.static.flickr.com/3346/3563853718_ecef8c3d67.jpg" alt="Project12" /><br/>
+Click to View Large Image</a></p>
+
+<p>Sekarang buatlah kategori baru dengan menekan tombol <strong>New Category</strong> kemudian isikan <strong>MartinSwingUtil</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3563853728/"><img src="http://farm4.static.flickr.com/3408/3563853728_06e7996f6c.jpg" alt="Project13" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah itu tekanlah tombol <strong>Add from JAR</strong> kemudian arahkanlah ke direktori yang menyimpan file <strong>MartinSwingUtil.jar</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3563853742/"><img src="http://farm4.static.flickr.com/3383/3563853742_d9ce79f2c3.jpg" alt="Project14" /><br/>
+Click to View Large Image</a></p>
+
+<p>Pada jendela berikutnya, pilihlah <strong>MDropDownButton</strong> pada panel <strong>Availlable Component</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3563853744/"><img src="http://farm4.static.flickr.com/3358/3563853744_2a6268ff4a.jpg" alt="Project15" /><br/>
+Click to View Large Image</a></p>
+
+<p>Kemudian pada jendela <strong>Select Pallete Category </strong> pilihlah <strong>MartinSwingUtil</strong> kemudianlah tekanlah tombol <strong>Finish</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3563853748/"><img src="http://farm4.static.flickr.com/3643/3563853748_679d3662cf.jpg" alt="Project16" /><br/>
+Click to View Large Image</a></p>
+
+<p>Setelah mengikuti langkah diatas, harusnya di NetBeans Pallete sekarang sudah muncul seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3563911220/"><img src="http://farm3.static.flickr.com/2165/3563911220_4138b10355.jpg" alt="Project17" /><br/>
+Click to View Large Image</a></p>
+
+<p>Nah mudah bukan caranya membuat sebuah custom komponen kemudian menambahkannya ke dalam NetBeans Pallete ? :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li> <a href="http://martinusadyh.web.id/2010/03/13/subversion-mudah-dengan-rabbitvcs/">SubVersion Mudah Dengan RabbitVCS</a></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-26T01:47:02+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/04/27/upload-dan-download-menggunakan-midnight-commander-mc/" title="Previous Post: Upload dan Download Menggunakan Midnight Commander (mc)">&laquo; Upload dan Download Menggunakan Midnight Commander (mc)</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/" title="Next Post: Violeted Constraints When Installing Packages in OpenSolaris">Violeted Constraints When Installing Packages in OpenSolaris &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/';
+        var disqus_url = 'http://martinusadyh.web.id/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

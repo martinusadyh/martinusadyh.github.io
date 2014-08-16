@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>LiquiBase XML Generator - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Beberapa terakhir ini, di project yang sedang saya kerjakan ada beberapa mainan yang baru buat saya. Nah yang pertama yaitu Liquibase. Untuk yang &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2011/12/14/liquibase-xml-generator/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">LiquiBase XML Generator</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-14T01:17:35+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Beberapa terakhir ini, di project yang sedang saya kerjakan ada beberapa mainan yang baru buat saya. Nah yang pertama yaitu <a href="http://www.liquibase.org/">Liquibase</a>. Untuk yang belum tahu, <strong>Liquibase</strong> ini adalah sebuah database independent library open source (lisensi yang digunakan adalah Apache 2.0) yang dapat digunakan untuk tracking, managing dan applying perubahan terhadap database. Dan semua konfigurasi di <strong>Liquibase</strong> ini tersimpan pada sebuah file <strong>XML</strong> yang nantinya dapat disimpan kedalam <strong>version control</strong>.</p>
+
+<p>Beberapa fitur dari <strong>Liquibase</strong> ini adalah :</p>
+
+<ol>
+<li><p> Merging changes from multiple developers</p></li>
+<li><p> Code branches</p></li>
+<li><p> Database &ldquo;diff&rdquo;</p></li>
+<li><p> Managing production data as well as various test datasets</p></li>
+<li><p> Generating database change documentation</p></li>
+<li><p> Cluster-safe database upgrades</p></li>
+<li><p> Automated updates or generation of SQL scripts that can be approved and applied by a DBA</p></li>
+<li><p> Generating starting change logs from existing databases</p></li>
+</ol>
+
+
+<p>Pada tulisan ini, saya tidak akan membahas tentang bagaimana menggunakan <strong>tag-tag</strong> yang dikenali oleh <strong>Liquibase</strong>. Jika ingin tahu <strong>tag</strong> apa saja yang di dukung oleh <strong>Liquibase</strong> bisa langsung menuju ke halaman <a href="http://www.liquibase.org/quickstart">Liquibase QuickStart</a>. Dibalik fitur-fitur keren yang dibawa oleh <strong>Liquibase</strong>, sekarang mari kita lihat bagaimana tampilan konfigurasi database yang harus kita tulis supaya bisa dikenali dan digunakan oleh <strong>Liquibase</strong>. Dibawah ini adalah contoh konfigurasi database yang harus kita tulis agar bisa digunakan oleh <strong>Liquibase</strong> :</p>
+
+<pre><code>&lt;databasechangelog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.0" xsi:schemalocation="http://www.liquibase.org/xml/ns/dbchangelog/1.0 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.0.xsd"&gt;
+    &lt;preconditions&gt;
+            &lt;dbms type="mysql"&gt;&lt;/dbms&gt;
+    &lt;/preconditions&gt;
+
+    &lt;changeset id="1" author="nvoxland"&gt;
+        &lt;createtable tablename="person"&gt;
+            &lt;column autoincrement="true" type="int" name="id"&gt;
+                &lt;constraints primarykey="true" nullable="false"&gt;&lt;/constraints&gt;
+            &lt;/column&gt;
+            &lt;column type="varchar(50)" name="firstname"&gt;&lt;/column&gt;
+            &lt;column type="varchar(50)" name="lastname"&gt;
+                &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+            &lt;/column&gt;
+        &lt;/createtable&gt;
+    &lt;/changeset&gt;
+    &lt;changeset id="2" author="nvoxland"&gt;
+        &lt;comment&gt;Add a username column so we can use "person" for authentication&lt;/comment&gt;
+        &lt;addcolumn tablename="person"&gt;
+            &lt;column type="varchar(8)" name="usernae"&gt;&lt;/column&gt;
+        &lt;/addcolumn&gt;
+    &lt;/changeset&gt;
+&lt;/databasechangelog&gt;
+</code></pre>
+
+<p><strong>Source code lengkap bisa dilihat ke <a href="http://www.liquibase.org/samples/changelogs/mysql.changelog.xml">http://www.liquibase.org/samples/changelogs/mysql.changelog.xml</a></strong></p>
+
+<p>Nah bisa dibayangkan bukan, jika misalkan kita punya tabel kurang lebih sekitar 100 buah plus dengan tambahan relasi antar tabel (kalau ini tidak mungkin tidak :D), komen dan index kolom-nya segala? :D</p>
+
+<!-- more -->
+
+
+<p>Untung-nya juga, ternyata ada aplikasi yang dapat kita gunakan untuk membantu membuatkan konfigurasi seperti diatas asalkan kita mempunyai schema database yang live :D Nama aplikasi tersebut adalah <a href="http://www.sqlpower.ca/page/architect">SQL Power Architect</a>, aplikasi ini secara default sudah mendukung file XML milik <strong>LiquiBase</strong>. <strong>Dan jika kita men-design ER</strong> menggunakan <strong>SQL Power Architect</strong> ini, hasilnya juga bisa langsung disimpan menjadi konfigurasi XML milik <strong>LiquiBase</strong> mudah bukan ?</p>
+
+<p>Masalahnya sekarang adalah bagaimana jika kita hanya mempunyai schema yang sudah terdapat di database, dan kita ingin membuatkan file konfigurasi XML untuk <strong>Liquibase</strong> ? Sebagai contoh, kita sudah mempunyai database dengan nama <strong>petsdb</strong> yang schema-nya terdiri dari 2 tabel seperti berikut :
+[plain]
+mysql> show create table category\G
+<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em> 1. row </em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>
+       Table: category
+Create Table: CREATE TABLE <code>category</code> (
+  <code>ID</code> bigint(20) NOT NULL,
+  <code>NAME</code> varchar(20) DEFAULT NULL,
+  PRIMARY KEY (<code>ID</code>)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.00 sec)</p>
+
+<p>mysql> show create table item\G
+<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em> 1. row </em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>
+       Table: item
+Create Table: CREATE TABLE <code>item</code> (
+  <code>ID</code> bigint(20) NOT NULL,
+  <code>CATEGORY_ID_FK</code> bigint(20) NOT NULL,
+  <code>NAME</code> varchar(20) NOT NULL,
+  <code>DESCRIPTION</code> text,
+  PRIMARY KEY (<code>ID</code>),
+  KEY <code>FK317B13E61327CF</code> (<code>CATEGORY_ID_FK</code>),
+  CONSTRAINT <code>FK317B13E61327CF</code> FOREIGN KEY (<code>CATEGORY_ID_FK</code>) REFERENCES <code>category</code> (<code>ID</code>)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.00 sec)
+[/plain]</p>
+
+<p>Nah sebelum melanjutkan, sekarang download-lah dahulu <a href="http://www.sqlpower.ca/page/architect">SQL Power Architect</a> dan installah java karena <strong>SQL Power Architect</strong> ini merupakan aplikasi berbasis Java. Jika sudah, buatlah dahulu database baru dengan nama <strong>petsdb2</strong> di MySQL seperti berikut ini :
+[plain]
+mysql> create database petsdb2;
+Query OK, 1 row affected (0.03 sec)</p>
+
+<p>mysql>
+[/plain]</p>
+
+<p>Setelah membuat database <strong>petsdb2</strong> diatas, sekarang ekstrak dan jalankan <strong>SQL Power Architect</strong> dengan perintah <code>java -jar architect.jar</code>. Tunggu-lah beberapa saat hingga dashboard Power Architect muncul seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=148"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/dashboard_power_architect.png" alt="dashboard_power_architect" /></a></p>
+
+<p>Pertama-tama yang harus dilakukan sebelum mulai bekerja dengan <strong>SQL Power Architect</strong> adalah melakukan konfigurasi koneksi database, untuk melakukan hal ini pilihlah menu <strong>Connections > Database Connection Manager</strong> untuk menampilkan jendela <strong>Database Connection Manager</strong> seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=149"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/database_connection_manager.png" alt="database_connection_manager" /></a></p>
+
+<p>Tekanlah tombol <strong>Add</strong> untuk mulai menambah koneksi ke database, dan lakukan konfigurasi seperti gambar dibawah ini untuk koneksi ke database <strong>petsdb</strong> :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=151"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/petsdb1.png" alt="petsdb" /></a></p>
+
+<p>Ulangi langkah diatas untuk koneksi ke database <strong>petsdb2</strong>, dan hasil akhir nanti-nya adalah kurang lebih seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=150"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/hasil_tambah_koneksi.png" alt="hasil_tambah_koneksi" /></a></p>
+
+<p>Jika sudah, sekarang tambahkan semua koneksi database tersebut ke dashboard <strong>SQL Power Architect</strong> dengan cara klik kanan pada <strong>PlayPen Database</strong> kemudian pilih menu <strong>Add Source Connection</strong> dan pilihlah nama koneksi <strong>petsdb</strong> dan <strong>petsdb2</strong> hingga hasil akhirnya seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=155"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/tambah_koneksi_dashboard.png" alt="tambah_koneksi_dashboard" /></a></p>
+
+<p>Untuk membuat file XML Liquibase, kita akan menggunakan fitur <strong>Compare DM</strong> yang dapat diakses pada menu <strong>Tools > Compare DM</strong> yang akan menampilkan jendela <strong>Compare Data Model</strong> seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=152"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/compare_data_model.png" alt="compare_data_model" /></a></p>
+
+<p>Sekarang lakukan konfigurasi seperti terlihat pada gambar dibawah ini agar proses <strong>Compare Data Model</strong> dapat menghasilkan file XML Liquibase :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=154"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/konfigurasi_compare_dm.png" alt="konfigurasi_compare_dm" /></a></p>
+
+<p>Setelah itu, sekarang tekan tombol <strong>Start</strong> dan tunggu beberapa saat sampai <strong>SQL Power Architect</strong> menampilkan hasil pembuatan file XML Liquibase seperti gambar dibawah ini :
+<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=153"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/contoh_hasil_generate_xml_liquibase.png" alt="contoh_hasil_generate_xml_liquibase" /></a></p>
+
+<p>Sampai disini simpan-lah hasil tersebut dengan menekan tombol <strong>Save</strong>, dan hasil dari proses diatas akan membentuk sebuah file XML yang dikenali oleh Liquibase seperti dibawah ini :</p>
+
+<pre><code>&lt;changeset id="1" author="martinus"&gt;
+    &lt;createtable tablename="category"&gt;
+        &lt;column type="BIGINT" name="ID"&gt;
+            &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+        &lt;/column&gt;
+        &lt;column type="VARCHAR(20)" name="NAME"&gt;&lt;/column&gt;
+    &lt;/createtable&gt;
+&lt;/changeset&gt;
+
+&lt;changeset id="2" author="martinus"&gt;
+    &lt;addprimarykey columnnames="ID" constraintname="category_PK" tablename="category"&gt;&lt;/addprimarykey&gt;
+&lt;/changeset&gt;
+
+&lt;changeset id="3" author="martinus"&gt;
+    &lt;createtable tablename="item"&gt;
+        &lt;column type="BIGINT" name="ID"&gt;
+            &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+        &lt;/column&gt;
+        &lt;column type="BIGINT" name="CATEGORY_ID_FK"&gt;
+            &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+        &lt;/column&gt;
+        &lt;column type="VARCHAR(20)" name="NAME"&gt;
+            &lt;constraints nullable="false"&gt;&lt;/constraints&gt;
+        &lt;/column&gt;
+        &lt;column type="LONGVARCHAR(65535)" name="DESCRIPTION"&gt;&lt;/column&gt;
+    &lt;/createtable&gt;
+&lt;/changeset&gt;
+
+&lt;changeset id="4" author="martinus"&gt;
+    &lt;addprimarykey columnnames="ID" constraintname="item_PK" tablename="item"&gt;&lt;/addprimarykey&gt;
+&lt;/changeset&gt;
+
+&lt;changeset id="5" author="martinus"&gt;
+    &lt;addforeignkeyconstraint basecolumnnames="CATEGORY_ID_FK" basetablename="item" constraintname="FK317B13E61327CF" referencedcolumnnames="ID" referencedtablename="category"&gt;&lt;/addforeignkeyconstraint&gt;
+&lt;/changeset&gt;
+</code></pre>
+
+<p>Sampai disini proses yang kita lakukan adalah tinggal mengecek sekali lagi, apakah konfigurasi diatas sudah benar-benar cocok atau tidak. Jika sudah merasa siap, maka kita bisa langsung menambahkan-nya kedalam project kita :) Bagaimana, mudah bukan ? Mimpi buruk menulis file xml satu persatu sudah hilang sekarang :)</p>
+
+<p>Sebenarnya inti dari tulisan ini hanya ingin menunjukkan ternyata ada tool opensource yang dapat kita gunakan untuk melakukan konfigurasi XML secara otomatis saja, karena ketika saya mencoba mencari plugin / generator untuk pembuatan file XML Liquibase ini tidak pernah menunjukkan hasil yang menggembirakan. :)</p>
+
+<p><strong>Link-link terkait :</strong></p>
+
+<ol>
+<li><p> <a href="http://www.liquibase.org/">Liquibase Library</a></p></li>
+<li><p> <a href="http://www.sqlpower.ca/page/architect">SQL Power Architect</a></p></li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-14T01:17:35+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2011/12/14/liquibase-xml-generator/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2011/12/14/liquibase-xml-generator/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2011/11/28/job-vacancy-as-a-developer-team-in-scrum-environment-company/" title="Previous Post: Job Vacancy as a Developer Team in Scrum Environment Company">&laquo; Job Vacancy as a Developer Team in Scrum Environment Company</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2012/01/07/building-mozilla-firefox-9-0-1-for-slackware-13-37/" title="Next Post: Building Mozilla Firefox 9.0.1 for Slackware 13.37">Building Mozilla Firefox 9.0.1 for Slackware 13.37 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2011/12/14/liquibase-xml-generator/';
+        var disqus_url = 'http://martinusadyh.web.id/2011/12/14/liquibase-xml-generator/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

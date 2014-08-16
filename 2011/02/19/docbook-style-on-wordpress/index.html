@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>DocBook Style On WordPress - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sebenarnya sudah sejak lama ingin menulis sebuah tulisan atau buku mengikuti gaya penulisan yang terdapat pada DocBook, tapi apa daya sampai sekarang &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2011/02/19/docbook-style-on-wordpress/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">DocBook Style on WordPress</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-19T17:02:15+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Sebenarnya sudah sejak lama ingin menulis sebuah tulisan atau buku mengikuti gaya penulisan yang terdapat pada <a href="http://www.docbook.org/">DocBook</a>, tapi apa daya sampai sekarang masih belum ada waktu untuk <strong>&ldquo;ngoprek&rdquo;</strong> format yang tersedia di <strong>DocBook</strong> :D Keinginan saya yang lain yaitu bagaimana meng-integrasikan antara <a href="http://wordpress.org/download/">WordPress</a> yang sudah terbukti sebagai CMS (Content Management System) blogging yang paling populer dengan <strong>DocBook</strong> yang sudah dikenal luas sebagai alat untuk penulisan dokumentasi sebuah software.</p>
+
+<p>Kombinasi struktur buku yang terdapat di <strong>DocBook</strong> dengan banyak-nya plugin yang tersedia untuk <strong>WordPress</strong> plus adanya fasilitas komentar, bagi saya ini merupakan sebuah kombinasi yang pas bagi seoarang penulis untuk mem-<em>publish</em> tulisan-nya di Internet :) Plus-nya sebagai penulis yaitu kita bisa langsung mendapatkan respon pembaca melalui fasilitas komentar yang sudah terdapat pada <strong>WordPress</strong> :D</p>
+
+<p>Nah untuk merealisasikan ide diatas, kemarin saya juga sudah coba iseng-iseng untuk mengimplementasikan-nya pada blog ini. Dan hasilnya bisa teman-teman lihat pada tulisan <a href="http://martinusadyh.web.id/tulisanku/berkenalan-dengan-iso-8583-menggunakan-java/">Berkenalan dengan ISO 8583 Menggunakan Java</a> :) Masih sangat-sangat sederhana sih, tapi setidaknya sudah bisa mencukupi kebutuhan saya saat ini yaitu menulis buku layaknya menulis blog :D plus dapat fasilitas komentar langsung pada bab yang dibahas :)</p>
+
+<p>Nah untuk teman-teman yang ingin mencoba konsep serupa dan ingin tahu apa yang dibutuhkan agar blog kita mempunyai halaman seperti itu, langkah pertama copy paste beberapa script dibawah ini dan simpanlah pada direktori <strong>themes</strong> yang teman-teman gunakan. Script-script yang diperlukan yaitu :</p>
+
+<ol>
+<li><p> <strong>docbook-archive.php</strong></p>
+
+<p>/docbook-archive.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)</li>
+<li></li>
+<li>Template Name: DocBookArchive
+*/
+?></li>
+</ul>
+
+
+<p><div id="content" class="narrowcolumn"></p>
+
+<pre><code>    &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+        &lt;h2&gt;&lt;/h2&gt;
+        &lt;div class="entry"&gt;
+            Read the rest of this page »&lt;/p&gt;'); ?&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+
+    ', '&lt;/p&gt;'); ?&gt;
+</code></pre>
+
+<p></div></p></li>
+</ol>
+
+
+<p>File <strong>docbook-archive.php</strong> ini berfungsi sebagai halaman depan untuk semua tulisan yang kita publish :) Sedangkan bagaimana cara pakainya yaitu buatlah sebuah halaman baru dengan nama misalkan <strong>Tulisanku</strong> kemudian pada opsi <strong>Page Attributes</strong> pilihlah <strong>(no parent)</strong> pada opsi <strong>Parent</strong> dan <strong>DocBookArchive</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458157556/"><img src="http://farm6.static.flickr.com/5176/5458157556_23499a1ea6.jpg" alt="TulisankuEdit" /></a><br/>
+<strong>Cara Penggunaan Template DocBook Archive</strong></p>
+
+<p>Sedangkan tampilan live-nya adalah seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458157552/"><img src="http://farm6.static.flickr.com/5016/5458157552_6f0759b2c5.jpg" alt="DocBookArchiveLive" /></a><br/>
+<strong>Tampilan Halaman Dengan Template DocBook Archive</strong></p>
+
+<!-- more -->
+
+
+<ol>
+<li><p> <strong>docbook-toc.php</strong></p>
+
+<p>/docbook-toc.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)
+*</li>
+<li><p>Template Name: DocBookTOC
+*/
+?></p>
+
+<p>  <div id="content" class="widecolumn_single"></p>
+
+<pre><code>  &lt;div class="navigation"&gt;
+      &lt;div class="alignleft"&gt;&lt;/div&gt;
+      &lt;div class="alignright"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;div class="entry"&gt;
+          Read the rest of this entry »&lt;/p&gt;'); ?&gt;
+
+          &lt;h2&gt;License&lt;/h2&gt;
+          &lt;p&gt;Redistribution and use in textual and binary forms, with or without modification, are permitted provided that the following conditions are met:&lt;br&gt;&lt;/br&gt;
+          1. Redistributions of this book must retain the above copyright notice, this list of conditions and the following disclaimer.&lt;br&gt;&lt;/br&gt;
+          2. The names of the authors may not be used to endorse or promote products derived from this book without specific prior written permission.&lt;/p&gt;
+          &lt;p&gt;THIS BOOK IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS BOOK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. &lt;/p&gt;&lt;br&gt;&lt;/br&gt;
+
+          &lt;small&gt;Published by  on &lt;/small&gt;
+          &lt;hr&gt;
+          &lt;h2&gt;Daftar Isi&lt;/h2&gt;
+
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p&gt;
+          ID;
+              }
+
+              $current = array_search($post-&gt;ID, $pages);
+              $prevID = $pages[$current-1];
+              $nextID = $pages[$current+1];
+          ?&gt;
+
+          &lt;div class="navigation"&gt;
+
+
+                  &lt;div class="alignright"&gt;&lt;a href="&lt;?php echo get_permalink($nextID); ?&gt;" title="&lt;?php echo get_the_title($nextID); ?&gt;"&gt;&lt;/a&gt;&lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;/p&gt;
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p class="postmetadata alt"&gt;
+              &lt;small&gt;                    
+
+                   for this entry.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Both Comments and Pings are open ?&gt;
+                      &lt;a href="#respond"&gt;Leave a response&lt;/a&gt;, or &lt;a href="&lt;?php trackback_url(); ?&gt;" rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Only Pings are Open ?&gt;
+                      Responses are currently closed, but you can &lt;a href="&lt;?php trackback_url(); ?&gt; " rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Comments are open, Pings are not ?&gt;
+                      You can skip to the end and leave a response. Pinging is currently not allowed.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Neither Comments, nor Pings are open ?&gt;
+                      Both comments and pings are currently closed.
+
+
+
+              &lt;/small&gt;
+          &lt;/p&gt;
+
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+
+
+
+
+  &lt;p&gt;Sorry, no posts matched your criteria.&lt;/p&gt;
+</code></pre>
+
+<p>  </div></p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>Sedangkan file <strong>docbook-toc.php</strong> ini digunakan sebagai halaman <strong>Daftar Isi</strong> atau <strong>Table Of Content</strong> untuk tulisan kita, di file ini juga akan secara otomatis memberi sebuah lisensi untuk semua tulisan kita yang menggunakan template <strong>DocBookTOC</strong>. Jika kita ingin merubah lisensi yang akan digunakan, maka ganti atau hapuslah baris dibawah ini agar sesuai dengan keinginan kita :</p>
+
+<pre><code>                &lt;h2&gt;License&lt;/h2&gt;
+                &lt;p&gt;Redistribution and use in textual and binary forms, with or without modification, are permitted provided that the following conditions are met:&lt;br&gt;&lt;/br&gt;
+                1. Redistributions of this book must retain the above copyright notice, this list of conditions and the following disclaimer.&lt;br&gt;&lt;/br&gt;
+                2. The names of the authors may not be used to endorse or promote products derived from this book without specific prior written permission.&lt;/p&gt;
+                &lt;p&gt;THIS BOOK IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS BOOK, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. &lt;/p&gt;&lt;br&gt;&lt;/br&gt;
+</code></pre>
+
+<p>Sedangkan cara penggunaan-nya adalah, buatlah sebuah halaman baru dengan nama tulisan yang akan dipublish dan pada opsi <strong>Page Attributes</strong> pilihlah <strong>Tulisanku</strong> (Halaman Tulisanku ini adalah halaman yang telah dibuat pada langkah nomor #1 diatas) pada opsi <strong>Parent</strong> dan <strong>DocBookTOC</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458184122/"><img src="http://farm6.static.flickr.com/5177/5458184122_5c46398d40.jpg" alt="TOCNoImage" /></a><br/>
+<strong>Cara Penggunaan Template DocBook TOC</strong></p>
+
+<p>Dan tampilan live-nya kurang lebih seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458184120/"><img src="http://farm6.static.flickr.com/5052/5458184120_36c2a1713c.jpg" alt="TOCLive" /></a><br/>
+<strong>Tampilan Halaman Dengan Template DocBook TOC</strong></p>
+
+<p>Jika kita ingin menggunakan gambar untuk sampul depan tulisan kita, pasangkan gambar tersebut seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458184110/"><img src="http://farm6.static.flickr.com/5254/5458184110_1f5e05f3f7.jpg" alt="EditTOC" /></a><br/>
+<strong>Cara Penggunaan Template DocBook TOC Menggunakan Gambar Sampul</strong></p>
+
+<ol>
+<li><p> <strong>docbook-toc-content.php</strong></p>
+
+<p>/docbook-toc-content.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)
+*</li>
+<li><p>Template Name: DocBookTOCContent
+*/
+?></p>
+
+<p>  <div id="content" class="widecolumn_single"></p>
+
+<pre><code>  &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;div class="entry"&gt;
+          Read the rest of this entry »&lt;/p&gt;'); ?&gt;
+
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p&gt;
+          ID;
+              }
+
+              $current = array_search($post-&gt;ID, $pages);
+              $prevID = $pages[$current-1];
+              $nextID = $pages[$current+1];
+          ?&gt;
+
+          &lt;div class="navigation"&gt;
+
+
+                  &lt;div class="alignright"&gt;&lt;a href="&lt;?php echo get_permalink($nextID); ?&gt;" title="&lt;?php echo get_the_title($nextID); ?&gt;"&gt;&lt;/a&gt;&lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;/p&gt;
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p class="postmetadata alt"&gt;
+              &lt;small&gt;                    
+
+                   for this entry.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Both Comments and Pings are open ?&gt;
+                      &lt;a href="#respond"&gt;Leave a response&lt;/a&gt;, or &lt;a href="&lt;?php trackback_url(); ?&gt;" rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Only Pings are Open ?&gt;
+                      Responses are currently closed, but you can &lt;a href="&lt;?php trackback_url(); ?&gt; " rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Comments are open, Pings are not ?&gt;
+                      You can skip to the end and leave a response. Pinging is currently not allowed.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Neither Comments, nor Pings are open ?&gt;
+                      Both comments and pings are currently closed.
+
+
+
+              &lt;/small&gt;
+          &lt;/p&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+
+  &lt;p&gt;Sorry, no posts matched your criteria.&lt;/p&gt;
+</code></pre>
+
+<p>  </div></p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>File <strong>docbook-toc-content.php</strong> ini digunakan sebagai template untuk <strong>bab (chapter)</strong> yang terdapat pada tulisan kita, cara penggunaan-nya adalah buatlah sebuah halaman baru dengan judul bab (chapter) yang akan dipublish dan pada opsi <strong>Page Attributes</strong> pilihlah parent yang menggunakan template <strong>DocBookTOC</strong> (dalam contoh ini parent page-nya adalah <strong>Berkenalan dengan ISO 8583 Menggunakan Java</strong>) pada opsi <strong>Parent</strong> dan <strong>DocBookTOCContent</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5457599263/"><img src="http://farm6.static.flickr.com/5018/5457599263_3cddaf9266.jpg" alt="DocBookTOCContentEdit" /></a><br/>
+<strong>Cara Penggunaan Template DocBook TOC Content (Template Untuk Bab / Chapter)</strong></p>
+
+<p>Sedangkan tampilan livenya adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5457599265/"><img src="http://farm6.static.flickr.com/5295/5457599265_eb114d1690.jpg" alt="DocBookTOCContentLive" /></a><br/>
+<strong>Tampilan Live  Template DocBook TOC Content (Template Untuk Bab / Chapter)</strong></p>
+
+<ol>
+<li><p> <strong>docbook-content.php</strong></p>
+
+<p>/docbook-content.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)
+*</li>
+<li><p>Template Name: DocBookContent
+*/
+?></p>
+
+<p>  <div id="content" class="widecolumn_single"></p>
+
+<pre><code>  &lt;div class="navigation"&gt;
+      &lt;div class="alignleft"&gt;&lt;/div&gt;
+      &lt;div class="alignright"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+      &lt;h2&gt;&lt;/h2&gt;
+      &lt;div class="entry"&gt;
+          Read the rest of this entry »&lt;/p&gt;'); ?&gt;
+
+           '&lt;p&gt;&lt;strong&gt;Pages:&lt;/strong&gt; ', 'after' =&gt; '&lt;/p&gt;', 'next_or_number' =&gt; 'number')); ?&gt;
+
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p&gt;
+
+          ID;
+              }
+
+              $current = array_search($post-&gt;ID, $pages);
+              $prevID = $pages[$current-1];
+              $nextID = $pages[$current+1];
+          ?&gt;
+
+          &lt;div class="navigation"&gt;
+
+                  &lt;div class="alignleft"&gt;&lt;a href="&lt;?php echo get_permalink($prevID); ?&gt;" title="&lt;?php echo get_the_title($prevID); ?&gt;"&gt;&lt;/a&gt;&lt;/div&gt;
+
+                  &lt;div class="alignright"&gt;&lt;a href="&lt;?php echo get_permalink($nextID); ?&gt;" title="&lt;?php echo get_the_title($nextID); ?&gt;"&gt;&lt;/a&gt;&lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;/p&gt;
+          &lt;p&gt;&lt;/p&gt;
+          &lt;p class="postmetadata alt"&gt;
+              &lt;small&gt;                    
+
+                   for this entry.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Both Comments and Pings are open ?&gt;
+                      &lt;a href="#respond"&gt;Leave a response&lt;/a&gt;, or &lt;a href="&lt;?php trackback_url(); ?&gt;" rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; ('open' == $post-&gt;ping_status)) {
+                      // Only Pings are Open ?&gt;
+                      Responses are currently closed, but you can &lt;a href="&lt;?php trackback_url(); ?&gt; " rel="trackback"&gt;trackback&lt;/a&gt; from your own site.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Comments are open, Pings are not ?&gt;
+                      You can skip to the end and leave a response. Pinging is currently not allowed.
+
+                   comment_status) &amp;&amp; !('open' == $post-&gt;ping_status)) {
+                      // Neither Comments, nor Pings are open ?&gt;
+                      Both comments and pings are currently closed.
+
+
+              &lt;/small&gt;
+          &lt;/p&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+
+
+  &lt;p&gt;Sorry, no posts matched your criteria.&lt;/p&gt;
+</code></pre>
+
+<p>  </div></p></li>
+</ul>
+</li>
+</ol>
+
+
+<p>Sedangkan file yang terakhir ini yaitu <strong>docbook-content.php</strong> digunakan untuk bagian <strong>Sub Bab</strong> pada tulisan kita, cara penggunaan-nya yaitu  buatlah sebuah halaman baru dengan judul <strong>sub bab</strong> yang akan dipublish dan pada opsi <strong>Page Attributes</strong> pilihlah parent yang menggunakan template <strong>DocBookTOCContent</strong> (dalam contoh ini parent page-nya adalah <strong>Pendahuluan</strong>) pada opsi <strong>Parent</strong> dan <strong>DocBookContent</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5457613225/"><img src="http://farm6.static.flickr.com/5174/5457613225_6b9f039dec.jpg" alt="DocBookContentEdit" /></a><br/>
+<strong>Cara Penggunaan Template DocBook Content (Template Untuk SubBab)</strong></p>
+
+<p>Sedangkan tampilan live-nya kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/5457613227/"><img src="http://farm6.static.flickr.com/5296/5457613227_ff70da3681.jpg" alt="DocBookContentLive" /></a><br/>
+<strong>Tampilan Template DocBook Content (Template Untuk SubBab)</strong></p>
+
+<p>Dengan sedikit modifikasi yang sudah kita lakukan diatas, sekarang blog kita sudah bisa mendukung tampilan seperti <strong>DocBook</strong> dengan tambahan fasilitas komentar seperti yang dimiliki oleh halaman manual <a href="http://dev.mysql.com/doc/refman/5.1/en/date-and-time-functions.html">MySQL</a> :) Alasan saya pribadi tertarik dengan model seperti ini yaitu <strong>supaya komunikasi antara penulis dan pembaca bisa 2 arah</strong> :D Jika pembaca tidak mengerti pada bab yang dibaca, bisa langsung konsultasi melalui kolom komentar yang sudah terdapat pada <strong>WordPress</strong> dan penulis bisa langsung menjawab pertanyaan tersebut secara langsung dan tentunya menggunakan fasilitas komentar juga :)</p>
+
+<p>Nah sekarang bagaimana pendapat teman-teman ? Ada ide yang lain ? :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">admin</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-19T17:02:15+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/netbeans/'>netbeans</a>, <a class='category' href='/blog/categories/opensolaris/'>opensolaris</a>, <a class='category' href='/blog/categories/slackware/'>slackware</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2011/02/19/docbook-style-on-wordpress/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2011/02/19/docbook-style-on-wordpress/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2011/02/18/artivisi-bootcamp/" title="Previous Post: ArtiVisi Bootcamp">&laquo; ArtiVisi Bootcamp</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2011/02/19/membuat-laptop-anda-tetap-dingin-di-slackware/" title="Next Post: Membuat Laptop Anda Tetap Dingin di Slackware">Membuat Laptop Anda Tetap Dingin di Slackware &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2011/02/19/docbook-style-on-wordpress/';
+        var disqus_url = 'http://martinusadyh.web.id/2011/02/19/docbook-style-on-wordpress/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,895 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Bingung bagaimana cara mendapatkan informasi dari BIOS (Basic Input/Ouput System) di Sistem Operasi GNU/Linux ? Jika iya, mungkin teman-teman perlu &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/19/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/12/01/getting-your-bios-vendor-information-in-gnulinux/">Getting Your BIOS Vendor Information in GNU/Linux</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-01T14:01:08+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/12/01/getting-your-bios-vendor-information-in-gnulinux/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Bingung bagaimana cara mendapatkan informasi dari <a href="">BIOS</a> (Basic Input/Ouput System) di Sistem Operasi GNU/Linux ? Jika iya, mungkin teman-teman perlu melihat lagi isi dari direktori <strong>/sys/class/dmi/id/</strong> yang didalam-nya terdapat beberapa file yang isinya kurang lebih seperti ini :</p>
+
+<pre><code>root@martinusadyh:[~]# ls /sys/class/dmi/id/
+bios_date     board_asset_tag  board_vendor       chassis_serial  chassis_version  product_name    product_version  uevent
+bios_vendor   board_name       board_version      chassis_type    modalias         product_serial  subsystem@
+bios_version  board_serial     chassis_asset_tag  chassis_vendor  power/           product_uuid    sys_vendor
+root@martinusadyh:[~]#
+</code></pre>
+
+<p>Nah sedangkan isi dari file-file tersebut kurang lebih isi-ya seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[~]# cat /sys/class/dmi/id/product_uuid
+44454C4C-4800-104B-804D-B1C04F4C4B31
+root@martinusadyh:[~]# cat /sys/class/dmi/id/chassis_serial
+1HKMLK1
+root@martinusadyh:[~]# cat /sys/class/dmi/id/board_serial
+.1HKMLK1.CN1296197P0164.
+root@martinusadyh:[~]# cat /sys/class/dmi/id/board_name
+0186NX
+root@martinusadyh:[~]# cat /sys/class/dmi/id/sys_vendor
+Dell Inc.
+root@martinusadyh:[~]# cat /sys/class/dmi/id/bios_version
+A01
+root@martinusadyh:[~]#
+</code></pre>
+
+<p><strong>Note: Beda hardware harus-nya informasi yang ditampilkan juga berbeda. Jadi informasi diatas tergantung dari hardware yang teman-teman gunakan</strong></p>
+
+<p>Semoga sedikit informasi ini bisa berguna buat teman-teman :) Maklum saya juga baru tahu koq :D</p>
+
+<p><strong>Link-link terkait :</strong>
+- <a href="http://en.wikipedia.org/wiki/BIOS">Basic Input/Output System</a>
+- <a href="http://0pointer.de/blog">No More dmidecode</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/">Changing Editor Fonts in NetBeans IDE</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-25T01:21:56+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemarin habis baca-baca artikel tentang <a href="http://hivelogic.com/articles/top-10-programming-fonts">Top 10 Programming Fonts</a>, akhir-nya jadi iseng-iseng deh cobain ganti font di editor-nya <a href="http://netbeans.org/">NetBeans IDE</a> supaya lebih betah lama-lama ngetik-nya :D</p>
+
+<p>Nah buat teman-teman yang ingin berburu font, mungkin bisa mengunjungi situs <a href="http://hivelogic.com/articles/top-10-programming-fonts">Top 10 Programming Fonts</a> untuk melihat-lihat font mana yang cocok kemudian download dan install deh :) Setelah proses download selesai, untuk menginstall font tersebut di GNU/Linux kita harus memasukkan font tersebut ke dalam direktori <strong>/usr/share/fonts/TTF</strong> agar font tersebut dikenali oleh user lain yang terdapat di sistem. Tapi kalau kita cuma ingin testing aja, kita bisa memasukkan font tersebut kedalam direktori <strong>.fonts</strong> yang terdapat di direktori home user kita masing-masing :)</p>
+
+<p>Bagaimana kalau direktori <strong>.fonts</strong> belum ada ? Ya mari kita buat direktori tersebut dengan perintah seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ mkdir ~/.fonts
+martinus@martinusadyh:[~]$
+</code></pre>
+
+<p>Setelah itu kopikan font yang sudah di download kedalam direktori <strong>~/.fonts</strong> tersebut seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ cp Inconsolata.ttf ~/.fonts/
+martinus@martinusadyh:[~]$ cd ~/.fonts/
+martinus@martinusadyh:[~/.fonts]$ ls
+Inconsolata.ttf
+martinus@martinusadyh:[~/.fonts]$
+</code></pre>
+
+<p>Sekarang mari kita update dahulu font cache kita dengan menjalankan perintah <strong>fc-cache -f -v</strong> agar font yang kita tambahkan bisa dikenali oleh NetBeans seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~/.fonts]$ fc-cache -f -v
+/usr/share/fonts/OTF: caching, new cache contents: 23 fonts, 0 dirs
+/usr/share/fonts/TTF: caching, new cache contents: 92 fonts, 0 dirs
+/usr/share/fonts/Type1: caching, new cache contents: 64 fonts, 0 dirs
+/usr/share/fonts/Speedo: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cyrillic: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/misc: caching, new cache contents: 59 fonts, 0 dirs
+/home/martinus/.fonts: caching, new cache contents: 1 fonts, 0 dirs
+/var/cache/fontconfig: not cleaning unwritable cache directory
+/home/martinus/.fontconfig: cleaning cache directory
+fc-cache: succeeded
+martinus@martinusadyh:[~/.fonts]$
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/23/adding-extra-icon-in-dia/">Adding Extra Icon in DIA</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-23T21:05:09+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/23/adding-extra-icon-in-dia/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman yang senang menggambar diagram mungkin sudah tidak asing lagi kan dengan yang namanya <a href="http://office.microsoft.com/en-us/visio/FX100487861033.aspx">Visio</a> kalau di Microsoft Windows, nah di lingkungan GNU/Linux kita bisa menggunakan aplikasi yang namanya <a href="http://www.gnome.org/projects/dia/">DIA Diagram</a> sebagai pengganti <a href="http://office.microsoft.com/en-us/visio/FX100487861033.aspx">Visio</a>. Cuman sayangnya, kalau kita menggunakan DIA Diagram ada 1 hal yang rasanya masih <strong>kurang</strong> yaitu tampilan icon-nya masih kelihatan <strong>jadul-jadul</strong> banget :(</p>
+
+<p>Nah apasih yang ngebikin <a href="http://office.microsoft.com/en-us/visio/FX100487861033.aspx">Visio</a> spesial dimata saya yaitu, kalau kita menggambar topologi jaringan icon-nya bisa keren-keren seperti gambar dibawah ini :
+<a href="http://knowledgehub.zeus.com/articles/2006/12/19/zxtm_visio_stencils"><img src="http://knowledgehub.zeus.com/media/visio-example.png" alt="Contoh Gambar Visio" /><br/>
+Contoh Gambar Topologi Jaringan dari Visio</a></p>
+
+<p>Nah sekarang coba bandingin dengan hasil gambar yang dihasilkan oleh <a href="http://www.gnome.org/projects/dia/">DIA Diagram</a> yang tampilannya seperti dibawah ini :
+<a href="http://davidnewall.com/papers/convert.html"><img src="http://davidnewall.com/papers/new-network.png" alt="Contoh Gambar DIA Diagram" /><br/>
+Contoh Gambar Topologi Jaringan dari DIA Diagram</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/23/adding-extra-icon-in-dia/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/">Membangun File Server Dengan Samba Di Slackware</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-22T04:21:15+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk membangun sebuah <strong>File Server</strong> menggunakan <a href="http://www.samba.org">SAMBA</a> di Slackware sebenarnya tidak begitu susah, sama seperti kalau kita menggunakan distribusi GNU/Linux yang lain :) Nah untungnya lagi, packages <a href="http://www.samba.org">SAMBA</a> sudah terinstall secara default pada Slackware yang kita gunakan dan kita hanya perlu melakukan sedikit konfigurasi agar <a href="http://www.samba.org">SAMBA</a> dapat berjalan :)</p>
+
+<p>Hal pertama yang perlu kita lakukan agar service <a href="http://www.samba.org">SAMBA</a> kita dapat berjalan yaitu melakukan konfigurasi terhadap file <strong>smb.conf</strong> yang terletak pada direktori <strong>/etc/samba</strong>. Karena di Slackware tidak menyertakan file <strong>smb.conf</strong> melainkan file <strong>smb.conf-sample</strong> maka kopikan-lah dahulu file <strong>smb.conf-sample</strong> menjadi <strong>smb.conf</strong> seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:/etc/samba# cp smb.conf-sample smb.conf
+root@martinusadyh:/etc/samba# ls
+private/  smb.conf  smb.conf-sample
+root@martinusadyh:/etc/samba#
+</code></pre>
+
+<p>Sekarang edit-lah file <strong>smb.conf</strong> diatas menjadi seperti dibawah ini:</p>
+
+<pre><code>[global]
+    workgroup = SLACKWARE_FILESERVER
+    server string = %h server (Samba, Slackware)
+    map to guest = Bad User
+    obey pam restrictions = Yes
+    passdb backend = tdbsam
+    pam password change = Yes
+    passwd program = /usr/bin/passwd %u
+    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+    unix password sync = Yes
+    socket options = TCP_NODELAY
+    syslog = 0
+    log file = /var/log/samba/log.%m
+    max log size = 1000
+    dns proxy = No
+    usershare allow guests = Yes
+
+[PublicShare]
+    comment = Slackware File Server
+    path = /home/sharing/data
+    read only = No
+    create mask = 0777
+    directory mask = 0777
+    guest ok = Yes
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/20/membuat-menu-accordion-di-java-swing/">Membuat Menu Accordion Di Java Swing</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-20T02:44:54+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/20/membuat-menu-accordion-di-java-swing/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Akhir-nya kesampaian juga menulis tentang <strong>Menu Accordion Di Java Swing</strong> ini :) Soalnya dulu bingung menu yang saya buat ini namanya apaan :malu: , nah buat teman-teman ada yang belum tahu apa itu <strong>Menu Accordion </strong> mungkin bisa coba baca-baca artikel <a href="http://en.wikipedia.org/wiki/Accordion_%28GUI%29">Mengenal Menu Accordion</a> dahulu :) Nah jika sudah tahu tentang apa itu <strong>Menu Accordion</strong> sekarang mari kita lihat contoh beberapa aplikasi dan <strong>library</strong> yang menggunakan atau menyertakan <strong>Menu Accordion</strong></p>
+
+<h3>Contoh Aplikasi Yang Menggunakan Menu Accordion</h3>
+
+<p><strong>OpenOffice.org Impress</strong>
+OpenOffice.org Impress menyertakan model menu dengan tipe <strong>Accordion</strong> yang dapat kita lihat seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4109213701/"><img src="http://farm3.static.flickr.com/2689/4109213701_af19d8aa80.jpg" alt="AccordionInOOoImpress" /><br/>
+OOo Impress Accordion Menu In Action</a></p>
+
+<p><strong>Plazma ERP</strong>
+<a href="http://plazma.sourceforge.net/frameaction.php?lng=en&amp;page=index">Plazma ERP</a> adalah sebuah aplikasi ERP yang dibangun dengan menggunakan Java dan SWT sebagai solusi GUI Toolkit-nya :) , menurut saya <a href="http://plazma.sourceforge.net/frameaction.php?lng=en&amp;page=index">Plazma ERP</a> mempunyai UI yang sangat elegan dan cantik ditambah lagi dengan <strong>Menu Accordion</strong>-nya yang tampak seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4109213705/"><img src="http://farm3.static.flickr.com/2733/4109213705_f7811e51f1.jpg" alt="AccordionInPlazmaERP" /><br/>
+Plazma ERP Accordion Menu In Action</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/20/membuat-menu-accordion-di-java-swing/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/13/the-best-of-xandria/">The Best of Xandria</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-13T19:34:06+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/13/the-best-of-xandria/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Akhirnya saya menemukan lagi 1 group band dengan vokalis cewek :) yang membawa aliran <a href="http://en.wikipedia.org/wiki/Symphonic_metal">Symphonic Metal</a>. Mungkin buat teman-teman pecinta aliran <a href="http://en.wikipedia.org/wiki/Symphonic_metal">Symphonic Metal</a> pasti udah tahu donk group band <a href="http://en.wikipedia.org/wiki/Xandria">Xandria</a> ini :) Nah dari ke 5 album <a href="http://en.wikipedia.org/wiki/Xandria">Xandria</a> (yaitu <em><a href="http://en.wikipedia.org/wiki/Kill_the_Sun">Kill_the_Sun</a> , <a href="http://en.wikipedia.org/wiki/Ravenheart">Ravenheart</a>, <a href="http://en.wikipedia.org/wiki/India_(album">India</a>), <a href="http://en.wikipedia.org/wiki/Salom%C3%A9_-_The_Seventh_Veil">Salome<em>-</em>The_Seventh_Veil</a> dan <a href="http://en.wikipedia.org/wiki/Now_%26_Forever_-_Best_of_Xandria">Now and Forever</a></em>) yang menurut saya paling bagus (soalnya ini yang sering saya denger :D ) yaitu :</p>
+
+<h3>Sister Of The Light dari Album Salome The Seventh Veil</h3>
+
+<p>Yang saya seneng dari lagu ini adalah intronya :) Menurut saya hm.., asyik banget suasananya kek ada suara ketipung-ketipung-nya gitu :D (eh bener ga yah :P :)) ) , ini klo mau lyrics-nya sekalian :
+<strong>Lyrics:</strong>
+follow me through the night
+we are the sisters of the light</p>
+
+<p>Follow me through the night
+We are sisters of the light
+We are daughters of sin
+We are laughter in the wind
+Follow me through the night
+We are sisters of the light
+We are wild, we are free
+Through the darkness follow me!</p>
+
+<p>I am here to break the silence and
+I want you to be the voice of mine</p>
+
+<p>follow me follow me follow me now</p>
+
+<p>Follow me through the night
+We are sisters of the light
+We are daughters of sin
+We are laughter in the wind
+Follow me through the night
+We are sisters of the light
+We are wild, we are free
+Through the darkness follow me</p>
+
+<p>You alone, you can let time stand still and
+You create the missing element</p>
+
+<p>We&rsquo;re the fires of hell
+We&rsquo;re the deep rough sea
+We&rsquo;re the stormy air
+We are we
+We&rsquo;re the ashes of time
+And we are banshee
+Through the darkness, sisters,
+Follow me!</p>
+
+<p>follow me follow me follow me now</p>
+
+<p>Follow me through the night
+We are sisters of the light
+We are daughters of sin
+We are laughter in the wind
+Follow me through the night
+We are sisters of the light
+We are wild, we are free
+Through the darkness follow me</p>
+
+<p>sisters of the light
+sisters of the light</p>
+
+<p>Follow me through the night
+We are sisters of the light
+We are daughters of sin
+We are laughter in the wind
+Follow me through the night
+We are sisters of the light
+We are wild, we are free
+Through the darkness follow me</p>
+
+<p>we are sisters of the light</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/13/the-best-of-xandria/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/">Membuat Menu Login Di Java Swing Dengan Animasi Progress Bar</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-09T19:02:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah kita mengerti tentang <strong>Thread-thread</strong> dasar yang terdapat pada Java Swing dan mengetahui bagaimana cara menggunakan <strong>Background Thread</strong> dengan <strong>SwingWorker</strong> (pembahasan tentang SwingWorker bisa dilihat pada tulisan <a href="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a>), sekarang mari kita coba membuat sebuah <strong>Project</strong> yang menggunakan Menu Login yang proses otentikasinya kita lakukan langsung ke database :)</p>
+
+<p>Sebelum memulai latihan kali ini, ada beberapa hal yang harus dipersiapkan terlebih dahulu yaitu :</p>
+
+<ul>
+<li>Inisialisasi Master Data Pada DataBase</li>
+<li>Pembuatan Project Menu Login</li>
+<li>Hasil Akhir</li>
+</ul>
+
+
+<p>Pada tulisan kali ini saya tidak akan memberikan penjelasan source code dari baris ke baris seperti pada tulisan-tulisan sebelumnya, tetapi sebagai gantinya penjelasan dapat dilihat pada komentar yang terdapat pada source code yang bersangkutan supaya lebih mudah di ingat-ingat nantinya :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/09/di-butuhkan-2-php-programmer/">Di Butuhkan 2 PHP Programmer</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-09T19:02:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/09/di-butuhkan-2-php-programmer/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kami perusahaan IT (PT. NADYNE MEDIA TAMA) yang sedang berkembang, membutuhkan 2 orang PHP Programmer untuk dapat membantu mengembangkan usaha kami kedepannya. Adapun lokasi kami adalah di Kemang - Jakarta Selatan.</p>
+
+<p>Dibawah ini adalah team member yang kami butuhkan.
+1. great attitude dan team player
+2. php programmer min. 2 tahun pengalaman
+3. memakai mysql setiap harinya.
+4. memakai mvc programming style
+5. lebih disukai mengerti codeigniter atau fusebox
+6. fresh graduate is welcome
+7. suka facebook, twitter, kaskus, atau plurk</p>
+
+<p>Silahkan kirimkan CV anda ke <a href="mailto:hr@nadyne.com">hr@nadyne.com</a> beserta gaji yang diharapkan. Paling lambat 1 Juni 2010</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-07T19:02:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/07/lebih-dekat-dengan-class-swingworker/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Beberapa minggu terakhir ini, saya mendapatkan 2 pertanyaan tentang <strong>Bagaimana sih agar progress bar bisa berjalan pada saat proses Query ?</strong> dan <strong>Bagaimana sih cara membuat sebuah login dialog yang menampilkan progress bar ?</strong> Nah karena 2 pertanyaan tersebut saling berkaitan menurut saya (sama-sama ingin menjalankan Progress Bar pada saat aplikasi sedang menjalankan <strong>tugas/proses</strong> yang lain) maka akan saya jawab bersama-sama pada tulisan ini :) . Nah sebelum kita masuk ke penjelasan lebih detail, kita harus tahu dahulu dong kenapa kita tidak bisa secara langsung menjalankan progress bar di saat kita melakukan proses yang lain ? Ada yang tahu kenapa ? Ini karena semua <strong>&ldquo;Event Handling&rdquo;</strong> yang terdapat pada Java Swing dijalankan oleh Thread yang bernama <strong>Event Dispatch Thread (EDT) </strong> Waks.. Thread ? Yaps betul Thread :)</p>
+
+<p>Agar aplikasi yang kita bangun di Java Swing tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang), maka kita juga perlu tahu beberapa Thread yang terdapat di Java Swing. Thread-thread tersebut yaitu :</p>
+
+<ol>
+<li><p> <strong>Initial Thread</strong>
+Thread ini bertugas untuk menjalankan method <strong>main</strong> dari aplikasi Swing kita dan thread ini bertugas untuk menampilkan GUI (Graphical User Interface) yang sudah kita bangun diatas Swing ke layar. Setelah GUI (Graphical User Interface) tampil, maka kerja dari thread ini telah selesai dan akan dilanjutkan oleh <strong>Event Dispatch Thread</strong>.</p></li>
+<li><p> <strong>Event Dispatch Thread</strong>
+Setiap aplikasi berbasis Java Swing hanya dapat mempunyai 1 Event Dispacth Thread (EDT) saja. Setiap respon dari penekanan tombol, menu item, update tampilan komponen akan dijalankan oleh thread ini. Dan semua proses tersebut <strong><em>biasanya</em></strong> tidak membutuhkan waktu yang lama. Jadi, segala proses yang dijalankan pada thread ini harus selesai secepat mungkin agar aplikasi kita tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang) .</p></li>
+<li><p> <strong>Worker Thread</strong>
+Worker thread atau biasanya disebut dengan <strong>background thread</strong> ini berfungsi untuk menjalankan proses yang lama seperti pembacaan direktori pada file system atau proses query ke database. Gunakan thread ini untuk melakukan operasi atau proses yang kita tidak bisa menentukan kapan kira-kira proses tersebut selesai.</p></li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/07/lebih-dekat-dengan-class-swingworker/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/06/editing-your-pdf-with-openoffice/">Editing Your PDF With OpenOffice</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-06T15:18:45+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/06/editing-your-pdf-with-openoffice/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pernah merasa butuh mengedit file PDF ? Jika jawaban-nya adalah <strong>Ya</strong> dan file PDF yang ingin di edit/dimodifikasi tidak begitu <strong>kompleks</strong> mungkin kita bisa menggunakan <a href="http://extensions.services.openoffice.org/project/pdfimport">Sun PDF Import Extension</a> dari OpenOffice.org yang bisa kita gunakan untuk memodifikasi file PDF :) Sedangkan beberapa fitur yang akan kita dapatkan jika kita menginstall extension <a href="http://extensions.services.openoffice.org/project/pdfimport">
+Sun PDF Import Extension</a> ini adalah :
+<strong>
+- Text attributes like font family, font size, weight (bold, not bold), style (italic, not italic) are imported together with their respective text
+- Retain font appearance, when a PDF file uses a font not installed on your system, the font is replaced with the best alternative font
+- Converts images and vector graphics
+- Each line in a paragraph is converted into one text object
+- Import of password-protected PDF files
+- Import shapes with default style
+- Support for colors and bitmaps
+- Backgrounds remain behind other elements
+</strong>
+Sedangkan beberapa fitur yang belum didukung yaitu :
+<strong>
+- Native PDF forms
+- Proper paragraphs
+- Processing layout of LaTeX PDF
+- Import of complex vector graphics elements
+- Conversion of tables
+- Import of EPS graphics
+- RTL (right-to-left) text/font support
+</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/06/editing-your-pdf-with-openoffice/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="20">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="18">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

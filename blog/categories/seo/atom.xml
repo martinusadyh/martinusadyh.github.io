@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: seo | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/seo/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-08-17T03:59:09+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Security Info Backdoor pada WordPress Plugin]]></title>
+    <link href="http://martinusadyh.web.id/2011/06/22/security-info-backdoor-pada-wordpress-plugin/"/>
+    <updated>2011-06-22T22:08:05+07:00</updated>
+    <id>http://martinusadyh.web.id/2011/06/22/security-info-backdoor-pada-wordpress-plugin</id>
+    <content type="html"><![CDATA[<p>Barusan saya menerima informasi di milis <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/1a329bee0859df69">id-slackware@googlegroups.com</a> yang menyebutkan ada backdoor pada tiga plugin popular WordPress yaitu <strong>Add This, WPTouch</strong> dan <strong>W3Total Cache</strong>. Kutipan resmi dari team WordPress adalah kurang lebih seperti dibawah ini :</p>
+
+<blockquote><h1>Passwords Reset</h1></blockquote>
+
+<p>Posted June 21, 2011 by Matt Mullenweg. Filed under Security.</p>
+
+<p>Earlier today the WordPress team noticed suspicious commits to several popular plugins (AddThis, WPtouch, and W3 Total Cache) containing cleverly disguised backdoors. We determined the commits were not from the authors, rolled them back, pushed updates to the plugins, and shut down access to the plugin repository while we looked for anything else unsavory.</p>
+
+<p>We’re still investigating what happened, but as a prophylactic measure we’ve decided to force-reset all passwords on WordPress.org. To use the forums, trac, or commit to a plugin or theme, you’ll need to reset your password to a new one. (Same for bbPress.org and BuddyPress.org.)</p>
+
+<p>As a user, make sure to never use the same password for two different services, and we encourage you not to reset your password to be the same as your old one.</p>
+
+<p>Second, if you use AddThis, WPtouch, or W3 Total Cache and there’s a possibility you could have updated in the past day, make sure to visit your updates page and upgrade each to the latest version.</p>
+
+<p>Tulisan asli bisa dibaca <a href="https://wordpress.org/news/2011/06/passwords-reset/">disini</a></p>
+
+<p>Nah untuk teman-teman yang menggunakan WordPress sebagai mesin utama blog-nya silahkan di-uninstall dahulu plugin-plugin tersebut jika memang menggunakan-nya, jika sudah di uninstall silahkan ganti password blog anda :)</p>
+
+<p><strong>Referensi-referensi terkait :</strong></p>
+
+<ol>
+<li><p> <a href="https://wordpress.org/news/2011/06/passwords-reset/">Password Reset</a></p></li>
+<li><p> <a href="http://www.h-online.com/security/news/item/Backdoor-in-popular-WordPress-plug-ins-1265289.html">Backdoor In Popular WordPress Plugins</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Payout Pertama Dari TNX]]></title>
+    <link href="http://martinusadyh.web.id/2010/06/11/payout-pertama-dari-tnx/"/>
+    <updated>2010-06-11T02:33:29+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/06/11/payout-pertama-dari-tnx</id>
+    <content type="html"><![CDATA[<p>:gembira:  :gembira:   :mataduitan:  :mataduitan: Hore&hellip; akhirnya pecah juga telor dari <a href="http://www.tnx.net/">TNX</a> setelah sekian lama ikutan program jualan link ini :silau: Awalnya sih masih kurang yakin dengan model <strong>cari duit dari internet</strong> ini, maklum takut-nya sih kena tipu atau <strong>scam</strong> :pusing: <strong>Payout</strong> awal ini juga ga begitu besar sih cuma <strong>$5.52</strong> aja, tapi sebagai permulaan buat saya <strong>&ldquo;Ini merupakan awal yang bagus&rdquo;</strong> karena bukti pembayaran sudah langsung masuk ke <a href="http://paypal.com">Paypal</a> saya :semangat:  Nah payout ini juga sebagai bukti buat &ldquo;teman-teman&rdquo; se-kontrakan saya kalau ternyata <strong>&ldquo;Nge BLOG itu lebih menguntungkan daripada mainan POKER loh !!&rdquo;</strong> :swt2: , alasan sederhana saya yaitu <strong>&ldquo;Kalau main POKER ada kemungkinan untuk KALAH, sedangkan Nge-BLOG ? Hm.. Ga ada yang KALAH melainkan earning masuk terus euy !!!&rdquo;</strong> :gembira: Ok sekarang mana buktinya ?? Kan ada pepatah <strong>NO PIC == HOAX</strong> :silau: , nah ini bukti pembayaran yang telah dilakukan oleh <a href="http://www.tnx.net/">TNX</a> :
+ <a href="http://www.flickr.com/photos/10243554@N02/4688949890/"><img src="http://farm5.static.flickr.com/4054/4688949890_a9b61747d6_b.jpg" alt="PayPall1" /></a><br/>
+Bukti Pembayaran TNX 1</p>
+
+<p> <a href="http://www.flickr.com/photos/10243554@N02/4688949924/"><img src="http://farm5.static.flickr.com/4049/4688949924_22b3742914_b.jpg" alt="PayPall2" /></a><br/>
+Bukti Pembayaran TNX 2</p>
+
+<p> Bagaimana teman-teman masih <strong>&ldquo;kurang percaya juga&rdquo;</strong> dengan ini ?? Itu udah masuk di Paypal loch :senyum:</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[75 Cara Menaikkan Traffic Blog]]></title>
+    <link href="http://martinusadyh.web.id/2010/06/07/75-cara-manikkan-traffic-blog/"/>
+    <updated>2010-06-07T23:52:37+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/06/07/75-cara-manikkan-traffic-blog</id>
+    <content type="html"><![CDATA[<p>Buat teman-teman yang belum tahu bagaimana sih caranya menaikkan traffic blog/website, dibawah ini merupakan kumpulan tips dan trik untuk menaikkan traffic blog dan saya posting disini agar besok-besok mudah untuk mencari-nya :) Tulisan ini murni diambil dari forum <a href="http://www.adsense-id.com/forums/showthread.php/23960-%5BHOT%5DHampir-Semua-Cara-untuk-Meningkatkan-Traffic-Blog!!">Adsense-ID</a> dengan sedikit modifikasi agar lebih enak dan lebih mudah dibaca :)</p>
+
+<p>Sudah tidak sabar ?? Selamat menikmati, kumpulan tips dan triknya :)</p>
+
+<p><strong>Baca.. Pelajari.. pahami.. praktekkan.. dan Kuasai</strong>  :jahat:</p>
+
+<ol>
+<li><p> Tulis content lebih banyak. Jika anda menginginkan traffic, anda harus menulis content. Orang-arang tidak akan mengunjungi site anda jika anda tidak menulis content yang baik, menarik &amp; berkualitas, dan pengunjung baru tidak akan kembali ke blog anda. Maka teruslah menulis postingan yang menarik.</p></li>
+<li><p> Design &amp; layout yang baik. Jika design site anda berantakan, navigasinya sulit, warnanya tidak match atau mengganggu penglihatan (silau), atao juga full error, pengunjung pasti tidak akan betah untuk berlama-lama di blog anda.</p></li>
+<li><p> Gunakan nama domain sendiri. Saya yakin jika anda memiliki nama domain sendiri anda akan dapat traffic yang lebih banyak. Site kamu akan dilink oleh lebih banyak orang &amp; orang akan lebih mudah untuk mengingat URL anda &amp; blog anda akan terkesan lebih profesional. Cobalah untuk mendapatkan nama domain sendiri &amp; “have it from the start”.</p></li>
+<li><p> Gunakan StumbleUpon. Saya memiliki pangalaman sukses dengan stumbleUpon. Ketika sebuah artikel yang baik dari blog anda di <strong>“StumbleUpon”</strong>, diharapkan banyak orang akan menilai baik blog anda dan akan <strong>“mengstumbling upon”</strong> blog anda.</p></li>
+<li><p> Post di blog orang lain. Tawarkan tulisan kepada orang lain untuk dipost blog miliknya. Lebih baik lagi apabila tulisan tersebut sudah siap dipost. Biarkan blogger tersebut tau bahwa anda mempunyai tulisan yang siap untuk di post di blognya, jika mereka setuju. Ketika anda menulis artikel untuk dipost di blog orang lain, carilah post di blog anda anda yang relefan &amp; buatlah link ke post tersebut. Sebuah link anda dapatkan di blog mereka &amp; dapatkan traffic dari sini.</p></li>
+<li><p> Mulailah “tagging” image diblog anda. Ketika anda menyisipkan image dipostingan anda, anda harus selalu memberi identitas (tagged). Pastikan ukuran lebar dan tinggi gambar anda ketahui. Tetapi yang paling penting adalah tuliskan keywords gambar pada tag “alt” &amp; “title”.</p></li>
+<li><p> Respon segera commentar &amp; email. Orang akan menyukai blog yang pemiliknya interaktiv &amp; yang merespon segera commentar dan email yang masuk. Jika anda melakukan ini akan banyak pembaca yang akan setia dan menyukai anda &amp; anda akan mendapatkan traffic dan link lebih banyak.</p></li>
+<li><p> Gunakan MyBlogLog. SignUp ke MyBlogLog &amp; join ke semua MyBlogLog communities (max. 15 communities per hari), dan anda akan melihat visitor akan berdatangan ke blog anda dari MyBlogLog.</p></li>
+<li><p> Jangan buang waktu anda. Jangan buang waktu anda dengan program2 penghasil uang seperti <strong>PTC, PTR, Pay to surf , pay to search atau yang sejenisnya</strong>. Program seperti itu tidak akan menghasilkan apa2 melainkan hanya akan membuang-buang waktu anda. Tulislah contain yang berkualitas &amp; traffic akan datang dengan sendirinya.</p></li>
+<li><p>. Perhatikan dan pelajari statistik anda. Pelajari statistic dan google Analitic anda. Lihat keyword apa yang digunakan pengunjung untuk mencari blog anda &amp; artikel apa yang disukai atau yang tidak disukai pembaca blog anda. Ini akan membantu anda untuk menentukan tulisan anda selanjutnya yang bisa popular &amp; disisipi dengan keyword yang efektif.</p></li>
+<li><p>. Link ke potingan lain. Ketika anda link ke potingan pada blog lain, maka hal itu akan membuat trackback, atau pingback. Ketika anda ngelink ke postingan blog lain, jika mereka mempunyai trackback yang diaktifkan maka anda akan menerima sebuah linkback di bagian comments postingan yang anda link.</p></li>
+<li><p>. Pada postingan anda, tanyakan pada para pembaca blog anda beberapa pertanyaan. Para pembaca akan merasa senang jika dianggap penting &amp; sebagian besar dari mereka akan senang untuk tukar pendapat. Jika lain kali anda buat tulisan sebaiknya tanyakan para pembaca sebuah pertanyaan atau pendapat mereka terhadap sesuatu. Maka anda akan mendapatkan banyak komentar dan banyak visitor akan suka untuk kembali.</p></li>
+<li><p>. Buat “Lens” di Squidoo. Di Squidoo, anda dapat membuat “lens” anda sendiri, juga aka &amp; halaman pada site mereka. Buat sebuah “lens” yang berhubungan dengan blog anda dan pastikan anda mengelinkannya dengan blog anda. Di Squidoo anda juga bias menghasilkan uang. klik disini untuk pelajari lebih lanjut.</p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<ol>
+<li><p>. Comment pada blog lain. Ketika anda memberikan komentar di log lain 99.9 % ada box dimana anda dapat menuliskan alamat URL blog anda. Dari sini ketika seseorang melihat komentar anda mereka dapat mengklik URL blog anda. Berikanlah komentar pada blog yang berbeda sebanyak-banyaknya, makin banyak anda memberikan komentar maka akan semakin banyak traffic yang anda dapatkan.</p></li>
+<li><p>. Tulislah List Posting. Semua orang suka akan list posting. Post ini berisi list poting yang ngelink ke potingan-postingan lain. Misalnya: <strong>“Top 10 Blog Themes”’ “25 Uses for Vinegar”, &amp; “5 Helpful Website Tools”</strong>. Postingan List biasanya ngelink ke lebih banyak potingan &amp; bisa mendapatkan lebih banyak traffic dari pada postingan biasa.</p></li>
+<li><p>. Submit Blog anda ke search engine. Banyak orang yang mayoritas trafficnya didapat dari search engine. Ketika orang mencari dengan keyword anda dan menemukan site anda, anda akan mendapatkan traffic! Klik disini untuk submit blog anda agar diindex oleh google jika anda belum pernah melakukannya, dan ingat untuk tetap menulis contain baru agar blog anda tetap memiliki peringkat di search engine.</p></li>
+<li><p>. Jalin kerjasama dengan blogger lain. Kembangkan kerja sama dengan semua blogger lain terutama yang blognya sejalan dengan blog anda. Berikan komentar pada blog mereka buat percakapan, link dengan mereka &amp; jalin persahabatan. Dan sebelum anda mengetahui mereka akan mengelink blog anda yang tentunya akan mendatangkan traffic ke blog anda.</p></li>
+<li><p>. Gunakan Traffic Exchange. Saya kurang yakin anda akan terkena penalty dari adsense jika anda menggunakan traffic exchange. Traffic exchange akan membawa para pembaca yang loyal jika blog anda cukup baik disamping mendapatkan traffic yang berkelanjutan. Lihat posting mengenai BlogMad traffic exchange.</p></li>
+<li><p>. Link ke postingan anda yang lain sebanyak yang anda bisa. Link internally ke potingan dalam blog anda. Ini akan membantu ranking blog anda dan juga akan membantu traffic. Jika orang yang datang ke blog anda tidak ada pilihan lagi untuk dilihat maka mereka akan pergi. Ketika anda ngeling ke postingan anda yang lain meraka akan klik link anda dan akan tetap di blog anda lebih lama.</p></li>
+<li><p>. Sign up ke Yahoo! Answer. Di Yahoo Answer anda dapat menjawab pertanyaan orang lain &amp; menolong orang lain. Disana ada box dimana anda dapat menuliskan sumber dari jawaban anda. Jawablah pertanyaan yang ada dan buat link ke blog anda sebagai sumber.</p></li>
+<li><p>. Sign up blog anda di top blog list. Blog top list adalah sebuah blog yang me listing semua blog yang menjadi member pada blog tersebut. Blog anda akan berada pada peringkat yang lebih tinggi jika memiliki lebih banyak traffic, lebih banyak vote &amp; lebih banyak visitor. Cara joinnya sangat simple, plus cara ini akan dapat menambah traffic. Klik disini untuk melihat beberapa blog toplist (dunia) yang dapat anda join &amp; pelajari lebih lanjut.</p></li>
+<li><p>. Submit ke site directory. Beberapa directory melisting ratusan site, &amp; beberapa ribuan. Blacklink dari directory adalah baik, tapi traffic dari directory hanya sebuah tric kecil, bahkan hampir tidak ada hasil. Walaupun demikian submit dengan nama site anda menggunakan keyword anda akan dapat ranking yang lebih tinngi di Google untuk keyword tersebut, yang akan berarti traffic yang lebih banyak.</p></li>
+<li><p>. Jangan Gunakan Link Train. Hal ini tidak secara langsung berhubungan dengan traffic, tetapi ini merupakan hal yang perlu diketahui. Saya pernah membuat kesalahan dengan bergabung di ViraLink and ViralTags, dan anda sebaiknya jangan melakukan itu, kecuali jika para pembaca anda menyukainya &amp; mereka membaca blog anda lebih lama.</p></li>
+<li><p>. Baca ulang, edit dan lanjutkan posting artikel anda. Tidak ada yang akan mau me link sebuah posting yang tidak berkualitas, walaupun potingan itu sebuah ide yang brilian jika penuh dengan ejaan dan gramatikal yang salah. Tidak ada yang melink berarti tidak ada traffic.</p></li>
+<li><p>. Submit postingan anda ke Blog carnival. Kunjungi Blog Carnival website dan submit sebanyak-banyaknya artikel anda ke carnival yang berhubungan dengan niche anda. Ketika artikel edisi carnival yang anda submit diposting, tidak hanya anda akan dapat linkback, tetapi anda akan mendapatkan visitor yang lebih banyak ke blog anda. Jika anda tidak mengerti apa itu blog carnival silahkan pelajari disini.</p></li>
+<li><p>. Pertahankan blog carnival anda. Menurut saya blog carnival sangat menyenangkan untuk dipertahankan. Orang akan submit artikel mereka ke carnival anda, &amp; hampir semua orang2 ini akan mengunjungi edisi carnival anda untuk melihat link mereka disana. Dan carnival anda dapat juga menjadi yang utama &amp; tampil di homepage website Blog Carnival.</p></li>
+<li><p>. Tukar Link dengan site lain dilingkungan anda. Di manapun tukar link dibuat, entah itu di sidebar pada setiap halaman site, di dalam halaman site tersebut, ataupun di postingan itu terserah anda. Tukar Link dengan orang lain yang memiliki blog yang berhubungan akan banyak membantu. Dan ketika site mereka menjadi besar maka akan lebih banyak membantu.</p></li>
+<li><p>. Gunakan Youtube. Buat account di youtube, dan kemudian pada profile anda anda akan dapat melist alamat2 website anda. List alamat blog anda disana &amp; mulailah buat video. Ketika seseorang melihat profile anda kemungkinan ia akan mengklik blog anda.</p></li>
+<li><p>. Mintalah blog yang lebih besar untuk sebuah link. Bangunlan relationship yang baik sebelum anda meminta sesuatu. Pastikan anda melink mereka dulu dipostingan anda. Sebelum anda melakukan ini silahkan anda baca “Kumiko’s post” . Jika blog anda mendapatkan banyak link tidak hanya akan mengangkat page rank anda tetapi juga akan mendapatkan banyak traffic.</p></li>
+<li><p>. Gunakan Techorati tags. Mendapatkan lebih banyak category pada Techorati berarti anda akan mendapatkan lebih banyak expose, yang berarti mendapatkan lebih banyak traffic. Jika anda ingin mengetahui lebih banyak tentang Techorati silahkan kunjungi Court’s post.</p></li>
+<li><p>. Tulislah mengenai celebrity. Tidak perduli tentang apa blog anda, anda akan dapat cara untuk menyesuaikan dengan topik blog anda tentang celebriti. Sebagai contoh, 6 Lessons Britney Spears Can Teach You About Blogging. Orang akan mencari info tentang celebriti setiap waktu dan menyukai gossip tentang mereka. Lipatgandakan traffic anda ketika anda mendapatkan sebuah gosip tentang celebriti setelah sesuatu yang terjadi pada celebriti tersebut. Sebagai contoh, misalnya tentang pencukuran rambut mereka, hari ulang tahun anak mereka, perkawinan mereka atau tentang kematian mereka.</p></li>
+<li><p>. Menganjurkan pembaca untuk meng”Digg” artikel anda. Digg adalah sebuah site yang mengumpulkan vote pada artikel. Dengan kata lain pembaca suka atau tidak artikel tersebut. Teman blogger anda akan dengan suka rela meng”Digg” artikel anda jika anda memintanya dengan sopan, atau lebih baik tambahkan tombol Digg pada bagian bawah semua postingan anda. Pastikan artikel-artikel terbaik anda mendapatkan Digg &amp; jika postingan tersebut cukup baik maka akan mendapatkan ribuan visitor tiap hari.</p></li>
+<li><p>. Dapatkan <strong>“plugin”</strong> ke social bookmarking site. Pada setiap artikel blog sering didapati barisan tombol yang mempersilahkan para pembaca untuk submit dan vote artikel ke social bookmarking site (Digg, Reddit, Netscape, atau yang lainnya). Saya sendiri menggunakan AntiSocial plugin. Jika anda anda mengimplementasikan plugin ini artikel anda akan tersubmit ke social bookmarking site yang berarti traffic yang lebih banyak.</p></li>
+<li><p>. Link ke “A-listers”. Teknik ini digunakan untuk meminta A-lister untuk sebuah link atau membujuk mereka untuk memberikan sebuah link kepada anda. Makin banyak anda melink ke A-listers dan probloggers makin banyak kemungkinan mereka mengenal anda, lalu mungkin mereka akan melink ke artikel anda yang akan memberikan banyak traffic ke blog anda.</p></li>
+<li><p>. Tulislah sebuah post pilar. Pilar post tidak hanya merupakan list post. Pilar post merupaka inti dari blog anda. Potingan ini biasanya panjang, authoritative, &amp; instructional. Pilar post membutuhkan waktu yang lama untuk menulisnya. Anda harus melink ke pilar post sebanyak mungkin dalam blog anda &amp; pastikan pilar post mendapatkan perhatian terbanyak. Pilar post akan mendapatkan banyak link &amp; mendatangkan banyak traffic.</p></li>
+<li><p>. Ketika masa perayaan tiba, tulislah tentang hal itu. Ketika Easter, Lebaran, Thanksgiving, Chrismas, atau hari-hari libur/perayaan lain tiba, buatlah post tentang hal itu sebulan sebelumnya. Pastikan postingan anda terindex &amp; dilink. Ketika harinya tiba, kemungkinan akan dicari oleh banyak orang &amp; blog kamu mungkin akan ditemukan.</p></li>
+<li><p>. Gunakan smart URLs di WordPress. Jika anda menggunakan wordpress dan menggunakan messy URL mereka, anda sebaiknya gunakan plugin ini untuk menukar URL termasuk tanggal dan nama post di link. menggunakan plugin tersebut tidak akan menghilangkan statistic search engine anda atau yang lainnya.</p></li>
+<li><p>. Buat pengunjung blog anda merasa seperti dirumah. Jika anda seseorang yang tidak sopan, jangan pernah memberikan apapun kepada pembaca blog anda, jangan menjawab komentar atau email, jangan menolong blogger lain, atau selalu sinis dan tidak membuat para pembaca blog anda merasa seperti dirumah mereka sendiri, maka besar kemungkinan mereka akan berhenti untuk mengunjungi blog anda. Tapi jika anda membuat mereka seperti dirumah sendiri anda akan mendapatkan banyak traffic.</p></li>
+<li><p>. Jadilah manusia, bukan robot. Jika di dalam semua poting anda selalu hanya meneriakkan business secara extrim, misalnya tidak menampilkan diri anda, hanya berbicara tentang hal yang sama setiap waktu, atau 100 % sempurna, hal itu kan membuat mereka menjauh. Saya tidak bermaksud mangatakan anda untuk selalu sopan, berbicara tentang diri anda setiap waktu, melenceng dari topic anda, atau berbuat banyak kesalahan. Tetapi biarkan para pembaca anda tahu bahwa anda juga seperti mereka, bahwa anda juga manusia biasa. Jangan buat blog anda membosankan.</p></li>
+<li><p>. Keluarkan iklan dari blog anda. Untuk meningkatkan traffic hilangkanlah iklan anda. Ketika anda tidak ada jalan untuk mendapatkan uang dari blog anda, anda akan merasa sayang, tapi yakinlah bahwa anda akan mendapatkan traffic dan pembaca yang loyal jika blog anda memang berkualitas. Dan jika sudah memungkinkan anda bisa memasangnya lagi untuk memulai meraup uang.</p></li>
+<li><p>. Mulailah membuat blog directory anda sendiri. Buatlah blog directory, misalnya di miserably. Ketika anda buat directory pertama kali, buatlah semua link dengan gratis dan dapatkan sebuah link submit form, dimana submission akan mengirimkan anda email. Anda dapat melakukannya mingguan/harian tergantung link yang dikirimkan kepada anda, atau anda dapat assign linknya ke <strong>“proper Categoies”</strong> yang disediakan. Ketika blog anda sudah menjadi besar, anda dapat mengajukan pemintaan <strong>“reciprocal link”</strong> &amp; akan mendapatkan <strong>“featured site table”</strong> yang ngelink ke blog anda.</p></li>
+<li><p>. Post tentang A-listers. Misalnya tentang blogger <strong>Darren Rowse</strong> dan <strong>John Chow</strong>. Anda dapat menulis tentang mereka sebagai personal atau sebagai blogger, atau anda dapat menulis tentang bagaimana mereka melakukan sesuatu. Anda dapat mempost pikiran anda tentang yang mereka katakana atau mengembangkan postingan mereka dan kemudian tinggalkan pesan dipostingan mereka bahwa anda juga sudah melakukan hal yang sama.</p></li>
+<li><p>. Interview blogger lain. Interview blogger lain biasanya akan memberikan beberapa posting &amp; links. Link berarti traffic.</p></li>
+<li><p>. Buatlah postingan link yang digemari. Saya mencoba membuat post link yang saya sukai setiap 2 kali seminggu. Ini hanya potingan link ke artikel di blogosphere atau ke web yang saya suka, terutama yang relefan dengan tema blog saya. Hal ini tidak hanya akan mendapatkan trackback, tapi juga akan memberikan anda kesempatan untuk mendapatkan medapatkan link balik yang berarti traffic.</p></li>
+<li><p>. Buatlah kontes berhadiah. Ini adalah ide yang baik. Buatlah kontes dengan hadiah yang menarik. Orang orang akan mengikuti blog anda dengan harapan akan memenangkan hadiah. Jika anda memberikan hadiah yang menarik beritanga pasti akan tersebar, tapi sebelumnya pastikan dulu bahwa bahwa blog anda memiliki banyak pembaca yang setia.</p></li>
+<li><p>. Berpura-puralah menjual blog anda. Ini adalah salah satu cara untuk mendapatkan traffic, tapi saya tidak merekomendasikannya. Anda dapat membayar beberapa dolar untuk melist blog anda di marketplace &amp; dapatkan traffic dari para pembeli potensial. Lalu batalkan penawaran dan keep blog anda. Tidak akan ada dari traffic anda yang akan kembali. Ini bukan targetnya dan hanya akan membuang uang. Tetapi jika anda ingin hanya mendapatkan traffic sesaat cara ini boleh dicoba.</p></li>
+<li><p>. Jadilah comedian. Buatlah pengunjung tertawa. Ini susah susah gampang. Jika anda dapat membuat pengunjung anda tertawa dan senang mereka akan mengingat blog anda &amp; akan memberitahukan yang lain tentang blog anda &amp; akan kembali lagi.</p></li>
+<li><p>. Tolonglah blogger yang membutuhkan anda. Jika ada blogger pemula yang meninggalkan anda komentar atau email bantulah mereka. Siapa tau suatu saat mereka akan menjadi besar &amp; akan selalu mengingat kebaikan anda.</p></li>
+<li><p>. Buatlah poll pada blog anda. Orang-orang menyukai voting &amp; selalu ingin melihat hasil dari sebuah polling. Polling itu popular &amp; popular akan mendatangkan traffic.</p></li>
+<li><p>. Buatlah blog baru. Jika anda masih dapat menanganinya dengan baik buatlah blog baru, baik itu di hosingan gratis atau domain anda sendiri. Apapun yang anda inginkan usahakan traffic untuk setiap blog yang anda miliki, &amp; pastikan semua blog anda ngelink terhadap yang lainnya, terutama blog yang kecil harus di link oleh blog yang lebih besar. Diharapkan siapapun yang membaca salah satu blog anda dapat diperkenalkan blog anda yang lain.</p></li>
+<li><p>. Buat atau hack plugin wordpress. Oke, ini hanya untuk yang pintar “nge-hack” atau membuat plugin wordpress. Saya belum pernah melakukannya. Tapi jika anda bisa, anda akan mendapatkan banyak link &amp; traffic dari semua yang menggunakan plugin anda.</p></li>
+<li><p>. Buatlah blog theme (wordpress, blogspot, atau apapun). Sama halnya seperti membuat sebuah plugin, traffic akan datang seiring dengan link. Bahkan membuat blog theme lebih mudah dari membuat plugin atau belajar seo.</p></li>
+<li><p>. Buatlah gambar yang dapat digunakan oleh orang lain. Jika anda membuat gambar yang gratis, yang dapat digunakan orang lain untuk blog mereka, anda akan mendapatkan traffic dari sini. Dan jika anda professional dalam membuat gambar, anda bisa mendapatkan tambahan uang dari sini.</p></li>
+<li><p>. Buatlah gambar untuk site social networking. Orang yang menggunakan Myspace, facebook, dan semua site tipe ini menyukai menggunakan gambar. Banner berwarna, gambar animasi, gambar berkedip, jika membuat ini maka mereka akan menggunakannya, Tempatkan link anda disana.</p></li>
+<li><p>. Gabung di Myspace dan dapatkan banyak teman. Bergabunglah di Myspace klicklah <strong>“browse”</strong> dan add people. Jika anda sudah mendapatkan banyak teman buatlah link ke blog anda pada bulletin dan di profile anda atau dimana saja yang anda bisa. Ini akan mendapatkan traffic jika anda melakukannya dengan benar.</p></li>
+<li><p>. Jawablah pertanyaan yang anda dapatkan dari komentar ataupun email dengan sebuah post. Jika seseorang memberikan komentar atau pertanyaan dan jawabannya cukup panjang, Jangan buang waktu anda jawablah dengan link ke potingan anda. Jika postingan mengenai hal itu belum ada, buatlah sebuah postingan mengenai hal itu.</p></li>
+<li><p>. Kerjakan Search Engine Optimization. Semakin baik rangking anda di search engine maka akan semakin banyak visitor yang akan mereka kirimkan.</p></li>
+<li><p>. Buatlan sebuah serial award/penghargaan. Luangkan waktu anda untuk membuat sebuah trophy atau banner untuk sebuah award atau penghargaan. Pastikan award itu memiliki tema atau nama, misalnya, <strong>“Tropy Penghargaan Untuk Blogger Terbaik”</strong>. Lalu linkkan banner tersebut ke 5 blogger lain yang menurut anda terbaik. Buat peraturan bahwa kelima blogger tersebut juga melakukan hal yang sama dengan banner tersebut, link dengan lima blogger lain yang menurut mereka terbaik. Pastikan di dalam banner tersebut terdapat link anda sebagai pembuat banner. Jika ini berjalan maka akan ada banyak linkback kepada blog anda &amp; anda akan menerima banyak traffic.</p></li>
+<li><p>. Order review melalui ReviewMe. Jika anda order review pada blog lain dengan ReviewMe atau PayPerPost orang banyak akan membaca tentang blog anda. Review adalah cara terbaik anda mengiklankan blog anda untuk mendapatkan pembaca yang setia.</p></li>
+<li><p>. Pasang iklan di Google Adwords. Jika anda ada uang lebih tidak ada salahnya anda membeli iklan di Google Adwords. Mereka yang tertarik akan mengklik iklan anda. Sebagian dari mereka akan menjadi pembaca yang setia dan mungin sebagian lagi tidak. Ini adalah jalan yang baik untuk mendapatkan traffic.</p></li>
+<li><p>. Gunakan ReviewBack untuk mendapatkan review gratis. Anda akan mendapatkan review gratis disini, berguna untuk mendapatkan traffic. Check di ReviewBack.</p></li>
+<li><p>. Tulislah sebuah Press Release. Klik disini untuk mengetahui bagainama caranya.</p></li>
+<li><p>. Dapatkan favorit list di Techorati. Tachorati top 100 favorited list direview di sini. Akan sangat sulit untuk mendapatkannya, anda memerlukan beberapa ratus favorite atau bahkan beberapa ribu jika anda menginginkan berada ditempat teratas list. Tapi ini akan menghasilkan banyak sekali traffic jika anda berhasil melakukannya.</p></li>
+<li><p>. Join forum dan &amp; message board. Bergabunglah dengan forum dan message board yang relevan dengan tema blog anda. Jika diizinkan link blog anda dimana yang anda bisa. Orang yang melihatnya akan senang untuk mengecheck blog anda.</p></li>
+<li><p>. Tambahkan link blog anda di forum signature. Ide lain, tapi tetap hanya jika diizinkan. Tambahkan link anda di forum signature dan aktiflah berkomunikasi. Link anda akan terlihat di setiap posting anda. Anda akan mendapatkan traffic yang lumayan jika forum banyak membernya.</p></li>
+<li><p>. Tulis sebuah post dengan title yang menarik, gampang diingat &amp; mengandung keyword. Postingan dengan title yang menarik &amp; gampang diingat biasanya akan mendapatkan traffic yang lebih banyak, apalagi jika mengandung keyword. Anda akan mendapatkan rangking di search engine, dan jika seseorang melink artikel anda dengan keywords tersebut anda akan mendapatkan rangking yang lebih baik dan akan mendapatkan traffic lebih dari google, yahoo, atau yang lainnya.</p></li>
+<li><p>. Gunakan gambar pada postingan anda. Jika postingan hanya berupa text postigan akan menjadi cepat membosankan. Gambar juga berguna untuk SEO jika seseorang mencari gambar di search engine. Tapi saya merekomendasikan hanya menggunakan 1 gambar per posting, agar tidak terjadi kesimpangsiuran pada search engine.</p></li>
+<li><p>. Tulislah sebuah review. Jika anda membuat sebuah review yang baik terhadap suatu product, hal itu akan menjadi perhatian dari orang orang yang tertarik terhadap product tersebut. Buatlah review terhadap sebuah product yang lagi digandrungi saat ini.</p></li>
+<li><p>. Buat tulisan yang lebih berkualitas. Jika artikel-artikel anda ada yang di Digg atau StumbleUpon oleh para pembaca blog anda, postinglah artikel yang lebih menarik dan lebih berkualitas. Biarkan pengunjung blog anda tau bahwa blog anda adalah blog yang berkualitas dan mereka akan datang kembali.</p></li>
+<li><p>. Post tentang event-event penting yang berhubungan dengan blog anda. Jika sesuatu event penting yang sesuai dengan tema blog anda akan datang, tulislah mengenai hal itu sebulan sebelum event itu tiba, berikan kesempatan search engine untuk mengindext artikel anda. Dan jika event itu tiba anda akan dapat traffic dari orang-orang yang mencari artikel tentang event tersebut.</p></li>
+<li><p>. Berbagilah rahasia anda dengan pembaca blog anda. Baik itu rahasia sukses bisnis anda, rahasia belajar seo ataupun rahasia hidup anda orang pasti akan senang mengetahuinya dan tidak akan menjadi antipati terhadap anda.</p></li>
+<li><p>. Jadilah lain dari yang lain. Bangunlah citra dan lakukan sesuatu yang berbeda yang orang lain belum pernah melakukannya. Anda akan mendapatkan ucapan terima kasih karena pembaca anda mendapatkan sesuatu yang baru. Nama anda akan diingat dalam waktu yang lama, tapi bukan selamanya. Muncullah dengan konsep baru yang orang lain belum pernah melakukannya.</p></li>
+<li><p>. Teruslah kembangkan blog anda. Para pembaca anda akan kembali lagi pada blog anda jika blog anda terus berkembang secara konstan. Usahakan menulis setiap hari, terutama menulis tentang topik belajar seo.</p></li>
+<li><p>. Jadilah diri anda sendiri. 75 Cara Untuk Meningkatkan Traffic Blog/website Anda</p></li>
+</ol>
+
+
+<p>Kelenger nich bacanya ya ?? ga papa dech yang penting sebagian tips diatas bisa dijalankan dengan baik, sehingga kita semua bisa jadi Blogger yang sukses&hellip;. :silau:</p>
+
+<p>ada yang tahu siapakah penulis artikel ini sebenarnya? :senyum:</p>
+
+<p>Comotan dari forum tongkrongan.us di forum komputer</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Google AdWords Account Strategist (Bahasa Indonesian) Singapore]]></title>
+    <link href="http://martinusadyh.web.id/2010/05/27/google-adwords-account-strategist-bahasa-indonesian-singapore/"/>
+    <updated>2010-05-27T12:32:06+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/05/27/google-adwords-account-strategist-bahasa-indonesian-singapore</id>
+    <content type="html"><![CDATA[<p>Hari ini tidak sengaja buka-buka informasi di Google dan ternyata ketemu bahwa ada lowongan di<a href="http://google.com">Google</a> dan lokasinya ada di Singapore :) Dan ternyata juga, lowongan-nya ga jauh-jauh dari bisnis internet marketing-nya Google yaitu <a href="http://www.google.com.sg/intl/en/jobs/adwords-account-strategist-bahasa-indonesian-thai-singapore/index.html">Adwords</a> :) Mau tahu detail lowongan-nya, silahkan baca dibawah ini :</p>
+
+<h2>AdWords Account Strategist (Bahasa Indonesian) - Singapore</h2>
+
+<p><strong>This position is based in Singapore.</strong></p>
+
+<h2>The area: Online Sales and Operations</h2>
+
+<p>The Online Sales and Operations (OSO) team keeps Google growing and profitable. We are dedicated to supporting the company&rsquo;s expanding base of advertisers, publishers and users in more than 40 languages on a global basis, and providing them with the highest levels of service. We are responsible for supporting customers and generating revenue from a broad range of products such as AdWords, AdSense, Gmail and Google Earth. This means that OSO team members need to be proactive, motivated, organized, responsible – and able to work well in a fast-paced, team-oriented environment.</p>
+
+<h2>The role: AdWords Account Strategist (Bahasa Indonesian/Thai)</h2>
+
+<p>As an AdWords Account Strategist, you use your passion for teamwork, the internet, and providing amazing customer service to help improve the AdWords experience for our advertisers. You will join Google&rsquo;s world-class advertising Operations team, and should be extremely proactive, efficient, and responsible. You will take an active role in the sales and support of Google&rsquo;s targeted advertising solutions to help drive business revenue growth across a variety of verticals.</p>
+
+<ol>
+<li><p> <strong>Responsibilities:</strong></p>
+
+<ol>
+<li><p>Provide excellent customer service to Google&rsquo;s advertisers by proactively and creatively solving client problems.</p></li>
+<li><p>Manage client advertising accounts by responding to inquiries by phone and email.</p></li>
+<li><p>Build strong relationships with customers and educate them on ways that AdWords can help grow their business.</p></li>
+<li><p>Optimize keyword lists and ads in order to identify opportunities for improved performance and to help maximize advertisers’ ROI.</p></li>
+<li><p>Be an advocate for your region’s advertisers and use your expertise to help improve AdWords to meet their needs.</p></li>
+</ol>
+</li>
+<li><p> <strong>Requirements:</strong></p>
+
+<ol>
+<li><p>Bachelors degree preferred with a strong academic record.</p></li>
+<li><p>Fluency, written and spoken, in English and Bahasa Indonesian or Thai.</p></li>
+<li><p>Detail-oriented, with the ability to quickly complete a large volume of high-quality work.</p></li>
+<li><p>Flexible and creative, and able to handle a multitude of tasks with ease.</p></li>
+<li><p>Excellent written and verbal communication skills.</p></li>
+<li><p>Proven record of successful process management and relationship development with large clients.</p></li>
+<li><p>Experience in a specific vertical or strong Internet advertising experience a plus.</p></li>
+</ol>
+</li>
+</ol>
+
+
+<p>Nah gimana teman-teman tertarik ?? Kalau iya, silahkan isi <a href="https://www.google.com/jobs/application/application?loc=sg">form lamaran</a>-nya  dahulu yach dan informasi ini dapat teman-teman lihat juga pada halaman <a href="http://www.google.com.sg/intl/en/jobs/adwords-account-strategist-bahasa-indonesian-thai-singapore/index.html">Lowongan Google Adwords</a> :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Adsense-ID.com Tempat Nongkrong Publisher Lokal]]></title>
+    <link href="http://martinusadyh.web.id/2010/04/22/adsense-id-com-tempat-nongkrong-publisher-lokal/"/>
+    <updated>2010-04-22T12:27:55+07:00</updated>
+    <id>http://martinusadyh.web.id/2010/04/22/adsense-id-com-tempat-nongkrong-publisher-lokal</id>
+    <content type="html"><![CDATA[<p>Meskipun baru bergabung beberapa hari terakhir ini, tapi tidak ada salah-nya kalau saya mempromosikan forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a> karena bagi newbie seperti saya, informasi yang disediakan benar-benar melimpah ruah :D :) . Nah kalau teman-teman ingin tahu apa sih kegunaan <strong>Page Rank</strong> (PR) di sebuah blog ? Ingin tahu <strong>tips dan trik meningkatkan jumlah pengunjung</strong> di blog ? Ingin tampil pada halaman pertama di mesin pencarian <a href="http://google.com">Google</a> ? Ingin tahu juga tentang apa itu <strong>Black Hat SEO</strong> ? Semua-nya dibahas tuntas pada forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a>. Forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a> ini merupakan tempat berkumpul-nya para <strong>publisher</strong> Indonesia, dan didalam-nya sudah pasti berisi tentang ilmu-ilmu yang diterapkan oleh para <strong>pakar SEO (Search Engine Optimization)</strong> dalam mengelola <strong>bisnis internet</strong>-nya. Selain mendapatkan ilmu tentang <strong>Search Engine Optimization (SEO)</strong>, kita juga di ajarkan untuk bermain bersih dalam dunia <strong>adsense</strong> seperti tidak menyuruh teman untuk mengklik <strong>adsense</strong> yang tampil pada blog kita dan lain-lain.</p>
+
+<p>Apa sih keuntungan yang didapat jika kita bergabung pada forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a> ??? Wuiiiih kalau menurut saya sih keuntungan-nya buaaaaaaanyak banget-nget-nget dah :D Yaps&hellip; masih tidak percaya ya kalau ternyata kita bisa <strong>menghasilkan pendapatan dari nge-blog</strong> ? Kalau masih saja tidak percaya, coba deh join dulu pada forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a> dan masuk ke sub forum <a href="http://www.adsense-id.com/forums/forumdisplay.php/125-Link-Market?s=ecb7aacd97194270154bf496387d12c5">Link Market</a> dan silahkan dibuktikan sendiri, apakah apa yang saya katakan disini bohong ? (Maklum sudah pernah dapat $$$ sih meskipun masih receh :D)</p>
+
+<!-- more -->
+
+
+<p>Ada 1 lagi yang saya senang dari forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a> ini, mungkin kalau teman-teman adalah penghuni forum <a href="http://www.kaskus.us/">Kaskus</a> pasti sudah sangat akrab dong dengan kata-kata <strong>pertamax</strong> atau pun <strong>gan</strong>. Nah pada forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a> ini juga ternyata mempunyai ciri khas sendiri yaitu kata-kata <strong>LAIP LING</strong> yang maksudnya adalah <strong>Live Link</strong> atau <strong>Direct Link</strong>. Kata-kata ini merupakan peringatan yang biasanya diberikan oleh member kepada <strong>member baru</strong> yang sejati-nya dalam sebuah posting, kita tidak boleh menyertakan <strong>Live Link</strong> atau <strong>Direct Link</strong> ke sebuah situs atau blog untuk tujuan promosi dan menarik traffik ke situs atau blog yang bersangkutan.</p>
+
+<p>Selain itu, di forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a> ada beberapa istilah yang perlu kita ketahui berasama demi kenyamanan kita juga sih sebenarnya. Istilah-istilah tersebut yaitu :</p>
+
+<ol>
+<li><p> <strong>TS (Trhead Starter)</strong>, orang yang mulai membuka sebuah thread diskusi.</p></li>
+<li><p> <strong>WTB (Want To Buy)</strong>, sudah jelas kan maksudnya :) Maksudnya adalah bahwa si TS (Thread Starter) ingin membeli sesuatu dari para member forum.</p></li>
+<li><p> <strong>WTS (Want To Sell)</strong>, yaps si TS (Tread Starter) ingin membeli sesuatu dari para member.</p></li>
+<li><p> <strong>BIN (Buy It Now)</strong></p></li>
+<li><p> <strong>BID</strong>, melakukan penarawan harga :D</p></li>
+<li><p> <strong>iTrader</strong>, ini adalah sebuah nilai kepercayaan yang diberikan antar penjual dan pembeli di forum <a href="http://www.adsense-id.com/forums/forum.php">Adsense-ID.com</a> setelah selesai melakukan transaksi. Semakin tinggi nilai iTrader-nya, maka reputasi kepercayaan member tersebut semakin naik dimata member lain-nya. Jika kepercayaan sudah terbangun, maka bisnis-pun diharapkan lancar jaya juga :)</p></li>
+</ol>
+
+
+<p>Nah bagaimana teman-teman ? Mantap bukan ? :) Yukk sama-sama menjadi publisher yang baik dan benar :D Semoga dengan menjadi publisher yang baik, kita juga kecripatan rejeki-nya :D</p>
+
+<p><strong>Referensi-referensi terkait:</strong></p>
+
+<ol>
+<li><p> <a href="http://www.adsense-id.com/forums/forum.php">Forum Adsense-ID.com</a></p></li>
+<li><p> <a href="http://www.adsense-id.com/forums/showthread.php/30131-Kumpulan-istilah-singkatan-gaul-di-forum">Kumpulan Istilah Gaul Forum</a></p></li>
+<li><p> <a href="http://www.adsense-id.com/forums/showthread.php/36393-memberi-itrader-abis-transaksi">Memberi iTrader Sehabis Transaksi</a></p></li>
+<li><p> <a href="http://www.adsense-id.com/forums/forumdisplay.php/125-Link-Market?s=ecb7aacd97194270154bf496387d12c5">Link Market</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>
