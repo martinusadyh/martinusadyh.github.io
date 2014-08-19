@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Setelah minggu kemarin kita mencoba plugin Java Swing Ayatana di NetBeans, sekarang mari kita coba bagaimana menggunakan library Java Swing Ayatana &hellip;">
+  <meta name="description" content="Kemarin ada yang tanya, gimana sih caranya mencari file duplicate di GNU/Linux ? Setelah beberapa kali mencari bantuan di Google akhirnya ketemu juga &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2012/09/01/finding-duplicate-file-in-linux/">Finding Duplicate File in Linux</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-01T21:12:48+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2012/09/01/finding-duplicate-file-in-linux/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemarin ada yang tanya, gimana sih caranya mencari file duplicate di <strong>GNU/Linux</strong> ? Setelah beberapa kali mencari bantuan di <a href="http://google.com">Google</a> akhirnya ketemu juga caranya yaitu dengan menjalankan perintah seperti dibawah ini :
+[plain]
+$ find /tmp -type f | rev | sort | sed -nr &lsquo;:a N;/^([^/]<em>\/).</em>\n\1/p;D;ba&rsquo; | uniq | rev
+[/plain]
+Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di inginkan.</p>
+
+<p>Tips ini saya temukan secara tidak sengeja di <a href="http://google.com">Google</a> tapi sayang-nya lupa dimana tepat-nya, jadi supaya tidak lupa saya posting sekalian di blog supaya bisa jadi referensi di kemudian hari :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -580,46 +626,6 @@ allow-guest=false
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04/">Konfigurasi User Home Direktori Apache Di Ubuntu 12.04</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-07T18:58:40+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="5">&larr; Older</a>
@@ -651,6 +657,10 @@ allow-guest=false
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
       </li>
     
@@ -666,15 +676,11 @@ allow-guest=false
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   

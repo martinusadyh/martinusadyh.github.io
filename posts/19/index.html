@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Bingung bagaimana cara mendapatkan informasi dari BIOS (Basic Input/Ouput System) di Sistem Operasi GNU/Linux ? Jika iya, mungkin teman-teman perlu &hellip;">
+  <meta name="description" content="Apakah teman-teman sudah puas dengan tampilan font rendering yang terdapat pada Desktop Manager GNOME ? Jika jawaban-nya tidak, mungkin teman-teman &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,81 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/12/03/enabling-font-smoothing-in-gnome/">Enabling Font Smoothing in GNOME</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-03T01:09:14+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/12/03/enabling-font-smoothing-in-gnome/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Apakah teman-teman sudah puas dengan tampilan font rendering yang terdapat pada Desktop Manager GNOME ? Jika jawaban-nya tidak, mungkin teman-teman perlu mencoba mengaktifkan fitur <strong>font smoothing</strong> agar tampilan font terlihat lebih <strong>smooth</strong> :) . Fitur ini tidak bisa kita konfigurasi melalui dialog <strong>Fonts Preferences</strong> yang dapat diakses melalui <strong>System > Preferences > Appearence</strong> karena memang ternyata GNOME belum menyediakan fasilitas ini :(</p>
+
+<p>Agar tampilan font kita terlihat lebih <strong>smooth</strong>, simpanlah kode dibawah ini dengan nama <strong>.fonts.conf</strong> dan letakkan pada direktori <strong>/home/namauseranda</strong> :</p>
+
+<pre><code>&lt;fontconfig&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="autohint"&gt;
+            &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="rgba"&gt;
+            &lt;const&gt;none&lt;/const&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="hinting"&gt;
+            &lt;bool&gt;false&lt;/bool&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="hintstyle"&gt;
+            &lt;const&gt;hintnone&lt;/const&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="antialias"&gt;
+            &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+&lt;/fontconfig&gt;
+</code></pre>
+
+<p><strong>Note: Source code asli bisa diambil dari <a href="http://rewind.themasterplan.in/dl/Kubuntu_FontsConf">Kubuntu Fonts Config</a></strong></p>
+
+<p>Setelah menyimpan konfigurasi font diatas sekarang coba-lah untuk logout kemudian login lagi dan lihat bagaimana perbedaan-nya :) Untuk sumber resmi dari tulisan ini, mungkin teman-teman bisa melihat tulisan The Masterplan tentang <a href="http://rewind.themasterplan.in/2007/07/15/sexy-smooth-fonts-on-kubuntu/">Sexy smooth fonts on Kubuntu</a> :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -705,72 +780,6 @@ Worker thread atau biasanya disebut dengan <strong>background thread</strong> in
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/11/06/editing-your-pdf-with-openoffice/">Editing Your PDF With OpenOffice</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-06T15:18:45+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/11/06/editing-your-pdf-with-openoffice/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pernah merasa butuh mengedit file PDF ? Jika jawaban-nya adalah <strong>Ya</strong> dan file PDF yang ingin di edit/dimodifikasi tidak begitu <strong>kompleks</strong> mungkin kita bisa menggunakan <a href="http://extensions.services.openoffice.org/project/pdfimport">Sun PDF Import Extension</a> dari OpenOffice.org yang bisa kita gunakan untuk memodifikasi file PDF :) Sedangkan beberapa fitur yang akan kita dapatkan jika kita menginstall extension <a href="http://extensions.services.openoffice.org/project/pdfimport">
-Sun PDF Import Extension</a> ini adalah :
-<strong>
-- Text attributes like font family, font size, weight (bold, not bold), style (italic, not italic) are imported together with their respective text
-- Retain font appearance, when a PDF file uses a font not installed on your system, the font is replaced with the best alternative font
-- Converts images and vector graphics
-- Each line in a paragraph is converted into one text object
-- Import of password-protected PDF files
-- Import shapes with default style
-- Support for colors and bitmaps
-- Backgrounds remain behind other elements
-</strong>
-Sedangkan beberapa fitur yang belum didukung yaitu :
-<strong>
-- Native PDF forms
-- Proper paragraphs
-- Processing layout of LaTeX PDF
-- Import of complex vector graphics elements
-- Conversion of tables
-- Import of EPS graphics
-- RTL (right-to-left) text/font support
-</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/11/06/editing-your-pdf-with-openoffice/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="20">&larr; Older</a>
@@ -802,6 +811,10 @@ Sedangkan beberapa fitur yang belum didukung yaitu :
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
       </li>
     
@@ -817,15 +830,11 @@ Sedangkan beberapa fitur yang belum didukung yaitu :
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   

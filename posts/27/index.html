@@ -10,7 +10,8 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Ihuy :) Akhirnya setelah nunggu selama kurang lebih 1 minggu buat aktifin domainnya, akhirnya blog ane bisa online juga :) Ngapain sih hrs beli &hellip;">
+  <meta name="description" content="Pingin tahu gimana cara install themes firefox secara offline ?? Ini ada artikel disini, yang memberitahu caranya :)
+Ternyata sangat mudah sekali, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +95,87 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2007/09/18/install-themes-firefox-secara-offline/">Install Themes Firefox Secara Offline</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-18T22:59:49+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2007/09/18/install-themes-firefox-secara-offline/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pingin tahu gimana cara install themes firefox secara offline ?? Ini ada artikel <a href="http://www.pcbypaul.com/linux/firefox_theme.html">disini</a>, yang memberitahu caranya :)
+Ternyata sangat mudah sekali, tinggal copy paste kode dibawah ini kemudian simpan dengan ekstensi *.html</p>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+function installTheme(where) {
+var file = '';
+if (where == 'local') {
+file = 'file:///' + escape(document.getElementById('filename').value.replace(/\/g,'/'));
+} else {
+file = document.getElementById('url').value;
+}
+InstallTrigger.installChrome(InstallTrigger.SKIN, file, getName(file));
+}
+function getName(raw) {
+var grabFileStart = raw.lastIndexOf('/');
+var grabFileEnd = raw.lastIndexOf('.');
+if (grabFileStart &gt;= grabFileEnd) {
+return 'Invalid file name';
+} else {
+return raw.substring(grabFileStart + 1,grabFileEnd);
+}
+}
+function installThemeNow(file) {
+InstallTrigger.installChrome(InstallTrigger.SKIN, file, getName(file));
+return true;
+}
+&lt;/script&gt;
+&lt;table width="80%" border="0" align="center" bgcolor="#a52a2a" cellpadding="0" cellspacing="2"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td bgcolor="#f5f4ed"&gt;
+&lt;p align="center"&gt;&lt;span class="style2"&gt;Install Firefox .JAR theme from Harddisk
+
+&lt;/span&gt;
+&lt;form&gt;
+&lt;input type="file" id="filename"&gt;&lt;/input&gt;
+&lt;input type="button" onclick="installTheme('local');" value="Install"&gt;&lt;/input&gt;&lt;/form&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</code></pre>
+
+<p>Setelah disimpan, buka pakai firefox kemudian ambil themes yang ingin diinstal dengan cara klik tombol browse setelah itu tekan instal. Ing..eng.. themes firefox sudah terinstal :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
         <h1 class="entry-title"><a href="/2007/09/18/pindah-rumah/">Pindah Rumah</a></h1>
       
     
@@ -159,6 +241,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
       </li>
     
@@ -174,15 +260,11 @@
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   

@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Pada posting yang kemarin (sehabis installasi GSB) ternyata saya tidak bisa mengakses GNOME Help Browser dengan pesan error seperti berikut : &hellip;">
+  <meta name="description" content="Untuk teman-teman sesama pecinta GNOME untuk distribusi Slackware, akhirnya team GNOME SlackBuild (GSB) meluncurkan GNOME 2.26.3 versi Stable untuk &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/">GNOMESlackBuild 2.26.3 Stable Released for Slackware and Slackware64</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-27T22:30:58+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk teman-teman sesama pecinta <a href="http://www.gnome.org/">GNOME</a> untuk distribusi <a href="http://slackware.com/">Slackware</a>, akhirnya team <a href="http://gnomeslackbuild.org/">GNOME SlackBuild (GSB)</a> meluncurkan <a href="http://www.gnome.org/">GNOME  2.26.3</a> versi <strong>Stable</strong> untuk <a href="http://slackware.com/">Slackware 13.0</a> dan <a href="http://slackware.com/">Slackware64 13.0</a> . Pada rilis ini ada beberapa perubahan yang dilakukan dari rilis <a href="http://www.gnome.org/">GNOME  2.26.3</a> yang di tujukan untuk distribusi <a href="http://slackware.com/">Slackware 12.2</a>.</p>
+
+<p>Dan dibawah ini adalah pemberitahuan resmi dari situs <a href="http://gnomeslackbuild.org/">GNOME SlackBuild</a> menyangkut rilis kali ini :</p>
+
+<blockquote><p><strong>GNOMESlackBuild 2.26.3 Stable Released for Slackware and Slackware64.</strong></p></blockquote>
+
+<p>We&rsquo;ve brought our GNOME SlackBuild 2.26.3 to the latest Slackware and
+Slackware64, and it&rsquo;s working solidly.  There have been some updates over the
+previous 2.26.3 release for Slackware 12.2, so please make sure to read the
+documentation, particularly our SLACKWARE-13.0_REPLACED_PACKAGES.TXT,
+CHANGES_AND_HINTS.TXT, and the INSTALL.TXT  For those of you upgrading from
+gsb-current, please make sure to update your SOURCE lines in your slapt-getrc to
+point to the new directories.  Check out our download
+page for more information.</p>
+
+<p>The release will be filtering out to a bunch of our new mirrors, which have
+recently been added, so please check the MIRRORS.TXT to find a local copy near
+you.  You may need to wait a bit before all the mirrors are up to date.</p>
+
+<p>Many thanks to all those who helped us out by submitting suggestions or
+reporting bugs! Now onto GNOME 2.28.0!</p>
+
+<p>Sayang-nya distribusi <a href="http://gnomeslackbuild.org/">GNOME SlackBuild (GSB)</a> masih belum menyertakan file <strong>ISO</strong> yang bisa kita download dan install secara manual dan tanpa koneksi internet  :(</p>
+
+<p>Tapi ga ada salah-nya mencoba kan ?? Happy Slacking ;)</p>
+
+<p><strong>Link-link terkait : </strong>
+- <a href="http://gnomeslackbuild.org/">Situs Resmi GNOMESlackBuild</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -795,63 +862,6 @@ Ekstrak-lah file <strong>RptMasterDetail.zip</strong> dengan perintah <strong>un
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Swing Component Focus Handler Using KeyStroke Editor</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-07-03T19:40:05+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Buat teman-teman yang sering membangun aplikasi menggunakan GUI Toolkit Swing pasti sudah tahu bagaimana caranya menambahkan focus handler pada komponen Swing. Sebagai contohnya, kita ingin menambahkan focus pada JTextField agar ketika kita menekan <strong>ENTER</strong> maka focus akan berpindah ke komponen yang lain. Nah biasanya, langkah yang kita lakukan adalah sebagai berikut :
-1. Klik kanan pada <strong>JTextField</strong> kemudian memilih <strong>Event > Key > Key Pressed</strong> seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3684434574/"><img src="http://farm3.static.flickr.com/2599/3684434574_7c77b75d3e.jpg" alt="AddKeyPressed" /><br/>
-Menambahkan Focus Handler Secara Manual</a>
-2. Setelah itu kita tambahkan handler untuk mendeteksi penekanan tombol <strong>ENTER</strong> kemudian secara manual memindahkan focus ke komponen yang lain seperti kode dibawah ini:</p>
-
-<pre><code>    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {
-        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            /* Pindahkan focus ke jTextField2 */
-            jTextField2.requestFocusInWindow();
-        }
-    }
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="22">&larr; Older</a>
@@ -883,6 +893,10 @@ Menambahkan Focus Handler Secara Manual</a>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
       </li>
     
@@ -898,15 +912,11 @@ Menambahkan Focus Handler Secara Manual</a>
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   

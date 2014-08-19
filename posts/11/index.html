@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Pernah merasa capek terlalu lama bekerja dengan NetBeans ?? Atau terlalu silau ketika mengarang menggunakan NetBeans ? Jika ya, mungkin teman-teman &hellip;">
+  <meta name="description" content="Dikarenakan ada beberapa permintaan SlackBuild Script untuk MySQL Workbench dan ternyata situs aslinya MySQL Workbench SlackBuild Script menghilang &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,85 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/06/23/slackbuild-script-for-mysql-workbench/">SlackBuild Script for MySQL WorkBench</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-23T23:58:54+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/06/23/slackbuild-script-for-mysql-workbench/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dikarenakan ada beberapa permintaan SlackBuild Script untuk MySQL Workbench dan ternyata situs aslinya <a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">MySQL Workbench SlackBuild Script</a> menghilang tanpa jejak :( Buat teman-teman yang ingin melakukan kompilasi dan installasi MySQL Workbench untuk Slackware 13.1, silahkan coba gunakan SlackBuild script MySQL Workbench dibawah ini yang telah saya gunakan di Slackware 13.0 dan berjalan tanpa ada masalah.</p>
+
+<p><strong>Note: Script-script dibawah ini murni saya ambil dari situs <a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/</a> dan saya re-posting disini karena ketika tulisan ini dibuat, situs aslinya sedang tidak bisa diakses.</strong></p>
+
+<p>Copy dan paste kode dibawah ini, kemudian simpan dengan nama <strong>README</strong></p>
+
+<pre><code>MySQL Workbench (A visual database design tool developed by MySQL)
+
+MySQL Workbench is a cross-platform, visual database design tool
+developed by MySQL. It is the highly anticipated successor
+application of the DBDesigner4 project. 
+
+This package is the Community OSS Edition.
+</code></pre>
+
+<p><strong>README File</strong></p>
+
+<p>Copy dan paste kode dibawah ini, kemudian simpan dengan nama <strong>doinst.sh</strong></p>
+
+<pre><code>if [ -x /usr/bin/update-desktop-database ]; then
+  /usr/bin/update-desktop-database -q usr/share/applications &gt;/dev/null 2&gt;&amp;1
+fi
+
+if [ -x /usr/bin/update-mime-database ]; then
+  /usr/bin/update-mime-database usr/share/mime &gt;/dev/null 2&gt;&amp;1
+fi
+
+if [ -e usr/share/icons/hicolor/icon-theme.cache ]; then
+  if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    /usr/bin/gtk-update-icon-cache usr/share/icons/hicolor &gt;/dev/null 2&gt;&amp;1
+  fi  
+fi
+</code></pre>
+
+<p><strong>doinst.sh</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/06/23/slackbuild-script-for-mysql-workbench/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -756,103 +835,6 @@ Requirements:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2010/06/07/lowongan-arsena-visitek/">Lowongan ARSENA & VISITEK</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-07T22:25:42+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2010/06/07/lowongan-arsena-visitek/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Lowongan ini didapat di milis <a href="mailto:jug-indonesia@yahoogroups.com">jug-indonesia@yahoogroups.com</a> pada tanggal <strong> 7 Juni 2010</strong>, silahkan buat yang berminat :)</p>
-
-<p>ARSENA &amp; VISITEK (www.visitek.co.id | www.arsena.co.id)</p>
-
-<p>To accommodate our expanding business, we offer vacancies with attractive remunerations for qualified professional as:
-<strong>PROJECT MANAGER</strong></p>
-
-<ol>
-<li><p> Hold a minimum of S1 degree from related major</p></li>
-<li><p> Has minimum  at least 3 years experiences in planning and coordinating IT projects</p></li>
-<li><p> Have experiences in J2EE &amp; BEA WebLogic is an advantage</p></li>
-<li><p> Have a good knowledge in business process for telecommunication industry</p></li>
-<li><p> Have a good understanding and experiences in project management (eg. scope management, time management, cost  management, resource management, and risk management, etc)</p></li>
-<li><p> Have an excellent management skills and strong leadership to manage teams</p></li>
-<li><p> Have a positive attitude, good networking, strong communication and interpersonal skills</p></li>
-<li><p> Able to handle project with tight deadline</p></li>
-</ol>
-
-
-<p><strong>PROGRAMMER ( 20 persons)</strong></p>
-
-<ol>
-<li><p> Hold a minimum of S1 or D3 degree from related major with 2-3 years experiences. Fresh graduates are considerable.</p></li>
-<li><p> Experinced in using Java, PHP, .Net programming</p></li>
-<li><p> Previous experience in 1 full cycle project using BEA WebLogic products would be an advantage</p></li>
-<li><p> Having knowledge in business process for telecommunication industry is a big advantage</p></li>
-<li><p> Able to handle project with tight deadline</p></li>
-<li><p> Fast learner and self motivated</p></li>
-<li><p> Have a positive attitude, strong communication and interpersonal skills</p></li>
-<li><p> A good team player</p></li>
-</ol>
-
-
-<p><strong>PROJECT ADMINISTRATOR (2 persons)</strong></p>
-
-<ol>
-<li><p> Hold a minimum D3 degree from related major</p></li>
-<li><p> Computer literate (MS Office, MS Visio, Adobe Reader, Adobe Photoshop, Adobe Illustrator)</p></li>
-<li><p> Excellent in English both oral and written</p></li>
-<li><p> Has 2 years experience in similar position would be an advantage</p></li>
-<li><p> Good communication and interpersonal skill</p></li>
-<li><p> Hard worker, diligent, and be able to work under pressures.</p></li>
-</ol>
-
-
-<p><strong>TECHNICAL WRITER (2 persons)</strong></p>
-
-<ol>
-<li><p> Hold a minimum D3 degree from related major</p></li>
-<li><p> Excellent in English both oral and written</p></li>
-<li><p> Has knowledge about programming language</p></li>
-<li><p> Has experience in technical writing for IT projects</p></li>
-<li><p> Good communication and interpersonal skill</p></li>
-<li><p> A good team player</p></li>
-</ol>
-
-
-<p>Please send your CV, application letter and photograph to <a href="mailto:hrd@visitek.co.id">hrd@visitek.co.id</a> or <a href="mailto:daniel@visitek.co.id">daniel@visitek.co.id</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="12">&larr; Older</a>
@@ -884,6 +866,10 @@ Requirements:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
       </li>
     
@@ -899,15 +885,11 @@ Requirements:</p>
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   

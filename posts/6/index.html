@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Sejak menggunakan GNOME 3, saya jarang sekali menggunakan pidgin sebagai pengganti YM (yahoo messenger). Masalahnya yaitu pidgin belum dapat &hellip;">
+  <meta name="description" content="Kemarin di tempat saya bekerja ada kejadian bagaimana caranya me-rename nama file yang mempunyai akhiran &ldquo;S&rdquo; menjadi &ldquo;R&rdquo;, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,112 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/09/09/batch-rename-with-shell-script/">Batch Rename With Shell Script</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-09T19:50:09+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/09/09/batch-rename-with-shell-script/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemarin di tempat saya bekerja ada kejadian bagaimana caranya me-rename nama file yang mempunyai akhiran <strong>&ldquo;S&rdquo;</strong> menjadi <strong>&ldquo;R&rdquo;</strong>, masalahnya adalah semua file tersebut tidak mempunyai pattern yang sama kecuali 3 huruf di depan dan 1 huruf dibelakang yaitu huruf <strong>&ldquo;S&rdquo;</strong> yang harus dirubah menjadi <strong>&ldquo;R&rdquo;</strong> :D Contoh nama file yang akan direname kurang lebih seperti terlihat dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinus@artivisi:[~]$ ls
+</span><span class='line'>EDW980012011S   EDW980T22011S
+</span><span class='line'>EDW980G32011S   EDWSUBS42011S
+</span><span class='line'>martinus@artivisi:[~]$</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pada kasus diatas, kita tidak bisa secara langsung melakukan kegiatan <strong>find and replace</strong> biasa. Karena ternyata huruf <strong>&ldquo;S&rdquo;</strong> juga terdapat ditengah-tengah nama file tersebut seperti terlihat pada tampilan diatas :( Setelah bertanya ke paman <a href="http://google.com/">Google</a> sebentar, akhirnya saya menemukan pattern untuk menghapus karakter terakhir dari sebuah string menggunakan command <code>sed</code>. Dan pattern tersebut adalah <code>sed 's/\(.*\)./\1/'</code> :D akhirnya setelah dikombinasikan dengan sedikit kemampuan di shell script jadilah script yang isinya adalah sebagai berikut :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'>ls EDW* &gt; file.txt
+</span><span class='line'>
+</span><span class='line'>find_file<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>   cat file.txt <span class="p">|</span> sort <span class="p">|</span> cut -d <span class="s2">&quot; &quot;</span> -f1
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> f in <span class="k">$(</span>find_file<span class="k">)</span> <span class="p">;</span> <span class="k">do</span>
+</span><span class='line'>   <span class="nb">echo</span> <span class="s2">&quot;Original filename $f&quot;</span>
+</span><span class='line'>   <span class="c"># tampung nama file yang baru (remove last character)</span>
+</span><span class='line'>   <span class="nv">newfilename</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$f</span> <span class="p">|</span> sed <span class="s1">&#39;s/\(.*\)./\1/&#39;</span><span class="sb">`</span>
+</span><span class='line'>   <span class="nb">echo</span> <span class="s2">&quot;After delete last character $newfilename&quot;</span>
+</span><span class='line'>   <span class="nv">r</span><span class="o">=</span>R
+</span><span class='line'>   <span class="nv">newfile1</span><span class="o">=</span><span class="nv">$newfilename$r</span>
+</span><span class='line'>   <span class="nb">echo</span> <span class="s2">&quot;New filename is $newfile1&quot;</span>
+</span><span class='line'>   mv <span class="nv">$f</span> <span class="nv">$newfile1</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Simpan script diatas dengan nama terserah (misalkan <code>batch_rename.sh</code>), kemudian beri akses execute dan jalankan. Jika tidak ada error, harusnya jika dijalankan akan merename semua file menjadi seperti dibawah ini :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>martinus@artivisi:<span class="o">[</span>~<span class="o">]</span><span class="nv">$ </span>ls
+</span><span class='line'>EDW980012011R   EDW980T22011R
+</span><span class='line'>EDW980G32011R   EDWSUBS42011R
+</span><span class='line'>martinus@artivisi:<span class="o">[</span>~<span class="o">]</span><span class="err">$</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Untuk penjelasan <code>sed</code> dan <code>regex</code>-nya, saya masih belum bisa menjelaskan :D Maklum saya juga masih belajar :D Semoga script diatas bisa berguna juga buat teman-teman yang mempunyai masalah yang sama :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -343,8 +449,8 @@ Tampilan Home Screen Game 0AD</p>
 
   <div class="entry-content"><p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=116"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/netbeans-stamp-69-70.png" alt="netbeans-stamp-69-70" /></a>Minggu kemarin di milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan tentang bagaimana mengisi JComboBox dari DataBase yang kutipan pertanyaan-nya kurang lebih seperti berikut :</p>
 
-<blockquote><p>From: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#98;&#97;&#106;&#x2a;&#x2a;&#x2a;&#64;&#x79;&#x61;&#x68;&#111;&#x6f;&#x2e;&#99;&#x6f;&#109;">&#x62;&#97;&#106;&#x2a;&#x2a;&#x2a;&#x40;&#x79;&#x61;&#x68;&#x6f;&#111;&#x2e;&#99;&#111;&#x6d;</a> Fakhrurozi M Nur
-To: <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x6e;&#101;&#116;&#98;&#x65;&#97;&#x6e;&#x73;&#45;&#105;&#110;&#x64;&#x6f;&#x6e;&#101;&#115;&#105;&#x61;&#x40;&#121;&#x61;&#x68;&#x6f;&#111;&#x67;&#x72;&#x6f;&#117;&#x70;&#115;&#46;&#99;&#111;&#109;">&#110;&#x65;&#x74;&#x62;&#x65;&#x61;&#x6e;&#x73;&#45;&#105;&#110;&#100;&#111;&#110;&#101;&#115;&#105;&#x61;&#x40;&#x79;&#x61;&#x68;&#x6f;&#x6f;&#x67;&#114;&#x6f;&#117;&#112;&#115;&#46;&#99;&#x6f;&#x6d;</a> <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#x6e;&#x65;&#116;&#x62;&#x65;&#97;&#110;&#115;&#x2d;&#x69;&#x6e;&#100;&#111;&#110;&#101;&#115;&#105;&#97;&#64;&#121;&#97;&#104;&#x6f;&#111;&#103;&#114;&#111;&#x75;&#x70;&#x73;&#46;&#x63;&#111;&#109;">&#110;&#x65;&#116;&#98;&#x65;&#97;&#110;&#115;&#45;&#105;&#x6e;&#100;&#x6f;&#x6e;&#101;&#x73;&#x69;&#x61;&#64;&#121;&#x61;&#104;&#111;&#x6f;&#x67;&#114;&#111;&#x75;&#x70;&#115;&#46;&#x63;&#x6f;&#109;</a>
+<blockquote><p>From: <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x62;&#97;&#106;&#x2a;&#42;&#x2a;&#64;&#121;&#x61;&#104;&#111;&#x6f;&#46;&#99;&#x6f;&#109;">&#x62;&#x61;&#106;&#x2a;&#x2a;&#42;&#x40;&#x79;&#97;&#x68;&#111;&#x6f;&#46;&#x63;&#111;&#x6d;</a> Fakhrurozi M Nur
+To: <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#x6e;&#x65;&#116;&#x62;&#x65;&#x61;&#110;&#x73;&#45;&#x69;&#x6e;&#100;&#x6f;&#x6e;&#x65;&#115;&#105;&#97;&#64;&#x79;&#97;&#x68;&#x6f;&#x6f;&#x67;&#114;&#111;&#x75;&#112;&#115;&#x2e;&#x63;&#x6f;&#x6d;">&#110;&#x65;&#116;&#x62;&#101;&#x61;&#110;&#115;&#x2d;&#x69;&#x6e;&#100;&#111;&#x6e;&#101;&#115;&#105;&#x61;&#64;&#121;&#97;&#x68;&#111;&#111;&#103;&#114;&#x6f;&#x75;&#x70;&#115;&#46;&#99;&#x6f;&#x6d;</a> <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x6e;&#x65;&#x74;&#x62;&#x65;&#x61;&#x6e;&#115;&#x2d;&#x69;&#x6e;&#100;&#x6f;&#x6e;&#101;&#x73;&#105;&#x61;&#x40;&#x79;&#97;&#x68;&#111;&#x6f;&#103;&#114;&#x6f;&#x75;&#112;&#115;&#46;&#99;&#x6f;&#x6d;">&#x6e;&#101;&#x74;&#98;&#x65;&#97;&#110;&#115;&#x2d;&#x69;&#x6e;&#x64;&#x6f;&#110;&#x65;&#115;&#x69;&#x61;&#x40;&#x79;&#97;&#x68;&#111;&#x6f;&#103;&#114;&#x6f;&#x75;&#112;&#115;&#46;&#x63;&#111;&#x6d;</a>
 Date: Tue, 5 Jul 2011 00:18:56 +0700
 Subject: [netbeans-indonesia] [TANYA] meload kode pada JComboBox tanpa harus me restart aplikasi</p></blockquote>
 
@@ -620,78 +726,6 @@ disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JText
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix/">June Issue of BSD Magazine NanoBSD and ALIX</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-03T01:14:24+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://martinusadyh.web.id/wp-content/uploads/2011/06/NanoBSD_and_ALIX_BSD_06_201.jpg"><img src="http://martinusadyh.web.id/wp-content/uploads/2011/06/NanoBSD_and_ALIX_BSD_06_201.jpg" alt="NanoBSD_and_ALIX_BSD_06_201" /></a>Here it is!</p>
-
-<p>We are back and present you with the June issue of BSD magazine. As you may have noticed, this month’s issue is a little bit thicker than usual and we hope you enjoy all the content!</p>
-
-<p>We get started with Ivan Rambius Ivanov and his „Introduction to OpenSSL: Command line Tool” article followed by the What’s New sectionwhere you will find a short summary of the BSDCan 2011 conference written by Josh Paetzel, and Dru Lavigne who will introduce us to the recently released FreeNAS 8.0.</p>
-
-<p>In the Developers Corner we will meet Antoine Jacoutot describing an OpenBSD success story, Justin C. Sherrill sharing news about the DragonflyBSD project, and Kris Moore who shows us how to install FreeBSD with the PC-BSD installer – PC-SYSINSTALL.</p>
-
-<p>In this months How-Tos Rob Somerville introduces us to GIS in what seems to be a promise of another series of his. Then you will find Sufyan bin Uzayr’s article teaching how to deploy a Cloud OS on BSD, and the third part of the Mutt series written by Michael Hernandez. Also in How-Tos you will find a cover story – „NanoBSD and ALIX” written by Erwin Kooi.</p>
-
-<p>In the Let’s Talk section we have articles from Girish Venkatachalam and Mohammed Farrag, as well as a First of BSD Certification articles written by Jim Brown.</p>
-
-<p>In the end we prepared an Interview with Rafał Jaworowski from Semihalf – an embedded hardware and software developing company which makes great use of BSD in their work.</p>
-
-<p>I wish you have a good read and feedback is always welcome!</p>
-
-<p><strong>Table of Content of this issue is :</strong>
-<strong>Introduction to OpenSSL: Command-line Tool</strong>
-<em>Ivan &lsquo;Rambius&rsquo; Ivanov</em>
-The article describes the command-line utility of openssl. It is a tool that supports encryption and decryption, message digests, key generation and exchange and ssl channel manipulations.</p>
-
-<p><strong>BSDCan</strong>
-<em>Josh Paetzel</em>
-Josh has prepared a short summary of BSDCan 2011 conference.</p>
-
-<p><strong>Introducing FreeNAS 8.0</strong>
-<em>Dru Lavigne</em>
-On May 2, 2011 the much anticipated redesign of FreeNAS was released. This article introduces FreeNAS 8.0, describing the reasons for its redesign, the current and upcoming features, the graphical administrative interface, and where you can find additional information.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="7">&larr; Older</a>
@@ -723,6 +757,10 @@ On May 2, 2011 the much anticipated redesign of FreeNAS was released. This artic
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
       </li>
     
@@ -738,15 +776,11 @@ On May 2, 2011 the much anticipated redesign of FreeNAS was released. This artic
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (9)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   
