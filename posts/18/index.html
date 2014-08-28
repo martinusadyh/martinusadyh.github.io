@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Tulisan kali ini murni untuk dokumentasi pribadi saya dan diperuntukkan bagi teman-teman yang masih baru banget di dunia GNU/Linux dan ingin bermain- &hellip;">
+  <meta name="description" content="Nah setelah kemarin kita berhasil meng-install CentOS yang difungsikan sebagai Server, sekarang mari kita coba install sebuah Java EE Application &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,91 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/19/installing-jboss-application-server-510-on-centos-54/">Installing JBoss Application Server 5.1.0 on CentOS 5.4</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-19T04:36:22+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/19/installing-jboss-application-server-510-on-centos-54/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Nah setelah <a href="http://martinusadyh.web.id/2010/02/17/step-by-step-installing-centos-54/">kemarin</a> kita berhasil meng-install <a href="http://centos.org/">CentOS</a> yang difungsikan sebagai <strong>Server</strong>, sekarang mari kita coba install sebuah <strong>Java EE Application Server</strong> diatas-nya yaitu <a href="http://www.jboss.org/">JBoss Application Server (AS)</a>. Nah buat yang belum tahu apa sih <a href="http://www.jboss.org/">JBoss Application Server</a> itu, <a href="http://www.jboss.org/">JBoss Application Server</a> ini merupakan sebuah <strong>Java EE Application Server</strong> yang berbasis pada spesifikasi Java EE versi 5 (sampai versi sekarang (versi 5.1.0) <a href="http://www.jboss.org/">JBoss Application Server</a> ini belum mendukung spesifikasi Java EE versi 6). Nah kalau bicara tentang <strong>Java EE Application Server</strong> <a href="http://www.jboss.org/">JBoss Application Server</a> ini sekelas dengan beberapa nama besar lain-nya yaitu <a href="http://www.oracle.com/appserver/weblogic/enterprise-edition.html">Oracle WebLogic</a> dan <a href="https://glassfish.dev.java.net/">Glassfish Application Server</a>.</p>
+
+<p>Yang perlu teman-teman ketahui selain hal-hal diatas yaitu bahwa <a href="http://www.jboss.org/">JBoss Application Server</a> ini dulu-nya dikembangkan oleh sebuah perusahaan bernama <a href="http://www.jboss.com/">JBoss</a>, setelah dibeli oleh <a href="http://www.redhat.com/">Red Hat</a> akhir-nya <a href="http://www.jboss.com/">JBoss</a> ini sekarang menjadi sebuah divisi di <a href="http://www.redhat.com/">Red Hat</a> yang bergerak pada bidang aplikasi <strong>middleware</strong> dengan sifat opensource. Sedangkan fitur-fitur yang dibawa oleh <a href="http://www.jboss.org/">JBoss Application Server</a> ini adalah :</p>
+
+<ul>
+<li><p>Clustering</p></li>
+<li><p>Failover (including sessions)</p></li>
+<li><p>Load Balancing</p></li>
+<li><p>Distributed caching (using JBoss Cache, a standalone product)</p></li>
+<li><p>Distributed deployment (farming)</p></li>
+<li><p>Deployment API</p></li>
+<li><p>Management API</p></li>
+<li><p>Aspect-Oriented Programming (AOP) support</p></li>
+<li><p>JSP/Servlet 2.&frac12;.5 (Tomcat)</p></li>
+<li><p>JavaServer Faces 1.2 (Mojarra)</p></li>
+<li><p>Enterprise Java Beans versions 3 and 2.1</p></li>
+<li><p>JNDI (Java Naming and Directory Interface)</p></li>
+<li><p>Hibernate-integration (for persistence programming; JPA)</p></li>
+<li><p>JDBC</p></li>
+<li><p>JTA (Java Transaction API)</p></li>
+<li><p>Support for Java EE-Web Services like JAX-WS</p></li>
+<li><p>SAAJ (SOAP with Attachments API for Java)</p></li>
+<li><p>JMS (Java Message Service) integration</p></li>
+<li><p>JavaMail</p></li>
+<li><p>RMI-IIOP (JacORB, alias Java and CORBA)</p></li>
+<li><p>JAAS (Java Authentication and Authorization Service)</p></li>
+<li><p>JCA (Java Connector Architecture)-integration</p></li>
+<li><p>JACC (Java Authorization Contract for Containers)-integration</p></li>
+<li><p>Java Management Extensions</p></li>
+</ul>
+
+
+<p>Hm.. mantap kan dan <a href="http://www.jboss.org/">JBoss Application Server</a> ini juga open source loh :) , nah gimana tertarik mencoba <a href="http://www.jboss.org/">JBoss Application Server</a> ini sebagai server utama ? Klo iya, mari kita lanjutkan dengan meng-install <a href="http://www.jboss.org/">JBoss Application Server</a> ini pada mesin <a href="http://centos.org/">CentOS</a> yang sudah kita persiapkan sebelum-nya. Sebelum mulai meng-install persiapkan dahulu beberapa kebutuhan yang akan kita gunakan agar <a href="http://www.jboss.org/">JBoss Application Server</a> ini dapat berjalan dengan mulus di server yang sudah kita siapkan. Untuk perlengkapan yang digunakan pada tulisan ini yaitu :</p>
+
+<ul>
+<li><p><a href="http://java.sun.com/javase/downloads/index.jsp">Sun Java JDK versi 1.6.0_17 (~+ 78 MB)</a></p></li>
+<li><p><a href="http://sourceforge.net/settings/mirror_choices?projectname=jboss&amp;filename=JBoss/JBoss-5.1.0.GA/jboss-5.1.0.GA.zip">JBoss Application Server 5.1.0.GA.zip (~+ 133.5 MB)</a></p></li>
+</ul>
+
+
+<p><strong>Note: Pada tulisan ini saya me-remove semua versi java bawaan CentOS dan mengganti-nya dengan SunJDK, jadi sebelum menginstall SunJDK hapuslah dahulu OpenJDK dan GCJ yang dibawa oleh CentOS.</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/02/19/installing-jboss-application-server-510-on-centos-54/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -665,56 +750,6 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/12/06/review-album-design-your-universe-epica/">Review Album Design Your Universe (EPICA)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-06T20:44:24+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/12/06/review-album-design-your-universe-epica/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hii all, berhubung karena keren-nya album ini jadi ngebuat saya pingin posting ke blog :D. Review Ini saya dapat dari forum <a href="http://www.facebook.com/group.php?gid=122826632728">Symphonic/Gothic Metal Group</a> di FaceBook dan ditulis oleh bro <a href="http://www.facebook.com/profile.php?id=1624398291">Luxmand Grapow</a> yang notabene adalah pengurus group ini. Dan inilah dia review-nya :</p>
-
-<pre><code>        [![Cover Album Design Your Universe](http://photos-h.ak.fbcdn.net/hphotos-ak-snc1/hs238.snc1/8517_1192695950598_1624398291_30497143_4645420_n.jpg)  
-</code></pre>
-
-<p>EPICA - DESIGN YOUR UNIVERSE (2009)](<a href="http://www.facebook.com/photo.php?pid=30497143&amp;id=1624398291">http://www.facebook.com/photo.php?pid=30497143&amp;id=1624398291</a>)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/12/06/review-album-design-your-universe-epica/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="19">&larr; Older</a>
@@ -746,6 +781,10 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/08/27/perjalanan-ke-kasepuhan-ciptagelar-number-2/">Perjalanan Ke Kasepuhan Ciptagelar #2</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
       </li>
     
@@ -761,15 +800,11 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (11)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   

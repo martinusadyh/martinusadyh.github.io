@@ -10,8 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Sedang mempunyai masalah bagaimana caranya mendeteksi sesi yang sedang idle di aplikasi yang menggunakan Dojo ? Sebenarnya Dojo juga sudah mempunyai &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +87,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2012/07/11/detecting-session-idle-with-dojo/">Detecting Session Idle With Dojo</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-11T03:15:40+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2012/07/11/detecting-session-idle-with-dojo/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sedang mempunyai masalah bagaimana caranya mendeteksi sesi yang sedang <strong>idle</strong> di aplikasi yang menggunakan <a href="">Dojo</a> ? Sebenarnya <strong>Dojo</strong> juga sudah mempunyai sebuah <strong>plugin</strong> yaitu <code>dojox.analytics.plugins.idle</code> yang terdapat pada package <a href="http://dojotoolkit.org/api/">dojox.analytics</a>. Sedangkan untuk cara penggunan-nya adalah kita bisa menambahkan parameter <code>idleTime</code> dan <code>analyticsUrl</code> pada <code>dojoConfig</code> yang kurang lebih seperti berikut :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">dojoConfig</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">isDebug</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">idleTime</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">sendInterval</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">analyticsUrl</span><span class="o">:</span> <span class="s1">&#39;http://localhost:10000/monitor/idle&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">modulePaths</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">app</span><span class="o">:</span> <span class="s1">&#39;../../../app&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Selain itu, import-lah juga package <code>dojox.analytics</code> dan <code>dojox.analytics.plugins.idle</code> supaya plugin <strong>idle</strong> dapat digunakan. Dengan kode seperti diatas, harusnya jika aplikasi kita tidak melakukan apapun selama 3 detik maka <strong>Dojo</strong> akan mengirimkan <code>POST</code> request ke alamat <code>http://localhost:10000/monitor/idle</code>. Nah yang jadi masalah disini adalah, sekarang bagaimana caranya menghandle jika di sisi browser sudah melewati batasan waktu 3 detik apa yang harus dilakukan di sisi client ??? :D (Karena dari sisi aplikasi, aplikasi hanya akan mengirimkan <code>POST</code> request ke server dengan informasi <code>idle</code> saja)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/07/11/detecting-session-idle-with-dojo/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -646,83 +715,6 @@ Nama Properties [os.arch] Value [i386]
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2011/11/28/job-vacancy-as-a-developer-team-in-scrum-environment-company/">Job Vacancy as a Developer Team in Scrum Environment Company</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-28T21:24:55+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2011/11/28/job-vacancy-as-a-developer-team-in-scrum-environment-company/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hii all, lama tidak update blog. Update terbaru ini saya cuma ingin re-posting lowongan yang ada di milis <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#106;&#x75;&#x67;&#45;&#x69;&#x6e;&#x64;&#111;&#x6e;&#101;&#x73;&#105;&#x61;&#64;&#x79;&#x61;&#104;&#x6f;&#111;&#103;&#x72;&#x6f;&#x75;&#112;&#115;&#46;&#99;&#x6f;&#109;">&#x6a;&#117;&#x67;&#45;&#x69;&#x6e;&#x64;&#x6f;&#110;&#x65;&#115;&#105;&#x61;&#64;&#121;&#x61;&#x68;&#x6f;&#x6f;&#x67;&#x72;&#x6f;&#117;&#112;&#115;&#46;&#x63;&#111;&#109;</a> :) Silahkan dicek ;)</p>
-
-<p>Mau forward lowongan pekerjaan Java Developer di organisasi Scrum. Definitely recommended terutama buat fresh graduate. Bisa cepat pinter karena dicemplugin ke tim Scrum. One of the strongest Scrum team di Jakarta yang saya pernah temui karena kemarin sempat coaching tim-nya.</p>
-
-<p>Yth All,</p>
-
-<p>Dengan ini kami sampaikan, bahwa perusahaan kami membutuhkan beberapa personel sebagai Scrum Developer Team.
-Dengan Kualifikasi sebagai berikut :</p>
-
-<ol>
-<li><p> Team Work Oriented</p></li>
-<li><p> Bersedia Bekerja di Lingkungan kerja agile dengan metodologi kerja SCRUM</p></li>
-<li><p> Supel, Proaktif, Disiplin, dan Open Mind</p></li>
-<li><p> Mampu belajar dan beradaptasi dengan Cepat</p></li>
-<li><p> Keinginan ber-Inovasi dan Inisatif yang tinggi</p></li>
-<li><p> Memiliki pengalaman pemrograman JAVA sebagai berikut :</p>
-
-<ol>
-<li><p>J2EE, Spring MVC, Hibernate</p></li>
-<li><p>Mampu menggunakan Tools Source Versioning Control</p></li>
-<li><p>Mengerti konsep SDLC yang baik</p></li>
-<li><p>Diutamakan jika memiliki pengalaman Sencha Ext-GWT atau Sencha EXT-JS</p></li>
-</ol>
-</li>
-<li><p> Fresh Graduates are Welcome to Apply</p></li>
-</ol>
-
-
-<p>Range Salary from Rp. 3jt s/d Rp. 8jt. Tergantung pengalaman dan hasil Interview.</p>
-
-<p>Jika berminat, mohon dapat dikirimkan Curriculum Vitae anda ke :</p>
-
-<ol>
-<li><p> <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x62;&#97;&#121;&#x75;&#x2e;&#98;&#x61;&#103;&#x75;&#x73;&#x40;&#105;&#99;&#111;&#x6e;&#112;&#x6c;&#110;&#46;&#99;&#111;&#x2e;&#105;&#x64;">&#x62;&#x61;&#x79;&#x75;&#x2e;&#x62;&#x61;&#103;&#x75;&#x73;&#x40;&#x69;&#99;&#x6f;&#x6e;&#x70;&#108;&#x6e;&#x2e;&#x63;&#x6f;&#x2e;&#x69;&#x64;</a></p></li>
-<li><p> <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#109;&#x75;&#x68;&#97;&#109;&#x6d;&#x61;&#x64;&#46;&#114;&#105;&#x64;&#104;&#x6f;&#x40;&#x69;&#99;&#111;&#x6e;&#x70;&#x6c;&#110;&#46;&#110;&#x65;&#x74;&#x2e;&#105;&#100;">&#x6d;&#x75;&#x68;&#97;&#109;&#x6d;&#97;&#x64;&#46;&#x72;&#105;&#100;&#104;&#x6f;&#x40;&#x69;&#99;&#111;&#x6e;&#112;&#x6c;&#110;&#46;&#x6e;&#101;&#116;&#46;&#105;&#100;</a></p></li>
-<li><p> <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#100;&#x6f;&#100;&#100;&#x69;&#46;&#x70;&#x72;&#x69;&#121;&#97;&#109;&#98;&#111;&#100;&#111;&#64;&#105;&#x63;&#x6f;&#x6e;&#112;&#x6c;&#x6e;&#x2e;&#x63;&#111;&#x2e;&#x69;&#x64;">&#x64;&#x6f;&#100;&#x64;&#105;&#x2e;&#x70;&#x72;&#105;&#x79;&#x61;&#x6d;&#x62;&#x6f;&#x64;&#x6f;&#x40;&#x69;&#99;&#x6f;&#110;&#x70;&#x6c;&#x6e;&#46;&#99;&#x6f;&#46;&#x69;&#100;</a></p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="6">&larr; Older</a>
@@ -754,6 +746,10 @@ Dengan Kualifikasi sebagai berikut :</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/08/27/perjalanan-ke-kasepuhan-ciptagelar-number-2/">Perjalanan Ke Kasepuhan Ciptagelar #2</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
       </li>
     
@@ -769,15 +765,11 @@ Dengan Kualifikasi sebagai berikut :</p>
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (11)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   
