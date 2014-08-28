@@ -47,7 +47,7 @@ Perjalanan menuju Desa Ciptarasa benar-benar cukup menantang tapi juga diselingi
 
 {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/HamparanBukit.jpg 300 225 Disambut dengan Hamparan Bukit %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/JalurKecilTanahItulahTujuanKita.jpg 300 225 Jalur Kecil dari Tanah Itulah Jalan Kita %}
 
-{% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/MaticJugaBisaLewat.jpg 300 225 Matic pun Juga Bisa Lewat %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/TrailJadijadian.jpg 300 225 Trail Jadi jadian %}
+{% imgcap https://lh6.googleusercontent.com/-IrzwvIWguWU/U_d4CEXm-2I/AAAAAAAAB7k/76tGRBbs1Js/s400/MaticJugaBisaLewat.jpg 300 225 Matic pun Juga Bisa Lewat %} {% imgcap https://lh6.googleusercontent.com/-JjOhULRzQg8/U_d4fxu3vsI/AAAAAAAAB88/p1s1ZqwdKt0/s400/TrailJadijadian.jpg 300 225 Trail Jadi jadian %}
 
 {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/FotoKeluargaDiPintuMasuk.jpg Foto Keluarga di Pintu Masuk %}
 
@@ -57,7 +57,7 @@ Apa yang kita temukan/lihat setelah **Pintu Masuk Gunung Halimun Salak** menuju 
 
 Menuju **Desa Ciptarasa** bagi kita bisa disebut sebagai sebuah perjuangan :D padahal ini juga belum masuk ke dalam hutan-nya yang mempunyai panjang 9 kilometer dan mempunyai tanjakan yang cukup panjang :D , ada beberapa kejadian lucu yang cukup menghibur kita ketika menuju **Ciptarasa** yaitu om [Mufid Amali](https://www.facebook.com/mufid.amali?fref=pb&hc_location=profile_browser) yang terpaksa mendorong motor matic-nya karena takut kampas-nya habis dan om [Tendy Septiagara](https://www.facebook.com/tendy.septiagara) yang ternyata juga kehilangan knalpotnya (beliau menggunakan 2 knalpot, 1 untuk aksesori dan 1 lagi knalpot aslinya) Kita sampai di pintu gerbang menuju hutan kira-kira sekitar jam 10:00 pagi dan disini juga akhirnya kita memutuskan untuk makan siang dan beristirahat selama 1 jam kedepan (_sekedar catatan, kopi yang disediakan oleh penduduk **Ciptarasa** ini enak loh rasanya seperti ada coklat-coklatnya begitu. Tapi jangan pilih yang kopi sachet ya, minta kopi buatan mereka sendiri_)
 
-{% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/PerjuanganMenujuCiptarasa.jpg 300 225 Perjuangan Menuju Ciptarasa %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/OmMufidNuntunMotor.jpg 300 225 Om Mufid Terpaksa Menuntun Motor %}
+{% imgcap https://lh5.googleusercontent.com/-d5649uyUPaY/U_d4PrSXhKI/AAAAAAAAB8Q/iQbqAMcmViY/s400/PerjuanganMenujuCiptarasa.jpg 300 225 Perjuangan Menuju Ciptarasa %} {% imgcap https://lh5.googleusercontent.com/-tLEh72I486s/U_d4I3GmExI/AAAAAAAAB78/4jHPd9VKuis/s400/OmMufidNuntunMotor.jpg 300 225 Om Mufid Terpaksa Menuntun Motor %}
 
 {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/PintuMasukTerakhirCiptarasa.jpg 300 225 Pintu Terakhir Ciptarasa %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/RumahTerakhirCiptarasa.jpg 300 225 Rumah Terakhir %}
 
@@ -67,9 +67,9 @@ Setelah puas istirahat, akhirnya kita melanjutkan perjalanan menuju **Ciptagelar
 
 Ditengah perjalanan kita juga sempat berhenti untuk foto-foto dan om [Tendy Septiagara](https://www.facebook.com/tendy.septiagara) menunjukkan tempat dimana beliau terjatuh, setelah itu kata beliau jalur yang akan kita hadapi benar-benar cukup bikin _spot jantung_ dengan kombinasi tanjakan dan turunan yang cukup curam. Tetapi asyik-nya lagi, dijalur ini ada beberapa pos yang dibangun oleh penduduk untuk beristirahat karena mayoritas penduduk Ciptagelar kalau ingin menuju ke Ciptarasa kebanyakan hanya berjalan kaki menembus hutan sepanjang 9 kilometer ini, ini seperti pos-pos yang bisa kita temukan di gunung ketika kita melakukan pendakian :)
 
-{% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/FotoKeluargaSebelumMasukHutan.jpg 300 225 Foto Keluarga Dulu %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/GantianJalannya.jpg 300 225 Gantian ya Jalannya %}
+{% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/FotoKeluargaSebelumMasukHutan.jpg 300 225 Foto Keluarga Dulu %} {% imgcap https://lh6.googleusercontent.com/-TBVU4nsOBTk/U_d3S48bvrI/AAAAAAAAB6M/nvBTG7IeXZI/s400/GantianJalannya.jpg 300 225 Gantian ya Jalannya %}
 
-{% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/ItutuhDisanaJatuh.jpg 300 225 Itu tuh Disana Pas Jatuh %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/AirYangJernih.jpg 300 225 Air Yang Jernih %}
+{% imgcap https://lh6.googleusercontent.com/-bPLnFBx58KQ/U_d3f9vnMjI/AAAAAAAAB6c/B03raiZJqaA/s400/ItutuhDisanaJatuh.jpg 300 225 Itu tuh Disana Pas Jatuh %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/AirYangJernih.jpg 300 225 Air Yang Jernih %}
 
 {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/KondisiJalurDiDalamHutan.jpg 300 225 Kondisi Jalur %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/LebatnyaHutanGunungHalimun.jpg 300 225 Lebatnya Hutan Gunung Halimun %}
 
@@ -83,7 +83,7 @@ Perjuangan ternyata belum berhenti :( ditengah perasaan was-was karena kita tida
 
 {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/AyoGas.jpg Ayo Gas Lagi %}
 
-{% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/IstirahatDiPos.jpg 300 225 Istirahat di Pos Menunggu Hujan Reda %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/AmbilNapasSetelahBerjuang.jpg 300 225 Ambil Napas Setelah Berjuang %}
+{% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/IstirahatDiPos.jpg 300 225 Istirahat di Pos Menunggu Hujan Reda %} {% imgcap https://lh4.googleusercontent.com/-U53bqed36rc/U_d2_T4nnNI/AAAAAAAAB5Y/1EmKNARCn7U/s400/AmbilNapasSetelahBerjuang.jpg 300 225 Ambil Napas Setelah Berjuang %}
 
 Ternyata hujan yang ditunggu tidak kunjung reda juga, akhirnya kitapun terpaksa menggunakan jas hujan dan melanjutkan perjalanan ini ditemani dengan guyuran air hujan. Sedangkan medan yang kita hadapin di depan adalah tanjakan, dan setelah tanjakan ini nanti akan terdapat sebuah jembatan terakhir sebelum memasuki kampung **Ciptagelar** kata om [Tendy Septiagara](https://www.facebook.com/tendy.septiagara). Apa yang mau dikata, akhirnya kitapun melanjutkan perjalanan ini. Dan memang benar, tanjakan dan turunan-nya emang benar-benar mantap :D Setelah melewati beberapa tanjakan dan turunan, akhirnya saya sampai juga di jembatan terakhir yang dimaksud oleh om [Tendy Septiagara](https://www.facebook.com/tendy.septiagara) kemudian disusul oleh om [Ar Farid](https://www.facebook.com/ar.farid.79?fref=pb&hc_location=profile_browser). Disini kita berdua beristirahat lagi karena hawa-nya cukup dingin sembari menunggu rombongan yang lain tiba, selain itu saya cukup _shock_ karena melihat didepan jalur yang akan dihadapi cukup menanjak setelah belokan.
 
