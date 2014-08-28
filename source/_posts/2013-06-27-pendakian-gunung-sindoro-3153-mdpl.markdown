@@ -20,7 +20,7 @@ tags:
 - Wonosobo
 ---
 
-{% img center /images/blog-images/Adventure/pendakian/pendakian-gunung-sindoro-3153-mdpl/Mt_Sindoro_view_from_Mt_Sikunir.jpg 'Mt. Sindoro view from Mt. Sikunir' %}
+{% img center https://lh5.googleusercontent.com/-TaJS8L-Y298/U_yiicP3COI/AAAAAAAACAM/5c7zMX6EaI0/s640/Mt_Sindoro_view_from_Mt_Sikunir.jpg 'Mt. Sindoro view from Mt. Sikunir' %}
 
 Setelah pendakian yang gagal ke **Cikuray** [kemarin](http://martinusadyh.web.id/2013/03/17/puncak-cikuray-yang-tertunda/) ditambah dengan racun foto-foto susasana **Semeru** ketika [Jimmy](https://www.facebook.com/jimmy.rengga) melakukan pendakian bulan Mei kemarin, akhirnya ada kesempatan juga untuk melakukan pendakian lagi di bulan Juni ini dan target yang dipilih adalah [Gunung Sindoro/Sindara](http://id.wikipedia.org/wiki/Gunung_Sindara) :)
 
