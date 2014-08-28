@@ -17,7 +17,7 @@ tags:
 - Citorek
 ---
 
-{% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/LeuitdiCiptagelar.jpg Suasana di Belakang Imah Gede %}
+{% imgcap center https://lh4.googleusercontent.com/--yV_1TWkT28/U_d3zf4X58I/AAAAAAAAB7M/PGTxAldf5G8/s640/LeuitdiCiptagelar.jpg Suasana di Belakang Imah Gede %}
 
 Perjalanan kali ini adalah perjalanan pada tahun lalu, tepatnya pada tanggal 20/10/2013 yang belum sempat di posting :( Awal mula dari perjalanan kali ini adalah ajakan dari om [Ar Farid](https://www.facebook.com/ar.farid.79?fref=pb&hc_location=profile_browser) untuk menghadiri acara Seren Taun[^1] yang diadakan oleh Kasepuhan Adat Ciptagelar kalau tidak salah ingat pada bulan September 2013.
 
