@@ -45,9 +45,9 @@ rdiscount:
     - smart
 highlighter: pygments # default python pygments have been replaced by pygments.rb
 
-paginate: 10          # Posts per page on the blog index
+paginate: 5          # Posts per page on the blog index
 paginate_path: "posts/:num"  # Directory base for pagination URLs eg. /posts/2/
-recent_posts: 5       # Posts in the sidebar Recent Posts section
+recent_posts: 15       # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 excerpt_separator: "<!--more-->"
 
@@ -58,8 +58,7 @@ titlecase: true       # Converts page and post titles to titlecase
 # default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html, custom/asides/category_list.html, custom/asides/sponsor.html]
 default_asides: [
     custom/asides/about.html, 
-    asides/recent_posts.html, 
-    custom/asides/category_list.html
+    asides/recent_posts.html
 ]
 
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
