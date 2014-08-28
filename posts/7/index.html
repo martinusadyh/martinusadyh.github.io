@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Setelah webcam terdeteksi di Slackware melalui bantuan aplikasi Cheese, sekarang waktunya untuk mencoba menginstall googletalk-plugin dari google :) &hellip;">
+  <meta name="description" content="Here it is! We are back and present you with the June issue of BSD magazine. As you may have noticed, this month’s issue is a little bit thicker than &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,65 +87,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2011/06/19/enabling-multilib-on-slackware64-13-37/">Enabling Multilib on Slackware64 13.37</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-19T23:32:06+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2011/06/19/enabling-multilib-on-slackware64-13-37/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Setelah webcam terdeteksi di Slackware melalui bantuan aplikasi Cheese, sekarang waktunya untuk mencoba menginstall googletalk-plugin dari google :) Kenapa tidak menggunakan Skype ? Karena menurut pendapat saya Skype itu lebih berat daripada Google Talk :D Nah minggu kemarin ketika menginstall googletalk-plugin di Slackware64, ternyata googletalk-plugin ini membutuhkan library untuk arsitektur 32 bit dan ini bisa kita lihat dengan perintah <code>file /opt/google/talkplugin/*</code> seperti dibawah ini :</p>
-
-<pre><code>root@artivisi:/mnt/DATA/SLACKBUILDS/googletalk-plugin# file /opt/google/talkplugin/*
-/opt/google/talkplugin/GoogleTalkPlugin:         ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), stripped
-/opt/google/talkplugin/cron:                     directory
-/opt/google/talkplugin/lib:                      directory
-/opt/google/talkplugin/libnpgoogletalk64.so:     ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped
-/opt/google/talkplugin/libnpgtpo3dautoplugin.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped
-/opt/google/talkplugin/openssl.txt:              ASCII English text
-/opt/google/talkplugin/windowpicker.glade:       XML document text
-</code></pre>
-
-<p>Dari hasil perintah diatas, kita bisa melihat bahwa file <code>/opt/google/talkplugin/GoogleTalkPlugin</code> ternyata merupakan file executable untuk arsitektur 32bit, nah untung-nya di Slackware64 sudah mendukung penggunaan multilib yang maksudnya kita bisa menggunakan aplikasi berbasis 32bit di arsitektur 64bit :) Dengan mengaktifkan dukungan multilib pada Slackware64, maka kita akan dapat menggunakan aplikasi seperti Skype, Wine atau aplikasi 32bit lain-nya yang belum terdapat di arsitektur 64 bit :)</p>
-
-<p>Nah tulisan ini murni merupakan langkah-langkah yang sudah dijelaskan pada halaman <a href="http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib">Multilib Slackware for x86_64</a>, dan saya posting ulang disini supaya <strong>saya tidak lupa apa yang saya lakukan sekarang</strong> :D</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2011/06/19/enabling-multilib-on-slackware64-13-37/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
   
   
     <article>
@@ -740,6 +681,51 @@ Dikutip Dari : Danareksa.com</p>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/04/09/dosa-dosa-usd-terhadap-emas/">Dosa-Dosa USD Terhadap Emas</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-09T15:49:51+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/04/09/dosa-dosa-usd-terhadap-emas/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah kemarin saya mengutip thread yang membahas tentang <a href="http://martinusadyh.web.id/2011/03/13/fundamental-reksadana/">Fundamental ReksaDana</a> dan <a href="http://martinusadyh.web.id/2011/03/13/pemilihan-reksadana/">Bagaimana cara memilih Reksa Dana</a> dari <a href="http://www.kaskus.us/showthread.php?t=5128677">KasKus</a>, sekarang yuuk mari kita bergeser ke <strong>Investasi EMAS</strong> :)</p>
+
+<p>Sebelum mulai membaca, sebaiknya siapkan dulu kopi, rokok dan cemilan disamping anda, karena tulisan ini sangat panjang dan mungkin akan bikin mata anda mengantuk :D Karena postingan merupakan gabungan dari 2 artikel yang dijadikan satu :) Jika sudah siap, artikel dibawah ini akan mencoba menjelaskan kenapa mata uang <strong>USD</strong> sangat dominan di pasar internasional sekarang ini, dibalik semua-nya itu ternyata ada yang jebakan-jebakan yang ternyata memang sengaja diciptakan. </div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/04/09/dosa-dosa-usd-terhadap-emas/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="8">&larr; Older</a>
@@ -771,10 +757,6 @@ Dikutip Dari : Danareksa.com</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/08/27/perjalanan-ke-kasepuhan-ciptagelar-number-2/">Perjalanan Ke Kasepuhan Ciptagelar #2</a>
-      </li>
-    
-      <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
       </li>
     
@@ -790,11 +772,15 @@ Dikutip Dari : Danareksa.com</p>
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (11)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   

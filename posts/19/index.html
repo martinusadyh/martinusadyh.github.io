@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Hii all, berhubung karena keren-nya album ini jadi ngebuat saya pingin posting ke blog :D. Review Ini saya dapat dari forum Symphonic/Gothic Metal &hellip;">
+  <meta name="description" content="Apakah teman-teman sudah puas dengan tampilan font rendering yang terdapat pada Desktop Manager GNOME ? Jika jawaban-nya tidak, mungkin teman-teman &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,56 +87,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/12/06/review-album-design-your-universe-epica/">Review Album Design Your Universe (EPICA)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-06T20:44:24+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/12/06/review-album-design-your-universe-epica/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hii all, berhubung karena keren-nya album ini jadi ngebuat saya pingin posting ke blog :D. Review Ini saya dapat dari forum <a href="http://www.facebook.com/group.php?gid=122826632728">Symphonic/Gothic Metal Group</a> di FaceBook dan ditulis oleh bro <a href="http://www.facebook.com/profile.php?id=1624398291">Luxmand Grapow</a> yang notabene adalah pengurus group ini. Dan inilah dia review-nya :</p>
-
-<pre><code>        [![Cover Album Design Your Universe](http://photos-h.ak.fbcdn.net/hphotos-ak-snc1/hs238.snc1/8517_1192695950598_1624398291_30497143_4645420_n.jpg)  
-</code></pre>
-
-<p>EPICA - DESIGN YOUR UNIVERSE (2009)](<a href="http://www.facebook.com/photo.php?pid=30497143&amp;id=1624398291">http://www.facebook.com/photo.php?pid=30497143&amp;id=1624398291</a>)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/12/06/review-album-design-your-universe-epica/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
   
   
     <article>
@@ -773,6 +723,63 @@ Through the darkness follow me</p>
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-07T19:02:04+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/07/lebih-dekat-dengan-class-swingworker/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Beberapa minggu terakhir ini, saya mendapatkan 2 pertanyaan tentang <strong>Bagaimana sih agar progress bar bisa berjalan pada saat proses Query ?</strong> dan <strong>Bagaimana sih cara membuat sebuah login dialog yang menampilkan progress bar ?</strong> Nah karena 2 pertanyaan tersebut saling berkaitan menurut saya (sama-sama ingin menjalankan Progress Bar pada saat aplikasi sedang menjalankan <strong>tugas/proses</strong> yang lain) maka akan saya jawab bersama-sama pada tulisan ini :) . Nah sebelum kita masuk ke penjelasan lebih detail, kita harus tahu dahulu dong kenapa kita tidak bisa secara langsung menjalankan progress bar di saat kita melakukan proses yang lain ? Ada yang tahu kenapa ? Ini karena semua <strong>&ldquo;Event Handling&rdquo;</strong> yang terdapat pada Java Swing dijalankan oleh Thread yang bernama <strong>Event Dispatch Thread (EDT) </strong> Waks.. Thread ? Yaps betul Thread :)</p>
+
+<p>Agar aplikasi yang kita bangun di Java Swing tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang), maka kita juga perlu tahu beberapa Thread yang terdapat di Java Swing. Thread-thread tersebut yaitu :</p>
+
+<ol>
+<li><p> <strong>Initial Thread</strong>
+Thread ini bertugas untuk menjalankan method <strong>main</strong> dari aplikasi Swing kita dan thread ini bertugas untuk menampilkan GUI (Graphical User Interface) yang sudah kita bangun diatas Swing ke layar. Setelah GUI (Graphical User Interface) tampil, maka kerja dari thread ini telah selesai dan akan dilanjutkan oleh <strong>Event Dispatch Thread</strong>.</p></li>
+<li><p> <strong>Event Dispatch Thread</strong>
+Setiap aplikasi berbasis Java Swing hanya dapat mempunyai 1 Event Dispacth Thread (EDT) saja. Setiap respon dari penekanan tombol, menu item, update tampilan komponen akan dijalankan oleh thread ini. Dan semua proses tersebut <strong><em>biasanya</em></strong> tidak membutuhkan waktu yang lama. Jadi, segala proses yang dijalankan pada thread ini harus selesai secepat mungkin agar aplikasi kita tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang) .</p></li>
+<li><p> <strong>Worker Thread</strong>
+Worker thread atau biasanya disebut dengan <strong>background thread</strong> ini berfungsi untuk menjalankan proses yang lama seperti pembacaan direktori pada file system atau proses query ke database. Gunakan thread ini untuk melakukan operasi atau proses yang kita tidak bisa menentukan kapan kira-kira proses tersebut selesai.</p></li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/07/lebih-dekat-dengan-class-swingworker/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="20">&larr; Older</a>
@@ -804,10 +811,6 @@ Through the darkness follow me</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/08/27/perjalanan-ke-kasepuhan-ciptagelar-number-2/">Perjalanan Ke Kasepuhan Ciptagelar #2</a>
-      </li>
-    
-      <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
       </li>
     
@@ -823,11 +826,15 @@ Through the darkness follow me</p>
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (11)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   
