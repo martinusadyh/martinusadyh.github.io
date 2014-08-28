@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Untuk teman-teman sesama pecinta GNOME untuk distribusi Slackware, akhirnya team GNOME SlackBuild (GSB) meluncurkan GNOME 2.26.3 versi Stable untuk &hellip;">
+  <meta name="description" content="Dikarenakan ada beberapa permintaan SlackBuild Script untuk MySQL Workbench dan ternyata situs aslinya MySQL Workbench SlackBuild Script menghilang &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,7 +94,7 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/">GNOMESlackBuild 2.26.3 Stable Released for Slackware and Slackware64</a></h1>
+        <h1 class="entry-title"><a href="/2010/06/23/slackbuild-script-for-mysql-workbench/">SlackBuild Script for MySQL WorkBench</a></h1>
       
     
     
@@ -111,329 +111,56 @@
   
 
 
-<time datetime="2009-09-27T22:30:58+07:00" pubdate data-updated="true"></time>
+<time datetime="2010-06-23T23:58:54+07:00" pubdate data-updated="true"></time>
         
-         | <a href="/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Untuk teman-teman sesama pecinta <a href="http://www.gnome.org/">GNOME</a> untuk distribusi <a href="http://slackware.com/">Slackware</a>, akhirnya team <a href="http://gnomeslackbuild.org/">GNOME SlackBuild (GSB)</a> meluncurkan <a href="http://www.gnome.org/">GNOME  2.26.3</a> versi <strong>Stable</strong> untuk <a href="http://slackware.com/">Slackware 13.0</a> dan <a href="http://slackware.com/">Slackware64 13.0</a> . Pada rilis ini ada beberapa perubahan yang dilakukan dari rilis <a href="http://www.gnome.org/">GNOME  2.26.3</a> yang di tujukan untuk distribusi <a href="http://slackware.com/">Slackware 12.2</a>.</p>
-
-<p>Dan dibawah ini adalah pemberitahuan resmi dari situs <a href="http://gnomeslackbuild.org/">GNOME SlackBuild</a> menyangkut rilis kali ini :</p>
-
-<blockquote><p><strong>GNOMESlackBuild 2.26.3 Stable Released for Slackware and Slackware64.</strong></p></blockquote>
-
-<p>We&rsquo;ve brought our GNOME SlackBuild 2.26.3 to the latest Slackware and
-Slackware64, and it&rsquo;s working solidly.  There have been some updates over the
-previous 2.26.3 release for Slackware 12.2, so please make sure to read the
-documentation, particularly our SLACKWARE-13.0_REPLACED_PACKAGES.TXT,
-CHANGES_AND_HINTS.TXT, and the INSTALL.TXT  For those of you upgrading from
-gsb-current, please make sure to update your SOURCE lines in your slapt-getrc to
-point to the new directories.  Check out our download
-page for more information.</p>
-
-<p>The release will be filtering out to a bunch of our new mirrors, which have
-recently been added, so please check the MIRRORS.TXT to find a local copy near
-you.  You may need to wait a bit before all the mirrors are up to date.</p>
-
-<p>Many thanks to all those who helped us out by submitting suggestions or
-reporting bugs! Now onto GNOME 2.28.0!</p>
-
-<p>Sayang-nya distribusi <a href="http://gnomeslackbuild.org/">GNOME SlackBuild (GSB)</a> masih belum menyertakan file <strong>ISO</strong> yang bisa kita download dan install secara manual dan tanpa koneksi internet  :(</p>
-
-<p>Tapi ga ada salah-nya mencoba kan ?? Happy Slacking ;)</p>
-
-<p><strong>Link-link terkait : </strong>
-- <a href="http://gnomeslackbuild.org/">Situs Resmi GNOMESlackBuild</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/24/solving-yelp-could-not-initialize-gecko/">Solving Yelp Could Not Initialize Gecko!</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-24T05:06:06+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/09/24/solving-yelp-could-not-initialize-gecko/#disqus_thread">Comments</a>
+         | <a href="/2010/06/23/slackbuild-script-for-mysql-workbench/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Pada posting yang <a href="http://martinusadyh.web.id/2009/09/22/installing-gnome-2263-gsb-distribution-in-slackware-130/">kemarin</a> (sehabis installasi <a href="http://gnomeslackbuild.org/">GSB</a>) ternyata saya tidak bisa mengakses <strong>GNOME Help Browser</strong> dengan pesan error seperti berikut :</p>
+  <div class="entry-content"><p>Dikarenakan ada beberapa permintaan SlackBuild Script untuk MySQL Workbench dan ternyata situs aslinya <a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">MySQL Workbench SlackBuild Script</a> menghilang tanpa jejak :( Buat teman-teman yang ingin melakukan kompilasi dan installasi MySQL Workbench untuk Slackware 13.1, silahkan coba gunakan SlackBuild script MySQL Workbench dibawah ini yang telah saya gunakan di Slackware 13.0 dan berjalan tanpa ada masalah.</p>
 
-<pre><code>martinus@martinusadyh:~$ yelp
-Could not initialize gecko!
-martinus@martinusadyh:~$
+<p><strong>Note: Script-script dibawah ini murni saya ambil dari situs <a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/</a> dan saya re-posting disini karena ketika tulisan ini dibuat, situs aslinya sedang tidak bisa diakses.</strong></p>
+
+<p>Copy dan paste kode dibawah ini, kemudian simpan dengan nama <strong>README</strong></p>
+
+<pre><code>MySQL Workbench (A visual database design tool developed by MySQL)
+
+MySQL Workbench is a cross-platform, visual database design tool
+developed by MySQL. It is the highly anticipated successor
+application of the DBDesigner4 project. 
+
+This package is the Community OSS Edition.
 </code></pre>
 
-<p>Setelah lumayan berpusing-pusing ria dengan mbah google dan belum menemukan <strong><em>hint</em></strong> akhirnya coba-coba tanya di milis <a href="http://groups.google.com/group/gsb-users">gsb-user</a> (bermodalkan inggris yang pas-pas&#8217;an :D <strong>Hajar bleh, yang penting error ane bisa solved</strong> ) dan untungnya om Steve mau menjawab pertanyaan saya dan dibawah ini adalah petuah yang sangat manjur dari om Steve :</p>
+<p><strong>README File</strong></p>
 
-<blockquote><p>Likely a problem with mozilla-xulrunner, or a conflict with seamonkey.
-Make sure that the mozilla-xulrunner-1.9.0.13-i486-2gsb package is
-installed:</p></blockquote>
+<p>Copy dan paste kode dibawah ini, kemudian simpan dengan nama <strong>doinst.sh</strong></p>
 
-<p>slapt-get &ndash;install &ndash;reinstall mozilla-xulrunner-1.9.0.13-i486-2gsb</p>
+<pre><code>if [ -x /usr/bin/update-desktop-database ]; then
+  /usr/bin/update-desktop-database -q usr/share/applications &gt;/dev/null 2&gt;&amp;1
+fi
 
-<p>Also, make sure to remove any &lsquo;seamonkey&rsquo; directories from
-/etc/ld.so.conf.  Re-run <code>ldconfig</code> after.  Hopefully this should fix the
-problem.</p>
+if [ -x /usr/bin/update-mime-database ]; then
+  /usr/bin/update-mime-database usr/share/mime &gt;/dev/null 2&gt;&amp;1
+fi
 
-<p>Good luck!</p>
-
-<p>-= Steve =-</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/09/24/solving-yelp-could-not-initialize-gecko/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/23/installing-gnome-2263-gsb-distribution-in-slackware-130/">Installing GNOME 2.26.3 (GSB Distribution) in Slackware 13.0</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-23T02:36:51+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/09/23/installing-gnome-2263-gsb-distribution-in-slackware-130/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/14/dbf2mysql-with-openoffice-base/">DBF2MySQL With OpenOffice Base</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-14T12:35:50+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/09/14/dbf2mysql-with-openoffice-base/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pernah merasa pusing bagaimana memindahkan database dari tabel yang bertipe <strong>DBF</strong> (biasanya sih ini dari aplikasi yang berbasis Foxpro 2.6 dan Clipper yang jalan di DOS) ke <strong>MySQL</strong> ? Kalau pernah, berarti sama dengan saya ketika dulu melakukan proses <strong>porting</strong> aplikasi dari Foxpro 2.6 + Clipper + DBF + Windows ke Java Swing + MySQL + GNU/Linux :)</p>
-
-<p>Mungkin banyak aplikasi lain yang mampu melakukan proses porting dari DBF ke MySQL selain menggunakan OpenOffice, tapi setahu saya hanya OpenOffice-lah aplikasi yang dapat melakukan proses porting dari DBF ke MySQL yang sifatnya OpenSource dan jalan di Sistem Operasi GNU/Linux (Maklum dirumah saya ga punya Sistem Operasi Windows, jadi memilih aplikasi yang jalan di GNU/Linux adalah pilihan nomor satu saya).</p>
-
-<p>Sebelum mulai melakukan proses migrasi dari DBF ke MySQL menggunakan OpenOffice, tambahkanlah dahulu <strong>MySQL JDBC Driver</strong> pada classpath OpenOffice yang akan digunakan. Sedangkan langkah-langkah untuk menambahkan <strong>MySQL JDBC Driver</strong> ke dalam OpenOffice bisa dibaca pada tulisan saya di <a href="http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/#Memasang%20MySQL%20JDBC%20Driver%20di%20OpenOffice">sini</a>. Fungsi dari penambahan <strong>MySQL JDBC Driver</strong> ini adalah agar kita dapat mengakses database yang terdapat pada MySQL dari OpenOffice, nah jika kita sudah menambahkan <strong>MySQL JDBC Driver</strong> pada OpenOffice sekarang mari kita mulai proses migrasi data dari DBF ke MySQL.</p>
-
-<p>Langkah pertama yang harus kita lakukan yaitu <strong>copy</strong> lah seluruh file yang ber-ekstensi <strong>DBF</strong> ke sebuah direktori khusus seperti pada gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3917613913/"><img src="http://farm3.static.flickr.com/2552/3917613913_25b4453342.jpg" alt="DBF2MYSQL_1" /></a></p>
-
-<p>Sekarang jalankan-lah OpenOffice Base kemudian pada jendela <strong>Database Wizard</strong> pilihlah opsi <strong>Connect to an existing database</strong> dan pilihlah <strong>dBase</strong> seperti gambar dibawah ini kemudian tekanlah tombol <strong>Next</strong> :
-<a href="http://www.flickr.com/photos/10243554@N02/3917613917/"><img src="http://farm3.static.flickr.com/2458/3917613917_87e3953f10.jpg" alt="DBF2MYSQL_2" /></a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/09/14/dbf2mysql-with-openoffice-base/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/05/adding-license-in-netbeans-ide/">Adding License in NetBeans IDE</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-05T13:43:54+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/09/05/adding-license-in-netbeans-ide/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mau bikin project opensource ? Kalau iya, kita harus pikirkan juga donk lisensi untuk source code yang ingin kita opensource-kan :) Buat teman-teman pengguna NetBeans IDE, pasti pernah donk melihat potongan souce code seperti dibawah ini  :</p>
-
-<pre><code>/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+if [ -e usr/share/icons/hicolor/icon-theme.cache ]; then
+  if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    /usr/bin/gtk-update-icon-cache usr/share/icons/hicolor &gt;/dev/null 2&gt;&amp;1
+  fi  
+fi
 </code></pre>
 
-<p>Yups.. tampilan kode diatas adalah tampilan standart dari NetBeans IDE setiap kita membuat sebuah file Java baru, nah bagaimana jika kita ingin menambahkan lisensi untuk source code kita menjadi seperti dibawah ini :</p>
-
-<pre><code>/*
- * Copyright (c) 2009, Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * o Redistributions of source code must retain the above copyright notice,
- *   this list of conditions and the following disclaimer.
- * o Redistributions in binary form must reproduce the above copyright
- *   notice, this list of conditions and the following disclaimer in the
- *   documentation and/or other materials provided with the distribution.
- * o Neither the name of the &lt;organization&gt; nor the names of its contributors
- *   may be used to endorse or promote products derived from this software
- *   without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-</code></pre>
-
-<p>Mau pastein lisensi-nya satu persatu diseluruh source code ? Tentunya pekerjaan yang sangat melelahkan donk :D Nah biar cepat, simpan dan modifikasi-lah <strong>Template</strong> lisensi BSD dibawah ini ke dalam komputer anda :</p>
-
-<pre><code>&lt;#if licenseFirst??&gt;
-${licenseFirst}
-
-${licensePrefix} Copyright (c) ${date?date?string("yyyy")} Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;.
-${licensePrefix} All rights reserved.
-${licensePrefix}
-${licensePrefix} Redistribution and use in source and binary forms, with or without
-${licensePrefix} modification, are permitted provided that the following conditions
-${licensePrefix} are met:
-${licensePrefix}
-${licensePrefix} o Redistributions of source code must retain the above copyright notice,
-${licensePrefix}   this list of conditions and the following disclaimer.
-${licensePrefix} o Redistributions in binary form must reproduce the above copyright
-${licensePrefix}   notice, this list of conditions and the following disclaimer in the
-${licensePrefix}   documentation and/or other materials provided with the distribution.
-${licensePrefix} o Neither the name of the &lt;organization&gt; nor the names of its contributors
-${licensePrefix}   may be used to endorse or promote products derived from this software
-${licensePrefix}   without specific prior written permission.
-${licensePrefix}
-${licensePrefix} THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-${licensePrefix} "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-${licensePrefix} TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-${licensePrefix} PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
-${licensePrefix} CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-${licensePrefix} EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-${licensePrefix} PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-${licensePrefix} OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-${licensePrefix} WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-${licensePrefix} OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-${licensePrefix} ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-${licensePrefix}
-${licensePrefix} ${name}.java
-${licensePrefix}
-${licensePrefix} Created on ${date}, ${time}
-&lt;#if licenseLast??&gt;
-${licenseLast}
-</code></pre>
+<p><strong>doinst.sh</strong></p>
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/2009/09/05/adding-license-in-netbeans-ide/">Read on &rarr;</a>
+      <a rel="full-article" href="/2010/06/23/slackbuild-script-for-mysql-workbench/">Read on &rarr;</a>
     </footer>
   
 
@@ -446,7 +173,7 @@ ${licenseLast}
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/05/playing-with-jtable-and-jcheckbox/">Playing With JTable and JCheckBox</a></h1>
+        <h1 class="entry-title"><a href="/2010/06/22/dark-color-themes-for-netbeans-ide/">Dark Color Themes for NetBeans IDE</a></h1>
       
     
     
@@ -463,120 +190,28 @@ ${licenseLast}
   
 
 
-<time datetime="2009-09-05T02:57:50+07:00" pubdate data-updated="true"></time>
+<time datetime="2010-06-22T03:20:44+07:00" pubdate data-updated="true"></time>
         
-         | <a href="/2009/09/05/playing-with-jtable-and-jcheckbox/#disqus_thread">Comments</a>
+         | <a href="/2010/06/22/dark-color-themes-for-netbeans-ide/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Sudah pernah mencoba menampilkan <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html">JCheckBox</a> didalam <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">JTable</a> ? Bagi sebagian teman-teman mungkin langsung berkata <strong>&ldquo;Itu kan gampang, tinggal tambahkan 1 kolom dengan tipe data Boolean kita sudah dapat menampilkan <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html">JCheckBox</a> didalam <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">JTable</a>&rdquo;</strong>, yups memang benar dan jawaban teman-teman sudah terdapat pada tutorial Java Swing :) Ok, sekarang mari kita bahas satu persatu bagaimana cara menampilkan <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html">JCheckBox</a> didalam <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">JTable</a>. Untuk menampilkan <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html">JCheckBox</a> didalam <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">JTable</a>, biasanya saya akan membuat sebuah Domain Class yang mempunyai tipe data boolean sesuai kata teman-teman seperti dibawah ini :</p>
+  <div class="entry-content"><p>Pernah merasa capek terlalu lama bekerja dengan NetBeans ?? Atau terlalu silau ketika <strong>mengarang</strong> menggunakan NetBeans ? Jika ya, mungkin teman-teman perlu mencoba mengganti <strong>Font and Colors Profile</strong> pada NetBeans agar kelihatan lebih sejuk ketika dipandang mata :) Buat pengguna Sistem Operasi Apple, mungkin sudah pernah kenal dengan yang namanya <a href="http://macromates.com/">Textmate</a>, berdasarkan riset yang tidak bisa dipertanggung jawabkan kebenaran-nya (berdasarkan hasil googling sementara :D ) ; ternyata <a href="http://macromates.com/">Textmate</a> mempunyai <strong>Dark Colors Themes</strong> yang sangat menarik dan keren dan bisa teman-teman lihat pada halaman <a href="http://wiki.macromates.com/Themes/UserSubmittedThemes">Galery Themes</a> milik Textmate. Penasaran seperti apakah tampilan <strong>Dark Colors Themes</strong> ini di NetBeans?? Mari kita lihat beberapa screenshot dibawah ini :</p>
 
-<pre><code>public class Domain {
+<p><a href="http://www.flickr.com/photos/10243554@N02/4721551573/"><img src="http://farm2.static.flickr.com/1361/4721551573_ff650f52b2_b.jpg" alt="XML" /></a><br/>
+Tampilan XML File</p>
 
-    private boolean data1;
-    private boolean data2;
-    private boolean data3;
-    private boolean data4;
-
-    // Automatic Generate Getter and Setter
-}
-</code></pre>
-
-<p>Nah setelah selesai membuat Domain seperti diatas, sekarang mari kita bikinkan tabel modelnya seperti dibawah ini :</p>
-
-<pre><code>public class TableModelStandart extends AbstractTableModel {
-
-    private final String[] HEADER = new String[]{"KOLOM1", "KOLOM2", "KOLOM3", "KOLOM4"};
-    private List&lt;domain&gt; listDomain;
-
-    public TableModelStandart(List&lt;domain&gt; listDomain) {
-        this.listDomain = listDomain;
-    }
-
-    public int getRowCount() {
-        return listDomain.size();
-    }
-
-    public int getColumnCount() {
-        return HEADER.length;
-    }
-
-    @Override
-    public String getColumnName(int column) {
-        return HEADER[column];
-    }
-
-    @Override
-    public Class getColumnClass(int columnIndex) {
-        Class tipe = super.getColumnClass(columnIndex);
-        if (columnIndex == 0) {
-            tipe = Boolean.class;
-        } else if (columnIndex == 1) {
-            tipe = Boolean.class;
-        } else if (columnIndex == 2) {
-            tipe = Boolean.class;
-        } else if (columnIndex == 3) {
-            tipe = Boolean.class;
-        }
-
-        return tipe;
-    }
-
-    @Override
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if (columnIndex == 0) {
-            return true;
-        } else if (columnIndex == 1) {
-            return true;
-        } else if (columnIndex == 2) {
-            return true;
-        } else if (columnIndex == 3) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        Domain domain = listDomain.get(rowIndex);
-        switch (columnIndex) {
-            case 0:
-                return domain.isData1();
-            case 1:
-                return domain.isData2();
-            case 2:
-                return domain.isData3();
-            case 3:
-                return domain.isData4();
-            default:
-                return "";
-        }
-    }
-
-    @Override
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        Domain model = listDomain.get(rowIndex);
-        if (columnIndex == 0 &amp;&amp; aValue instanceof Boolean) {
-            model.setData1((Boolean) aValue);
-        } else if (columnIndex == 1 &amp;&amp; aValue instanceof Boolean) {
-            model.setData2((Boolean) aValue);
-        } else if (columnIndex == 2 &amp;&amp; aValue instanceof Boolean) {
-            model.setData3((Boolean) aValue);
-        } else if (columnIndex == 3 &amp;&amp; aValue instanceof Boolean) {
-            model.setData4((Boolean) aValue);
-        }
-    }
-}
-</code></pre>
+<p><a href="http://www.flickr.com/photos/10243554@N02/4721551571/"><img src="http://farm2.static.flickr.com/1242/4721551571_35e4e6829e_b.jpg" alt="SQL" /></a><br/>
+Tampilan SQL File</p>
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/2009/09/05/playing-with-jtable-and-jcheckbox/">Read on &rarr;</a>
+      <a rel="full-article" href="/2010/06/22/dark-color-themes-for-netbeans-ide/">Read on &rarr;</a>
     </footer>
   
 
@@ -589,7 +224,7 @@ ${licenseLast}
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/05/find-cpu-architecture-on-gnulinux/">Find CPU Architecture on GNU/Linux</a></h1>
+        <h1 class="entry-title"><a href="/2010/06/19/the-silent-force-2004-2006-within-temptation-allbum-track-and-lyrics/">The Silent Force (2004-2006 Within Temptation Allbum) Track and Lyrics</a></h1>
       
     
     
@@ -606,22 +241,28 @@ ${licenseLast}
   
 
 
-<time datetime="2009-09-05T01:20:38+07:00" pubdate data-updated="true"></time>
+<time datetime="2010-06-19T08:14:21+07:00" pubdate data-updated="true"></time>
         
-         | <a href="/2009/09/05/find-cpu-architecture-on-gnulinux/#disqus_thread">Comments</a>
+         | <a href="/2010/06/19/the-silent-force-2004-2006-within-temptation-allbum-track-and-lyrics/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Gara-gara kemarin ada yang tanya tentang CPU Architecture di milis <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/6c7a0d22fcf5255d">id-slackware@googlegroups.com</a> akhirnya iseng-iseng deh coba-coba lihat spesifikasi laptop yang saya pakai masih 32 bit atau sudah 64 bit :)  Ada beberapa cara yang saya tahu untuk mengetahui informasi tentang CPU di GNU/Linux, tapi jangan tanya apa artinya loh :malu: karena saya cuma tahu gimana cara lihatnya aja :malu:</p>
+  <div class="entry-content"><p><a href="http://www.flickr.com/photos/10243554@N02/4672153439/"><img src="http://farm5.static.flickr.com/4046/4672153439_9c4d9da140.jpg" alt="The Silent Force" /></a>T-Net&hellip; diwarnet inilah awalnya saya mendengarkan lagu dari album &ldquo;The Silent Force&rdquo; ini, T-Net jugalah warnet satu-satu-nya di Kediri yang kental dengan nuansa METAL karena semua operator-nya maniak musik-musik cadas (hii Ux, kang Ed) dan ada juga operator yang side job-nya adalah ngebuka kursus gitar (kadang-kadang jadi panitia konser punk juga klo ga salah) :D :) Gara-gara album ini juga, saya akhirnya menjadi penggemar aliran Symphonic/Gothic Metal dan mulai mencari-cari band dengan aliran sejenis yang akhirnya ketemu dengan Nightwish, Epica, Lacuna Coil, After Forever, Delain dan Xandria :) Sebenarnya masih banyak lagi sih band-band yang lain, cuma saya belum sempat dengerin musiknya :D :)</p>
+
+<p>The Silent Force ini merupakan album ketiga dari Within Temptation yang di release pada tanggal 15 November 2004 oleh <a href="http://en.wikipedia.org/wiki/GUN_Records">Gun Records</a>. Album ini di release tiga versi yaitu <strong>basic version</strong>, <strong>standart version</strong> dan <strong>premium version</strong>, untuk <strong>premium version</strong> terdapat 2 bonus track :) Kabar lainnya adalah album ini meraih Gold status di negara Jerman, Belanda, Belgia dan Finlandia setelah 1 minggu di release. Dan pada tanggal 5 Agustus 2008, album &ldquo;The Silent Force&rdquo; beserta album &ldquo;Mother Earth&rdquo; di release di Amerika dibawah bendera Roadrunner Records.</p>
+
+<p>Yang mengejutkan lagi, album The Silent Force ini (atau setidaknya judul album ini) terinspirasi dari judul buku pada awal abad ke 19 yang ditulis oleh penulis Belanda yang masa muda-nya dahulu pernah bersekolah di Batavia (sekarang Jakarta - Indonesia) bernama <a href="http://en.wikipedia.org/wiki/Louis_Couperus">Louis Couperus</a>. Pernyataan ini dikatakan sendiri oleh Sharon den Adel dalam sebuah wawancara dengan Buzznet yang membahas judul album, dan inilah kutipan Sharon den Adel tersebut :</p>
+
+<blockquote><p>&ldquo;The title of our latest album &lsquo;The Silent Force&rsquo; is actually taken from the title of a book from the beginning of the 19th century from a Dutch writer (who lived in Indonesia when he was young) called Louis Couperus. All the songs on this album are in some way related to that book (or at least the title).&rdquo;</p></blockquote>
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/2009/09/05/find-cpu-architecture-on-gnulinux/">Read on &rarr;</a>
+      <a rel="full-article" href="/2010/06/19/the-silent-force-2004-2006-within-temptation-allbum-track-and-lyrics/">Read on &rarr;</a>
     </footer>
   
 
@@ -634,7 +275,7 @@ ${licenseLast}
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/08/31/mysql-tips-n-trik/">MySQL Tips N Trik</a></h1>
+        <h1 class="entry-title"><a href="/2010/06/16/mother-earth-2000-within-temptation-album-track-listing-and-lyrics/">Mother Earth (2000-2004 Within Temptation Album) Track Listing and Lyrics</a></h1>
       
     
     
@@ -651,34 +292,108 @@ ${licenseLast}
   
 
 
-<time datetime="2009-08-31T11:17:07+07:00" pubdate data-updated="true"></time>
+<time datetime="2010-06-16T05:56:50+07:00" pubdate data-updated="true"></time>
         
-         | <a href="/2009/08/31/mysql-tips-n-trik/#disqus_thread">Comments</a>
+         | <a href="/2010/06/16/mother-earth-2000-within-temptation-album-track-listing-and-lyrics/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Bagi teman-teman yang sudah sering sekali menggunakan <a href="http://www.mysql.com/">MySQL</a> sebagai database server-nya mungkin sudah tidak asing lagi dengan beberapa tips dan trik yang ada pada tulisan kali ini :) Tapi kenapa saya menulis ini, karena saya sendiri sering lupa dan membuat saya sering <strong>googling</strong> lagi untuk kasus yang sama :malu: Beberapa perintah atau tips dan trik yang sering membuat saya lupa yaitu :</p>
+  <div class="entry-content"><p><a href="http://www.flickr.com/photos/10243554@N02/4672153437/"><img src="http://farm5.static.flickr.com/4057/4672153437_3fafcc073d.jpg" alt="Mother Earth" /></a>Mother Earth adalah album ke dua dari band Within Temptation yang di release pada tanggal 4 Desember 2000 di Belanda dan tanggal 21 Agustus 2001 di sebagian negara Eropa. Album ini meraih status platinum di beberapa negara Eropa antara lain Belanda, Belgia dan Jerman, dan berdasarkan laporan album ini terjual sampai 750.000 kopi di Eropa saja. Sedangkan untuk Amerika Serikat, album ini di release pada tanggal 5 Agustus 2008 bersama dengan album &ldquo;The Silent Force&rdquo; dibawah bendera &ldquo;Roadrunners Records&rdquo;.</p>
 
-<ul>
-<li>Mengganti Password Root di MySQL</li>
-<li>Mereset Password Root MySQL</li>
-<li>Melihat DataBase Engine yang Terinstall</li>
-<li>Backup Data dengan Menggunakan Perintah <code>mysqldump</code></li>
-<li>Restore Data Pada MySQL</li>
-<li>Backup Per Tabel Menggunakan Perintah <code>SELECT INTO OUTFILE</code></li>
-<li>Insert Data Menggunakan Perintah <code>LOAD DATA INFILE</code></li>
-<li>Melihat Struktur Tabel di MySQL</li>
-</ul>
+<p>Album Mother Earth ini mengusung 11 lagu yang antara lain :</p>
 
+<p><strong>No</strong></p>
+
+<p><strong>Title</strong></p>
+
+<p><strong>Duration</strong></p>
+
+<p>1</p>
+
+<p>Mother Earth</p>
+
+<p>5:02</p>
+
+<p>2</p>
+
+<p>Ice Queen</p>
+
+<p>5:20</p>
+
+<p>3</p>
+
+<p>Our Farewell</p>
+
+<p>5:20</p>
+
+<p>4</p>
+
+<p>Caged</p>
+
+<p>5:48</p>
+
+<p>5</p>
+
+<p>The Promise</p>
+
+<p>8:00</p>
+
+<p>6</p>
+
+<p>Never Ending Story</p>
+
+<p>4:03</p>
+
+<p>7</p>
+
+<p>Deceiver of Fools</p>
+
+<p>7:37</p>
+
+<p>8</p>
+
+<p>Intro</p>
+
+<p>1:08</p>
+
+<p>9</p>
+
+<p>Dark Wings</p>
+
+<p>4:16</p>
+
+<p>10</p>
+
+<p>In Perfect Harmony</p>
+
+<p>7:01</p>
+
+<p>11</p>
+
+<p>Bittersweet</p>
+
+<p>3:21</p>
+
+<p>Waw.. menakjubkan sekali, dari 11 lagu diatas merupakan favorit saya semua :D Kkwkwkwwk&hellip;. dan wow&hellip; ternyata album Mother Earth ini terinspirasi oleh soundtrack film <a href="http://www.imdb.com/title/tt0112573/">Bravehearth</a> yang sedang populer waktu itu. Ini adalah kutipan perkataan Sharon den Adel tentang soundtrack film <a href="http://www.imdb.com/title/tt0112573/">Bravehearth</a> <strong>&ldquo;and also we were very much enthralled by a movie at that time, Braveheart, which was very Celtic, and that&rsquo;s how our album became very Celtic because we were so in love with the soundtrack of the Braveheart movie. So, inspired by that, the album came out that way&hellip;I still love that album very much&hellip;it came together in a very natural way.&rdquo;</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4672477587/"><img src="http://farm5.static.flickr.com/4071/4672477587_9b2c6646d0_m.jpg" alt="McCormack.as.Murron.lt" /></a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4672477595/"><img src="http://farm5.static.flickr.com/4040/4672477595_acef559d2c_m.jpg" alt="un-immagine-tratta-dal-film-barbarossa-diretto-da-renzo-martinelli-130931" /></a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4672477591/"><img src="http://farm5.static.flickr.com/4067/4672477591_7b8e23130f_m.jpg" alt="raz-degan-in-un-immagine-del-film-barbarossa-130968" /></a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4672477579/"><img src="http://farm5.static.flickr.com/4010/4672477579_6108e85d9c_m.jpg" alt="Braveheart_Marceau.as.Isabelle" /></a></p>
+
+<p><strong>Scene film Bravehearth</strong></p>
 
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/2009/08/31/mysql-tips-n-trik/">Read on &rarr;</a>
+      <a rel="full-article" href="/2010/06/16/mother-earth-2000-within-temptation-album-track-listing-and-lyrics/">Read on &rarr;</a>
     </footer>
   
 
@@ -691,7 +406,7 @@ ${licenseLast}
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/08/28/slackware-130-released/">Slackware 13.0 Released</a></h1>
+        <h1 class="entry-title"><a href="/2010/06/13/the-dance-1998-1999-withintemptation-ep-track-listing-and-lyrics/">The Dance (1998-1999 WithinTemptation EP) Track Listing and Lyrics</a></h1>
       
     
     
@@ -708,154 +423,80 @@ ${licenseLast}
   
 
 
-<time datetime="2009-08-28T17:59:00+07:00" pubdate data-updated="true"></time>
+<time datetime="2010-06-13T04:44:21+07:00" pubdate data-updated="true"></time>
         
-         | <a href="/2009/08/28/slackware-130-released/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Cuma pingin ngeramein klo Slackware 13.0 udah release, dan ini release note dari situs resminya :)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/08/28/slackware-130-released/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/07/12/membuat-master-detail-report-menggunakan-jrbeanscollections-datasource/">Membuat Master Detail Report Menggunakan JRBeansCollections DataSource</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-07-12T05:35:37+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/07/12/membuat-master-detail-report-menggunakan-jrbeanscollections-datasource/#disqus_thread">Comments</a>
+         | <a href="/2010/06/13/the-dance-1998-1999-withintemptation-ep-track-listing-and-lyrics/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Banyak sekali pertanyaan dari teman-teman tentang bagaimana cara membuat report dengan menggunakan JRBeansCollection sebagai datasource-nya, sebenarnya konsepnya tidak jauh berbeda dari pembuatan report dengan menggunakan JDBC sebagai datasourcenya. Pada latihan kali ini, sekarang mari kita coba bagaimana sih membuat report menggunakan JRBeansCollection sebagai datasourcenya :) Untuk teman-teman yang belum tahu bagaimana membuat report dengan menggunakan JDBC DataSource, silahkan baca dahulu tulisan tentang <a href="http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/">Membuat Master Detail Report dengan iReport</a>, dan buat teman-teman yang sudah tidak sabar bagaimana membuat Report dengan menggunakan JRBeansCollections mari langsung kita mulai saja.</p>
+  <div class="entry-content"><p><a href="http://www.flickr.com/photos/10243554@N02/4672153433/"><img src="http://farm5.static.flickr.com/4042/4672153433_4f48844287.jpg" alt="The Dance" /></a> Pada rentang waktu 1998-1999 Within Temptation tidak merilis material baru untuk album kedua mereka, sebagai ganti-nya mereka merelease EP (Extended Play) dengan judul &ldquo;The Dance&rdquo; yang berisi 3 lagu baru dan 2 lagu remix dari album Enter. Tiga lagu baru tersebut yaitu :</p>
 
-<p>Sebelum memulai latihan kali ini, persiapkanlah dahulu perlengkapan yang akan digunakan yaitu :
-1. <a href="http://sourceforge.net/projects/ireport/files/">iReport 3.0.0</a>
-2. <a href="http://www.netbeans.org/downloads/index.html">NetBeans IDE 6.7</a>
-3. <a href="http://dev.mysql.com/downloads/">MySQL 5.0.67</a>
-4. <a href="http://java.sun.com/javase/downloads/?intcmp=1281">JDK 1.6.0_13</a></p>
+<p><strong>No</strong></p>
 
-<p>Setelah semua perlengkan selesai, pada tulisan kali ini akan dibagi menjadi beberapa bagian yaitu :
-1. Download Sample Project RptMasterDetail.zip dan RptMasterDetail.sql
-2. Modifikasi Report RptMaster.jrxml dan RptDetail.jrxml
-3. Menggunakan JRBeansCollections Sebagai DataSource</p>
+<p><strong>Title</strong></p>
+
+<p><strong>Duration</strong></p>
+
+<p>1</p>
+
+<p>The Dance</p>
+
+<p>5:02</p>
+
+<p>2</p>
+
+<p>Another Day</p>
+
+<p>5:45</p>
+
+<p>3</p>
+
+<p>The Other Half (Of me)</p>
+
+<p>4:51</p>
+
+<p>Sedangkan dua lagu dari album Enter yang diremix adalah :</p>
+
+<p><strong>No</strong></p>
+
+<p><strong>Title</strong></p>
+
+<p><strong>Duration</strong></p>
+
+<p>4</p>
+
+<p>Restless (Remix)</p>
+
+<p>3:31</p>
+
+<p>5</p>
+
+<p>Candles &amp; Pearls Of Light (Remix)</p>
+
+<p>9:02</p>
+
+<p>Within Temptation melakukan rekaman EP &ldquo;The Dance&rdquo; ini di Studio Moskou yang berada di Utrecht, sedangkan untuk dua lagu remix diatas dibuat oleh produser Oscar Holleman atas banyaknya permintaan tentang remix dan ini diperkuat juga oleh Sharon den Adel yang berkata &ldquo;the remixes were not our idea, but apparently there was a demand for remixes&rdquo; .</p>
 
 <ol>
-<li><p> <strong> Download Sample Project RptMasterDetail.zip dan RptMasterDetail.sql</strong>
-Sebagai langkah awal, mari kita download dahulu aplikasi RptMasterDetail.zip dan Database schema RptMasterDetail.sql dari tutorial <a href="http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/">Membuat Master Detail Report dengan iReport</a> dengan cara sebagai berikut :</p>
-
-<p>  [martin@opensolarisbox:~/jrbeans]$ wget -c <a href="http://martinusadyh.web.id/download/RptMasterDetail.zip">http://martinusadyh.web.id/download/RptMasterDetail.zip</a>
-  &ndash;00:49:53&ndash;  <a href="http://martinusadyh.web.id/download/RptMasterDetail.zip">http://martinusadyh.web.id/download/RptMasterDetail.zip</a>
-             => `RptMasterDetail.zip&#8217;
-  Resolving martinusadyh.web.id&hellip; 208.87.243.66
-  Connecting to martinusadyh.web.id|208.87.243.66|:80&hellip; connected.
-  HTTP request sent, awaiting response&hellip; 200 OK
-  Length: 31,118 (30K) [application/zip]</p>
-
-<p>  100%[========================================================================================================================================>] 31,118        21.80K/s</p>
-
-<p>  00:49:55 (21.75 KB/s) - `RptMasterDetail.zip&#8217; saved [31118/31118]</p>
-
-<p>  [martin@opensolarisbox:~/jrbeans]$ wget -c <a href="http://martinusadyh.web.id/download/RptMasterDetail.sql">http://martinusadyh.web.id/download/RptMasterDetail.sql</a>
-  &ndash;00:50:03&ndash;  <a href="http://martinusadyh.web.id/download/RptMasterDetail.sql">http://martinusadyh.web.id/download/RptMasterDetail.sql</a>
-             => `RptMasterDetail.sql&#8217;
-  Resolving martinusadyh.web.id&hellip; 208.87.243.66
-  Connecting to martinusadyh.web.id|208.87.243.66|:80&hellip; connected.
-  HTTP request sent, awaiting response&hellip; 200 OK
-  Length: 1,824 (1.8K) [text/x-sql]</p>
-
-<p>  100%[========================================================================================================================================>] 1,824          6.93K/s</p>
-
-<p>  00:50:03 (6.92 KB/s) - `RptMasterDetail.sql&#8217; saved [1824/1824]</p>
-
-<p>  [martin@opensolarisbox:~/jrbeans]$</p></li>
+<li> <strong>The Dance</strong>
+Someone is dancing on my grave
+Sending shivers down my spine.
+I hear a laugh, it awoke my soul
+The wind takes the leaves where he
+Wants them to go
+His tunes enchant our world,
+Our thoughts and leave us frozen</li>
 </ol>
 
 
-<p>Setelah proses download selesai, sekarang restore database schema RptMasterDetail.sql kedalam MySQL dengan cara sebagai berikut :</p>
-
-<pre><code>[martin@opensolarisbox:~/jrbeans]$ mysql -u root -p &lt; RptMasterDetail.sql
-Enter password:
-[martin@opensolarisbox:~/jrbeans]$
-</code></pre>
-
-<p>Proses konfigurasi database telah selesai, sekarang kita coba melakukan modifikasi report yang menggunakan JDBC DataSource agar menggunakan JRBeansCollections sebagai datasourcenya :)</p>
-
-<ol>
-<li><p> <strong> Modifikasi Report RptMaster.jrxml dan RptDetail.jrxml</strong>
-Ekstrak-lah file <strong>RptMasterDetail.zip</strong> dengan perintah <strong>unzip namafile.zip</strong> seperti dibawah ini :</p>
-
-<p>  [martin@opensolarisbox:~/jrbeans]$ unzip RptMasterDetail.zip
-  Archive:  RptMasterDetail.zip
-    inflating: RptMasterDetail/src/rptmasterdetail/FormReport.java
-    inflating: RptMasterDetail/src/rptmasterdetail/FormReport.form
-    inflating: RptMasterDetail/src/rptmasterdetail/Main.java
-    inflating: RptMasterDetail/nbproject/private/private.xml
-    inflating: RptMasterDetail/nbproject/private/private.properties
-    inflating: RptMasterDetail/nbproject/project.properties
-    inflating: RptMasterDetail/nbproject/project.xml
-    inflating: RptMasterDetail/nbproject/build-impl.xml
-    inflating: RptMasterDetail/nbproject/genfiles.properties
-    inflating: RptMasterDetail/Report/RptDetail.jasper
-    inflating: RptMasterDetail/Report/RptMaster.jrxml
-    inflating: RptMasterDetail/Report/RptDetail.jrxml
-   extracting: RptMasterDetail/Report/netbeans_logo.gif
-    inflating: RptMasterDetail/Report/RptMaster.jasper
-    inflating: RptMasterDetail/manifest.mf
-    inflating: RptMasterDetail/build.xml
-  [martin@opensolarisbox:~/jrbeans]$</p></li>
-</ol>
-
-
-<p>kemudian bukalah file <strong>RptMaster.jrxml</strong> dan <strong>RptDetail.jrxml</strong> yang terdapat pada direktori <strong>RptMasterDetail/Report/</strong> pada iReport seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3710388729/"><img src="http://farm3.static.flickr.com/2501/3710388729_04419d9f2b.jpg" alt="open_report" /></a></p>
-
-<p>Sekarang coba jalankan report tersebut dari iReport dengan menggunakan <strong>Active Connection</strong> (buatlah dahulu datasourcenya dengan menggunakan JDBC Connection dan arahkan databasenya ke <strong>rptmasterdetail</strong>) hingga tampilannya menjadi seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3710388735/"><img src="http://farm3.static.flickr.com/2477/3710388735_ca41f41b87.jpg" alt="run_report" /></a>
-<strong>Note: Usahakan report berjalan dengan sukses sampai langkah ini, jika belum berjalan dengan benar silahkan cek ulang lagi mungkin ada konfigurasi yang terlewati.</strong></p>
-
-<p>Setelah berhasil menjalankan report dengan <strong>JDBC Connection</strong> sekarang saatnya untuk merubah report kita agar menggunakan <strong>JRBeanCollection</strong> sebagai datasourcenya, nah agar report kita menggunakan <strong>JRBeanCollection</strong> kita harus melakukan beberapa modifikasi yang harus dilakukan yaitu :</p>
-
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/2009/07/12/membuat-master-detail-report-menggunakan-jrbeanscollections-datasource/">Read on &rarr;</a>
+      <a rel="full-article" href="/2010/06/13/the-dance-1998-1999-withintemptation-ep-track-listing-and-lyrics/">Read on &rarr;</a>
     </footer>
   
 
@@ -912,11 +553,47 @@ Ekstrak-lah file <strong>RptMasterDetail.zip</strong> dengan perintah <strong>un
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
       </li>
     
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
+      </li>
+    
   </ul>
-</section>
-<section>
-  <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/adventure'>adventure (10)</a></li><li><a href='/blog/categories/android'>android (9)</a></li><li><a href='/blog/categories/berita'>berita (4)</a></li><li><a href='/blog/categories/bisnis-online'>bisnis online (14)</a></li><li><a href='/blog/categories/blogging'>blogging (21)</a></li><li><a href='/blog/categories/centos'>centos (18)</a></li><li><a href='/blog/categories/database'>database (21)</a></li><li><a href='/blog/categories/e-magazine'>e-magazine (1)</a></li><li><a href='/blog/categories/financial'>financial (8)</a></li><li><a href='/blog/categories/internet'>internet (1)</a></li><li><a href='/blog/categories/investasi'>investasi (8)</a></li><li><a href='/blog/categories/java'>java (78)</a></li><li><a href='/blog/categories/javascript'>javascript (4)</a></li><li><a href='/blog/categories/lowongan-pekerjaan'>lowongan pekerjaan (21)</a></li><li><a href='/blog/categories/music'>music (11)</a></li><li><a href='/blog/categories/netbeans'>netbeans (58)</a></li><li><a href='/blog/categories/opensolaris'>opensolaris (30)</a></li><li><a href='/blog/categories/other'>other (20)</a></li><li><a href='/blog/categories/project-management'>project management (6)</a></li><li><a href='/blog/categories/religi'>religi (1)</a></li><li><a href='/blog/categories/seo'>seo (10)</a></li><li><a href='/blog/categories/shell-script'>shell script (12)</a></li><li><a href='/blog/categories/slackware'>slackware (87)</a></li><li><a href='/blog/categories/tips-dan-trik'>tips dan trik (2)</a></li><li><a href='/blog/categories/ubuntu'>ubuntu (19)</a></li><li><a href='/blog/categories/wordpress'>wordpress (4)</a></li></ul>
 </section>
 
   

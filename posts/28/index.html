@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Bingung dengan apa yang disebut dengan Pair Programming ? Pair Programming ini sebenarnya adalah salah satu teknik yang terdapat dalam metodologi &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/28/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/18/apa-itu-pair-programming/">Apa Itu Pair Programming</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T15:50:29+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/04/18/apa-itu-pair-programming/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Bingung dengan apa yang disebut dengan <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ? <strong>Pair Programming</strong> ini sebenarnya adalah salah satu teknik yang terdapat dalam metodologi <strong>eXtreme Programming</strong> atau yang biasa disingkat dengan <strong>XP Programming</strong>, sedangkan <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> sendiri itu adalah sebuah proses <strong>knowledge transfer</strong> yang terjadi didalam sebuah team <strong>software development</strong>.</p>
+
+<p>Cara kerja <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ini adalah dua orang programmer bekerja bersama memecahkan sebuah masalah dalam 1 komputer atau laptop, biasanya sih gabungan dari kombinasi <strong>junior programmer dan senior programmer</strong>. Nah proses <strong>knowledge transfer</strong> yang terjadi biasanya <strong>junior programmer</strong> yang menulis source code dan <strong>senior programmer</strong> yang melakukan <strong>review</strong> terhadap apa yang dilulis oleh <strong>junior</strong>-nya ini sudah benar atau belum. Si penulis source code didalam <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ini bisa disebut sebagai <strong>Driver</strong> dan yang melakukan <strong>review</strong> bisa disebut sebagai <strong>Observer</strong> atau <strong>Navigator</strong>.</p>
+
+<p>Sudah bisa menangkap maksud dan tujuan dari topik pembahasan-nya ? Untuk lebih jelas-nya bagaimana sih teknik <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> ini dilakukan, mungkin teman-teman bisa melihat beberapa gambar dibawah ini yang saya ambil dari berbagai sumber juga :D untuk memberi sedikit gambaran pada tulisan ini.</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4529069470/"><img src="http://farm5.static.flickr.com/4054/4529069470_239e46bc5d.jpg" alt="Pair_programming_1" /></a><br/>
+<strong>Pair Programming 1</strong></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4529069480/"><img src="http://farm5.static.flickr.com/4059/4529069480_53c1b7e1bd_o.png" alt="xp_pairprogramming_pic2" /></a><br/>
+<strong>Pair Programming 2</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/04/18/apa-itu-pair-programming/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/17/kernel-trap-interview-with-theo-de-raadt/">Kernel Trap Interview With Theo De Raadt</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-17T19:18:47+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/04/17/kernel-trap-interview-with-theo-de-raadt/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemarin secara tidak sengaja baca-baca artikel di <a href="http://kerneltrap.org/">Kernel Trap</a> eh ga tau-nya ketemu postingan tentang interview Theo de Raadt <a href="http://kerneltrap.org/node/6">disini</a>. Buat teman-teman yang belum tahu siapa itu Theo de Raadt, Theo de Raadt adalah pendiri proyek <a href="http://www.openbsd.org/">OpenBSD</a> yang terkenal dengan slogan <strong>&ldquo;Secure By Default&rdquo;</strong> :) Sedangkan biografi  Theo de Raadt sendiri bisa teman-teman baca di halaman <a href="http://en.wikipedia.org/wiki/Theo_de_Raadt">Biografi Theo de Raadt</a> di wikipedia atau bisa main langsung ke <a href="http://www.theos.com/deraadt/">Halaman Pribadi Theo de Raadt</a> langsung :)</p>
+
+<p>Nah yang membikin saya kaget yaitu adalah ada beberapa perkataan Theo de Raadt yang menurut saya hm.. :D, contoh-nya seperti dibawah ini :</p>
+
+<ol>
+<li><p> Slackers are called slackers, people who can&rsquo;t read manual pages are called losers, and in general, calling things what they are results in developers wasting less time.</p></li>
+<li><p>OpenBSD development has a long tradition of stealing free code from other projects, and then improving it ;-)</p></li>
+<li><p> However, one learns how to write code by reading code. One doesn&rsquo;t learn how to ride a bike by reading a book, either</p></li>
+</ol>
+
+
+<p>Waw&hellip; mengejutkan bukan ?? Perkataan dari seorang tokoh sekelas Theo de Raadt :D Penasaran membaca arsip lama ini ? Saya posting disini supaya gampang nanti cari-nya :D, jika penasaran yuuk kita baca sama-sama :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/04/17/kernel-trap-interview-with-theo-de-raadt/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/16/souvenir-pernikahan-unik-dan-menarik/">Souvenir Pernikahan Unik Dan Menarik</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T17:54:16+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/04/16/souvenir-pernikahan-unik-dan-menarik/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://www.souvenirpernikahan.net/wp-content/gallery/hiasan/kupu-kupu.jpg" alt="Hiasan Kupu-kupu sebagai souvenir pernikahan" /> Banyak orang sudah pasti ingin mempunyai kenangan yang sangat berkesan dalam hidup-nya bukan, apalagi ketika menyambut momen-momen penting yang terjadi di dalam hidup-nya contoh-nya pada momen pernikahan :) Yah meskipun saya juga belum menikah :D :P , tapi setidak-nya saya sudah beberapa kali menerima (dan kadang-kadang melihat) sebuah undangan pernikahan yang sangat menggelitik. Yups.. menggelitik, unik dan hm&hellip; yang pasti <strong>kreatif</strong> tentu-nya :D Souvenir untuk pernikahan juga bisa macam-macam bentuk-nya, mulai dari undangan yang aneh, terus kenang-kenangan yang diperuntukan untuk para undangan (yang dibawa pulang oleh para tamu maksudnya :D) dan tentu-nya ga harus mahal juga kan (yang kreatif dan unik terkesan lebih <strong>mengena</strong> menurut saya :D ) :) Saya juga masih ingat, dulu waktu awal-awal kuliah ada seorang teman yang ingin melangsungkan pernikahan masih harus susah-susah membuat sendiri <a href="http://www.souvenirpernikahan.net/">souvenir pernikahan</a>-nya dan kemudian harus pontang-panting kesana-kemari mengurus sendiri <strong>souvenir pernikahan</strong>-nya. Masih seperti itu sekarang ? Hm.. saya rasa dengan adanya internet, sekarang kita bisa dengan mudah mencari sebuah toko online yang menjual <strong>souvenir pernikahan</strong> dengan harga yang terjangkau tentu-nya :)</p>
+
+<p>Kemarin iseng-iseng cari di <strong><a href="http://google.com**">http://google.com**</a> tentang  <a href="http://www.souvenirpernikahan.net/">souvenir pernikahan unik</a>, eh ga tau-nya ketemu dengan toko online dengan nama </strong>SouvenirPernikahan.Net<strong>. Dan tahu tidak, yang ditawarkan juga tergolong &ldquo;unik&rdquo; juga, contoh-nya yaitu seperti undangan berbentuk kipas dibawah ini :
+<img src="http://www.souvenirpernikahan.net/wp-content/gallery/kipas-cantik/spdn-0049-undangan-kipas-renda-kuning.jpg" alt="Undangan Pernikahan Bentuk Kipas" /><br/>
+</strong>Undangan Berbentuk Kipas**</p>
+
+<p>Hm&hellip; asyik juga seperti-nya yah kalau undangan pernikahan-nya berbentuk kipas seperti diatas, kesan-nya jadi ga repot dan tentu-nya bisa buat kipas-kipas kalau nanti kita kepanasan di acara resepsi pernikahan tentu-nya :D :P Selain menyediakan bentuk yang <strong>unik dan kreatif</strong> harga yang ditawarkan juga bisa dibilang bersaing juga loh. Jika teman-teman bingung dimana mencari toko <a href="http://www.souvenirpernikahan.net/">souvenir pernikahan yang murah</a> dan unik, maka tidak salah-nya jika kita mencoba untuk melihat-lihat di <strong>SouvenirPernikahan.Net</strong> bukan ? :) Selain lokasi-nya yang jelas, kita juga bisa mendapatkan katalog produk yang ditawarkan juga loh. Setidak-nya ini membuktikan bahwa <strong>SouvenirPernikahan.Net</strong> memang benar-benar serius dalam membangun bisnis online-nya ini :) Nah sekarang bagiamana teman-teman, tertarik ? Kalau bagi saya sih, setidaknya bisa jadi referensi kalau besok jadi menikah :D ;)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/16/needed-2-junior-it-consultant/">Needed 2 Junior IT Consultant</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T17:42:44+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/04/16/needed-2-junior-it-consultant/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Needed 2 Junior IT Consultant</p>
+
+<ol>
+<li><p> University Graduate</p></li>
+<li><p> 1 year working experience or Fresh graduate with some working experience in Campus Lab.</p></li>
+<li><p> Smart worker and willing to learn new things without formal training.</p></li>
+<li><p> Able to learn new concept and technology in limited time.</p></li>
+<li><p> Able to share knowledge and doing presentation.</p></li>
+<li><p> Willing to travel overseas for doing a project.</p></li>
+<li><p> Familiar with ITIL and or CoBIT is a plus.</p></li>
+<li><p> Familiar with Windows 2003/2008 and any UNIX/Linux Server OS.</p></li>
+<li><p> Familiar with RDBMS, Oracle, MSSQL or PostgreSQL.</p></li>
+<li><p>. Familiar with Scripting Programming; like VBs, Perl, and Shell script.</p></li>
+<li><p>. Familiar with Networking Concepts.</p></li>
+<li><p>. English is a must.</p></li>
+</ol>
+
+
+<p>email CV to [antonius.sony_AT_emeriocorp_DOT_com</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/04/15/vacancy-oracle-dba-it-qa-and-business-analyst/">Vacancy Oracle DBA, IT QA and Business Analyst</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-15T17:38:36+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/04/15/vacancy-oracle-dba-it-qa-and-business-analyst/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>April 2010</p>
+
+<p>Mohon ijin di infokan ke teman2 yang lain, mungkin ada yang membutuhkan informasi ini. semoga bermanfaat.</p>
+
+<h1>Terima kasih - salam  :) </h1>
+
+<p>Arthapati is currently inviting potential candidates who feel passionate and are highly desired in growing with our company  through contributing your skills and experiences in these following challenging positions:</p>
+
+<ol>
+<li><p> <strong>Oracle Database Administrator (DBA)</strong>
+<strong>Detail Qualification :</strong></p>
+
+<ol>
+<li><p> Experience Minimum of 2 years of Oracle DBA Process (programming, reporting, form, tuning, documentation, etc)</p></li>
+<li><p> Experience within a 24×7 production support environment</p></li>
+<li><p> Oracle 10g – installation on different platforms, patching, troubleshooting, backup, recovery, 10g RAC</p></li>
+<li><p> Experience with PL/SQL programming, SQL command, data modeling</p></li>
+<li><p> Excellent skills in performance tuning of database and SQL</p></li>
+<li><p> Strong SH/KSH scripting skills. Ability to write UNIX scripts for DBA task automation</p></li>
+<li><p> Strong PL/SQL programming skills</p></li>
+<li><p> Precise/SQL</p></li>
+<li><p> Oracle10g RAC installation, configuration and maintenance</p></li>
+<li><p>. Experience with data warehouse</p></li>
+<li><p><strong>IT QA</strong>
+<strong>Detail Qualification:</strong></p></li>
+<li><p> Male/Female</p></li>
+<li><p> experience in the same field as IT QA (fresh graduated are encouraged to apply)</p></li>
+<li><p> Familiar with analytical system</p></li>
+<li><p> Familiar with Database/Development oracle 8i,9i,10g, Toad 9,PLSQL</p></li>
+<li><p> Self motivated and like to learn something new, particularly something that related to IT.</p></li>
+<li><p> Well individually or in group, hardworking and enjoy to eager learn new skills.</p></li>
+<li><p><strong>Business Analyst with Programming Experience</strong>
+<strong>Detail Qualification :</strong></p></li>
+<li><p> Min experience 3 year as analyst.</p></li>
+<li><p> Have extensive knowledge of Java (J2EE), Web Sphere, or Oracle</p></li>
+<li><p> Able to do Java Programming  or Oracle</p></li>
+<li><p> Experienced in doing mapping</p></li>
+<li><p> Having knowledge in SQL</p></li>
+<li><p> Have extensive knowledge of RDMS (Database, SQL Server / Oracle)</p></li>
+<li><p> Having a finance industries knowledge is a plus</p></li>
+<li><p><strong>General Qualification :</strong></p></li>
+<li><p> Good ALGORITHM, analytic, and systematic skills</p></li>
+<li><p> Good interpersonal skills, good initiative, proactive, and willing to help users</p></li>
+<li><p> Highly motivated and able to work in a team or independently and systematically</p></li>
+<li><p> Hardworking and able to complete tasks in tight deadline</p></li>
+<li><p> Applicant must be willing to work in Jakarta</p></li>
+</ol>
+</li>
+</ol>
+
+
+<blockquote><p><strong>Note :</strong></p>
+
+<ol>
+<li><p> Status : Contract based with minimum Contract Length 3-12 month (extendable)</p></li>
+<li><p> Placement : Jakarta – Indonesia</p></li>
+</ol>
+</blockquote>
+
+<p>Should you meet the above requirement, please send your application letter and complete CV (certified, current photograph, including expected salary, and other document), and write down the position code as an email subject to:</p>
+
+<p><strong>HRD PT ARTHAPATI NUSANTARA</strong>
+email : <a href="mailto:info@arthapati.com;">info_at_arthapati_dot_com</a>, <a href="mailto:arthaworld@gmail.com">arthaworld_at_gmail_dot_com</a> and <a href="mailtto:arthaworld@yahoo.com">arthaworld_dot_yahoo_dot_com
+</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="29">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="27">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

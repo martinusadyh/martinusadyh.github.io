@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Tulisan kali ini murni untuk dokumentasi pribadi saya dan diperuntukkan bagi teman-teman yang masih baru banget di dunia GNU/Linux dan ingin bermain- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/35/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/18/step-by-step-installing-centos-54/">Step by Step Installing CentOS 5.4</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-18T02:54:26+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/18/step-by-step-installing-centos-54/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tulisan kali ini murni untuk dokumentasi pribadi saya dan diperuntukkan bagi teman-teman yang masih baru banget di dunia GNU/Linux dan ingin bermain-main dengan distro <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a>. Buat teman-teman yang belum tahu apa sih distro <a href="http://centos.org/">CentOS</a> ini, distro ini adalah merupakan versi <strong>Community</strong> dari distro komersial yaitu <a href="http://www.redhat.com/">Red Hat Enterprise Linux (RHEL)</a> nah jadi buat teman-teman yang ingin merasakan versi <a href="http://www.redhat.com/">Red Hat Enterprise Linux (RHEL)</a> tapi belum punya pikiran untuk beli <strong>subscription</strong>-nya mungkin distro ini cocok untuk anda. Sedangkan pada tulisan kali ini, versi <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> yang digunakan yaitu versi <strong>5.4</strong> untuk mesin <strong>32 bit</strong> dan dicoba di <a href="http://www.virtualbox.org/">VirtualBox</a> (harusnya sih bisa langsung di implement di <strong>real</strong> komputer):)</p>
+
+<p>Ok sekarang mari kita mulai permainan-nya :) Langkah awal yang pasti yaitu masukkan <strong>cd installer</strong>  <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> ke dalam <strong>cd/dvd rom</strong> kemudian aturlah <a href="http://en.wikipedia.org/wiki/BIOS">BIOS</a> di komputer anda agar dapat <strong>boot</strong> melalui <strong>cd/dvd rom</strong>. Setelah semua-nya selesai, sekarang tunggu-lah beberapa saat hingga tampilan installer <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> tampil seperti gambar dibawah ini:</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4365803644/"><img src="http://farm5.static.flickr.com/4004/4365803644_9d48265f49.jpg" alt="Screenshot" /><br/>
+Tampilan Awal Installer CentOS</a></p>
+
+<p>Setelah terlihat tampilan seperti diatas, tekan saja tombol <strong>ENTER</strong> untuk memulai proses installasi. Setelah kita menekan tombol <strong>ENTER</strong> maka pada layar selanjutnya adalah proses pengecekan <strong>cd installer</strong>. Skip saja bagian ini dengan memilih tombol <strong>Skip</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4365803646/"><img src="http://farm3.static.flickr.com/2708/4365803646_f88bc45cf6.jpg" alt="Screenshot-5" /><br/>
+Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/02/18/step-by-step-installing-centos-54/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/13/linux-monitoring-utility/">Linux Monitoring Utility</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-13T07:14:08+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/13/linux-monitoring-utility/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/01/tampilan-macosx-di-netbeans-ide/">Tampilan MacOSX Di NetBeans IDE</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-01T11:35:12+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/01/tampilan-macosx-di-netbeans-ide/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemarin habis baca-baca tulisan dari Pak Kaiser tentang <a href="http://medan.nug.or.id/mengubah-tampilan-ide-netbeans.html">Mengubah Tampilan IDE Netbeans</a> dengan menggunakan <a href="http://www.randelshofer.ch/quaqua/">Quaqua Look and Feel</a>. Ga nyangka, ternyata <a href="http://www.randelshofer.ch/quaqua/">Quaqua Look and Feel</a> bisa jalan dengan mulus juga di Sistem Operasi GNU/Linux :) dan disini cara yang saya gunakan berbeda dengan cara yang digunakan oleh Pak Kaiser yang mengkopikan library <a href="http://www.randelshofer.ch/quaqua/">Quaqua Look and Feel</a> kedalam direktori <strong>JAVA_HOME</strong>. Nah cara yang paling sederhana yaitu gunakan opsi <strong>&ndash;cp:p [tempat_file_jar_diletakkan]</strong>, jika ada 2 file jar yang ingin masuk kedalam <strong>CLASSPATH</strong>  gunakan pemisah <strong>: (titik dua)</strong> untuk GNU/Linux dan <strong>; (titik koma)</strong> untuk Microsoft Windows. Jika digabungkan, kira-kira perintah-nya kurang lebih seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~/Desktop/Quaqua]$ /bin/sh "/opt/netbeans-6.8/bin/netbeans" --cp:p /home/martinus/Desktop/Quaqua/dist/quaqua.jar:/home/martinus/Desktop/Quaqua/dist/swing-layout.jar --laf ch.randelshofer.quaqua.QuaquaLookAndFeel -J-DQuaqua.selectionStyle=bright -J-DQuaqua.opaque=true -J-DQuaqua.tabLayoutPolicy=wrap
+</code></pre>
+
+<p>Agar benar-benar kelihatan seperti di Mac beneran, sekarang download dulu font Monaco (Monaco adalah Monospace font untuk Mac OS) dari <a href="http://www.gringod.com/2006/02/24/return-of-monacottf/">sini</a> kemudian pasangkan pada NetBeans IDE anda :) dan jika sudah kurang lebih tampilan-nya menjadi seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4321389874/"><img src="http://farm5.static.flickr.com/4057/4321389874_7546dceb6a.jpg" alt="source" /><br/>
+Tampilann NetBeans Menggunakan Font Monaco</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4321389854/"><img src="http://farm5.static.flickr.com/4070/4321389854_e028db5bc0.jpg" alt="SwingQuaqua" /><br/>
+Tampilan Java Swing Dengan LAF Quaqua</a></p>
+
+<p>Hm&hellip; mantap juga ternyata yah tampilan-nya :) Cuma sayang-nya koq perasaan ga jauh beda ama Look And Feel GTK yakz ? :D Tapi gapapa lah, yang penting bisa cobain :)</p>
+
+<p><strong>Link-link terkait :</strong>
+- <a href="http://medan.nug.or.id/mengubah-tampilan-ide-netbeans.html">Mengubah Tampilan IDE Netbeans</a>
+- <a href="http://www.randelshofer.ch/quaqua/">Quaqua Look and Feel</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/01/27/portal-dan-wiki-netbeans-user-group-indonesia-launching/">Portal Dan WIKI NetBeans User Group Indonesia Launching</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-27T00:32:59+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/01/27/portal-dan-wiki-netbeans-user-group-indonesia-launching/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hyiip&hellip;hyipp huray, akhir-nya sekarang komunitas netbeans-indonesia yang selama ini hanya aktif di milis punya <a href="http://nug.or.id">portal</a> dan <a href="http://wiki.nug.or.id">wiki</a> khusus yang membahas tentang NetBeans IDE dari A-Z :) Semua ini terwujud berkat jerih payah <a href="http://alexbudiyanto.web.id/">Mas Alex Budiannto</a>, dan kabar ini saya terima 2 hari yang lalu di milis netbeans-indonesia dan berikut ini adalah cuplikan notifikasi dari <a href="http://alexbudiyanto.web.id/">Mas Alex Budiyanto</a> :</p>
+
+<blockquote><p>Rekan,
+Sekedar informasi, saat ini kami sedang mengembangkan portal komunitas
+untuk NetBeans User Group Indonesia dengan alamat: <a href="http://NUG.OR.ID/">http://NUG.OR.ID/,</a>,
+saat ini portal tersebut masih dalam tahap development. Portal <a href="http://NUG.OR.ID/">http://NUG.OR.ID/,</a>
+ini juga mengagregasi content dari NetBeans user group daerah lain seperti:
+- <a href="http://bandung.nug.or.id/">http://bandung.nug.or.id/</a>
+- <a href="http://surabaya.nug.or.id/">http://surabaya.nug.or.id/</a>
+- <a href="http://medan.nug.or.id/">http://medan.nug.or.id/</a>
+- dsb
+Selain Portal, kita juga mempunyai wiki yang beralamatkan di
+<a href="http://wiki.nug.or.id/">http://wiki.nug.or.id/</a>
+Silahkan bagi rekan-rekan yang ingin menyumbangkan content, ide maupun
+saran untuk perkembangan portal ini.
+Thanks</p></blockquote>
+
+<p>Hm&hellip; bagaimana teman-teman ?? :) Mantap bukan, sekarang untuk mencari informasi atau tutorial yang berbau-bau NetBeans kita bisa mengunjungi ke 2 buah situs diatas. Dan ini tampilan dari portal dan wiki NetBeans Indonesia yang baru lahir :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4307042934/"><img src="http://farm3.static.flickr.com/2789/4307042934_8d0d733a60.jpg" alt="Screenshot" /><br/>
+Tampilann Portal NetBeans User Group (NUG)</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4307066084/"><img src="http://farm5.static.flickr.com/4005/4307066084_278b6ab8ef.jpg" alt="Screenshot-1" /><br/>
+Tampilan WIKI NetBeans User Group (NUG)</a></p>
+
+<p>Nah buat teman-teman yang suka nulis, yok sama-sama bikin repository tutorial bahasa Indonesia :) Sekalian itung-itung <strong>amal</strong> ngebantuin teman-teman yang masih baru belajar :) Gimana menurut pendapat teman-teman ?? :)</p>
+
+<p><strong>Link-link terkait : </strong>
+- <a href="http://nug.or.id">Portal NetBeans User Group (NUG)</a>
+- <a href="http://wiki.nug.or.id">WIKI NetBeans User Group (NUG)</a>
+- <a href="mailto:netbeans-indonesia@yahoogroups.com">Milis NetBeans Indonesia</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/01/02/installing-gambas2-2180-on-slackware-13/">Installing Gambas2-2.18.0 on Slackware 13</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-02T07:06:06+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/01/02/installing-gambas2-2180-on-slackware-13/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tulisan ini hanya untuk teman-teman yang bingung bagaimana menginstall gambas2-2.18.0 di mesin Slackware 13.0, soalnya saya sendiri cari-cari belum ketemu :D Nah langkah pertama yang harus dilakukan yaitu download dulu <strong>binary packages</strong> yang sudah dibuat oleh temen-temen slackers dari <a href="http://www.slacky.eu/aadm/pkgs/index.php?ver=13&amp;pkg=134">slacky.eu</a> yang bisa di download <a href="http://repository.slacky.eu/slackware-13.0/development/gambas2/2.18.0/gambas2-2.18.0-i486-1sl.txz">disini</a> dan simpanlah pada direktori <strong>~/gambas</strong> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ mkdir ~/gambas
+martinus@martinusadyh:[~]$ cd gambas
+martinus@martinusadyh:[~/gambas]$ wget -c http://repository.slacky.eu/slackware-13.0/development/gambas2/2.18.0/gambas2-2.18.0-i486-1sl.txz
+--2010-01-02 06:53:57--  http://repository.slacky.eu/slackware-13.0/development/gambas2/2.18.0/gambas2-2.18.0-i486-1sl.txz
+Resolving repository.slacky.eu... 151.1.182.109
+Connecting to repository.slacky.eu|151.1.182.109|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 11079204 (11M) [text/plain]
+Saving to: `gambas2-2.18.0-i486-1sl.txz'
+
+100%[==============================================================================================================================&gt;] 11,079,204  11.1K/s   in 11m 11s
+
+2010-01-02 07:05:10 (16.1 KB/s) - `gambas2-2.18.0-i486-1sl.txz' saved [11079204/11079204]
+
+martinus@martinusadyh:[~/gambas]$
+</code></pre>
+
+<p>Karena Slackware 13.0 sudah menggunakan KDE4 yang notabene pakai Qt4, maka kita harus meng-install library <strong>qt3</strong> agar aplikasi gambas2 dapat berjalan dengan semestinya. Sekarang download dahulu packages <strong>qt3</strong> yang bisa kita download <a href="http://ftp.pnfi.depdiknas.go.id/slackware/slackware-13.0/extra/kde3-compat/qt3-3.3.8b-i486-opt1.txz">disini</a> dan simpanlah pada direktori <strong>~/gambas</strong> yang sudah dibuat pada langkah sebelum-nya seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~/gambas]$ wget -c http://ftp.pnfi.depdiknas.go.id/slackware/slackware-13.0/extra/kde3-compat/qt3-3.3.8b-i486-opt1.txz
+--2010-01-02 06:54:09--  http://ftp.pnfi.depdiknas.go.id/slackware/slackware-13.0/extra/kde3-compat/qt3-3.3.8b-i486-opt1.txz
+Resolving ftp.pnfi.depdiknas.go.id... 118.98.232.229
+Connecting to ftp.pnfi.depdiknas.go.id|118.98.232.229|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6174072 (5.9M) [application/octet-stream]
+Saving to: `qt3-3.3.8b-i486-opt1.txz'
+
+100%[==============================================================================================================================&gt;] 6,174,072   26.0K/s   in 3m 49s
+
+2010-01-02 06:57:58 (26.4 KB/s) - `qt3-3.3.8b-i486-opt1.txz' saved [6174072/6174072]
+
+martinus@martinusadyh:[~/gambas]$
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/01/02/installing-gambas2-2180-on-slackware-13/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="36">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="34">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

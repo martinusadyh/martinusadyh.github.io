@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Buat teman-teman yang sering membangun aplikasi menggunakan GUI Toolkit Swing pasti sudah tahu bagaimana caranya menambahkan focus handler pada &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/43/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Swing Component Focus Handler Using KeyStroke Editor</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-03T19:40:05+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman yang sering membangun aplikasi menggunakan GUI Toolkit Swing pasti sudah tahu bagaimana caranya menambahkan focus handler pada komponen Swing. Sebagai contohnya, kita ingin menambahkan focus pada JTextField agar ketika kita menekan <strong>ENTER</strong> maka focus akan berpindah ke komponen yang lain. Nah biasanya, langkah yang kita lakukan adalah sebagai berikut :
+1. Klik kanan pada <strong>JTextField</strong> kemudian memilih <strong>Event > Key > Key Pressed</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3684434574/"><img src="http://farm3.static.flickr.com/2599/3684434574_7c77b75d3e.jpg" alt="AddKeyPressed" /><br/>
+Menambahkan Focus Handler Secara Manual</a>
+2. Setelah itu kita tambahkan handler untuk mendeteksi penekanan tombol <strong>ENTER</strong> kemudian secara manual memindahkan focus ke komponen yang lain seperti kode dibawah ini:</p>
+
+<pre><code>    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            /* Pindahkan focus ke jTextField2 */
+            jTextField2.requestFocusInWindow();
+        }
+    }
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/06/22/adding-multiple-svn-externals/">Adding Multiple SVN Externals</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-22T03:30:00+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/06/22/adding-multiple-svn-externals/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Apa sih svn externals itu ?? Untuk penjelasan tentang apa itu svn externals bisa dibaca di halaman manual Subversion <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.3.6">Chapter 7 Section 2.3.6</a> atau kalau tidak mau membaca yang bahasa inggris, pak Endy sudah menjelaskan dengan detail tentang penggunaan svn externals itu <a href="http://endy.artivisi.com/blog/lain/svn-externals/">disini</a>.</p>
+
+<p>Nah sekarang kasus yang dihadapi yaitu, bagaimana jika kita ingin menambah lebih dari 1 svn externals ?? Hm&hellip; bukannya caranya gampang, tinggal jalankan saja perintah <strong>svn propset svn:externals &ldquo;com.myrepository.modul.satu.project.lain <a href="https://myrepository.com/svn/project-lain/trunk/com.myrepository.modul.satu.project.lain">https://myrepository.com/svn/project-lain/trunk/com.myrepository.modul.satu.project.lain</a>&rdquo; .</strong> secara berulang sesuai dengan modul yang ingin diambil.  Ok sekarang mari kita coba simulasikan, kita akan mengambil 3 modul dari <strong>project-lain</strong> dan 3 modul itu yaitu <strong>modul.satu.project.lain</strong>, <strong>modul.dua.project.lain</strong> dan <strong>modul.tiga.project.lain</strong>.</p>
+
+<p>Sekarang mari kita coba, langkah pertama yaitu menambahkan properties <strong>svn:externals</strong> untuk <strong>modul.satu.project.lain</strong> dan mengambil modulnya dengan perintah seperti dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$ svn propset svn:externals "com.myrepository.modul.satu.project.lain https://myrepository.com/svn/project-lain/trunk/com.myrepository.modul.satu.project.lain" .
+property 'svn:externals' set on '.'
+[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$  svn up
+Fetching external item into 'com.myrepository.modul.satu.project.lain'
+A    com.myrepository.modul.satu.project.lain/nbproject
+A    com.myrepository.modul.satu.project.lain/nbproject/project.properties
+A    com.myrepository.modul.satu.project.lain/nbproject/project.xml
+A    com.myrepository.modul.satu.project.lain/nbproject/genfiles.properties
+A    com.myrepository.modul.satu.project.lain/nbproject/build-impl.xml
+Updated external to revision 7.
+
+Updated to revision 27.
+[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$
+</code></pre>
+
+<p>Ok berhasil, mari sekarang kita cek apakah properties <strong>svn:externals</strong> sudah disimpan ??? Mari kita lihat pada file <strong>.svn/dir-props</strong> dan hasilnya adalah seperti berikut :</p>
+
+<pre><code>[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$ more .svn/dir-props
+K 13
+svn:externals
+V 121
+com.myrepository.modul.satu.project.lain https://myrepository.com/svn/project-lain/trunk/com.myrepository.modul.satu.project.lain
+
+END
+[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/06/22/adding-multiple-svn-externals/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/06/20/view-your-database-schema-with-openoffice-301/">View Your DataBase Schema With OpenOffice 3.0.1</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-20T20:55:25+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/06/20/view-your-database-schema-with-openoffice-301/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hore.. OpenOffice sekarang sudah bisa menampilkan schema database loh, misalkan kita punya 3 tabel yaitu <strong>T_ARTIKEL, T_KOMENTAR</strong> dan <strong>T_ARTIKEL_T_KOMENTAR</strong> dengan struktur tabel seperti dibawah ini:</p>
+
+<pre><code>mysql&gt; show create table T_ARTIKEL;
+*************************** 1. row ***************************
+       Table: T_ARTIKEL
+Create Table: CREATE TABLE `T_ARTIKEL` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `content` varchar(255) default NULL,
+  `mode` varchar(255) default NULL,
+  `publishDate` datetime default NULL,
+  `title` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.01 sec)
+
+ERROR:
+No query specified
+
+mysql&gt; show create table T_KOMENTAR;
+*************************** 1. row ***************************
+       Table: T_KOMENTAR
+Create Table: CREATE TABLE `T_KOMENTAR` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `email` varchar(255) default NULL,
+  `komentar` varchar(255) default NULL,
+  `url` varchar(255) default NULL,
+  `username` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.66 sec)
+
+ERROR:
+No query specified
+
+mysql&gt; show create table T_ARTIKEL_T_KOMENTAR;
+*************************** 1. row ***************************
+       Table: T_ARTIKEL_T_KOMENTAR
+Create Table: CREATE TABLE `T_ARTIKEL_T_KOMENTAR` (
+  `T_ARTIKEL_id` bigint(20) NOT NULL,
+  `listKomentar_id` bigint(20) NOT NULL,
+  UNIQUE KEY `listKomentar_id` (`listKomentar_id`),
+  KEY `FK2BF571DCDAEA7AB0` (`listKomentar_id`),
+  KEY `FK2BF571DC8E399F31` (`T_ARTIKEL_id`),
+  CONSTRAINT `FK2BF571DC8E399F31` FOREIGN KEY (`T_ARTIKEL_id`) REFERENCES `T_ARTIKEL` (`id`),
+  CONSTRAINT `FK2BF571DCDAEA7AB0` FOREIGN KEY (`listKomentar_id`) REFERENCES `T_KOMENTAR` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.47 sec)
+
+ERROR:
+No query specified
+
+mysql&gt;
+</code></pre>
+
+<p>Kalau tabel yang kita miliki cuma sedikit sih tidak begitu masalah, sekarang bagaimana kalau tabel kita lebih dari 10 ? Mau dilihat satu persatu dari terminal ? :D Nah untungnya sekarang kita bisa melihat schema database tersebut dari OpenOffice :) Sedangkan perlengkapan yang saya pakai disini adalah seperti berikut:
+- <a href="http://mysql.com">MySQL server versi 5.0.67</a>
+- <a href="http://openoffice.org/">OpenOffice 3.0.1</a></p>
+
+<p>Sedangkan langkah-langkah yang harus kita lakukan yaitu adalah sebagai berikut:
+1. Memasang MySQL JDBC Driver di OpenOffice
+2. Akses Database MySQL menggunakan OpenOffice</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/06/20/view-your-database-schema-with-openoffice-301/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Violeted Constraints When Installing Packages in OpenSolaris</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-31T14:09:42+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pernah mendapatkan pesan <strong>pkg: the following package(s) violated constraints:</strong> ketika ingin menginstall sebuah packages di OpenSolaris ?? Yaps saya pernah :D dan ini berkali-kali saya alamin, kejadian ini terjadi kalau kita mempunyai lebih dari 1 mirror repositori selain yang terdapat di <a href="http://pkg.opensolaris.org/release/">http://pkg.opensolaris.org/release/</a>. Masalah ini saya alami ketika saya ingin menginstall packages amp di OpenSolaris yang saya gunakan, sedangkan konfigurasi repository yang saya pakai adalah sebagai berikut :</p>
+
+<pre><code>[martin@opensolarisbox:~]# pkg authority
+AUTHORITY                           URL
+Development                         http://pkg.opensolaris.org/dev/
+Blastwave                           http://blastwave.network.com:10000/
+OpenSolaris (preferred)             http://pkg.opensolaris.org/release/
+
+[martin@opensolarisbox:~]#
+</code></pre>
+
+<p>Sedangkan untuk menginstall packages amp, saya gunakan perintah pkg install amp dan akhirnya saya dengan sukses mendapatkan pesan error seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~]# pkg install amp
+Creating Plan -
+pkg: the following package(s) violated constraints:
+    Package pkg:/SUNWcsl@0.5.11,5.11-0.111 conflicts with constraint in installed pkg:/entire:
+            Pkg SUNWcsl: Optional min_version: 0.5.11,5.11-0.101 max version: 0.5.11,5.11-0.101 defined by: pkg:/entire
+[martin@opensolarisbox:~]#
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/">Membuat Dan Menambahkan Swing Custom Component Ke NetBeans Pallete</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-26T01:47:02+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mungkin ada diantara teman-teman yang sudah pernah membikin sebuah custom komponen di Java Swing, nah ada baiknya juga kalau custom komponen tersebut bisa kita pakai secara berulang-ulang dan kita tinggal melakukan proses <strong>drag-n-drop</strong> saja dari NetBeans Pallete ketika kita ingin menggunakannya. Tentunya lebih mudah bukan dengan proses seperti itu, daripada kita harus manual menulis kode untuk komponen yang sudah kita bikin :)</p>
+
+<p>Sedangkan untuk mulai membuat sebuah Swing komponen yang bisa ditampilkan pada NetBeans Pallete, ada beberapa langkah yang harus kita lakukan yaitu :
+1. Konfigurasi Project. (Pembuatan custom komponen memerlukan setting project <strong>khusus</strong> menurut saya loh ini :D )
+2. Menulis Kode Yang Ingin Di Jadikan Sebagai Custom Komponen.
+3. Konfigurasi Icon dan Membuat Class BeanInfo
+4. Edit File Manifest.mf
+5. Build dan sebarkan :)
+6. Menambahkan Ke NetBeans Pallete</p>
+
+<p>Nah setelah kita tahu langkah-langkah yang harus kita lakukan, maka siapkan dahulu sebungkus Marlboro Putih dan segelas susu coklat untuk menemani perjalanan ke planet Java dan mari kita mulai dari langkah pertama :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="44">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="42">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

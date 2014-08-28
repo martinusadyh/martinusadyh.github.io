@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Beberapa minggu terakhir ini, saya kebagian tugas melakukan installasi MySQL Enterprise Server beserta peralatan pendukung untuk melakukan monitoring &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/posts/34/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/">Monitoring MySQL DataBase Server With MySQL Monitor</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-24T07:28:19+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Beberapa minggu terakhir ini, saya kebagian tugas melakukan installasi <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> beserta peralatan pendukung untuk melakukan monitoring-nya sekalian :) Secara kebetulan juga di minggu yang sama, di milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan yang ditanyakan oleh <a href="http://budigunawan.wordpress.com/">Pak Budi</a> tentang <a href="http://tech.groups.yahoo.com/group/netbeans-indonesia/message/8066">Table Index Pada Hibernate</a>. Diskusi berjalan sangat hangat dan akhir-nya pembahasan secara perlahan namun pasti mengarah ke topik bagaimana melakukan <strong>tunning</strong> pada  database server yang kebetulan juga pakai <a href="http://www.mysql.com/downloads/">MySQL Community Server</a> yang notabene bisa kita download secara gratis :)</p>
+
+<p>Nah pada tulisan kali ini, saya cuma ingin berbagi pengalaman bagaimana cara meng-install dan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> untuk keperluan <strong>monitoring</strong> terhadap <a href="http://www.mysql.com/downloads/">MySQL Server</a> kita (Maklum meskipun sudah jelas dibahas pada halaman manual-nya, saya masih sering salah langkah juga :( ). Saya juga tahu bahwa <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> ini tidak gratis melainkan sebuah aplikasi yang berbayar. Tapi jangan kuatir, <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> ini tersedia secara <strong>gratis</strong> selama <strong>30 hari</strong> dan semua fitur tidak ada yang dipangkas :) Ok kita sudahi dulu basa-basi-nya, sekarang mari kita masuk ke inti masalah-nya yaitu bagaimana meng-install dan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a>. Sebelum membaca lebih lanjut, yang perlu kita lakukan pertama kali yaitu melakukan registrasi pada situs <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> dahulu untuk mendapatkan <strong>link</strong> download-nya baru kemudian mari kita download file-file yang kita perlukan :D :) (<strong>Note: Proses registrasi pada situs <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> ini hanya bisa digunakan untuk 1 account email saja</strong>)</p>
+
+<p>Sudah siap untuk melakukan proses <strong>download</strong> ? Jika sudah, silahkan download file-file dibawah ini :</p>
+
+<ol>
+<li><p> <strong>mysql_monitoring_service.key</strong>
+File ini digunakan untuk aktivasi ketika akan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a></p></li>
+<li><p> <strong>AdvisorScript-Trial-2.1.0.1093.jar</strong>
+File ini digunakan untuk aktivasi ketika akan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a></p></li>
+<li><p> <strong>mysql-enterprise-gpl-5.1.40sp1-0.rhel5.i386.tar</strong>
+File ini adalah versi <strong>Enterprise</strong> dari <a href="http://www.mysql.com/downloads/">MySQL Community Server</a>, kalau ingin coba-coba download saja. Tapi kalau menurut saya, koq seperti-nya tidak ada beda-nya ya antara versi <strong>Community</strong> sama yang <strong>Enterprise</strong> (Ini murni berdasarkan pengalaman <strong>ngoprek</strong> selama beberapa minggu terakhir ini, jadi belum sempat <strong>explore</strong> lebih dalam lagi :D )</p></li>
+<li><p> <strong>mysqlmonitor-2.1.1.1141-linux-x86-installer.bin</strong>
+File ini merupakan server untuk melakukan proses <strong>monitoring</strong>, nanti-nya yang akan kita akses adalah hasil proses installasi dari file ini. Didalam file ini juga sudah terdapat <a href="http://tomcat.apache.org/">Apache Tomcat</a> dan <a href="http://www.mysql.com/downloads/">MySQL Server</a> untuk menjalankan <strong>Dashboard</strong> dan menyimpan data hasil monitoring yang kita lakukan.
+<strong>Note: Download-lah dengan file yang sesuai dengan spesifikasi server yang teman-teman gunakan</strong></p></li>
+<li><p> <strong>mysqlmonitoragent-2.1.1.1144-linux-glibc2.3-x86-32bit-installer.bin</strong>
+File ini fungsi-nya adalah sebagai reporter ke <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor Server</a>, agar <strong>Dashboard</strong> dapat berfungsi dengan baik maka semua proses koneksi ke <strong>MySQL Server</strong> harus melalui <strong>MySQL Monitor Agent</strong> ini dahulu baru kemudian diteruskan ke <strong>MySQL Server</strong> sebenar-nya :)
+<strong>Note: Download-lah dengan file yang sesuai dengan spesifikasi server yang teman-teman gunakan</strong></p></li>
+<li><p> <strong>mysql-monitor-html.tar.gz</strong>
+Dan yang terakhir adalah jangan lupa untuk sekalian mendownload halaman manual-nya juga, karena didalam file ini banyak sekali konfigurasi yang diterangkan secara <strong>jelas, padat dan terpercaya</strong> :D :) Untuk teman-teman yang ingin bermain-main dengan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a>, file ini <strong>WAJIB</strong> hukum-nya untuk didownload.</p></li>
+</ol>
+
+
+<p>Nah setelah semua selesai di download, sekarang tiba saat-nya untuk proses installasi. Karena ini pengalaman pertama saya, maka pilihan <strong>Sistem Operasi</strong> yang saya pilih yaitu <a href="http://centos.org/">CentOS</a>. Pilihan ini dikarenakan agar kita tidak perlu melakukan perubahan pada <strong>init script</strong> yang dibawa oleh <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> :) Jadi untuk teman-teman, silahkan siapkan dahulu <strong>environment</strong> yang akan digunakan yah :) (Untuk Sistem Operasi yang lain, jika saya ada waktu akan saya tulis bagaimana integrasi pada masing-masing karakteristik <strong>init script</strong>-nya dan yang pasti bukan pada Sistem Operasi Microsoft Windows :) )</p>
+
+<p>Sekarang pastikan dahulu bahwa teman-teman sudah meng-install <a href="http://mysql.com/">MySQL</a> pada server yang ingin kita <strong>monitor</strong>, sedangkan pada tulisan ini <a href="http://mysql.com/">MySQL</a> yang digunakan adalah <a href="http://www.mysql.com/downloads/">MySQL Community Server</a> bawaan dari distro <a href="http://centos.org/">CentOS</a> yang cara installasi dan konfigurasi-nya bisa teman-teman lihat pada <a href="http://martinusadyh.web.id/2010/02/23/installing-mysql-in-centos-5-4/">tutorial kemarin</a> :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/24/installing-mysql-in-centos-5-4/">Installing MySQL in CentOS 5.4</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-24T03:14:22+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/24/installing-mysql-in-centos-5-4/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kalau dulu kita sudah pernah install dan konfigurasi <a href="http://www.mysql.com/downloads/">MySQL</a> pada <a href="http://martinusadyh.web.id/2009/09/27/konfigurasi-mysql-di-slackware-130/">Slackware</a> dan <a href="http://martinusadyh.web.id/2009/03/28/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/">OpenSolaris</a>, sekarang bagaimana jika kita install di distro <a href="http://centos.org/">CentOS</a> ??? Cara install-nya sih <strong>berbeda</strong> tapi untuk konfigurasi-nya sama saja. Karena <a href="http://martinusadyh.web.id/2010/02/17/step-by-step-installing-centos-54/">kemarin</a> kita sudah belajar untuk meng-install distro <a href="http://centos.org/">CentOS</a>, sekarang mari kita install dan konfigurasi <a href="http://www.mysql.com/downloads/">MySQL</a>-nya :)</p>
+
+<p>Langkah pertama yang harus dilakukan yaitu bukalah sebuah terminal kemudian ganti akses user anda menjadi <strong>super user</strong> atau <strong>root</strong> dengan mengetikkan perintah <strong>su -</strong> kemudian isikan password <strong>user root</strong> yang terdapat pada sistem anda. Jika sudah, sekarang mari kita install <a href="http://www.mysql.com/downloads/">MySQL</a> dengan menggunakan <strong>yum</strong> dengan cara seperti dibawah ini :
+[plain]
+[root@localhost ~]# yum install mysql-server
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * addons: ftp.oss.eznetsols.org
+ * base: ftp.oss.eznetsols.org
+ * extras: ftp.oss.eznetsols.org
+ * updates: ftp.oss.eznetsols.org
+Setting up Install Process
+Resolving Dependencies
+&ndash;> Running transaction check
+&mdash;> Package mysql-server.i386 0:5.0.77-4.el5_4.1 set to be updated
+&ndash;> Processing Dependency: mysql = 5.0.77-4.el5_4.1 for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient.so.15(libmysqlclient_15) for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient_r.so.15(libmysqlclient_15) for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient.so.15 for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient_r.so.15 for package: mysql-server
+&ndash;> Processing Dependency: perl-DBD-MySQL for package: mysql-server
+&ndash;> Running transaction check
+&mdash;> Package mysql.i386 0:5.0.77-4.el5_4.1 set to be updated
+&mdash;> Package perl-DBD-MySQL.i386 0:3.0007-2.el5 set to be updated
+&ndash;> Finished Dependency Resolution</p>
+
+<p>Dependencies Resolved</p>
+
+<hr />
+
+<h1> Package                   Arch            Version                      Repository          Size</h1>
+
+<p>Installing:
+ mysql-server              i386            5.0.77-4.el5_4.1             updates            9.8 M
+Installing for dependencies:
+ mysql                     i386            5.0.77-4.el5_4.1             updates            4.8 M
+ perl-DBD-MySQL            i386            3.0007-2.el5                 base               148 k</p>
+
+<h1>Transaction Summary</h1>
+
+<p>Install      3 Package(s)       <br/>
+Update       0 Package(s)       <br/>
+Remove       0 Package(s)</p>
+
+<p>Total download size: 15 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/3): perl-DBD-MySQL-3.0007-2.el5.i386.rpm                               | 148 kB     00:11   <br/>
+(2/3): mysql-5.0.77-4.el5_4.1.i386.rpm                                    | 4.8 MB     06:33</p>
+
+<h2>(3/3): mysql-server-5.0.77-4.el5_4.1.i386.rpm                             | 9.8 MB     06:21     </h2>
+
+<p>Total                                                             19 kB/s |  15 MB     13:17   <br/>
+Running rpm_check_debug
+Running Transaction Test
+Finished Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing     : mysql                                                                     1/3
+  Installing     : perl-DBD-MySQL                                                            2/3
+  Installing     : mysql-server                                                              3/3</p>
+
+<p>Installed:
+  mysql-server.i386 0:5.0.77-4.el5_4.1</p>
+
+<p>Dependency Installed:
+  mysql.i386 0:5.0.77-4.el5_4.1                perl-DBD-MySQL.i386 0:3.0007-2.el5</p>
+
+<p>Complete!
+[root@localhost ~]#
+[/plain]</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/02/24/installing-mysql-in-centos-5-4/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/22/update-blog/">Update Blog</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-22T21:25:38+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/22/update-blog/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hii all.. cuma ingin kasih info tentang perubahan tampilan di blog ini :) Malam minggu kemarin, saya mulai main-main lagi dengan blog. Dan hasil akhir-nya adalah yang sudah teman-teman lihat sekarang :D Alasan kenapa saya ganti yaitu karena versi <a href="http://wordpress.org/">WordPress</a> yang saya gunakan sudah terlalu lama :D , yups kenapa koq saya ga pernah ngikutin versi rilis <a href="http://wordpress.org/">WordPress</a> ? Karena pada themes yang kemarin sudah terlalu banyak modifikasi yang saya lakukan di source code <a href="http://wordpress.org/">WordPress</a> itu sendiri :D (sekdear buat main-main sih) dan gara-gara perubahan <strong>custom</strong> yang saya lakukan akhirnya sukses membuat saya sendiri kesulitan untuk melakukan proses <strong>upgrade</strong> ke versi yang lebih baru :( . Nah selain alasan tersebut, saya juga pingin merasakan <strong>themes</strong> yang lain, dan hasil akhir-nya juga udah teman-teman lihat sendiri sekarang :)</p>
+
+<p>Nah ada temen yang bilang bahwa themes blog saya ini <strong>jelek</strong> :) Emang sih, themes yang kemarin terlihat <strong>kaku</strong> dan saya akui hal tersebut. Kalau jelek ? Hmm&hellip; ini harus kita lihat dari kacamata mana teman-teman melihat-nya, klo dilihat dari sudut pandang <strong>saya sendiri</strong> saya ngelihat ya <strong>lumayan</strong>-lah untuk seorang pemula di bidang <strong>web designer</strong> (meskipun ngedit themes-nya orang kwkwkw :)) )</p>
+
+<p>Ada 2 penyebab kenapa saya melakukan perombakan besar-besaran pada blog ini, 2 penyebab-nya yaitu :</p>
+
+<ol>
+<li><p> Ingin menjadi lebih <strong>wiki style</strong> , yups saya dari dulu ingin supaya tulisan-tulisan yang saya <strong>post</strong> ke blog dapat dibaca layak-nya membaca sebuah halaman <a href="http://id.wikipedia.org/">wikipedia</a>. Kalau gitu kenapa tidak pakai <a href="http://id.wikipedia.org/">wikipedia</a> saja sekalian?? Alasan saya tidak menggunakan <a href="http://id.wikipedia.org/">wikipedia</a> adalah karena kalau pakai <a href="http://id.wikipedia.org/">wikipedia</a> saya pasti kehilangan fasilitas komentar :D  Pada tampilan baru ini, <strong>wiki style</strong> saya coba masukkan pada halaman <strong>single page</strong> dan ini bisa kita lihat kalau teman-teman menekan tulisan Read More &hellip; pada setiap posting di blog ini. Perubahan yang saya lakukan cukup sederhana sih, cukup hilangkan saja <strong>sidebar</strong>-nya dan <strong>voilla&hellip;</strong> tampilan posting menjadi penuh 1 halaman :).
+Selain alasan <strong>wiki style</strong> diatas, saya terkadang suka merasa susah jika membaca postingan sendiri terutama kalau ada contoh kode atau potongan hasil output pada terminal yang terlalu memanjang hingga akhirnya saya terpaksa menggeser scroll ke kanan. Nah menurut saya hal ini tidak efektif (baca-nya jadi ga bisa ngefull atau ada bagian yang masih kepotong), dengan membuat halaman menjadi full 1 halaman dan tanpa sidebar hal ini menjadi mungkin membaca keseluruhan potongan kode program atau hasil output dari terminal yang saya post :D :)</p></li>
+<li><p>Pingin merasakan themes yang baru :) Nah ini juga bermasalah karena saya kurang begitu senang dengan tampilan web yang terlalu <strong>berwarna</strong> dan <strong>penuh corak</strong> (secara saya ini kan orang-nya sederhana banget <strong>wakakakaka&hellip;. #$#* LEBAY MODE ON</strong>) :D Ternyata sangat susah sekali mencari themes dengan kategori <strong>Simple, Clean dan Elegan</strong> :D Menurut saya pribadi, tampilan yang paling keren dan elegan itu ditunjukkan oleh <a href="http://google.com">Mbah Google</a> dan <a href="http://id.wikipedia.org/">wikipedia</a> dengan background putih dan warna <strong>hyperlink</strong> biru, bagi saya sih kesan-nya sederhana dan sarat informasi yang berguna. Nah setelah <strong>ngulik-ngulik</strong> themes di <a href="http://wordpress.org/extend/themes/">WordPress</a> akhirnya saya menemukan 1 themes yaitu <a href="http://www.niceweesites.com/wordpress-theme/">Nice Wee Themes</a> yang menurut saya <strong>mendekati</strong> kriteria yang saya cari, tapi tetap harus dilakukan modifikasi juga  :)</p></li>
+</ol>
+
+
+<p>Proses upgrade <a href="http://wordpress.org/">WordPress</a> ternyata tidak semudah yang saya bayangkan, langkah yang akan saya tempuh sebenar-nya seperti ini :</p>
+
+<ul>
+<li><p>Backup DB <a href="http://wordpress.org/">WordPress</a> yang lama</p></li>
+<li><p>Restore DB lama di laptop</p></li>
+<li><p>Install <a href="http://wordpress.org/">WordPress</a> baru di laptop</p></li>
+<li><p>Setelah <a href="http://wordpress.org/">WordPress</a> yang baru terinstall menggunakan schema DB yang baru juga, baru deh konfigurasi <a href="http://wordpress.org/">WordPress</a> baru agar menggunakan schema DB lama</p></li>
+<li><p>Kalau sukses, upload lagi ke hosting</p></li>
+</ul>
+
+
+<p>Nah ternyata pada waktu melakukan proses restore DB yang lama, saya melihat ada keganjilan  antara schema DB <a href="http://wordpress.org/">WordPress</a> yang lama dengan yang baru. Yups&hellip;. ternyata jumlah tabel di <a href="http://wordpress.org/">WordPress</a> yang baru berkurang :(  Pada versi <a href="http://wordpress.org/">WordPress</a> yang lama, jumlah tabel ada 12 buah, tapi di versi yang sekarang jumlah tabel-nya cuma 11 :(  Otomatis proses migrasi tidak bisa semudah ganti nama database :( dan akhirnya saya dengan sukses memilih cara yang lain yaitu melakukan proses migrasi data menggunakan <strong>tool</strong> bawaan-nya si <a href="http://wordpress.org/">WordPress</a> yaitu menggunakan tool <strong>Export dan Import</strong>. Sukses sih, semua postingan dan komentar berhasil dipindah tangankan tanpa ada perubahan sedikitpun, tapi sayang-nya tidak semua di ter-migrasi :( Dan ini dibuktikan dengan hilang-nya link blog teman-teman yang sudah saya tambahkan :( (Maaf ya teman-teman :( iks&hellip;) Sampai saat ini, saya juga masih melakukan pembenahan terhadap tampilan dari blog ini, jadi harap maklum ya teman-teman kalau tampilan-nya masih acak adut :D</p>
+
+<p>Akhir kata, bagaimana menurut pendapat teman-teman sendiri dengan tampilan yang sekarang  ?? Selain itu, kira-kira apa lagi ya yang diperlukan biar ngebaca-nya jadi lebih <strong>&ldquo;nyaman&rdquo;</strong> dan <strong>&ldquo;enak&rdquo;</strong>?? Atau ada saran tentang bagaimana enaknya tampilan blog ini, atau penggunaan themes yang lain ?  :)  Dan yang paling terakhir, selamat menikmati tampilan baru dari blog saya ini :D</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/20/tambah-kategori-blog/">Tambah Kategori Blog</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-20T04:48:25+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/20/tambah-kategori-blog/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hii all, setelah kemarin menambah 2 kategori yaitu <a href="http://martinusadyh.web.id/category/ubuntu/">Ubuntu</a> dan <a href="http://martinusadyh.web.id/category/centos/">CentOS</a>, Sekarang (hari ini) saya memutuskan untuk menambah 1 kategori lagi yaitu <a href="http://martinusadyh.web.id/category/seo/">SEO</a> :D :) Nah aneh kan ? Biasa-nya tulisan-tulisan pada blog ini selalu membahas seputar GNU/Linux atau Java, sesekali juga saya posting beberapa tentang <a href="http://martinusadyh.web.id/category/music/">musik</a> yang saya senangi :D Tujuan utama sebenar-nya sih, saya ingin mencoba sedikit <strong>peruntungan</strong> di dunia <strong>internet marketing</strong> atau bahasa keren-nya <a href="http://www.google.co.id/search?q=mencari+uang+di+internet&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;rls=org.mozilla:en-US:official&amp;client=firefox-a">cari duit di internet</a> :D</p>
+
+<p>Loh koq cari duit di internet ? Emang gaji-nya ga cukup ?
+Bukan masalah gaji ga cukup atau masalah apa, tapi kalau kita bisa <strong>sekali dayung dua tiga pulau terlampaui</strong> apa salah-nya ? :D Ga ada salah-nya kalau kita mencoba hal baru kan ;) Nah akhir kata, semoga blog ini tetap bisa menjadi tempat <strong>sharing</strong> buat saya dan teman-teman dan maaf kalau ada kata-kata saya yang kurang berkenan :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/19/installing-jboss-application-server-510-on-centos-54/">Installing JBoss Application Server 5.1.0 on CentOS 5.4</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-19T04:36:22+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/19/installing-jboss-application-server-510-on-centos-54/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Nah setelah <a href="http://martinusadyh.web.id/2010/02/17/step-by-step-installing-centos-54/">kemarin</a> kita berhasil meng-install <a href="http://centos.org/">CentOS</a> yang difungsikan sebagai <strong>Server</strong>, sekarang mari kita coba install sebuah <strong>Java EE Application Server</strong> diatas-nya yaitu <a href="http://www.jboss.org/">JBoss Application Server (AS)</a>. Nah buat yang belum tahu apa sih <a href="http://www.jboss.org/">JBoss Application Server</a> itu, <a href="http://www.jboss.org/">JBoss Application Server</a> ini merupakan sebuah <strong>Java EE Application Server</strong> yang berbasis pada spesifikasi Java EE versi 5 (sampai versi sekarang (versi 5.1.0) <a href="http://www.jboss.org/">JBoss Application Server</a> ini belum mendukung spesifikasi Java EE versi 6). Nah kalau bicara tentang <strong>Java EE Application Server</strong> <a href="http://www.jboss.org/">JBoss Application Server</a> ini sekelas dengan beberapa nama besar lain-nya yaitu <a href="http://www.oracle.com/appserver/weblogic/enterprise-edition.html">Oracle WebLogic</a> dan <a href="https://glassfish.dev.java.net/">Glassfish Application Server</a>.</p>
+
+<p>Yang perlu teman-teman ketahui selain hal-hal diatas yaitu bahwa <a href="http://www.jboss.org/">JBoss Application Server</a> ini dulu-nya dikembangkan oleh sebuah perusahaan bernama <a href="http://www.jboss.com/">JBoss</a>, setelah dibeli oleh <a href="http://www.redhat.com/">Red Hat</a> akhir-nya <a href="http://www.jboss.com/">JBoss</a> ini sekarang menjadi sebuah divisi di <a href="http://www.redhat.com/">Red Hat</a> yang bergerak pada bidang aplikasi <strong>middleware</strong> dengan sifat opensource. Sedangkan fitur-fitur yang dibawa oleh <a href="http://www.jboss.org/">JBoss Application Server</a> ini adalah :</p>
+
+<ul>
+<li><p>Clustering</p></li>
+<li><p>Failover (including sessions)</p></li>
+<li><p>Load Balancing</p></li>
+<li><p>Distributed caching (using JBoss Cache, a standalone product)</p></li>
+<li><p>Distributed deployment (farming)</p></li>
+<li><p>Deployment API</p></li>
+<li><p>Management API</p></li>
+<li><p>Aspect-Oriented Programming (AOP) support</p></li>
+<li><p>JSP/Servlet 2.&frac12;.5 (Tomcat)</p></li>
+<li><p>JavaServer Faces 1.2 (Mojarra)</p></li>
+<li><p>Enterprise Java Beans versions 3 and 2.1</p></li>
+<li><p>JNDI (Java Naming and Directory Interface)</p></li>
+<li><p>Hibernate-integration (for persistence programming; JPA)</p></li>
+<li><p>JDBC</p></li>
+<li><p>JTA (Java Transaction API)</p></li>
+<li><p>Support for Java EE-Web Services like JAX-WS</p></li>
+<li><p>SAAJ (SOAP with Attachments API for Java)</p></li>
+<li><p>JMS (Java Message Service) integration</p></li>
+<li><p>JavaMail</p></li>
+<li><p>RMI-IIOP (JacORB, alias Java and CORBA)</p></li>
+<li><p>JAAS (Java Authentication and Authorization Service)</p></li>
+<li><p>JCA (Java Connector Architecture)-integration</p></li>
+<li><p>JACC (Java Authorization Contract for Containers)-integration</p></li>
+<li><p>Java Management Extensions</p></li>
+</ul>
+
+
+<p>Hm.. mantap kan dan <a href="http://www.jboss.org/">JBoss Application Server</a> ini juga open source loh :) , nah gimana tertarik mencoba <a href="http://www.jboss.org/">JBoss Application Server</a> ini sebagai server utama ? Klo iya, mari kita lanjutkan dengan meng-install <a href="http://www.jboss.org/">JBoss Application Server</a> ini pada mesin <a href="http://centos.org/">CentOS</a> yang sudah kita persiapkan sebelum-nya. Sebelum mulai meng-install persiapkan dahulu beberapa kebutuhan yang akan kita gunakan agar <a href="http://www.jboss.org/">JBoss Application Server</a> ini dapat berjalan dengan mulus di server yang sudah kita siapkan. Untuk perlengkapan yang digunakan pada tulisan ini yaitu :</p>
+
+<ul>
+<li><p><a href="http://java.sun.com/javase/downloads/index.jsp">Sun Java JDK versi 1.6.0_17 (~+ 78 MB)</a></p></li>
+<li><p><a href="http://sourceforge.net/settings/mirror_choices?projectname=jboss&amp;filename=JBoss/JBoss-5.1.0.GA/jboss-5.1.0.GA.zip">JBoss Application Server 5.1.0.GA.zip (~+ 133.5 MB)</a></p></li>
+</ul>
+
+
+<p><strong>Note: Pada tulisan ini saya me-remove semua versi java bawaan CentOS dan mengganti-nya dengan SunJDK, jadi sebelum menginstall SunJDK hapuslah dahulu OpenJDK dan GCJ yang dibawa oleh CentOS.</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/02/19/installing-jboss-application-server-510-on-centos-54/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="35">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="33">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
