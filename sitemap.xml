@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/</loc>
+    <lastmod>2014-09-04T19:04:48+07:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://martinusadyh.web.id/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/</loc>
     <lastmod>2014-08-17T21:12:27+07:00</lastmod>
     <priority>0.8</priority>
@@ -1577,21 +1583,21 @@
   
   <url>
     <loc>http://martinusadyh.web.id/blog/archives/</loc>
-    <lastmod>2014-08-28T22:51:53+07:00</lastmod>
+    <lastmod>2014-09-04T20:11:37+07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://martinusadyh.web.id/</loc>
-    <lastmod>2014-08-28T22:51:53+07:00</lastmod>
+    <lastmod>2014-09-04T20:11:37+07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://martinusadyh.web.id/tutorial/</loc>
-    <lastmod>2014-08-28T22:51:53+07:00</lastmod>
+    <lastmod>2014-09-04T20:11:37+07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

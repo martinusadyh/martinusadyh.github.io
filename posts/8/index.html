@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Pada tulisan kali ini, kita akan membahas bagaimana membuat sebuah shell script yang berisi sebuah binary file. Apa sih sebenarnya yang bisa kita &hellip;">
+  <meta name="description" content="Sedang bingung tentang Java Collections Framework di Java ? Jika iya, mungkin Cheat Sheet dibawah ini yang dibuat oleh Alexander Zagniotov bisa &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2012/08/11/java-collections-cheat-sheet/">Java Collections Cheat Sheet</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-11T23:47:20+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2012/08/11/java-collections-cheat-sheet/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sedang bingung tentang <a href="http://docs.oracle.com/javase/tutorial/collections/TOC.html">Java Collections Framework</a> di Java ? Jika iya, mungkin <a href="http://initbinder.com/articles/cheat-sheet-for-selecting-maplistset-in-java.html">Cheat Sheet</a> dibawah ini yang dibuat oleh <a href="http://initbinder.com/">Alexander Zagniotov</a> bisa sedikit memberikan gambaran tentang fungsi dan fitur-fitur yang membedakan beberapa class yang terdapat pada <strong>Collections Framework</strong> di Java.</p>
+
+<p>[caption id=&ldquo;attachment_1797&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;802&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=181"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/07/collections.png" alt="Java Collections Cheat Sheet" /></a> Java Collections Cheat Sheet[/caption]</p>
+
+<p><strong>Cheat Sheet</strong> diatas merupakan jawaban dari <strong>Muhammad Edwin</strong> ketika ada yang bertanya tentang penggunaan Java Collections Framework di milis <a href="mailto:jug-indonesia@yahoogroups.com">jug-indonesia</a>, dan mungkin berguna juga buat teman-teman yang sedang mengalami hal serupa tentang Java Collections :)</p>
+
+<p>Happy coding guys.. :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -323,76 +369,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2012/07/11/detecting-session-idle-with-dojo/">Detecting Session Idle With Dojo</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-11T03:15:40+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2012/07/11/detecting-session-idle-with-dojo/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sedang mempunyai masalah bagaimana caranya mendeteksi sesi yang sedang <strong>idle</strong> di aplikasi yang menggunakan <a href="">Dojo</a> ? Sebenarnya <strong>Dojo</strong> juga sudah mempunyai sebuah <strong>plugin</strong> yaitu <code>dojox.analytics.plugins.idle</code> yang terdapat pada package <a href="http://dojotoolkit.org/api/">dojox.analytics</a>. Sedangkan untuk cara penggunan-nya adalah kita bisa menambahkan parameter <code>idleTime</code> dan <code>analyticsUrl</code> pada <code>dojoConfig</code> yang kurang lebih seperti berikut :</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">dojoConfig</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">isDebug</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">idleTime</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">sendInterval</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">analyticsUrl</span><span class="o">:</span> <span class="s1">&#39;http://localhost:10000/monitor/idle&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">modulePaths</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">app</span><span class="o">:</span> <span class="s1">&#39;../../../app&#39;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Selain itu, import-lah juga package <code>dojox.analytics</code> dan <code>dojox.analytics.plugins.idle</code> supaya plugin <strong>idle</strong> dapat digunakan. Dengan kode seperti diatas, harusnya jika aplikasi kita tidak melakukan apapun selama 3 detik maka <strong>Dojo</strong> akan mengirimkan <code>POST</code> request ke alamat <code>http://localhost:10000/monitor/idle</code>. Nah yang jadi masalah disini adalah, sekarang bagaimana caranya menghandle jika di sisi browser sudah melewati batasan waktu 3 detik apa yang harus dilakukan di sisi client ??? :D (Karena dari sisi aplikasi, aplikasi hanya akan mengirimkan <code>POST</code> request ke server dengan informasi <code>idle</code> saja)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/07/11/detecting-session-idle-with-dojo/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="9">&larr; Older</a>
@@ -422,6 +398,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -477,10 +457,6 @@
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>

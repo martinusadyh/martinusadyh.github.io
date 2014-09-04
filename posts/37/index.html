@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Apakah teman-teman sudah puas dengan tampilan font rendering yang terdapat pada Desktop Manager GNOME ? Jika jawaban-nya tidak, mungkin teman-teman &hellip;">
+  <meta name="description" content="Hii all, berhubung karena keren-nya album ini jadi ngebuat saya pingin posting ke blog :D. Review Ini saya dapat dari forum Symphonic/Gothic Metal &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/12/06/review-album-design-your-universe-epica/">Review Album Design Your Universe (EPICA)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-06T20:44:24+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/12/06/review-album-design-your-universe-epica/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hii all, berhubung karena keren-nya album ini jadi ngebuat saya pingin posting ke blog :D. Review Ini saya dapat dari forum <a href="http://www.facebook.com/group.php?gid=122826632728">Symphonic/Gothic Metal Group</a> di FaceBook dan ditulis oleh bro <a href="http://www.facebook.com/profile.php?id=1624398291">Luxmand Grapow</a> yang notabene adalah pengurus group ini. Dan inilah dia review-nya :</p>
+
+<pre><code>        [![Cover Album Design Your Universe](http://photos-h.ak.fbcdn.net/hphotos-ak-snc1/hs238.snc1/8517_1192695950598_1624398291_30497143_4645420_n.jpg)  
+</code></pre>
+
+<p>EPICA - DESIGN YOUR UNIVERSE (2009)](<a href="http://www.facebook.com/photo.php?pid=30497143&amp;id=1624398291">http://www.facebook.com/photo.php?pid=30497143&amp;id=1624398291</a>)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/12/06/review-album-design-your-universe-epica/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -366,87 +416,6 @@ Contoh Gambar Topologi Jaringan dari DIA Diagram</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/">Membangun File Server Dengan Samba Di Slackware</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-22T04:21:15+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Untuk membangun sebuah <strong>File Server</strong> menggunakan <a href="http://www.samba.org">SAMBA</a> di Slackware sebenarnya tidak begitu susah, sama seperti kalau kita menggunakan distribusi GNU/Linux yang lain :) Nah untungnya lagi, packages <a href="http://www.samba.org">SAMBA</a> sudah terinstall secara default pada Slackware yang kita gunakan dan kita hanya perlu melakukan sedikit konfigurasi agar <a href="http://www.samba.org">SAMBA</a> dapat berjalan :)</p>
-
-<p>Hal pertama yang perlu kita lakukan agar service <a href="http://www.samba.org">SAMBA</a> kita dapat berjalan yaitu melakukan konfigurasi terhadap file <strong>smb.conf</strong> yang terletak pada direktori <strong>/etc/samba</strong>. Karena di Slackware tidak menyertakan file <strong>smb.conf</strong> melainkan file <strong>smb.conf-sample</strong> maka kopikan-lah dahulu file <strong>smb.conf-sample</strong> menjadi <strong>smb.conf</strong> seperti dibawah ini :</p>
-
-<pre><code>root@martinusadyh:/etc/samba# cp smb.conf-sample smb.conf
-root@martinusadyh:/etc/samba# ls
-private/  smb.conf  smb.conf-sample
-root@martinusadyh:/etc/samba#
-</code></pre>
-
-<p>Sekarang edit-lah file <strong>smb.conf</strong> diatas menjadi seperti dibawah ini:</p>
-
-<pre><code>[global]
-    workgroup = SLACKWARE_FILESERVER
-    server string = %h server (Samba, Slackware)
-    map to guest = Bad User
-    obey pam restrictions = Yes
-    passdb backend = tdbsam
-    pam password change = Yes
-    passwd program = /usr/bin/passwd %u
-    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
-    unix password sync = Yes
-    socket options = TCP_NODELAY
-    syslog = 0
-    log file = /var/log/samba/log.%m
-    max log size = 1000
-    dns proxy = No
-    usershare allow guests = Yes
-
-[PublicShare]
-    comment = Slackware File Server
-    path = /home/sharing/data
-    read only = No
-    create mask = 0777
-    directory mask = 0777
-    guest ok = Yes
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="38">&larr; Older</a>
@@ -476,6 +445,10 @@ root@martinusadyh:/etc/samba#
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -531,10 +504,6 @@ root@martinusadyh:/etc/samba#
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>

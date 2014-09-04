@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
+  <title>Setup Octopress in Linux Mint - Martinus Ady H. BloG</title>
+  <meta name="author" content="Martinus Ady H">
+
+  
+  <meta name="description" content="Sudah sejak lama saya sebenarnya saya migrasi blog dari platform WordPress ke static blog, alasan utama-nya adalah ingin mengejar loading page yang &hellip;">
+  <meta name="keywords" content="Static Blog, Blog, Octopress, Linux, Linux Mint 17, Ruby, Ubuntu 14.04, Git, GitHub">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Martinus Ady H. BloG" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6422034-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mab</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Martinus Ady H. BloG</a></h1>
+  
+    <h2>Human Knowledge Belongs To The World</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:martinusadyh.web.id" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/tutorial">Tutorial</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Setup Octopress in Linux Mint</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-04T19:04:48+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 10/6/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:15px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="9729928824"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div class="entry-content"><p>Sudah sejak lama saya sebenarnya saya migrasi blog dari <em>platform</em> <a href="http://wordpress.com">WordPress</a> ke <em>static</em> blog, alasan utama-nya adalah ingin mengejar <em>loading page</em> yang lebih cepat dan supaya setiap postingan saya bisa di simpan di <a href="http://git-scm.com/">Git</a> (tentu-nya dengan menggunakan <em>repo</em> gratisan di <a href="https://github.com/">GitHub</a>) :D :) Dari banyak-nya pilihan <em>static blog generator</em> yang bisa dilihat di <a href="https://www.staticgen.com/">StaticGen</a>, saya akhirnya memutuskan untuk menggunakan <a href="http://octopress.org">Octopress</a> dikarenakan <strong>Octopress</strong> merupakan <em>static blog generator</em> yang paling populer saat ini dan tutorial setup-nya juga sudah dibuatkan oleh pak <a href="https://www.facebook.com/endy.muhardin?fref=ts">Endy Muhardin</a> di tulisan <a href="http://software.endy.muhardin.com/aplikasi/terima-kasih-wordpress/">Terima Kasih WordPress</a> :D</p>
+
+<p>Nah yang jadi masalah saya adalah karena <strong>Octopress</strong> ini dibuat dengan bahasa pemrograman ruby yang mana saya bener-bener buta :( . Karena kemarin sempat 3 kali setup ruby untuk kepentingan <strong>Octopress</strong> baru berhasil dan sukses menjalankan perintah <code>rake generate &amp;&amp; rake preview</code>, akhirnya saya putuskan untuk men-dokumentasikan langkah-langkah tersebut pada postingan kali ini :)</p>
+
+<p>Semua langkah-langkah ini dijalankan di sistem operasi Linux Mint 17 dengan kondisi <em>fresh install</em> , jadi memang semua kebutuhan juga belum ada. Langkah pertama yang harus dilakukan adalah install dulu <em>library</em> yang dibutuhkan dengan menjalankan perintah <code>sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev curl</code> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev curl
+</span><span class='line'>Reading package lists... Done
+</span><span class='line'>Building dependency tree       
+</span><span class='line'>Reading state information... Done
+</span><span class='line'>libreadline6 is already the newest version.
+</span><span class='line'>zlib1g is already the newest version.
+</span><span class='line'>The following packages were automatically installed and are no longer required:
+</span><span class='line'>  libmysqlcppconn7 libodbc1 libvsqlitepp3 python-pyodbc
+</span><span class='line'>Use 'apt-get autoremove' to remove them.
+</span><span class='line'>The following extra packages will be installed:
+</span><span class='line'>  dpkg-dev g++ g++-4.8 libbison-dev libc-dev-bin libc6-dev libstdc++-4.8-dev
+</span><span class='line'>  libtinfo-dev libyaml-0-2 m4
+</span><span class='line'>Suggested packages:
+</span><span class='line'>  autoconf2.13 autoconf-archive gnu-standards autoconf-doc libtool bison-doc
+</span><span class='line'>  debian-keyring g++-multilib g++-4.8-multilib gcc-4.8-doc libstdc++6-4.8-dbg
+</span><span class='line'>  glibc-doc libstdc++-4.8-doc
+</span><span class='line'>Recommended packages:
+</span><span class='line'>  automake automaken libalgorithm-merge-perl libssl-doc
+</span><span class='line'>The following NEW packages will be installed:
+</span><span class='line'>  autoconf bison build-essential dpkg-dev g++ g++-4.8 libbison-dev
+</span><span class='line'>  libc-dev-bin libc6-dev libreadline6-dev libssl-dev libstdc++-4.8-dev
+</span><span class='line'>  libtinfo-dev libyaml-0-2 libyaml-dev m4 zlib1g-dev
+</span><span class='line'>0 upgraded, 17 newly installed, 0 to remove and 44 not upgraded.
+</span><span class='line'>Need to get 13.6 MB of archives.
+</span><span class='line'>After this operation, 56.7 MB of additional disk space will be used.
+</span><span class='line'>Do you want to continue? [Y/n] y
+</span><span class='line'>...
+</span><span class='line'>...
+</span><span class='line'>Setting up libreadline6-dev:amd64 (6.3-4ubuntu2) ...
+</span><span class='line'>Setting up zlib1g-dev:amd64 (1:1.2.8.dfsg-1ubuntu1) ...
+</span><span class='line'>Setting up libssl-dev:amd64 (1.0.1f-1ubuntu2.5) ...
+</span><span class='line'>Setting up libyaml-dev:amd64 (0.1.4-3ubuntu3) ...
+</span><span class='line'>Processing triggers for libc-bin (2.19-0ubuntu6.3) ...
+</span><span class='line'>martinusadyh@martinusadyh ~ $</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<!-- more -->
+
+
+<p>Karena kita menggunakan <a href="http://octopress.org/docs/setup/rvm/">RVM</a> untuk menginstall ruby, maka lanjutkan dengan mendownload <strong>RVM</strong> dengan perintah <code>curl -L https://get.rvm.io | bash -s stable --ruby</code> kemudian jalankan perintah <code>source /home/martinusadyh/.rvm/scripts/rvm</code> supaya kita bisa langsung menggunakan <strong>RVM</strong> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ curl -L https://get.rvm.io | bash -s stable --ruby
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100   184  100   184    0     0     61      0  0:00:03  0:00:02  0:00:01    61
+</span><span class='line'>100 20776  100 20776    0     0   3965      0  0:00:05  0:00:05 --:--:-- 17532
+</span><span class='line'>Downloading https://github.com/wayneeseguin/rvm/archive/stable.tar.gz
+</span><span class='line'>
+</span><span class='line'>Installing RVM to /home/martinusadyh/.rvm/
+</span><span class='line'>    Adding rvm PATH line to /home/martinusadyh/.profile /home/martinusadyh/.bashrc /home/martinusadyh/.zshrc.
+</span><span class='line'>    Adding rvm loading line to /home/martinusadyh/.bash_profile /home/martinusadyh/.zlogin.
+</span><span class='line'>    Fixing environment for *.
+</span><span class='line'>Unknown ruby interpreter version (do not know how to handle): *.
+</span><span class='line'>Installation of RVM in /home/martinusadyh/.rvm/ is almost complete:
+</span><span class='line'>
+</span><span class='line'>  * To start using RVM you need to run `source /home/martinusadyh/.rvm/scripts/rvm`
+</span><span class='line'>    in all your open shell windows, in rare cases you need to reopen all shell windows.
+</span><span class='line'>
+</span><span class='line'># Martinus Ady H,
+</span><span class='line'>#
+</span><span class='line'>#   Thank you for using RVM!
+</span><span class='line'>#   We sincerely hope that RVM helps to make your life easier and more enjoyable!!!
+</span><span class='line'>#
+</span><span class='line'># ~Wayne, Michal & team.
+</span><span class='line'>
+</span><span class='line'>In case of problems: http://rvm.io/help and https://twitter.com/rvm_io
+</span><span class='line'>
+</span><span class='line'>  * WARNING: You have '~/.profile' file, you might want to load it,
+</span><span class='line'>    to do that add the following line to '/home/martinusadyh/.bash_profile':
+</span><span class='line'>
+</span><span class='line'>      source ~/.profile
+</span><span class='line'>
+</span><span class='line'>rvm 1.25.29 (stable) by Wayne E. Seguin &lt;wayneeseguin@gmail.com&gt;, Michal Papis &lt;mpapis@gmail.com&gt; [https://rvm.io/]
+</span><span class='line'>Searching for binary rubies, this might take some time.
+</span><span class='line'>No binary rubies available for: mint/17/x86_64/ruby-2.1.2.
+</span><span class='line'>Continuing with compilation. Please read 'rvm help mount' to get more information on binary rubies.
+</span><span class='line'>Checking requirements for mint.
+</span><span class='line'>Installing requirements for mint.
+</span><span class='line'>Updating system............
+</span><span class='line'>Installing required packages: libsqlite3-dev, sqlite3, libgdbm-dev, libncurses5-dev, automake, libtool, libffi-dev..........
+</span><span class='line'>Requirements installation successful.
+</span><span class='line'>Found user configured '-j' flag in 'rvm_make_flags', pleae note that RVM can detect number of CPU threads and set the '-j' flag automatically if you do not set it.
+</span><span class='line'>Installing Ruby from source to: /home/martinusadyh/.rvm/rubies/ruby-2.1.2, this may take a while depending on your cpu(s)...
+</span><span class='line'>ruby-2.1.2 - #downloading ruby-2.1.2, this may take a while depending on your connection...
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100 11.4M  100 11.4M    0     0   345k      0  0:00:33  0:00:33 --:--:--  477k
+</span><span class='line'>ruby-2.1.2 - #extracting ruby-2.1.2 to /home/martinusadyh/.rvm/src/ruby-2.1.2....
+</span><span class='line'>ruby-2.1.2 - #configuring....................................................
+</span><span class='line'>ruby-2.1.2 - #post-configuration.
+</span><span class='line'>ruby-2.1.2 - #compiling.....................................................................................
+</span><span class='line'>ruby-2.1.2 - #installing.................................
+</span><span class='line'>ruby-2.1.2 - #making binaries executable..
+</span><span class='line'>Rubygems 2.2.2 already available in installed ruby, skipping installation, use --force to reinstall.
+</span><span class='line'>ruby-2.1.2 - #gemset created /home/martinusadyh/.rvm/gems/ruby-2.1.2@global
+</span><span class='line'>ruby-2.1.2 - #importing gemset /home/martinusadyh/.rvm/gemsets/global.gems..........................................................
+</span><span class='line'>ruby-2.1.2 - #generating global wrappers........
+</span><span class='line'>ruby-2.1.2 - #gemset created /home/martinusadyh/.rvm/gems/ruby-2.1.2
+</span><span class='line'>ruby-2.1.2 - #importing gemsetfile /home/martinusadyh/.rvm/gemsets/default.gems evaluated to empty gem list
+</span><span class='line'>ruby-2.1.2 - #generating default wrappers........
+</span><span class='line'>ruby-2.1.2 - #adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
+</span><span class='line'>Install of ruby-2.1.2 - #complete 
+</span><span class='line'>Ruby was built without documentation, to build it run: rvm docs generate-ri
+</span><span class='line'>Creating alias default for ruby-2.1.2...
+</span><span class='line'>
+</span><span class='line'>  * To start using RVM you need to run `source /home/martinusadyh/.rvm/scripts/rvm`
+</span><span class='line'>    in all your open shell windows, in rare cases you need to reopen all shell windows.
+</span><span class='line'>martinusadyh@martinusadyh ~ $ source /home/martinusadyh/.rvm/scripts/rvm</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Langkah selanjutnya adalah install-lah ruby versi 1.9.3 dengan mengetikkan perintah <code>rvm install 1.9.3</code> dan jalankan perintah <code>rvm use 1.9.3</code> untuk menggunakan ruby versi 1.9.3 seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ rvm install 1.9.3
+</span><span class='line'>Searching for binary rubies, this might take some time.
+</span><span class='line'>No binary rubies available for: mint/17/x86_64/ruby-1.9.3-p547.
+</span><span class='line'>Continuing with compilation. Please read 'rvm help mount' to get more information on binary rubies.
+</span><span class='line'>Checking requirements for mint.
+</span><span class='line'>Requirements installation successful.
+</span><span class='line'>Installing Ruby from source to: /home/martinusadyh/.rvm/rubies/ruby-1.9.3-p547, this may take a while depending on your cpu(s)...
+</span><span class='line'>ruby-1.9.3-p547 - #downloading ruby-1.9.3-p547, this may take a while depending on your connection...
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100 9801k  100 9801k    0     0   381k      0  0:00:25  0:00:25 --:--:--  416k
+</span><span class='line'>ruby-1.9.3-p547 - #extracting ruby-1.9.3-p547 to /home/martinusadyh/.rvm/src/ruby-1.9.3-p547....
+</span><span class='line'>ruby-1.9.3-p547 - #applying patch /home/martinusadyh/.rvm/patches/ruby/GH-488.patch.
+</span><span class='line'>ruby-1.9.3-p547 - #configuring.............................................
+</span><span class='line'>ruby-1.9.3-p547 - #post-configuration.
+</span><span class='line'>ruby-1.9.3-p547 - #compiling................................................................................................................................................................
+</span><span class='line'>ruby-1.9.3-p547 - #installing........................
+</span><span class='line'>ruby-1.9.3-p547 - #making binaries executable..
+</span><span class='line'>ruby-1.9.3-p547 - #downloading rubygems-2.2.2
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100  404k  100  404k    0     0  65039      0  0:00:06  0:00:06 --:--:--  104k
+</span><span class='line'>No checksum for downloaded archive, recording checksum in user configuration.
+</span><span class='line'>ruby-1.9.3-p547 - #extracting rubygems-2.2.2....
+</span><span class='line'>ruby-1.9.3-p547 - #removing old rubygems.........
+</span><span class='line'>ruby-1.9.3-p547 - #installing rubygems-2.2.2...............
+</span><span class='line'>ruby-1.9.3-p547 - #gemset created /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547@global
+</span><span class='line'>ruby-1.9.3-p547 - #importing gemset /home/martinusadyh/.rvm/gemsets/global.gems..........................................................
+</span><span class='line'>ruby-1.9.3-p547 - #generating global wrappers........
+</span><span class='line'>ruby-1.9.3-p547 - #gemset created /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547
+</span><span class='line'>ruby-1.9.3-p547 - #importing gemsetfile /home/martinusadyh/.rvm/gemsets/default.gems evaluated to empty gem list
+</span><span class='line'>ruby-1.9.3-p547 - #generating default wrappers........
+</span><span class='line'>ruby-1.9.3-p547 - #adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
+</span><span class='line'>Install of ruby-1.9.3-p547 - #complete 
+</span><span class='line'>WARNING: Please be aware that you just installed a ruby that is no longer maintained (2014-02-23), for a list of maintained rubies visit:
+</span><span class='line'>
+</span><span class='line'>    http://bugs.ruby-lang.org/projects/ruby/wiki/ReleaseEngineering
+</span><span class='line'>
+</span><span class='line'>Please consider upgrading to ruby-2.1.2 which will have all of the latest security patches.
+</span><span class='line'>Ruby was built without documentation, to build it run: rvm docs generate-ri
+</span><span class='line'>
+</span><span class='line'>martinusadyh@martinusadyh ~ $ rvm use 1.9.3
+</span><span class='line'>Using /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547
+</span><span class='line'>martinusadyh@martinusadyh ~ $</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Sampai disini seharusnya ruby sudah terinstall dengan baik dan benar, jalankan perintah <code>ruby --version</code> untuk mengecek hasil installasi diatas.</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ ruby --version
+</span><span class='line'>ruby 1.9.3p547 (2014-05-14 revision 45962) [x86_64-linux]
+</span><span class='line'>martinusadyh@martinusadyh ~ $ </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Setelah ruby terinstall, sekarang masuk ke dalam direktori <strong>Octopress</strong> dan jalankan perintah <code>gem install bundler</code> seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ cd octopress/
+</span><span class='line'>martinusadyh@martinusadyh ~/octopress $ gem install bundler
+</span><span class='line'>Fetching: bundler-1.7.2.gem (100%)
+</span><span class='line'>Successfully installed bundler-1.7.2
+</span><span class='line'>1 gem installed
+</span><span class='line'>Installing ri documentation for bundler-1.7.2...
+</span><span class='line'>Installing RDoc documentation for bundler-1.7.2...
+</span><span class='line'>martinusadyh@martinusadyh ~/octopress $ rbenv rehash
+</span><span class='line'>martinusadyh@martinusadyh ~/octopress $ bundle install
+</span><span class='line'>Fetching gem metadata from https://rubygems.org/........
+</span><span class='line'>Resolving dependencies...
+</span><span class='line'>Installing rake 10.3.2
+</span><span class='line'>Installing RedCloth 4.2.9
+</span><span class='line'>Installing blankslate 2.1.2.4
+</span><span class='line'>Installing timers 1.1.0
+</span><span class='line'>Installing celluloid 0.15.2
+</span><span class='line'>Installing chunky_png 1.3.1
+</span><span class='line'>Installing fast-stemmer 1.0.2
+</span><span class='line'>Installing classifier-reborn 2.0.1
+</span><span class='line'>Installing coffee-script-source 1.8.0
+</span><span class='line'>Installing execjs 2.2.1
+</span><span class='line'>Installing coffee-script 2.3.0
+</span><span class='line'>Installing colorator 0.1
+</span><span class='line'>Installing fssm 0.2.10
+</span><span class='line'>Installing sass 3.2.19
+</span><span class='line'>Installing compass 0.12.7
+</span><span class='line'>Installing ffi 1.9.3
+</span><span class='line'>Installing tilt 1.4.1
+</span><span class='line'>Installing haml 4.0.5
+</span><span class='line'>Installing jekyll-coffeescript 1.0.1
+</span><span class='line'>Installing jekyll-gist 1.1.0
+</span><span class='line'>Installing jekyll-paginate 1.0.0
+</span><span class='line'>Installing jekyll-sass-converter 1.2.1
+</span><span class='line'>Installing rb-fsevent 0.9.4
+</span><span class='line'>Installing rb-inotify 0.9.5
+</span><span class='line'>Installing listen 2.7.9
+</span><span class='line'>Installing jekyll-watch 1.1.0
+</span><span class='line'>Installing kramdown 1.4.1
+</span><span class='line'>Installing liquid 2.6.1
+</span><span class='line'>Installing mercenary 0.3.4
+</span><span class='line'>Installing posix-spawn 0.3.9
+</span><span class='line'>Installing yajl-ruby 1.1.0
+</span><span class='line'>Installing pygments.rb 0.6.0
+</span><span class='line'>Installing redcarpet 3.1.2
+</span><span class='line'>Installing safe_yaml 1.0.3
+</span><span class='line'>Installing parslet 1.5.0
+</span><span class='line'>Installing toml 0.1.1
+</span><span class='line'>Installing jekyll 2.3.0
+</span><span class='line'>Installing jekyll-sitemap 0.5.1
+</span><span class='line'>Installing octopress-hooks 2.2.1
+</span><span class='line'>Installing octopress-date-format 2.0.1
+</span><span class='line'>Installing rack 1.5.2
+</span><span class='line'>Installing rack-protection 1.5.3
+</span><span class='line'>Installing rdiscount 2.1.7.1
+</span><span class='line'>Installing rubypants 0.2.0
+</span><span class='line'>Installing sass-globbing 1.0.0
+</span><span class='line'>Installing sinatra 1.4.5
+</span><span class='line'>Installing stringex 1.4.0
+</span><span class='line'>Using bundler 1.7.2
+</span><span class='line'>Your bundle is complete!
+</span><span class='line'>Use `bundle show [gemname]` to see where a bundled gem is installed.
+</span><span class='line'>Post-install message from haml:
+</span><span class='line'>
+</span><span class='line'>HEADS UP! Haml 4.0 has many improvements, but also has changes that may break
+</span><span class='line'>your application:
+</span><span class='line'>
+</span><span class='line'>* Support for Ruby 1.8.6 dropped
+</span><span class='line'>* Support for Rails 2 dropped
+</span><span class='line'>* Sass filter now always outputs &lt;style&gt; tags
+</span><span class='line'>* Data attributes are now hyphenated, not underscored
+</span><span class='line'>* html2haml utility moved to the html2haml gem
+</span><span class='line'>* Textile and Maruku filters moved to the haml-contrib gem
+</span><span class='line'>
+</span><span class='line'>For more info see:
+</span><span class='line'>
+</span><span class='line'>http://rubydoc.info/github/haml/haml/file/CHANGELOG.md
+</span><span class='line'>
+</span><span class='line'>martinusadyh@martinusadyh ~/octopress $</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Jika semua proses diatas selesai, sekarang jalankan perintah <code>rake generate &amp;&amp; rake preview</code> untuk melihat blog kita di localhost :) Supaya lebih memudahkan menjalankan perintah <code>rake</code> di kemudian hari, tambahkan perintah <code>source /home/martinusadyh/.rvm/scripts/rvm</code> di <code>.bashrc</code> dengan cara seperti dibawah ini :</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~/octopress $ echo "source /home/martinusadyh/.rvm/scripts/rvm" &gt;&gt; ~/.bashrc</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>Yaps dan sekarang kita sudah bisa nge-blog lagi :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Martinus Ady H</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-04T19:04:48+07:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, created 3/1/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0995130352"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br />
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/" title="Previous Post: Perjalanan ke Kasepuhan Ciptagelar">&laquo; Perjalanan ke Kasepuhan Ciptagelar</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <li class="post">
+        Software Developer yang tinggal di Jakarta dan sedang tergila-gila dengan semua kegiatan outdoor :)
+        <br /><br />
+        <img src="/images/blog-images/about/avatar.jpg">
+    </li>
+    <li class="post">
+        <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
+    </li>
+    <li class="post">
+        <i class="fa fa-facebook"></i><a href="https://www.facebook.com/martinusadyh" target="_blank"> facebook.com/martinusadyh</a>
+    </li>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/21/persiapan-sebelum-melakukan-pendakian/">Persiapan Sebelum Melakukan Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Martinus Ady H -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'martinusadyhblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/';
+        var disqus_url = 'http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=542765635800767&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

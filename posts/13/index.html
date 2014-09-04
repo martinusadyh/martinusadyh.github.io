@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Here it is! We are back and present you with the June issue of BSD magazine. As you may have noticed, this month’s issue is a little bit thicker than &hellip;">
+  <meta name="description" content="Setelah webcam terdeteksi di Slackware melalui bantuan aplikasi Cheese, sekarang waktunya untuk mencoba menginstall googletalk-plugin dari google :) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/06/19/enabling-multilib-on-slackware64-13-37/">Enabling Multilib on Slackware64 13.37</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-19T23:32:06+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/06/19/enabling-multilib-on-slackware64-13-37/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah webcam terdeteksi di Slackware melalui bantuan aplikasi Cheese, sekarang waktunya untuk mencoba menginstall googletalk-plugin dari google :) Kenapa tidak menggunakan Skype ? Karena menurut pendapat saya Skype itu lebih berat daripada Google Talk :D Nah minggu kemarin ketika menginstall googletalk-plugin di Slackware64, ternyata googletalk-plugin ini membutuhkan library untuk arsitektur 32 bit dan ini bisa kita lihat dengan perintah <code>file /opt/google/talkplugin/*</code> seperti dibawah ini :</p>
+
+<pre><code>root@artivisi:/mnt/DATA/SLACKBUILDS/googletalk-plugin# file /opt/google/talkplugin/*
+/opt/google/talkplugin/GoogleTalkPlugin:         ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), stripped
+/opt/google/talkplugin/cron:                     directory
+/opt/google/talkplugin/lib:                      directory
+/opt/google/talkplugin/libnpgoogletalk64.so:     ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped
+/opt/google/talkplugin/libnpgtpo3dautoplugin.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped
+/opt/google/talkplugin/openssl.txt:              ASCII English text
+/opt/google/talkplugin/windowpicker.glade:       XML document text
+</code></pre>
+
+<p>Dari hasil perintah diatas, kita bisa melihat bahwa file <code>/opt/google/talkplugin/GoogleTalkPlugin</code> ternyata merupakan file executable untuk arsitektur 32bit, nah untung-nya di Slackware64 sudah mendukung penggunaan multilib yang maksudnya kita bisa menggunakan aplikasi berbasis 32bit di arsitektur 64bit :) Dengan mengaktifkan dukungan multilib pada Slackware64, maka kita akan dapat menggunakan aplikasi seperti Skype, Wine atau aplikasi 32bit lain-nya yang belum terdapat di arsitektur 64 bit :)</p>
+
+<p>Nah tulisan ini murni merupakan langkah-langkah yang sudah dijelaskan pada halaman <a href="http://alien.slackbook.org/dokuwiki/doku.php?id=slackware:multilib">Multilib Slackware for x86_64</a>, dan saya posting ulang disini supaya <strong>saya tidak lupa apa yang saya lakukan sekarang</strong> :D</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/06/19/enabling-multilib-on-slackware64-13-37/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -361,67 +420,6 @@ Dikutip dari <a href="http://www.tabloidnova.com/">Tabloid NOVA No. 662/XIII</a>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2011/05/13/emas-sebagai-penangkal-inflasi/">Emas Sebagai Penangkal Inflasi</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-13T21:45:27+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2011/05/13/emas-sebagai-penangkal-inflasi/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Oleh: Safir Senduk
-Dikutip dari <a href="http://detik.com">detik.com</a></p>
-
-<p>Banyak orang percaya emas adalah produk investasi yang bisa menangkal inflasi. Dan memang, sejarah membuktikan emas akan diborong orang apabila terjadi kepanikan yang bisa membahayakan ekonomi negara, seperti inflasi tinggi, krisis keuangan, atau perang.</p>
-
-<p>Inflasi merupakan kenaikan harga barang dan jasa secara umum. Inflasi bisa menggerogoti uang Anda. Kalau asumsi inflasi 15 persen/tahun, maka harga barang &amp; jasa yang sekarang bernilai Rp 5 juta, akan menjadi Rp 10,06 juta atau dua kali lipat pada tahun ke-6, dan Rp 15,3 juta atau tiga kali lipat pada tahun ke-9, dan seterusnya.</p>
-
-<p>Menurut keparahannya, ada tiga tipe inflasi:</p>
-
-<ol>
-<li><p> <strong>Inflasi Moderat,</strong> yaitu apabila laju inflasi hanya berada di bawah dua digit per tahun (di bawah 10 persen)</p></li>
-<li><p> <strong>Inflasi Ganas,</strong> yaitu apabila laju inflasi berada pada dua digit per tahun (10 persen - 99 persen)</p></li>
-<li><p> <strong>Inflasi Hiper,</strong> yaitu apabila laju inflasi berada pada tiga digit per tahun (100 persen atau lebih)</p></li>
-</ol>
-
-
-<p>Tulisan ini akan membahas tentang apa yang bisa Anda lakukan agar bisa menghadapi inflasi. Bila Anda bukan termasuk pengambil keputusan di pemerintahan, Anda mungkin tidak bisa ikut menurunkan tingkat inflasi. Yang bisa Anda lakukan sebagai individu, hanyalah bagaimana agar Anda bisa mengambil &lsquo;keuntungan&rsquo; dari terjadinya inflasi tersebut. Bagaimana caranya? Saya menyarankan agar Anda melakukan investasi pada instrumen yang akan naik pesat apabila terjadi inflasi tinggi. Apa itu? Emas.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2011/05/13/emas-sebagai-penangkal-inflasi/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="14">&larr; Older</a>
@@ -451,6 +449,10 @@ Dikutip dari <a href="http://detik.com">detik.com</a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -506,10 +508,6 @@ Dikutip dari <a href="http://detik.com">detik.com</a></p>
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>

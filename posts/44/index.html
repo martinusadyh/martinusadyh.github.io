@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Mungkin teman-teman sudah tidak asing dengan tool yang namanya mc atau Midnight Commander di dunia Unix/Linux, yups mc adalah salah satu tool yang &hellip;">
+  <meta name="description" content="Mungkin ada diantara teman-teman yang sudah pernah membikin sebuah custom komponen di Java Swing, nah ada baiknya juga kalau custom komponen tersebut &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/">Membuat Dan Menambahkan Swing Custom Component Ke NetBeans Pallete</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-26T01:47:02+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mungkin ada diantara teman-teman yang sudah pernah membikin sebuah custom komponen di Java Swing, nah ada baiknya juga kalau custom komponen tersebut bisa kita pakai secara berulang-ulang dan kita tinggal melakukan proses <strong>drag-n-drop</strong> saja dari NetBeans Pallete ketika kita ingin menggunakannya. Tentunya lebih mudah bukan dengan proses seperti itu, daripada kita harus manual menulis kode untuk komponen yang sudah kita bikin :)</p>
+
+<p>Sedangkan untuk mulai membuat sebuah Swing komponen yang bisa ditampilkan pada NetBeans Pallete, ada beberapa langkah yang harus kita lakukan yaitu :
+1. Konfigurasi Project. (Pembuatan custom komponen memerlukan setting project <strong>khusus</strong> menurut saya loh ini :D )
+2. Menulis Kode Yang Ingin Di Jadikan Sebagai Custom Komponen.
+3. Konfigurasi Icon dan Membuat Class BeanInfo
+4. Edit File Manifest.mf
+5. Build dan sebarkan :)
+6. Menambahkan Ke NetBeans Pallete</p>
+
+<p>Nah setelah kita tahu langkah-langkah yang harus kita lakukan, maka siapkan dahulu sebungkus Marlboro Putih dan segelas susu coklat untuk menemani perjalanan ke planet Java dan mari kita mulai dari langkah pertama :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/05/26/membuat-dan-menambahkan-swing-custom-component-ke-netbeans-pallete/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -381,11 +436,11 @@ MPlayer-1.0rc2/libpostproc/Makefile
 
   <div class="entry-content"><p>Wah akhirnya <a href="http://www.belajaronline.web.id/downloads/zencafe-2.0.iso">Zencafe 2.0</a> Release euy &hellip; salut deh buat temen-temen di <a href="http://www.awali.org/">AWALI</a> yang udah berusaha semaksimal mungkin untuk tetep <strong>keukeuh</strong> ngembangin Zencafe :)</p>
 
-<p>Sedangkan press release ini saya ketahui dari postingan om <a href="http://redmouse-ku.com">Romi</a> ke milis <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#x6c;&#x69;&#x6e;&#x75;&#x78;&#x2d;&#97;&#107;&#116;&#105;&#x76;&#105;&#115;&#64;&#108;&#x69;&#110;&#117;&#120;&#x2e;&#x6f;&#x72;&#x2e;&#x69;&#x64;">&#x6c;&#105;&#x6e;&#117;&#120;&#x2d;&#97;&#x6b;&#116;&#x69;&#x76;&#x69;&#115;&#x40;&#x6c;&#105;&#x6e;&#x75;&#x78;&#x2e;&#111;&#114;&#46;&#105;&#100;</a> yang isinya kurang lebih seperti berikut :</p>
+<p>Sedangkan press release ini saya ketahui dari postingan om <a href="http://redmouse-ku.com">Romi</a> ke milis <a href="&#109;&#97;&#105;&#108;&#x74;&#111;&#58;&#x6c;&#105;&#110;&#117;&#x78;&#x2d;&#97;&#x6b;&#x74;&#x69;&#x76;&#105;&#115;&#64;&#108;&#105;&#x6e;&#117;&#120;&#46;&#111;&#x72;&#x2e;&#105;&#x64;">&#x6c;&#105;&#x6e;&#x75;&#120;&#45;&#97;&#107;&#116;&#105;&#118;&#105;&#x73;&#x40;&#x6c;&#105;&#110;&#x75;&#120;&#46;&#111;&#x72;&#x2e;&#105;&#x64;</a> yang isinya kurang lebih seperti berikut :</p>
 
 <blockquote><p>Date: Thu, 9 Apr 2009 18:54:44 +0700
 From: redmouse internet cafe
-To: <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#108;&#x69;&#110;&#117;&#x78;&#45;&#x61;&#x6b;&#x74;&#105;&#x76;&#x69;&#115;&#64;&#108;&#x69;&#110;&#x75;&#120;&#46;&#x6f;&#114;&#46;&#x69;&#x64;">&#108;&#x69;&#x6e;&#117;&#x78;&#x2d;&#97;&#x6b;&#x74;&#105;&#118;&#x69;&#x73;&#x40;&#108;&#105;&#110;&#117;&#120;&#x2e;&#111;&#x72;&#x2e;&#x69;&#x64;</a>
+To: <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#x69;&#x6e;&#117;&#x78;&#x2d;&#x61;&#107;&#x74;&#x69;&#118;&#105;&#115;&#x40;&#108;&#105;&#110;&#x75;&#x78;&#46;&#111;&#114;&#x2e;&#x69;&#100;">&#x6c;&#x69;&#110;&#117;&#x78;&#45;&#97;&#x6b;&#x74;&#x69;&#118;&#105;&#115;&#64;&#108;&#x69;&#110;&#117;&#x78;&#x2e;&#x6f;&#x72;&#46;&#105;&#100;</a>
 Subject: [linux-aktivis] Release terbaru Zencafe 2.0</p></blockquote>
 
 <p>Press Release AWALI :</p>
@@ -466,71 +521,6 @@ Romi Muharyono (AWALI)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/04/09/membuat-database-user-dan-password-di-mysql-berbasis-username-system/">Membuat DataBase, User Dan Password Di MySQL Berbasis Username System</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-09T23:31:52+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/04/09/membuat-database-user-dan-password-di-mysql-berbasis-username-system/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sore tadi waktu ngelihat milis tanya-jawab@linux.or.id, ada pertanyaan dari om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> tentang bagaimana sih cara membuat database, user dan password sekaligus berbasis pada user yang terdaftar pada mesin linux kita.  Nah dibawah ini pertanyaan yang dikirim oleh om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> ke milis <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x74;&#97;&#x6e;&#121;&#97;&#x2d;&#x6a;&#97;&#119;&#x61;&#x62;&#64;&#108;&#x69;&#x6e;&#117;&#120;&#46;&#111;&#x72;&#46;&#105;&#100;">&#116;&#x61;&#110;&#121;&#97;&#45;&#106;&#x61;&#x77;&#97;&#98;&#x40;&#x6c;&#x69;&#110;&#x75;&#x78;&#46;&#111;&#x72;&#46;&#x69;&#100;</a></p>
-
-<blockquote><p>From: &ldquo;Funny Farady Coastera&rdquo;
-To: <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x74;&#x61;&#x6e;&#x79;&#x61;&#x2d;&#x6a;&#x61;&#119;&#97;&#98;&#64;&#108;&#x69;&#x6e;&#117;&#120;&#46;&#111;&#114;&#46;&#105;&#x64;">&#116;&#97;&#x6e;&#x79;&#97;&#45;&#106;&#97;&#x77;&#x61;&#x62;&#x40;&#108;&#x69;&#110;&#x75;&#x78;&#x2e;&#x6f;&#114;&#x2e;&#105;&#x64;</a>
-Date: Thu, 9 Apr 2009 16:35:55 +0700
-Subject: [tanya-jawab] mengatur privilege user mysql secara masal</p></blockquote>
-
-<p>Assalamu&#8217;alaikum Wr. Wb
-Kemarin-kemarin saya sudah pernah nanyain cara membuat user secara masal
-menggunakan adduser, sekarang saya mau ngelanjutin pertanyaannya, itu juga
-kalau boleh. Ada tidak script yang mampu membuat database sesuai dengan nama
-usernya, password jg sesuai dengan nama usernya kemudian mempunyai privilege
-select, create, insert, edit, khusus untuk database tersebut (satu user satu
-database)</p>
-
-<p>Mohon kalau ada scriptnya, bisa di sharing.. guna pembelajaran bersama.
-NB, via console yah.. Bisa pake python, perl atau yang lainnya.. sangat d
-mohon bantuannya.
-BTW, kalau thread ini masuk kategori programming mohon di pindah</p>
-
-<p>Wassalamu&#8217;alaikum Wr. Wb</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/04/09/membuat-database-user-dan-password-di-mysql-berbasis-username-system/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="45">&larr; Older</a>
@@ -560,6 +550,10 @@ BTW, kalau thread ini masuk kategori programming mohon di pindah</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -615,10 +609,6 @@ BTW, kalau thread ini masuk kategori programming mohon di pindah</p>
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>

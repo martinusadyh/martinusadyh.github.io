@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Buat teman-teman yang ingin menginstall OpenOffice tapi tidak mempunyai koneksi internet untuk melakukan proses installasi via IPS (Image Packaging &hellip;">
+  <meta name="description" content="Pertama-tama download dulu Flash Player 10 nya dari situs Adobe seperti gambar dibawah ini : Download Flash Player Setelah proses download selesai, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/03/28/installing-flash-player-10-di-opensolaris-200811/">Installing Flash Player 10 Di OpenSolaris 2008.11</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-28T19:20:40+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/03/28/installing-flash-player-10-di-opensolaris-200811/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pertama-tama download dulu Flash Player 10 nya dari situs <a href="http://get.adobe.com/flashplayer/">Adobe</a> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3391388667/"><img src="http://farm4.static.flickr.com/3433/3391388667_a4cb6d8ff5.jpg" alt="Screenshot" /><br/>
+Download Flash Player</a></p>
+
+<p>Setelah proses download selesai, ekstrak dengan perintah seperti dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]$ tar xvf flash_player_10_solaris_x86.tar.bz2
+flash_player_10_solaris_r22_87_x86/
+flash_player_10_solaris_r22_87_x86/libflashplayer.so
+[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]$
+</code></pre>
+
+<p>Ganti akses user anda ke root dengan perintah <strong>su</strong> kemudian copykan file <strong>libflashplayer.so</strong> ke direktori <strong>/usr/lib/firefox/plugins/</strong> seperti dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]$ ls
+flash_player_10_solaris_r22_87_x86  flash_player_10_solaris_x86.tar.bz2
+[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]$ su
+Password:
+[martin@opensolarisbox:~/Desktop/Solaris/flashplayer]# cp flash_player_10_solaris_r22_87_x86/libflashplayer.so /usr/lib/firefox/plugins/
+</code></pre>
+
+<p>Jalankan firefox dan cek apakah plugin sudah terinstall atau belum dengan mengetikkan <strong>about:plugins</strong> pada firefox seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3391388669/"><img src="http://farm4.static.flickr.com/3544/3391388669_486c226ebf.jpg" alt="Screenshot-1" /><br/>
+Plugin Flash Player Sudah Terinstall</a></p>
+
+<p>Sekarang kita sudah bisa bermain-main dengan file flash di OpenSolaris :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -364,103 +429,6 @@ FileSize : 96.8 MB</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/03/10/trying-opensolaris-200811/">Trying OpenSolaris 2008.11</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-03-10T22:25:36+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/03/10/trying-opensolaris-200811/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Fyuh akhirnya setelah sekian lama pingin cobain themes GTK Nimbus, akhirnya kesampaian juga kemarin install OpenSolaris 2008.11 di laptop kantor (Acer Aspire 5500Z ) :) (Tepatnya laptopnya <a href="http://ifnu.artivisi.com/">mas Ifnu</a> :D ).</p>
-
-<p>Proses instal sebenarnya juga ga begitu mulus sih, sehabis boot via CD ternyata berhenti di proses probing device :( luaaaaaaaama banget. Setelah tanya-tanya ke paman google, akhirnya dapat link <a href="http://blogs.sun.com/danasblog/entry/configuring_solaris_acpi_at_boot">disini</a>. Akhirnya dengan modal tekad dan nekat, coba lagi dah dengan menambahkan opsi <strong>acpi-user-options=0x8</strong> akhirnya tampil deh GNOME 2.24.0 dengan themes Nimbus idaman saya :)</p>
-
-<p>Proses instalasi OpenSolaris ga begitu sulit ternyata, cukup mudah dan tinggal ikutin langkah-langkah yang udah dijelasin ama om Rachmat <a href="http://w3hol.wordpress.com/2009/02/14/install-opensolaris-itu-mudah/">disini</a>. Seperti yang udah om Rachmat katakan, proses instalasi yang saya lakukan juga ga begitu sulit koq tinggal Next, Next dan Done :)</p>
-
-<p>Tapi setelah proses instalasi selesai ternyata timbul masalah baru lagi, saya lupa backup grub Ubuntu 8.10 yang saya pakai tiap hari :(( . Yah akhirnya mau ga mau cari LiveCD Ubuntu kemudian copy file menu.lst punya Ubuntu dan paste ke grub-nya OpenSolaris yang terdapat di <strong>/rpool/boot/grub</strong> dan hasil akhir menu.lst saya adalah sebagai berikut :</p>
-
-<pre><code>splashimage /boot/grub/splash.xpm.gz
-background 215ECA
-timeout 30
-default 0
-#---------- ADDED BY BOOTADM - DO NOT EDIT ----------
-title OpenSolaris 2008.11 snv_101b_rc2 X86
-findroot (pool_rpool,3,a)
-splashimage /boot/solaris.xpm
-foreground d25f00
-background 115d93
-bootfs rpool/ROOT/opensolaris
-kernel$ /platform/i86pc/kernel/$ISADIR/unix -B $ZFS-BOOTFS,console=graphics,acpi-user-options=0x8
-module$ /platform/i86pc/$ISADIR/boot_archive
-#---------------------END BOOTADM--------------------
-
-# Unknown partition of type 131 found on /dev/rdsk/c3d0p0 partition: 1
-# It maps to the GRUB device: (hd0,0) .
-
-# Unknown partition of type 5 found on /dev/rdsk/c3d0p0 partition: 2
-# It maps to the GRUB device: (hd0,1) .
-
-# Unknown partition of type 131 found on /dev/rdsk/c3d0p0 partition: 3
-# It maps to the GRUB device: (hd0,2) .
-
-title OpenSolaris 2008.11 snv_101b_rc2 X86 text boot
-findroot (pool_rpool,3,a)
-bootfs rpool/ROOT/opensolaris
-kernel$ /platform/i86pc/kernel/$ISADIR/unix -B $ZFS-BOOTFS,acpi-user-options=0x8
-module$ /platform/i86pc/$ISADIR/boot_archive
-
-#--------------- UBUNTU -------------------------------------
-title       Ubuntu 8.10, kernel 2.6.27-7-generic
-uuid        1ddb05f1-298e-4d0e-a308-fc7d31279eb0
-root            (hd0,0)
-kernel      /boot/vmlinuz-2.6.27-7-generic root=UUID=1ddb05f1-298e-4d0e-a308-fc7d31279eb0 ro quiet splash
-initrd      /boot/initrd.img-2.6.27-7-generic
-quiet
-
-title       Ubuntu 8.10, kernel 2.6.27-7-generic (recovery mode)
-uuid        1ddb05f1-298e-4d0e-a308-fc7d31279eb0
-root            (hd0,0)
-kernel      /boot/vmlinuz-2.6.27-7-generic root=UUID=1ddb05f1-298e-4d0e-a308-fc7d31279eb0 ro  single
-initrd      /boot/initrd.img-2.6.27-7-generic
-#--------------- END UBUNTU -------------------------------------
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/03/10/trying-opensolaris-200811/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="47">&larr; Older</a>
@@ -490,6 +458,10 @@ initrd      /boot/initrd.img-2.6.27-7-generic
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -545,10 +517,6 @@ initrd      /boot/initrd.img-2.6.27-7-generic
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>

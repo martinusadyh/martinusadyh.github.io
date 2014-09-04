@@ -10,8 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Sedang mempunyai masalah bagaimana caranya mendeteksi sesi yang sedang idle di aplikasi yang menggunakan Dojo ? Sebenarnya Dojo juga sudah mempunyai &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +87,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2012/07/11/detecting-session-idle-with-dojo/">Detecting Session Idle With Dojo</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-11T03:15:40+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2012/07/11/detecting-session-idle-with-dojo/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sedang mempunyai masalah bagaimana caranya mendeteksi sesi yang sedang <strong>idle</strong> di aplikasi yang menggunakan <a href="">Dojo</a> ? Sebenarnya <strong>Dojo</strong> juga sudah mempunyai sebuah <strong>plugin</strong> yaitu <code>dojox.analytics.plugins.idle</code> yang terdapat pada package <a href="http://dojotoolkit.org/api/">dojox.analytics</a>. Sedangkan untuk cara penggunan-nya adalah kita bisa menambahkan parameter <code>idleTime</code> dan <code>analyticsUrl</code> pada <code>dojoConfig</code> yang kurang lebih seperti berikut :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">dojoConfig</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">isDebug</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">idleTime</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">sendInterval</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">analyticsUrl</span><span class="o">:</span> <span class="s1">&#39;http://localhost:10000/monitor/idle&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">modulePaths</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">app</span><span class="o">:</span> <span class="s1">&#39;../../../app&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Selain itu, import-lah juga package <code>dojox.analytics</code> dan <code>dojox.analytics.plugins.idle</code> supaya plugin <strong>idle</strong> dapat digunakan. Dengan kode seperti diatas, harusnya jika aplikasi kita tidak melakukan apapun selama 3 detik maka <strong>Dojo</strong> akan mengirimkan <code>POST</code> request ke alamat <code>http://localhost:10000/monitor/idle</code>. Nah yang jadi masalah disini adalah, sekarang bagaimana caranya menghandle jika di sisi browser sudah melewati batasan waktu 3 detik apa yang harus dilakukan di sisi client ??? :D (Karena dari sisi aplikasi, aplikasi hanya akan mengirimkan <code>POST</code> request ke server dengan informasi <code>idle</code> saja)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/07/11/detecting-session-idle-with-dojo/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -312,64 +381,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2012/01/18/sopa-dan-pipa-yang-menghebohkan-dunia-internet/">SOPA Dan PIPA Yang Menghebohkan Dunia Internet</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-18T23:26:01+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2012/01/18/sopa-dan-pipa-yang-menghebohkan-dunia-internet/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hari ini, <strong>Rabu 18 Januari 2012</strong> benar-benar hari yang sangat menghebohkan dunia persilatan di ranah Internet. Ini dikarenakan ada-nya undang-undang yang sedang digodok yaitu SOPA <a href="https://en.wikipedia.org/wiki/Stop_Online_Piracy_Act">(Stop Online Piracy Act)</a> dan PIPA <a href="https://en.wikipedia.org/wiki/PROTECT_IP_Act">(Protect IP Act)</a>. Karena 2 RUU ini, ada banyak situs-situs besar melakukan aksi <strong>blackout</strong> untuk menolak-nya. Dari banyak-nya situs yang melakukan <strong>blackout</strong>, dibawah ini merupakan beberapa tampilan situs yang melakukan <strong>blackout</strong> yang sempat saya lihat sendiri :</p>
-
-<ol>
-<li><p> <strong>Wikipedia</strong>
-<a href="http://martinusadyh.web.id/wp-content/uploads/2012/01/Wikipedia.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/01/Wikipedia-300x168.png" alt="" /></a>
-<a href="http://en.wikipedia.org/wiki/Main_Page">Aksi Blackout Wikipedia</a></p></li>
-<li><p> <strong>GNU</strong>
-<a href="http://martinusadyh.web.id/wp-content/uploads/2012/01/gnu.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/01/gnu-300x168.png" alt="" /></a>
-<a href="http://gnu.org/">Aksi Blackout GNU</a></p></li>
-<li><p> <strong>WordPress</strong>
-<a href="http://martinusadyh.web.id/wp-content/uploads/2012/01/wp.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/01/wp-300x168.png" alt="" /></a>
-<a href="http://wordpress.com/">Aksi Blackout WordPress</a></p></li>
-</ol>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/01/18/sopa-dan-pipa-yang-menghebohkan-dunia-internet/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="10">&larr; Older</a>
@@ -399,6 +410,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -454,10 +469,6 @@
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>

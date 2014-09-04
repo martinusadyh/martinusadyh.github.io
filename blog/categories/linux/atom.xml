@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: linux | Martinus Ady H. BloG]]></title>
+  <link href="http://martinusadyh.web.id/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://martinusadyh.web.id/"/>
+  <updated>2014-09-04T20:11:37+07:00</updated>
+  <id>http://martinusadyh.web.id/</id>
+  <author>
+    <name><![CDATA[Martinus Ady H]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Octopress in Linux Mint]]></title>
+    <link href="http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/"/>
+    <updated>2014-09-04T19:04:48+07:00</updated>
+    <id>http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint</id>
+    <content type="html"><![CDATA[<p>Sudah sejak lama saya sebenarnya saya migrasi blog dari <em>platform</em> <a href="http://wordpress.com">WordPress</a> ke <em>static</em> blog, alasan utama-nya adalah ingin mengejar <em>loading page</em> yang lebih cepat dan supaya setiap postingan saya bisa di simpan di <a href="http://git-scm.com/">Git</a> (tentu-nya dengan menggunakan <em>repo</em> gratisan di <a href="https://github.com/">GitHub</a>) :D :) Dari banyak-nya pilihan <em>static blog generator</em> yang bisa dilihat di <a href="https://www.staticgen.com/">StaticGen</a>, saya akhirnya memutuskan untuk menggunakan <a href="http://octopress.org">Octopress</a> dikarenakan <strong>Octopress</strong> merupakan <em>static blog generator</em> yang paling populer saat ini dan tutorial setup-nya juga sudah dibuatkan oleh pak <a href="https://www.facebook.com/endy.muhardin?fref=ts">Endy Muhardin</a> di tulisan <a href="http://software.endy.muhardin.com/aplikasi/terima-kasih-wordpress/">Terima Kasih WordPress</a> :D</p>
+
+<p>Nah yang jadi masalah saya adalah karena <strong>Octopress</strong> ini dibuat dengan bahasa pemrograman ruby yang mana saya bener-bener buta :( . Karena kemarin sempat 3 kali setup ruby untuk kepentingan <strong>Octopress</strong> baru berhasil dan sukses menjalankan perintah <code>rake generate &amp;&amp; rake preview</code>, akhirnya saya putuskan untuk men-dokumentasikan langkah-langkah tersebut pada postingan kali ini :)</p>
+
+<p>Semua langkah-langkah ini dijalankan di sistem operasi Linux Mint 17 dengan kondisi <em>fresh install</em> , jadi memang semua kebutuhan juga belum ada. Langkah pertama yang harus dilakukan adalah install dulu <em>library</em> yang dibutuhkan dengan menjalankan perintah <code>sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev curl</code> seperti dibawah ini :
+<code>
+martinusadyh@martinusadyh ~ $ sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev curl
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+libreadline6 is already the newest version.
+zlib1g is already the newest version.
+The following packages were automatically installed and are no longer required:
+  libmysqlcppconn7 libodbc1 libvsqlitepp3 python-pyodbc
+Use 'apt-get autoremove' to remove them.
+The following extra packages will be installed:
+  dpkg-dev g++ g++-4.8 libbison-dev libc-dev-bin libc6-dev libstdc++-4.8-dev
+  libtinfo-dev libyaml-0-2 m4
+Suggested packages:
+  autoconf2.13 autoconf-archive gnu-standards autoconf-doc libtool bison-doc
+  debian-keyring g++-multilib g++-4.8-multilib gcc-4.8-doc libstdc++6-4.8-dbg
+  glibc-doc libstdc++-4.8-doc
+Recommended packages:
+  automake automaken libalgorithm-merge-perl libssl-doc
+The following NEW packages will be installed:
+  autoconf bison build-essential dpkg-dev g++ g++-4.8 libbison-dev
+  libc-dev-bin libc6-dev libreadline6-dev libssl-dev libstdc++-4.8-dev
+  libtinfo-dev libyaml-0-2 libyaml-dev m4 zlib1g-dev
+0 upgraded, 17 newly installed, 0 to remove and 44 not upgraded.
+Need to get 13.6 MB of archives.
+After this operation, 56.7 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+...
+...
+Setting up libreadline6-dev:amd64 (6.3-4ubuntu2) ...
+Setting up zlib1g-dev:amd64 (1:1.2.8.dfsg-1ubuntu1) ...
+Setting up libssl-dev:amd64 (1.0.1f-1ubuntu2.5) ...
+Setting up libyaml-dev:amd64 (0.1.4-3ubuntu3) ...
+Processing triggers for libc-bin (2.19-0ubuntu6.3) ...
+martinusadyh@martinusadyh ~ $
+</code></p>
+
+<!-- more -->
+
+
+<p>Karena kita menggunakan <a href="http://octopress.org/docs/setup/rvm/">RVM</a> untuk menginstall ruby, maka lanjutkan dengan mendownload <strong>RVM</strong> dengan perintah <code>curl -L https://get.rvm.io | bash -s stable --ruby</code> kemudian jalankan perintah <code>source /home/martinusadyh/.rvm/scripts/rvm</code> supaya kita bisa langsung menggunakan <strong>RVM</strong> seperti dibawah ini :
+&#8220;`
+martinusadyh@martinusadyh ~ $ curl -L <a href="https://get.rvm.io">https://get.rvm.io</a> | bash -s stable &ndash;ruby
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   184  100   184    0     0     61      0  0:00:03  0:00:02  0:00:01    61
+100 20776  100 20776    0     0   3965      0  0:00:05  0:00:05 &ndash;:&ndash;:&ndash; 17532
+Downloading <a href="https://github.com/wayneeseguin/rvm/archive/stable.tar.gz">https://github.com/wayneeseguin/rvm/archive/stable.tar.gz</a></p>
+
+<p>Installing RVM to /home/martinusadyh/.rvm/
+    Adding rvm PATH line to /home/martinusadyh/.profile /home/martinusadyh/.bashrc /home/martinusadyh/.zshrc.
+    Adding rvm loading line to /home/martinusadyh/.bash_profile /home/martinusadyh/.zlogin.
+    Fixing environment for <em>.
+Unknown ruby interpreter version (do not know how to handle): </em>.
+Installation of RVM in /home/martinusadyh/.rvm/ is almost complete:</p>
+
+<ul>
+<li>To start using RVM you need to run <code>source /home/martinusadyh/.rvm/scripts/rvm</code>
+in all your open shell windows, in rare cases you need to reopen all shell windows.</li>
+</ul>
+
+
+<h1>Martinus Ady H,</h1>
+
+<p>#</p>
+
+<h1>Thank you for using RVM!</h1>
+
+<h1>We sincerely hope that RVM helps to make your life easier and more enjoyable!!!</h1>
+
+<p>#</p>
+
+<h1>~Wayne, Michal &amp; team.</h1>
+
+<p>In case of problems: <a href="http://rvm.io/help">http://rvm.io/help</a> and <a href="https://twitter.com/rvm_io">https://twitter.com/rvm_io</a></p>
+
+<ul>
+<li><p>WARNING: You have &lsquo;~/.profile&rsquo; file, you might want to load it,
+to do that add the following line to &lsquo;/home/martinusadyh/.bash_profile&rsquo;:</p>
+
+<p>  source ~/.profile</p></li>
+</ul>
+
+
+<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x77;&#x61;&#x79;&#x6e;&#x65;&#101;&#115;&#x65;&#103;&#117;&#x69;&#x6e;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#119;&#x61;&#121;&#110;&#x65;&#101;&#x73;&#101;&#x67;&#x75;&#105;&#110;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a>, Michal Papis <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x6d;&#112;&#x61;&#112;&#105;&#115;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">&#x6d;&#112;&#97;&#112;&#x69;&#115;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
+Searching for binary rubies, this might take some time.
+No binary rubies available for: mint/17/x86_64/ruby-2.1.2.
+Continuing with compilation. Please read &lsquo;rvm help mount&rsquo; to get more information on binary rubies.
+Checking requirements for mint.
+Installing requirements for mint.
+Updating system&hellip;&hellip;&hellip;&hellip;
+Installing required packages: libsqlite3-dev, sqlite3, libgdbm-dev, libncurses5-dev, automake, libtool, libffi-dev&hellip;&hellip;&hellip;.
+Requirements installation successful.
+Found user configured &lsquo;-j&rsquo; flag in &lsquo;rvm_make_flags&rsquo;, pleae note that RVM can detect number of CPU threads and set the &lsquo;-j&rsquo; flag automatically if you do not set it.
+Installing Ruby from source to: /home/martinusadyh/.rvm/rubies/ruby-2.1.2, this may take a while depending on your cpu(s)&hellip;
+ruby-2.1.2 - #downloading ruby-2.1.2, this may take a while depending on your connection&hellip;
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 11.4M  100 11.4M    0     0   345k      0  0:00:33  0:00:33 &ndash;:&ndash;:&ndash;  477k
+ruby-2.1.2 - #extracting ruby-2.1.2 to /home/martinusadyh/.rvm/src/ruby-2.1.2&hellip;.
+ruby-2.1.2 - #configuring&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+ruby-2.1.2 - #post-configuration.
+ruby-2.1.2 - #compiling&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+ruby-2.1.2 - #installing&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+ruby-2.1.2 - #making binaries executable..
+Rubygems 2.2.2 already available in installed ruby, skipping installation, use &ndash;force to reinstall.
+ruby-2.1.2 - #gemset created /home/martinusadyh/.rvm/gems/ruby-2.1.2@global
+ruby-2.1.2 - #importing gemset /home/martinusadyh/.rvm/gemsets/global.gems&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+ruby-2.1.2 - #generating global wrappers&hellip;&hellip;..
+ruby-2.1.2 - #gemset created /home/martinusadyh/.rvm/gems/ruby-2.1.2
+ruby-2.1.2 - #importing gemsetfile /home/martinusadyh/.rvm/gemsets/default.gems evaluated to empty gem list
+ruby-2.1.2 - #generating default wrappers&hellip;&hellip;..
+ruby-2.1.2 - #adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
+Install of ruby-2.1.2 - #complete
+Ruby was built without documentation, to build it run: rvm docs generate-ri
+Creating alias default for ruby-2.1.2&hellip;</p>
+
+<ul>
+<li>To start using RVM you need to run <code>source /home/martinusadyh/.rvm/scripts/rvm</code>
+in all your open shell windows, in rare cases you need to reopen all shell windows.
+martinusadyh@martinusadyh ~ $ source /home/martinusadyh/.rvm/scripts/rvm
+&#8220;`</li>
+</ul>
+
+
+<p>Langkah selanjutnya adalah install-lah ruby versi 1.9.3 dengan mengetikkan perintah <code>rvm install 1.9.3</code> dan jalankan perintah <code>rvm use 1.9.3</code> untuk menggunakan ruby versi 1.9.3 seperti dibawah ini :
+&#8220;`
+martinusadyh@martinusadyh ~ $ rvm install 1.9.3
+Searching for binary rubies, this might take some time.
+No binary rubies available for: mint/17/x86_64/ruby-1.9.3-p547.
+Continuing with compilation. Please read &lsquo;rvm help mount&rsquo; to get more information on binary rubies.
+Checking requirements for mint.
+Requirements installation successful.
+Installing Ruby from source to: /home/martinusadyh/.rvm/rubies/ruby-1.9.3-p547, this may take a while depending on your cpu(s)&hellip;
+ruby-1.9.3-p547 - #downloading ruby-1.9.3-p547, this may take a while depending on your connection&hellip;
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 9801k  100 9801k    0     0   381k      0  0:00:25  0:00:25 &ndash;:&ndash;:&ndash;  416k
+ruby-1.9.3-p547 - #extracting ruby-1.9.3-p547 to /home/martinusadyh/.rvm/src/ruby-1.9.3-p547&hellip;.
+ruby-1.9.3-p547 - #applying patch /home/martinusadyh/.rvm/patches/ruby/GH-488.patch.
+ruby-1.9.3-p547 - #configuring&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+ruby-1.9.3-p547 - #post-configuration.
+ruby-1.9.3-p547 - #compiling&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+ruby-1.9.3-p547 - #installing&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+ruby-1.9.3-p547 - #making binaries executable..
+ruby-1.9.3-p547 - #downloading rubygems-2.2.2
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  404k  100  404k    0     0  65039      0  0:00:06  0:00:06 &ndash;:&ndash;:&ndash;  104k
+No checksum for downloaded archive, recording checksum in user configuration.
+ruby-1.9.3-p547 - #extracting rubygems-2.2.2&hellip;.
+ruby-1.9.3-p547 - #removing old rubygems&hellip;&hellip;&hellip;
+ruby-1.9.3-p547 - #installing rubygems-2.2.2&hellip;&hellip;&hellip;&hellip;&hellip;
+ruby-1.9.3-p547 - #gemset created /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547@global
+ruby-1.9.3-p547 - #importing gemset /home/martinusadyh/.rvm/gemsets/global.gems&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+ruby-1.9.3-p547 - #generating global wrappers&hellip;&hellip;..
+ruby-1.9.3-p547 - #gemset created /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547
+ruby-1.9.3-p547 - #importing gemsetfile /home/martinusadyh/.rvm/gemsets/default.gems evaluated to empty gem list
+ruby-1.9.3-p547 - #generating default wrappers&hellip;&hellip;..
+ruby-1.9.3-p547 - #adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
+Install of ruby-1.9.3-p547 - #complete
+WARNING: Please be aware that you just installed a ruby that is no longer maintained (2014-02-23), for a list of maintained rubies visit:</p>
+
+<pre><code>http://bugs.ruby-lang.org/projects/ruby/wiki/ReleaseEngineering
+</code></pre>
+
+<p>Please consider upgrading to ruby-2.1.2 which will have all of the latest security patches.
+Ruby was built without documentation, to build it run: rvm docs generate-ri</p>
+
+<p>martinusadyh@martinusadyh ~ $ rvm use 1.9.3
+Using /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547
+martinusadyh@martinusadyh ~ $
+&#8220;`</p>
+
+<p>Sampai disini seharusnya ruby sudah terinstall dengan baik dan benar, jalankan perintah <code>ruby --version</code> untuk mengecek hasil installasi diatas.
+<code>
+martinusadyh@martinusadyh ~ $ ruby --version
+ruby 1.9.3p547 (2014-05-14 revision 45962) [x86_64-linux]
+martinusadyh@martinusadyh ~ $
+</code></p>
+
+<p>Setelah ruby terinstall, sekarang masuk ke dalam direktori <strong>Octopress</strong> dan jalankan perintah <code>gem install bundler</code> seperti dibawah ini :
+<code>``
+martinusadyh@martinusadyh ~ $ cd octopress/
+martinusadyh@martinusadyh ~/octopress $ gem install bundler
+Fetching: bundler-1.7.2.gem (100%)
+Successfully installed bundler-1.7.2
+1 gem installed
+Installing ri documentation for bundler-1.7.2...
+Installing RDoc documentation for bundler-1.7.2...
+martinusadyh@martinusadyh ~/octopress $ rbenv rehash
+martinusadyh@martinusadyh ~/octopress $ bundle install
+Fetching gem metadata from https://rubygems.org/........
+Resolving dependencies...
+Installing rake 10.3.2
+Installing RedCloth 4.2.9
+Installing blankslate 2.1.2.4
+Installing timers 1.1.0
+Installing celluloid 0.15.2
+Installing chunky_png 1.3.1
+Installing fast-stemmer 1.0.2
+Installing classifier-reborn 2.0.1
+Installing coffee-script-source 1.8.0
+Installing execjs 2.2.1
+Installing coffee-script 2.3.0
+Installing colorator 0.1
+Installing fssm 0.2.10
+Installing sass 3.2.19
+Installing compass 0.12.7
+Installing ffi 1.9.3
+Installing tilt 1.4.1
+Installing haml 4.0.5
+Installing jekyll-coffeescript 1.0.1
+Installing jekyll-gist 1.1.0
+Installing jekyll-paginate 1.0.0
+Installing jekyll-sass-converter 1.2.1
+Installing rb-fsevent 0.9.4
+Installing rb-inotify 0.9.5
+Installing listen 2.7.9
+Installing jekyll-watch 1.1.0
+Installing kramdown 1.4.1
+Installing liquid 2.6.1
+Installing mercenary 0.3.4
+Installing posix-spawn 0.3.9
+Installing yajl-ruby 1.1.0
+Installing pygments.rb 0.6.0
+Installing redcarpet 3.1.2
+Installing safe_yaml 1.0.3
+Installing parslet 1.5.0
+Installing toml 0.1.1
+Installing jekyll 2.3.0
+Installing jekyll-sitemap 0.5.1
+Installing octopress-hooks 2.2.1
+Installing octopress-date-format 2.0.1
+Installing rack 1.5.2
+Installing rack-protection 1.5.3
+Installing rdiscount 2.1.7.1
+Installing rubypants 0.2.0
+Installing sass-globbing 1.0.0
+Installing sinatra 1.4.5
+Installing stringex 1.4.0
+Using bundler 1.7.2
+Your bundle is complete!
+Use</code>bundle show [gemname]` to see where a bundled gem is installed.
+Post-install message from haml:</p>
+
+<p>HEADS UP! Haml 4.0 has many improvements, but also has changes that may break
+your application:</p>
+
+<ul>
+<li>Support for Ruby 1.8.6 dropped</li>
+<li>Support for Rails 2 dropped</li>
+<li>Sass filter now always outputs <style> tags</li>
+<li>Data attributes are now hyphenated, not underscored</li>
+<li>html2haml utility moved to the html2haml gem</li>
+<li>Textile and Maruku filters moved to the haml-contrib gem</li>
+</ul>
+
+
+<p>For more info see:</p>
+
+<p><a href="http://rubydoc.info/github/haml/haml/file/CHANGELOG.md">http://rubydoc.info/github/haml/haml/file/CHANGELOG.md</a></p>
+
+<p>martinusadyh@martinusadyh ~/octopress $
+&#8220;`</p>
+
+<p>Jika semua proses diatas selesai, sekarang jalankan perintah <code>rake generate &amp;&amp; rake preview</code> untuk melihat blog kita di localhost :) Supaya lebih memudahkan menjalankan perintah <code>rake</code> di kemudian hari, tambahkan perintah <code>source /home/martinusadyh/.rvm/scripts/rvm</code> di <code>.bashrc</code> dengan cara seperti dibawah ini :
+<code>
+martinusadyh@martinusadyh ~/octopress $ echo "source /home/martinusadyh/.rvm/scripts/rvm" &gt;&gt; ~/.bashrc
+</code></p>
+
+<p>Yaps dan sekarang kita sudah bisa nge-blog lagi :)</p>
+]]></content>
+  </entry>
+  
+</feed>

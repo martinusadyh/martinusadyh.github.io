@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Untuk teman-teman sesama pecinta GNOME untuk distribusi Slackware, akhirnya team GNOME SlackBuild (GSB) meluncurkan GNOME 2.26.3 versi Stable untuk &hellip;">
+  <meta name="description" content="Fyuh&hellip; akhirnya berhasil juga meng-enable-kan wireles dengan chipset Broadcom BCM4312 di Slackware 13.0 berkat hint dari Om Arya Sabda di milis &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/09/28/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/">Konfigurasi Broadcom BCM4312 802.11b Di Slackware 13.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-28T04:34:53+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/09/28/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Fyuh&hellip; akhirnya berhasil juga meng-enable-kan wireles dengan chipset Broadcom BCM4312 di <a href="http://slackware.com/">Slackware 13.0</a> berkat <strong>hint</strong> dari <a href="http://aryasabda.dagdigdug.com/">Om Arya Sabda</a> di <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/3d83aff7866747b0">milis id-slackware</a> :)</p>
+
+<p>Sedangkan pada tulisan kali ini hardware yang dicoba yaitu Laptop DELL Inspiron 1320 dengan spesifikasi seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:~# lspci
+...
+...
+0e:00.0 Network controller: Broadcom Corporation BCM4312 802.11b/g (rev 01)
+...
+...
+</code></pre>
+
+<p>Dan <a href="http://slackware.com/">Slackware</a> yang saya pakai yaitu <a href="http://slackware.com/">Slackware 13.0</a> dengan kernel (default kernel bawaan <a href="http://slackware.com/">Slackware 13.0</a>) sebagai berikut :</p>
+
+<pre><code>root@martinusadyh:~# uname -a
+Linux martinusadyh 2.6.29.6-smp #1 SMP Mon Aug 17 00:18:05 CDT 2009 i686 Intel(R) Core(TM)2 Duo CPU     T6500  @ 2.10GHz GenuineIntel GNU/Linux
+root@martinusadyh:~#
+</code></pre>
+
+<p>Setelah mendapatkan <strong>hint</strong> dari <a href="http://aryasabda.dagdigdug.com/">Om Arya Sabda</a>, secara otomatis tujuan utama saya yaitu melihat ke blog <a href="http://somat.web.id/">om Somat</a> yang juga mengalami kejadian yang sama di <a href="http://somat.web.id/2009/sep/08/wifi-broadcom-compaq-cq40-slackware-130/">sini</a>. Solusi Om Somat menggunakan ndiswrapper ternyata, awalnya sih saya juga ingin menggunakan ndiswrapper ngikut ke blog Om Somat :D :) . Tapi gara-gara di google nemu tulisan om Denic <a href="http://makassar-slackers.org/node/193">disini</a> akhirnya penasaran juga cobain untuk pake driver resmi dari Broadcom-nya :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/09/28/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -316,130 +380,6 @@ problem.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/05/adding-license-in-netbeans-ide/">Adding License in NetBeans IDE</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-05T13:43:54+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/09/05/adding-license-in-netbeans-ide/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mau bikin project opensource ? Kalau iya, kita harus pikirkan juga donk lisensi untuk source code yang ingin kita opensource-kan :) Buat teman-teman pengguna NetBeans IDE, pasti pernah donk melihat potongan souce code seperti dibawah ini  :</p>
-
-<pre><code>/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-</code></pre>
-
-<p>Yups.. tampilan kode diatas adalah tampilan standart dari NetBeans IDE setiap kita membuat sebuah file Java baru, nah bagaimana jika kita ingin menambahkan lisensi untuk source code kita menjadi seperti dibawah ini :</p>
-
-<pre><code>/*
- * Copyright (c) 2009, Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * o Redistributions of source code must retain the above copyright notice,
- *   this list of conditions and the following disclaimer.
- * o Redistributions in binary form must reproduce the above copyright
- *   notice, this list of conditions and the following disclaimer in the
- *   documentation and/or other materials provided with the distribution.
- * o Neither the name of the &lt;organization&gt; nor the names of its contributors
- *   may be used to endorse or promote products derived from this software
- *   without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-</code></pre>
-
-<p>Mau pastein lisensi-nya satu persatu diseluruh source code ? Tentunya pekerjaan yang sangat melelahkan donk :D Nah biar cepat, simpan dan modifikasi-lah <strong>Template</strong> lisensi BSD dibawah ini ke dalam komputer anda :</p>
-
-<pre><code>&lt;#if licenseFirst??&gt;
-${licenseFirst}
-
-${licensePrefix} Copyright (c) ${date?date?string("yyyy")} Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;.
-${licensePrefix} All rights reserved.
-${licensePrefix}
-${licensePrefix} Redistribution and use in source and binary forms, with or without
-${licensePrefix} modification, are permitted provided that the following conditions
-${licensePrefix} are met:
-${licensePrefix}
-${licensePrefix} o Redistributions of source code must retain the above copyright notice,
-${licensePrefix}   this list of conditions and the following disclaimer.
-${licensePrefix} o Redistributions in binary form must reproduce the above copyright
-${licensePrefix}   notice, this list of conditions and the following disclaimer in the
-${licensePrefix}   documentation and/or other materials provided with the distribution.
-${licensePrefix} o Neither the name of the &lt;organization&gt; nor the names of its contributors
-${licensePrefix}   may be used to endorse or promote products derived from this software
-${licensePrefix}   without specific prior written permission.
-${licensePrefix}
-${licensePrefix} THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-${licensePrefix} "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-${licensePrefix} TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-${licensePrefix} PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
-${licensePrefix} CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-${licensePrefix} EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-${licensePrefix} PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-${licensePrefix} OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-${licensePrefix} WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-${licensePrefix} OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-${licensePrefix} ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-${licensePrefix}
-${licensePrefix} ${name}.java
-${licensePrefix}
-${licensePrefix} Created on ${date}, ${time}
-&lt;#if licenseLast??&gt;
-${licenseLast}
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/09/05/adding-license-in-netbeans-ide/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="42">&larr; Older</a>
@@ -469,6 +409,10 @@ ${licenseLast}
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -524,10 +468,6 @@ ${licenseLast}
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>

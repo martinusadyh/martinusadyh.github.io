@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Waw.. bulan-bulan ini merupakan bulan yang bisa dikatakan sangat menyedihkan untuk perkembangan dunia OpenSource :( , setelah kasus Oracle vs Google &hellip;">
+  <meta name="description" content="Buat teman-teman yang sudah lama menggunakan Git), mungkin sudah tahu teknik ini :) Yaps&hellip; karena saya juga merasa baru tahu, jadi tidak ada &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,81 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/08/17/coloring-your-git-output/">Coloring Your Git Output</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-17T00:51:09+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/08/17/coloring-your-git-output/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman yang sudah lama menggunakan <a href="http://en.wikipedia.org/wiki/Git_(software">Git</a>), mungkin sudah tahu teknik ini :) Yaps&hellip; karena saya juga merasa baru tahu, jadi tidak ada salahnya untuk sekedar <strong>&ldquo;mencatat&rdquo;</strong>-nya pada posting kali ini :) :D Nah biasanya kalau kita bekerja dengan <a href="http://en.wikipedia.org/wiki/Git_(software">Git</a>), dan ingin melihat sebuah status atau log dari proses <strong>push</strong> yang dilakukan dari terminal (konsole) maka kita akan mendapatkan tampilan yang kurang lebih seperti ini :
+[plain]
+martinus@martinusadyh:[~/Desktop/tinymce]$ git status</p>
+
+<h1>On branch master</h1>
+
+<h1>Changed but not updated:</h1>
+
+<h1>(use &ldquo;git add &hellip;&rdquo; to update what will be committed)</h1>
+
+<h1>(use &ldquo;git checkout &ndash; &hellip;&rdquo; to discard changes in working directory)</h1>
+
+<p>#</p>
+
+<h1>modified:   jscripts/tiny_mce/tiny_mce_popup.js</h1>
+
+<p>#</p>
+
+<h1>Untracked files:</h1>
+
+<h1>(use &ldquo;git add &hellip;&rdquo; to include in what will be committed)</h1>
+
+<p>#</p>
+
+<h1>jscripts/tiny_mce/langs/id.js</h1>
+
+<h1>jscripts/tiny_mce/langs/in.js</h1>
+
+<p>no changes added to commit (use &ldquo;git add&rdquo; and/or &ldquo;git commit -a&rdquo;)
+martinus@martinusadyh:[~/Desktop/tinymce]$
+[/plain]</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/08/17/coloring-your-git-output/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -294,61 +369,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2010/06/27/string-manipulation-dengan-commonslang/">String Manipulation Dengan CommonsLang</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-27T01:23:28+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2010/06/27/string-manipulation-dengan-commonslang/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sering melakukan manipulasi terhadap <a href="http://java.sun.com/javase/6/docs/api/java/lang/String.html">String</a> di Java ? Pernah merasa bahwa method-method yang terdapat pada class <a href="http://java.sun.com/javase/6/docs/api/java/lang/String.html">String</a> standart masih kurang ? Sering kena NPE (NullPointerEexception) ketika melakukan manipulasi ?? Jika iya, mungkin teman-teman perlu melihat class <strong>StringUtils</strong> yang terdapat pada library <a href="http://commons.apache.org/lang/">Apache Commons Lang</a> untuk keperluan manipulasi class <a href="http://java.sun.com/javase/6/docs/api/java/lang/String.html">String</a> pada Java :) Nah dibawah ini adalah beberapa method yang sering saya gunakan (untuk daftar lengkap, silahkan cek pada <a href="http://commons.apache.org/lang/api-release/org/apache/commons/lang/StringUtils.html">JavaDoc StringUtils</a>) pada class <strong>StringUtils</strong> :</p>
-
-<ol>
-<li><p> <strong>LeftPad</strong>, method untuk membuat String menjadi rata kiri.</p></li>
-<li><p> <strong>RightPad</strong>, method untuk membuat String menjadi rata kanan.</p></li>
-<li><p> <strong>Center</strong>, method untuk membuat String menjadi rata tengah.</p></li>
-<li><p> <strong>isAlphanumeric</strong>, method untuk mengecek apakah string berisi alpha numeric atau bukan.</p></li>
-</ol>
-
-
-<p>Method-method diatas adalah method-method yang sering saya gunakan, sedangkan bagaimana detail dari method-method tersebut ? Mari kita lihat cara penggunaan-nya seperti dibawah ini :</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/06/27/string-manipulation-dengan-commonslang/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="21">&larr; Older</a>
@@ -378,6 +398,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -433,10 +457,6 @@
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>

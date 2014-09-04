@@ -4,7 +4,7 @@
   <title><![CDATA[Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-08-28T22:51:53+07:00</updated>
+  <updated>2014-09-04T20:11:37+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -12,6 +12,500 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Octopress in Linux Mint]]></title>
+    <link href="http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/"/>
+    <updated>2014-09-04T19:04:48+07:00</updated>
+    <id>http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint</id>
+    <content type="html"><![CDATA[<p>Sudah sejak lama saya sebenarnya saya migrasi blog dari <em>platform</em> <a href="http://wordpress.com">WordPress</a> ke <em>static</em> blog, alasan utama-nya adalah ingin mengejar <em>loading page</em> yang lebih cepat dan supaya setiap postingan saya bisa di simpan di <a href="http://git-scm.com/">Git</a> (tentu-nya dengan menggunakan <em>repo</em> gratisan di <a href="https://github.com/">GitHub</a>) :D :) Dari banyak-nya pilihan <em>static blog generator</em> yang bisa dilihat di <a href="https://www.staticgen.com/">StaticGen</a>, saya akhirnya memutuskan untuk menggunakan <a href="http://octopress.org">Octopress</a> dikarenakan <strong>Octopress</strong> merupakan <em>static blog generator</em> yang paling populer saat ini dan tutorial setup-nya juga sudah dibuatkan oleh pak <a href="https://www.facebook.com/endy.muhardin?fref=ts">Endy Muhardin</a> di tulisan <a href="http://software.endy.muhardin.com/aplikasi/terima-kasih-wordpress/">Terima Kasih WordPress</a> :D</p>
+
+<p>Nah yang jadi masalah saya adalah karena <strong>Octopress</strong> ini dibuat dengan bahasa pemrograman ruby yang mana saya bener-bener buta :( . Karena kemarin sempat 3 kali setup ruby untuk kepentingan <strong>Octopress</strong> baru berhasil dan sukses menjalankan perintah <code>rake generate &amp;&amp; rake preview</code>, akhirnya saya putuskan untuk men-dokumentasikan langkah-langkah tersebut pada postingan kali ini :)</p>
+
+<p>Semua langkah-langkah ini dijalankan di sistem operasi Linux Mint 17 dengan kondisi <em>fresh install</em> , jadi memang semua kebutuhan juga belum ada. Langkah pertama yang harus dilakukan adalah install dulu <em>library</em> yang dibutuhkan dengan menjalankan perintah <code>sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev curl</code> seperti dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev curl
+</span><span class='line'>Reading package lists... Done
+</span><span class='line'>Building dependency tree       
+</span><span class='line'>Reading state information... Done
+</span><span class='line'>libreadline6 is already the newest version.
+</span><span class='line'>zlib1g is already the newest version.
+</span><span class='line'>The following packages were automatically installed and are no longer required:
+</span><span class='line'>  libmysqlcppconn7 libodbc1 libvsqlitepp3 python-pyodbc
+</span><span class='line'>Use 'apt-get autoremove' to remove them.
+</span><span class='line'>The following extra packages will be installed:
+</span><span class='line'>  dpkg-dev g++ g++-4.8 libbison-dev libc-dev-bin libc6-dev libstdc++-4.8-dev
+</span><span class='line'>  libtinfo-dev libyaml-0-2 m4
+</span><span class='line'>Suggested packages:
+</span><span class='line'>  autoconf2.13 autoconf-archive gnu-standards autoconf-doc libtool bison-doc
+</span><span class='line'>  debian-keyring g++-multilib g++-4.8-multilib gcc-4.8-doc libstdc++6-4.8-dbg
+</span><span class='line'>  glibc-doc libstdc++-4.8-doc
+</span><span class='line'>Recommended packages:
+</span><span class='line'>  automake automaken libalgorithm-merge-perl libssl-doc
+</span><span class='line'>The following NEW packages will be installed:
+</span><span class='line'>  autoconf bison build-essential dpkg-dev g++ g++-4.8 libbison-dev
+</span><span class='line'>  libc-dev-bin libc6-dev libreadline6-dev libssl-dev libstdc++-4.8-dev
+</span><span class='line'>  libtinfo-dev libyaml-0-2 libyaml-dev m4 zlib1g-dev
+</span><span class='line'>0 upgraded, 17 newly installed, 0 to remove and 44 not upgraded.
+</span><span class='line'>Need to get 13.6 MB of archives.
+</span><span class='line'>After this operation, 56.7 MB of additional disk space will be used.
+</span><span class='line'>Do you want to continue? [Y/n] y
+</span><span class='line'>...
+</span><span class='line'>...
+</span><span class='line'>Setting up libreadline6-dev:amd64 (6.3-4ubuntu2) ...
+</span><span class='line'>Setting up zlib1g-dev:amd64 (1:1.2.8.dfsg-1ubuntu1) ...
+</span><span class='line'>Setting up libssl-dev:amd64 (1.0.1f-1ubuntu2.5) ...
+</span><span class='line'>Setting up libyaml-dev:amd64 (0.1.4-3ubuntu3) ...
+</span><span class='line'>Processing triggers for libc-bin (2.19-0ubuntu6.3) ...
+</span><span class='line'>martinusadyh@martinusadyh ~ $</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
+
+
+<p>Karena kita menggunakan <a href="http://octopress.org/docs/setup/rvm/">RVM</a> untuk menginstall ruby, maka lanjutkan dengan mendownload <strong>RVM</strong> dengan perintah <code>curl -L https://get.rvm.io | bash -s stable --ruby</code> kemudian jalankan perintah <code>source /home/martinusadyh/.rvm/scripts/rvm</code> supaya kita bisa langsung menggunakan <strong>RVM</strong> seperti dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ curl -L https://get.rvm.io | bash -s stable --ruby
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100   184  100   184    0     0     61      0  0:00:03  0:00:02  0:00:01    61
+</span><span class='line'>100 20776  100 20776    0     0   3965      0  0:00:05  0:00:05 --:--:-- 17532
+</span><span class='line'>Downloading https://github.com/wayneeseguin/rvm/archive/stable.tar.gz
+</span><span class='line'>
+</span><span class='line'>Installing RVM to /home/martinusadyh/.rvm/
+</span><span class='line'>    Adding rvm PATH line to /home/martinusadyh/.profile /home/martinusadyh/.bashrc /home/martinusadyh/.zshrc.
+</span><span class='line'>    Adding rvm loading line to /home/martinusadyh/.bash_profile /home/martinusadyh/.zlogin.
+</span><span class='line'>    Fixing environment for *.
+</span><span class='line'>Unknown ruby interpreter version (do not know how to handle): *.
+</span><span class='line'>Installation of RVM in /home/martinusadyh/.rvm/ is almost complete:
+</span><span class='line'>
+</span><span class='line'>  * To start using RVM you need to run `source /home/martinusadyh/.rvm/scripts/rvm`
+</span><span class='line'>    in all your open shell windows, in rare cases you need to reopen all shell windows.
+</span><span class='line'>
+</span><span class='line'># Martinus Ady H,
+</span><span class='line'>#
+</span><span class='line'>#   Thank you for using RVM!
+</span><span class='line'>#   We sincerely hope that RVM helps to make your life easier and more enjoyable!!!
+</span><span class='line'>#
+</span><span class='line'># ~Wayne, Michal & team.
+</span><span class='line'>
+</span><span class='line'>In case of problems: http://rvm.io/help and https://twitter.com/rvm_io
+</span><span class='line'>
+</span><span class='line'>  * WARNING: You have '~/.profile' file, you might want to load it,
+</span><span class='line'>    to do that add the following line to '/home/martinusadyh/.bash_profile':
+</span><span class='line'>
+</span><span class='line'>      source ~/.profile
+</span><span class='line'>
+</span><span class='line'>rvm 1.25.29 (stable) by Wayne E. Seguin &lt;wayneeseguin@gmail.com&gt;, Michal Papis &lt;mpapis@gmail.com&gt; [https://rvm.io/]
+</span><span class='line'>Searching for binary rubies, this might take some time.
+</span><span class='line'>No binary rubies available for: mint/17/x86_64/ruby-2.1.2.
+</span><span class='line'>Continuing with compilation. Please read 'rvm help mount' to get more information on binary rubies.
+</span><span class='line'>Checking requirements for mint.
+</span><span class='line'>Installing requirements for mint.
+</span><span class='line'>Updating system............
+</span><span class='line'>Installing required packages: libsqlite3-dev, sqlite3, libgdbm-dev, libncurses5-dev, automake, libtool, libffi-dev..........
+</span><span class='line'>Requirements installation successful.
+</span><span class='line'>Found user configured '-j' flag in 'rvm_make_flags', pleae note that RVM can detect number of CPU threads and set the '-j' flag automatically if you do not set it.
+</span><span class='line'>Installing Ruby from source to: /home/martinusadyh/.rvm/rubies/ruby-2.1.2, this may take a while depending on your cpu(s)...
+</span><span class='line'>ruby-2.1.2 - #downloading ruby-2.1.2, this may take a while depending on your connection...
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100 11.4M  100 11.4M    0     0   345k      0  0:00:33  0:00:33 --:--:--  477k
+</span><span class='line'>ruby-2.1.2 - #extracting ruby-2.1.2 to /home/martinusadyh/.rvm/src/ruby-2.1.2....
+</span><span class='line'>ruby-2.1.2 - #configuring....................................................
+</span><span class='line'>ruby-2.1.2 - #post-configuration.
+</span><span class='line'>ruby-2.1.2 - #compiling.....................................................................................
+</span><span class='line'>ruby-2.1.2 - #installing.................................
+</span><span class='line'>ruby-2.1.2 - #making binaries executable..
+</span><span class='line'>Rubygems 2.2.2 already available in installed ruby, skipping installation, use --force to reinstall.
+</span><span class='line'>ruby-2.1.2 - #gemset created /home/martinusadyh/.rvm/gems/ruby-2.1.2@global
+</span><span class='line'>ruby-2.1.2 - #importing gemset /home/martinusadyh/.rvm/gemsets/global.gems..........................................................
+</span><span class='line'>ruby-2.1.2 - #generating global wrappers........
+</span><span class='line'>ruby-2.1.2 - #gemset created /home/martinusadyh/.rvm/gems/ruby-2.1.2
+</span><span class='line'>ruby-2.1.2 - #importing gemsetfile /home/martinusadyh/.rvm/gemsets/default.gems evaluated to empty gem list
+</span><span class='line'>ruby-2.1.2 - #generating default wrappers........
+</span><span class='line'>ruby-2.1.2 - #adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
+</span><span class='line'>Install of ruby-2.1.2 - #complete 
+</span><span class='line'>Ruby was built without documentation, to build it run: rvm docs generate-ri
+</span><span class='line'>Creating alias default for ruby-2.1.2...
+</span><span class='line'>
+</span><span class='line'>  * To start using RVM you need to run `source /home/martinusadyh/.rvm/scripts/rvm`
+</span><span class='line'>    in all your open shell windows, in rare cases you need to reopen all shell windows.
+</span><span class='line'>martinusadyh@martinusadyh ~ $ source /home/martinusadyh/.rvm/scripts/rvm</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Langkah selanjutnya adalah install-lah ruby versi 1.9.3 dengan mengetikkan perintah <code>rvm install 1.9.3</code> dan jalankan perintah <code>rvm use 1.9.3</code> untuk menggunakan ruby versi 1.9.3 seperti dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ rvm install 1.9.3
+</span><span class='line'>Searching for binary rubies, this might take some time.
+</span><span class='line'>No binary rubies available for: mint/17/x86_64/ruby-1.9.3-p547.
+</span><span class='line'>Continuing with compilation. Please read 'rvm help mount' to get more information on binary rubies.
+</span><span class='line'>Checking requirements for mint.
+</span><span class='line'>Requirements installation successful.
+</span><span class='line'>Installing Ruby from source to: /home/martinusadyh/.rvm/rubies/ruby-1.9.3-p547, this may take a while depending on your cpu(s)...
+</span><span class='line'>ruby-1.9.3-p547 - #downloading ruby-1.9.3-p547, this may take a while depending on your connection...
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100 9801k  100 9801k    0     0   381k      0  0:00:25  0:00:25 --:--:--  416k
+</span><span class='line'>ruby-1.9.3-p547 - #extracting ruby-1.9.3-p547 to /home/martinusadyh/.rvm/src/ruby-1.9.3-p547....
+</span><span class='line'>ruby-1.9.3-p547 - #applying patch /home/martinusadyh/.rvm/patches/ruby/GH-488.patch.
+</span><span class='line'>ruby-1.9.3-p547 - #configuring.............................................
+</span><span class='line'>ruby-1.9.3-p547 - #post-configuration.
+</span><span class='line'>ruby-1.9.3-p547 - #compiling................................................................................................................................................................
+</span><span class='line'>ruby-1.9.3-p547 - #installing........................
+</span><span class='line'>ruby-1.9.3-p547 - #making binaries executable..
+</span><span class='line'>ruby-1.9.3-p547 - #downloading rubygems-2.2.2
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100  404k  100  404k    0     0  65039      0  0:00:06  0:00:06 --:--:--  104k
+</span><span class='line'>No checksum for downloaded archive, recording checksum in user configuration.
+</span><span class='line'>ruby-1.9.3-p547 - #extracting rubygems-2.2.2....
+</span><span class='line'>ruby-1.9.3-p547 - #removing old rubygems.........
+</span><span class='line'>ruby-1.9.3-p547 - #installing rubygems-2.2.2...............
+</span><span class='line'>ruby-1.9.3-p547 - #gemset created /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547@global
+</span><span class='line'>ruby-1.9.3-p547 - #importing gemset /home/martinusadyh/.rvm/gemsets/global.gems..........................................................
+</span><span class='line'>ruby-1.9.3-p547 - #generating global wrappers........
+</span><span class='line'>ruby-1.9.3-p547 - #gemset created /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547
+</span><span class='line'>ruby-1.9.3-p547 - #importing gemsetfile /home/martinusadyh/.rvm/gemsets/default.gems evaluated to empty gem list
+</span><span class='line'>ruby-1.9.3-p547 - #generating default wrappers........
+</span><span class='line'>ruby-1.9.3-p547 - #adjusting #shebangs for (gem irb erb ri rdoc testrb rake).
+</span><span class='line'>Install of ruby-1.9.3-p547 - #complete 
+</span><span class='line'>WARNING: Please be aware that you just installed a ruby that is no longer maintained (2014-02-23), for a list of maintained rubies visit:
+</span><span class='line'>
+</span><span class='line'>    http://bugs.ruby-lang.org/projects/ruby/wiki/ReleaseEngineering
+</span><span class='line'>
+</span><span class='line'>Please consider upgrading to ruby-2.1.2 which will have all of the latest security patches.
+</span><span class='line'>Ruby was built without documentation, to build it run: rvm docs generate-ri
+</span><span class='line'>
+</span><span class='line'>martinusadyh@martinusadyh ~ $ rvm use 1.9.3
+</span><span class='line'>Using /home/martinusadyh/.rvm/gems/ruby-1.9.3-p547
+</span><span class='line'>martinusadyh@martinusadyh ~ $</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sampai disini seharusnya ruby sudah terinstall dengan baik dan benar, jalankan perintah <code>ruby --version</code> untuk mengecek hasil installasi diatas.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ ruby --version
+</span><span class='line'>ruby 1.9.3p547 (2014-05-14 revision 45962) [x86_64-linux]
+</span><span class='line'>martinusadyh@martinusadyh ~ $ </span></code></pre></td></tr></table></div></figure>
+
+
+<p>Setelah ruby terinstall, sekarang masuk ke dalam direktori <strong>Octopress</strong> dan jalankan perintah <code>gem install bundler</code> seperti dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ cd octopress/
+</span><span class='line'>martinusadyh@martinusadyh ~/octopress $ gem install bundler
+</span><span class='line'>Fetching: bundler-1.7.2.gem (100%)
+</span><span class='line'>Successfully installed bundler-1.7.2
+</span><span class='line'>1 gem installed
+</span><span class='line'>Installing ri documentation for bundler-1.7.2...
+</span><span class='line'>Installing RDoc documentation for bundler-1.7.2...
+</span><span class='line'>martinusadyh@martinusadyh ~/octopress $ rbenv rehash
+</span><span class='line'>martinusadyh@martinusadyh ~/octopress $ bundle install
+</span><span class='line'>Fetching gem metadata from https://rubygems.org/........
+</span><span class='line'>Resolving dependencies...
+</span><span class='line'>Installing rake 10.3.2
+</span><span class='line'>Installing RedCloth 4.2.9
+</span><span class='line'>Installing blankslate 2.1.2.4
+</span><span class='line'>Installing timers 1.1.0
+</span><span class='line'>Installing celluloid 0.15.2
+</span><span class='line'>Installing chunky_png 1.3.1
+</span><span class='line'>Installing fast-stemmer 1.0.2
+</span><span class='line'>Installing classifier-reborn 2.0.1
+</span><span class='line'>Installing coffee-script-source 1.8.0
+</span><span class='line'>Installing execjs 2.2.1
+</span><span class='line'>Installing coffee-script 2.3.0
+</span><span class='line'>Installing colorator 0.1
+</span><span class='line'>Installing fssm 0.2.10
+</span><span class='line'>Installing sass 3.2.19
+</span><span class='line'>Installing compass 0.12.7
+</span><span class='line'>Installing ffi 1.9.3
+</span><span class='line'>Installing tilt 1.4.1
+</span><span class='line'>Installing haml 4.0.5
+</span><span class='line'>Installing jekyll-coffeescript 1.0.1
+</span><span class='line'>Installing jekyll-gist 1.1.0
+</span><span class='line'>Installing jekyll-paginate 1.0.0
+</span><span class='line'>Installing jekyll-sass-converter 1.2.1
+</span><span class='line'>Installing rb-fsevent 0.9.4
+</span><span class='line'>Installing rb-inotify 0.9.5
+</span><span class='line'>Installing listen 2.7.9
+</span><span class='line'>Installing jekyll-watch 1.1.0
+</span><span class='line'>Installing kramdown 1.4.1
+</span><span class='line'>Installing liquid 2.6.1
+</span><span class='line'>Installing mercenary 0.3.4
+</span><span class='line'>Installing posix-spawn 0.3.9
+</span><span class='line'>Installing yajl-ruby 1.1.0
+</span><span class='line'>Installing pygments.rb 0.6.0
+</span><span class='line'>Installing redcarpet 3.1.2
+</span><span class='line'>Installing safe_yaml 1.0.3
+</span><span class='line'>Installing parslet 1.5.0
+</span><span class='line'>Installing toml 0.1.1
+</span><span class='line'>Installing jekyll 2.3.0
+</span><span class='line'>Installing jekyll-sitemap 0.5.1
+</span><span class='line'>Installing octopress-hooks 2.2.1
+</span><span class='line'>Installing octopress-date-format 2.0.1
+</span><span class='line'>Installing rack 1.5.2
+</span><span class='line'>Installing rack-protection 1.5.3
+</span><span class='line'>Installing rdiscount 2.1.7.1
+</span><span class='line'>Installing rubypants 0.2.0
+</span><span class='line'>Installing sass-globbing 1.0.0
+</span><span class='line'>Installing sinatra 1.4.5
+</span><span class='line'>Installing stringex 1.4.0
+</span><span class='line'>Using bundler 1.7.2
+</span><span class='line'>Your bundle is complete!
+</span><span class='line'>Use `bundle show [gemname]` to see where a bundled gem is installed.
+</span><span class='line'>Post-install message from haml:
+</span><span class='line'>
+</span><span class='line'>HEADS UP! Haml 4.0 has many improvements, but also has changes that may break
+</span><span class='line'>your application:
+</span><span class='line'>
+</span><span class='line'>* Support for Ruby 1.8.6 dropped
+</span><span class='line'>* Support for Rails 2 dropped
+</span><span class='line'>* Sass filter now always outputs &lt;style&gt; tags
+</span><span class='line'>* Data attributes are now hyphenated, not underscored
+</span><span class='line'>* html2haml utility moved to the html2haml gem
+</span><span class='line'>* Textile and Maruku filters moved to the haml-contrib gem
+</span><span class='line'>
+</span><span class='line'>For more info see:
+</span><span class='line'>
+</span><span class='line'>http://rubydoc.info/github/haml/haml/file/CHANGELOG.md
+</span><span class='line'>
+</span><span class='line'>martinusadyh@martinusadyh ~/octopress $</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Jika semua proses diatas selesai, sekarang jalankan perintah <code>rake generate &amp;&amp; rake preview</code> untuk melihat blog kita di localhost :) Supaya lebih memudahkan menjalankan perintah <code>rake</code> di kemudian hari, tambahkan perintah <code>source /home/martinusadyh/.rvm/scripts/rvm</code> di <code>.bashrc</code> dengan cara seperti dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~/octopress $ echo "source /home/martinusadyh/.rvm/scripts/rvm" &gt;&gt; ~/.bashrc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yaps dan sekarang kita sudah bisa nge-blog lagi :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Perjalanan ke Kasepuhan Ciptagelar]]></title>
@@ -2311,78 +2805,6 @@ NUSANTARIDE</p>
 <li><p> <a href="https://www.facebook.com/events/436396919767024/">Groups Nusantaride di Facebook</a></p></li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Nusantaride Tempat Berkumpulnya Adventure Rider]]></title>
-    <link href="http://martinusadyh.web.id/2013/01/08/nusantaride-tempat-berkumpulnya-adventure-rider/"/>
-    <updated>2013-01-08T21:23:32+07:00</updated>
-    <id>http://martinusadyh.web.id/2013/01/08/nusantaride-tempat-berkumpulnya-adventure-rider</id>
-    <content type="html"><![CDATA[<p>[caption id=&ldquo;attachment_2393&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;397&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=386"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/01/nusantaride.jpg" alt="Logo Nusantaride" /></a> Logo Nusantaride[/caption]
-Apakah diantara teman-teman ada yang mempunyai hobi berpetualang menjelajahi daerah-daerah wisata nan eksotis dengan menggunakan sepeda motor ? Jika iya, mungkin sudah saat-nya melirik sebuah komunitas <a href="http://www.nusantaride.com">Nusantaride</a> yang didalam-nya banyak sekali rider-rider yang berbagi pengalaman tentang daerah-daerah yang sudah pernah dikunjungi-nya melalui sebuah <strong>Ride Report</strong> :)</p>
-
-<p>Nah sedangkan apasih sebenarnya <a href="http://www.nusantaride.com">Nusantaride</a> ini ? Berikut ini adalah sepenggal kata pembuka yang saya dapatkan dari posting om <a href="https://www.facebook.com/haryowidodo">Haryo Widodo</a> di <a href="https://www.facebook.com/groups/nusantaride">groups Nusantaride</a> :)</p>
-
-<p>Bagi yang baru bergabung, selamat datang di Nusantaride.</p>
-
-<h1><strong>MOHON SELALU DI BACA SEBELUM POSTING</strong></h1>
-
-<p>Ride the Archipelago with two wheels adrenaline, share your riding experience (touring/adventure riding) on Narrative and Visual format..and be wise when u&rsquo;re about to post pictures&hellip;</p>
-
-<p>notes: if you like to share many pictures, it will be wise if you just post the link to the pictures blogs/website.</p>
-
-<p>Agar lebih teratur Mohon kepada rekan rekan, setiap memposting gambar supaya dilengkapi oleh keterangan dengan format:</p>
-
-<p><em>Judul Foto:
-</em>Lokasi Pengambilan:(Nama lokasi, Nama Propinsi)
-<em>Titik Koordinat:
-</em>Tanggal pengambilan:
-*Jalur yang dicapai menuju lokasi:</p>
-
-<p>*)wajib diisi</p>
-
-<p>Jika dalam memposting foto tidak disertai format diatas foto akan langsung di hapus oleh admin.</p>
-
-<p>Bagi rekan-rekan yang belum mempunyai GPS, ada cara untuk mengetahui koordinat suatu lokasi, yaitu:
-1. Buka Google Maps
-2. Cari lokasi yang dimaksud
-3. Klik kanan dilokasi tersebut kemudian pilih &ldquo;what&rsquo;s here&rdquo;
-4. Di kolom alamat akan muncul angka koordinat
-5. Jika ingin dikonversi ke dalam bentuk ddd.mm.ss, silakan buka <a href="http://itouchmap.com/latlong.html">http://itouchmap.com/latlong.html</a> dan masukkan angka koordinat dari Google Maps tadi di kolom Latitude dan Longitude.
-6. Pilih &ldquo;clear/reset all markers&rdquo;
-7. Geser marker kearah yang lebih mendekati.
-8. Angka koodinat dalam format ddd.mm.ss akan muncul di kolom Latitude dan Longitude..</p>
-
-<hr />
-
-<p>web : www.nusantaride.com
-mailing list : <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#110;&#x75;&#115;&#97;&#110;&#x74;&#x61;&#x72;&#x69;&#100;&#101;&#64;&#121;&#x61;&#104;&#111;&#111;&#x67;&#x72;&#x6f;&#117;&#112;&#115;&#x2e;&#x63;&#x6f;&#109;">&#x6e;&#x75;&#x73;&#x61;&#x6e;&#116;&#97;&#114;&#x69;&#x64;&#x65;&#64;&#121;&#x61;&#104;&#111;&#111;&#x67;&#x72;&#111;&#x75;&#112;&#x73;&#46;&#99;&#111;&#x6d;</a>
-Facebook : as in your screen right now :)
-twitter : @nusantaride</p>
-
-<hr />
-
-<p>DISCLAIMER</p>
-
-<p>NUSANTARIDE bukan lah club,komunitas ataupun organisasi pengendara motor lainnya,NUSANTARIDE hanyalah sebuah FORUM,Forum untuk saling berbagi pengalaman berkendara di bumi pertiwi INDONESIA dengan format narasi dan visual,harapan baik kedepan adalah memperkenalkan dan menunjukan keindahan keelokan dan bagusnya INDONESIA ke mata dunia dari “kacamata” para penggemar sepeda motor.</p>
-
-<p>Para penggagas NUSANTARIDE berasal dari beberapa komunitas di INDONESIA dan Privateer, akan tetapi para penggagas (dan diharapkan kepada semua subscriber) tidak dan bukan untuk mempromosikan eksistensi,doktrin, jargon dari satu komunitas dan atau organisasinya, hanya fokus kepada berbagi pengalaman berkendara di bumi pertiwi INDONESIA saja.</p>
-
-<p>Silahkan berinteraksi di forum ini(nusantaride) dengan meng-unggah kisah perjalanan anda dan motor anda berupa foto dan narasi ,link blog atau format lain yang bisa terbaca.</p>
-
-<p>Bagi rekan yang ingin menggunakan foto dari si pemilik foto tertentu, diharapkan dengan bijak untuk meminta izin  terlebih dahulu kepada pemilik foto tersebut.</p>
-
-<p>Moderator akan menghapus segala bentuk posting promosi Produk maupun Komunitas apapun dan juga menghapus posting yang dianggap tidak berhubungan dengan Nusantaride.</p>
-
-<p>let the good time rolls with ride and share</p>
-
-<p>Atas Perhatiannya kami ucapkan terima kasih</p>
-
-<p>on behalf
-NUSANTARIDE</p>
-
-<p>Nah menarik bukan ? Yuuk mari kita ramaikan dengan saling membagi <strong>Ride Report</strong> dan oleh-oleh berupa foto-foto pemandangan alam yang cantik biar menjadi sedikit <strong>ratjoen-ratjoen</strong> rider lain :)</p>
 ]]></content>
   </entry>
   

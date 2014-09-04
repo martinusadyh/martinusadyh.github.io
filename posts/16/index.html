@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Kita banyak dengar keluhan sulitnya mencari programmer, ataupun keluhan tentang rendahnya kualitas fresh graduate di sini. Daripada berkeluh kesah, &hellip;">
+  <meta name="description" content="Sebenarnya sudah sejak lama ingin menulis sebuah tulisan atau buku mengikuti gaya penulisan yang terdapat pada DocBook, tapi apa daya sampai sekarang &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,99 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/02/19/docbook-style-on-wordpress/">DocBook Style on WordPress</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-19T17:02:15+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/02/19/docbook-style-on-wordpress/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sebenarnya sudah sejak lama ingin menulis sebuah tulisan atau buku mengikuti gaya penulisan yang terdapat pada <a href="http://www.docbook.org/">DocBook</a>, tapi apa daya sampai sekarang masih belum ada waktu untuk <strong>&ldquo;ngoprek&rdquo;</strong> format yang tersedia di <strong>DocBook</strong> :D Keinginan saya yang lain yaitu bagaimana meng-integrasikan antara <a href="http://wordpress.org/download/">WordPress</a> yang sudah terbukti sebagai CMS (Content Management System) blogging yang paling populer dengan <strong>DocBook</strong> yang sudah dikenal luas sebagai alat untuk penulisan dokumentasi sebuah software.</p>
+
+<p>Kombinasi struktur buku yang terdapat di <strong>DocBook</strong> dengan banyak-nya plugin yang tersedia untuk <strong>WordPress</strong> plus adanya fasilitas komentar, bagi saya ini merupakan sebuah kombinasi yang pas bagi seoarang penulis untuk mem-<em>publish</em> tulisan-nya di Internet :) Plus-nya sebagai penulis yaitu kita bisa langsung mendapatkan respon pembaca melalui fasilitas komentar yang sudah terdapat pada <strong>WordPress</strong> :D</p>
+
+<p>Nah untuk merealisasikan ide diatas, kemarin saya juga sudah coba iseng-iseng untuk mengimplementasikan-nya pada blog ini. Dan hasilnya bisa teman-teman lihat pada tulisan <a href="http://martinusadyh.web.id/tulisanku/berkenalan-dengan-iso-8583-menggunakan-java/">Berkenalan dengan ISO 8583 Menggunakan Java</a> :) Masih sangat-sangat sederhana sih, tapi setidaknya sudah bisa mencukupi kebutuhan saya saat ini yaitu menulis buku layaknya menulis blog :D plus dapat fasilitas komentar langsung pada bab yang dibahas :)</p>
+
+<p>Nah untuk teman-teman yang ingin mencoba konsep serupa dan ingin tahu apa yang dibutuhkan agar blog kita mempunyai halaman seperti itu, langkah pertama copy paste beberapa script dibawah ini dan simpanlah pada direktori <strong>themes</strong> yang teman-teman gunakan. Script-script yang diperlukan yaitu :</p>
+
+<ol>
+<li><p> <strong>docbook-archive.php</strong></p>
+
+<p>/docbook-archive.php</p>
+
+<ul>
+<li>where <your-themes> is your current blog themes :)</li>
+<li></li>
+<li>Template Name: DocBookArchive
+*/
+?></li>
+</ul>
+
+
+<p><div id="content" class="narrowcolumn"></p>
+
+<pre><code>    &lt;div class="post" id="post-&lt;?php the_ID(); ?&gt;"&gt;
+        &lt;h2&gt;&lt;/h2&gt;
+        &lt;div class="entry"&gt;
+            Read the rest of this page »&lt;/p&gt;'); ?&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+
+    ', '&lt;/p&gt;'); ?&gt;
+</code></pre>
+
+<p></div></p></li>
+</ol>
+
+
+<p>File <strong>docbook-archive.php</strong> ini berfungsi sebagai halaman depan untuk semua tulisan yang kita publish :) Sedangkan bagaimana cara pakainya yaitu buatlah sebuah halaman baru dengan nama misalkan <strong>Tulisanku</strong> kemudian pada opsi <strong>Page Attributes</strong> pilihlah <strong>(no parent)</strong> pada opsi <strong>Parent</strong> dan <strong>DocBookArchive</strong> pada opsi <strong>Template</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458157556/"><img src="http://farm6.static.flickr.com/5176/5458157556_23499a1ea6.jpg" alt="TulisankuEdit" /></a><br/>
+<strong>Cara Penggunaan Template DocBook Archive</strong></p>
+
+<p>Sedangkan tampilan live-nya adalah seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/5458157552/"><img src="http://farm6.static.flickr.com/5016/5458157552_6f0759b2c5.jpg" alt="DocBookArchiveLive" /></a><br/>
+<strong>Tampilan Halaman Dengan Template DocBook Archive</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/02/19/docbook-style-on-wordpress/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -307,55 +400,6 @@ E-Mail : <a href="mailto:info@artivisi.com">info@artivisi.com</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2010/12/10/mysqlworkbench-5-2-31-for-slackware/">MySQLWorkbench 5.2.31 for Slackware</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-10T02:35:22+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2010/12/10/mysqlworkbench-5-2-31-for-slackware/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hari ini tidak sengaja iseng-iseng main ke project <a href="http://wb.mysql.com/">MySQL WorkBench</a> dan ternyata ada update terbaru yaitu versi <strong>5.2.31</strong> yang announcement-nya bisa  teman-teman baca di halaman <a href="http://wb.mysql.com/?p=861">MySQL Workbench 5.2.31 GA Available</a>. Berbeda dari versi-versi sebelum-nya, pada versi ini ternyata MySQL Workbench tidak hanya mengusung tool <strong>Data Modelling</strong> saja melainkan menyediakan juga <strong>Query (sebagai ganti dari MySQL Query Browser)</strong> dan <strong>Administration (sebagai ganti dari MySQL Administration)</strong> (dulu ke 3 tool ini bisa disebut sebagai <strong>MySQL GUI Tool</strong>)</p>
-
-<p>Nah untuk teman-teman yang penasaran bagaimana tampilan dari <a href="http://wb.mysql.com/">MySQL WorkBench</a> terbaru ini, silahkan lihat beberapa screenshot yang terdapat dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/5247286226/"><img src="http://farm6.static.flickr.com/5163/5247286226_04ee54b0cf.jpg" alt="WorkspaceMySQLWB" /></a><br/>
-<strong>Tampilan Workspace MySQL Workbench</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/12/10/mysqlworkbench-5-2-31-for-slackware/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="17">&larr; Older</a>
@@ -385,6 +429,10 @@ E-Mail : <a href="mailto:info@artivisi.com">info@artivisi.com</a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
+      </li>
     
       <li class="post">
         <a href="/2014/08/17/perjalanan-ke-kasepuhan-ciptagelar/">Perjalanan Ke Kasepuhan Ciptagelar</a>
@@ -440,10 +488,6 @@ E-Mail : <a href="mailto:info@artivisi.com">info@artivisi.com</a></p>
     
       <li class="post">
         <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/17/nusantaride-event-ride-launch-and-laugh/">Nusantaride Event Ride Launch and Laugh</a>
       </li>
     
   </ul>
