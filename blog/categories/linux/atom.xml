@@ -4,7 +4,7 @@
   <title><![CDATA[Category: linux | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-05T08:32:51+07:00</updated>
+  <updated>2014-09-05T17:24:15+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -18,7 +18,7 @@
     <link href="http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/"/>
     <updated>2014-09-04T19:04:48+07:00</updated>
     <id>http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint</id>
-    <content type="html"><![CDATA[<p>Sudah sejak lama saya sebenarnya saya migrasi blog dari <em>platform</em> <a href="http://wordpress.com">WordPress</a> ke <em>static</em> blog, alasan utama-nya adalah ingin mengejar <em>loading page</em> yang lebih cepat dan supaya setiap postingan saya bisa di simpan di <a href="http://git-scm.com/">Git</a> (tentu-nya dengan menggunakan <em>repo</em> gratisan di <a href="https://github.com/">GitHub</a>) :D :) Dari banyak-nya pilihan <em>static blog generator</em> yang bisa dilihat di <a href="https://www.staticgen.com/">StaticGen</a>, saya akhirnya memutuskan untuk menggunakan <a href="http://octopress.org">Octopress</a> dikarenakan <strong>Octopress</strong> merupakan <em>static blog generator</em> yang paling populer saat ini dan tutorial setup-nya juga sudah dibuatkan oleh pak <a href="https://www.facebook.com/endy.muhardin?fref=ts">Endy Muhardin</a> di tulisan <a href="http://software.endy.muhardin.com/aplikasi/terima-kasih-wordpress/">Terima Kasih WordPress</a> :D</p>
+    <content type="html"><![CDATA[<p>Sudah sejak lama sebenarnya saya migrasi blog dari <em>platform</em> <a href="http://wordpress.com">WordPress</a> ke <em>static</em> blog, alasan utama-nya adalah ingin mengejar <em>loading page</em> yang lebih cepat dan supaya setiap postingan saya bisa di simpan di <a href="http://git-scm.com/">Git</a> (tentu-nya dengan menggunakan <em>repo</em> gratisan di <a href="https://github.com/">GitHub</a>) :D :) Dari banyak-nya pilihan <em>static blog generator</em> yang bisa dilihat di <a href="https://www.staticgen.com/">StaticGen</a>, saya akhirnya memutuskan untuk menggunakan <a href="http://octopress.org">Octopress</a> dikarenakan <strong>Octopress</strong> merupakan <em>static blog generator</em> yang paling populer saat ini dan tutorial setup-nya juga sudah dibuatkan oleh pak <a href="https://www.facebook.com/endy.muhardin?fref=ts">Endy Muhardin</a> di tulisan <a href="http://software.endy.muhardin.com/aplikasi/terima-kasih-wordpress/">Terima Kasih WordPress</a> :D</p>
 
 <p>Nah yang jadi masalah saya adalah karena <strong>Octopress</strong> ini dibuat dengan bahasa pemrograman ruby yang mana saya bener-bener buta :( . Karena kemarin sempat 3 kali setup ruby untuk kepentingan <strong>Octopress</strong> baru berhasil dan sukses menjalankan perintah <code>rake generate &amp;&amp; rake preview</code>, akhirnya saya putuskan untuk men-dokumentasikan langkah-langkah tersebut pada postingan kali ini :)</p>
 
@@ -107,7 +107,7 @@ to do that add the following line to &lsquo;/home/martinusadyh/.bash_profile&rsq
 </ul>
 
 
-<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#x77;&#97;&#x79;&#110;&#101;&#101;&#x73;&#x65;&#x67;&#117;&#105;&#110;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#119;&#x61;&#x79;&#110;&#x65;&#x65;&#115;&#101;&#x67;&#117;&#105;&#110;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;</a>, Michal Papis <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x6d;&#x70;&#97;&#112;&#105;&#x73;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#109;&#x70;&#97;&#112;&#x69;&#115;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
+<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;&#119;&#97;&#121;&#x6e;&#x65;&#x65;&#x73;&#x65;&#103;&#x75;&#x69;&#x6e;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#119;&#97;&#x79;&#x6e;&#101;&#x65;&#x73;&#x65;&#103;&#117;&#x69;&#110;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a>, Michal Papis <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x6d;&#x70;&#97;&#x70;&#x69;&#x73;&#64;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#x6d;&#x70;&#97;&#112;&#x69;&#x73;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
 Searching for binary rubies, this might take some time.
 No binary rubies available for: mint/17/x86_64/ruby-2.1.2.
 Continuing with compilation. Please read &lsquo;rvm help mount&rsquo; to get more information on binary rubies.
