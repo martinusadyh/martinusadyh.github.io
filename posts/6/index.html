@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Untuk yang sering bermain dengan Apache HTTPD mungkin sudah tidak asing dengan module mod_userdir, modul ini berfungsi supaya aplikasi web kita tidak &hellip;">
+  <meta name="description" content="Setelah kemarin melakukan upgrade ke WordPress, baru malam ini mengalami masalah yaitu ada 1 fitur dari plugin NextGen Gallery yaitu tampilan album &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2012/12/19/how-to-fixing-problem-jetpack-2-0-4-breaks-nextgen-galleries-plugins/">How to Fixing Problem Jetpack 2.0.4 Breaks NextGen Galleries Plugins</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-19T00:52:39+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2012/12/19/how-to-fixing-problem-jetpack-2-0-4-breaks-nextgen-galleries-plugins/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah kemarin melakukan upgrade ke <a href="http://wordpress.org/">WordPress</a>, baru malam ini mengalami masalah yaitu ada 1 fitur dari plugin <a href="http://wordpress.org/extend/plugins/nextgen-gallery/">NextGen Gallery</a> yaitu tampilan album tidak bisa masuk ke dalam gallery. Hasilnya adalah ketika kita masuk pada halaman gallery, maka tampilan dari gallery tersebut akan kosonng  :nangis: Hasil pencarian di <a href="http://google.com/">google</a> mengarahkan saya pada thread <a href="http://wordpress.org/support/topic/jetpack-204-breaks-nextgen-galleries">Jetpack 2.0.4 Breaks NextGen Galleries</a> yang ternyata plugin <a href="http://wordpress.org/extend/plugins/nextgen-gallery/">NextGen Gallery</a> hanya bermasalah jika module <strong>Publicize</strong> dan <strong>Sharing</strong> diaktifkan.</p>
+
+<p>Supaya <a href="http://wordpress.org/extend/plugins/nextgen-gallery/">NextGen Gallery</a> berfungsi dengan normal kembali, yang kita perlukan adalah men-disable kedua module tersebut dengan cara masuk ke menu <code>Jetpack &gt; Jetpack</code> pada halaman <strong>dashboard jetpack</strong>, klik tombol <code>Learn More</code> pada module <strong>Publicize</strong> dan <strong>Sharing</strong> kemudian klik tombol <code>Deactivate</code> seperti gambar dibawah ini :
+[caption id=&ldquo;attachment_2108&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=218"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/12/Disable-Module-Publicize-300x177.png" alt="Disable Module Publicize" /></a> Disable Module Publicize[/caption]</p>
+
+<p>Setelah melakukan langkah diatas, sekarang plugin <a href="http://wordpress.org/extend/plugins/nextgen-gallery/">NextGen Gallery</a> dapat berjalan dengan normal kembali  :peace:</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -296,62 +341,6 @@ Kalau begitu Internet adalah sahabat terbaik anda. Dengan internet anda bisa men
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2012/10/27/create-auto-increment-in-javadb/">Create Auto Increment in JavaDB</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-27T21:33:42+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2012/10/27/create-auto-increment-in-javadb/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>[caption id=&ldquo;attachment_1883&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;110&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png" alt="JavaDB" /></a>JavaDB[/caption]Kemarin sempat bermain-main sebentar dengan <a href="http://www.oracle.com/technetwork/java/javadb/index.html">JavaDB</a> dan ternyata baru tahu, kalau editor SQL di NetBeans ternyata tidak (belum) ada fitur untuk membuat kolom <strong>auto increment</strong> untuk <strong>JavaDB</strong> :( Nah untuk teman-teman yang ingin membuat kolom <strong>auto increment</strong> di <strong>JavaDB</strong> mungkin bisa menambahkan perintah <code>ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)</code> pada script <code>create table</code> di JavaDB seperti terlihat pada script dibawah ini :</p>
-
-<pre><code>create table M_BARANG
-(
-    ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
-        (START WITH 1, INCREMENT BY 1),
-    HARGA NUMERIC(19),
-    ISEDITABLE SMALLINT,
-    KETERANGAN VARCHAR(255),
-    KODE_BARANG VARCHAR(255) not null
-)
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/10/27/create-auto-increment-in-javadb/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="7">&larr; Older</a>
@@ -381,6 +370,10 @@ Kalau begitu Internet adalah sahabat terbaik anda. Dengan internet anda bisa men
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
@@ -436,10 +429,6 @@ Kalau begitu Internet adalah sahabat terbaik anda. Dengan internet anda bisa men
     
       <li class="post">
         <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
       </li>
     
   </ul>

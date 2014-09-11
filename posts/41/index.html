@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Fyuh&hellip; akhirnya berhasil juga meng-enable-kan wireles dengan chipset Broadcom BCM4312 di Slackware 13.0 berkat hint dari Om Arya Sabda di milis &hellip;">
+  <meta name="description" content="Tulisan kali ini sebenarnya untuk menambah archive blog saya saja :D . Setelah Wifi udah jalan dan GNOME pun udah terinstall, sekarang mari &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/09/28/konfigurasi-mysql-di-slackware-130/">Konfigurasi MySQL Di Slackware 13.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-28T05:45:01+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/09/28/konfigurasi-mysql-di-slackware-130/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tulisan kali ini sebenarnya untuk menambah archive blog saya saja :D . Setelah Wifi udah jalan dan GNOME pun udah terinstall, sekarang mari konfigurasi MySQL di Slackware 13.0 :) Pada default installasi Slackware, sebenarnya MySQL sudah ter-install dan kita tinggal melakukan proses konfigurasi saja. Sedangkan caranya yaitu, masuk ke terminal dengan menggunakan akses <strong>root</strong> kemudian jalankan perintah <strong>mysql_install_db</strong> untuk menginstall database-nya dan beri akses ke direktori <strong>/var/lib/mysql</strong> dengan perintah <strong>chown -R mysql.mysql /var/lib/mysql</strong> seperti dibawah ini :</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/09/28/konfigurasi-mysql-di-slackware-130/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -325,61 +370,6 @@ problem.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/09/14/dbf2mysql-with-openoffice-base/">DBF2MySQL With OpenOffice Base</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-14T12:35:50+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/09/14/dbf2mysql-with-openoffice-base/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pernah merasa pusing bagaimana memindahkan database dari tabel yang bertipe <strong>DBF</strong> (biasanya sih ini dari aplikasi yang berbasis Foxpro 2.6 dan Clipper yang jalan di DOS) ke <strong>MySQL</strong> ? Kalau pernah, berarti sama dengan saya ketika dulu melakukan proses <strong>porting</strong> aplikasi dari Foxpro 2.6 + Clipper + DBF + Windows ke Java Swing + MySQL + GNU/Linux :)</p>
-
-<p>Mungkin banyak aplikasi lain yang mampu melakukan proses porting dari DBF ke MySQL selain menggunakan OpenOffice, tapi setahu saya hanya OpenOffice-lah aplikasi yang dapat melakukan proses porting dari DBF ke MySQL yang sifatnya OpenSource dan jalan di Sistem Operasi GNU/Linux (Maklum dirumah saya ga punya Sistem Operasi Windows, jadi memilih aplikasi yang jalan di GNU/Linux adalah pilihan nomor satu saya).</p>
-
-<p>Sebelum mulai melakukan proses migrasi dari DBF ke MySQL menggunakan OpenOffice, tambahkanlah dahulu <strong>MySQL JDBC Driver</strong> pada classpath OpenOffice yang akan digunakan. Sedangkan langkah-langkah untuk menambahkan <strong>MySQL JDBC Driver</strong> ke dalam OpenOffice bisa dibaca pada tulisan saya di <a href="http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/#Memasang%20MySQL%20JDBC%20Driver%20di%20OpenOffice">sini</a>. Fungsi dari penambahan <strong>MySQL JDBC Driver</strong> ini adalah agar kita dapat mengakses database yang terdapat pada MySQL dari OpenOffice, nah jika kita sudah menambahkan <strong>MySQL JDBC Driver</strong> pada OpenOffice sekarang mari kita mulai proses migrasi data dari DBF ke MySQL.</p>
-
-<p>Langkah pertama yang harus kita lakukan yaitu <strong>copy</strong> lah seluruh file yang ber-ekstensi <strong>DBF</strong> ke sebuah direktori khusus seperti pada gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3917613913/"><img src="http://farm3.static.flickr.com/2552/3917613913_25b4453342.jpg" alt="DBF2MYSQL_1" /></a></p>
-
-<p>Sekarang jalankan-lah OpenOffice Base kemudian pada jendela <strong>Database Wizard</strong> pilihlah opsi <strong>Connect to an existing database</strong> dan pilihlah <strong>dBase</strong> seperti gambar dibawah ini kemudian tekanlah tombol <strong>Next</strong> :
-<a href="http://www.flickr.com/photos/10243554@N02/3917613917/"><img src="http://farm3.static.flickr.com/2458/3917613917_87e3953f10.jpg" alt="DBF2MYSQL_2" /></a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/09/14/dbf2mysql-with-openoffice-base/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="42">&larr; Older</a>
@@ -409,6 +399,10 @@ problem.</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
@@ -464,10 +458,6 @@ problem.</p>
     
       <li class="post">
         <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
       </li>
     
   </ul>

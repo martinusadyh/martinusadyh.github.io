@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Kesulitan mencari villa murah di Bali? Anda dapat menyimak tips berikut ini. Tua-muda pergi ke Bali. Baik hanya untuk urusan bisnis ataupun sengaja &hellip;">
+  <meta name="description" content="[caption id=&ldquo;attachment_1883&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;110&rdquo;]JavaDB[/caption]Kemarin sempat bermain-main sebentar &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2012/10/27/create-auto-increment-in-javadb/">Create Auto Increment in JavaDB</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-27T21:33:42+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2012/10/27/create-auto-increment-in-javadb/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[caption id=&ldquo;attachment_1883&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;110&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png" alt="JavaDB" /></a>JavaDB[/caption]Kemarin sempat bermain-main sebentar dengan <a href="http://www.oracle.com/technetwork/java/javadb/index.html">JavaDB</a> dan ternyata baru tahu, kalau editor SQL di NetBeans ternyata tidak (belum) ada fitur untuk membuat kolom <strong>auto increment</strong> untuk <strong>JavaDB</strong> :( Nah untuk teman-teman yang ingin membuat kolom <strong>auto increment</strong> di <strong>JavaDB</strong> mungkin bisa menambahkan perintah <code>ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)</code> pada script <code>create table</code> di JavaDB seperti terlihat pada script dibawah ini :</p>
+
+<pre><code>create table M_BARANG
+(
+    ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
+    HARGA NUMERIC(19),
+    ISEDITABLE SMALLINT,
+    KETERANGAN VARCHAR(255),
+    KODE_BARANG VARCHAR(255) not null
+)
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/10/27/create-auto-increment-in-javadb/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -294,54 +350,6 @@ Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di ingink
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2012/08/16/remove-guest-session-in-ubuntu-12-04/">Remove Guest Session in Ubuntu 12.04</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T03:00:50+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2012/08/16/remove-guest-session-in-ubuntu-12-04/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ingin menghilangkan guest session di Ubuntu 12.04 ? Jika iya, silahkan edit file <code>/etc/lightdm/lightdm.conf</code> dan tambahkan baris <code>allow-guest=false</code> menjadi seperti dibawah ini :</p>
-
-<pre><code>[SeatDefaults]
-user-session=ubuntu
-greeter-session=unity-greeter
-allow-guest=false
-</code></pre>
-
-<p>Setelah merubah file <code>/etc/lightdm/lightdm.conf</code> simpan dan logout :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="8">&larr; Older</a>
@@ -371,6 +379,10 @@ allow-guest=false
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
@@ -426,10 +438,6 @@ allow-guest=false
     
       <li class="post">
         <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
       </li>
     
   </ul>

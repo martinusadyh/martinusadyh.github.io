@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17/</loc>
+    <lastmod>2014-09-11T09:04:54+07:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/</loc>
     <lastmod>2014-09-04T19:04:48+07:00</lastmod>
     <priority>0.8</priority>
@@ -1583,21 +1589,21 @@
   
   <url>
     <loc>http://martinusadyh.web.id/blog/archives/</loc>
-    <lastmod>2014-09-06T23:47:55+07:00</lastmod>
+    <lastmod>2014-09-11T11:07:10+07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://martinusadyh.web.id/</loc>
-    <lastmod>2014-09-06T23:47:55+07:00</lastmod>
+    <lastmod>2014-09-11T11:07:10+07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>http://martinusadyh.web.id/tutorial/</loc>
-    <lastmod>2014-09-06T23:47:55+07:00</lastmod>
+    <lastmod>2014-09-11T11:07:10+07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

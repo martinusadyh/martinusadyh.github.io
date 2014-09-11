@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Banyak sekali pertanyaan dari teman-teman tentang bagaimana cara membuat report dengan menggunakan JRBeansCollection sebagai datasource-nya, &hellip;">
+  <meta name="description" content="Cuma pingin ngeramein klo Slackware 13.0 udah release, dan ini release note dari situs resminya :) ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/08/28/slackware-130-released/">Slackware 13.0 Released</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-28T17:59:00+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/08/28/slackware-130-released/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Cuma pingin ngeramein klo Slackware 13.0 udah release, dan ini release note dari situs resminya :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/08/28/slackware-130-released/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -458,70 +503,6 @@ mysql&gt;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Violeted Constraints When Installing Packages in OpenSolaris</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-05-31T14:09:42+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pernah mendapatkan pesan <strong>pkg: the following package(s) violated constraints:</strong> ketika ingin menginstall sebuah packages di OpenSolaris ?? Yaps saya pernah :D dan ini berkali-kali saya alamin, kejadian ini terjadi kalau kita mempunyai lebih dari 1 mirror repositori selain yang terdapat di <a href="http://pkg.opensolaris.org/release/">http://pkg.opensolaris.org/release/</a>. Masalah ini saya alami ketika saya ingin menginstall packages amp di OpenSolaris yang saya gunakan, sedangkan konfigurasi repository yang saya pakai adalah sebagai berikut :</p>
-
-<pre><code>[martin@opensolarisbox:~]# pkg authority
-AUTHORITY                           URL
-Development                         http://pkg.opensolaris.org/dev/
-Blastwave                           http://blastwave.network.com:10000/
-OpenSolaris (preferred)             http://pkg.opensolaris.org/release/
-
-[martin@opensolarisbox:~]#
-</code></pre>
-
-<p>Sedangkan untuk menginstall packages amp, saya gunakan perintah pkg install amp dan akhirnya saya dengan sukses mendapatkan pesan error seperti dibawah ini :</p>
-
-<pre><code>martin@opensolarisbox:~]# pkg install amp
-Creating Plan -
-pkg: the following package(s) violated constraints:
-    Package pkg:/SUNWcsl@0.5.11,5.11-0.111 conflicts with constraint in installed pkg:/entire:
-            Pkg SUNWcsl: Optional min_version: 0.5.11,5.11-0.101 max version: 0.5.11,5.11-0.101 defined by: pkg:/entire
-[martin@opensolarisbox:~]#
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="44">&larr; Older</a>
@@ -551,6 +532,10 @@ pkg: the following package(s) violated constraints:
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
@@ -606,10 +591,6 @@ pkg: the following package(s) violated constraints:
     
       <li class="post">
         <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
       </li>
     
   </ul>

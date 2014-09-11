@@ -4,7 +4,7 @@
   <title><![CDATA[Category: linux | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-06T23:47:55+07:00</updated>
+  <updated>2014-09-11T11:07:10+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Disable Recent Files in Linux Mint 17]]></title>
+    <link href="http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17/"/>
+    <updated>2014-09-11T09:04:54+07:00</updated>
+    <id>http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17</id>
+    <content type="html"><![CDATA[<p>Sejak menggunakan <a href="http://blog.linuxmint.com/?p=2626">Mint 17</a> yang mengusung <a href="http://cinnamon.linuxmint.com/">Cinnamon 2.2</a> sebagai Desktop Managernya dan <a href="https://github.com/linuxmint/nemo">Nemo 2.2.4</a> sebagai file browser-nya, saya belum menemukan bagaimana cara untuk men-<em>disable</em> menu <strong>Recent Files</strong> baik di <strong>Cinnamon</strong> dan di <strong>Nemo</strong> :&lsquo;( Karena sudah terbiasa tidak menggunakan menu <strong>Recent Files</strong> dan hasil pencarian di <a href="https://www.google.com">Google</a> yang saya lakukan hanya berhasil di jalankan di <strong>Nemo</strong> saja<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> <em>(dengan penempatan dan nama file yang berbeda :( )</em> , akhirnya mau tidak mau untuk men-<em>disable</em> <strong>recent files</strong> di Cinnamon harus dicari sendiri :( .</p>
+
+<p>Setelah melakukan <em>trial and error</em> beberapa kali, akhirnya saya bisa juga men-<em>disable</em> menu <strong>Recent files</strong> baik di <strong>Cinnamon</strong> dan <strong>Nemo</strong> :) . Ada 2 langkah dan 2 file yang harus di <em>edit</em> yang saya lakukan yaitu :</p>
+
+<ul>
+<li><p><strong>Disable Recent Files in Cinnamon 2.2</strong></p>
+
+<p>Menu <em>Recent Files</em> di <strong>Cinnamon</strong> yang saya maksud disini adalah menu yang akan tampil ketika kita menekan tombol <code>Menu</code> seperti terlihat pada <em>screenshot</em> dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh5.googleusercontent.com/-9c7tZyR2-Xs/VBECdbYqQyI/AAAAAAAACYs/nHT0tY4GG8o/s288/Sebelum_Modifikasi_File%2520_menu%2540cinnamon.org.json.png">https://lh5.googleusercontent.com/-9c7tZyR2-Xs/VBECdbYqQyI/AAAAAAAACYs/nHT0tY4GG8o/s288/Sebelum_Modifikasi_File%2520_menu%2540cinnamon.org.json.png</a>' width='' height='' title='Menu Recent Files di Cinnamon'><span class='caption-text'>Menu Recent Files di Cinnamon</span></span></p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Nah untuk men-<em>disable recent files</em> di <strong>Cinnamon 2.2</strong> seperti terlihat pada <em>screenshot</em> diatas, maka sekarang edit-lah file <code>menu@cinnamon.org.json</code> yang terdapat pada direktori <code>/home/&lt;nama-user&gt;/.cinnamon/configs/menu@cinnamon.org/</code> dan cari baris yang isinya seperti dibawah ini :</p>
+
+<pre><code class="json">...
+"show-recent": {
+    "type": "checkbox",
+    "default": true,
+    "description": "Show recent files",
+    "tooltip": "Choose whether or not to show a recent file list in the menu.",
+    "value": true
+},
+...
+</code></pre>
+
+<p>kemudian edit menjadi seperti dibawah ini :</p>
+
+<pre><code class="json">...
+"show-recent": {
+    "type": "checkbox",
+    "default": false,
+    "description": "Show recent files",
+    "tooltip": "Choose whether or not to show a recent file list in the menu.",
+    "value": false
+},
+...
+</code></pre>
+
+<p>Kalau sudah sekarang simpan perubahan diatas dan sekarang coba klik tombol <code>Menu</code> , jika semua konfigurasi telah sesuai seharusnya kita sudah tidak melihat menu <em>Recent Files</em> lagi seperti gambar dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh5.googleusercontent.com/-rAuXCV5GLuw/VBECekitnQI/AAAAAAAACY8/39glRev1E88/s288/Setelah_Modifikasi_File%2520_menu%2540cinnamon.org.json.png">https://lh5.googleusercontent.com/-rAuXCV5GLuw/VBECekitnQI/AAAAAAAACY8/39glRev1E88/s288/Setelah_Modifikasi_File%2520_menu%2540cinnamon.org.json.png</a>' width='' height='' title='Menu Recent Files Hilang'><span class='caption-text'>Menu Recent Files Hilang</span></span></p>
+
+<ul>
+<li><p><strong>Disable Recent Tab in Nemo 2.2.4</strong></p>
+
+<p>Sedangkan untuk <em>Nemo</em> , buat-lah <em>(atau edit bila sudah ada)</em> file yang terdapat di dalam direktori <code>/home/&lt;nama-user&gt;/.config/gtk-3.0</code> dengan nama <code>settings.ini</code> dan kemudian tambahkan baris dibawah ini ke dalam file <code>settings.ini</code></p></li>
+</ul>
+
+
+<pre><code class="properties">[Settings]
+gtk-recent-files-max-age=0
+gtk-recent-files-limit=0
+</code></pre>
+
+<p>Jika sudah, simpan-lah perubahan yang sudah dilakukan. Sekarang seharus-nya <strong>Nemo</strong> sudah tidak akan menampilkan apa-pun di tab <code>Recent</code> seperti terlihat pada <em>screenshot</em> dibawah ini ;)</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh6.googleusercontent.com/-Uy9xof7d0u8/VBECdZ2X2LI/AAAAAAAACYw/1o5yrom-S_E/s288/Setelah_Menambah_File_Settings_ini.png">https://lh6.googleusercontent.com/-Uy9xof7d0u8/VBECdZ2X2LI/AAAAAAAACYw/1o5yrom-S_E/s288/Setelah_Menambah_File_Settings_ini.png</a>' width='' height='' title='Tab Recent Bersih'><span class='caption-text'>Tab Recent Bersih</span></span></p>
+
+<p>Bagaimana mudah bukan ? ;)</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>Tutorial membersihkan recent files di Nautilus versi 3.6 yang ternyata masih bisa digunakan untuk Nemo :) <a href="http://www.webupd8.org/2012/12/nautilus-36-how-to-clear-recent-files.html">Nautilus 3.6: How To Clear The Recent Files List (Or Disable It)</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setup Octopress in Linux Mint]]></title>
@@ -107,7 +186,7 @@ to do that add the following line to &lsquo;/home/martinusadyh/.bash_profile&rsq
 </ul>
 
 
-<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#119;&#97;&#121;&#110;&#x65;&#x65;&#115;&#101;&#103;&#x75;&#x69;&#x6e;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#119;&#97;&#121;&#x6e;&#x65;&#x65;&#x73;&#101;&#x67;&#x75;&#x69;&#x6e;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a>, Michal Papis <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#109;&#x70;&#x61;&#x70;&#x69;&#115;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#x6d;&#x70;&#97;&#112;&#x69;&#115;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
+<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#x77;&#x61;&#121;&#110;&#x65;&#x65;&#115;&#101;&#x67;&#117;&#x69;&#110;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#119;&#x61;&#x79;&#110;&#x65;&#101;&#115;&#x65;&#103;&#x75;&#105;&#110;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a>, Michal Papis <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#109;&#x70;&#x61;&#x70;&#105;&#x73;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;">&#109;&#112;&#97;&#x70;&#105;&#115;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
 Searching for binary rubies, this might take some time.
 No binary rubies available for: mint/17/x86_64/ruby-2.1.2.
 Continuing with compilation. Please read &lsquo;rvm help mount&rsquo; to get more information on binary rubies.

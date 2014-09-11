@@ -4,7 +4,7 @@
   <title><![CDATA[Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-06T23:47:55+07:00</updated>
+  <updated>2014-09-11T11:07:10+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Disable Recent Files in Linux Mint 17]]></title>
+    <link href="http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17/"/>
+    <updated>2014-09-11T09:04:54+07:00</updated>
+    <id>http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17</id>
+    <content type="html"><![CDATA[<p>Sejak menggunakan <a href="http://blog.linuxmint.com/?p=2626">Mint 17</a> yang mengusung <a href="http://cinnamon.linuxmint.com/">Cinnamon 2.2</a> sebagai Desktop Managernya dan <a href="https://github.com/linuxmint/nemo">Nemo 2.2.4</a> sebagai file browser-nya, saya belum menemukan bagaimana cara untuk men-<em>disable</em> menu <strong>Recent Files</strong> baik di <strong>Cinnamon</strong> dan di <strong>Nemo</strong> :&lsquo;( Karena sudah terbiasa tidak menggunakan menu <strong>Recent Files</strong> dan hasil pencarian di <a href="https://www.google.com">Google</a> yang saya lakukan hanya berhasil di jalankan di <strong>Nemo</strong> saja<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> <em>(dengan penempatan dan nama file yang berbeda :( )</em> , akhirnya mau tidak mau untuk men-<em>disable</em> <strong>recent files</strong> di Cinnamon harus dicari sendiri :( .</p>
+
+<p>Setelah melakukan <em>trial and error</em> beberapa kali, akhirnya saya bisa juga men-<em>disable</em> menu <strong>Recent files</strong> baik di <strong>Cinnamon</strong> dan <strong>Nemo</strong> :) . Ada 2 langkah dan 2 file yang harus di <em>edit</em> yang saya lakukan yaitu :</p>
+
+<ul>
+<li><p><strong>Disable Recent Files in Cinnamon 2.2</strong></p>
+
+<p>Menu <em>Recent Files</em> di <strong>Cinnamon</strong> yang saya maksud disini adalah menu yang akan tampil ketika kita menekan tombol <code>Menu</code> seperti terlihat pada <em>screenshot</em> dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh5.googleusercontent.com/-9c7tZyR2-Xs/VBECdbYqQyI/AAAAAAAACYs/nHT0tY4GG8o/s288/Sebelum_Modifikasi_File%2520_menu%2540cinnamon.org.json.png' width='' height='' title='Menu Recent Files di Cinnamon'><span class='caption-text'>Menu Recent Files di Cinnamon</span></span></p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p>Nah untuk men-<em>disable recent files</em> di <strong>Cinnamon 2.2</strong> seperti terlihat pada <em>screenshot</em> diatas, maka sekarang edit-lah file <code>menu@cinnamon.org.json</code> yang terdapat pada direktori <code>/home/&lt;nama-user&gt;/.cinnamon/configs/menu@cinnamon.org/</code> dan cari baris yang isinya seperti dibawah ini :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="err">...</span>
+</span><span class='line'><span class="s2">&quot;show-recent&quot;</span><span class="err">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;checkbox&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Show recent files&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;tooltip&quot;</span><span class="p">:</span> <span class="s2">&quot;Choose whether or not to show a recent file list in the menu.&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">}</span><span class="err">,</span>
+</span><span class='line'><span class="err">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>kemudian edit menjadi seperti dibawah ini :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="err">...</span>
+</span><span class='line'><span class="s2">&quot;show-recent&quot;</span><span class="err">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;checkbox&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Show recent files&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;tooltip&quot;</span><span class="p">:</span> <span class="s2">&quot;Choose whether or not to show a recent file list in the menu.&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
+</span><span class='line'><span class="p">}</span><span class="err">,</span>
+</span><span class='line'><span class="err">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Kalau sudah sekarang simpan perubahan diatas dan sekarang coba klik tombol <code>Menu</code> , jika semua konfigurasi telah sesuai seharusnya kita sudah tidak melihat menu <em>Recent Files</em> lagi seperti gambar dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh5.googleusercontent.com/-rAuXCV5GLuw/VBECekitnQI/AAAAAAAACY8/39glRev1E88/s288/Setelah_Modifikasi_File%2520_menu%2540cinnamon.org.json.png' width='' height='' title='Menu Recent Files Hilang'><span class='caption-text'>Menu Recent Files Hilang</span></span></p>
+
+<ul>
+<li><p><strong>Disable Recent Tab in Nemo 2.2.4</strong></p>
+
+<p>Sedangkan untuk <em>Nemo</em> , buat-lah <em>(atau edit bila sudah ada)</em> file yang terdapat di dalam direktori <code>/home/&lt;nama-user&gt;/.config/gtk-3.0</code> dengan nama <code>settings.ini</code> dan kemudian tambahkan baris dibawah ini ke dalam file <code>settings.ini</code></p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='properties'><span class='line'><span class="err">[Settings]</span>
+</span><span class='line'><span class="na">gtk-recent-files-max-age</span><span class="o">=</span><span class="s">0</span>
+</span><span class='line'><span class="na">gtk-recent-files-limit</span><span class="o">=</span><span class="s">0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Jika sudah, simpan-lah perubahan yang sudah dilakukan. Sekarang seharus-nya <strong>Nemo</strong> sudah tidak akan menampilkan apa-pun di tab <code>Recent</code> seperti terlihat pada <em>screenshot</em> dibawah ini ;)</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh6.googleusercontent.com/-Uy9xof7d0u8/VBECdZ2X2LI/AAAAAAAACYw/1o5yrom-S_E/s288/Setelah_Menambah_File_Settings_ini.png' width='' height='' title='Tab Recent Bersih'><span class='caption-text'>Tab Recent Bersih</span></span></p>
+
+<p>Bagaimana mudah bukan ? ;)</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>Tutorial membersihkan recent files di Nautilus versi 3.6 yang ternyata masih bisa digunakan untuk Nemo :) <a href="http://www.webupd8.org/2012/12/nautilus-36-how-to-clear-recent-files.html">Nautilus 3.6: How To Clear The Recent Files List (Or Disable It)</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setup Octopress in Linux Mint]]></title>
@@ -2726,92 +2829,6 @@ martinusadyh@artivisi:/tmp/apache-nutch-1.6$
 <li><p> <a href="http://lucene.apache.org/solr/">Apache Solr</a></p></li>
 <li><p> <a href="http://nutch.apache.org/">Apache Nutch</a></p></li>
 <li><p> <a href="http://blog.building-blocks.com/building-a-search-engine-with-nutch-and-solr-in-10-minutes">Building a Search Engine with Nutch and Solr in 10 Minutes</a></p></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ride And Capture Nusantaride Event]]></title>
-    <link href="http://martinusadyh.web.id/2013/01/18/ride-and-capture-nusantaride-event/"/>
-    <updated>2013-01-18T22:46:35+07:00</updated>
-    <id>http://martinusadyh.web.id/2013/01/18/ride-and-capture-nusantaride-event</id>
-    <content type="html"><![CDATA[<p>Hiii rekans,</p>
-
-<p>Sekedar meneruskan sebuah event yang akan di gelar pada tanggal 24 Januari 2013 oleh komunitas <a href="http://www.nusantaride.com">Nusantaride</a> , mungkin berguna buat rekan-rekan yang belum bergabung dan ingin ikut :)</p>
-
-<p>[caption id=&ldquo;attachment_2400&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;739&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=388"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/01/RideandCapture.jpg" alt="Ride and Capture" /></a> Ride and Capture[/caption]</p>
-
-<p>Sahabat nusantaride,</p>
-
-<p>Sebagai pembuka kalender event Nusantaride dimulai dengan <strong>&ldquo;Ride and Capture&rdquo;</strong> ,event yang berformat penulisan dan fotography ini akan diadakan di Cibodas Camping Ground pada tanggal 24 - 25 Januari 2013.</p>
-
-<p>Final Run Down event RIDE and CAPTURE</p>
-
-<p>Berdasarkan banyaknya permintaan dari para audience, biaya registrasi event akan dibagi 2 pilihan yang dapat audience pilih :</p>
-
-<ol>
-<li>Rp. 150.000 (t-shirt, snack, akomodasi lokal)</li>
-<li>Rp. 75.000 (hanya akomodasi lokal saja)</li>
-</ol>
-
-
-<p>Pendaftaran registrasi via online dengan format :
-Nama :
-Alamat lengkap :
-No telepon :
-No telepon kerabat :
-Gol. Darah :
-Ukuran t-shirt (dicantumkan apabila audience membayar Rp. 150.000)
-Via inbox facebook : Pramudya Irawan</p>
-
-<!-- more -->
-
-
-<p>Bagi yang hanya beli t-shirt, silahkan ditebus dengan harga Rp. 75.000</p>
-
-<p>Semua pembayaran via transfer ke BCA 4212378848 a/n Diana Indrasari, sms konfirmasi ke 0856 800 6972, harap 2 digit dibelakang diganti dengan angka 13, contoh :150013</p>
-
-<p>Batas Waktu :
-- pembayaran transfer sampai tanggal 19 Januari 2013
-- pemesanan kaos sampai dengan 21 Januari 2013</p>
-
-<p>INBOX ke <a href="https://www.facebook.com/pramudya.dillusion?group_id=147651798611077">Pramudya Irawan</a> (ID Facebook)</p>
-
-<p>Transfer :
-Diana Indrasari ,BCA 4212378848 a/n Diana Indrasari,konfirmasi transfer ke 0856-800-6972,harap diberi akhiran 13,sebagai pembeda,contoh : 150.013</p>
-
-<p>Sedangkan untuk detail acaranya adalah sebagai berikut :</p>
-
-<p>24.01.2013
-14:00-14:30: pembukaan
-14:30-15:30: workshop menulis
-15:30-16:30: rehat
-16:30-17:30: lanjutan workshop
-17:30-18:30: rehat
-18:30-22:00: diskusi dan api unggun</p>
-
-<p>25.01.2013
-08:00-09:00: sesi teori workshop fotografi
-09:00-12:00: sesi praktek
-12:00-13:00: rehat
-13:00-15:00: sesi pembahasan hasil praktek
-15:00-16:00: penutupan</p>
-
-<p>Dan untuk kaos-nya (jika datang) adalah seperti berikut :</p>
-
-<p>[caption id=&ldquo;attachment_2399&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;800&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=387"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/01/KaosRideandCapture.jpg" alt="Kaos Ride and Capture" /></a> Kaos Ride and Capture[/caption]</p>
-
-<p>On behalf
-NUSANTARIDE</p>
-
-<p>Bagaimana rekan-rekan ? Tertarik untuk ikut ? Jika iya, langsung kontak saja panitia-nya ya :)</p>
-
-<p><strong>Referensi :</strong></p>
-
-<ol>
-<li><p> <a href="http://www.nusantaride.com/Forums">Forum Nusantaride</a></p></li>
-<li><p> <a href="https://www.facebook.com/events/436396919767024/">Groups Nusantaride di Facebook</a></p></li>
 </ol>
 
 ]]></content>

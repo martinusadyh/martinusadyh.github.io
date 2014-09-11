@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Buat teman-teman yang sudah lama menggunakan Git), mungkin sudah tahu teknik ini :) Yaps&hellip; karena saya juga merasa baru tahu, jadi tidak ada &hellip;">
+  <meta name="description" content="Pernah ingin mencoba melakukan simulasi &ldquo;jaringan lambat&rdquo; ?? Jika iya, maka teman-teman dapat mencoba menggunakan sebuah shell script &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,105 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/08/17/simulasi-slow-network-dengan-lagfactory/">Simulasi Slow Network Dengan LagFactory</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-17T17:20:18+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/08/17/simulasi-slow-network-dengan-lagfactory/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pernah ingin mencoba melakukan simulasi <strong>&ldquo;jaringan lambat&rdquo;</strong> ?? Jika iya, maka teman-teman dapat mencoba menggunakan sebuah shell script dengan nama <strong>LagFactory</strong> yang bisa di unduh pada <a href="http://software.inl.fr/trac/wiki/LagFactory">http://software.inl.fr/trac/wiki/LagFactory</a> :) Agar dapat menggunakan script <strong>LagFactory</strong> ini, editlah dahulu variabel <code>IFACE</code> dan <code>TARGET</code> sesuai dengan kebutuhan kita. Nah sebagai contoh, jika kita ingin melakukan simulasi pada komputer kita sendiri gantilah isi variabel <code>IFACE</code> dan <code>TARGET</code> menjadi seperti dibawah ini :</p>
+
+<pre><code>IFACE="lo lo" # Input and output interface to simulate lag in INPUT and OUTPUT
+TARGET="0.0.0.0/0" # Host or network to apply lag on
+</code></pre>
+
+<p>Setelah selesai, sekarang jalankanlah dengan menggunakan akses root (#) dengan cara seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[/home/martinus/Desktop]# ./lagfactory.sh start 10000 10
+DELAY : 10000 ms
+LOSS : 10%
+RTNETLINK answers: Invalid argument
+RTNETLINK answers: File exists
+RTNETLINK answers: File exists
+RTNETLINK answers: Invalid argument
+RTNETLINK answers: File exists
+We have an error talking to the kernel
+root@martinusadyh:[/home/martinus/Desktop]#
+</code></pre>
+
+<p>Jika sudah, sekarang coba jalankan perintah <code>ping</code> pada localhost seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[/]$ ping localhost 
+PING martinusadyh (127.0.0.1) 56(84) bytes of data.
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=11 ttl=64 time=18625 ms
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=13 ttl=64 time=18476 ms
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=10 ttl=64 time=21548 ms
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=12 ttl=64 time=19786 ms
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=14 ttl=64 time=18206 ms
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=15 ttl=64 time=19416 ms
+martinus@martinusadyh:[/]$ 
+</code></pre>
+
+<p>Untuk membandingkan dengan keadan <strong>&ldquo;normal&rdquo;</strong>, sekarang matikan dahulu script <strong>LagFactory</strong> dengan menggunakan perintah <code>./lagfactory.sh stop</code> dan cek hasil ping yang seharusnya nilai time yang dihasilkan berkisar dibawah <strong>0.040 ms</strong> di seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[/home/martinus/Desktop]# ./lagfactory.sh stop          
+RTNETLINK answers: No such file or directory
+root@martinusadyh:[/home/martinus/Desktop]# ping localhost
+PING martinusadyh (127.0.0.1) 56(84) bytes of data.
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=1 ttl=64 time=0.035 ms
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=2 ttl=64 time=0.040 ms
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=3 ttl=64 time=0.038 ms
+64 bytes from martinusadyh (127.0.0.1): icmp_seq=4 ttl=64 time=0.037 ms
+^C
+--- martinusadyh ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3001ms
+rtt min/avg/max/mdev = 0.035/0.037/0.040/0.006 ms
+root@martinusadyh:[/home/martinus/Desktop]# 
+</code></pre>
+
+<p>Sebenarnya apasih tujuan dari posting ini ?? Tujuan utama-nya yaitu adalah agar kita bisa mengetahui seberapa <strong>&ldquo;cepat&rdquo;</strong>-kah aplikasi yang kita bangun jika dihadapkan pada kondisi jaringan yang <strong>&ldquo;jelek&rdquo;</strong> :) (Bayangkan jika kita mempunyai client yang outletnya ada di pelosok desa, dan koneksi yang tersedia hanyalah GPRS saja :D )</p>
+
+<p>Bagaimana teman-teman, tertarik untuk mencoba ??? :)</p>
+
+<p><strong>Referensi</strong></p>
+
+<ol>
+<li> <a href="http://software.inl.fr/trac/wiki/LagFactory">http://software.inl.fr/trac/wiki/LagFactory</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -308,67 +407,6 @@ martinus@martinusadyh:[~/Desktop/tinymce]$
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2010/06/28/tnx-invitation-code/">TNX Invitation Code</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-28T19:01:40+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2010/06/28/tnx-invitation-code/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Buat teman-teman yang penasaran apa sih itu <a href="http://tnx.net/">TNX</a> dan bagaimana cara kerjanya ? Pada tulisan ini saya akan coba sedikit kasih gambaran :) <a href="http://tnx.net/">TNX</a> sebenarnya adalah sebuah <strong>broker</strong> jual beli link, dan disini para blogger akan dipertemukan dengan advertiser (pembeli link atau pemasang iklan) secara langsung. Nah sedangkan cara kerja sistem jual beli link ini sangat mudah, cukup <strong>&ldquo;PASANG DAN TINGGAL&rdquo;</strong> kemudian kita sebagai blogger tinggal menunggu kucuran $$$ mengalir ke akun kita. Mudah dan sederhana bukan ??</p>
-
-<p>Terus bagaimana cara mendaftar di <a href="http://tnx.net/">TNX</a> ini ? Saya tidak akan membahas bagaimana cara daftarnya, karena sudah banyak teman-teman blogger yang sudah menjelaskan langkah demi langkahnya, dan salah satu contohnya ada di <a href="http://lebahndut.blogspot.com/2009/11/cara-mudah-mendaftar-tnx-panduan.html">Panduan Cara Mudah Mendafar TNX</a>. Nah disini saya cuma ingin bagi-bagi <strong>INVITATION CODE</strong> untuk teman-teman :) , jika teman-teman mau silahkan pakai <strong>INVITATION CODE</strong> dibawah ini :</p>
-
-<ol>
-<li><p> <strong> <del>4c1f437f</del></strong></p></li>
-<li><p> <strong> <del>4c1f4388</del> </strong></p></li>
-<li><p> <strong> 4c1f438d </strong></p></li>
-<li><p> <strong> 4c1f44a1 </strong></p></li>
-<li><p> <strong> <del>4c1f44a5</del></strong></p></li>
-<li><p> <strong> 4c1f44a8 </strong></p></li>
-<li><p> <strong> 4c1f44aa </strong></p></li>
-<li><p> <strong> 4c235c47 </strong></p></li>
-<li><p> <strong> 4c235c4a </strong></p></li>
-<li><p>. <strong> 4c235c4e </strong></p></li>
-<li><p>. <strong> <del>4c235c51</del> </strong></p></li>
-</ol>
-
-
-<p>Jika sudah silahkan konfirmasi di bagian komentar, kode mana yang sudah teman-teman pakai :) Yuukk mari berbagi ilmu + meraup <strong>recehan dollar</strong> dari Internet :)</p>
-
-<p><strong>Note: Masih banyak hal positif di internet ini dari pada hunting video Cut Tari + Ariel + Luna Maya guys. !!!, mari ambil keuntungan dari  Internet semaksimal-maksimalnya</strong> :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="21">&larr; Older</a>
@@ -398,6 +436,10 @@ martinus@martinusadyh:[~/Desktop/tinymce]$
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a>
@@ -453,10 +495,6 @@ martinus@martinusadyh:[~/Desktop/tinymce]$
     
       <li class="post">
         <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-senior-java-web-developer/">Lowongan Senior Java Web Developer</a>
       </li>
     
   </ul>
