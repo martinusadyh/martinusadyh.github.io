@@ -16,7 +16,7 @@ tags:
 - Slackware
 ---
 
-{% img center /images/blog-images/linux/StepByStepBuildingOpenJDK/openjdk.png OpenJDK %}
+{% imgcap /images/blog-images/linux/StepByStepBuildingOpenJDK/openjdk.png OpenJDK %}
 
 Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk [OpenJDK](http://openjdk.java.net/) yang tinggal install menggunakan perintah `installpkg` ataupun tutorial bagaimana membuat sebuah binary packages untuk Slackware. Nah pada posting kali ini, kita akan mencoba untuk melakukan proses kompilasi source code [OpenJDK](http://openjdk.java.net/) langsung dari repository-nya. Dan sekedar catatan, proses yang akan dijelaskan disini hanya sampai mendapatkan **JDK** maupun **JRE** yang siap digunakan dalam bentuk direktori saja bukan dalam bentuk binary Slackware yang ber-ekstensi ***.tgz** atau ***.txz** :) 
 
@@ -31,99 +31,104 @@ Setelah 2 kebutuhan dasar tersebut terinstall, sekarang mari kita persiapkan kon
   * **JAVA_HOME**, 
   lakukan pengecekan apakah variabel **JAVA_HOME** sudah terkonfigurasi pada sistem anda atau belum dengan mengetikkan `echo $JAVA_HOME` dan jika benar, maka hasil perintah tersebut akan menampilkan dimana letak direktori **jdk** berada seperti dibawah ini : 
 
-    root@artivisi:~# echo $JAVA_HOME
-    /usr/lib64/java
-    root@artivisi:~#
+``` 
+root@artivisi:~# echo $JAVA_HOME
+/usr/lib64/java
+root@artivisi:~#
+```
 
   Jika perintah `echo $JAVA_HOME` tidak mengeluarkan apa-apa, sekarang jalankan perintah `export JAVA_HOME=/usr/lib64/java` dan kemudian lagi cek dengan perintah `echo $JAVA_HOME`. 
 
   * **LANG**, ketikkan `export LANG="C"` untuk mengkonfigurasi dan cek dengan mengetikkan perintah `echo $LANG` seperti dibawah ini :
-
-    root@artivisi:~# export LANG="C"
-    root@artivisi:~# echo $LANG
-    C
-    root@artivisi:~# 
+```
+root@artivisi:~# export LANG="C"
+root@artivisi:~# echo $LANG
+C
+root@artivisi:~# 
+```
 
   * **ALT_BOOTDIR**, untuk konfigurasi **ALT_BOOTDIR** ini isinya samakan dengan isi variabel **$JAVA_HOME** yang terdapat pada komputer / laptop kita masing-masing. Sebagai contoh di laptop yang digunakan pada tulisan kali ini, isi variabel **$JAVA_HOME** mengarah ke `/usr/lib64/java/` maka jalankan perintah `export ALT_BOOTDIR="/usr/lib64/java/"` dan cek menggunakan perintah `echo $ALT_BOOTDIR` seperti dibawah ini :
-
-    root@artivisi:~# export ALT_BOOTDIR="/usr/lib64/java/"
-    root@artivisi:~# echo $ALT_BOOTDIR
-    /usr/lib64/java/
-    root@artivisi:~#
+```
+root@artivisi:~# export ALT_BOOTDIR="/usr/lib64/java/"
+root@artivisi:~# echo $ALT_BOOTDIR
+/usr/lib64/java/
+root@artivisi:~#
+```
 
   * **ANT_HOME**, dan langkah terakhir yaitu mengkonfigurasi variabel **$ANT_HOME**. Jalankan perintah `export ANT_HOME=/usr/share/ant` dan cek menggunakan perintah `echo $ANT_HOME` seperti dibawah ini :
-
-    root@artivisi:~# export ANT_HOME=/usr/share/ant
-    root@artivisi:~# echo $ANT_HOME
-    /usr/share/ant
-    root@artivisi:~# 
+```
+root@artivisi:~# export ANT_HOME=/usr/share/ant
+root@artivisi:~# echo $ANT_HOME
+/usr/share/ant
+root@artivisi:~# 
+```
 
 <!-- more -->
 Jika sudah, sekarang mari kita download source code [OpenJDK 7](http://openjdk.java.net/) dari repository mercurial dengan mengetikkan perintah `hg clone http://hg.openjdk.java.net/jdk7/jdk7 open-jdk7` dan jika sudah harusnya akan tampak seperti dibawah ini :
-
-    root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ hg clone http://hg.openjdk.java.net/jdk7/jdk7 open-jdk7
-    requesting all changes
-    adding changesets
-    adding manifests
-    adding file changes
-    added 340 changesets with 340 changes to 33 files
-    updating to branch default
-    32 files updated, 0 files merged, 0 files removed, 0 files unresolved
-    root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$
-
+```
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ hg clone http://hg.openjdk.java.net/jdk7/jdk7 open-jdk7
+requesting all changes
+adding changesets
+adding manifests
+adding file changes
+added 340 changesets with 340 changes to 33 files
+updating to branch default
+32 files updated, 0 files merged, 0 files removed, 0 files unresolved
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$
+```
 
 Setelah menjalankan perintah diatas, kita akan mendapatkan sebuah direktori baru dengan nama **open-jdk7**. Masuklah kedalam direktori tersebut dan tambahkanlah akses **execute** pada file `get_source.sh` dan ambil source code [OpenJDK](http://openjdk.java.net/) dengan menjalankan perintah `./get_source.sh` seperti dibawah ini :
-
-    root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ cd open-jdk7/
-    root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ls
-    ASSEMBLY_EXCEPTION  LICENSE  Makefile  README  README-builds.html  THIRD_PARTY_README  get_source.sh  make  test
-    root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ chmod +x get_source.sh 
-    root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ./get_source.sh 
-    No repositories to process.
-    # Repos:  . ./corba ./hotspot ./jaxp ./jaxws ./jdk ./langtools
-    Starting on .
-    Starting on ./corba
-    Starting on ./hotspot
-    Starting on ./jaxp
-    Starting on ./jaxws
-    Starting on ./jdk
-    Starting on ./langtools
-    # cd ./jaxp && hg pull -u
-    pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxp
-    searching for changes
-    no changes found
-    # exit code 0
-    # cd ./jaxws && hg pull -u
-    pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxws
-    searching for changes
-    no changes found
-    # exit code 0
-    # cd ./langtools && hg pull -u
-    pulling from http://hg.openjdk.java.net/jdk7/jdk7/langtools
-    searching for changes
-    no changes found
-    # exit code 0
-    # cd ./jdk && hg pull -u
-    pulling from http://hg.openjdk.java.net/jdk7/jdk7/jdk
-    searching for changes
-    no changes found
-    # exit code 0
-    # cd ./hotspot && hg pull -u
-    pulling from http://hg.openjdk.java.net/jdk7/jdk7/hotspot
-    searching for changes
-    no changes found
-    # exit code 0
-    # cd ./corba && hg pull -u
-    pulling from http://hg.openjdk.java.net/jdk7/jdk7/corba
-    searching for changes
-    no changes found
-    # exit code 0
-    # cd . && hg pull -u
-    pulling from http://hg.openjdk.java.net/jdk7/jdk7
-    searching for changes
-    no changes found
-    # exit code 0
-
+```
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ cd open-jdk7/
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ls
+ASSEMBLY_EXCEPTION  LICENSE  Makefile  README  README-builds.html  THIRD_PARTY_README  get_source.sh  make  test
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ chmod +x get_source.sh 
+root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ./get_source.sh 
+No repositories to process.
+# Repos:  . ./corba ./hotspot ./jaxp ./jaxws ./jdk ./langtools
+Starting on .
+Starting on ./corba
+Starting on ./hotspot
+Starting on ./jaxp
+Starting on ./jaxws
+Starting on ./jdk
+Starting on ./langtools
+# cd ./jaxp && hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxp
+searching for changes
+no changes found
+# exit code 0
+# cd ./jaxws && hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxws
+searching for changes
+no changes found
+# exit code 0
+# cd ./langtools && hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/langtools
+searching for changes
+no changes found
+# exit code 0
+# cd ./jdk && hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/jdk
+searching for changes
+no changes found
+# exit code 0
+# cd ./hotspot && hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/hotspot
+searching for changes
+no changes found
+# exit code 0
+# cd ./corba && hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7/corba
+searching for changes
+no changes found
+# exit code 0
+# cd . && hg pull -u
+pulling from http://hg.openjdk.java.net/jdk7/jdk7
+searching for changes
+no changes found
+# exit code 0
+```
 
 Ketika kita sudah mendapatkan semua source code yang diperlukan, **unset** dahulu variabel **JAVA_HOME** dengan mengetikkan perintah `unset JAVA_HOME` setelah itu jalankan proses pengecekan sekali lagi dengan mengetikkan perintah `gmake sanity` seperti dibawah ini :
 
