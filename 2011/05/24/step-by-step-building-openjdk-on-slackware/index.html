@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk OpenJDK yang tinggal install &hellip;">
+  <meta name="description" content="OpenJDK Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk OpenJDK yang tinggal &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -128,7 +128,7 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-<div class="entry-content"><p><img class="center" src="/images/blog-images/linux/StepByStepBuildingOpenJDK/openjdk.png" title="OpenJDK" ></p>
+<div class="entry-content"><p><span class='caption-wrapper'><img class='caption' src='/images/blog-images/linux/StepByStepBuildingOpenJDK/openjdk.png' width='' height='' title='OpenJDK'><span class='caption-text'>OpenJDK</span></span></p>
 
 <p>Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk <a href="http://openjdk.java.net/">OpenJDK</a> yang tinggal install menggunakan perintah <code>installpkg</code> ataupun tutorial bagaimana membuat sebuah binary packages untuk Slackware. Nah pada posting kali ini, kita akan mencoba untuk melakukan proses kompilasi source code <a href="http://openjdk.java.net/">OpenJDK</a> langsung dari repository-nya. Dan sekedar catatan, proses yang akan dijelaskan disini hanya sampai mendapatkan <strong>JDK</strong> maupun <strong>JRE</strong> yang siap digunakan dalam bentuk direktori saja bukan dalam bentuk binary Slackware yang ber-ekstensi <em><strong>.tgz</strong> atau </em><strong>.txz</strong> :)</p>
 
@@ -143,37 +143,66 @@
 <p>Setelah 2 kebutuhan dasar tersebut terinstall, sekarang mari kita persiapkan konfigurasi <strong>&ldquo;environment variable&rdquo;</strong> yang dibutuhkan oleh <a href="http://openjdk.java.net/">OpenJDK</a>. Beberapa konfigurasi <strong>&ldquo;environment variable&rdquo;</strong> yang dibutuhkan adalah (lakukan konfigurasi dibawah ini menggunakan akses super user / root) :</p>
 
 <ul>
-<li><p><strong>JAVA_HOME</strong>,
-lakukan pengecekan apakah variabel <strong>JAVA_HOME</strong> sudah terkonfigurasi pada sistem anda atau belum dengan mengetikkan <code>echo $JAVA_HOME</code> dan jika benar, maka hasil perintah tersebut akan menampilkan dimana letak direktori <strong>jdk</strong> berada seperti dibawah ini :</p>
+<li><strong>JAVA_HOME</strong>,
+lakukan pengecekan apakah variabel <strong>JAVA_HOME</strong> sudah terkonfigurasi pada sistem anda atau belum dengan mengetikkan <code>echo $JAVA_HOME</code> dan jika benar, maka hasil perintah tersebut akan menampilkan dimana letak direktori <strong>jdk</strong> berada seperti dibawah ini :</li>
+</ul>
 
-<p>  root@artivisi:~# echo $JAVA_HOME
-  /usr/lib64/java
-  root@artivisi:~#</p>
 
-<p>Jika perintah <code>echo $JAVA_HOME</code> tidak mengeluarkan apa-apa, sekarang jalankan perintah <code>export JAVA_HOME=/usr/lib64/java</code> dan kemudian lagi cek dengan perintah <code>echo $JAVA_HOME</code>.</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:~# echo $JAVA_HOME
+</span><span class='line'>/usr/lib64/java
+</span><span class='line'>root@artivisi:~#</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<p>  Jika perintah <code>echo $JAVA_HOME</code> tidak mengeluarkan apa-apa, sekarang jalankan perintah <code>export JAVA_HOME=/usr/lib64/java</code> dan kemudian lagi cek dengan perintah <code>echo $JAVA_HOME</code>.</p>
 
 <ul>
-<li><p><strong>LANG</strong>, ketikkan <code>export LANG="C"</code> untuk mengkonfigurasi dan cek dengan mengetikkan perintah <code>echo $LANG</code> seperti dibawah ini :</p>
-
-<p>root@artivisi:~# export LANG=&ldquo;C&rdquo;
-root@artivisi:~# echo $LANG
-C
-root@artivisi:~#</p></li>
-<li><p><strong>ALT_BOOTDIR</strong>, untuk konfigurasi <strong>ALT_BOOTDIR</strong> ini isinya samakan dengan isi variabel <strong>$JAVA_HOME</strong> yang terdapat pada komputer / laptop kita masing-masing. Sebagai contoh di laptop yang digunakan pada tulisan kali ini, isi variabel <strong>$JAVA_HOME</strong> mengarah ke <code>/usr/lib64/java/</code> maka jalankan perintah <code>export ALT_BOOTDIR="/usr/lib64/java/"</code> dan cek menggunakan perintah <code>echo $ALT_BOOTDIR</code> seperti dibawah ini :</p>
-
-<p>root@artivisi:~# export ALT_BOOTDIR=&ldquo;/usr/lib64/java/&rdquo;
-root@artivisi:~# echo $ALT_BOOTDIR
-/usr/lib64/java/
-root@artivisi:~#</p></li>
-<li><p><strong>ANT_HOME</strong>, dan langkah terakhir yaitu mengkonfigurasi variabel <strong>$ANT_HOME</strong>. Jalankan perintah <code>export ANT_HOME=/usr/share/ant</code> dan cek menggunakan perintah <code>echo $ANT_HOME</code> seperti dibawah ini :</p>
-
-<p>root@artivisi:~# export ANT_HOME=/usr/share/ant
-root@artivisi:~# echo $ANT_HOME
-/usr/share/ant
-root@artivisi:~#</p></li>
+<li><strong>LANG</strong>, ketikkan <code>export LANG="C"</code> untuk mengkonfigurasi dan cek dengan mengetikkan perintah <code>echo $LANG</code> seperti dibawah ini :</li>
 </ul>
-</li>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:~# export LANG="C"
+</span><span class='line'>root@artivisi:~# echo $LANG
+</span><span class='line'>C
+</span><span class='line'>root@artivisi:~# </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<ul>
+<li><strong>ALT_BOOTDIR</strong>, untuk konfigurasi <strong>ALT_BOOTDIR</strong> ini isinya samakan dengan isi variabel <strong>$JAVA_HOME</strong> yang terdapat pada komputer / laptop kita masing-masing. Sebagai contoh di laptop yang digunakan pada tulisan kali ini, isi variabel <strong>$JAVA_HOME</strong> mengarah ke <code>/usr/lib64/java/</code> maka jalankan perintah <code>export ALT_BOOTDIR="/usr/lib64/java/"</code> dan cek menggunakan perintah <code>echo $ALT_BOOTDIR</code> seperti dibawah ini :</li>
 </ul>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:~# export ALT_BOOTDIR="/usr/lib64/java/"
+</span><span class='line'>root@artivisi:~# echo $ALT_BOOTDIR
+</span><span class='line'>/usr/lib64/java/
+</span><span class='line'>root@artivisi:~#</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
+<ul>
+<li><strong>ANT_HOME</strong>, dan langkah terakhir yaitu mengkonfigurasi variabel <strong>$ANT_HOME</strong>. Jalankan perintah <code>export ANT_HOME=/usr/share/ant</code> dan cek menggunakan perintah <code>echo $ANT_HOME</code> seperti dibawah ini :</li>
+</ul>
+
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:~# export ANT_HOME=/usr/share/ant
+</span><span class='line'>root@artivisi:~# echo $ANT_HOME
+</span><span class='line'>/usr/share/ant
+</span><span class='line'>root@artivisi:~# </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+
 
 
 <!-- more -->
@@ -181,69 +210,127 @@ root@artivisi:~#</p></li>
 
 <p>Jika sudah, sekarang mari kita download source code <a href="http://openjdk.java.net/">OpenJDK 7</a> dari repository mercurial dengan mengetikkan perintah <code>hg clone http://hg.openjdk.java.net/jdk7/jdk7 open-jdk7</code> dan jika sudah harusnya akan tampak seperti dibawah ini :</p>
 
-<pre><code>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ hg clone http://hg.openjdk.java.net/jdk7/jdk7 open-jdk7
-requesting all changes
-adding changesets
-adding manifests
-adding file changes
-added 340 changesets with 340 changes to 33 files
-updating to branch default
-32 files updated, 0 files merged, 0 files removed, 0 files unresolved
-root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$
-</code></pre>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ hg clone http://hg.openjdk.java.net/jdk7/jdk7 open-jdk7
+</span><span class='line'>requesting all changes
+</span><span class='line'>adding changesets
+</span><span class='line'>adding manifests
+</span><span class='line'>adding file changes
+</span><span class='line'>added 340 changesets with 340 changes to 33 files
+</span><span class='line'>updating to branch default
+</span><span class='line'>32 files updated, 0 files merged, 0 files removed, 0 files unresolved
+</span><span class='line'>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$</span></code></pre></td></tr></table></div></figure></notextile></div>
+
 
 <p>Setelah menjalankan perintah diatas, kita akan mendapatkan sebuah direktori baru dengan nama <strong>open-jdk7</strong>. Masuklah kedalam direktori tersebut dan tambahkanlah akses <strong>execute</strong> pada file <code>get_source.sh</code> dan ambil source code <a href="http://openjdk.java.net/">OpenJDK</a> dengan menjalankan perintah <code>./get_source.sh</code> seperti dibawah ini :</p>
 
-<pre><code>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ cd open-jdk7/
-root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ls
-ASSEMBLY_EXCEPTION  LICENSE  Makefile  README  README-builds.html  THIRD_PARTY_README  get_source.sh  make  test
-root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ chmod +x get_source.sh 
-root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ./get_source.sh 
-No repositories to process.
-# Repos:  . ./corba ./hotspot ./jaxp ./jaxws ./jdk ./langtools
-Starting on .
-Starting on ./corba
-Starting on ./hotspot
-Starting on ./jaxp
-Starting on ./jaxws
-Starting on ./jdk
-Starting on ./langtools
-# cd ./jaxp &amp;&amp; hg pull -u
-pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxp
-searching for changes
-no changes found
-# exit code 0
-# cd ./jaxws &amp;&amp; hg pull -u
-pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxws
-searching for changes
-no changes found
-# exit code 0
-# cd ./langtools &amp;&amp; hg pull -u
-pulling from http://hg.openjdk.java.net/jdk7/jdk7/langtools
-searching for changes
-no changes found
-# exit code 0
-# cd ./jdk &amp;&amp; hg pull -u
-pulling from http://hg.openjdk.java.net/jdk7/jdk7/jdk
-searching for changes
-no changes found
-# exit code 0
-# cd ./hotspot &amp;&amp; hg pull -u
-pulling from http://hg.openjdk.java.net/jdk7/jdk7/hotspot
-searching for changes
-no changes found
-# exit code 0
-# cd ./corba &amp;&amp; hg pull -u
-pulling from http://hg.openjdk.java.net/jdk7/jdk7/corba
-searching for changes
-no changes found
-# exit code 0
-# cd . &amp;&amp; hg pull -u
-pulling from http://hg.openjdk.java.net/jdk7/jdk7
-searching for changes
-no changes found
-# exit code 0
-</code></pre>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk]$ cd open-jdk7/
+</span><span class='line'>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ls
+</span><span class='line'>ASSEMBLY_EXCEPTION  LICENSE  Makefile  README  README-builds.html  THIRD_PARTY_README  get_source.sh  make  test
+</span><span class='line'>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ chmod +x get_source.sh 
+</span><span class='line'>root@artivisi:[/mnt/DATA1/data/SLACKBUILDS/SLACKWARE-JAVA/openjdk/open-jdk7]$ ./get_source.sh 
+</span><span class='line'>No repositories to process.
+</span><span class='line'># Repos:  . ./corba ./hotspot ./jaxp ./jaxws ./jdk ./langtools
+</span><span class='line'>Starting on .
+</span><span class='line'>Starting on ./corba
+</span><span class='line'>Starting on ./hotspot
+</span><span class='line'>Starting on ./jaxp
+</span><span class='line'>Starting on ./jaxws
+</span><span class='line'>Starting on ./jdk
+</span><span class='line'>Starting on ./langtools
+</span><span class='line'># cd ./jaxp && hg pull -u
+</span><span class='line'>pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxp
+</span><span class='line'>searching for changes
+</span><span class='line'>no changes found
+</span><span class='line'># exit code 0
+</span><span class='line'># cd ./jaxws && hg pull -u
+</span><span class='line'>pulling from http://hg.openjdk.java.net/jdk7/jdk7/jaxws
+</span><span class='line'>searching for changes
+</span><span class='line'>no changes found
+</span><span class='line'># exit code 0
+</span><span class='line'># cd ./langtools && hg pull -u
+</span><span class='line'>pulling from http://hg.openjdk.java.net/jdk7/jdk7/langtools
+</span><span class='line'>searching for changes
+</span><span class='line'>no changes found
+</span><span class='line'># exit code 0
+</span><span class='line'># cd ./jdk && hg pull -u
+</span><span class='line'>pulling from http://hg.openjdk.java.net/jdk7/jdk7/jdk
+</span><span class='line'>searching for changes
+</span><span class='line'>no changes found
+</span><span class='line'># exit code 0
+</span><span class='line'># cd ./hotspot && hg pull -u
+</span><span class='line'>pulling from http://hg.openjdk.java.net/jdk7/jdk7/hotspot
+</span><span class='line'>searching for changes
+</span><span class='line'>no changes found
+</span><span class='line'># exit code 0
+</span><span class='line'># cd ./corba && hg pull -u
+</span><span class='line'>pulling from http://hg.openjdk.java.net/jdk7/jdk7/corba
+</span><span class='line'>searching for changes
+</span><span class='line'>no changes found
+</span><span class='line'># exit code 0
+</span><span class='line'># cd . && hg pull -u
+</span><span class='line'>pulling from http://hg.openjdk.java.net/jdk7/jdk7
+</span><span class='line'>searching for changes
+</span><span class='line'>no changes found
+</span><span class='line'># exit code 0</span></code></pre></td></tr></table></div></figure></notextile></div>
+
 
 <p>Ketika kita sudah mendapatkan semua source code yang diperlukan, <strong>unset</strong> dahulu variabel <strong>JAVA_HOME</strong> dengan mengetikkan perintah <code>unset JAVA_HOME</code> setelah itu jalankan proses pengecekan sekali lagi dengan mengetikkan perintah <code>gmake sanity</code> seperti dibawah ini :</p>
 
