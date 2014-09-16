@@ -48,6 +48,18 @@ Jalanan menuju Curug Cigamea ini sangat mudah sekali, dan terdapat beberapa waru
 
 {% imgcap https://lh6.googleusercontent.com/-S5xdRAXxPRA/VAsxoaKZsGI/AAAAAAAACQ0/A2GG_G1IFos/s288/Pemandangan%2520Menuju%2520Curug%2520Cigamea3.JPG Pose dengan background Curug Cigamea %}
 
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 Tidak membutuhkan waktu lama untuk sampai ke lokasi Curug Cigamea, dan inilah beberapa pemandangan yang bisa kita lihat ketika kita berkunjung ke Curug Cigamea.
 
 {% imgcap https://lh5.googleusercontent.com/-PGNHcyAjSvU/VAsxuw2mmTI/AAAAAAAACSE/05YarRPGMg4/s288/PemandanganMenujuCurugCigamea2.jpg Mendekati Curug %} {% imgcap https://lh5.googleusercontent.com/-shUbVF3Mixc/VAsyKBAZ2iI/AAAAAAAACV0/TzQ6ydxhDTk/s288/SuasanaCurugCigamea1.jpg Suasana Curug Cigamea %} 

@@ -69,6 +69,18 @@ Karena perut kita sudah mulai kelaparan, akhir-nya kita putuskan untuk cari waru
 
 Setelah puas bersantai di warung Bu Yati, setelah berpamitan dengan Bu Yati akhirnya kita melanjutkan perjalan menuju ke **Cisolok** dan jika sesuai dengan rencana kita akan segera masuk ke **Desa Sawarna** :) Karena HP saya sudah mati karena kehabisan baterai, dan sinyal untuk data susah di daerah Pelabuhan Ratu yang membuat kita tidak bisa membuka **Google Maps**. Akhirnya kita mengikuti saran dari beberapa penduduk yang mengatakan untuk lurus saja mengikuti jalanan dan nanti akan sampai ke **Desa Sawarna**, jalanan sehabis **Cisolok** kalau tidak salah di dominasi oleh tanjakan dan jalanan yang berkelok-kelok. Cukup menggoda kita untuk melakukan aksi miring-miring, tapi karena ada beberapa bagian jalan yang berlubang, berpasir maupun terdapat luberan air, akhirnya kita cukup _riding_ santai saja karena kita juga belum tahu medan-nya dengan baik :D 
 
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 Ditengah asyik-asyiknya menikmati perjalanan yang naik turun dan berkelok-kelok, secara tidak sengaja mata saya melihat ke sebelah kiri dan waaauww.. indah-nya pemandangan yang tersaji di depan mata ini yang memaksa saya untuk membunyikan klakson berkali-kali ke [@imam_aki](http://twitter.com/imam_aki) untuk berhenti sebentar sekedar untuk melakukan photo-photo :D
 
 {% imgcap /images/blog-images/Adventure/TOURING/PerjalananMenyusuriHiddenParadiseSawarnaBanten/PemandanganSetelahCisolok.JPG 300 225 Pemandangan Setelah Cisolok %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananMenyusuriHiddenParadiseSawarnaBanten/Kapal-kapalNelayan.JPG 300 225 Kapal-kapal Nelayan %}
