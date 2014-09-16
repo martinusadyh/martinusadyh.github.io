@@ -39,7 +39,17 @@ Dan jika kredit kita di pegadaian sudah lunas, maka kita akan menerima emas kita
 {% imgcap https://lh5.googleusercontent.com/-kUN17xijcws/VAsngYbo5VI/AAAAAAAACNQ/LdF-zi4qgz4/s288/Emas_Dan_Sertifikat_Antam3.jpg Emas Dan Sertifikat Antam3 %}
 
 Waw... mantap bukan ? :) 
-
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 Nah setelah kita menerima emas batangan kita, ada baik-nya juga kita mengecek apakah emas yang kita terima itu asli yang dikeluarkan oleh [PT. Antam](http://www.antam.com/) atau bukan. Sedangkan cara pengecekan ini dapat kita lakukan dengan cara :
 
   * **Pengecekan keaslian sertifikat**
