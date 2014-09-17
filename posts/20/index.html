@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Pernah ingin mencoba melakukan simulasi &ldquo;jaringan lambat&rdquo; ?? Jika iya, maka teman-teman dapat mencoba menggunakan sebuah shell script &hellip;">
+  <meta name="description" content="Ingin membuat sebuah aplikasi untuk Android ? Jika iya, maka langkah pertama yang harus kita lakukan yaitu mempersiapkan lingkungan pengembangan pada &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/08/29/installasi-android-sdk-untuk-pengembangan-aplikasi-android/">Installasi Android SDK Untuk Pengembangan Aplikasi Android</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-29T09:30:23+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/08/29/installasi-android-sdk-untuk-pengembangan-aplikasi-android/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ingin membuat sebuah aplikasi untuk Android ? Jika iya, maka langkah pertama yang harus kita lakukan yaitu mempersiapkan lingkungan pengembangan pada komputer kita. Sebelum mulai menginstall Android SDK dan teman-teman-nya, pastikan dahulu bahwa SUN JDK 1.6 sudah terinstall pada komputer kita dan pastikan juga variabel <strong>$JAVA_HOME</strong> mengarah pada direktori SUN JDK yang sebenarnya. Jika sudah, sekarang mari kita bahas satu persatu mempersiapkan lingkungan pengembangan Android yang kurang lebih seperti dibawah ini :</p>
+
+<ol>
+<li> Installasi Android SDK</li>
+<li> Installasi Plugin Android Development Tools (ADT) Pada Eclipse 3.5.2 (Galileo) Classic</li>
+<li> Konfigurasi Plugin ADT Pada Eclipse 3.5.2 (Galileo)</li>
+</ol>
+
+
+<p>Masih tertarik ingin membuat sebuah aplikasi untuk Android ? Jika iya, mari kita lanjutkan pembahasan-nya lebih detail lagi seperti dibawah ini :</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/08/29/installasi-android-sdk-untuk-pengembangan-aplikasi-android/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -357,56 +411,6 @@ martinus@martinusadyh:[~/Desktop/tinymce]$
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2010/07/08/tabbed-container-in-stand-alone-swing-application/">Tabbed Container in Stand Alone Swing Application</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-08T03:40:36+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2010/07/08/tabbed-container-in-stand-alone-swing-application/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Buat teman-teman yang sudah tahu teknik ini, mungkin tulisan ini bisa dikatakan ketinggalan jaman :D Sebenarnya apa sih maksud tulisan ini ? Tulisan ini cuma ingin menunjukkan pada teman-teman yang belum tahu bagaimana sih <strong>menggunakan Tabbed Pane milik NetBeans (TabbedContainer) pada Aplikasi Swing</strong> kita :) Kenapa saya bilang tulisan ini ketinggalan jaman ? Karena ternyata, sudah ada yang pernah melakukan hal serupa sejak tahun 2004 lalu :( ( NetBeans versi 4.0, detail artikel bisa dibaca <a href="http://www.javalobby.org/java/forums/t13337.html?start=0">disini</a> ). Kenapa saya posting lagi disini, karena cari tutorialnya ternyata susah juga :D . Jadi harapan saya agar, semoga teman-teman yang belum tahu bisa dengan mudah mencoba dan tidak perlu berlama-lama bermain dengan paman <a href="http://google.com">Google</a> :) Ok sudah siap?? Kalau iya, mari kita lanjutkan :)</p>
-
-<p>Seperti teman-teman ketahui bersama, class <strong>JTabbedPane</strong> pada Swing mempunyai sedikit sekali fitur dan juga <strong>JTabbedPane</strong> hanya mempunyai 2 buah mode tampilan yaitu <strong>SCROLL_TAB_LAYOUT</strong> dan <strong>WRAP_TAB_LAYOUT</strong> yang bisa kita konfigurasi melalui metode <code>setTabLayoutPolicy()</code> (<strong>WRAP_TAB_LAYOUT</strong> merupakan konfigurasi standart dari <strong>JTabbedPane</strong> jadi tidak perlu dikonfigurasi lagi agar tampilan tab menjadi mode <em>&ldquo;wrapping&rdquo;</em>) Nah sekarang yang menjadi pertanyaan saya yaitu, apakah teman-teman pernah membuat sebuah aplikasi yang mempunyai jumlah tab yang banyak (anggap saja sampai 10 atau 20 tab lebih) dalam 1 form ? Bagaimanakah tampilan tab teman-teman ? Kemudian bagaimana navigasi antar tab ? Dengan menggunakan <strong>JTabedPane</strong> yang hanya membawa 2 buah mode tampilan akan terasa sangat kurang dan proses navigasi menjadi &ldquo;susah&rdquo;. Jika menggunakan tampilan <strong>WRAP_TAB_LAYOUT</strong> navigasi antar tab memang mudah, tapi dari tampilan akan terlihat sedikit <strong>&ldquo;kurang pas dimata&rdquo;</strong>. Sedangkan jika kita menggunakan tampilan <strong>SCROLL_TAB_LAYOUT</strong>, dari sisi tampilan bagus (tidak berubah) tapi dari sisi navigasi terasa sangat susah :( (Bayangkan jika kita ingin pindah secara cepat dari tab 20 ke tab 1, dengan menggunakan tampilan <strong>SCROLL_TAB_LAYOUT</strong> kita harus melakukan klik 1-1 dari tab 20 sampai tab 1 tampil. Hm.. bukan proses yang menyenangkan saya rasa :D ). Untuk menjelaskan ilustrasi saya diatas, mari kita sama-sama melihat screenshot tampilan <strong>JTabbedPane</strong> dalam 2 mode yaitu <strong>SCROLL_TAB_LAYOUT</strong> dan <strong>WRAP_TAB_LAYOUT</strong> dibawah ini :</p>
-
-<p><a href="http://www.flickr.com/photos/10243554@N02/4771484937/"><img src="http://farm5.static.flickr.com/4075/4771484937_26627527f4.jpg" alt="StandartTabbedPane" /></a><br/>
-<strong>Tampilan WRAP_TAB_LAYOUT (atas) dan SCROLL_TAB_LAYOUT (bawah)</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/07/08/tabbed-container-in-stand-alone-swing-application/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="21">&larr; Older</a>
@@ -436,6 +440,10 @@ martinus@martinusadyh:[~/Desktop/tinymce]$
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
@@ -491,10 +499,6 @@ martinus@martinusadyh:[~/Desktop/tinymce]$
     
       <li class="post">
         <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
       </li>
     
   </ul>

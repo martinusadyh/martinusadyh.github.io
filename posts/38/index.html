@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Buat teman-teman yang senang menggambar diagram mungkin sudah tidak asing lagi kan dengan yang namanya Visio kalau di Microsoft Windows, nah di &hellip;">
+  <meta name="description" content="Kemarin habis baca-baca artikel tentang Top 10 Programming Fonts, akhir-nya jadi iseng-iseng deh cobain ganti font di editor-nya NetBeans IDE supaya &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/">Changing Editor Fonts in NetBeans IDE</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-25T01:21:56+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemarin habis baca-baca artikel tentang <a href="http://hivelogic.com/articles/top-10-programming-fonts">Top 10 Programming Fonts</a>, akhir-nya jadi iseng-iseng deh cobain ganti font di editor-nya <a href="http://netbeans.org/">NetBeans IDE</a> supaya lebih betah lama-lama ngetik-nya :D</p>
+
+<p>Nah buat teman-teman yang ingin berburu font, mungkin bisa mengunjungi situs <a href="http://hivelogic.com/articles/top-10-programming-fonts">Top 10 Programming Fonts</a> untuk melihat-lihat font mana yang cocok kemudian download dan install deh :) Setelah proses download selesai, untuk menginstall font tersebut di GNU/Linux kita harus memasukkan font tersebut ke dalam direktori <strong>/usr/share/fonts/TTF</strong> agar font tersebut dikenali oleh user lain yang terdapat di sistem. Tapi kalau kita cuma ingin testing aja, kita bisa memasukkan font tersebut kedalam direktori <strong>.fonts</strong> yang terdapat di direktori home user kita masing-masing :)</p>
+
+<p>Bagaimana kalau direktori <strong>.fonts</strong> belum ada ? Ya mari kita buat direktori tersebut dengan perintah seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ mkdir ~/.fonts
+martinus@martinusadyh:[~]$
+</code></pre>
+
+<p>Setelah itu kopikan font yang sudah di download kedalam direktori <strong>~/.fonts</strong> tersebut seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ cp Inconsolata.ttf ~/.fonts/
+martinus@martinusadyh:[~]$ cd ~/.fonts/
+martinus@martinusadyh:[~/.fonts]$ ls
+Inconsolata.ttf
+martinus@martinusadyh:[~/.fonts]$
+</code></pre>
+
+<p>Sekarang mari kita update dahulu font cache kita dengan menjalankan perintah <strong>fc-cache -f -v</strong> agar font yang kita tambahkan bisa dikenali oleh NetBeans seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~/.fonts]$ fc-cache -f -v
+/usr/share/fonts/OTF: caching, new cache contents: 23 fonts, 0 dirs
+/usr/share/fonts/TTF: caching, new cache contents: 92 fonts, 0 dirs
+/usr/share/fonts/Type1: caching, new cache contents: 64 fonts, 0 dirs
+/usr/share/fonts/Speedo: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cyrillic: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/misc: caching, new cache contents: 59 fonts, 0 dirs
+/home/martinus/.fonts: caching, new cache contents: 1 fonts, 0 dirs
+/var/cache/fontconfig: not cleaning unwritable cache directory
+/home/martinus/.fontconfig: cleaning cache directory
+fc-cache: succeeded
+martinus@martinusadyh:[~/.fonts]$
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -391,62 +469,6 @@ Through the darkness follow me</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/">Membuat Menu Login Di Java Swing Dengan Animasi Progress Bar</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-09T19:02:04+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Setelah kita mengerti tentang <strong>Thread-thread</strong> dasar yang terdapat pada Java Swing dan mengetahui bagaimana cara menggunakan <strong>Background Thread</strong> dengan <strong>SwingWorker</strong> (pembahasan tentang SwingWorker bisa dilihat pada tulisan <a href="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a>), sekarang mari kita coba membuat sebuah <strong>Project</strong> yang menggunakan Menu Login yang proses otentikasinya kita lakukan langsung ke database :)</p>
-
-<p>Sebelum memulai latihan kali ini, ada beberapa hal yang harus dipersiapkan terlebih dahulu yaitu :</p>
-
-<ul>
-<li>Inisialisasi Master Data Pada DataBase</li>
-<li>Pembuatan Project Menu Login</li>
-<li>Hasil Akhir</li>
-</ul>
-
-
-<p>Pada tulisan kali ini saya tidak akan memberikan penjelasan source code dari baris ke baris seperti pada tulisan-tulisan sebelumnya, tetapi sebagai gantinya penjelasan dapat dilihat pada komentar yang terdapat pada source code yang bersangkutan supaya lebih mudah di ingat-ingat nantinya :)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/11/09/membuat-menu-login-di-java-swing-dengan-animasi-progress-bar/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="39">&larr; Older</a>
@@ -476,6 +498,10 @@ Through the darkness follow me</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
@@ -531,10 +557,6 @@ Through the darkness follow me</p>
     
       <li class="post">
         <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
       </li>
     
   </ul>

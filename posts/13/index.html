@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Barusan saya menerima informasi di milis id-slackware@googlegroups.com yang menyebutkan ada backdoor pada tiga plugin popular WordPress yaitu Add &hellip;">
+  <meta name="description" content="Karena mencari di SlackBuild ternyata tidak ada, maka saya posting kesini aja sekalian :) Nah untuk teman-teman yang ingin menginstall aplikasi gitg &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/06/24/slackbuild-script-for-gitg/">SlackBuild Script for Gitg</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-24T00:01:38+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/06/24/slackbuild-script-for-gitg/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Karena mencari di SlackBuild ternyata tidak ada, maka saya posting kesini aja sekalian :) Nah untuk teman-teman yang ingin menginstall aplikasi <a href="http://trac.novowork.com/git">gitg</a> bisa menggunakan SlackBuild script yang sudah saya siapkan dan sebelum menggunakan-nya, pastikan bahwa kita sudah menginstall <a href="http://projects.gnome.org/gtksourceview/">gtksourceview</a> dahulu yang SlackBuild script-nya bisa di download di <a href="http://slackbuilds.org/repository/13.37/libraries/gtksourceview/">sini</a></p>
+
+<p>Untuk sementara ini, dependencies yang baru saya temukan baru <a href="http://projects.gnome.org/gtksourceview/">gtksourceview</a> di Slackware64 + GSB 3.0.0. Bagi teman-teman yang tidak menggunakan GNOME sebagai Desktop Manager-nya, jika mengetahui ada dependencies yang kurang tolong di infokan disini sekalian biar saya bisa update file <code>slack-required</code> dengan info dependencies yang terbaru :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/06/24/slackbuild-script-for-gitg/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -403,62 +450,6 @@ lakukan pengecekan apakah variabel <strong>JAVA_HOME</strong> sudah terkonfigura
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/">Installasi Slackware64 13.37 Dan GNOME 3.0</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-22T02:30:27+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sudah lama sekali rasanya saya tidak posting apapun tentang Slackware :D Nah untuk kali ini, berhubung <a href="http://martinusadyh.web.id/2011/04/28/slackware-13-37-is-released/">Slackware 13.37</a> juga barusan dirilis akhirnya kesampaian juga untuk melakukan <em>&ldquo;clean format&rdquo;</em> pada harddisk agar menggunakan Slackware saja sebagai Sistem Operasi utama saya :D Kali ini saya menginstall Slackware64 dan menggunakan kernel default yaitu 2.6.37, sedangkan untuk pilihan Desktop Manager-nya pilihan saya jatuh pada GNOME 3.0 yang diambil dari <a href="http://gnomeslackbuild.org/">GNOME Slackbuild</a> sekalian mencoba suasana baru :)</p>
-
-<p>Proses installasi ini berjalan seperti biasa tidak ada yang berubah, setelah selesai menginstall Slackware64 langkah selanjut-nya yaitu menginstall GNOME 3.0 dari <a href="http://gnomeslackbuild.org/">GNOME Slackbuild</a> Setelah selesai menginstall GNOME 3.0, langkah selanjutnya yang saya lakukan adalah konfigurasi driver <a href="http://martinusadyh.web.id/2009/09/27/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/">Broadcom BCM4312 802.11b</a> agar wifi saya bisa berjalan dengan normal :) Untuk drivernya sendiri bisa didownload di halaman <a href="http://www.broadcom.com/support/802.11/linux_sta.php">802.11 Linux STA driver</a>. Nah masalah mulai muncul ketika menjalankan perintah <code>make clean</code> yang hasilnya adalah seperti berikut :
-[plain]
-CC [M]  /home/martinus/driver_broadcom/src/wl/sys/wl_linux.o
-/home/martinus/driver_broadcom/src/wl/sys/wl_linux.c: In function &lsquo;wl_attach&rsquo;:
-/home/martinus/driver_broadcom/src/wl/sys/wl_linux.c:485:3: error: implicit declaration of function &lsquo;init_MUTEX&rsquo;
-make[2]: <strong><em> [/home/martinus/driver_broadcom/src/wl/sys/wl_linux.o] Error 1
-make[1]: </em></strong> [<em>module</em>/home/martinus/driver_broadcom] Error 2
-make[1]: Leaving directory `/usr/src/linux-2.6.37&#8217;
-make: *** [all] Error 2
-[/plain]</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="14">&larr; Older</a>
@@ -488,6 +479,10 @@ make: *** [all] Error 2
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
@@ -543,10 +538,6 @@ make: *** [all] Error 2
     
       <li class="post">
         <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
       </li>
     
   </ul>

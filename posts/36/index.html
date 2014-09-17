@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Hyiip&hellip;hyipp huray, akhir-nya sekarang komunitas netbeans-indonesia yang selama ini hanya aktif di milis punya portal dan wiki khusus yang &hellip;">
+  <meta name="description" content="Kemarin habis baca-baca tulisan dari Pak Kaiser tentang Mengubah Tampilan IDE Netbeans dengan menggunakan Quaqua Look and Feel. Ga nyangka, ternyata &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,63 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2010/02/01/tampilan-macosx-di-netbeans-ide/">Tampilan MacOSX Di NetBeans IDE</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-01T11:35:12+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2010/02/01/tampilan-macosx-di-netbeans-ide/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemarin habis baca-baca tulisan dari Pak Kaiser tentang <a href="http://medan.nug.or.id/mengubah-tampilan-ide-netbeans.html">Mengubah Tampilan IDE Netbeans</a> dengan menggunakan <a href="http://www.randelshofer.ch/quaqua/">Quaqua Look and Feel</a>. Ga nyangka, ternyata <a href="http://www.randelshofer.ch/quaqua/">Quaqua Look and Feel</a> bisa jalan dengan mulus juga di Sistem Operasi GNU/Linux :) dan disini cara yang saya gunakan berbeda dengan cara yang digunakan oleh Pak Kaiser yang mengkopikan library <a href="http://www.randelshofer.ch/quaqua/">Quaqua Look and Feel</a> kedalam direktori <strong>JAVA_HOME</strong>. Nah cara yang paling sederhana yaitu gunakan opsi <strong>&ndash;cp:p [tempat_file_jar_diletakkan]</strong>, jika ada 2 file jar yang ingin masuk kedalam <strong>CLASSPATH</strong>  gunakan pemisah <strong>: (titik dua)</strong> untuk GNU/Linux dan <strong>; (titik koma)</strong> untuk Microsoft Windows. Jika digabungkan, kira-kira perintah-nya kurang lebih seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~/Desktop/Quaqua]$ /bin/sh "/opt/netbeans-6.8/bin/netbeans" --cp:p /home/martinus/Desktop/Quaqua/dist/quaqua.jar:/home/martinus/Desktop/Quaqua/dist/swing-layout.jar --laf ch.randelshofer.quaqua.QuaquaLookAndFeel -J-DQuaqua.selectionStyle=bright -J-DQuaqua.opaque=true -J-DQuaqua.tabLayoutPolicy=wrap
+</code></pre>
+
+<p>Agar benar-benar kelihatan seperti di Mac beneran, sekarang download dulu font Monaco (Monaco adalah Monospace font untuk Mac OS) dari <a href="http://www.gringod.com/2006/02/24/return-of-monacottf/">sini</a> kemudian pasangkan pada NetBeans IDE anda :) dan jika sudah kurang lebih tampilan-nya menjadi seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4321389874/"><img src="http://farm5.static.flickr.com/4057/4321389874_7546dceb6a.jpg" alt="source" /><br/>
+Tampilann NetBeans Menggunakan Font Monaco</a></p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4321389854/"><img src="http://farm5.static.flickr.com/4070/4321389854_e028db5bc0.jpg" alt="SwingQuaqua" /><br/>
+Tampilan Java Swing Dengan LAF Quaqua</a></p>
+
+<p>Hm&hellip; mantap juga ternyata yah tampilan-nya :) Cuma sayang-nya koq perasaan ga jauh beda ama Look And Feel GTK yakz ? :D Tapi gapapa lah, yang penting bisa cobain :)</p>
+
+<p><strong>Link-link terkait :</strong>
+- <a href="http://medan.nug.or.id/mengubah-tampilan-ide-netbeans.html">Mengubah Tampilan IDE Netbeans</a>
+- <a href="http://www.randelshofer.ch/quaqua/">Quaqua Look and Feel</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -400,61 +457,6 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2009/12/12/cara-mudah-internet-connection-sharing-di-slackware-ad-hoc-mode/">Cara Mudah Internet Connection Sharing Di Slackware (Ad Hoc Mode)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-12T00:36:07+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2009/12/12/cara-mudah-internet-connection-sharing-di-slackware-ad-hoc-mode/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Membuat sebuah <strong>Internet Connection Sharing</strong> di GNU/Linux bagi saya merupakan hal yang baru, karena sebelum-nya saya tidak pernah bermain-main terlalu dalam di dunia jaringan :D :) . Apalagi kalau harus ber-urusan dengan yang namanya <strong>IP Tables</strong> dan kawan-kawan-nya, sepertinya saya harus belajar lebih dalam lagi untuk bisa bersentuhan dengan makanan-makanan tersebut. Nah tulisan ini sebenarnya cuma ingin sharing tentang pengalaman saya pribadi menggunakan internet connection sharing di kontrakan yang saya tinggalin sekarang. Dan khusus untuk tulisan kali ini, kita tidak akan bermain-main dengan yang nama-nya <strong>terminal, command prompt atau pun konsole</strong>. Yaps, semua-nya ini selesai hanya dengan proses <strong>klik sini</strong> dan <strong>klik sana</strong> dan alat-alat yang saya gunakan pada tulisan kali ini yaitu :</p>
-
-<ul>
-<li><p>Sistem Operasi GNU/Linux Slackware 13.0 (kernel 2.6.29.6-smp)</p></li>
-<li><p>Desktop Manager menggunakan GnomeSlackBuild versi 2.6.23</p></li>
-<li><p>Network Manager Applet versi 0.7.1 yang di install dari repository GnomeSlackBuild</p></li>
-</ul>
-
-
-<p>Sedangkan kasus yang terjadi di kontrakan saya yaitu kita hanya mendapatkan 1 buah modem + 1 kabel UTP untuk bisa menggunakan internet dengan nyaman, dan penghuni di kontrakan yang haus akan internet kurang lebih ada 7 orang (termasuk saya :D ) yang kesemua-nya membawa laptop masing-masing. Nah karena cuma mendapatkan 1 kabel UTP saja, akhir-nya kita memutuskan bahwa yang online menggunakan kabel UTP harus <strong>rela</strong> membagi koneksi yang didapatkan-nya ke seluruh penghuni kontrakan melalui <strong>wifi</strong> dengan menggunakan mode <strong>Ad Hoc</strong> :) Dan kira-kira topologi jaringan (halah baru bisa gambar topoologi ajah dah pamer <em><em>($</em>&amp;$</em>%&amp;^&amp;#)</b> ) di kontrakan saya kurang lebih seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/4176251631/" title="ICS by thundherbolth, on Flickr"><img src="http://farm3.static.flickr.com/2539/4176251631_fbaa6bc176_m.jpg" width="240" height="218" alt="ICS" /><br /><small>Gambar Topologi Jaringan ICS dengan Mode Ad-Hoc</small></a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/12/12/cara-mudah-internet-connection-sharing-di-slackware-ad-hoc-mode/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="37">&larr; Older</a>
@@ -484,6 +486,10 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
@@ -539,10 +545,6 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
     
       <li class="post">
         <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
       </li>
     
   </ul>

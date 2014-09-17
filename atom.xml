@@ -4,7 +4,7 @@
   <title><![CDATA[Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-16T22:33:55+07:00</updated>
+  <updated>2014-09-17T22:35:55+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -12,6 +12,112 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Optimasi Filesystem Ext4]]></title>
+    <link href="http://martinusadyh.web.id/2014/09/18/optimasi-filesystem-ext4/"/>
+    <updated>2014-09-18T01:16:47+07:00</updated>
+    <id>http://martinusadyh.web.id/2014/09/18/optimasi-filesystem-ext4</id>
+    <content type="html"><![CDATA[<p>Apakah anda seorang <em>programmer java</em> yang menggunakan sistem operasi utama <strong>Linux</strong> ? Apakah anda pernah merasa ketika proses kompilasi membutuhkan waktu yang lama ? Jika iya, maka nasib anda sama dengan saya :) Tapi jangan bersedih dahulu, apakah pernah terlintas di pikiran anda untuk melakukan <strong>optimasi filesystem</strong> ? Tahukah anda bahwa pemilihan filesystem dan opsi <em>mount</em> yang tepat bisa mempercepat proses kompilasi yang kita lakukan ?</p>
+
+<p>Sebenarnya tulisan ini adalah hasil dari rasa kecewa saya ketika setelah melakukan penggantian <em>hard disk</em> ke SSD <em>(Solid State Drive)</em> dengan harapan supaya proses kompilasi menjadi cepat <em>(target/harapan awal saya adalah kalau bisa &lt; 1 menit :D )</em>, tetapi yang terjadi adalah proses kompilasi hanya <em>lebih cepat ~+ 50%</em> dibandingkan ketika menggunakan <em>hard disk</em> seperti gambar dibawah ini :( <em>(Catatan: Ketika menggunakan hard disk, dengan proses yang sama membutuhkan waktu ~+ 6 menit)</em></p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh6.googleusercontent.com/-gKJHNHb0V5E/VBM8ak0MHaI/AAAAAAAACdc/NJpb9jQJJyQ/s640/DefaultConfig.png' width='' height='' title='Setelah Menggunakan SSD'><span class='caption-text'>Setelah Menggunakan SSD</span></span></p>
+
+<!-- more -->
+
+
+<p>Karena peningkatan waktunya tidak se-signifikan teman saya yang sudah menggunakan <em>SSD</em> sebelumnya, akhirnya rasa penasaran saya timbul apa yang menyebabkan proses ditempat saya membutuhkan waktu yang berbeda <em>(terlepas dari beda merk SSD yang digunakan)</em> ? Akhirnya kita berdua-pun berdiskusi apakah kira-kira ada konfigurasi lain yang dilakukan di laptop teman saya tersebut karena kita menggunakan distro yang sama yaitu <strong>Ubuntu 14.04</strong> <em>(saya menggunakan Linux Mint 17 yang masih varian dari Ubuntu)</em>, dari hasil diskusi ternyata yang membedakan laptop saya dan teman adalah pemilihan filesystem yang digunakan. Teman saya menggunakan filesystem <strong>Ext2</strong> sedangkan saya menggunakan <strong>Ext4</strong> , dan dari sinilah yang membuat saya menjadi penasaran <strong>kenapa Ext2 bisa lebih cepat dibanding Ext4</strong> ketika digunakan untuk melakukan proses kompilasi ?</p>
+
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+<p>Hasil pencarian di <a href="https://www.google.co.id/search?q=ext4+optimization&amp;oq=ext4+optimization&amp;aqs=chrome..69i57.693j0j9&amp;sourceid=chrome&amp;es_sm=0&amp;ie=UTF-8">Google dengan keyword Ext4 Optimizations</a> sebenarnya cukup banyak, dan setelah membaca berbagai referensi di <strong>google</strong> akhirnya saya menemukan sebuah artikel untuk melakukan <a href="http://blog.smartlogicsolutions.com/2009/06/04/mount-options-to-improve-ext4-file-system-performance/">Optimasi Filesystem Ext4</a> dengan cara merubah/menambah <code>mount options</code> di <code>/etc/fstab</code> yang saya gunakan yang sebelum-nya seperti ini :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># /etc/fstab: static file system information.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Use &#39;blkid&#39; to print the universally unique identifier for a</span>
+</span><span class='line'><span class="c"># device; this may be used with UUID= as a more robust way to name devices</span>
+</span><span class='line'><span class="c"># that works even if disks are added and removed. See fstab(5).</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span>
+</span><span class='line'><span class="c"># / was on /dev/sda1 during installation</span>
+</span><span class='line'><span class="nv">UUID</span><span class="o">=</span>39b79e2e-3dbc-474b-b6b2-c762834a83ff /               ext4    <span class="nv">errors</span><span class="o">=</span>remount-ro <span class="m">0</span>       1
+</span><span class='line'><span class="c"># /home was on /dev/sda5 during installation</span>
+</span><span class='line'><span class="nv">UUID</span><span class="o">=</span>3004edcb-ad9e-4bdd-b6d4-a06a9112a5fd /home           ext4    defaults        <span class="m">0</span>       2
+</span><span class='line'><span class="c"># swap was on /dev/sda6 during installation</span>
+</span><span class='line'><span class="nv">UUID</span><span class="o">=</span>e1e465db-c3df-4209-9c5a-9c08ea3d1939 none            swap    sw              <span class="m">0</span>       0
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>menjadi seperti dibawah ini :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># /etc/fstab: static file system information.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Use &#39;blkid&#39; to print the universally unique identifier for a</span>
+</span><span class='line'><span class="c"># device; this may be used with UUID= as a more robust way to name devices</span>
+</span><span class='line'><span class="c"># that works even if disks are added and removed. See fstab(5).</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span>
+</span><span class='line'><span class="c"># / was on /dev/sda1 during installation</span>
+</span><span class='line'><span class="nv">UUID</span><span class="o">=</span>39b79e2e-3dbc-474b-b6b2-c762834a83ff /               ext4    noatime,discard,barrier<span class="o">=</span>0,nouser_xattr,nobh,commit<span class="o">=</span>100,errors<span class="o">=</span>remount-ro <span class="m">0</span>       1
+</span><span class='line'><span class="c"># /home was on /dev/sda5 during installation</span>
+</span><span class='line'><span class="nv">UUID</span><span class="o">=</span>3004edcb-ad9e-4bdd-b6d4-a06a9112a5fd /home           ext4    noatime,discard,barrier<span class="o">=</span>0,nouser_xattr,nobh,commit<span class="o">=</span><span class="m">100</span>        <span class="m">0</span>       2
+</span><span class='line'><span class="c"># swap was on /dev/sda6 during installation</span>
+</span><span class='line'><span class="nv">UUID</span><span class="o">=</span>e1e465db-c3df-4209-9c5a-9c08ea3d1939 none            swap    sw              <span class="m">0</span>       0
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Setelah melakukan perubahan, simpan dan <em>restart-lah</em> laptop anda, dan inilah hasil akhir setelah merubah <code>mount options</code> di file <code>/etc/fstab</code> :)</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh4.googleusercontent.com/-mOjHLE_3Jp8/VBM8asbyVKI/AAAAAAAACdY/oBkTQvF0S5Y/s640/Optimize.png' width='' height='' title='Hasil Optimasi Ext4'><span class='caption-text'>Hasil Optimasi Ext4</span></span></p>
+
+<h3>Referensi:</h3>
+
+<ul>
+<li><a href="https://www.kernel.org/doc/Documentation/filesystems/ext4.txt">Halaman Dokumentasi Ext4</a></li>
+<li><a href="http://blog.smartlogicsolutions.com/2009/06/04/mount-options-to-improve-ext4-file-system-performance/">Optimasi Filesystem Ext4</a></li>
+<li><a href="https://developer.ridgerun.com/wiki/index.php/High_performance_SD_card_tuning_using_the_EXT4_file_system">High performance SD card tuning using the EXT4 file system</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Disable Recent Files in Linux Mint 17]]></title>
@@ -78,6 +184,21 @@
 </span><span class='line'><span class="p">}</span><span class="err">,</span>
 </span><span class='line'><span class="err">...</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
 
 <p>Kalau sudah sekarang simpan perubahan diatas dan sekarang coba klik tombol <code>Menu</code> , jika semua konfigurasi telah sesuai seharusnya kita sudah tidak melihat menu <em>Recent Files</em> lagi seperti gambar dibawah ini :</p>
@@ -2345,195 +2466,6 @@ Bojonegoro
 
 <ol>
 <li> <a href="http://starikovs.com/2011/02/20/change-font-mysql-workbench-editor/">Change Font MySQL Workbench</a></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bermain dengan Apache Solr dan Nutch]]></title>
-    <link href="http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch/"/>
-    <updated>2013-03-02T00:38:10+07:00</updated>
-    <id>http://martinusadyh.web.id/2013/03/02/bermain-dengan-apache-solr-dan-nutch</id>
-    <content type="html"><![CDATA[<p>Sudah lama saya tidak menulis hal-hal yang berkaitan dengan dunia TI, dan akhirnya setelah cukup lama beristirahat akhirnya malam ini saya mencoba menuliskan pengalaman bermain-main dengan <a href="http://lucene.apache.org/solr/">Apache SOLR</a> dan <a href="http://nutch.apache.org/">Apache Nutch</a>. Sebenarnya kedua mainan ini merupakan barang lama, tapi bagi saya merupakan barang baru dikarenakan ada teman yang minta tolong dikonfigurasikan menggunakan kedua mainan ini dan ternyata mengkombinasikan 2 mainan ini tidak semudah seperti yang dibayangkan, maka akhirnya saya jadikan sebuah catatan tersendiri hanya sebagai pengingat saja :D</p>
-
-<p>Nah untuk yang belum tahu apasih sebenarnya <a href="http://lucene.apache.org/solr/">Apache SOLR</a> ini, bahasa mudahnya <strong>SOLR</strong> ini adalah sebuah aplikasi mesin pencari seperti <a href="http://google.com">Google</a> yang ditulis menggunakan bahasa pemrograman java. Dan berikut ini adalah penjelasan yang lebih lengkap diambil dari web resmi-nya <a href="http://lucene.apache.org/solr/">Apache SOLR</a>:</p>
-
-<blockquote><p>SolrTM is the popular, blazing fast open source enterprise search platform from the Apache LuceneTM project. Its major features include powerful full-text search, hit highlighting, faceted search, near real-time indexing, dynamic clustering, database integration, rich document (e.g., Word, PDF) handling, and geospatial search. Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world&rsquo;s largest internet sites.
-Solr is written in Java and runs as a standalone full-text search server within a servlet container such as Tomcat. Solr uses the Lucene Java search library at its core for full-text indexing and search, and has REST-like HTTP/XML and JSON APIs that make it easy to use from virtually any programming language. Solr&rsquo;s powerful external configuration allows it to be tailored to almost any type of application without Java coding, and it has an extensive plugin architecture when more advanced customization is required.</p></blockquote>
-
-<p>Sedangkan <a href="http://nutch.apache.org/">Apache Nutch</a> adalah sebuah aplikasi <strong>web-crawler</strong> yang ditulis menggunakan bahasa pemrograman java juga, dan penjelasan lengkapnya adalah seperti berikut ini :</p>
-
-<blockquote><p>Apache Nutch is an open source web-search software project. Stemming from <a href="http://lucene.apache.org/java/">Apache Lucene</a>, it now builds on Apache Solr adding web-specifics, such as a crawler, a link-graph database and parsing support handled by Apache Tika for HTML and and array other document formats.</p></blockquote>
-
-<p>Apache Nutch can run on a single machine, but gains a lot of its strength from running in a <a href="http://hadoop.apache.org/">Hadoop cluster</a></p>
-
-<p>The system can be enhanced (eg other document formats can be parsed) using a highly flexible, easily extensible and thoroughly maintained plugin infrastructure.</p>
-
-<p>Pada tulisan kali ini, kita akan mencoba membangun sebuah mesin pencari menggunakan <a href="http://lucene.apache.org/solr/">Apache SOLR</a> dan untuk <strong>web-crawler</strong>-nya menggunakan <a href="http://nutch.apache.org/">Apache Nutch</a>. Dikarenakan percobaan menggunakan versi terbaru dari kedua aplikasi ini bermasalah, maka pada tulisan kali ini kita akan menggunakan :</p>
-
-<ol>
-<li><p> <a href="http://apache.mirrors.tds.net/lucene/solr/3.6.2/apache-solr-3.6.2.tgz">Apache Solr 3.6.2</a> dan</p></li>
-<li><p> <a href="http://mirror.cc.columbia.edu/pub/software/apache/nutch/1.6/apache-nutch-1.6-bin.zip">Apache Nutch 1.6</a></p></li>
-</ol>
-
-
-<p>Langkah pertama yang perlu dilakukan adalah pastikan bahwa Java telah terinstall pada komputer atau laptop anda, jika sudah konfigurasilah <code>environment variable JAVA_HOME</code> dahulu. Untuk mengecek apakah <code>JAVA_HOME</code> sudah terkonfigurasi dengan benar atau tidak, jalankan perintah <code>echo $JAVA_HOME</code> di terminal. Jika menampilkan direktori tempat dimana java terinstall, maka konfigurasi <code>JAVA_HOME</code> sudah benar. Selanjutnya adalah downloadlah <a href="http://lucene.apache.org/solr/">Apache Solr</a> dari link diatas, kemudian ekstrak ke sebuah direktori hingga kita mendapatkan direktori <strong>apache-solr-3.6.2</strong> Sekarang masuklah kedalam direktori <code>apache-solr-3.6.2/example</code> dan jalankan perintah <code>java -jar start.jar</code> seperti dibawah ini :
-[plain]
-martinusadyh@artivisi:/tmp/apache-solr-3.6.2/example$ java -jar start.jar
-&hellip;
-&hellip;
-&hellip;
-Mar 01, 2013 10:23:43 PM org.apache.solr.servlet.SolrUpdateServlet init
-INFO: SolrUpdateServlet.init() done
-2013-03-01 22:23:43.638:INFO::Started SocketConnector@0.0.0.0:8983
-[/plain]</p>
-
-<!-- more -->
-
-
-<p>Jika sudah, sekarang bukalah alamat <a href="http://localhost:8983/solr/admin/">http://localhost:8983/solr/admin/</a> dan jika tidak ada masalah, maka kita akan melihat tampilan seperti gambar dibawah ini :
-[caption id=&ldquo;attachment_2418&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=389"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/HalamanDepanApacheSolr-300x113.png" alt="Halaman Depan Apache Solr" /></a> Halaman Depan Apache Solr[/caption]</p>
-
-<p>Setelah <a href="http://lucene.apache.org/solr/">Apache Solr</a> berhasil kita jalankan, sekarang waktunya bermain-main dengan <a href="http://nutch.apache.org/">Apache Nutch</a>. Downloadlah <strong>Apache Nutch</strong> pada link diatas kemudian ekstraklah hingga kita mendapatkan sebuah direktori <strong>apache-nutch-1.6</strong>, sekarang editlah file <code>apache-nutch-1.6/conf/nuch-site.xml</code> menjadi seperti dibawah ini :</p>
-
-<pre><code>&lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;http.agent.name&lt;/name&gt;
-        &lt;value&gt;SSG Web Crawler&lt;/value&gt;
-    &lt;/property&gt;
-&lt;/configuration&gt;
-</code></pre>
-
-<p><strong>Konfigurasi ini bertujuan untuk memberi nama crawler yang akan kita gunakan nanti-nya.</strong></p>
-
-<p>Untuk memberi tahu <a href="http://nutch.apache.org/">Apache Nutch</a> url mana saja yang harus di <strong>crawling</strong>, sekarang buatlah sebuah direktori dengan nama <strong>urls</strong> didalam direktori <strong>apache-nutch-1.6</strong> kemudian buatlah sebuah file dengan nama <code>seed.txt</code> dan daftarkan url apa saja yang ingin di crawling seperti contohnya adalah :</p>
-
-<pre><code>http://kompas.com/
-http://detik.com/
-http://goal.com/
-</code></pre>
-
-<p>Jika sudah, masih ada 1 konfigurasi file yang perlu kita edit yaitu file <code>apache-nutch-1.6/conf/regex-urlfilter.txt</code>. Bukalah file tersebut dan editlah baris paling bawah sendiri menjadi seperti dibawah ini :</p>
-
-<pre><code># accept anything else
-+^http://([a-z0-9]*\.)*kompas.com/
-+^http://([a-z0-9]*\.)*detik.com/
-+^http://([a-z0-9]*\.)*goal.com/
-</code></pre>
-
-<p>Sekarang mari kita test apakah semua url yang sudah kita daftarkan berhasil di <strong>crawling</strong> oleh <a href="http://nutch.apache.org/">Apache Nutch</a> dengan menjalankan perintah <code>bin/nutch crawl urls -dir crawl -depth 3 -topN 5</code> pada direktori <strong>apache-nutch-1.6</strong> seperti dibawah ini :
-[plain]
-martinusadyh@artivisi:/tmp/apache-nutch-1.6$ bin/nutch crawl urls -dir crawl -depth 3 -topN 5
-solrUrl is not set, indexing will be skipped&hellip;
-crawl started in: crawl
-rootUrlDir = urls
-threads = 10
-depth = 3
-solrUrl=null
-topN = 5
-Injector: starting at 2013-03-01 23:34:15
-Injector: crawlDb: crawl/crawldb
-Injector: urlDir: urls
-Injector: Converting injected urls to crawl db entries.
-Injector: total number of urls rejected by filters: 0
-Injector: total number of urls injected after normalization and filtering: 3
-Injector: Merging injected urls into crawl db.
-&hellip;
-&hellip;
-&hellip;
-[/plain]</p>
-
-<p>Tunggulah beberapa saat, proses <strong>crawling</strong> ini bisa sangat lama tergantung dengan banyak-nya url yang ingin di <strong>crawling</strong> dan cepatnya koneksi internet yang kita gunakan :D Sampai disini <a href="http://lucene.apache.org/solr/">Apache Solr</a> dan <a href="http://nutch.apache.org/">Apache Nutch</a> berjalan sesuai dengan harapan kita, dan sekarang waktunya untuk melakukan integrasi untuk kedua-nya. Jadi apa yang akan di <strong>crawling</strong> oleh <a href="http://nutch.apache.org/">Apache Nutch</a> bisa kita cari di <a href="http://lucene.apache.org/solr/">Apache Solr</a>.</p>
-
-<p>Nah untuk mulai proses integrasi ini, sekarang copykanlah dahulu file <code>apache-nutch-1.6/conf/schema.xml</code> ke direktori <code>apache-solr-3.6.2/example/solr/conf</code> dengan menggunakan perintah <code>cp</code> seperti dibawah ini :
-[plain]
-martinusadyh@artivisi:/tmp$ cp apache-nutch-1.6/conf/schema.xml apache-solr-3.6.2/example/solr/conf/
-martinusadyh@artivisi:/tmp$
-[/plain]</p>
-
-<p>Jika sudah sekarang editlah file <code>apache-solr-3.6.2/example/solr/conf/solrconfig.xml</code> dan kemudian editlah baris dibawah ini :</p>
-
-<pre><code>  &lt;requesthandler name="/select" class="solr.SearchHandler"&gt;
-
-     &lt;lst name="defaults"&gt;
-       &lt;str name="echoParams"&gt;explicit&lt;/str&gt;
-       &lt;int name="rows"&gt;10&lt;/int&gt;
-       &lt;str name="df"&gt;text&lt;/str&gt;
-     &lt;/lst&gt;
-</code></pre>
-
-<p>menjadi seperti dibawah ini :</p>
-
-<pre><code>  &lt;requesthandler name="/select" class="solr.SearchHandler"&gt;
-
-     &lt;lst name="defaults"&gt;
-       &lt;str name="echoParams"&gt;explicit&lt;/str&gt;
-       &lt;int name="rows"&gt;10&lt;/int&gt;
-       &lt;str name="df"&gt;content&lt;/str&gt; 
-     &lt;/lst&gt;
-</code></pre>
-
-<p>Setelah mengedit file <code>apache-solr-3.6.2/example/solr/conf/solrconfig.xml</code> sekarang editlah juga file <code>apache-solr-3.6.2/example/solr/conf/schema.xml</code> dan carilah baris seperti dibawah ini :</p>
-
-<pre><code>        &lt;field indexed="true" stored="false" type="string" name="host"&gt;&lt;/field&gt;
-        &lt;field indexed="true" stored="true" type="url" name="url" required="true"&gt;&lt;/field&gt;
-        &lt;field indexed="true" stored="false" type="text" name="content"&gt;&lt;/field&gt;
-        &lt;field indexed="true" stored="true" type="text" name="title"&gt;&lt;/field&gt;
-        &lt;field indexed="false" stored="true" type="string" name="cache"&gt;&lt;/field&gt;
-        &lt;field indexed="false" stored="true" type="date" name="tstamp"&gt;&lt;/field&gt;
-</code></pre>
-
-<p>Dan kemudian editlah menjadi seperti dibawah ini :</p>
-
-<pre><code>        &lt;field indexed="true" stored="false" type="string" name="host"&gt;&lt;/field&gt;
-        &lt;field indexed="true" stored="true" type="url" name="url" required="true"&gt;&lt;/field&gt;
-        &lt;field indexed="true" stored="true" type="text" name="content"&gt;&lt;/field&gt; 
-        &lt;field indexed="true" stored="true" type="text" name="title"&gt;&lt;/field&gt;
-        &lt;field indexed="false" stored="true" type="string" name="cache"&gt;&lt;/field&gt;
-        &lt;field indexed="false" stored="true" type="date" name="tstamp"&gt;&lt;/field&gt;
-</code></pre>
-
-<p>Jika sudah, sekarang waktunya kita untuk melakukan pengetesan apakah hasil <strong>crawling</strong> dari <a href="http://nutch.apache.org/">Apache Nutch</a> bisa ke index oleh <a href="http://lucene.apache.org/solr/">Apache Solr</a>. Yang pertama perlu lakukan adalah menjalankan <strong>Solr</strong>-nya dahulu dengan perintah <code>java -jar start.jar</code> seperti dibawah ini :
-[plain]
-martinusadyh@artivisi:/tmp/apache-solr-3.6.2/example$ java -jar start.jar
-&hellip;.
-&hellip;.
-&hellip;.
-INFO: JNDI not configured for solr (NoInitialContextEx)
-Mar 02, 2013 12:14:30 AM org.apache.solr.core.SolrResourceLoader locateSolrHome
-INFO: solr home defaulted to &lsquo;solr/&rsquo; (could not find system property or JNDI)
-Mar 02, 2013 12:14:30 AM org.apache.solr.servlet.SolrUpdateServlet init
-INFO: SolrUpdateServlet.init() done
-2013-03-02 00:14:30.581:INFO::Started SocketConnector@0.0.0.0:8983
-[/plain]</p>
-
-<p>Setelah <a href="http://lucene.apache.org/solr/">Apache Solr</a>-nya berjalan, sekarang masuk ke dalam direktori <strong>apache-nutch-1.6</strong> dan jalankan perintah <code>bin/nutch solrindex http://127.0.0.1:8983/solr/ crawl/crawldb -linkdb crawl/linkdb crawl/segments/*</code> seperti dibawah ini :
-[plain]
-martinusadyh@artivisi:/tmp/apache-nutch-1.6$ bin/nutch solrindex <a href="http://127.0.0.1:8983/solr/">http://127.0.0.1:8983/solr/</a> crawl/crawldb -linkdb crawl/linkdb crawl/segments/*
-SolrIndexer: starting at 2013-03-02 00:23:17
-SolrIndexer: deleting gone documents: false
-SolrIndexer: URL filtering: false
-SolrIndexer: URL normalizing: false
-Indexing 11 documents
-SolrIndexer: finished at 2013-03-02 00:24:04, elapsed: 00:00:47
-martinusadyh@artivisi:/tmp/apache-nutch-1.6$
-[/plain]</p>
-
-<p>Jika sudah, mari kita mengecek-nya dengan memasukkan <strong>query string</strong> seperti gambar dibawah ini :
-[caption id=&ldquo;attachment_2433&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=390"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/Coba-Search-Dari-File-Seed-300x140.png" alt="Coba Search Dari File Seed" /></a> Coba Search Dari File Seed[/caption]</p>
-
-<p>Dan inilah hasil pencarian yang kita lakukan :
-[caption id=&ldquo;attachment_2434&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;300&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=391"><img src="http://martinusadyh.web.id/wp-content/uploads/2013/03/Hasil-Pencarian-Dari-Nutch-300x173.png" alt="Hasil Pencarian Dari Nutch" /></a> Hasil Pencarian Dari Nutch[/caption]</p>
-
-<p>Hmm&hellip; bagaimana, mudah bukan ? :)</p>
-
-<p><strong>Referensi-referensi:</strong></p>
-
-<ol>
-<li><p> <a href="http://lucene.apache.org/solr/">Apache Solr</a></p></li>
-<li><p> <a href="http://nutch.apache.org/">Apache Nutch</a></p></li>
-<li><p> <a href="http://blog.building-blocks.com/building-a-search-engine-with-nutch-and-solr-in-10-minutes">Building a Search Engine with Nutch and Solr in 10 Minutes</a></p></li>
 </ol>
 
 ]]></content>

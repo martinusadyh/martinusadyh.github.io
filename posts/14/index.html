@@ -10,8 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Oleh: Safir Senduk
-Dikutip dari Tabloid NOVA No. 662/XIII Rekening bersama adalah rekening yang dimiliki atas nama dua orang, di mana biasanya kedua &hellip;">
+  <meta name="description" content="Sudah lama sekali rasanya saya tidak posting apapun tentang Slackware :D Nah untuk kali ini, berhubung Slackware 13.37 juga barusan dirilis akhirnya &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +87,62 @@ Dikutip dari Tabloid NOVA No. 662/XIII Rekening bersama adalah rekening yang dim
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/">Installasi Slackware64 13.37 Dan GNOME 3.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-22T02:30:27+07:00" pubdate data-updated="true"></time>
+        
+         | <a href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sudah lama sekali rasanya saya tidak posting apapun tentang Slackware :D Nah untuk kali ini, berhubung <a href="http://martinusadyh.web.id/2011/04/28/slackware-13-37-is-released/">Slackware 13.37</a> juga barusan dirilis akhirnya kesampaian juga untuk melakukan <em>&ldquo;clean format&rdquo;</em> pada harddisk agar menggunakan Slackware saja sebagai Sistem Operasi utama saya :D Kali ini saya menginstall Slackware64 dan menggunakan kernel default yaitu 2.6.37, sedangkan untuk pilihan Desktop Manager-nya pilihan saya jatuh pada GNOME 3.0 yang diambil dari <a href="http://gnomeslackbuild.org/">GNOME Slackbuild</a> sekalian mencoba suasana baru :)</p>
+
+<p>Proses installasi ini berjalan seperti biasa tidak ada yang berubah, setelah selesai menginstall Slackware64 langkah selanjut-nya yaitu menginstall GNOME 3.0 dari <a href="http://gnomeslackbuild.org/">GNOME Slackbuild</a> Setelah selesai menginstall GNOME 3.0, langkah selanjutnya yang saya lakukan adalah konfigurasi driver <a href="http://martinusadyh.web.id/2009/09/27/konfigurasi-broadcom-bcm4312-80211b-di-slackware-130/">Broadcom BCM4312 802.11b</a> agar wifi saya bisa berjalan dengan normal :) Untuk drivernya sendiri bisa didownload di halaman <a href="http://www.broadcom.com/support/802.11/linux_sta.php">802.11 Linux STA driver</a>. Nah masalah mulai muncul ketika menjalankan perintah <code>make clean</code> yang hasilnya adalah seperti berikut :
+[plain]
+CC [M]  /home/martinus/driver_broadcom/src/wl/sys/wl_linux.o
+/home/martinus/driver_broadcom/src/wl/sys/wl_linux.c: In function &lsquo;wl_attach&rsquo;:
+/home/martinus/driver_broadcom/src/wl/sys/wl_linux.c:485:3: error: implicit declaration of function &lsquo;init_MUTEX&rsquo;
+make[2]: <strong><em> [/home/martinus/driver_broadcom/src/wl/sys/wl_linux.o] Error 1
+make[1]: </em></strong> [<em>module</em>/home/martinus/driver_broadcom] Error 2
+make[1]: Leaving directory `/usr/src/linux-2.6.37&#8217;
+make: *** [all] Error 2
+[/plain]</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/05/22/installasi-slackware64-13-37-dan-gnome-3-0/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -322,85 +377,6 @@ Dikutip Dari : Danareksa.com</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/2011/04/28/slackware-13-37-is-released/">Slackware 13.37 Is Released!</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-28T10:24:23+07:00" pubdate data-updated="true"></time>
-        
-         | <a href="/2011/04/28/slackware-13-37-is-released/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://slackware.com/"><img src="http://slackware.com/grfx/shared/slackware1337.gif" alt="Slackware Logo" /></a> It&rsquo;s true! Slackware 13.37 has been released. Nearly a year in the making, you will appreciate the performance and stability that can only come with careful and rigorous testing. Slackware 13.37 uses the 2.6.37.6 Linux kernel (hence our new <strong>$SLACKWARE_VERSION.$KERNEL_VERSION</strong> naming system used for this release ;-), and also ships with <strong>2.6.38.4 kernels</strong> for those who want to run the latest (and also includes configuration files for 2.6.35.12 and 2.6.39-rc4). The long-awaited <strong>Firefox 4.0 web browser</strong> is included, the X Window System has been upgraded (and includes the open source nouveau driver for nVidia cards). The venerable Slackware installer has been improved as well, with support for installing to btrfs (for those who would like to try a new copy on write filesystem), a one-package-per-line display mode option, and alienBOB&rsquo;s big surprise: an easy to set up PXE install server that runs right off the DVD!</p>
-
-<p>More details may by found in the <a href="http://slackware.com/announce/13.37.php">official announcement</a> and in the <a href="http://slackware.com/releasenotes/13.37.php">release notes</a>. For a complete list of included packages, see <a href="http://slackware.com/releasenotes/packages13.37.php">the package list</a>.</p>
-
-<p>Please consider supporting the Slackware project by picking up a copy of the Slackware 13.37 release from the <a href="http://store.slackware.com/">Slackware Store</a>. The discs are off to replication, but we&rsquo;re accepting pre-orders for the official 6 CD set and the DVD. The CD set is the 32-bit x86 release, while the DVD is a dual-sided disc with the 32-bit x86 release on one side and the 64-bit x86_64 release on the other. And, we still have T-shirts (coming soon, a limited edition 13.37 release commemorative black T-shirt with the classic Slackware logo on the front, and a &ldquo;leet&rdquo; LILO bootscreen on the back) and other Slackware stuff there, so have a look around. Thanks to our subscribers and supporters for keeping Slackware going all these years.</p>
-
-<p>Thanks are again due to the Slackware crew, the developers of <a href="http://slackbuilds.org/">slackbuilds.org</a>, the community on <a href="http://www.linuxquestions.org/questions/slackware-14/">linuxquestions.org</a>, Slackware IRC channels, and everyone else who helped out with this release.</p>
-
-<p>Have fun, and enjoy the new stable release!</p>
-
-<p>Pat and the Slackware crew</p>
-
-<p>Oh, in case our web server that&rsquo;s rather short of RAM goes down, try this link: <a href="http://connie.slackware.com">http://connie.slackware.com</a></p>
-
-<p>+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+</p>
-
-<p>This space intentionally left blank.</p>
-
-<p>Hyip&hellip;hyip&hellip; huray&hellip;.. :gembira:  :gembira:  :gembira:  akhirnya Slackware 13.37 release juga :silau:, nah diatas itu adalah cuplikan dari situs <a href="http://slackware.com/">Slackware</a> yang memberitahukan bahwa pagi ini Slackware versi 13.37 sudah di release ke publik dan siap untuk di download  :silau:</p>
-
-<p>Sedangkan untuk ISO-nya bisa didownload pada alamat dibawah ini :</p>
-
-<ol>
-<li><p> <a href="ftp://slackware.osuosl.org/pub/slackware/slackware-13.37/">ftp://slackware.osuosl.org/pub/slackware/slackware-13.37/</a></p></li>
-<li><p> <a href="ftp://ftp.slackware.com/pub/slackware/slackware-13.37/">ftp://ftp.slackware.com/pub/slackware/slackware-13.37/</a></p></li>
-<li><p> <a href="http://slackware.com/getslack/">http://slackware.com/getslack/</a></p></li>
-</ol>
-
-
-<p>Dan untuk mirror lokal bisa didownload disini :</p>
-
-<ol>
-<li><p> <a href="http://ftp.paudni.kemdiknas.go.id/slackware/slackware-13.37-iso/">http://ftp.paudni.kemdiknas.go.id/slackware/slackware-13.37-iso/</a></p></li>
-<li><p> <a href="http://repo.ukdw.ac.id/slackware/slackware-13.37/">http://repo.ukdw.ac.id/slackware/slackware-13.37/</a></p></li>
-<li><p> <a href="http://kambing.ui.ac.id/slackware/slackware64-13.37/">http://kambing.ui.ac.id/slackware/slackware64-13.37/</a></p></li>
-<li><p> <a href="http://kambing.ui.ac.id/slackware/slackware-13.37/">http://kambing.ui.ac.id/slackware/slackware-13.37/</a></p></li>
-<li><p> <a href="http://kambing.ui.ac.id/iso/slackware/slackware64-13.37-iso/">http://kambing.ui.ac.id/iso/slackware/slackware64-13.37-iso/</a></p></li>
-<li><p> <a href="http://kambing.ui.ac.id/iso/slackware/slackware-13.37-iso/">http://kambing.ui.ac.id/iso/slackware/slackware-13.37-iso/</a></p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="15">&larr; Older</a>
@@ -430,6 +406,10 @@ Dikutip Dari : Danareksa.com</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/11/disable-recent-files-in-linux-mint-17/">Disable Recent Files in Linux Mint 17</a>
@@ -485,10 +465,6 @@ Dikutip Dari : Danareksa.com</p>
     
       <li class="post">
         <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/20/lowongan-supervisor-it/">Lowongan Supervisor IT</a>
       </li>
     
   </ul>
