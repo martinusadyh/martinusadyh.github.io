@@ -184,8 +184,16 @@ ruby 1.9.3p547 (2014-05-14 revision 45962) [x86_64-linux]
 martinusadyh@martinusadyh ~ $ 
 ```
 
-Setelah ruby terinstall, sekarang masuk ke dalam direktori **Octopress** dan jalankan perintah `gem install bundler` seperti dibawah ini :
+Setelah ruby terinstall, sekarang `clone` repository [Octopress](http://octopress.org/) dengan mengetikkan perintah `git clone git://github.com/imathis/octopress.git octopress` kemudian masuk ke dalam direktori **Octopress** dan jalankan perintah `gem install bundler` seperti dibawah ini :
 ```
+martinusadyh@martinusadyh ~ $ git clone git://github.com/imathis/octopress.git octopress
+Cloning into 'octopress'...
+remote: Counting objects: 10633, done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 10633 (delta 8), reused 4 (delta 1)
+Receiving objects: 100% (10633/10633), 2.78 MiB | 554.00 KiB/s, done.
+Resolving deltas: 100% (5121/5121), done.
+Checking connectivity... done.
 martinusadyh@martinusadyh ~ $ cd octopress/
 martinusadyh@martinusadyh ~/octopress $ gem install bundler
 Fetching: bundler-1.7.2.gem (100%)
