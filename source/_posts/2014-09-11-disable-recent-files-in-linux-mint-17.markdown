@@ -55,6 +55,18 @@ kemudian edit menjadi seperti dibawah ini :
 ...
 ```
 
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 Kalau sudah sekarang simpan perubahan diatas dan sekarang coba klik tombol `Menu` , jika semua konfigurasi telah sesuai seharusnya kita sudah tidak melihat menu _Recent Files_ lagi seperti gambar dibawah ini :
 
 {% imgcap https://lh5.googleusercontent.com/-rAuXCV5GLuw/VBECekitnQI/AAAAAAAACY8/39glRev1E88/s288/Setelah_Modifikasi_File%2520_menu%2540cinnamon.org.json.png Menu Recent Files Hilang %}
