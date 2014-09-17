@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: wordpress | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: Wordpress | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/wordpress/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How To Fixing Problem Jetpack 2.0.4 Breaks NextGen Galleries Plugins]]></title>
+    <title type="html"><![CDATA[How to Fixing Problem Jetpack 2.0.4 Breaks NextGen Galleries Plugins]]></title>
     <link href="http://martinusadyh.web.id/2012/12/19/how-to-fixing-problem-jetpack-2-0-4-breaks-nextgen-galleries-plugins/"/>
     <updated>2012-12-19T00:52:39+07:00</updated>
     <id>http://martinusadyh.web.id/2012/12/19/how-to-fixing-problem-jetpack-2-0-4-breaks-nextgen-galleries-plugins</id>
@@ -62,7 +62,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Security Info Backdoor pada WordPress Plugin]]></title>
+    <title type="html"><![CDATA[Security Info Backdoor Pada WordPress Plugin]]></title>
     <link href="http://martinusadyh.web.id/2011/06/22/security-info-backdoor-pada-wordpress-plugin/"/>
     <updated>2011-06-22T22:08:05+07:00</updated>
     <id>http://martinusadyh.web.id/2011/06/22/security-info-backdoor-pada-wordpress-plugin</id>

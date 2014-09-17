@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: slackware | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: Slackware | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/slackware/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -29,7 +29,7 @@ Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di ingink
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How To Embedding Your Binary Files into Shell Script]]></title>
+    <title type="html"><![CDATA[How to Embedding Your Binary Files Into Shell Script]]></title>
     <link href="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/"/>
     <updated>2012-08-04T14:47:56+07:00</updated>
     <id>http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script</id>
@@ -337,7 +337,7 @@ Package mozilla-firefox-9.0.1-x86_64-2.txz installed.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Batch Rename with Shell Script]]></title>
+    <title type="html"><![CDATA[Batch Rename With Shell Script]]></title>
     <link href="http://martinusadyh.web.id/2011/09/09/batch-rename-with-shell-script/"/>
     <updated>2011-09-09T19:50:09+07:00</updated>
     <id>http://martinusadyh.web.id/2011/09/09/batch-rename-with-shell-script</id>

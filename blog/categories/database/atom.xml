@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: database | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: Database | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/database/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -39,7 +39,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Create Auto Increment In JavaDB]]></title>
+    <title type="html"><![CDATA[Create Auto Increment in JavaDB]]></title>
     <link href="http://martinusadyh.web.id/2012/10/27/create-auto-increment-in-javadb/"/>
     <updated>2012-10-27T21:33:42+07:00</updated>
     <id>http://martinusadyh.web.id/2012/10/27/create-auto-increment-in-javadb</id>
@@ -248,7 +248,7 @@ Query OK, 1 row affected (0.03 sec)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Installing Tora On Slackware 13.37]]></title>
+    <title type="html"><![CDATA[Installing Tora on Slackware 13.37]]></title>
     <link href="http://martinusadyh.web.id/2011/08/22/installing-tora-on-slackware-13-37/"/>
     <updated>2011-08-22T23:37:45+07:00</updated>
     <id>http://martinusadyh.web.id/2011/08/22/installing-tora-on-slackware-13-37</id>
@@ -304,7 +304,7 @@ Query OK, 1 row affected (0.03 sec)</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Paging On JTable]]></title>
+    <title type="html"><![CDATA[Paging on JTable]]></title>
     <link href="http://martinusadyh.web.id/2011/01/31/paging-on-jtable/"/>
     <updated>2011-01-31T02:43:45+07:00</updated>
     <id>http://martinusadyh.web.id/2011/01/31/paging-on-jtable</id>

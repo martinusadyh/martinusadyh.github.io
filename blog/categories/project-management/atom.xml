@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: project management | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: Project Management | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/project-management/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -55,7 +55,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[SlackBuild Script For Gitg]]></title>
+    <title type="html"><![CDATA[SlackBuild Script for Gitg]]></title>
     <link href="http://martinusadyh.web.id/2011/06/24/slackbuild-script-for-gitg/"/>
     <updated>2011-06-24T00:01:38+07:00</updated>
     <id>http://martinusadyh.web.id/2011/06/24/slackbuild-script-for-gitg</id>
@@ -181,7 +181,7 @@ cd $PKG
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Training Git di Artivisi Intermedia]]></title>
+    <title type="html"><![CDATA[Training Git Di Artivisi Intermedia]]></title>
     <link href="http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia/"/>
     <updated>2011-01-05T21:13:21+07:00</updated>
     <id>http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia</id>

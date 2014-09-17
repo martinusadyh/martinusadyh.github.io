@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: javascript | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: Javascript | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Cara Mudah Mendebug Widget di Dojo]]></title>
+    <title type="html"><![CDATA[Cara Mudah Mendebug Widget Di Dojo]]></title>
     <link href="http://martinusadyh.web.id/2013/07/27/cara-mudah-mendebug-widget-di-dojo/"/>
     <updated>2013-07-27T20:50:51+07:00</updated>
     <id>http://martinusadyh.web.id/2013/07/27/cara-mudah-mendebug-widget-di-dojo</id>
@@ -39,7 +39,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Dojo GUI Builder with Maqetta]]></title>
+    <title type="html"><![CDATA[Dojo GUI Builder With Maqetta]]></title>
     <link href="http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta/"/>
     <updated>2012-07-22T01:54:38+07:00</updated>
     <id>http://martinusadyh.web.id/2012/07/22/dojo-gui-builder-with-maqetta</id>
@@ -101,7 +101,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Detecting Session Idle with Dojo]]></title>
+    <title type="html"><![CDATA[Detecting Session Idle With Dojo]]></title>
     <link href="http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo/"/>
     <updated>2012-07-11T03:15:40+07:00</updated>
     <id>http://martinusadyh.web.id/2012/07/11/detecting-session-idle-with-dojo</id>

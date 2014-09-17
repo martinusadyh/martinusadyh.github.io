@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: centos | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: Centos | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -29,7 +29,7 @@ Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di ingink
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How To Embedding Your Binary Files into Shell Script]]></title>
+    <title type="html"><![CDATA[How to Embedding Your Binary Files Into Shell Script]]></title>
     <link href="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/"/>
     <updated>2012-08-04T14:47:56+07:00</updated>
     <id>http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script</id>
@@ -250,7 +250,7 @@ martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Training Git di Artivisi Intermedia]]></title>
+    <title type="html"><![CDATA[Training Git Di Artivisi Intermedia]]></title>
     <link href="http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia/"/>
     <updated>2011-01-05T21:13:21+07:00</updated>
     <id>http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia</id>
@@ -395,7 +395,7 @@ ftp&gt;
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Konfigurasi Modem di Linux]]></title>
+    <title type="html"><![CDATA[Konfigurasi Modem Di Linux]]></title>
     <link href="http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux/"/>
     <updated>2010-05-03T04:13:32+07:00</updated>
     <id>http://martinusadyh.web.id/2010/05/03/konfigurasi-modem-di-linux</id>

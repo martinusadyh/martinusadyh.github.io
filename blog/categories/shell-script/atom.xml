@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: shell script | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: Shell Script | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/shell-script/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How To Embedding Your Binary Files into Shell Script]]></title>
+    <title type="html"><![CDATA[How to Embedding Your Binary Files Into Shell Script]]></title>
     <link href="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/"/>
     <updated>2012-08-04T14:47:56+07:00</updated>
     <id>http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script</id>
@@ -235,7 +235,7 @@ martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Batch Rename with Shell Script]]></title>
+    <title type="html"><![CDATA[Batch Rename With Shell Script]]></title>
     <link href="http://martinusadyh.web.id/2011/09/09/batch-rename-with-shell-script/"/>
     <updated>2011-09-09T19:50:09+07:00</updated>
     <id>http://martinusadyh.web.id/2011/09/09/batch-rename-with-shell-script</id>
@@ -282,7 +282,7 @@ martinus@artivisi:[~]$
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Call For Paper Programming Tutorial on SlackID Ezine]]></title>
+    <title type="html"><![CDATA[Call for Paper Programming Tutorial on SlackID Ezine]]></title>
     <link href="http://martinusadyh.web.id/2010/05/25/call-for-paper-programming-tutorial-on-slackid-ezine/"/>
     <updated>2010-05-25T00:36:47+07:00</updated>
     <id>http://martinusadyh.web.id/2010/05/25/call-for-paper-programming-tutorial-on-slackid-ezine</id>
@@ -371,7 +371,7 @@ martinus@artivisi:[~]$
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Installasi File tar.gz dan tar.bz2]]></title>
+    <title type="html"><![CDATA[Installasi File tar.gz Dan tar.bz2]]></title>
     <link href="http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2/"/>
     <updated>2010-03-27T05:42:06+07:00</updated>
     <id>http://martinusadyh.web.id/2010/03/27/installasi-file-tar-gz-dan-tar-bz2</id>

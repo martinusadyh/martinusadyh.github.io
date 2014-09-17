@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: e-magazine | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: E-magazine | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/e-magazine/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[June issue of BSD magazine NanoBSD and ALIX]]></title>
+    <title type="html"><![CDATA[June Issue of BSD Magazine NanoBSD and ALIX]]></title>
     <link href="http://martinusadyh.web.id/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix/"/>
     <updated>2011-06-03T01:14:24+07:00</updated>
     <id>http://martinusadyh.web.id/2011/06/03/june-issue-of-bsd-magazine-nanobsd-and-alix</id>

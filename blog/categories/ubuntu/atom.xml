@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ubuntu | Martinus Ady H. BloG]]></title>
+  <title><![CDATA[Category: Ubuntu | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-17T22:35:55+07:00</updated>
+  <updated>2014-09-17T23:43:34+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -29,7 +29,7 @@ Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di ingink
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Ubuntu Global Menu Support In NetBeans]]></title>
+    <title type="html"><![CDATA[Ubuntu Global Menu Support in NetBeans]]></title>
     <link href="http://martinusadyh.web.id/2012/08/18/ubuntu-global-menu-support-in-netbeans/"/>
     <updated>2012-08-18T01:12:28+07:00</updated>
     <id>http://martinusadyh.web.id/2012/08/18/ubuntu-global-menu-support-in-netbeans</id>
@@ -77,7 +77,7 @@ allow-guest=false
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How To Embedding Your Binary Files into Shell Script]]></title>
+    <title type="html"><![CDATA[How to Embedding Your Binary Files Into Shell Script]]></title>
     <link href="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/"/>
     <updated>2012-08-04T14:47:56+07:00</updated>
     <id>http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script</id>
@@ -298,7 +298,7 @@ martinus@artivisi:[/tmp/test-makeself/makeself-2.1.5/result]$
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Konfigurasi User Home Direktori Apache di Ubuntu 12.04]]></title>
+    <title type="html"><![CDATA[Konfigurasi User Home Direktori Apache Di Ubuntu 12.04]]></title>
     <link href="http://martinusadyh.web.id/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04/"/>
     <updated>2012-07-07T18:58:40+07:00</updated>
     <id>http://martinusadyh.web.id/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04</id>
