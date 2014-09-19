@@ -26,7 +26,7 @@ tags:
 - Turing
 ---
 
-{% img center /images/blog-images/Adventure/TOURING/BerburuSunsetdiPantaiRancaBuayadanPantaiSantolo/SunsetyangterhalangawandiPantaiSantolo.jpg 'Sunset yang terhalang awan di Pantai Santolo' %}
+{% imgcap https://lh6.googleusercontent.com/-ET-k5EF7ho4/UVqjDfe-J0I/AAAAAAAABFk/lOuFC08yHCw/s640/IMG_20130329_181833.jpg Sunset yang terhalang awan di Pantai Santolo %}
 
 Sebenarnya perjalanan kali ini terinspirasi dari **Ride Report** om Debian di forum **Nusantaride** dengan judul [Ekspedisi Menyingkap Keindahan 8 Pantai Tersembuyi di Garut](http://www.nusantaride.com/Forums/showthread.php?t=544), nah karena tergiur dengan pemandangan yang terdapat pada tulisan om Debian akhirnya sayapun berusaha meracuni beberapa teman untuk ikutan jalan menuju ke Pantai Ranca Buaya di akhir maret nanti tepatnya waktu _long weekend_ di tanggal 29-31 Maret 2013 :) Dan ternyata, respon teman-teman cukup baik juga dengan menyatakan bahwa mereka tertarik untuk ikutan _riding_ bareng menuju ke Pantai Ranca Buaya :)
 <!-- more -->
