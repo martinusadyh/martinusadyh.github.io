@@ -46,6 +46,18 @@ Untuk menginstall Android SDK, silahkan mengunjungi alamat [http://developer.and
 
 Proses download sudah selesai, sekarang ekstrak pada direktori yang diinginkan (jika menggunakan windows bisa diekstrak pada `C:\>` atau `/home/[nama-user]` jika menggunakan GNU/Linux) yang nantinya akan membuat sebuah direktori seperti `C:\android-sdk-windows_86` di Windows atau `/home/[nama-user]/android-sdk-linux_86` jika menggunakan GNU/Linux.
 
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 Jika proses ekstrak sudah selesai, sekarang downloadlah Android Component dengan cara masuklah pada direktori `/home/[nama-user]/android-sdk-linux_86/tools` melalui terminal dan jalankan perintah `android` seperti dibawah ini :
 
     martinus@martinusadyh:[~]$ cd android-sdk-linux_86/tools/
@@ -55,20 +67,21 @@ Jika proses ekstrak sudah selesai, sekarang downloadlah Android Component dengan
     See 'android --help' for operations from the command line.
 
 Setelah kita mengetikkan `android` pada terminal, maka tidak lama akan muncul **Android SDK and AVD Manager**. Untuk menginstall dan menambahkan komponen, sekarang pilihlah menu **Available Packages** dan pilihlah semua opsi yang terdapat pada menu sebelah kanan seperti gambar dibawah ini :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/AndroidComponent.png Menambahkan Android Component %}
-**Menambahkan Android Component**
+
+{% imgcap https://lh3.googleusercontent.com/-bi1BHve5te8/VB2PctZ7ZvI/AAAAAAAACss/WBWA6i1aBxk/s288/AndroidComponent.png Menambahkan Android Component %}
+
 
 Kemudian tekanlah tombol **Install Selected** dan pilihlah opsi **Accept All** pada dialog **Choose Packages to Install** setelah itu baru tekan tombol **Install** seperti dibawah ini :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/ChoosePackagesToInstall.png ChoosePackagesToInstall %}
-**Menambahkan Android Component**
+
+{% imgcap https://lh4.googleusercontent.com/-eTHS2f2kGNQ/VB2Pd_UnS4I/AAAAAAAACtE/j3LdopL4ypA/s288/ChoosePackagesToInstall.png ChoosePackagesToInstall %}
 
 Tunggu sampai proses download selesai dan jika sudah proses installasi Android SDK ini bisa dikatakan sudah selesai. Sekarang mari kita lanjut ke tahapan selanjut-nya ;)
 
   2. **Installasi Plugin Android Development Tools (ADT) Pada Eclipse 3.5.2 (Galileo) Classic**
 
 Karena ADT ini merupakan sebuah plugin pada Eclipse, maka pastikan dahulu anda menginstall Eclipse yang sesuai yaitu **Eclipse 3.5.2 (Galileo) Classic** yang bisa kita download dari [http://www.eclipse.org/downloads/](http://www.eclipse.org/downloads/). (Aneh kenapa plugin ADT ini tidak jalan ya di Eclipse Helios versi EE ??? Ada yang sudah pernah mencoba di Helios ???) Jika proses installasi Eclipse sudah selesai, sekarang installah plugin ADT ini dengan cara pilihlah menu **Help > Install New Software** dan masukkanlah alamat [https://dl-ssl.google.com/android/eclipse/](https://dl-ssl.google.com/android/eclipse/) pada field **Work with** kemudian tekan **ENTER** dan tunggulah beberapa saat sampai muncul plugin **Developer Tools** dan berilah tanda centang seperti dibawah ini :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/AndroidDevelopmentTools.png Installasi Plugin ADT Pada Eclipse %}
-**Installasi Plugin ADT Pada Eclipse**
+
+{% imgcap https://lh4.googleusercontent.com/-FG4NnWu5MoQ/VB2PebjpwZI/AAAAAAAACtI/sU4ZaGQvwW0/s288/InstallWST.png Installasi Plugin ADT Pada Eclipse %}
 
 Tekanlah tombol **Next** hingga plugin **Android Development Tools** ter-install pada Eclipse kemudian restartlah Eclipse agar plugin **Android Development Tools** dapat segera digunakan :)
 
@@ -86,8 +99,8 @@ Missing requirement: Android Development Tools 0.9.7.v201005071157-36220 (com.an
 > 
 
 Maka cara pemecahan-nya yaitu install-lah dahulu plugin **WST Server Adapters** dengan cara pilihlah menu **Help > Install New Software** dan masukkanlah alamat [http://download.eclipse.org/releases/galileo/](http://download.eclipse.org/releases/galileo/) pada field **Work with** kemudian tekan **ENTER** tunggu sampai menampilkan daftar plugin lalu ketikkan **WST Server Adapters** pada field **Type Filter Text** seperti dibawah ini :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/InstallWST.png Installasi Plugin WST Server Adapters Pada Eclipse %}
-**Installasi Plugin WST Server Adapters Pada Eclipse**
+
+{% imgcap https://lh4.googleusercontent.com/-FG4NnWu5MoQ/VB2PebjpwZI/AAAAAAAACtI/sU4ZaGQvwW0/s288/InstallWST.png Installasi Plugin WST Server Adapters Pada Eclipse %}
 
 Jika sudah selesai, restartlah Eclipse-nya dan lanjutkan untuk menginstall plugin ADT :)
 
@@ -102,25 +115,24 @@ Sampai disini proses installasi Plugin sudah bisa dikatakan selesai :)
   3. **Konfigurasi Plugin ADT Pada Eclipse 3.5.2 (Galileo)**
 
 Jika proses installasi plugin ADT berjalan dengan lancar, maka langkah selanjutnya yaitu menentukan lokasi **Android SDK** dengan cara pilihlah menu **Window > Preferences** dan pilihlah menu **Android** pada panel sebelah kiri seperti gambar dibawah ini :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/PreferencesAndroid.png Konfigurasi Plugin ADT %}
-**Konfigurasi Plugin ADT**
+
+{% imgcap https://lh3.googleusercontent.com/-VgBXygvcs6I/VB2Pf_Zy1OI/AAAAAAAACtU/o7h14v2qznc/s288/PreferencesAndroid.png Konfigurasi Plugin ADT %}
 
 Pada jendela **Preferences** diatas, tekanlah tombol **Browse** dan arahkan pada tempat dimana kita menginstall **Android SDK** kemudian tekanlah tombol **Apply** hingga tampilannya seperti gambar dibawah ini :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/gambar_preferences_android2.png gambar_preferences_android2 %}  
-**Tampilan Android SDK Yang Sudah Dikenali**
+
+{% imgcap https://lh5.googleusercontent.com/-172SszAWKEU/VB2PhTXuhFI/AAAAAAAACtk/q4NRrJG-pRA/s288/gambar_preferences_android2.png gambar_preferences_android2 %}  
 
 Jika sudah sekarang mari kita konfigurasi **Android Virtual Device (ADV)** melalui menu **Window > Android SDK and ADV Manager** seperti gambar dibawah ini :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/JendelaADV.png Dialog Konfigurasi Android Virtual Device %}
-**Dialog Konfigurasi Android Virtual Device**
+
+{% imgcap https://lh5.googleusercontent.com/-2kJ6LY-W0Cc/VB2PesztQbI/AAAAAAAACtM/l8gBZcT6MT4/s288/JendelaADV.png Dialog Konfigurasi Android Virtual Device %}
 
 Pada dialog **Android SDK and ADV Manager** tekanlah tombol **New** pada panel sebelah kanan dan isikan Nama Virtual Device serta pilihlah versi Android yang ingin di simulasikan pada field Target seperti dibawah ini setelah itu tekanlah tombol **Create AVD** :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/AndroidVD.png Konfigurasi Android Virtual Device %}
-**Konfigurasi Android Virtual Device**
 
+{% imgcap https://lh4.googleusercontent.com/-gt5jlH1BrqA/VB2Pc0KvsuI/AAAAAAAACs0/RfHpQT2hqtU/s288/AndroidVD.png Konfigurasi Android Virtual Device %}
 
 Proses installasi Android SDK dan konfigurasi plugin ADT pada Eclipse sudah selesai, nah sekarang untuk mengetest apakah hasil installasi ini berjalan dengan sukses atau tidak. Cobalah untuk membuat sebuah project baru yang berbasis pada direktori **[android-sdk-home]/samples/**, dan jika tidak ada masalah maka kita akan dapat menjalankan salah satu project samples seperti dibawah ini :
-{% img /images/blog-images/Java_NetBeans/InstallasiAndroidSDKUntukPengembanganAplikasiAndroid/SnakeAndroidSampleProject.png Android Emulator Menjalankan Sample Project Snake %}
-**Android Emulator Menjalankan Sample Project Snake**
+
+{% imgcap https://lh6.googleusercontent.com/-h-loNLS_3jY/VB2PhKOQQbI/AAAAAAAACtg/OEsIeODXxx0/s400/SnakeAndroidSampleProject.png Android Emulator Menjalankan Sample Project Snake %}
 
 Nah setelah perlengkapan perang kita sudah siap, sekarang waktu-nya untuk mempelajari lebih dalam lagi bagaimana membuat sebuah aplikasi untuk Android :D Sekarang, waktu-nya untuk belajar dahulu ya teman-teman  :senyum: 
 
