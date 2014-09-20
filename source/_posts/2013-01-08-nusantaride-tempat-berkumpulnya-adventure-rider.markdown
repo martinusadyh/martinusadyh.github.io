@@ -12,12 +12,27 @@ tags:
 - Nusantaride
 ---
 
-[caption id="attachment_2393" align="alignnone" width="397"][![Logo Nusantaride](http://martinusadyh.web.id/wp-content/uploads/2013/01/nusantaride.jpg)](http://martinusadyh.web.id/gallery/?album=4&gallery=3&pid=386) Logo Nusantaride[/caption]
+{% imgcap https://lh6.googleusercontent.com/-cmY8z5wcg-A/VB2SrJekfPI/AAAAAAAACt8/yuK3pE6DWO4/s800/nusantaride.jpg Logo Nusantaride %}
+
 Apakah diantara teman-teman ada yang mempunyai hobi berpetualang menjelajahi daerah-daerah wisata nan eksotis dengan menggunakan sepeda motor ? Jika iya, mungkin sudah saat-nya melirik sebuah komunitas [Nusantaride](http://www.nusantaride.com) yang didalam-nya banyak sekali rider-rider yang berbagi pengalaman tentang daerah-daerah yang sudah pernah dikunjungi-nya melalui sebuah **Ride Report** :)
 
 Nah sedangkan apasih sebenarnya [Nusantaride](http://www.nusantaride.com) ini ? Berikut ini adalah sepenggal kata pembuka yang saya dapatkan dari posting om [Haryo Widodo](https://www.facebook.com/haryowidodo) di [groups Nusantaride](https://www.facebook.com/groups/nusantaride) :)
 
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 Bagi yang baru bergabung, selamat datang di Nusantaride.
+
+<pre>
 
 **MOHON SELALU DI BACA SEBELUM POSTING**
 ====================================
@@ -74,6 +89,6 @@ Atas Perhatiannya kami ucapkan terima kasih
 
 on behalf
 NUSANTARIDE
-
+</pre>
 
 Nah menarik bukan ? Yuuk mari kita ramaikan dengan saling membagi **Ride Report** dan oleh-oleh berupa foto-foto pemandangan alam yang cantik biar menjadi sedikit **ratjoen-ratjoen** rider lain :)

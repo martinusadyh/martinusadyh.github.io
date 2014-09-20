@@ -20,12 +20,12 @@ tags:
 Sedang mencari solusi **Paging di JTable** ? Jika iya, pada posting kali ini kita akan mencoba membuat supaya **JTable** pada aplikasi kita mendukung **pagination** :D Niat awal sih sebenarnya ingin menjadikan **Table Paging** ini menjadi sebuah komponen yang tinggal **"drag and drop"** saja untuk menggunakan-nya, tapi apa daya sampai sekarang juga belum jadi-jadi komponen-nya :D
 
 Pembuatan **Table Paging** ini semuanya terinspirasi dari komponen javascript untuk jQuery bernama [Flexigrid](http://www.flexigrid.info/) yang tampilan-nya kurang lebih seperti gambar dibawah ini :
-[![flexigrid](http://farm6.static.flickr.com/5052/5400874631_7bfb733fcf.jpg)](http://www.flickr.com/photos/10243554@N02/5400874631/)  
-**Tampilan Paging Flexigrid**
+
+{% imgcap http://farm6.static.flickr.com/5052/5400874631_7bfb733fcf.jpg Tampilan Paging Flexigrid %}
 
 Sedangkan tampilan **JTable** yang akan kita buat kurang lebih seperti gambar dibawah ini :
-[![Screenshot](http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg)](http://www.flickr.com/photos/10243554@N02/5400874633/)  
-**Tampilan Paging on JTable**
+
+{% imgcap http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg Tampilan Paging on JTable %}
 
 Pada posting kali ini, kita akan coba meng-implementasikan **Table Paging** ini menggunakan **JDBC** dan **Hibernate**. Untuk yang tidak menggunakan **JDBC** maupun **Hibernate**, saya rasa juga tidak akan begitu kesulitan karena tinggal mengganti sintaks query-nya saja :D Dan database yang digunakan pada posting kali ini adalah MySQL :)
 <!-- more -->
@@ -40,24 +40,20 @@ Ok sebelum mulai latihan-nya, sekarang downloadlah dahulu contoh database-nya. C
 
 
 Nah jika sudah, sekarang bukalah NetBeans IDE dan buatlah 4 buah project yaitu **domain,service,service.impl dan ui** kurang lebih seperti gambar dibawah ini :
-[![StrukturProject](http://farm6.static.flickr.com/5299/5401141101_59a8e445f1.jpg)](http://www.flickr.com/photos/10243554@N02/5401141101/)  
-**Contoh Struktur Project**
+
+{% imgcap http://farm6.static.flickr.com/5299/5401141101_59a8e445f1.jpg Contoh Struktur Project %}
 
 Sebelum mulai lebih lanjut, sekarang tambahkanlah dahulu beberapa library yang diperlukan oleh ke empat project diatas seperti gambar dibawah ini :
-[![LibraryDomain](http://farm6.static.flickr.com/5133/5401949258_c80289c9b4.jpg)](http://www.flickr.com/photos/10243554@N02/5401949258/)  
-**Library Project Domain**
 
-[![LibraryService](http://farm6.static.flickr.com/5172/5401949260_fc9941c546.jpg)](http://www.flickr.com/photos/10243554@N02/5401949260/)  
-**Library Project Service**
+{% imgcap http://farm6.static.flickr.com/5133/5401949258_c80289c9b4.jpg Library Project Domain %}
 
-[![LibraryServiceImpl](http://farm6.static.flickr.com/5094/5401949264_dfa27ae237.jpg)](http://www.flickr.com/photos/10243554@N02/5401949264/)  
-**Library Project Service Impl**
+{% imgcap http://farm6.static.flickr.com/5172/5401949260_fc9941c546.jpg Library Project Service %}
 
-[![LibraryUI1](http://farm6.static.flickr.com/5051/5401949266_b4f56e6cdd.jpg)](http://www.flickr.com/photos/10243554@N02/5401949266/)  
-**Library Project UI**
+{% imgcap http://farm6.static.flickr.com/5094/5401949264_dfa27ae237.jpg Library Project Service Impl %}
 
-[![LibraryUI2](http://farm6.static.flickr.com/5217/5401949268_2045053900.jpg)](http://www.flickr.com/photos/10243554@N02/5401949268/)  
-**Lanjutan Library Project UI**
+{% imgcap http://farm6.static.flickr.com/5051/5401949266_b4f56e6cdd.jpg Library Project UI %}
+
+{% imgcap http://farm6.static.flickr.com/5217/5401949268_2045053900.jpg Lanjutan Library Project UI %}
 
 Jika library yang diperlukan sudah ditambahkan seperti gambar diatas, sekarang buatlah sebuah **domain class** dengan nama `WPComment.java` pada project `com.artivisi.sample.tablepaging.domain` dengan isi kurang lebih seperti berikut :
 
@@ -295,8 +291,7 @@ hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
 
 Simpan ke 3 file tersebut pada project `com.artivisi.sample.tablepaging.ui` seperti gambar dibawah ini :
 
-[![FileKonfigurasiSpringHibernate](http://farm6.static.flickr.com/5053/5402028584_2e872dc9a9.jpg)](http://www.flickr.com/photos/10243554@N02/5402028584/)  
-**Simpan file applicationContext.xml, hibernate.cfg.xml dan jdbc.properties pada root direktori src**
+{% imgcap http://farm6.static.flickr.com/5053/5402028584_2e872dc9a9.jpg Simpan file applicationContext.xml, hibernate.cfg.xml dan jdbc.properties pada root direktori src %}
 
 Jika sudah, sekarang buatlah sebuah **Main class** yang mempunyai fungsi sebagai inisialisasi awal aplikasi kita yang isinya kurang lebih seperti kode dibawah ini :
 
@@ -360,6 +355,18 @@ public class Main {
 }
 ```
 
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 Setelah selesai membuat sebuah **Main class**, sekarang buatlah dahulu sebuah table model dengan nama `CommentTableModel.java` yang berfungsi untuk menampung data yang berasal dari database yang kodenya kurang lebih seperti dibawah ini :
 
 ``` java
@@ -414,8 +421,8 @@ public class CommentTableModel extends AbstractTableModel {
 ```
 
 Setelah membuat sebuah table model, sekarang buatlah sebuah **JFrame** dengan nama `MainForm.java` yang mempunyai tampilan seperti gambar dibawah ini :
-[![DesignForm](http://farm6.static.flickr.com/5098/5401313671_7217162b8a.jpg)](http://www.flickr.com/photos/10243554@N02/5401313671/)  
-**Design Form**
+
+{% imgcap http://farm6.static.flickr.com/5098/5401313671_7217162b8a.jpg Design Form %}
 
 Pada design form diatas terdapat 5 buah tombol yaitu `btnFirst, btnPrevious, btnNext, btnLast` dan `btnRefresh`. Sebelum menambahkan event pada setiap tombol diatas, sekarang buatlah 4 buah variable yaitu `totalRows, pageNumber, totalPage` dan `rowsPerPage` pada `MainForm.java` seperti dibawah ini :
 
@@ -608,8 +615,7 @@ public class Main {
 
 Nah sampai disini sekarang kita tinggal menjalankan projectnya dengan cara menekan tombol **F6** dan jika tidak ada pesan kesalahan maka harusnya kita sudah bisa melihat tampilan table kita seperti gambar dibawah ini :
 
-[![Screenshot](http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg)](http://www.flickr.com/photos/10243554@N02/5400874633/)  
-**Tampilan Paging on JTable**
+{% imgcap http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg Tampilan Paging on JTable %}
 
 Bagaimana ? Mudah bukan ? :D Mungkin solusi ini masih kurang elegan, tapi ya mari di diskusikan bagaimana baiknya :D :) Jika ada yang ingin bertanya, silahkan langsung tanya saja pada kolom komentar ya :)
 
