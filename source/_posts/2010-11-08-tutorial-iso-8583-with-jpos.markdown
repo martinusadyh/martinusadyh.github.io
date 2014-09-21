@@ -148,4 +148,4 @@ Fyuh... setelah lama _ngendon_ di draft, akhirnya baru pagi ini tulisan pertama 
 
 
 
-Sedangkan untuk tutorial-nya bisa teman-teman lihat pada halaman [Tulisanku](http://martinusadyh.web.id/tulisanku/) diatas :) 
+Sedangkan untuk tutorial-nya bisa teman-teman lihat pada halaman [ISO 8583 Tutorial](http://iso8583tutorial.blogspot.com/) :) 
