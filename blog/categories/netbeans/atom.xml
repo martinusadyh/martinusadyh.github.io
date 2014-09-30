@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Netbeans | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/netbeans/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-09-21T18:31:05+07:00</updated>
+  <updated>2014-09-30T09:47:40+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -140,18 +140,18 @@
     <link href="http://martinusadyh.web.id/2011/07/10/jcombobox-with-database/"/>
     <updated>2011-07-10T17:20:31+07:00</updated>
     <id>http://martinusadyh.web.id/2011/07/10/jcombobox-with-database</id>
-    <content type="html"><![CDATA[<p><a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=116"><img src="http://martinusadyh.web.id/wp-content/gallery/tutorial/netbeans-stamp-69-70.png" alt="netbeans-stamp-69-70" /></a>Minggu kemarin di milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan tentang bagaimana mengisi JComboBox dari DataBase yang kutipan pertanyaan-nya kurang lebih seperti berikut :</p>
+    <content type="html"><![CDATA[<p><img class="left <a" src="href="https://lh4.googleusercontent.com/-6tfMKUeM7-g/VCoT5SqQkAI/AAAAAAAACyA/ql_iDIIGfWA/s800/netbeans-stamp-69-70.png">https://lh4.googleusercontent.com/-6tfMKUeM7-g/VCoT5SqQkAI/AAAAAAAACyA/ql_iDIIGfWA/s800/netbeans-stamp-69-70.png</a>"> Minggu kemarin di milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan tentang bagaimana mengisi JComboBox dari DataBase yang kutipan pertanyaan-nya kurang lebih seperti berikut :</p>
 
-<blockquote><p>From: <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#98;&#97;&#106;&#x2a;&#x2a;&#x2a;&#64;&#x79;&#x61;&#104;&#x6f;&#111;&#x2e;&#x63;&#x6f;&#x6d;">&#x62;&#x61;&#106;&#42;&#x2a;&#42;&#64;&#121;&#97;&#104;&#x6f;&#111;&#x2e;&#99;&#111;&#109;</a> Fakhrurozi M Nur
-To: <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#x3a;&#x6e;&#x65;&#116;&#98;&#x65;&#x61;&#x6e;&#115;&#x2d;&#105;&#110;&#x64;&#x6f;&#x6e;&#101;&#x73;&#x69;&#97;&#x40;&#121;&#x61;&#x68;&#111;&#x6f;&#x67;&#x72;&#x6f;&#x75;&#112;&#115;&#46;&#x63;&#111;&#109;">&#x6e;&#x65;&#116;&#98;&#x65;&#x61;&#110;&#115;&#45;&#105;&#x6e;&#100;&#x6f;&#110;&#101;&#115;&#105;&#97;&#x40;&#x79;&#x61;&#x68;&#111;&#111;&#103;&#114;&#x6f;&#x75;&#112;&#x73;&#x2e;&#x63;&#111;&#x6d;</a> <a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#110;&#x65;&#116;&#x62;&#101;&#97;&#x6e;&#115;&#45;&#105;&#x6e;&#x64;&#x6f;&#110;&#x65;&#x73;&#x69;&#97;&#x40;&#121;&#97;&#x68;&#111;&#x6f;&#x67;&#x72;&#111;&#x75;&#x70;&#x73;&#46;&#x63;&#111;&#109;">&#110;&#101;&#116;&#98;&#101;&#97;&#110;&#115;&#x2d;&#x69;&#110;&#x64;&#x6f;&#x6e;&#x65;&#115;&#x69;&#x61;&#x40;&#x79;&#x61;&#104;&#111;&#x6f;&#103;&#x72;&#111;&#117;&#x70;&#115;&#46;&#x63;&#x6f;&#109;</a>
+<blockquote><p>From: <a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#98;&#97;&#106;&#x2a;&#42;&#x2a;&#x40;&#121;&#97;&#x68;&#x6f;&#x6f;&#x2e;&#99;&#111;&#109;">&#98;&#x61;&#x6a;&#x2a;&#42;&#42;&#x40;&#x79;&#97;&#x68;&#x6f;&#111;&#x2e;&#x63;&#x6f;&#x6d;</a> Fakhrurozi M Nur
+To: <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#110;&#x65;&#x74;&#x62;&#x65;&#97;&#x6e;&#x73;&#45;&#105;&#110;&#x64;&#111;&#x6e;&#101;&#x73;&#x69;&#97;&#x40;&#x79;&#x61;&#104;&#x6f;&#111;&#103;&#x72;&#x6f;&#117;&#112;&#x73;&#46;&#99;&#x6f;&#x6d;">&#x6e;&#101;&#x74;&#98;&#x65;&#x61;&#x6e;&#x73;&#x2d;&#x69;&#110;&#x64;&#x6f;&#x6e;&#x65;&#115;&#x69;&#97;&#64;&#121;&#x61;&#104;&#x6f;&#111;&#103;&#x72;&#111;&#117;&#112;&#x73;&#46;&#x63;&#x6f;&#x6d;</a> <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#110;&#x65;&#x74;&#x62;&#x65;&#x61;&#110;&#x73;&#45;&#105;&#110;&#100;&#x6f;&#x6e;&#x65;&#x73;&#x69;&#x61;&#x40;&#121;&#x61;&#104;&#x6f;&#x6f;&#103;&#x72;&#111;&#x75;&#112;&#115;&#46;&#99;&#x6f;&#x6d;">&#110;&#101;&#x74;&#98;&#101;&#x61;&#x6e;&#115;&#x2d;&#105;&#x6e;&#100;&#x6f;&#110;&#101;&#115;&#105;&#x61;&#x40;&#x79;&#97;&#x68;&#111;&#111;&#x67;&#x72;&#111;&#x75;&#x70;&#115;&#46;&#x63;&#111;&#x6d;</a>
 Date: Tue, 5 Jul 2011 00:18:56 +0700
-Subject: [netbeans-indonesia] [TANYA] meload kode pada JComboBox tanpa harus me restart aplikasi</p></blockquote>
+Subject: [netbeans-indonesia] [TANYA] meload kode pada JComboBox tanpa harus me restart aplikasi</p>
 
 <p>mas-mas saya mau tanya,,,
 mas untuk meload noInduk_Siswa di JComboBox dari database trus Di JTextField muncul otomatis nama_Siswa gimana ya? tanpa harus me restart aplikasi,
 disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JTextField tidak mau muncul Di bawah ini source code :</p>
 
-<blockquote><pre><code>private void comboIndukPendaftaranPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+<pre><code>private void comboIndukPendaftaranPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
   // TODO add your handling code here:
   comboIndukPendaftaran.removeAllItems();
   Statement statement = null;
@@ -188,17 +188,17 @@ disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JText
 <!-- more -->
 
 
-<p>Untuk tutorial kali ini, kita akan menggunakan mode koneksi JDBC biasa tanpa framework tambahan dan database-nya akan menggunakan MySQL. Sebelum mulai lebih lanjut, persiapkan dahulu database yang akan digunakan. Pada tulisan kali ini, kita akan menggunakan database yang terdapat pada tulisan <a href="http://martinusadyh.web.id/2011/01/31/paging-on-jtable/">Paging On JTable</a>. Persiapkan dulu database-nya seperti pada tutorial tersebut, kemudian setelah selesai sekarang buatlah 1 buah project untuk latihan dengan nama project <strong>JComboBoxDB</strong> dan buatlah juga 2 buah package yaitu <code>jcomboboxdb.domain</code> dan <code>jcomboboxdb.service</code> seperti gambar dibawah ini :
-<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=120"><img src="http://martinusadyh.web.id/index.php?callback=image&amp;pid=120&amp;width=320&amp;height=240&amp;mode=%22%20alt=" alt="" /></a><br/>
-<strong>Struktur Package</strong></p>
+<p>Untuk tutorial kali ini, kita akan menggunakan mode koneksi JDBC biasa tanpa framework tambahan dan database-nya akan menggunakan MySQL. Sebelum mulai lebih lanjut, persiapkan dahulu database yang akan digunakan. Pada tulisan kali ini, kita akan menggunakan database yang terdapat pada tulisan <a href="http://martinusadyh.web.id/2011/01/31/paging-on-jtable/">Paging On JTable</a>. Persiapkan dulu database-nya seperti pada tutorial tersebut, kemudian setelah selesai sekarang buatlah 1 buah project untuk latihan dengan nama project <strong>JComboBoxDB</strong> dan buatlah juga 2 buah package yaitu <code>jcomboboxdb.domain</code> dan <code>jcomboboxdb.service</code> seperti gambar dibawah ini :</p>
 
-<p>Setelah selesai, tambahkan dulu library <strong>MySQL JDBC Driver</strong> dengan cara klik kanan pada node <strong>Libraries</strong> kemudian pilih <strong>Add Library > MySQL JDBC Driver</strong> dan harusnya tampilan pada struktur project kita kali ini akan tampak menjadi seperti gambar dibawah ini :
-<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=121"><img src="http://martinusadyh.web.id/index.php?callback=image&amp;pid=121&amp;width=320&amp;height=240&amp;mode=" alt="Struktur Project" /></a><br/>
-<strong>Tampilan struktur project setelah penambahan library MySQL JDBC Driver</strong></p>
+<p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-rAYxCrIYix8/VCoTY1rdpVI/AAAAAAAACxw/HQ61DH29Ovk/s800/StrukturPackage.png">https://lh3.googleusercontent.com/-rAYxCrIYix8/VCoTY1rdpVI/AAAAAAAACxw/HQ61DH29Ovk/s800/StrukturPackage.png</a>' width='' height='' title='Struktur Package'><span class='caption-text'>Struktur Package</span></span></p>
+
+<p>Setelah selesai, tambahkan dulu library <strong>MySQL JDBC Driver</strong> dengan cara klik kanan pada node <strong>Libraries</strong> kemudian pilih <strong>Add Library > MySQL JDBC Driver</strong> dan harusnya tampilan pada struktur project kita kali ini akan tampak menjadi seperti gambar dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-VAtD10xJXNo/VCoTY5T1gNI/AAAAAAAACxs/YeXv8yT-0EA/s800/StrukturProject.png">https://lh3.googleusercontent.com/-VAtD10xJXNo/VCoTY5T1gNI/AAAAAAAACxs/YeXv8yT-0EA/s800/StrukturProject.png</a>' width='' height='' title='Tampilan struktur project setelah penambahan library MySQL JDBC Driver'><span class='caption-text'>Tampilan struktur project setelah penambahan library MySQL JDBC Driver</span></span></p>
 
 <p>Sekarang tambahkanlah sebuah <strong>domain class</strong> pada package <code>jcomboboxdb.domain</code> dengan cara klik kanan package <code>jcomboboxdb.domain</code> kemudian pilih <strong>New Java Class</strong> dan beri nama class <code>WPComment</code> yang isinya kurang lebih seperti dibawah ini :</p>
 
-<pre><code>public class WPComment {
+<pre><code class="java">public class WPComment {
 
     private Integer commentID;
     private String commentAuthor;
@@ -219,13 +219,13 @@ disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JText
 }
 </code></pre>
 
-<p>Setelah selesai membuat sebuah domain class, sekarang pada package <code>jcomboboxdb.service</code> buatlah 1 buah <code>interface</code> dengan nama <code>DBService</code> dan implementasinya dengan nama <code>DBServiceImpl</code> yang terlihat seperti gambar dibawah ini :
-<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=119"><img src="http://martinusadyh.web.id/index.php?callback=image&amp;pid=119&amp;width=320&amp;height=240&amp;mode=" alt="Isi Package Service" /></a><br/>
-<strong>Isi package service ini hanya 1 buah interface yaitu DBService dan 1 buah java class biasa yaitu DBServiceImpl</strong></p>
+<p>Setelah selesai membuat sebuah domain class, sekarang pada package <code>jcomboboxdb.service</code> buatlah 1 buah <code>interface</code> dengan nama <code>DBService</code> dan implementasinya dengan nama <code>DBServiceImpl</code> yang terlihat seperti gambar dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh5.googleusercontent.com/-WmuEL_-8clQ/VCoTXW01SuI/AAAAAAAACxc/00tN6zEQSvE/s800/IsiPackageService.png">https://lh5.googleusercontent.com/-WmuEL_-8clQ/VCoTXW01SuI/AAAAAAAACxc/00tN6zEQSvE/s800/IsiPackageService.png</a>' width='' height='' title='Isi package service ini hanya 1 buah interface yaitu DBService dan 1 buah java class biasa yaitu DBServiceImpl'><span class='caption-text'>Isi package service ini hanya 1 buah interface yaitu DBService dan 1 buah java class biasa yaitu DBServiceImpl</span></span></p>
 
 <p>Dan isi dari <code>interface DBService</code> adalah kurang lebih seperti berikut :</p>
 
-<pre><code>public interface DBService {
+<pre><code class="java    ">public interface DBService {
 
     public List&lt;wpcomment&gt; findAllComment();
 
@@ -234,7 +234,7 @@ disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JText
 
 <p>Sedangkan isi dari <code>DBServiceImpl</code> adalah kurang lebih seperti berikut ini :</p>
 
-<pre><code>public class DBServiceImpl implements DBService {
+<pre><code class="java">public class DBServiceImpl implements DBService {
 
     private final String FIND_ALL_QRY = "select * from wp_comments";
 
@@ -272,7 +272,7 @@ disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JText
 
 <p>Jika sudah, sekarang waktunya untuk melakukan inisialisasi database dan service. Untuk melakukan ini, sekarang editlah file <code>Main.java</code> yang terdapat pada package <code>jcomboboxdb</code> menjadi seperti ini :</p>
 
-<pre><code>public class Main {
+<pre><code class="java">public class Main {
 
     private static DBService dBService;
 
@@ -296,34 +296,34 @@ disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JText
 }
 </code></pre>
 
-<p>Sampai disini proses inisialisasi database sudah berhasil dilakukan, dan sekarang kita tinggal memanggil-nya dari sisi UI. Untuk melakukan hal tersebut, sekarang buatlah sebuah <strong>Form</strong> dari <code>JFrame</code> dengan nama <code>MainForm</code> yang berisi <code>JComboBox, JLabel, JTextField</code> dan <code>JButton</code> kemudian design-lah menjadi  seperti gambar dibawah ini :
-<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=117"><img src="http://martinusadyh.web.id/index.php?callback=image&amp;pid=117&amp;width=320&amp;height=240&amp;mode=" alt="Design JFrame" /></a><br/>
-<strong>Design JFrame</strong></p>
+<p>Sampai disini proses inisialisasi database sudah berhasil dilakukan, dan sekarang kita tinggal memanggil-nya dari sisi UI. Untuk melakukan hal tersebut, sekarang buatlah sebuah <strong>Form</strong> dari <code>JFrame</code> dengan nama <code>MainForm</code> yang berisi <code>JComboBox, JLabel, JTextField</code> dan <code>JButton</code> kemudian design-lah menjadi  seperti gambar dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-ZZUq9iVUVRo/VCoTXROfGCI/AAAAAAAACxY/1akshJ9e79U/s400/DesignJFrame.png">https://lh3.googleusercontent.com/-ZZUq9iVUVRo/VCoTXROfGCI/AAAAAAAACxY/1akshJ9e79U/s400/DesignJFrame.png</a>' width='' height='' title='Design JFrame'><span class='caption-text'>Design JFrame</span></span></p>
 
 <p>Untuk mengambil data dari database dan memasukkan-nya ke dalam <code>JComboBox</code> kita harus masuk ke dalam mode <strong>Source</strong> dan buatlah sebuah private class dengan nama <code>ComboBoxListener</code> dahulu untuk mendeteksi proses seleksi yang terjadi pada <code>JComboBox</code> seperti dibawah ini :</p>
 
-<pre><code>    ...
-    ...
-    private class ComboBoxListener implements ActionListener {
+<pre><code class="java    ">...
+...
+private class ComboBoxListener implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            WPComment wPComment = (WPComment) cmbID.getSelectedItem();
-            txtAuthor.setText(wPComment.getCommentAuthor());
-        }
-
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        WPComment wPComment = (WPComment) cmbID.getSelectedItem();
+        txtAuthor.setText(wPComment.getCommentAuthor());
     }
 
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton btnClose;
-    private javax.swing.JComboBox cmbID;
-    ...
-    ...
+}
+
+// Variables declaration - do not modify                     
+private javax.swing.JButton btnClose;
+private javax.swing.JComboBox cmbID;
+...
+...
 </code></pre>
 
 <p>Setelah selesai membuat sebuah private class yang berfungsi untuk melakukan pendeteksian pada <code>JComboBox</code>, sekarang modifikasi-lah <code>constructor MainForm</code> tambahkan 1 method yaitu <code>loadDB()</code> seperti potongan kode dibawah ini :</p>
 
-<pre><code>public class MainForm extends javax.swing.JFrame {
+<pre><code class="java">public class MainForm extends javax.swing.JFrame {
 
     /** Creates new form MainForm */
     public MainForm() {
@@ -348,31 +348,33 @@ disini bisa meload noInduk_Siswa dari database dengan JComboBox tapi untuk JText
 
 <p>Dan langkah terakhir yang harus kita lakukan yaitu, editlah file <code>Main.java</code> agar memanggil <code>MainForm</code>  dan sekalian kita konfigurasikan agar menggunakan <code>SystemLookAndFeel</code> seperti dibawah ini :</p>
 
-<pre><code>    public static void main(String args[]) throws SQLException {
-        ...
-        ...
-        ...
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (ClassNotFoundException ex) {
-                } catch (InstantiationException ex) {
-                } catch (IllegalAccessException ex) {
-                } catch (UnsupportedLookAndFeelException ex) {
-                }
-                new MainForm().setVisible(true);
-            }
-        });
-    }
+<pre><code class="java">public static void main(String args[]) throws SQLException {
     ...
+    ...
+    ...
+
+    java.awt.EventQueue.invokeLater(new Runnable() {
+
+        public void run() {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException ex) {
+            } catch (InstantiationException ex) {
+            } catch (IllegalAccessException ex) {
+            } catch (UnsupportedLookAndFeelException ex) {
+            }
+            new MainForm().setVisible(true);
+        }
+    });
+}
+...
 </code></pre>
 
-<p>Dan sekarang, mari kita coba jalankan. Jika tidak ada masalah, harusnya kita akan melihat tampilan seperti gambar dibawah ini :
-<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=118"><img src="http://martinusadyh.web.id/index.php?callback=image&amp;pid=118&amp;width=320&amp;height=240&amp;mode=" alt="Hasil Akhir" /></a><br/>
-<strong>Hasil akhir, disini kita bisa melihat bahwa <code>JComboBox</code> sudah terisi data yang berasal dari database :)</strong></p>
+<p>Dan sekarang, mari kita coba jalankan. Jika tidak ada masalah, harusnya kita akan melihat tampilan seperti gambar dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh5.googleusercontent.com/-797GVqqVQtk/VCoTXZH9ItI/AAAAAAAACxg/Gxnx4AK-PB4/s400/HasilAkhir.png">https://lh5.googleusercontent.com/-797GVqqVQtk/VCoTXZH9ItI/AAAAAAAACxg/Gxnx4AK-PB4/s400/HasilAkhir.png</a>' width='' height='' title=''><span class='caption-text'></span></span></p>
+
+<p><strong>Hasil akhir, disini kita bisa melihat bahwa <code>JComboBox</code> sudah terisi data yang berasal dari database :)</strong></p>
 
 <p>Apakah hasilnya benar ? Ok mari kita cek di database dengan menjalankan perintah <code>select comment_ID,comment_author from wp_comments limit 10;</code> seperti dibawah ini :</p>
 
