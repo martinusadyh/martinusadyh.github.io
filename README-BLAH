@@ -1,7 +1,0 @@
-Langkah-langkah yang dilakukan ketika mengedit offline :
-- rake generate && rake preview (untuk menggenerate dan melihat perubahan scr offline)
-
-Ketika artikel sudah siap di publish:
-- git add .
-- git commit && push origin source
-- rake generate && rake deploy

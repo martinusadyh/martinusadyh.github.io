@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Helper script untuk posting pake octopress, karena ga hafal klo harus
-# jalanin manual :'(
+# jalanin manual :'( plus males klo harus nulis satu2 ~_~'
 
 judul=""
 file=""
@@ -34,15 +34,28 @@ new_post() {
 
     # insert tags
     sed -i "s|$kategori|$kategori\n$tags_label|" $file
+    echo -n "Masukkan nama tag (ex: tag1 tag2 tag3 tag4): "
+    read jwb
+    for tag in $jwb ; do
+        tag="- $tag"
+        sed -i "s|$tags_label|$tags_label\n$tag|" $file
+    done
+
+    keywords=`echo $jwb | tr ' ' ', '`
+    keyword_line='keywords: "'$keywords'"'
+    sed -i "s|$sharingline|$sharingline\n$keyword_line|" $file
+
+    echo "File $file berhasil di edit, dengan hasil :"
+    cat $file
 }
 
 publish() {
     git add .
-    git commit -m "Tambah postingan"
+    git commit -m "Tambah postingan $judul"
     git commit && push origin source
     rake generate && rake deploy
 
-    # pinging search engine
+    # ping search engine
     rake notify
 }
 
