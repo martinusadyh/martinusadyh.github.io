@@ -3,7 +3,16 @@ layout: post
 title: "Watcher.rb: No space left on device - Failed to watch"
 date: 2015-01-10 00:01:21 +0700
 comments: true
+sharing: true
+keywords: "ruby, Blog, Octopress, Watcher.rb, Failed to watch"
 categories: 
+- Blog
+tags:
+- ruby
+- Blog
+- Octopress
+- Watcher.rb
+- Failed to watch
 ---
 
 Malam ini ketika saya melakukan update blog, saya mendapatkan sebuah pesan error ketika menjalankan perintah `rake preview` untuk melihat _preview_ blog saya seperti terlihat dibawah ini :
