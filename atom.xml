@@ -4,7 +4,7 @@
   <title><![CDATA[Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2014-11-07T08:49:28+07:00</updated>
+  <updated>2015-01-10T00:48:31+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Watcher.rb: No Space Left on Device - Failed to Watch]]></title>
+    <link href="http://martinusadyh.web.id/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/"/>
+    <updated>2015-01-10T00:01:21+07:00</updated>
+    <id>http://martinusadyh.web.id/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch</id>
+    <content type="html"><![CDATA[<p>Malam ini ketika saya melakukan update blog, saya mendapatkan sebuah pesan error ketika menjalankan perintah <code>rake preview</code> untuk melihat <em>preview</em> blog saya seperti terlihat dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ rake preview
+</span><span class='line'>Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
+</span><span class='line'>[2015-01-09 23:50:47] INFO  WEBrick 1.3.1
+</span><span class='line'>[2015-01-09 23:50:47] INFO  ruby 1.9.3 (2014-11-13) [x86_64-linux]
+</span><span class='line'>[2015-01-09 23:50:47] INFO  WEBrick::HTTPServer#start: pid=11095 port=4000
+</span><span class='line'>Configuration file: /home/martinusadyh/MyArticle/STATIC_BLOG/octopress/_config.yml
+</span><span class='line'>&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.
+</span><span class='line'>Errno::ENOSPC on line ["85"] of /home/martinusadyh/.rvm/gems/ruby-1.9.3-p551/gems/rb-inotify-0.9.5/lib/rb-inotify/watcher.rb: No space left on device - Failed to watch "/home/martinusadyh/MyArticle/STATIC_BLOG/octopress/sass/partials/sidebar": The user limit on the total number of inotify watches was reached or the kernel failed to allocate a needed resource.
+</span><span class='line'>Run with --trace to see the full backtrace
+</span><span class='line'>            Source: source
+</span><span class='line'>       Destination: public
+</span><span class='line'>      Generating... 
+</span><span class='line'>                    done.
+</span><span class='line'>FATAL: Listen error: unable to monitor directories for changes.
+</span><span class='line'>Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers for info on how to fix this.
+</span><span class='line'>jekyll 2.3.0 | Error:  FATAL: Listen error: unable to monitor directories for changes.
+</span><span class='line'>Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers for info on how to fix this.
+</span><span class='line'>
+</span><span class='line'>^C[2015-01-09 23:52:18] INFO  going to shutdown ...
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Untung-nya pesan error diatas sekaligus memberikan <a href="https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers">tautan</a> untuk meningkatkan jumlah <em>inotify-watchers</em> yang terdapat pada sistem kita, dan dibawah ini merupakan ringkasan untuk keperluan sebagai catatan pribadi jika ketemu dengan masalah yang sama lagi :)</p>
+
+<h3>Melihat jumlah max_user_watches yang terdapat di sistem</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ cat /proc/sys/fs/inotify/max_user_watches
+</span><span class='line'>8192
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ </span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Menaikkan jumlah max_user_watches sementara</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ sudo sysctl fs.inotify.max_user_watches=10000
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ sudo sysctl -p</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Menaikkan jumlah max_user_watches permanen</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ echo fs.inotify.max_user_watches=10000 | sudo tee -a /etc/sysctl.conf
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ sudo sysctl -p
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ </span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Optimasi Filesystem Ext4]]></title>
@@ -2284,31 +2367,6 @@ Bojonegoro
 
 <ol>
 <li> <a href="https://picasaweb.google.com/114687551796914852693/PuncakCikurayYangTertunda#">Album Foto</a></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Howto Change Default Editor Font in MySQL Workbench]]></title>
-    <link href="http://martinusadyh.web.id/2013/03/16/howto-change-default-editor-font-in-mysql-workbench/"/>
-    <updated>2013-03-16T20:57:54+07:00</updated>
-    <id>http://martinusadyh.web.id/2013/03/16/howto-change-default-editor-font-in-mysql-workbench</id>
-    <content type="html"><![CDATA[<p>Pernah merasa bahwa font yang digunakan oleh aplikasi <a href="http://dev.mysql.com/downloads/workbench/">MySQL Workbench</a> kurang nikmat dipandang mata ? Pernah merasa ingin mengganti font yang digunakan oleh <strong>MySQL Workbench</strong> melalui menu <strong>Edit > Preferences</strong> tapi masih saja tidak berubah  ? Jika iya, berarti kita mempunyai masalah yang sama :D Setelah kemarin iseng-iseng bertanya ke paman <a href="http://google.com">Google</a>, akhirnya saya menemukan juga bagaimana mengganti font untuk SQL Editor di <strong>MySQL Workbench</strong> :) Jika kita menggunakan linux, maka carilah file dengan nama <code>/home/namauser/.mysql/workbench</code> (catatan: <strong>namauser</strong> diganti dengan nama user anda) dan jika di Windows maka carilah file <code>C:\Users\User\AppData\Roaming\MySQL\Workbench\wb_options.xml</code> Jika sudah, sekarang carilah entri seperti dibawah ini :</p>
-
-<pre><code>&lt;value type="string" key="workbench.general.Editor:Font"&gt;Bitstream Vera Sans Mono 11&lt;/value&gt;
-</code></pre>
-
-<p>Gantilah entrian font dengan font yang anda inginkan, jika sudah tutup dan jalankan lagi <strong>MySQL Workbench</strong> maka kita akan mendapatkan hasil kurang lebih seperti gambar dibawah ini :)</p>
-
-<p><img class="center" src="http://martinusadyh.web.id/images/blog-images/DataBase/HowtoChangeDefaultEditorFontinMySQLWorkbench/TampilanEditordenganFontMonaco.png" title="Tampilan Editor dengan Font Monaco" ></p>
-
-<p>Nah dengan begini, jadi makin betah bukan berlama-lama menggunakan <strong>MySQL Workbench</strong> :)</p>
-
-<p><strong>Referensi:</strong></p>
-
-<ol>
-<li> <a href="http://starikovs.com/2011/02/20/change-font-mysql-workbench-editor/">Change Font MySQL Workbench</a></li>
 </ol>
 
 ]]></content>

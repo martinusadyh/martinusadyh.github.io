@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Apakah anda seorang programmer java yang menggunakan sistem operasi utama Linux ? Apakah anda pernah merasa ketika proses kompilasi membutuhkan waktu &hellip;">
+  <meta name="description" content="Malam ini ketika saya melakukan update blog, saya mendapatkan sebuah pesan error ketika menjalankan perintah rake preview untuk melihat preview blog &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,112 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-10T00:01:21+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:01 am</span></time>
+        
+           | <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Malam ini ketika saya melakukan update blog, saya mendapatkan sebuah pesan error ketika menjalankan perintah <code>rake preview</code> untuk melihat <em>preview</em> blog saya seperti terlihat dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ rake preview
+</span><span class='line'>Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
+</span><span class='line'>[2015-01-09 23:50:47] INFO  WEBrick 1.3.1
+</span><span class='line'>[2015-01-09 23:50:47] INFO  ruby 1.9.3 (2014-11-13) [x86_64-linux]
+</span><span class='line'>[2015-01-09 23:50:47] INFO  WEBrick::HTTPServer#start: pid=11095 port=4000
+</span><span class='line'>Configuration file: /home/martinusadyh/MyArticle/STATIC_BLOG/octopress/_config.yml
+</span><span class='line'>&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.
+</span><span class='line'>Errno::ENOSPC on line ["85"] of /home/martinusadyh/.rvm/gems/ruby-1.9.3-p551/gems/rb-inotify-0.9.5/lib/rb-inotify/watcher.rb: No space left on device - Failed to watch "/home/martinusadyh/MyArticle/STATIC_BLOG/octopress/sass/partials/sidebar": The user limit on the total number of inotify watches was reached or the kernel failed to allocate a needed resource.
+</span><span class='line'>Run with --trace to see the full backtrace
+</span><span class='line'>            Source: source
+</span><span class='line'>       Destination: public
+</span><span class='line'>      Generating... 
+</span><span class='line'>                    done.
+</span><span class='line'>FATAL: Listen error: unable to monitor directories for changes.
+</span><span class='line'>Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers for info on how to fix this.
+</span><span class='line'>jekyll 2.3.0 | Error:  FATAL: Listen error: unable to monitor directories for changes.
+</span><span class='line'>Visit https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers for info on how to fix this.
+</span><span class='line'>
+</span><span class='line'>^C[2015-01-09 23:52:18] INFO  going to shutdown ...
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Untung-nya pesan error diatas sekaligus memberikan <a href="https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers">tautan</a> untuk meningkatkan jumlah <em>inotify-watchers</em> yang terdapat pada sistem kita, dan dibawah ini merupakan ringkasan untuk keperluan sebagai catatan pribadi jika ketemu dengan masalah yang sama lagi :)</p>
+
+<h3>Melihat jumlah max_user_watches yang terdapat di sistem</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ cat /proc/sys/fs/inotify/max_user_watches
+</span><span class='line'>8192
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ </span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Menaikkan jumlah max_user_watches sementara</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ sudo sysctl fs.inotify.max_user_watches=10000
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ sudo sysctl -p</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Menaikkan jumlah max_user_watches permanen</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ echo fs.inotify.max_user_watches=10000 | sudo tee -a /etc/sysctl.conf
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ sudo sysctl -p
+</span><span class='line'>martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ </span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -333,48 +439,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Cara Mudah Mendebug Widget Di Dojo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-07-27T20:50:51+07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:50 pm</span></time>
-        
-           | <a href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pernah menggunakan <a href="http://dojotoolkit.org/">Dojo Toolkit</a> sebagai UI <em>layer</em>? Pernah merasa kalau dokumentasi di Dojo itu sangat sedikit sekali ? Bingung tentang <em>function</em> apa saja yang terdapat di komponen tersebut ? Jika iya berarti sama dengan saya ketika dulu baru pertama kali baru mulai menggunakan Dojo sebagai pilihan untuk sisi UI. Sebenar-nya Dojo merupakan pilihan yang cukup <strong>&ldquo;mumpuni&rdquo;</strong> dibandingkan dengan <a href="http://www.sencha.com/products/extjs">ExtJS</a> dari sisi kelengkapan widget-widget yang disediakan, tetapi sayang-nya kelengkapan widget ini tidak didukung dengan dokumentasi yang sepadan jika dibandingkan dengan <a href="http://www.sencha.com/products/extjs">ExtJS</a> yang dokumentasi-nya cukup lengkap dari tutorial sampai ke sisi API <em>(Application Programming Interface)</em>-nya.</p>
-
-<p>Meskipun <a href="http://dojotoolkit.org/">Dojo Toolkit</a> juga mempunyai sebuah halaman <a href="http://dojotoolkit.org/api/">API Documentation</a>, tapi rasanya masih kurang lengkap menurut saya. Nah untuk mendebug sebuah widget Dojo untuk menampilkan seluruh function yang terdapat didalam-nya, maka kita memerlukan sebuah browser dan <a href="http://getfirebug.com/">Firebug</a> sebagai alat bantu kita (jika menggunakan Chrome, tidak perlu firebug lagi karena kita bisa membuka <strong>Developer Tools</strong> dengan menekan kombinasi tombol <strong>CTRL+SHIFT+J</strong>)</p>
-
-<p>Sebagai contoh misalkan kita mempunyai sebuah widget grid dengan id <code>tblSettingSegment</code> seperti gambar dibawah ini :
-<img src="/images/blog-images/javascript/cara-mudah-mendebug-widget-di-dojo/Contoh_Grid.png" title="'Contoh Grid'" ></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2013/07/27/cara-mudah-mendebug-widget-di-dojo/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -402,6 +466,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -459,10 +527,6 @@
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -485,7 +549,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Humm&hellip; setelah selesai download Java SE 6 Update N tadi malam, sampai rumah akhirnya langsung cobain gimana dukungan Java pada aplikasi Desktop &hellip;">
+  <meta name="description" content="Kemaren waktu baca-baca di forum.linux.or.id, ada yang tanya bagaimana caranya membuat repositori lokal di Zencafe. Setelah semalaman bongkar-bongkar &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,45 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/10/11/zencafe-lokal-repositori/">Zencafe Lokal Repositori</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-10-11T20:15:02+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>8:15 pm</span></time>
+        
+           | <a href="/2007/10/11/zencafe-lokal-repositori/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2007/10/11/zencafe-lokal-repositori/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemaren waktu baca-baca di <a href="http://forum.linux.or.id/viewtopic.php?t=10771">forum.linux.or.id</a>, ada yang tanya bagaimana caranya membuat repositori lokal di Zencafe. Setelah semalaman bongkar-bongkar script <strong>netpkg</strong> akhirnya saya berhasil meng-edit script <strong>netpkg</strong> agar dapat digunakan untuk keperluan lokal repositori, jadi tidak perlu download-download lagi untuk proses instalasi programnya :)</p>
+
+<p>Tahapan-tahapan yang perlu dilakukan untuk dapat menggunakan repositori secara lokal di Zencafe atau Zenwalk disini saya bagi menjadi 3 bagian yaitu :</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2007/10/11/zencafe-lokal-repositori/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -253,72 +292,6 @@ C:\Project> mkdir tool</p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/09/26/install-nimbus-gtk-themes-di-slackware-101/">Install Nimbus GTK Themes Di Slackware 10.1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2007-09-26T20:20:14+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>8:20 pm</span></time>
-        
-           | <a href="/2007/09/26/install-nimbus-gtk-themes-di-slackware-101/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2007/09/26/install-nimbus-gtk-themes-di-slackware-101/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hmm&hellip; gara-gara ngebet banget pingin cobain Open Solaris 10 dan ndak keturutan  (iks&hellip; soalnya RAM saya kurang, cuman 256 MB doank), akhirnya iseng-iseng cobain install themes Open Solaris yang baru yaitu Nimbus :) di Slackware 10.1 saya :) Kan lumayan, misalkan bisa ngebikin tampilan GNU/Linux Slackware saya bisa jadi kek Open Solaris :) , jadi ndak usah susah-susah upgrade RAM karena cuman pingin cobain Open Solaris :malu: (Kalau linux ajah bisa, kenapa tidak ? :D <strong>&ldquo;Ga ada rotan, akar pun jadi&rdquo; </strong>)</p>
-
-<p>Ini ada deskripsi apa itu Nimbus sebenarnya :</p>
-
-<blockquote><p>Nimbus is the name of a look-and-feel designed by Sun for the Java Desktop System; it&rsquo;s implemented as a GTK theme in the latest Solaris 11 pre-release builds.
-Note: <a href="https://nimbus.dev.java.net/">read more here</a></p></blockquote>
-
-<p>Oh iya, ini spesifikasi Slackware Linux yang saya pakai sehari-hari :
-- OS Slackware Linux 10.1
-- Kernel 2.6.10 ( ambil dari binary cd slackware)
-- GNOME versi 2.12 ( GSB/Free Rock GNOME )</p>
-
-<p>Downloadlah dahulu package-package dibawah ini sebelum mulai instalasi, alat-alat yang perlu dipersiapkan yaitu :
-<strong>Packages Dependencies :</strong>
-- <a href="http://search.cpan.org/CPAN/authors/id/G/GR/GRANTM/XML-Simple-2.18.tar.gz">XML-Simple-2.18.tar.gz</a>
-- <a href="http://tango-project.org/releases/icon-naming-utils-0.8.6.tar.gz">icon-naming-utils-0.8.6.tar.gz </a></p>
-
-<p><strong>Package Utama :</strong>
-- <a href="http://zap.tartarus.org/~ds/debian/dists/sid/main/source/nimbus_0.0.6-1.diff.gz">nimbus_0.0.6-1.diff.gz </a>
-- <a href="http://dlc.sun.com/osol/jds/downloads/extras/nimbus-0.0.8.tar.bz2">nimbus-0.0.8.tar.bz2</a>
-- <a href="http://dlc.sun.com/osol/jds/downloads/extras/sun-gdm-themes-0.25.tar.gz">sun-gdm-themes-0.25.tar.gz </a>
-- <a href="http://dlc.sun.com/osol/jds/downloads/extras/opensolaris-backgrounds-0.2.tar.bz2">opensolaris-backgrounds-0.2.tar.bz2 </a></p>
-
-<blockquote><p>Paket-paket diatas sudah saya coba di Slackware 10.1 dan jalan dengan sukses, untuk distribusi Linux yang lain, mungkin ada sedikit perbedaan :) . Jika distro yang anda pakai adalah Debian, Ubuntu dan Gentoo, bergembira-lah soalnya sudah ada yang buat package untuk ke 2 distribusi Linux tersebut. :)</p></blockquote>
-
-<p>Package Untuk Debian dan Ubuntu bisa diambil dari sini :
-- <a href="http://www.gnome-look.org/content/show.php/Nimbus+(Ubuntu+and+Debian">Nimbus For Debian and Ubuntu</a>?content=54755)</p>
-
-<p>Package Untuk Gentoo bisa diambil dari sini :
-- <a href="http://www.gnome-look.org/content/show.php/Nimbus+%28Gentoo+ebuild%29?content=54702"> Nimbus For Gentoo e-build</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2007/09/26/install-nimbus-gtk-themes-di-slackware-101/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/53">&larr; Older</a>
@@ -348,6 +321,10 @@ Note: <a href="https://nimbus.dev.java.net/">read more here</a></p></blockquote>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -405,10 +382,6 @@ Note: <a href="https://nimbus.dev.java.net/">read more here</a></p></blockquote>
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -431,7 +404,7 @@ Note: <a href="https://nimbus.dev.java.net/">read more here</a></p></blockquote>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

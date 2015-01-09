@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Masih merasa susah dan bingung bagaimana menggunakan SubVersion ? Atau masih belum terbiasa menggunakan SubVersion melalui terminal atau konsole di &hellip;">
+  <meta name="description" content="Pernah mengalami kejadian kalau ternyata tiba-tiba Midnight Commander (MC) tidak bisa membuka sebuah file zip atau file jar ? Kalau belum pernah, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/03/15/fixing-midnight-commander-mc-failed-to-display-zip-content/">Fixing Midnight Commander (Mc) Failed to Display Zip Content</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-03-15T07:00:49+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>7:00 am</span></time>
+        
+           | <a href="/2010/03/15/fixing-midnight-commander-mc-failed-to-display-zip-content/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/03/15/fixing-midnight-commander-mc-failed-to-display-zip-content/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pernah mengalami kejadian kalau ternyata tiba-tiba <a href="http://www.midnight-commander.org/">Midnight Commander (MC)</a> tidak bisa membuka sebuah file zip atau file jar ? Kalau belum pernah, mungkin tulisan ini bisa dijadikan referensi jika dikemudian hari teman-teman mengalami masalah yang serupa :D Pengalaman ini sempat dialami oleh <a href="http://adi.artivisi.com/">Adi</a> ketika ingin membuka sebuah file jar pada Ubuntu 9.04 :) Awal-nya sempat bingung dan heran juga, karena <a href="http://www.midnight-commander.org/">Midnight Commander (MC)</a> tidak mengeluarkan pesan error sama sekali, tetapi hanya menampilkan layar biru yang tidak ada isinya seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4419635613/"><img src="http://farm5.static.flickr.com/4066/4419635613_a2f218c9c1.jpg" alt="MCCantOpenJarZipFile" /><br/>
+Tampilan MC Gagal Membuka File jar / zip</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/03/15/fixing-midnight-commander-mc-failed-to-display-zip-content/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -296,55 +336,6 @@ Ooo, oh ooo, ooo ahh</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/">Installing PgAdmin3 1.10.1 on Slackware 13.0</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-03-05T04:06:52+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>4:06 am</span></time>
-        
-           | <a href="/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Akhir-nya berhasil juga melakukan installasi <a href="http://www.pgadmin.org/">PgAdmin3-1.10.1</a> di Slackware 13.0 saya :) , tulisan kali ini merupakan jawaban untuk pertanyaan saya sendiri yang kemarin belum sempat terjawab pada milis <a href="mailto:id-slackware@googlegroups.com">id-slackware@googlegroups.com</a> dengan subyek <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/998fbab9cedb34da">Installing pgadmin error di proses make</a> :D Nah karena kemarin belum ada yang jawab, menurut asumsi saya <strong>pribadi</strong> kemungkinan teman-teman di milis juga belum pernah mengalami hal yang saya alamin jadinya bingung mau menjawab apaan :D . Dan asumsi kedua saya yaitu, saya yang kurang teliti dalam hal mengatur urusan <strong>dependencies</strong> yang diperlukan oleh <a href="http://www.pgadmin.org/">pgadmin</a>-nya :) Setelah ditelusuri lebih lanjut, masalah utama yaitu ternyata saya sendiri yang kurang teliti membaca halaman <strong>INSTALL</strong> yang terdapat dalam direktori source code <a href="http://www.pgadmin.org/">pgadmin</a> :D , kenapa saya sempat melewatkan file <strong>INSTALL</strong> tersebut ? Nah kasus yang terjadi pada saya yaitu adalah, <strong>saya terlalu percaya</strong> oleh SlackBuild Script bawaan dari <a href="http://slackbuild.org">SBo</a> :D (Maklum biasanya saya tidak pernah mengalami masalah sama sekali dengan SlackBuild Script bawaan <a href="http://slackbuild.org">SBo</a> :D ) Hmm&hellip; mantap kan Slackware :) , untuk teman-teman pengguna distribusi GNU/Linux lain mungkin sudah bisa bernyaman-nyaman dengan mengetikkan 1 baris perintah untuk menginstall <a href="http://www.pgadmin.org/">pgadmin</a> beserta <strong>dependencies</strong>-nya. Tapi di Slackware &hellip;.. hmm&hellip; mari kita lihat apa yang harus kita lakukan agar Slackware kita bisa seperti distribusi GNU/Linux yang lain :) (Ini yang membuat saya tetep <strong>keukeuh</strong> sama Slackware, ada aja yang perlu di ****) :)</p>
-
-<p>Sekedar catatan untuk teman-teman, semua versi aplikasi maupun library pada tulisan ini merupakan versi yang terbaru ketika artikel ini mulai ditulis. Dan <strong>mungkin</strong> langkah-langkah pada tulisan ini sudah tidak <strong>relevan</strong> lagi jika versi library maupun aplikasi yang teman-teman gunakan sudah berbeda jauh, jadi <strong>SAYA TIDAK MENJAMIN</strong> apa yang saya tulis disini bisa berjalan dengan mulus pada sistem teman-teman. Sedangkan spesifikasi sistem yang saya gunakan pada tulisan kali ini yaitu adalah sebagai berikut :</p>
-
-<ol>
-<li><p> Slackware 13.0 versi stable (saya belum sanggup mengikuti perkembangan Slackware current :( )</p></li>
-<li><p> PostgreSQL 8.4.2</p></li>
-<li><p> PgAdmin3 v1.10.1</p></li>
-<li><p> wxPython 2.8.10.1</p></li>
-</ol>
-
-
-<p>Ok konfigurasi sistem yang teman-teman gunakan sama dan mengalami masalah yang sama juga ? Kalau iya, mari kita lanjutkan :D Nah untuk mulai menginstall <a href="http://www.pgadmin.org/">pgadmin</a> pada Slackware, yang kita perlukan pasti-nya installer <a href="http://www.pgadmin.org/">pgadmin</a> itu sendiri kan. Karena saya lebih suka melakukan proses installasi dari source, maka pilihan yang saya pakai yaitu mendownload <strong>SlackBuild Script</strong> untuk <a href="http://www.pgadmin.org/">pgadmin</a> yang bisa kita download pada halaman <a href="http://slackbuilds.org/repository/13.0/system/pgadmin3/">PgAdmin SBo</a>. Pada halaman download tersebut juga terdapat <strong>catatan</strong> yang kurang lebih seperti berikut :</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/03/05/installing-pgadmin3-1-10-1-on-slackware-13-0/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/34">&larr; Older</a>
@@ -374,6 +365,10 @@ Ooo, oh ooo, ooo ahh</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -431,10 +426,6 @@ Ooo, oh ooo, ooo ahh</p>
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -457,7 +448,7 @@ Ooo, oh ooo, ooo ahh</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

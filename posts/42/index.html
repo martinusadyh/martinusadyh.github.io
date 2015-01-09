@@ -10,8 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Pada posting yang kemarin (sehabis installasi GSB) ternyata saya tidak bisa mengakses GNOME Help Browser dengan pesan error seperti berikut : &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +86,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/09/24/solving-yelp-could-not-initialize-gecko/">Solving Yelp Could Not Initialize Gecko!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-09-24T05:06:06+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>5:06 am</span></time>
+        
+           | <a href="/2009/09/24/solving-yelp-could-not-initialize-gecko/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/09/24/solving-yelp-could-not-initialize-gecko/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pada posting yang <a href="http://martinusadyh.web.id/2009/09/22/installing-gnome-2263-gsb-distribution-in-slackware-130/">kemarin</a> (sehabis installasi <a href="http://gnomeslackbuild.org/">GSB</a>) ternyata saya tidak bisa mengakses <strong>GNOME Help Browser</strong> dengan pesan error seperti berikut :</p>
+
+<pre><code>martinus@martinusadyh:~$ yelp
+Could not initialize gecko!
+martinus@martinusadyh:~$
+</code></pre>
+
+<p>Setelah lumayan berpusing-pusing ria dengan mbah google dan belum menemukan <strong><em>hint</em></strong> akhirnya coba-coba tanya di milis <a href="http://groups.google.com/group/gsb-users">gsb-user</a> (bermodalkan inggris yang pas-pas&#8217;an :D <strong>Hajar bleh, yang penting error ane bisa solved</strong> ) dan untungnya om Steve mau menjawab pertanyaan saya dan dibawah ini adalah petuah yang sangat manjur dari om Steve :</p>
+
+<blockquote><p>Likely a problem with mozilla-xulrunner, or a conflict with seamonkey.
+Make sure that the mozilla-xulrunner-1.9.0.13-i486-2gsb package is
+installed:</p></blockquote>
+
+<p>slapt-get &ndash;install &ndash;reinstall mozilla-xulrunner-1.9.0.13-i486-2gsb</p>
+
+<p>Also, make sure to remove any &lsquo;seamonkey&rsquo; directories from
+/etc/ld.so.conf.  Re-run <code>ldconfig</code> after.  Hopefully this should fix the
+problem.</p>
+
+<p>Good luck!</p>
+
+<p>-= Steve =-</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/09/24/solving-yelp-could-not-initialize-gecko/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -418,43 +475,6 @@ ${licenseLast}
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/09/05/find-cpu-architecture-on-gnulinux/">Find CPU Architecture on GNU/Linux</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-09-05T01:20:38+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:20 am</span></time>
-        
-           | <a href="/2009/09/05/find-cpu-architecture-on-gnulinux/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/09/05/find-cpu-architecture-on-gnulinux/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Gara-gara kemarin ada yang tanya tentang CPU Architecture di milis <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/6c7a0d22fcf5255d">id-slackware@googlegroups.com</a> akhirnya iseng-iseng deh coba-coba lihat spesifikasi laptop yang saya pakai masih 32 bit atau sudah 64 bit :)  Ada beberapa cara yang saya tahu untuk mengetahui informasi tentang CPU di GNU/Linux, tapi jangan tanya apa artinya loh :malu: karena saya cuma tahu gimana cara lihatnya aja :malu:</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/09/05/find-cpu-architecture-on-gnulinux/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/43">&larr; Older</a>
@@ -484,6 +504,10 @@ ${licenseLast}
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -541,10 +565,6 @@ ${licenseLast}
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -567,7 +587,7 @@ ${licenseLast}
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Membuat sebuah Internet Connection Sharing di GNU/Linux bagi saya merupakan hal yang baru, karena sebelum-nya saya tidak pernah bermain-main terlalu &hellip;">
+  <meta name="description" content="Hari ini ada sedikit masalah di aplikasi yang berjalan menggunakan dosemu, yups masalah ini terjadi ketika saya meng-upgrade Sistem Operasi GNU/Linux &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/12/25/solving-lowram-mmap-dosemu-problem-on-slackware-130/">Solving LOWRAM Mmap Dosemu Problem on Slackware 13.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-12-25T15:34:33+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>3:34 pm</span></time>
+        
+           | <a href="/2009/12/25/solving-lowram-mmap-dosemu-problem-on-slackware-130/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/12/25/solving-lowram-mmap-dosemu-problem-on-slackware-130/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hari ini ada sedikit masalah di aplikasi yang berjalan menggunakan dosemu, yups masalah ini terjadi ketika saya meng-upgrade Sistem Operasi GNU/Linux Slackware dari versi 12.1 ke versi 13.0. Sedangkan source dosemu yang digunakan adalah milik om Alien yang bisa di download <a href="http://connie.slackware.com/~alien/slackbuilds/dosemu/">disini</a>. Permasalahan timbul ketika saya menjalankan dosemu dari user, dan secara otomatis saya mendapatkan pesan error seperti ini :</p>
+
+<pre><code>muhib@gafa:~$ dosemu
+LOWRAM mmap: Invalid argument
+Segmentation fault
+muhib@gafa:~$
+</code></pre>
+
+<p>Hmm.. proses upgrade Sistem Operasi ternyata tidak semudah yang dibayangkan, akhir-nya setelah googling baru deh menemukan pemecahan-nya. Pemecahan-nya yaitu rubah nilai <strong>4096</strong> pada file <strong>/proc/sys/vm/mmap_min_addr</strong> menjadi <strong>0</strong> dengan menjalankan perintah seperti dibawah ini :</p>
+
+<pre><code>root@gafa:~# echo 0 &gt; /proc/sys/vm/mmap_min_addr
+root@gafa:~# more /proc/sys/vm/mmap_min_addr
+0
+root@gafa:~#
+</code></pre>
+
+<p>Setelah melakukan perubahan diatas, sekarang coba jalankan lagi perintah <strong>dosemu</strong> dari user. Dan jika konfigurasi yang dilakukan sudah benar. Maka harusnya jendela <strong>dosemu</strong> akan tampil seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4212134737/"><img src="http://farm5.static.flickr.com/4056/4212134737_4e806c2a23.jpg" alt="dosemu" /><br/>
+Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
+
+<p>Bagaiman teman-teman?? Asyik bukan ? :)</p>
+
+<p><strong>Referensi-referensi terkait :</strong>
+- <a href="http://lastchancestudio.com/slackware">http://lastchancestudio.com/slackware</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -293,70 +348,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/12/01/getting-your-bios-vendor-information-in-gnulinux/">Getting Your BIOS Vendor Information in GNU/Linux</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-12-01T14:01:08+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2009</span></span> <span class='time'>2:01 pm</span></time>
-        
-           | <a href="/2009/12/01/getting-your-bios-vendor-information-in-gnulinux/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/12/01/getting-your-bios-vendor-information-in-gnulinux/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Bingung bagaimana cara mendapatkan informasi dari <a href="">BIOS</a> (Basic Input/Ouput System) di Sistem Operasi GNU/Linux ? Jika iya, mungkin teman-teman perlu melihat lagi isi dari direktori <strong>/sys/class/dmi/id/</strong> yang didalam-nya terdapat beberapa file yang isinya kurang lebih seperti ini :</p>
-
-<pre><code>root@martinusadyh:[~]# ls /sys/class/dmi/id/
-bios_date     board_asset_tag  board_vendor       chassis_serial  chassis_version  product_name    product_version  uevent
-bios_vendor   board_name       board_version      chassis_type    modalias         product_serial  subsystem@
-bios_version  board_serial     chassis_asset_tag  chassis_vendor  power/           product_uuid    sys_vendor
-root@martinusadyh:[~]#
-</code></pre>
-
-<p>Nah sedangkan isi dari file-file tersebut kurang lebih isi-ya seperti dibawah ini :</p>
-
-<pre><code>root@martinusadyh:[~]# cat /sys/class/dmi/id/product_uuid
-44454C4C-4800-104B-804D-B1C04F4C4B31
-root@martinusadyh:[~]# cat /sys/class/dmi/id/chassis_serial
-1HKMLK1
-root@martinusadyh:[~]# cat /sys/class/dmi/id/board_serial
-.1HKMLK1.CN1296197P0164.
-root@martinusadyh:[~]# cat /sys/class/dmi/id/board_name
-0186NX
-root@martinusadyh:[~]# cat /sys/class/dmi/id/sys_vendor
-Dell Inc.
-root@martinusadyh:[~]# cat /sys/class/dmi/id/bios_version
-A01
-root@martinusadyh:[~]#
-</code></pre>
-
-<p><strong>Note: Beda hardware harus-nya informasi yang ditampilkan juga berbeda. Jadi informasi diatas tergantung dari hardware yang teman-teman gunakan</strong></p>
-
-<p>Semoga sedikit informasi ini bisa berguna buat teman-teman :) Maklum saya juga baru tahu koq :D</p>
-
-<p><strong>Link-link terkait :</strong>
-- <a href="http://en.wikipedia.org/wiki/BIOS">Basic Input/Output System</a>
-- <a href="http://0pointer.de/blog">No More dmidecode</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/38">&larr; Older</a>
@@ -386,6 +377,10 @@ root@martinusadyh:[~]#
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -443,10 +438,6 @@ root@martinusadyh:[~]#
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -469,7 +460,7 @@ root@martinusadyh:[~]#
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

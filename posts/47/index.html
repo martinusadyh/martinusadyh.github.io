@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Fyuh akhirnya berhasil juga nih konfigurasi Lan Card di OpenSolaris 2008.11 pada Laptop Acer Aspire 5500Z :) sedangkan untuk wifi-nya masih belum &hellip;">
+  <meta name="description" content="Setelah beberapa hari kencan dengan OpenSolaris cuma ditemanin ama suara jangkrik dan kodok di sawah, akhirnya malam ini kesampaian juga install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/03/26/playing-mp3-di-opensolaris-200811/">Playing MP3 Di OpenSolaris 2008.11</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-03-26T00:23:56+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:23 am</span></time>
+        
+           | <a href="/2009/03/26/playing-mp3-di-opensolaris-200811/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/03/26/playing-mp3-di-opensolaris-200811/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah beberapa hari kencan dengan OpenSolaris cuma ditemanin ama suara jangkrik dan kodok di sawah, akhirnya malam ini kesampaian juga install codec MP3 di OpenSolaris :)  Codec MP3 untuk OpenSolaris bisa didownload dari situs <a href="https://shop.fluendo.com/">Fluendo Web Shop</a> tapi kita harus register dahulu sebelum mulai mendownload codecnya (proses registrasinya free koq, cuma sayangnya codec-nya koq cuma berlaku 1 thn yah ?? emang bener 1 thn ? :D ) :)</p>
+
+<p>Setelah proses registrasi selesai, sekarang download dan simpan di hard disk lokal kemudian ekstrak dengan perintah seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~/Desktop$ tar xjvf fluendo-mp3-7.solaris-intel.tar.bz2
+codecs/
+codecs/libgstflump3dec.so
+README.txt
+LICENSE.txt
+martin@opensolarisbox:~/Desktop$
+</code></pre>
+
+<p>Kemudian copy-kan file <strong>libgstflump3dec.so</strong> ke direktori <strong>/usr/lib/gstreamer-0.10/</strong> seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~/Desktop$ pfexec cp codecs/libgstflump3dec.so /usr/lib/gstreamer-0.10/
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/26/playing-mp3-di-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -323,43 +375,6 @@ initrd      /boot/initrd.img-2.6.27-7-generic
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/">Step by Step Instalasi LTSP 4.2u2-0 Di Zencafe 1.0/Zenwalk4.4</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-10-02T21:39:21+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2008</span></span> <span class='time'>9:39 pm</span></time>
-        
-           | <a href="/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sebenarnya tulisan ini udah lama saya posting di blog yang <a href="pemula.blogsome.com">lama</a>, tetapi berhubung <a href="http://ahardiena.uni.cc/">Om Anjar</a> minta agar saya reposting lagi di blog yang baru ya akhirnya saya posting lagi disini :)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2008/10/02/step-by-step-instalasi-ltsp-42u2-0-di-zencafe-10zenwalk44/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/48">&larr; Older</a>
@@ -389,6 +404,10 @@ initrd      /boot/initrd.img-2.6.27-7-generic
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -446,10 +465,6 @@ initrd      /boot/initrd.img-2.6.27-7-generic
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -472,7 +487,7 @@ initrd      /boot/initrd.img-2.6.27-7-generic
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

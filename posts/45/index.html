@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Wah akhirnya setelah beberapa lama ga bisa nonton koleksi video clip yang mempunyai ekstensi *.avi, akhirnya sekarang bisa juga :) Cara ini saya &hellip;">
+  <meta name="description" content="Pada installasi default OpenSolaris 2008.11, ketika kita ingin melakukan konfigurasi atau bermain-main pada teks mode ada sesuatu yang agak ganjil &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,92 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/04/20/mengaktifkan-tombol-page-up-page-down-home-end-dan-del-pada-terminal-di-opensolaris-200811/">Mengaktifkan Tombol PAGE UP, PAGE DOWN, HOME, END Dan DEL Pada Terminal Di OpenSolaris 2008.11</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-04-20T02:29:13+07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>2:29 am</span></time>
+        
+           | <a href="/2009/04/20/mengaktifkan-tombol-page-up-page-down-home-end-dan-del-pada-terminal-di-opensolaris-200811/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/04/20/mengaktifkan-tombol-page-up-page-down-home-end-dan-del-pada-terminal-di-opensolaris-200811/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pada installasi default OpenSolaris 2008.11, ketika kita ingin melakukan konfigurasi atau bermain-main pada teks mode ada sesuatu yang agak ganjil  yaitu tombol HOME dan END tidak berfungsi sebagaimana mestinya :D Setelah googling kesana dan kemari, akhirnya ketahuan juga masalahnya yaitu ada di konfigurasi file <strong>terminfo</strong> yang terdapat pada OpenSolaris (hm&hellip;. baru tahu apa itu terminfo ya baru sekarang dogh :malu: ). Karena banyaknya referensi yang saya dapat dan akhirnya sukses membuat bingung saya :malu: , akhirnya saya menggunakan referensi dari blognya om Miroslav Osladill yang bisa dilihat <a href="http://www.osladil.cz/oprava-kl%C3%A1ves-home-end-pgup-pgdn">disini</a> . Dan untuk konfigurasi tombol PAGE UP, PAGE DOWN, HOME dan END bisa ikutin langkah-langkah dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~]# mkdir /tmp/xterm
+[martin@opensolarisbox:~]# env TERMINFO=/usr/share/lib/terminfo/ /bin/infocmp xterm &gt; /tmp/xterm/xterm.ti
+[martin@opensolarisbox:~]# echo ' knp=\E[6~, kpp=\E[5~, kend=\EOF, khome=\EOH, ' &gt;&gt; /tmp/xterm/xterm.ti
+[martin@opensolarisbox:~]# more /tmp/xterm/xterm.ti
+#   Reconstructed via infocmp from file: /usr/share/lib/terminfo//x/xterm
+xterm|vs100|xterm terminal emulator,
+    am, km, mir, msgr, xenl,
+    cols#80, it#8, lines#65,
+    acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz~~,
+    bel=^G, blink=\E[5m, bold=\E[1m, clear=\E[H\E[2J,
+    cr=\r, csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=\b,
+    cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
+    cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
+    dch=\E[%p1%dP, dch1=\E[P, dl=\E[%p1%dM, dl1=\E[M,
+    ed=\E[J, el=\E[K, el1=\E[1K$&lt;3&gt;, enacs=\E(B\E)0,
+    home=\E[H, ht=\t, hts=\EH, ich=\E[%p1%d@, ich1=\E[@,
+    il=\E[%p1%dL, il1=\E[L, ind=\n, ka1=\EOq, ka3=\EOs,
+    kb2=\EOr, kbs=\b, kc1=\EOp, kc3=\EOn, kcub1=\EOD,
+    kcud1=\EOB, kcuf1=\EOC, kcuu1=\EOA, kent=\EOM,
+    kf0=\E[21~, kf1=\E[11~, kf10=\EOx, kf2=\E[12~,
+    kf3=\E[13~, kf4=\E[14~, kf5=\E[15~, kf6=\E[17~,
+    kf7=\E[18~, kf8=\E[19~, kf9=\E[20~, rc=\E8, rev=\E[7m,
+    ri=\EM, rmacs=^O, rmcup=\E[2J\E[?47l\E8,
+    rmkx=\E[?1l\E&gt;, rmso=\E[m, rmul=\E[m,
+    rs1=\E&gt;\E[1;3;4;5;6l\E[?7h\E[m\E[r\E[2J\E[H, rs2=@,
+    sc=\E7,
+    sgr=\E[0%?%p1%p6%|%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;m%?%p9%t^N%e^O%;,
+    sgr0=\E[m, smacs=^N, smcup=\E7\E[?47h, smkx=\E[?1h\E=,
+    smso=\E[7m, smul=\E[4m, tbc=\E[3g,
+ knp=\E[6~, kpp=\E[5~, kend=\EOF, khome=\EOH,
+[martin@opensolarisbox:~]# env TERMINFO=/tmp/xterm /bin/tic -v /tmp/xterm/xterm.ti
+Working in /tmp/xterm
+Created x/xterm
+Linked v/vs100
+[martin@opensolarisbox:~]# ls /usr/share/lib/terminfo/x
+x1700        x1750        xitex        xpcterm      xtalk        xtermc       xtermm
+x1720        x820         xl83         xpcterms     xterm        xterm-color  xterms
+[martin@opensolarisbox:~]# mv /usr/share/lib/terminfo/x/xterm /usr/share/lib/terminfo/x/xterm.orig
+[martin@opensolarisbox:~]# ls /tmp/xterm/
+v         x         xterm.ti
+[martin@opensolarisbox:~]# ls /tmp/xterm/x
+xterm
+[martin@opensolarisbox:~]# cp /tmp/xterm/x/xterm /usr/share/lib/terminfo/x/
+[martin@opensolarisbox:~]# ls /usr/share/lib/terminfo/x/
+x1700        x1750        xitex        xpcterm      xtalk        xtermc       xtermm       xterms
+x1720        x820         xl83         xpcterms     xterm        xterm-color  xterm.orig
+[martin@opensolarisbox:~]#
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/04/20/mengaktifkan-tombol-page-up-page-down-home-end-dan-del-pada-terminal-di-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -216,11 +302,11 @@ MPlayer-1.0rc2/libpostproc/Makefile
 
   <div class="entry-content"><p>Wah akhirnya <a href="http://www.belajaronline.web.id/downloads/zencafe-2.0.iso">Zencafe 2.0</a> Release euy &hellip; salut deh buat temen-temen di <a href="http://www.awali.org/">AWALI</a> yang udah berusaha semaksimal mungkin untuk tetep <strong>keukeuh</strong> ngembangin Zencafe :)</p>
 
-<p>Sedangkan press release ini saya ketahui dari postingan om <a href="http://redmouse-ku.com">Romi</a> ke milis <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#108;&#105;&#110;&#x75;&#120;&#x2d;&#97;&#107;&#116;&#105;&#118;&#x69;&#115;&#64;&#x6c;&#105;&#x6e;&#x75;&#120;&#46;&#111;&#114;&#x2e;&#x69;&#x64;">&#108;&#105;&#x6e;&#117;&#x78;&#x2d;&#97;&#107;&#x74;&#x69;&#118;&#x69;&#115;&#64;&#x6c;&#105;&#x6e;&#x75;&#x78;&#x2e;&#111;&#x72;&#46;&#x69;&#x64;</a> yang isinya kurang lebih seperti berikut :</p>
+<p>Sedangkan press release ini saya ketahui dari postingan om <a href="http://redmouse-ku.com">Romi</a> ke milis <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x6c;&#x69;&#110;&#117;&#120;&#45;&#97;&#107;&#116;&#x69;&#x76;&#105;&#x73;&#64;&#108;&#x69;&#110;&#117;&#120;&#x2e;&#111;&#x72;&#46;&#x69;&#x64;">&#x6c;&#x69;&#110;&#117;&#120;&#45;&#x61;&#x6b;&#x74;&#x69;&#x76;&#x69;&#x73;&#x40;&#x6c;&#105;&#110;&#x75;&#120;&#46;&#x6f;&#x72;&#46;&#x69;&#x64;</a> yang isinya kurang lebih seperti berikut :</p>
 
 <blockquote><p>Date: Thu, 9 Apr 2009 18:54:44 +0700
 From: redmouse internet cafe
-To: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#108;&#105;&#110;&#117;&#x78;&#45;&#97;&#x6b;&#116;&#105;&#118;&#105;&#x73;&#x40;&#108;&#105;&#110;&#x75;&#x78;&#46;&#111;&#x72;&#x2e;&#105;&#x64;">&#108;&#105;&#110;&#117;&#x78;&#45;&#x61;&#107;&#116;&#x69;&#x76;&#105;&#x73;&#64;&#108;&#x69;&#110;&#117;&#120;&#46;&#x6f;&#114;&#46;&#105;&#x64;</a>
+To: <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#58;&#108;&#x69;&#110;&#117;&#x78;&#x2d;&#x61;&#107;&#116;&#105;&#x76;&#105;&#x73;&#x40;&#108;&#105;&#110;&#117;&#120;&#46;&#111;&#x72;&#x2e;&#x69;&#x64;">&#x6c;&#105;&#x6e;&#117;&#x78;&#x2d;&#x61;&#107;&#x74;&#x69;&#x76;&#105;&#x73;&#64;&#x6c;&#x69;&#x6e;&#x75;&#x78;&#46;&#x6f;&#x72;&#x2e;&#105;&#x64;</a>
 Subject: [linux-aktivis] Release terbaru Zencafe 2.0</p></blockquote>
 
 <p>Press Release AWALI :</p>
@@ -325,10 +411,10 @@ Romi Muharyono (AWALI)</p>
   </header>
 
 
-  <div class="entry-content"><p>Sore tadi waktu ngelihat milis tanya-jawab@linux.or.id, ada pertanyaan dari om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> tentang bagaimana sih cara membuat database, user dan password sekaligus berbasis pada user yang terdaftar pada mesin linux kita.  Nah dibawah ini pertanyaan yang dikirim oleh om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> ke milis <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#x74;&#x61;&#110;&#121;&#97;&#x2d;&#x6a;&#97;&#119;&#97;&#98;&#x40;&#108;&#x69;&#x6e;&#117;&#x78;&#x2e;&#x6f;&#114;&#46;&#x69;&#x64;">&#x74;&#x61;&#x6e;&#x79;&#97;&#x2d;&#106;&#97;&#119;&#x61;&#98;&#x40;&#x6c;&#x69;&#110;&#x75;&#120;&#46;&#111;&#x72;&#46;&#x69;&#x64;</a></p>
+  <div class="entry-content"><p>Sore tadi waktu ngelihat milis tanya-jawab@linux.or.id, ada pertanyaan dari om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> tentang bagaimana sih cara membuat database, user dan password sekaligus berbasis pada user yang terdaftar pada mesin linux kita.  Nah dibawah ini pertanyaan yang dikirim oleh om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> ke milis <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#116;&#97;&#110;&#121;&#97;&#x2d;&#106;&#x61;&#x77;&#97;&#98;&#64;&#108;&#105;&#110;&#x75;&#x78;&#x2e;&#x6f;&#x72;&#x2e;&#105;&#x64;">&#x74;&#97;&#x6e;&#121;&#x61;&#45;&#106;&#x61;&#119;&#97;&#98;&#64;&#x6c;&#x69;&#110;&#117;&#120;&#46;&#111;&#114;&#x2e;&#105;&#x64;</a></p>
 
 <blockquote><p>From: &ldquo;Funny Farady Coastera&rdquo;
-To: <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x74;&#97;&#x6e;&#121;&#x61;&#x2d;&#106;&#x61;&#x77;&#97;&#98;&#x40;&#x6c;&#x69;&#x6e;&#x75;&#x78;&#x2e;&#x6f;&#x72;&#46;&#105;&#100;">&#x74;&#97;&#110;&#121;&#97;&#45;&#x6a;&#97;&#x77;&#x61;&#x62;&#64;&#108;&#105;&#110;&#x75;&#x78;&#46;&#x6f;&#114;&#46;&#105;&#x64;</a>
+To: <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#116;&#97;&#x6e;&#121;&#x61;&#x2d;&#106;&#x61;&#119;&#97;&#98;&#64;&#108;&#x69;&#x6e;&#117;&#x78;&#46;&#111;&#x72;&#46;&#x69;&#x64;">&#x74;&#97;&#x6e;&#x79;&#x61;&#45;&#106;&#x61;&#119;&#x61;&#98;&#64;&#108;&#x69;&#110;&#x75;&#120;&#46;&#x6f;&#114;&#46;&#105;&#100;</a>
 Date: Thu, 9 Apr 2009 16:35:55 +0700
 Subject: [tanya-jawab] mengatur privilege user mysql secara masal</p></blockquote>
 
@@ -392,83 +478,6 @@ BTW, kalau thread ini masuk kategori programming mohon di pindah</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/03/29/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/">Installasi Dan Konfigurasi MySQL Di OpenSolaris 2008.11</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-03-29T03:30:40+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>3:30 am</span></time>
-        
-           | <a href="/2009/03/29/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/03/29/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wuah akhirnya, setelah berjam-jam melelahkan menginstall MySQL via IPS (lamanya karena belum ada mirror lokal dan waktu proses download sempat mati lampu :( ) akhirnya selesai juga proses installasi MySQL-nya :) Proses installasi MySQL nya sendiri sangat mudah, tinggal cari saja packages <strong>SUNWmysql5</strong> di IPS yang terdapat di OpenSolaris 2008.11 kemudian kasih centang dan tekan tombol <strong>Install/Update</strong> maka IPS akan dengan senang hati mendownload dan melakukan proses installasinya untuk anda :)</p>
-
-<p>Setelah proses installasi selesai, sekarang berilah akses read dan execute untuk group pada direktori /var/mysql dengan mengetikkan perintah <strong>pfexec chmod 750 /var/mysql</strong> seperti dibawah ini :</p>
-
-<pre><code>martin@opensolarisbox:~$ pfexec chmod 750 /var/mysql/
-martin@opensolarisbox:~$ pfexec ls -l /var/
-total 60
-drwxrwxr-x   9 root   sys      17 2009-03-22 03:10 adm
-drwxr-xr-x   2 root   sys       2 2008-11-20 07:13 audit
-drwxr-xr-x   3 root   root      3 2008-11-20 07:38 cache
-drwxr-xr-x   2 root   sys       2 2008-11-20 07:13 cores
-drwxr-xr-x   2 root   sys       3 2009-03-02 04:04 cron
-drwxr-xr-x   3 root   sys       3 2008-11-20 07:29 db
-drwxr-xr-x   3 root   sys       3 2008-11-20 07:29 fm
-drwxr-xr-x   2 root   bin       2 2008-11-20 07:13 games
-drwxr-xr-x   2 daemon daemon    2 2008-11-20 07:13 idmap
-drwxr-xr-x   2 root   sys       2 2008-11-20 07:13 inet
-drwxr-xr-x   3 root   sys       3 2008-11-20 07:29 krb5
-drwxr-xr-x   3 root   bin       5 2009-03-02 03:57 ld
-drwxr-xr-x   2 root   sys       2 2008-11-20 07:29 ldap
-drwxr-xr-x   6 root   other     6 2008-11-20 07:29 lib
-drwxr-xr-x   4 root   sys      11 2009-03-27 18:18 log
-drwxrwxr-x   5 lp     lp        5 2008-11-20 07:29 lp
-drwxrwxrwt   3 root   mail      4 2009-03-27 15:28 mail
-drwxr-x---   3 mysql  mysql     4 2009-03-22 15:58 mysql
-drwxr-xr-x   2 root   bin       2 2008-11-20 07:13 news
-drwxr-xr-x   4 root   bin       4 2008-11-20 07:29 nfs
-drwxr-xr-x   2 root   sys       3 2008-11-20 07:35 nis
-drwxr-xr-x   3 root   sys       3 2008-11-20 07:29 ntp
-drwxr-xr-x   2 root   sys       2 2008-11-20 07:13 opt
-drwxr-xr-x   9 root   root     10 2009-03-22 03:56 pkg
-drwxrwxrwt   2 root   bin       2 2008-11-20 07:13 preserve
-drwxr-xr-x  10 root   sys    1323 2009-03-27 18:24 run
-drwxr-xr-x   9 root   sys      10 2009-03-02 03:57 sadm
-drwxr-xr-x   3 root   bin       4 2008-11-20 07:13 saf
-drwx------   2 root   root      3 2009-03-28 00:49 sma_snmp
-drwxr-xr-x  11 root   bin      11 2009-03-02 04:10 spool
-drwxr-xr-x   5 root   sys       5 2008-11-20 07:13 svc
-drwxrwxrwt 253 root   sys     260 2009-03-27 18:45 tmp
-drwxr-xr-x   3 root   bin       5 2008-11-20 07:35 yp
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/03/29/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/46">&larr; Older</a>
@@ -498,6 +507,10 @@ drwxr-xr-x   3 root   bin       5 2008-11-20 07:35 yp
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -555,10 +568,6 @@ drwxr-xr-x   3 root   bin       5 2008-11-20 07:35 yp
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -581,7 +590,7 @@ drwxr-xr-x   3 root   bin       5 2008-11-20 07:35 yp
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

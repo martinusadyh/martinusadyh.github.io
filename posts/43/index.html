@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Bagi teman-teman yang sudah sering sekali menggunakan MySQL sebagai database server-nya mungkin sudah tidak asing lagi dengan beberapa tips dan trik &hellip;">
+  <meta name="description" content="Gara-gara kemarin ada yang tanya tentang CPU Architecture di milis id-slackware@googlegroups.com akhirnya iseng-iseng deh coba-coba lihat spesifikasi &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/09/05/find-cpu-architecture-on-gnulinux/">Find CPU Architecture on GNU/Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-09-05T01:20:38+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:20 am</span></time>
+        
+           | <a href="/2009/09/05/find-cpu-architecture-on-gnulinux/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/09/05/find-cpu-architecture-on-gnulinux/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Gara-gara kemarin ada yang tanya tentang CPU Architecture di milis <a href="http://groups.google.com/group/id-slackware/browse_thread/thread/6c7a0d22fcf5255d">id-slackware@googlegroups.com</a> akhirnya iseng-iseng deh coba-coba lihat spesifikasi laptop yang saya pakai masih 32 bit atau sudah 64 bit :)  Ada beberapa cara yang saya tahu untuk mengetahui informasi tentang CPU di GNU/Linux, tapi jangan tanya apa artinya loh :malu: karena saya cuma tahu gimana cara lihatnya aja :malu:</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/09/05/find-cpu-architecture-on-gnulinux/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -346,74 +383,6 @@ Menambahkan Focus Handler Secara Manual</a>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/22/adding-multiple-svn-externals/">Adding Multiple SVN Externals</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-06-22T03:30:00+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2009</span></span> <span class='time'>3:30 am</span></time>
-        
-           | <a href="/2009/06/22/adding-multiple-svn-externals/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/06/22/adding-multiple-svn-externals/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Apa sih svn externals itu ?? Untuk penjelasan tentang apa itu svn externals bisa dibaca di halaman manual Subversion <a href="http://svnbook.red-bean.com/en/1.0/ch07s02.html#svn-ch-7-sect-2.3.6">Chapter 7 Section 2.3.6</a> atau kalau tidak mau membaca yang bahasa inggris, pak Endy sudah menjelaskan dengan detail tentang penggunaan svn externals itu <a href="http://endy.artivisi.com/blog/lain/svn-externals/">disini</a>.</p>
-
-<p>Nah sekarang kasus yang dihadapi yaitu, bagaimana jika kita ingin menambah lebih dari 1 svn externals ?? Hm&hellip; bukannya caranya gampang, tinggal jalankan saja perintah <strong>svn propset svn:externals &ldquo;com.myrepository.modul.satu.project.lain <a href="https://myrepository.com/svn/project-lain/trunk/com.myrepository.modul.satu.project.lain">https://myrepository.com/svn/project-lain/trunk/com.myrepository.modul.satu.project.lain</a>&rdquo; .</strong> secara berulang sesuai dengan modul yang ingin diambil.  Ok sekarang mari kita coba simulasikan, kita akan mengambil 3 modul dari <strong>project-lain</strong> dan 3 modul itu yaitu <strong>modul.satu.project.lain</strong>, <strong>modul.dua.project.lain</strong> dan <strong>modul.tiga.project.lain</strong>.</p>
-
-<p>Sekarang mari kita coba, langkah pertama yaitu menambahkan properties <strong>svn:externals</strong> untuk <strong>modul.satu.project.lain</strong> dan mengambil modulnya dengan perintah seperti dibawah ini :</p>
-
-<pre><code>[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$ svn propset svn:externals "com.myrepository.modul.satu.project.lain https://myrepository.com/svn/project-lain/trunk/com.myrepository.modul.satu.project.lain" .
-property 'svn:externals' set on '.'
-[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$  svn up
-Fetching external item into 'com.myrepository.modul.satu.project.lain'
-A    com.myrepository.modul.satu.project.lain/nbproject
-A    com.myrepository.modul.satu.project.lain/nbproject/project.properties
-A    com.myrepository.modul.satu.project.lain/nbproject/project.xml
-A    com.myrepository.modul.satu.project.lain/nbproject/genfiles.properties
-A    com.myrepository.modul.satu.project.lain/nbproject/build-impl.xml
-Updated external to revision 7.
-
-Updated to revision 27.
-[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$
-</code></pre>
-
-<p>Ok berhasil, mari sekarang kita cek apakah properties <strong>svn:externals</strong> sudah disimpan ??? Mari kita lihat pada file <strong>.svn/dir-props</strong> dan hasilnya adalah seperti berikut :</p>
-
-<pre><code>[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$ more .svn/dir-props
-K 13
-svn:externals
-V 121
-com.myrepository.modul.satu.project.lain https://myrepository.com/svn/project-lain/trunk/com.myrepository.modul.satu.project.lain
-
-END
-[martin@opensolarisbox:~/PROJECT/project-saya/trunk]$
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/06/22/adding-multiple-svn-externals/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/44">&larr; Older</a>
@@ -443,6 +412,10 @@ END
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -500,10 +473,6 @@ END
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -526,7 +495,7 @@ END
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

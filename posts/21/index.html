@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Buat teman-teman yang sudah tahu teknik ini, mungkin tulisan ini bisa dikatakan ketinggalan jaman :D Sebenarnya apa sih maksud tulisan ini ? Tulisan &hellip;">
+  <meta name="description" content="Beberapa hari terakhir ini, kita di ArtiVisi melakukan migrasi repository dari Subversion ke Git :) (cuma masih belum semua, melainkan hanya beberapa &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/07/25/using-git-on-netbeans-with-nbgit-plugin/">Using Git on NetBeans With Nbgit Plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-07-25T17:57:50+07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>5:57 pm</span></time>
+        
+           | <a href="/2010/07/25/using-git-on-netbeans-with-nbgit-plugin/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/07/25/using-git-on-netbeans-with-nbgit-plugin/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Beberapa hari terakhir ini, kita di <a href="http://artivisi.com/">ArtiVisi</a> melakukan migrasi repository dari <a href="http://subversion.tigris.org/">Subversion</a> ke <a href="http://git-scm.com/">Git</a> :) (cuma masih belum semua, melainkan hanya beberapa project saja yang di migrasikan sedangkan yang lain masih tetap menggunakan Subversion). Migrasi ini dilakukan karena <strong>main repo</strong> kita sedang di pindah juga, dan ternyata proses <strong>pindah server</strong> tidak berjalan mulus seperti yang dibayangkan (hard disk server baru ternyata bad sector). Nah untuk mengantisipasi hal ini (seluruh team tidak bisa kerja, karena repository utama mati), maka sebagian project yang masih <strong>in-development tree</strong> dan timeline-nya mepet dipindah menggunakan <a href="http://git-scm.com/">Git</a> :) Nah karena kita di <a href="http://artivisi.com/">ArtiVisi</a> menggunakan NetBeans sebagai IDE utama, maka hal pertama yang dicari adalah dukungan NetBeans terhadap Git dan untungnya kita bisa menginstall plugin <a href="http://code.google.com/p/nbgit/">nbgit</a> agar bisa menggunakan Git secara lancar di NetBeans IDE :)</p>
+
+<p>Untuk NetBeans 6.9, project <a href="http://code.google.com/p/nbgit/">nbgit</a> pada saat tulisan ini dibuat belum menyediakan file <strong>*.nbm</strong> melainkan menyediakan versi <strong>source code</strong> yang bisa kita download pada alamat <a href="http://nbgit.googlecode.com/files/nbgit-0.4-netbeans-6.9.zip">http://nbgit.googlecode.com/files/nbgit-0.4-netbeans-6.9.zip</a>. Agar dapat digunakan pada NetBeans, maka kita harus membuat file <strong>.nbm</strong> sendiri berdasarkan source code yang telah disediakan diatas. Untuk membuat file <strong>.nbm</strong> dan menginstallnya pada NetBeans, download dan ekstrak-lah <strong>source code</strong> nbgit tersebut kemudian bukalah pada NetBeans IDE kemudian klik kanan pada project <strong>nbgit</strong> dan pilihlah menu <strong>Create NBM</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4825927169/"><img src="http://farm5.static.flickr.com/4099/4825927169_f37eec4d28_m.jpg" alt="CreateNBM" /></a><br/>
+<strong>Membuat File NBM</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/07/25/using-git-on-netbeans-with-nbgit-plugin/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -300,49 +342,6 @@ fi
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/06/22/dark-color-themes-for-netbeans-ide/">Dark Color Themes for NetBeans IDE</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-06-22T03:20:44+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2010</span></span> <span class='time'>3:20 am</span></time>
-        
-           | <a href="/2010/06/22/dark-color-themes-for-netbeans-ide/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/06/22/dark-color-themes-for-netbeans-ide/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pernah merasa capek terlalu lama bekerja dengan NetBeans ?? Atau terlalu silau ketika <strong>mengarang</strong> menggunakan NetBeans ? Jika ya, mungkin teman-teman perlu mencoba mengganti <strong>Font and Colors Profile</strong> pada NetBeans agar kelihatan lebih sejuk ketika dipandang mata :) Buat pengguna Sistem Operasi Apple, mungkin sudah pernah kenal dengan yang namanya <a href="http://macromates.com/">Textmate</a>, berdasarkan riset yang tidak bisa dipertanggung jawabkan kebenaran-nya (berdasarkan hasil googling sementara :D ) ; ternyata <a href="http://macromates.com/">Textmate</a> mempunyai <strong>Dark Colors Themes</strong> yang sangat menarik dan keren dan bisa teman-teman lihat pada halaman <a href="http://wiki.macromates.com/Themes/UserSubmittedThemes">Galery Themes</a> milik Textmate. Penasaran seperti apakah tampilan <strong>Dark Colors Themes</strong> ini di NetBeans?? Mari kita lihat beberapa screenshot dibawah ini :</p>
-
-<p><a href="http://www.flickr.com/photos/10243554@N02/4721551573/"><img src="http://farm2.static.flickr.com/1361/4721551573_ff650f52b2_b.jpg" alt="XML" /></a><br/>
-Tampilan XML File</p>
-
-<p><a href="http://www.flickr.com/photos/10243554@N02/4721551571/"><img src="http://farm2.static.flickr.com/1242/4721551571_35e4e6829e_b.jpg" alt="SQL" /></a><br/>
-Tampilan SQL File</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/06/22/dark-color-themes-for-netbeans-ide/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/22">&larr; Older</a>
@@ -372,6 +371,10 @@ Tampilan SQL File</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -429,10 +432,6 @@ Tampilan SQL File</p>
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -455,7 +454,7 @@ Tampilan SQL File</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

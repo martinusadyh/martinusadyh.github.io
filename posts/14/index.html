@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Sudah lama sekali rasanya saya tidak posting apapun tentang Slackware :D Nah untuk kali ini, berhubung Slackware 13.37 juga barusan dirilis akhirnya &hellip;">
+  <meta name="description" content="OpenJDK Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk OpenJDK yang tinggal &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,118 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/05/24/step-by-step-building-openjdk-on-slackware/">Step by Step Building OpenJDK on Slackware</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-05-24T22:27:16+07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>10:27 pm</span></time>
+        
+           | <a href="/2011/05/24/step-by-step-building-openjdk-on-slackware/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2011/05/24/step-by-step-building-openjdk-on-slackware/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class='caption-wrapper'><img class='caption' src='/images/blog-images/linux/StepByStepBuildingOpenJDK/openjdk.png' width='' height='' title='OpenJDK'><span class='caption-text'>OpenJDK</span></span></p>
+
+<p>Tidak seperti pada distro GNU/Linux yang lain, pada distro Slackware ternyata sangat susah mencari binary package untuk <a href="http://openjdk.java.net/">OpenJDK</a> yang tinggal install menggunakan perintah <code>installpkg</code> ataupun tutorial bagaimana membuat sebuah binary packages untuk Slackware. Nah pada posting kali ini, kita akan mencoba untuk melakukan proses kompilasi source code <a href="http://openjdk.java.net/">OpenJDK</a> langsung dari repository-nya. Dan sekedar catatan, proses yang akan dijelaskan disini hanya sampai mendapatkan <strong>JDK</strong> maupun <strong>JRE</strong> yang siap digunakan dalam bentuk direktori saja bukan dalam bentuk binary Slackware yang ber-ekstensi <em><strong>.tgz</strong> atau </em><strong>.txz</strong> :)</p>
+
+<p>Sebelum mulai, persiapkan dahulu beberapa alat yang dibutuhkan yaitu :</p>
+
+<ul>
+<li><p><strong>Apache ANT,</strong> versi <a href="http://ant.apache.org/">Apache ANT</a> yang dibutuhkan untuk melakukan proses kompilasi pada OpenJDK adalah versi 7, jadi pastikan versi Apache ANT yang terinstall di sistem kita mempunyai versi yang sama atau lebih tinggi. Untuk melakukan installasi Apache ANT di Slackware, downloadlah SlackBuild Script Apache ANT <a href="http://slackbuilds.org/slackbuilds/13.37/development/apache-ant.tar.gz">disini</a> dan source Apache ANT-nya bisa didownload <a href="http://www.carfab.com/apachesoftware/ant/binaries/apache-ant-1.8.2-bin.tar.bz2">disini</a>.</p></li>
+<li><p><strong>JDK 1.6.0_25</strong>, untuk menginstall JDK kita bisa menggunakan package binary JDK bawaan Slackware yang terdapat di direktori <code>/extra/jdk-6/</code>. Installah dengan menggunakan perintah <code>installpkg jdk-6u25-x86_64-1.txz</code> agar segera dapat digunakan :)</p></li>
+</ul>
+
+
+<p>Setelah 2 kebutuhan dasar tersebut terinstall, sekarang mari kita persiapkan konfigurasi <strong>&ldquo;environment variable&rdquo;</strong> yang dibutuhkan oleh <a href="http://openjdk.java.net/">OpenJDK</a>. Beberapa konfigurasi <strong>&ldquo;environment variable&rdquo;</strong> yang dibutuhkan adalah (lakukan konfigurasi dibawah ini menggunakan akses super user / root) :</p>
+
+<ul>
+<li><strong>JAVA_HOME</strong>,
+lakukan pengecekan apakah variabel <strong>JAVA_HOME</strong> sudah terkonfigurasi pada sistem anda atau belum dengan mengetikkan <code>echo $JAVA_HOME</code> dan jika benar, maka hasil perintah tersebut akan menampilkan dimana letak direktori <strong>jdk</strong> berada seperti dibawah ini :</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:~# echo $JAVA_HOME
+</span><span class='line'>/usr/lib64/java
+</span><span class='line'>root@artivisi:~#</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  Jika perintah <code>echo $JAVA_HOME</code> tidak mengeluarkan apa-apa, sekarang jalankan perintah <code>export JAVA_HOME=/usr/lib64/java</code> dan kemudian lagi cek dengan perintah <code>echo $JAVA_HOME</code>.</p>
+
+<ul>
+<li><strong>LANG</strong>, ketikkan <code>export LANG="C"</code> untuk mengkonfigurasi dan cek dengan mengetikkan perintah <code>echo $LANG</code> seperti dibawah ini :</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:~# export LANG="C"
+</span><span class='line'>root@artivisi:~# echo $LANG
+</span><span class='line'>C
+</span><span class='line'>root@artivisi:~# </span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>ALT_BOOTDIR</strong>, untuk konfigurasi <strong>ALT_BOOTDIR</strong> ini isinya samakan dengan isi variabel <strong>$JAVA_HOME</strong> yang terdapat pada komputer / laptop kita masing-masing. Sebagai contoh di laptop yang digunakan pada tulisan kali ini, isi variabel <strong>$JAVA_HOME</strong> mengarah ke <code>/usr/lib64/java/</code> maka jalankan perintah <code>export ALT_BOOTDIR="/usr/lib64/java/"</code> dan cek menggunakan perintah <code>echo $ALT_BOOTDIR</code> seperti dibawah ini :</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:~# export ALT_BOOTDIR="/usr/lib64/java/"
+</span><span class='line'>root@artivisi:~# echo $ALT_BOOTDIR
+</span><span class='line'>/usr/lib64/java/
+</span><span class='line'>root@artivisi:~#</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><strong>ANT_HOME</strong>, dan langkah terakhir yaitu mengkonfigurasi variabel <strong>$ANT_HOME</strong>. Jalankan perintah <code>export ANT_HOME=/usr/share/ant</code> dan cek menggunakan perintah <code>echo $ANT_HOME</code> seperti dibawah ini :</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@artivisi:~# export ANT_HOME=/usr/share/ant
+</span><span class='line'>root@artivisi:~# echo $ANT_HOME
+</span><span class='line'>/usr/share/ant
+</span><span class='line'>root@artivisi:~# </span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/05/24/step-by-step-building-openjdk-on-slackware/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -282,60 +394,6 @@ Risiko yang paling ditakuti orang ketika berinvestasi umumnya adalah &ldquo;Apak
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/05/07/pahami-siklus-hidup-finansial-anda/">Pahami Siklus Hidup Finansial Anda</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-05-07T21:32:01+07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>9:32 pm</span></time>
-        
-           | <a href="/2011/05/07/pahami-siklus-hidup-finansial-anda/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2011/05/07/pahami-siklus-hidup-finansial-anda/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Artikel oleh : Mike Rini
-Dikutip Dari : Danareksa.com</p>
-
-<p>Sejalan dengan berjalannya siklus kehidupan manusia mulai dari bayi, balita, anak-anak, remaja, dewasa, orang tua sampai tua renta, maka berbagai pandangan dan kebutuhan finansial kita juga selalu berubah-rubah sesuai kondisinya. Contohnya, saat seseorang berada di usia 30-an, kemungkinan sedang sangat menikmati masa mudanya, bekerja dengan giat dan agresif namun berkejaran dengan gaya hidup konsumtif yang bergulat dengan tagihan kartu kredit Menjelang pensiun di usia sekitar 50-an, seseorang biasanya sedang berusaha keras memastikan sudah punya cukup uang untuk bisa melanjutkan hidupnya setelah tidak bekerja, cari aman deh !</p>
-
-<p>Dalam kesempatan kali ini, marilah kita pelajari beberapa kunci-kunci keputusan finansial dalam tiap tahapan kehidupan manusia - yang saya kira perlu kita pahami dengan seksama. Mempelajari hal ini bertujuan untuk memudahkan pengambilan keputusan finansial, apa yang perlu kita lakukan dan apa yang sebaiknya tidak kita lakukan berkaitan dengan uang dari tiap tahapan kehidupan kita. Lebih dari, manfaatnya bukan sekedar hanya untuk menambah pengetahuan kita sendiri, namun juga membantu memahami kebutuhan dan pandangan orang lain secara finansial, sesuai dengan usianya juga.</p>
-
-<p>Karena penting sekali bagi kita untuk bisa sesekali menempatkan diri pada posisi orang lain secara finansial. Sebab suatu keputusan keuangan jarang sekali yang bisa berdiri sendiri, baik Anda yang masih lajang maupun sudah menikah, atau Anda punya tanggungan atau justru Anda yang ditanggung. Selalu saja ada pengaruh serta kepentingan orang lain didalamnya.</p>
-
-<p><strong>Usia Sekolah Dasar sampai dengan dengan lulus Perguruan Tinggi S1 di usia 20-an</strong></p>
-
-<ol>
-<li><p> Pada usia 0 sampai 18 tahun, umumnya orang masih berada di bangku sekolah pendidikan dasar dan seluruh biaya hidup ditanggung oleh orang tua. “Life is beautiful, with no responsibilities what so ever.. “ kira-kira begitulah gambaran hidup seseorang pada masa kanak-kanak dan remajanya. Hanya saja memang tidak seindah kenyataannya jika berkaitan dengan uang. Anda tahu kan bagaimana pada jaman sekolah dulu, sulitnya meminta uang pada orang tua. Tidak.</p></li>
-<li><p> Saat di Perguruan Tinggi, kebanyakan dari Anda mungkin masih di biayai orang tua, tapi pengaruh teman-teman, mengikuti trend atau mungkian memang terpaksa banyak juga dari Anda bahkan harus bekerja paruh waktu mencari penghasilan tambahan untuk tambahan ongkos kuliah. Dengan naiknya ongkos kuliah, transport dan buku-buku, memang agak sulit jika harus mengandalkan orang tua.</p></li>
-</ol>
-
-
-<p>Lagipula mempunyai uang sendiri, kedengaran lebih cool &amp; gaul. Lebih bebas menntukan pilihan dalam membelanjakan uang, juga sesekali mentraktir orang tua dan teman bisa jadi kebanggaan tersendiri. Asalkan bisa membagi waktu dengan jadwal kuliah yang harus segera diselesaikan, maka bekerja paruh waktu atau berusaha mendapatkan uang sendiri sambil kuliah tentunya bisa dilakukan. Bekerja sambil kuliah memang memanfaatkan waktu luang dengan positif, tentunya kita sedikit banyak bisa mempraktekkan apa yang dipelajari selama ini di sekolah.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2011/05/07/pahami-siklus-hidup-finansial-anda/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/15">&larr; Older</a>
@@ -365,6 +423,10 @@ Dikutip Dari : Danareksa.com</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
+      </li>
     
       <li class="post">
         <a href="/2014/09/18/optimasi-filesystem-ext4/">Optimasi Filesystem Ext4</a>
@@ -422,10 +484,6 @@ Dikutip Dari : Danareksa.com</p>
         <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/03/23/cedera-otot-yang-umum-terjadi-selama-pendakian/">Cedera Otot Yang Umum Terjadi Selama Pendakian</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -448,7 +506,7 @@ Dikutip Dari : Danareksa.com</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Martinus Ady H -
+  Copyright &copy; 2015 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
