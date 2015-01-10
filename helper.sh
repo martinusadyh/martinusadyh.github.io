@@ -69,6 +69,8 @@ quit() {
 }
 
 main() {
+    # rvm use 1.9.3
+
     echo "[ Octopress Helper ] ------------------------------------------------"
     echo "1) New Post"
     echo "2) Preview"
