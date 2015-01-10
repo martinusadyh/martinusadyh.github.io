@@ -6,12 +6,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="google-site-verification" content="bDYoRXmTPkVPTYWKarEw2FV03wL-NI8ybIHQ4EO8zbU" />
-  <title>Disable Recent Files in Linux Mint 17 - Martinus Ady H. BloG</title>
+  <title>Send Email from Shell Script - Martinus Ady H. BloG</title>
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="This tutorial will show you howto disable recent files in Linux Mint 17 Qiana">
-  <meta name="keywords" content="Disable Recent File, Disable, Permanently, Permanently disable recent files, Cinnamon, Nemo, Nemo File Browser, Linux Mint 17, recently used, recent, Qiana, Mint 17, Linux Mint tips and trick, Tips, Trick, Cinnamon 2.2, Nemo 2.2.4, Disable Recent File on Cinnamon, Disable Recent Tab on Nemo">
+  <meta name="description" content="Tertarik untuk mencoba mengirim e-mail lewat shell script ? Jika iya, yuk mari kita bahas beberapa langkah sederhana dibawah ini agar kita bisa &hellip;">
+  <meta name="keywords" content="email,shell,script,ssmtp,ubuntu,linux,mint, send email from shell, google, gmail, smtp">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17">
+  <link rel="canonical" href="http://martinusadyh.web.id/2015/01/10/send-email-from-shell-script">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script async src="/javascripts/modernizr-2.0.js"></script>
@@ -89,7 +89,7 @@
   
   <header>
     
-      <h1 class="entry-title">Disable Recent Files in Linux Mint 17</h1>
+      <h1 class="entry-title">Send Email From Shell Script</h1>
     
     
       <p class="meta">
@@ -98,7 +98,7 @@
 
 
 
-<time class='entry-date' datetime='2014-09-11T09:04:54+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:04 am</span></time>
+<time class='entry-date' datetime='2015-01-10T16:19:36+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:19 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://martinusadyh.web.id">Comments</a>
@@ -119,66 +119,67 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-<div class="entry-content"><p>Sejak menggunakan <a href="http://blog.linuxmint.com/?p=2626">Mint 17</a> yang mengusung <a href="http://cinnamon.linuxmint.com/">Cinnamon 2.2</a> sebagai Desktop Managernya dan <a href="https://github.com/linuxmint/nemo">Nemo 2.2.4</a> sebagai file browser-nya, saya belum menemukan bagaimana cara untuk men-<em>disable</em> menu <strong>Recent Files</strong> baik di <strong>Cinnamon</strong> dan di <strong>Nemo</strong> :&lsquo;( Karena sudah terbiasa tidak menggunakan menu <strong>Recent Files</strong> dan hasil pencarian di <a href="https://www.google.com">Google</a> yang saya lakukan hanya berhasil di jalankan di <strong>Nemo</strong> saja<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> <em>(dengan penempatan dan nama file yang berbeda :( )</em> , akhirnya mau tidak mau untuk men-<em>disable</em> <strong>recent files</strong> di Cinnamon harus dicari sendiri :( .</p>
+<div class="entry-content"><p>Tertarik untuk mencoba mengirim e-mail lewat shell script ? Jika iya, yuk mari kita bahas beberapa langkah sederhana dibawah ini agar kita bisa mengirimkan e-mail lewat shell script :) Semua langkah-langkah dibawah ini dilakukan di sistem operasi turunan Debian <em>(Linux Mint 17.1)</em> dan seharusnya bisa jalan secara normal di sistem operasi berbasis Debian lain-nya, untuk yang menggunakan distribusi Linux lain mungkin bisa mencari cara installasi atau konfigurasi yang sesuai dengan distribusi yang digunakan.</p>
 
-<p>Setelah melakukan <em>trial and error</em> beberapa kali, akhirnya saya bisa juga men-<em>disable</em> menu <strong>Recent files</strong> baik di <strong>Cinnamon</strong> dan <strong>Nemo</strong> :) . Ada 2 langkah dan 2 file yang harus di <em>edit</em> yang saya lakukan yaitu :</p>
+<p>Untuk mengirim e-mail lewat shell script, kita akan menggunakan aplikasi kecil bernama <code>ssmtp</code> yang konfigurasi-nya cukup sederhana. Dan supaya e-mail yang kita kirim tidak masuk ke kotak <em>spam</em> , maka kita akan menggunakan <strong>SMTP</strong> <em>(Simple Mail Transport Protocol)</em> milik <a href="http://google.com">Google</a> yaitu <strong>GMail</strong>.</p>
 
-<ul>
-<li><p><strong>Disable Recent Files in Cinnamon 2.2</strong></p>
+<h2>Installasi ssmtp</h2>
 
-<p>Menu <em>Recent Files</em> di <strong>Cinnamon</strong> yang saya maksud disini adalah menu yang akan tampil ketika kita menekan tombol <code>Menu</code> seperti terlihat pada <em>screenshot</em> dibawah ini :</p>
+<p>Karena kita akan menggunakan <code>ssmtp</code> maka ya tentu saja kita harus menginstall-nya dulu :) Untuk pembaca yang menggunakan distribusi linux berbasis <strong>Debian</strong> bisa melakukan proses installasi dengan cara menjalankan perintah <code>sudo apt-get install ssmtp</code> seperti dibawah ini :</p>
 
-<p><span class='caption-wrapper'><img class='caption' src='https://lh5.googleusercontent.com/-9c7tZyR2-Xs/VBECdbYqQyI/AAAAAAAACYs/nHT0tY4GG8o/s288/Sebelum_Modifikasi_File%2520_menu%2540cinnamon.org.json.png' width='' height='' title='Menu Recent Files di Cinnamon'><span class='caption-text'>Menu Recent Files di Cinnamon</span></span></p></li>
-</ul>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~]$ sudo apt-get install ssmtp
+</span><span class='line'>Reading package lists... Done
+</span><span class='line'>Building dependency tree       
+</span><span class='line'>Reading state information... Done
+</span><span class='line'>The following packages were automatically installed and are no longer required:
+</span><span class='line'>  liblua5.1-0 libmysqlcppconn7 libodbc1 libvsqlitepp3 mysql-workbench-data
+</span><span class='line'>  python-mysql.connector python-pyodbc python-pysqlite2
+</span><span class='line'>Use 'apt-get autoremove' to remove them.
+</span><span class='line'>The following NEW packages will be installed:
+</span><span class='line'>  ssmtp
+</span><span class='line'>0 upgraded, 1 newly installed, 0 to remove and 38 not upgraded.
+</span><span class='line'>Need to get 46,2 kB of archives.
+</span><span class='line'>After this operation, 8.192 B of additional disk space will be used.
+</span><span class='line'>Get:1 http://archive.ubuntu.com/ubuntu/ trusty/universe ssmtp amd64 2.64-7 [46,2 kB]
+</span><span class='line'>Fetched 46,2 kB in 1s (24,5 kB/s)
+</span><span class='line'>Preconfiguring packages ...
+</span><span class='line'>Selecting previously unselected package ssmtp.
+</span><span class='line'>(Reading database ... 168794 files and directories currently installed.)
+</span><span class='line'>Preparing to unpack .../ssmtp_2.64-7_amd64.deb ...
+</span><span class='line'>Unpacking ssmtp (2.64-7) ...
+</span><span class='line'>Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+</span><span class='line'>Setting up ssmtp (2.64-7) ...
+</span><span class='line'>martinusadyh@martinusadyh:[~]$ </span></code></pre></td></tr></table></div></figure></notextile></div>
 
+
+<p><small>Catatan: Untuk distribusi linux yang lain, mungkin bisa mencoba cara installasi <b>ssmtp</b> pada distribusi yang digunakan. </small></p>
+
+<p>Jika sudah sekarang mari kita masuk ke tahapan yang paling menyenangkan yaitu konfigurasi :)</p>
 
 <!-- more -->
-
-
-<p>Nah untuk men-<em>disable recent files</em> di <strong>Cinnamon 2.2</strong> seperti terlihat pada <em>screenshot</em> diatas, maka sekarang edit-lah file <code>menu@cinnamon.org.json</code> yang terdapat pada direktori <code>/home/&lt;nama-user&gt;/.cinnamon/configs/menu@cinnamon.org/</code> dan cari baris yang isinya seperti dibawah ini :</p>
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="err">...</span>
-</span><span class='line'><span class="s2">&quot;show-recent&quot;</span><span class="err">:</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;checkbox&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Show recent files&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;tooltip&quot;</span><span class="p">:</span> <span class="s2">&quot;Choose whether or not to show a recent file list in the menu.&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">true</span>
-</span><span class='line'><span class="p">}</span><span class="err">,</span>
-</span><span class='line'><span class="err">...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-
-<p>kemudian edit menjadi seperti dibawah ini :</p>
-
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="err">...</span>
-</span><span class='line'><span class="s2">&quot;show-recent&quot;</span><span class="err">:</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;checkbox&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Show recent files&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;tooltip&quot;</span><span class="p">:</span> <span class="s2">&quot;Choose whether or not to show a recent file list in the menu.&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="kc">false</span>
-</span><span class='line'><span class="p">}</span><span class="err">,</span>
-</span><span class='line'><span class="err">...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 
@@ -196,38 +197,73 @@
 </div>
 
 
-<p>Kalau sudah sekarang simpan perubahan diatas dan sekarang coba klik tombol <code>Menu</code> , jika semua konfigurasi telah sesuai seharusnya kita sudah tidak melihat menu <em>Recent Files</em> lagi seperti gambar dibawah ini :</p>
+<h2>Konfigurasi ssmtp Menggunakan SMTP Gmail</h2>
 
-<p><span class='caption-wrapper'><img class='caption' src='https://lh5.googleusercontent.com/-rAuXCV5GLuw/VBECekitnQI/AAAAAAAACY8/39glRev1E88/s288/Setelah_Modifikasi_File%2520_menu%2540cinnamon.org.json.png' width='' height='' title='Menu Recent Files Hilang'><span class='caption-text'>Menu Recent Files Hilang</span></span></p>
-
-<ul>
-<li><p><strong>Disable Recent Tab in Nemo 2.2.4</strong></p>
-
-<p>Sedangkan untuk <em>Nemo</em> , buat-lah <em>(atau edit bila sudah ada)</em> file yang terdapat di dalam direktori <code>/home/&lt;nama-user&gt;/.config/gtk-3.0</code> dengan nama <code>settings.ini</code> dan kemudian tambahkan baris dibawah ini ke dalam file <code>settings.ini</code></p></li>
-</ul>
-
+<p>Supaya <code>ssmtp</code> bisa menggunakan <strong>SMTP</strong> milik <a href="https://mail.google.com">Gmail</a>, sekarang buka dan editlah file <code>/etc/ssmtp/ssmtp.conf</code> menjadi seperti dibawah ini :</p>
 
 <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='properties'><span class='line'><span class="err">[Settings]</span>
-</span><span class='line'><span class="na">gtk-recent-files-max-age</span><span class="o">=</span><span class="s">0</span>
-</span><span class='line'><span class="na">gtk-recent-files-limit</span><span class="o">=</span><span class="s">0</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># masukkan alamat email yang digunakan sebagai sender disini</span>
+</span><span class='line'><span class="nv">root</span><span class="o">=</span>xxx@gmail.com
+</span><span class='line'>
+</span><span class='line'><span class="nv">mailhub</span><span class="o">=</span>smtp.gmail.com:465
+</span><span class='line'><span class="nv">rewriteDomain</span><span class="o">=</span>gmail.com
+</span><span class='line'>
+</span><span class='line'><span class="c"># masukkan username email disini, klo emailnya xxx@gmail.com maka isi kolom</span>
+</span><span class='line'><span class="c"># dibawah ini dengan </span>
+</span><span class='line'><span class="nv">AuthUser</span><span class="o">=</span>xxx
+</span><span class='line'>
+</span><span class='line'><span class="c"># masukkan password email disini</span>
+</span><span class='line'><span class="nv">AuthPass</span><span class="o">=</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">FromLineOverride</span><span class="o">=</span>YES
+</span><span class='line'><span class="nv">UseTLS</span><span class="o">=</span>YES
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
-<p>Jika sudah, simpan-lah perubahan yang sudah dilakukan. Sekarang seharus-nya <strong>Nemo</strong> sudah tidak akan menampilkan apa-pun di tab <code>Recent</code> seperti terlihat pada <em>screenshot</em> dibawah ini ;)</p>
+<p>Sekarang tiba saat-nya untuk mencoba mengirim e-mail dari <em>command line/shell/terimanl</em> kita :), jalankan perintah seperti dibawah ini:</p>
 
-<p><span class='caption-wrapper'><img class='caption' src='https://lh6.googleusercontent.com/-Uy9xof7d0u8/VBECdZ2X2LI/AAAAAAAACYw/1o5yrom-S_E/s288/Setelah_Menambah_File_Settings_ini.png' width='' height='' title='Tab Recent Bersih'><span class='caption-text'>Tab Recent Bersih</span></span></p>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>martinusadyh@martinusadyh:<span class="o">[</span>~/MyArticle/STATIC_BLOG/octopress<span class="o">]</span><span class="nv">$ </span>ssmtp alamattujuan@gmail.com
+</span><span class='line'>To: alamattujuan@gmail.com
+</span><span class='line'>From: alamatsender@gmail.com
+</span><span class='line'>Subject: Isi Subject-nya
+</span><span class='line'>Isi email yang ingin dikirim
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Bagaimana mudah bukan ? ;)</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn:1">
-<p>Tutorial membersihkan recent files di Nautilus versi 3.6 yang ternyata masih bisa digunakan untuk Nemo :) <a href="http://www.webupd8.org/2012/12/nautilus-36-how-to-clear-recent-files.html">Nautilus 3.6: How To Clear The Recent Files List (Or Disable It)</a><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
-</ol>
-</div>
+
+<p>Untuk mengirim e-mail, tekan kombinasi tombol <strong>CTRL+D</strong> <em>(^d)</em> dan jika tidak ada kesalahan kita seharusnya melihat tampilan seperti gambar dibawah ini:</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-iM7Nmx6YJPw/VLEBgL-RJDI/AAAAAAAADC0/XLeSkwwRJzk/s800/SendEmailFromShell.png' width='' height='' title='Send Email From Shell'><span class='caption-text'>Send Email From Shell</span></span></p>
+
+<p>Dan sekarang mari kita cek di email tujuan, dan berikut ini adalah hasil-nya :)</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-RFoyIcxRdaw/VLEDLGoBNSI/AAAAAAAADDA/Yu66JkRiRP4/s400/HasilSendEmailFromShell.png' width='' height='' title='Hasil Send Email From Shell'><span class='caption-text'>Hasil Send Email From Shell</span></span></p>
+
+<p>Mudah bukan ? :)</p>
+
+<h2>Referensi:</h2>
+
+<ul>
+<li><a href="http://askubuntu.com/questions/12917/how-to-send-mail-from-the-command-line">Howto Send Email from The Command Line</a></li>
+</ul>
 
 </div>
 
@@ -244,7 +280,7 @@
 
 
 
-<time class='entry-date' datetime='2014-09-11T09:04:54+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:04 am</span></time>
+<time class='entry-date' datetime='2015-01-10T16:19:36+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:19 pm</span></time>
       
 
 <span class="categories">
@@ -268,7 +304,7 @@
 </script>
 <br />
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://martinusadyh.web.id/2015/01/10/send-email-from-shell-script/" data-via="martinusadyh" data-counturl="http://martinusadyh.web.id/2015/01/10/send-email-from-shell-script/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -281,10 +317,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2014/09/04/setup-octopress-in-linux-mint/" title="Previous Post: Setup Octopress in Linux Mint">&laquo; Setup Octopress in Linux Mint</a>
+        <a class="basic-alignment left" href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/" title="Previous Post: Watcher.rb: No space left on device - Failed to watch">&laquo; Watcher.rb: No space left on device - Failed to watch</a>
       
-      
-        <a class="basic-alignment right" href="/2014/09/18/optimasi-filesystem-ext4/" title="Next Post: Optimasi Filesystem Ext4">Optimasi Filesystem Ext4 &raquo;</a>
       
     </p>
   </footer>
@@ -416,8 +450,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17/';
-        var disqus_url = 'http://martinusadyh.web.id/2014/09/11/disable-recent-files-in-linux-mint-17/';
+        var disqus_identifier = 'http://martinusadyh.web.id/2015/01/10/send-email-from-shell-script/';
+        var disqus_url = 'http://martinusadyh.web.id/2015/01/10/send-email-from-shell-script/';
         var disqus_script = 'embed.js';
       
     (function () {

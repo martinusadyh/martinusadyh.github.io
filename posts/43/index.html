@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Gara-gara kemarin ada yang tanya tentang CPU Architecture di milis id-slackware@googlegroups.com akhirnya iseng-iseng deh coba-coba lihat spesifikasi &hellip;">
+  <meta name="description" content="Sudah pernah mencoba menampilkan JCheckBox didalam JTable ? Bagi sebagian teman-teman mungkin langsung berkata &ldquo;Itu kan gampang, tinggal &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,141 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/09/05/playing-with-jtable-and-jcheckbox/">Playing With JTable and JCheckBox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-09-05T02:57:50+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>2:57 am</span></time>
+        
+           | <a href="/2009/09/05/playing-with-jtable-and-jcheckbox/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/09/05/playing-with-jtable-and-jcheckbox/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sudah pernah mencoba menampilkan <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html">JCheckBox</a> didalam <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">JTable</a> ? Bagi sebagian teman-teman mungkin langsung berkata <strong>&ldquo;Itu kan gampang, tinggal tambahkan 1 kolom dengan tipe data Boolean kita sudah dapat menampilkan <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html">JCheckBox</a> didalam <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">JTable</a>&rdquo;</strong>, yups memang benar dan jawaban teman-teman sudah terdapat pada tutorial Java Swing :) Ok, sekarang mari kita bahas satu persatu bagaimana cara menampilkan <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html">JCheckBox</a> didalam <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">JTable</a>. Untuk menampilkan <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html">JCheckBox</a> didalam <a href="http://java.sun.com/docs/books/tutorial/uiswing/components/table.html">JTable</a>, biasanya saya akan membuat sebuah Domain Class yang mempunyai tipe data boolean sesuai kata teman-teman seperti dibawah ini :</p>
+
+<pre><code>public class Domain {
+
+    private boolean data1;
+    private boolean data2;
+    private boolean data3;
+    private boolean data4;
+
+    // Automatic Generate Getter and Setter
+}
+</code></pre>
+
+<p>Nah setelah selesai membuat Domain seperti diatas, sekarang mari kita bikinkan tabel modelnya seperti dibawah ini :</p>
+
+<pre><code>public class TableModelStandart extends AbstractTableModel {
+
+    private final String[] HEADER = new String[]{"KOLOM1", "KOLOM2", "KOLOM3", "KOLOM4"};
+    private List&lt;domain&gt; listDomain;
+
+    public TableModelStandart(List&lt;domain&gt; listDomain) {
+        this.listDomain = listDomain;
+    }
+
+    public int getRowCount() {
+        return listDomain.size();
+    }
+
+    public int getColumnCount() {
+        return HEADER.length;
+    }
+
+    @Override
+    public String getColumnName(int column) {
+        return HEADER[column];
+    }
+
+    @Override
+    public Class getColumnClass(int columnIndex) {
+        Class tipe = super.getColumnClass(columnIndex);
+        if (columnIndex == 0) {
+            tipe = Boolean.class;
+        } else if (columnIndex == 1) {
+            tipe = Boolean.class;
+        } else if (columnIndex == 2) {
+            tipe = Boolean.class;
+        } else if (columnIndex == 3) {
+            tipe = Boolean.class;
+        }
+
+        return tipe;
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        if (columnIndex == 0) {
+            return true;
+        } else if (columnIndex == 1) {
+            return true;
+        } else if (columnIndex == 2) {
+            return true;
+        } else if (columnIndex == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Domain domain = listDomain.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                return domain.isData1();
+            case 1:
+                return domain.isData2();
+            case 2:
+                return domain.isData3();
+            case 3:
+                return domain.isData4();
+            default:
+                return "";
+        }
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        Domain model = listDomain.get(rowIndex);
+        if (columnIndex == 0 &amp;&amp; aValue instanceof Boolean) {
+            model.setData1((Boolean) aValue);
+        } else if (columnIndex == 1 &amp;&amp; aValue instanceof Boolean) {
+            model.setData2((Boolean) aValue);
+        } else if (columnIndex == 2 &amp;&amp; aValue instanceof Boolean) {
+            model.setData3((Boolean) aValue);
+        } else if (columnIndex == 3 &amp;&amp; aValue instanceof Boolean) {
+            model.setData4((Boolean) aValue);
+        }
+    }
+}
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/09/05/playing-with-jtable-and-jcheckbox/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -334,55 +469,6 @@ Ekstrak-lah file <strong>RptMasterDetail.zip</strong> dengan perintah <strong>un
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Swing Component Focus Handler Using KeyStroke Editor</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-07-03T19:40:05+07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2009</span></span> <span class='time'>7:40 pm</span></time>
-        
-           | <a href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Buat teman-teman yang sering membangun aplikasi menggunakan GUI Toolkit Swing pasti sudah tahu bagaimana caranya menambahkan focus handler pada komponen Swing. Sebagai contohnya, kita ingin menambahkan focus pada JTextField agar ketika kita menekan <strong>ENTER</strong> maka focus akan berpindah ke komponen yang lain. Nah biasanya, langkah yang kita lakukan adalah sebagai berikut :
-1. Klik kanan pada <strong>JTextField</strong> kemudian memilih <strong>Event > Key > Key Pressed</strong> seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3684434574/"><img src="http://farm3.static.flickr.com/2599/3684434574_7c77b75d3e.jpg" alt="AddKeyPressed" /><br/>
-Menambahkan Focus Handler Secara Manual</a>
-2. Setelah itu kita tambahkan handler untuk mendeteksi penekanan tombol <strong>ENTER</strong> kemudian secara manual memindahkan focus ke komponen yang lain seperti kode dibawah ini:</p>
-
-<pre><code>    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {
-        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            /* Pindahkan focus ke jTextField2 */
-            jTextField2.requestFocusInWindow();
-        }
-    }
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/44">&larr; Older</a>
@@ -403,6 +489,9 @@ Menambahkan Focus Handler Secara Manual</a>
         <img src="/images/blog-images/about/avatar.jpg">
     </li>
     <li class="post">
+        <i class="fa fa-envelope-o"></i><a href="mailto:mrt.itnewbies@gmail.com"> mrt.itnewbies@gmail.com</a>
+    </li>
+    <li class="post">
         <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
     </li>
     <li class="post">
@@ -412,6 +501,10 @@ Menambahkan Focus Handler Secara Manual</a>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
@@ -467,10 +560,6 @@ Menambahkan Focus Handler Secara Manual</a>
     
       <li class="post">
         <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
   </ul>

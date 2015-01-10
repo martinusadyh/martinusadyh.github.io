@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Setelah beberapa hari kencan dengan OpenSolaris cuma ditemanin ama suara jangkrik dan kodok di sawah, akhirnya malam ini kesampaian juga install &hellip;">
+  <meta name="description" content="Buat teman-teman yang ingin menginstall OpenOffice tapi tidak mempunyai koneksi internet untuk melakukan proses installasi via IPS (Image Packaging &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,88 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/03/28/instalasi-openoffice-301-di-opensolaris-200811/">Instalasi OpenOffice 3.0.1 Di OpenSolaris 2008.11</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-03-28T16:24:31+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>4:24 pm</span></time>
+        
+           | <a href="/2009/03/28/instalasi-openoffice-301-di-opensolaris-200811/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/03/28/instalasi-openoffice-301-di-opensolaris-200811/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman yang ingin menginstall OpenOffice tapi tidak mempunyai koneksi internet untuk melakukan proses installasi via IPS (Image Packaging System)-nya OpenSolaris, bisa melakukan proses installasi secara manual yaitu dengan mendownload source codenya langsung dari situs OpenOffice dan prosesnya juga mudah koq :) Sebelum mulai menginstall OpenOffice-nya, install dulu JRE (Java Runtime Enviroment) nah baru kemudian download-lah installer OpenOffice dari <a href="http://download.openoffice.org/other.html#en-US">sini</a></p>
+
+<p>Nah kalau proses download sudah selesai, sekarang ektrak dengan perintah seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~/Desktop/OpenOffice$ tar zxvf OOo_3.0.1_Solarisx86_install_wJRE_en-US.tar.gz
+............
+............
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/pkginfo
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/archive/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/archive/none.bz2
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/pkgmap
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/licenses/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/share/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/share/readme/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/program/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/program/resource/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/reloc/opt/openoffice.org3/readmes/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/install/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/install/copyright
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/install/depend
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-en-US/install/i.none
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/pkgmap
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/pkginfo
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/reloc/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/reloc/opt/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/reloc/opt/openoffice.org3/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/reloc/opt/openoffice.org3/program/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/install/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/install/i.none
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/install/copyright
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/install/depend
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/archive/
+OOO300_m15_native_packed-1_en-US.9379/packages/openofficeorg3-math/archive/none.bz2
+OOO300_m15_native_packed-1_en-US.9379/licenses/
+OOO300_m15_native_packed-1_en-US.9379/licenses/LICENSE_en-US
+OOO300_m15_native_packed-1_en-US.9379/licenses/LICENSE_en-US.html
+OOO300_m15_native_packed-1_en-US.9379/update
+OOO300_m15_native_packed-1_en-US.9379/readmes/
+OOO300_m15_native_packed-1_en-US.9379/readmes/README_en-US
+OOO300_m15_native_packed-1_en-US.9379/readmes/README_en-US.html
+OOO300_m15_native_packed-1_en-US.9379/JavaSetup.jar
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/28/instalasi-openoffice-301-di-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -338,43 +420,6 @@ initrd      /boot/initrd.img-2.6.27-7-generic
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/10/24/i-walk-alone-tarja-turunen/">I Walk Alone (Tarja Turunen)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-10-24T23:45:51+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2008</span></span> <span class='time'>11:45 pm</span></time>
-        
-           | <a href="/2008/10/24/i-walk-alone-tarja-turunen/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2008/10/24/i-walk-alone-tarja-turunen/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Silahkan di dengerin nih buat yang belum tahu, lagu dari mantan vokalisnya <a href="http://en.wikipedia.org/wiki/Nightwish">Nigtwish</a> udah gitu cakep lagi :malu: sayangnya sih udah nikah :(</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2008/10/24/i-walk-alone-tarja-turunen/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/48">&larr; Older</a>
@@ -395,6 +440,9 @@ initrd      /boot/initrd.img-2.6.27-7-generic
         <img src="/images/blog-images/about/avatar.jpg">
     </li>
     <li class="post">
+        <i class="fa fa-envelope-o"></i><a href="mailto:mrt.itnewbies@gmail.com"> mrt.itnewbies@gmail.com</a>
+    </li>
+    <li class="post">
         <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
     </li>
     <li class="post">
@@ -404,6 +452,10 @@ initrd      /boot/initrd.img-2.6.27-7-generic
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
@@ -459,10 +511,6 @@ initrd      /boot/initrd.img-2.6.27-7-generic
     
       <li class="post">
         <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
   </ul>

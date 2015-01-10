@@ -10,7 +10,8 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Ihuy :) Akhirnya setelah nunggu selama kurang lebih 1 minggu buat aktifin domainnya, akhirnya blog ane bisa online juga :) Ngapain sih hrs beli &hellip;">
+  <meta name="description" content="Pingin tahu gimana cara install themes firefox secara offline ?? Ini ada artikel disini, yang memberitahu caranya :)
+Ternyata sangat mudah sekali, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +93,79 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2007/09/18/install-themes-firefox-secara-offline/">Install Themes Firefox Secara Offline</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-09-18T22:59:49+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>10:59 pm</span></time>
+        
+           | <a href="/2007/09/18/install-themes-firefox-secara-offline/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2007/09/18/install-themes-firefox-secara-offline/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pingin tahu gimana cara install themes firefox secara offline ?? Ini ada artikel <a href="http://www.pcbypaul.com/linux/firefox_theme.html">disini</a>, yang memberitahu caranya :)
+Ternyata sangat mudah sekali, tinggal copy paste kode dibawah ini kemudian simpan dengan ekstensi *.html</p>
+
+<pre><code>&lt;script type="text/javascript"&gt;
+function installTheme(where) {
+var file = '';
+if (where == 'local') {
+file = 'file:///' + escape(document.getElementById('filename').value.replace(/\/g,'/'));
+} else {
+file = document.getElementById('url').value;
+}
+InstallTrigger.installChrome(InstallTrigger.SKIN, file, getName(file));
+}
+function getName(raw) {
+var grabFileStart = raw.lastIndexOf('/');
+var grabFileEnd = raw.lastIndexOf('.');
+if (grabFileStart &gt;= grabFileEnd) {
+return 'Invalid file name';
+} else {
+return raw.substring(grabFileStart + 1,grabFileEnd);
+}
+}
+function installThemeNow(file) {
+InstallTrigger.installChrome(InstallTrigger.SKIN, file, getName(file));
+return true;
+}
+&lt;/script&gt;
+&lt;table width="80%" border="0" align="center" bgcolor="#a52a2a" cellpadding="0" cellspacing="2"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td bgcolor="#f5f4ed"&gt;
+&lt;p align="center"&gt;&lt;span class="style2"&gt;Install Firefox .JAR theme from Harddisk
+
+&lt;/span&gt;
+&lt;form&gt;
+&lt;input type="file" id="filename"&gt;&lt;/input&gt;
+&lt;input type="button" onclick="installTheme('local');" value="Install"&gt;&lt;/input&gt;&lt;/form&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</code></pre>
+
+<p>Setelah disimpan, buka pakai firefox kemudian ambil themes yang ingin diinstal dengan cara klik tombol browse setelah itu tekan instal. Ing..eng.. themes firefox sudah terinstal :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2007/09/18/pindah-rumah/">Pindah Rumah</a></h1>
     
     
@@ -139,6 +213,9 @@
         <img src="/images/blog-images/about/avatar.jpg">
     </li>
     <li class="post">
+        <i class="fa fa-envelope-o"></i><a href="mailto:mrt.itnewbies@gmail.com"> mrt.itnewbies@gmail.com</a>
+    </li>
+    <li class="post">
         <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
     </li>
     <li class="post">
@@ -148,6 +225,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
@@ -203,10 +284,6 @@
     
       <li class="post">
         <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
   </ul>

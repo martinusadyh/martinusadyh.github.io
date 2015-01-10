@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Setelah minggu kemarin kita mencoba plugin Java Swing Ayatana di NetBeans, sekarang mari kita coba bagaimana menggunakan library Java Swing Ayatana &hellip;">
+  <meta name="description" content="Kemarin ada yang tanya, gimana sih caranya mencari file duplicate di GNU/Linux ? Setelah beberapa kali mencari bantuan di Google akhirnya ketemu juga &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,44 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/09/01/finding-duplicate-file-in-linux/">Finding Duplicate File in Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-09-01T21:12:48+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>9:12 pm</span></time>
+        
+           | <a href="/2012/09/01/finding-duplicate-file-in-linux/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2012/09/01/finding-duplicate-file-in-linux/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kemarin ada yang tanya, gimana sih caranya mencari file duplicate di <strong>GNU/Linux</strong> ? Setelah beberapa kali mencari bantuan di <a href="http://google.com">Google</a> akhirnya ketemu juga caranya yaitu dengan menjalankan perintah seperti dibawah ini :
+[plain]
+$ find /tmp -type f | rev | sort | sed -nr &lsquo;:a N;/^([^/]<em>\/).</em>\n\1/p;D;ba&rsquo; | uniq | rev
+[/plain]
+Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di inginkan.</p>
+
+<p>Tips ini saya temukan secara tidak sengeja di <a href="http://google.com">Google</a> tapi sayang-nya lupa dimana tepat-nya, jadi supaya tidak lupa saya posting sekalian di blog supaya bisa jadi referensi di kemudian hari :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -242,77 +280,6 @@ allow-guest=false
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/">How to Embedding Your Binary Files Into Shell Script</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-08-04T14:47:56+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>2:47 pm</span></time>
-        
-           | <a href="/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pada tulisan kali ini, kita akan membahas bagaimana membuat sebuah shell script yang berisi sebuah <strong><em>binary file</em></strong>. Apa sih sebenarnya yang bisa kita lakukan dengan sebuah shell script yang berisi file binary ? Hm.. sebenarnya banyak sih, dan salah satunya adalah membuat installer untuk sistem operasi GNU/Linux seperti installer milik <strong>NetBeans IDE</strong> yang mempunyai ekstensi <strong>*.sh</strong> :)</p>
-
-<p>Nah untuk membantu tujuan kita diatas, kita membutuhkan bantuan sebuah shell script yaitu <a href="http://megastep.org/makeself/">makeself</a>. Untuk yang belum tahu apa itu script makeself, dibawah ini adalah deskripsi singkat tentang  script makeself :</p>
-
-<blockquote><p><a href="http://megastep.org/makeself/">makeself.sh</a> is a small shell script that generates a self-extractable tar.gz archive from a directory. The resulting file appears as a shell script (many of those have a .run suffix), and can be launched as is. The archive will then uncompress itself to a temporary directory and an optional arbitrary command will be executed (for example an installation script). This is pretty similar to archives generated with WinZip Self-Extractor in the Windows world. Makeself archives also include checksums for integrity self-validation (CRC and/or MD5 checksums).</p></blockquote>
-
-<p>Dan yang menggembirakan lagi adalah, script makeself ini sudah di test dan dapat digunakan pada beberapa sistem operasi yang kurang lebih seperti berikut :</p>
-
-<ol>
-<li><p> Linux (all distributions)</p></li>
-<li><p> Sun Solaris (8 and above)</p></li>
-<li><p> HP-UX (tested on 11.0 and 11i on HPPA RISC)</p></li>
-<li><p> SCO OpenUnix and OpenServer</p></li>
-<li><p> IBM AIX 5.1L</p></li>
-<li><p> MacOS X (Darwin)</p></li>
-<li><p> SGI IRIX 6.5</p></li>
-<li><p> FreeBSD</p></li>
-<li><p> UnicOS / Cray</p></li>
-<li><p>. Cygwin (Windows)</p></li>
-</ol>
-
-
-<p>Sedangkan yang sudah menggunakan script ini sebagai installer mereka adalah :</p>
-
-<ol>
-<li><p> Game patches and installers for <a href="http://www.idsoftware.com/">Id Software games</a> like Quake 3 for Linux or Return To Castle Wolfenstien ;</p></li>
-<li><p> All game patches released by <a href="http://www.lokigames.com/products/myth2/updates.php3">Loki Software</a> for the Linux version of popular games</p></li>
-<li><p> The <a href="http://www.nvidia.com/">nVidia drivers</a> for Linux</p></li>
-<li><p> The installer for the Linux version of <a href="http://earth.google.com/">Google Earth</a></p></li>
-<li><p> The <a href="http://www.virtualbox.org/">VirtualBox</a> installers for Linux</p></li>
-<li><p> The Makeself distribution itself ;-)</p></li>
-</ol>
-
-
-<p>Menarik bukan ? Masih tertarik bagaimana caranya menggunakan script ini untuk membuat sebuah installer sendiri ?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/08/04/how-to-embedding-your-binary-files-into-shell-script/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -333,6 +300,9 @@ allow-guest=false
         <img src="/images/blog-images/about/avatar.jpg">
     </li>
     <li class="post">
+        <i class="fa fa-envelope-o"></i><a href="mailto:mrt.itnewbies@gmail.com"> mrt.itnewbies@gmail.com</a>
+    </li>
+    <li class="post">
         <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
     </li>
     <li class="post">
@@ -342,6 +312,10 @@ allow-guest=false
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
@@ -397,10 +371,6 @@ allow-guest=false
     
       <li class="post">
         <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
   </ul>

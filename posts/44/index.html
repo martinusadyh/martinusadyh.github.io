@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Apa sih svn externals itu ?? Untuk penjelasan tentang apa itu svn externals bisa dibaca di halaman manual Subversion Chapter 7 Section 2.3.6 atau &hellip;">
+  <meta name="description" content="Buat teman-teman yang sering membangun aplikasi menggunakan GUI Toolkit Swing pasti sudah tahu bagaimana caranya menambahkan focus handler pada &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Swing Component Focus Handler Using KeyStroke Editor</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-07-03T19:40:05+07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2009</span></span> <span class='time'>7:40 pm</span></time>
+        
+           | <a href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman yang sering membangun aplikasi menggunakan GUI Toolkit Swing pasti sudah tahu bagaimana caranya menambahkan focus handler pada komponen Swing. Sebagai contohnya, kita ingin menambahkan focus pada JTextField agar ketika kita menekan <strong>ENTER</strong> maka focus akan berpindah ke komponen yang lain. Nah biasanya, langkah yang kita lakukan adalah sebagai berikut :
+1. Klik kanan pada <strong>JTextField</strong> kemudian memilih <strong>Event > Key > Key Pressed</strong> seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3684434574/"><img src="http://farm3.static.flickr.com/2599/3684434574_7c77b75d3e.jpg" alt="AddKeyPressed" /><br/>
+Menambahkan Focus Handler Secara Manual</a>
+2. Setelah itu kita tambahkan handler untuk mendeteksi penekanan tombol <strong>ENTER</strong> kemudian secara manual memindahkan focus ke komponen yang lain seperti kode dibawah ini:</p>
+
+<pre><code>    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            /* Pindahkan focus ke jTextField2 */
+            jTextField2.requestFocusInWindow();
+        }
+    }
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/07/03/swing-component-focus-handler-using-keystroke-editor/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -355,52 +404,6 @@ pkg: the following package(s) violated constraints:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/27/upload-dan-download-menggunakan-midnight-commander-mc/">Upload Dan Download Menggunakan Midnight Commander (Mc)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-04-27T03:10:02+07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>3:10 am</span></time>
-        
-           | <a href="/2009/04/27/upload-dan-download-menggunakan-midnight-commander-mc/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/04/27/upload-dan-download-menggunakan-midnight-commander-mc/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Mungkin teman-teman sudah tidak asing dengan tool yang namanya <strong>mc</strong> atau <a href="http://www.midnight-commander.org/">Midnight Commander</a> di dunia Unix/Linux, yups <a href="http://www.midnight-commander.org/">mc</a> adalah salah satu tool yang fungsinya menyerupai <a href="http://en.wikipedia.org/wiki/Norton_Commander">Norton Commander</a>. Nah tulisan kali ini saya tulis gara-gara saya mengalami beberapa kegagalan dalam proses installasi <a href="http://gftp.seul.org/">gFtp</a> di OpenSolaris yang saya gunakan :malu: , nah agar dapat menggunakan mc untuk proses upload dan download yang pertama-tama adalah pastikan dahulu apakah aplikasi mc sudah terinstal atau belum pada sistem anda dengan menggunakan perintah <strong>which mc</strong> seperti dibawah ini :</p>
-
-<pre><code>[martin@opensolarisbox:~]$ which mc
-/usr/bin/mc
-[martin@opensolarisbox:~]$
-</code></pre>
-
-<p>Nah jika <strong>mc</strong> sudah terinstall pada sistem anda, sekarang coba jalankan dengan mengetikkan <strong>mc</strong> pada terminal atau konsole anda hingga tampilannya menjadi seperti dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3476694521/"><img src="http://farm4.static.flickr.com/3619/3476694521_e5b57da273.jpg" alt="TampilanDefaultMc" /><br/>
-Tampilan Default Midnight Commander</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/04/27/upload-dan-download-menggunakan-midnight-commander-mc/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/45">&larr; Older</a>
@@ -421,6 +424,9 @@ Tampilan Default Midnight Commander</a></p>
         <img src="/images/blog-images/about/avatar.jpg">
     </li>
     <li class="post">
+        <i class="fa fa-envelope-o"></i><a href="mailto:mrt.itnewbies@gmail.com"> mrt.itnewbies@gmail.com</a>
+    </li>
+    <li class="post">
         <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
     </li>
     <li class="post">
@@ -430,6 +436,10 @@ Tampilan Default Midnight Commander</a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
@@ -485,10 +495,6 @@ Tampilan Default Midnight Commander</a></p>
     
       <li class="post">
         <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
   </ul>

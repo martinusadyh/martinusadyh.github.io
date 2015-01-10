@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Kalau dulu kita sudah pernah install dan konfigurasi MySQL pada Slackware dan OpenSolaris, sekarang bagaimana jika kita install di distro CentOS ??? &hellip;">
+  <meta name="description" content="Beberapa minggu terakhir ini, saya kebagian tugas melakukan installasi MySQL Enterprise Server beserta peralatan pendukung untuk melakukan monitoring &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/">Monitoring MySQL DataBase Server With MySQL Monitor</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-02-24T07:28:19+07:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>7:28 am</span></time>
+        
+           | <a href="/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Beberapa minggu terakhir ini, saya kebagian tugas melakukan installasi <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> beserta peralatan pendukung untuk melakukan monitoring-nya sekalian :) Secara kebetulan juga di minggu yang sama, di milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan yang ditanyakan oleh <a href="http://budigunawan.wordpress.com/">Pak Budi</a> tentang <a href="http://tech.groups.yahoo.com/group/netbeans-indonesia/message/8066">Table Index Pada Hibernate</a>. Diskusi berjalan sangat hangat dan akhir-nya pembahasan secara perlahan namun pasti mengarah ke topik bagaimana melakukan <strong>tunning</strong> pada  database server yang kebetulan juga pakai <a href="http://www.mysql.com/downloads/">MySQL Community Server</a> yang notabene bisa kita download secara gratis :)</p>
+
+<p>Nah pada tulisan kali ini, saya cuma ingin berbagi pengalaman bagaimana cara meng-install dan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> untuk keperluan <strong>monitoring</strong> terhadap <a href="http://www.mysql.com/downloads/">MySQL Server</a> kita (Maklum meskipun sudah jelas dibahas pada halaman manual-nya, saya masih sering salah langkah juga :( ). Saya juga tahu bahwa <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> ini tidak gratis melainkan sebuah aplikasi yang berbayar. Tapi jangan kuatir, <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> ini tersedia secara <strong>gratis</strong> selama <strong>30 hari</strong> dan semua fitur tidak ada yang dipangkas :) Ok kita sudahi dulu basa-basi-nya, sekarang mari kita masuk ke inti masalah-nya yaitu bagaimana meng-install dan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a>. Sebelum membaca lebih lanjut, yang perlu kita lakukan pertama kali yaitu melakukan registrasi pada situs <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> dahulu untuk mendapatkan <strong>link</strong> download-nya baru kemudian mari kita download file-file yang kita perlukan :D :) (<strong>Note: Proses registrasi pada situs <a href="http://mysql.com/trials/">MySQL Enterprise Server</a> ini hanya bisa digunakan untuk 1 account email saja</strong>)</p>
+
+<p>Sudah siap untuk melakukan proses <strong>download</strong> ? Jika sudah, silahkan download file-file dibawah ini :</p>
+
+<ol>
+<li><p> <strong>mysql_monitoring_service.key</strong>
+File ini digunakan untuk aktivasi ketika akan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a></p></li>
+<li><p> <strong>AdvisorScript-Trial-2.1.0.1093.jar</strong>
+File ini digunakan untuk aktivasi ketika akan menggunakan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a></p></li>
+<li><p> <strong>mysql-enterprise-gpl-5.1.40sp1-0.rhel5.i386.tar</strong>
+File ini adalah versi <strong>Enterprise</strong> dari <a href="http://www.mysql.com/downloads/">MySQL Community Server</a>, kalau ingin coba-coba download saja. Tapi kalau menurut saya, koq seperti-nya tidak ada beda-nya ya antara versi <strong>Community</strong> sama yang <strong>Enterprise</strong> (Ini murni berdasarkan pengalaman <strong>ngoprek</strong> selama beberapa minggu terakhir ini, jadi belum sempat <strong>explore</strong> lebih dalam lagi :D )</p></li>
+<li><p> <strong>mysqlmonitor-2.1.1.1141-linux-x86-installer.bin</strong>
+File ini merupakan server untuk melakukan proses <strong>monitoring</strong>, nanti-nya yang akan kita akses adalah hasil proses installasi dari file ini. Didalam file ini juga sudah terdapat <a href="http://tomcat.apache.org/">Apache Tomcat</a> dan <a href="http://www.mysql.com/downloads/">MySQL Server</a> untuk menjalankan <strong>Dashboard</strong> dan menyimpan data hasil monitoring yang kita lakukan.
+<strong>Note: Download-lah dengan file yang sesuai dengan spesifikasi server yang teman-teman gunakan</strong></p></li>
+<li><p> <strong>mysqlmonitoragent-2.1.1.1144-linux-glibc2.3-x86-32bit-installer.bin</strong>
+File ini fungsi-nya adalah sebagai reporter ke <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor Server</a>, agar <strong>Dashboard</strong> dapat berfungsi dengan baik maka semua proses koneksi ke <strong>MySQL Server</strong> harus melalui <strong>MySQL Monitor Agent</strong> ini dahulu baru kemudian diteruskan ke <strong>MySQL Server</strong> sebenar-nya :)
+<strong>Note: Download-lah dengan file yang sesuai dengan spesifikasi server yang teman-teman gunakan</strong></p></li>
+<li><p> <strong>mysql-monitor-html.tar.gz</strong>
+Dan yang terakhir adalah jangan lupa untuk sekalian mendownload halaman manual-nya juga, karena didalam file ini banyak sekali konfigurasi yang diterangkan secara <strong>jelas, padat dan terpercaya</strong> :D :) Untuk teman-teman yang ingin bermain-main dengan <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a>, file ini <strong>WAJIB</strong> hukum-nya untuk didownload.</p></li>
+</ol>
+
+
+<p>Nah setelah semua selesai di download, sekarang tiba saat-nya untuk proses installasi. Karena ini pengalaman pertama saya, maka pilihan <strong>Sistem Operasi</strong> yang saya pilih yaitu <a href="http://centos.org/">CentOS</a>. Pilihan ini dikarenakan agar kita tidak perlu melakukan perubahan pada <strong>init script</strong> yang dibawa oleh <a href="http://www.mysql.com/products/enterprise/advisors.html">MySQL Monitor</a> :) Jadi untuk teman-teman, silahkan siapkan dahulu <strong>environment</strong> yang akan digunakan yah :) (Untuk Sistem Operasi yang lain, jika saya ada waktu akan saya tulis bagaimana integrasi pada masing-masing karakteristik <strong>init script</strong>-nya dan yang pasti bukan pada Sistem Operasi Microsoft Windows :) )</p>
+
+<p>Sekarang pastikan dahulu bahwa teman-teman sudah meng-install <a href="http://mysql.com/">MySQL</a> pada server yang ingin kita <strong>monitor</strong>, sedangkan pada tulisan ini <a href="http://mysql.com/">MySQL</a> yang digunakan adalah <a href="http://www.mysql.com/downloads/">MySQL Community Server</a> bawaan dari distro <a href="http://centos.org/">CentOS</a> yang cara installasi dan konfigurasi-nya bisa teman-teman lihat pada <a href="http://martinusadyh.web.id/2010/02/23/installing-mysql-in-centos-5-4/">tutorial kemarin</a> :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/02/24/monitoring-mysql-database-server-with-mysql-monitor/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -364,53 +427,6 @@ Bukan masalah gaji ga cukup atau masalah apa, tapi kalau kita bisa <strong>sekal
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/02/18/step-by-step-installing-centos-54/">Step by Step Installing CentOS 5.4</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-02-18T02:54:26+07:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>2:54 am</span></time>
-        
-           | <a href="/2010/02/18/step-by-step-installing-centos-54/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/02/18/step-by-step-installing-centos-54/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Tulisan kali ini murni untuk dokumentasi pribadi saya dan diperuntukkan bagi teman-teman yang masih baru banget di dunia GNU/Linux dan ingin bermain-main dengan distro <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a>. Buat teman-teman yang belum tahu apa sih distro <a href="http://centos.org/">CentOS</a> ini, distro ini adalah merupakan versi <strong>Community</strong> dari distro komersial yaitu <a href="http://www.redhat.com/">Red Hat Enterprise Linux (RHEL)</a> nah jadi buat teman-teman yang ingin merasakan versi <a href="http://www.redhat.com/">Red Hat Enterprise Linux (RHEL)</a> tapi belum punya pikiran untuk beli <strong>subscription</strong>-nya mungkin distro ini cocok untuk anda. Sedangkan pada tulisan kali ini, versi <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> yang digunakan yaitu versi <strong>5.4</strong> untuk mesin <strong>32 bit</strong> dan dicoba di <a href="http://www.virtualbox.org/">VirtualBox</a> (harusnya sih bisa langsung di implement di <strong>real</strong> komputer):)</p>
-
-<p>Ok sekarang mari kita mulai permainan-nya :) Langkah awal yang pasti yaitu masukkan <strong>cd installer</strong>  <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> ke dalam <strong>cd/dvd rom</strong> kemudian aturlah <a href="http://en.wikipedia.org/wiki/BIOS">BIOS</a> di komputer anda agar dapat <strong>boot</strong> melalui <strong>cd/dvd rom</strong>. Setelah semua-nya selesai, sekarang tunggu-lah beberapa saat hingga tampilan installer <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> tampil seperti gambar dibawah ini:</p>
-
-<p><a href="http://www.flickr.com/photos/10243554@N02/4365803644/"><img src="http://farm5.static.flickr.com/4004/4365803644_9d48265f49.jpg" alt="Screenshot" /><br/>
-Tampilan Awal Installer CentOS</a></p>
-
-<p>Setelah terlihat tampilan seperti diatas, tekan saja tombol <strong>ENTER</strong> untuk memulai proses installasi. Setelah kita menekan tombol <strong>ENTER</strong> maka pada layar selanjutnya adalah proses pengecekan <strong>cd installer</strong>. Skip saja bagian ini dengan memilih tombol <strong>Skip</strong> seperti gambar dibawah ini :</p>
-
-<p><a href="http://www.flickr.com/photos/10243554@N02/4365803646/"><img src="http://farm3.static.flickr.com/2708/4365803646_f88bc45cf6.jpg" alt="Screenshot-5" /><br/>
-Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/02/18/step-by-step-installing-centos-54/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/36">&larr; Older</a>
@@ -431,6 +447,9 @@ Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
         <img src="/images/blog-images/about/avatar.jpg">
     </li>
     <li class="post">
+        <i class="fa fa-envelope-o"></i><a href="mailto:mrt.itnewbies@gmail.com"> mrt.itnewbies@gmail.com</a>
+    </li>
+    <li class="post">
         <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
     </li>
     <li class="post">
@@ -440,6 +459,10 @@ Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
@@ -495,10 +518,6 @@ Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
     
       <li class="post">
         <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
   </ul>

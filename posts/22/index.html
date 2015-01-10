@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Pernah merasa capek terlalu lama bekerja dengan NetBeans ?? Atau terlalu silau ketika mengarang menggunakan NetBeans ? Jika ya, mungkin teman-teman &hellip;">
+  <meta name="description" content="Dikarenakan ada beberapa permintaan SlackBuild Script untuk MySQL Workbench dan ternyata situs aslinya MySQL Workbench SlackBuild Script menghilang &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,77 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/06/23/slackbuild-script-for-mysql-workbench/">SlackBuild Script for MySQL WorkBench</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-06-23T23:58:54+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2010</span></span> <span class='time'>11:58 pm</span></time>
+        
+           | <a href="/2010/06/23/slackbuild-script-for-mysql-workbench/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/06/23/slackbuild-script-for-mysql-workbench/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dikarenakan ada beberapa permintaan SlackBuild Script untuk MySQL Workbench dan ternyata situs aslinya <a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">MySQL Workbench SlackBuild Script</a> menghilang tanpa jejak :( Buat teman-teman yang ingin melakukan kompilasi dan installasi MySQL Workbench untuk Slackware 13.1, silahkan coba gunakan SlackBuild script MySQL Workbench dibawah ini yang telah saya gunakan di Slackware 13.0 dan berjalan tanpa ada masalah.</p>
+
+<p><strong>Note: Script-script dibawah ini murni saya ambil dari situs <a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/</a> dan saya re-posting disini karena ketika tulisan ini dibuat, situs aslinya sedang tidak bisa diakses.</strong></p>
+
+<p>Copy dan paste kode dibawah ini, kemudian simpan dengan nama <strong>README</strong></p>
+
+<pre><code>MySQL Workbench (A visual database design tool developed by MySQL)
+
+MySQL Workbench is a cross-platform, visual database design tool
+developed by MySQL. It is the highly anticipated successor
+application of the DBDesigner4 project. 
+
+This package is the Community OSS Edition.
+</code></pre>
+
+<p><strong>README File</strong></p>
+
+<p>Copy dan paste kode dibawah ini, kemudian simpan dengan nama <strong>doinst.sh</strong></p>
+
+<pre><code>if [ -x /usr/bin/update-desktop-database ]; then
+  /usr/bin/update-desktop-database -q usr/share/applications &gt;/dev/null 2&gt;&amp;1
+fi
+
+if [ -x /usr/bin/update-mime-database ]; then
+  /usr/bin/update-mime-database usr/share/mime &gt;/dev/null 2&gt;&amp;1
+fi
+
+if [ -e usr/share/icons/hicolor/icon-theme.cache ]; then
+  if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    /usr/bin/gtk-update-icon-cache usr/share/icons/hicolor &gt;/dev/null 2&gt;&amp;1
+  fi  
+fi
+</code></pre>
+
+<p><strong>doinst.sh</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/06/23/slackbuild-script-for-mysql-workbench/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -391,45 +462,6 @@ Our thoughts and leave us frozen</li>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/06/11/payout-pertama-dari-tnx/">Payout Pertama Dari TNX</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-06-11T02:33:29+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>2:33 am</span></time>
-        
-           | <a href="/2010/06/11/payout-pertama-dari-tnx/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/06/11/payout-pertama-dari-tnx/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>:gembira:  :gembira:   :mataduitan:  :mataduitan: Hore&hellip; akhirnya pecah juga telor dari <a href="http://www.tnx.net/">TNX</a> setelah sekian lama ikutan program jualan link ini :silau: Awalnya sih masih kurang yakin dengan model <strong>cari duit dari internet</strong> ini, maklum takut-nya sih kena tipu atau <strong>scam</strong> :pusing: <strong>Payout</strong> awal ini juga ga begitu besar sih cuma <strong>$5.52</strong> aja, tapi sebagai permulaan buat saya <strong>&ldquo;Ini merupakan awal yang bagus&rdquo;</strong> karena bukti pembayaran sudah langsung masuk ke <a href="http://paypal.com">Paypal</a> saya :semangat:  Nah payout ini juga sebagai bukti buat &ldquo;teman-teman&rdquo; se-kontrakan saya kalau ternyata <strong>&ldquo;Nge BLOG itu lebih menguntungkan daripada mainan POKER loh !!&rdquo;</strong> :swt2: , alasan sederhana saya yaitu <strong>&ldquo;Kalau main POKER ada kemungkinan untuk KALAH, sedangkan Nge-BLOG ? Hm.. Ga ada yang KALAH melainkan earning masuk terus euy !!!&rdquo;</strong> :gembira: Ok sekarang mana buktinya ?? Kan ada pepatah <strong>NO PIC == HOAX</strong> :silau: , nah ini bukti pembayaran yang telah dilakukan oleh <a href="http://www.tnx.net/">TNX</a> :
- <a href="http://www.flickr.com/photos/10243554@N02/4688949890/"><img src="http://farm5.static.flickr.com/4054/4688949890_a9b61747d6_b.jpg" alt="PayPall1" /></a><br/>
-Bukti Pembayaran TNX 1</p>
-
-<p> <a href="http://www.flickr.com/photos/10243554@N02/4688949924/"><img src="http://farm5.static.flickr.com/4049/4688949924_22b3742914_b.jpg" alt="PayPall2" /></a><br/>
-Bukti Pembayaran TNX 2</p>
-
-<p> Bagaimana teman-teman masih <strong>&ldquo;kurang percaya juga&rdquo;</strong> dengan ini ?? Itu udah masuk di Paypal loch :senyum:</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/23">&larr; Older</a>
@@ -450,6 +482,9 @@ Bukti Pembayaran TNX 2</p>
         <img src="/images/blog-images/about/avatar.jpg">
     </li>
     <li class="post">
+        <i class="fa fa-envelope-o"></i><a href="mailto:mrt.itnewbies@gmail.com"> mrt.itnewbies@gmail.com</a>
+    </li>
+    <li class="post">
         <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
     </li>
     <li class="post">
@@ -459,6 +494,10 @@ Bukti Pembayaran TNX 2</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
@@ -514,10 +553,6 @@ Bukti Pembayaran TNX 2</p>
     
       <li class="post">
         <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
   </ul>

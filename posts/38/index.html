@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Bingung bagaimana cara mendapatkan informasi dari BIOS (Basic Input/Ouput System) di Sistem Operasi GNU/Linux ? Jika iya, mungkin teman-teman perlu &hellip;">
+  <meta name="description" content="Apakah teman-teman sudah puas dengan tampilan font rendering yang terdapat pada Desktop Manager GNOME ? Jika jawaban-nya tidak, mungkin teman-teman &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/12/03/enabling-font-smoothing-in-gnome/">Enabling Font Smoothing in GNOME</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-12-03T01:09:14+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2009</span></span> <span class='time'>1:09 am</span></time>
+        
+           | <a href="/2009/12/03/enabling-font-smoothing-in-gnome/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/12/03/enabling-font-smoothing-in-gnome/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Apakah teman-teman sudah puas dengan tampilan font rendering yang terdapat pada Desktop Manager GNOME ? Jika jawaban-nya tidak, mungkin teman-teman perlu mencoba mengaktifkan fitur <strong>font smoothing</strong> agar tampilan font terlihat lebih <strong>smooth</strong> :) . Fitur ini tidak bisa kita konfigurasi melalui dialog <strong>Fonts Preferences</strong> yang dapat diakses melalui <strong>System > Preferences > Appearence</strong> karena memang ternyata GNOME belum menyediakan fasilitas ini :(</p>
+
+<p>Agar tampilan font kita terlihat lebih <strong>smooth</strong>, simpanlah kode dibawah ini dengan nama <strong>.fonts.conf</strong> dan letakkan pada direktori <strong>/home/namauseranda</strong> :</p>
+
+<pre><code>&lt;fontconfig&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="autohint"&gt;
+            &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="rgba"&gt;
+            &lt;const&gt;none&lt;/const&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="hinting"&gt;
+            &lt;bool&gt;false&lt;/bool&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="hintstyle"&gt;
+            &lt;const&gt;hintnone&lt;/const&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+    &lt;match target="font"&gt;
+        &lt;edit mode="assign" name="antialias"&gt;
+            &lt;bool&gt;true&lt;/bool&gt;
+        &lt;/edit&gt;
+    &lt;/match&gt;
+&lt;/fontconfig&gt;
+</code></pre>
+
+<p><strong>Note: Source code asli bisa diambil dari <a href="http://rewind.themasterplan.in/dl/Kubuntu_FontsConf">Kubuntu Fonts Config</a></strong></p>
+
+<p>Setelah menyimpan konfigurasi font diatas sekarang coba-lah untuk logout kemudian login lagi dan lihat bagaimana perbedaan-nya :) Untuk sumber resmi dari tulisan ini, mungkin teman-teman bisa melihat tulisan The Masterplan tentang <a href="http://rewind.themasterplan.in/2007/07/15/sexy-smooth-fonts-on-kubuntu/">Sexy smooth fonts on Kubuntu</a> :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -339,55 +406,6 @@ root@martinusadyh:/etc/samba#
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/11/20/membuat-menu-accordion-di-java-swing/">Membuat Menu Accordion Di Java Swing</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-11-20T02:44:54+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>2:44 am</span></time>
-        
-           | <a href="/2009/11/20/membuat-menu-accordion-di-java-swing/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/11/20/membuat-menu-accordion-di-java-swing/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Akhir-nya kesampaian juga menulis tentang <strong>Menu Accordion Di Java Swing</strong> ini :) Soalnya dulu bingung menu yang saya buat ini namanya apaan :malu: , nah buat teman-teman ada yang belum tahu apa itu <strong>Menu Accordion </strong> mungkin bisa coba baca-baca artikel <a href="http://en.wikipedia.org/wiki/Accordion_%28GUI%29">Mengenal Menu Accordion</a> dahulu :) Nah jika sudah tahu tentang apa itu <strong>Menu Accordion</strong> sekarang mari kita lihat contoh beberapa aplikasi dan <strong>library</strong> yang menggunakan atau menyertakan <strong>Menu Accordion</strong></p>
-
-<h3>Contoh Aplikasi Yang Menggunakan Menu Accordion</h3>
-
-<p><strong>OpenOffice.org Impress</strong>
-OpenOffice.org Impress menyertakan model menu dengan tipe <strong>Accordion</strong> yang dapat kita lihat seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/4109213701/"><img src="http://farm3.static.flickr.com/2689/4109213701_af19d8aa80.jpg" alt="AccordionInOOoImpress" /><br/>
-OOo Impress Accordion Menu In Action</a></p>
-
-<p><strong>Plazma ERP</strong>
-<a href="http://plazma.sourceforge.net/frameaction.php?lng=en&amp;page=index">Plazma ERP</a> adalah sebuah aplikasi ERP yang dibangun dengan menggunakan Java dan SWT sebagai solusi GUI Toolkit-nya :) , menurut saya <a href="http://plazma.sourceforge.net/frameaction.php?lng=en&amp;page=index">Plazma ERP</a> mempunyai UI yang sangat elegan dan cantik ditambah lagi dengan <strong>Menu Accordion</strong>-nya yang tampak seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/4109213705/"><img src="http://farm3.static.flickr.com/2733/4109213705_f7811e51f1.jpg" alt="AccordionInPlazmaERP" /><br/>
-Plazma ERP Accordion Menu In Action</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/11/20/membuat-menu-accordion-di-java-swing/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/39">&larr; Older</a>
@@ -408,6 +426,9 @@ Plazma ERP Accordion Menu In Action</a></p>
         <img src="/images/blog-images/about/avatar.jpg">
     </li>
     <li class="post">
+        <i class="fa fa-envelope-o"></i><a href="mailto:mrt.itnewbies@gmail.com"> mrt.itnewbies@gmail.com</a>
+    </li>
+    <li class="post">
         <i class="fa fa-twitter"></i><a href="https://twitter.com/martinusadyh" target="_blank"> @martinusadyh</a>
     </li>
     <li class="post">
@@ -417,6 +438,10 @@ Plazma ERP Accordion Menu In Action</a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/watcher-dot-rb-no-space-left-on-device-failed-to-watch/">Watcher.rb: No Space Left on Device - Failed to Watch</a>
@@ -472,10 +497,6 @@ Plazma ERP Accordion Menu In Action</a></p>
     
       <li class="post">
         <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/09/nusantaride-event-ride-and-roast/">Nusantaride Event RIDE and ROAST</a>
       </li>
     
   </ul>

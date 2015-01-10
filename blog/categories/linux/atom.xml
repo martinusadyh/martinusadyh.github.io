@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2015-01-10T00:48:31+07:00</updated>
+  <updated>2015-01-10T17:52:36+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -12,6 +12,119 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Send Email From Shell Script]]></title>
+    <link href="http://martinusadyh.web.id/2015/01/10/send-email-from-shell-script/"/>
+    <updated>2015-01-10T16:19:36+07:00</updated>
+    <id>http://martinusadyh.web.id/2015/01/10/send-email-from-shell-script</id>
+    <content type="html"><![CDATA[<p>Tertarik untuk mencoba mengirim e-mail lewat shell script ? Jika iya, yuk mari kita bahas beberapa langkah sederhana dibawah ini agar kita bisa mengirimkan e-mail lewat shell script :) Semua langkah-langkah dibawah ini dilakukan di sistem operasi turunan Debian <em>(Linux Mint 17.1)</em> dan seharusnya bisa jalan secara normal di sistem operasi berbasis Debian lain-nya, untuk yang menggunakan distribusi Linux lain mungkin bisa mencari cara installasi atau konfigurasi yang sesuai dengan distribusi yang digunakan.</p>
+
+<p>Untuk mengirim e-mail lewat shell script, kita akan menggunakan aplikasi kecil bernama <code>ssmtp</code> yang konfigurasi-nya cukup sederhana. Dan supaya e-mail yang kita kirim tidak masuk ke kotak <em>spam</em> , maka kita akan menggunakan <strong>SMTP</strong> <em>(Simple Mail Transport Protocol)</em> milik <a href="http://google.com">Google</a> yaitu <strong>GMail</strong>.</p>
+
+<h2>Installasi ssmtp</h2>
+
+<p>Karena kita akan menggunakan <code>ssmtp</code> maka ya tentu saja kita harus menginstall-nya dulu :) Untuk pembaca yang menggunakan distribusi linux berbasis <strong>Debian</strong> bisa melakukan proses installasi dengan cara menjalankan perintah <code>sudo apt-get install ssmtp</code> seperti dibawah ini :
+<code>
+martinusadyh@martinusadyh:[~]$ sudo apt-get install ssmtp
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  liblua5.1-0 libmysqlcppconn7 libodbc1 libvsqlitepp3 mysql-workbench-data
+  python-mysql.connector python-pyodbc python-pysqlite2
+Use 'apt-get autoremove' to remove them.
+The following NEW packages will be installed:
+  ssmtp
+0 upgraded, 1 newly installed, 0 to remove and 38 not upgraded.
+Need to get 46,2 kB of archives.
+After this operation, 8.192 B of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty/universe ssmtp amd64 2.64-7 [46,2 kB]
+Fetched 46,2 kB in 1s (24,5 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package ssmtp.
+(Reading database ... 168794 files and directories currently installed.)
+Preparing to unpack .../ssmtp_2.64-7_amd64.deb ...
+Unpacking ssmtp (2.64-7) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Setting up ssmtp (2.64-7) ...
+martinusadyh@martinusadyh:[~]$
+</code>
+<small>Catatan: Untuk distribusi linux yang lain, mungkin bisa mencoba cara installasi <b>ssmtp</b> pada distribusi yang digunakan. </small></p>
+
+<p>Jika sudah sekarang mari kita masuk ke tahapan yang paling menyenangkan yaitu konfigurasi :)</p>
+
+<!-- more -->
+
+
+
+
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+<h2>Konfigurasi ssmtp Menggunakan SMTP Gmail</h2>
+
+<p>Supaya <code>ssmtp</code> bisa menggunakan <strong>SMTP</strong> milik <a href="https://mail.google.com">Gmail</a>, sekarang buka dan editlah file <code>/etc/ssmtp/ssmtp.conf</code> menjadi seperti dibawah ini :
+&#8220;` bash</p>
+
+<h1>masukkan alamat email yang digunakan sebagai sender disini</h1>
+
+<p>root=<a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#120;&#120;&#x78;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x78;&#x78;&#x78;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;</a></p>
+
+<p>mailhub=smtp.gmail.com:465
+rewriteDomain=gmail.com</p>
+
+<h1>masukkan username email disini, klo emailnya <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#120;&#120;&#120;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#120;&#x78;&#120;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;</a> maka isi kolom</h1>
+
+<h1>dibawah ini dengan</h1>
+
+<p>AuthUser=xxx</p>
+
+<h1>masukkan password email disini</h1>
+
+<p>AuthPass=</p>
+
+<p>FromLineOverride=YES
+UseTLS=YES
+&#8220;`</p>
+
+<p>Sekarang tiba saat-nya untuk mencoba mengirim e-mail dari <em>command line/shell/terimanl</em> kita :), jalankan perintah seperti dibawah ini:
+<code>
+martinusadyh@martinusadyh:[~/MyArticle/STATIC_BLOG/octopress]$ ssmtp alamattujuan@gmail.com
+To: alamattujuan@gmail.com
+From: alamatsender@gmail.com
+Subject: Isi Subject-nya
+Isi email yang ingin dikirim
+</code></p>
+
+<p>Untuk mengirim e-mail, tekan kombinasi tombol <strong>CTRL+D</strong> <em>(^d)</em> dan jika tidak ada kesalahan kita seharusnya melihat tampilan seperti gambar dibawah ini:</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-iM7Nmx6YJPw/VLEBgL-RJDI/AAAAAAAADC0/XLeSkwwRJzk/s800/SendEmailFromShell.png">https://lh3.googleusercontent.com/-iM7Nmx6YJPw/VLEBgL-RJDI/AAAAAAAADC0/XLeSkwwRJzk/s800/SendEmailFromShell.png</a>' width='' height='' title='Send Email From Shell'><span class='caption-text'>Send Email From Shell</span></span></p>
+
+<p>Dan sekarang mari kita cek di email tujuan, dan berikut ini adalah hasil-nya :)</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-RFoyIcxRdaw/VLEDLGoBNSI/AAAAAAAADDA/Yu66JkRiRP4/s400/HasilSendEmailFromShell.png">https://lh3.googleusercontent.com/-RFoyIcxRdaw/VLEDLGoBNSI/AAAAAAAADDA/Yu66JkRiRP4/s400/HasilSendEmailFromShell.png</a>' width='' height='' title='Hasil Send Email From Shell'><span class='caption-text'>Hasil Send Email From Shell</span></span></p>
+
+<p>Mudah bukan ? :)</p>
+
+<h2>Referensi:</h2>
+
+<ul>
+<li><a href="http://askubuntu.com/questions/12917/how-to-send-mail-from-the-command-line">Howto Send Email from The Command Line</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Optimasi Filesystem Ext4]]></title>
@@ -277,7 +390,7 @@ to do that add the following line to &lsquo;/home/martinusadyh/.bash_profile&rsq
 </ul>
 
 
-<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#119;&#x61;&#x79;&#x6e;&#x65;&#x65;&#115;&#101;&#103;&#x75;&#105;&#110;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#99;&#111;&#x6d;">&#119;&#97;&#121;&#110;&#x65;&#101;&#x73;&#x65;&#x67;&#117;&#105;&#110;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a>, Michal Papis <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x6d;&#112;&#x61;&#x70;&#105;&#115;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x6d;&#112;&#x61;&#x70;&#x69;&#115;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
+<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#119;&#97;&#121;&#x6e;&#x65;&#x65;&#x73;&#101;&#103;&#x75;&#105;&#110;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#119;&#97;&#x79;&#x6e;&#x65;&#101;&#x73;&#101;&#103;&#x75;&#105;&#110;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>, Michal Papis <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#x6d;&#112;&#x61;&#112;&#x69;&#115;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;">&#109;&#112;&#97;&#112;&#x69;&#115;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
 Searching for binary rubies, this might take some time.
 No binary rubies available for: mint/17/x86_64/ruby-2.1.2.
 Continuing with compilation. Please read &lsquo;rvm help mount&rsquo; to get more information on binary rubies.
