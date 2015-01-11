@@ -10,7 +10,7 @@ simple_search: http://google.com/search
 description:
 
 # Facebook comment
-# facebook_appid: 542765635800767
+facebook_appid: 542765635800767
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
