@@ -10,7 +10,7 @@ new_post() {
     echo -n "Judul postingan: "
     read judul
 
-    echo -n "Masukkan kategori: "
+    echo -n "Masukkan kategori[Adventure, Blogging, Programming, Linux]: "
     read kategori
 
     tmp=`rake new_post["$judul"]`

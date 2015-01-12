@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 group :development do
+  gem 'octopress-popular-posts'
   gem 'execjs'
   gem 'therubyracer'
   gem 'rake', '~> 10.0'
