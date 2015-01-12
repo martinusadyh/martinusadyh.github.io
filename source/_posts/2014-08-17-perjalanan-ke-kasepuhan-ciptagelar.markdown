@@ -73,6 +73,18 @@ Ditengah perjalanan kita juga sempat berhenti untuk foto-foto dan om [Tendy Sept
 
 {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/KondisiJalurDiDalamHutan.jpg 300 225 Kondisi Jalur %} {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/LebatnyaHutanGunungHalimun.jpg 300 225 Lebatnya Hutan Gunung Halimun %}
 
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300x250, created 12/13/09 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-8822787298726866"
+     data-ad-slot="0323780848"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 {% imgcap /images/blog-images/Adventure/TOURING/PerjalananKeKasepuhanCiptagelar/FotoKeluargaLagiDalamHutan.jpg Foto Keluarga Lagi di Dalam Hutan %}
 
 Puas foto-foto, akhirnya perjalanan kita lanjutkan kembali. Perjalanan kali ini benar-benar menguras tenaga, dikarenakan antrian kita sempat terpecah dengan adanya motor penduduk yang sedang turun tepat di tikungan. Dengan posisi yang tidak pas karena kita sedang menanjak dan menghadapi tikungan, akhirnya om [Ar Farid](https://www.facebook.com/ar.farid.79?fref=pb&hc_location=profile_browser) dan [Febri Pies](https://www.facebook.com/febry.pies?fref=pb&hc_location=profile_browser) pun kehilangan keseimbangan dan akhirnya terjatuh karena kaget mendengar suara klakson yang tiba-tiba, untung-nya om [Ar Farid](https://www.facebook.com/ar.farid.79?fref=pb&hc_location=profile_browser) tidak sampai jatuh ke jurang karena beliau jatuh-nya pas disisi jurang. 
