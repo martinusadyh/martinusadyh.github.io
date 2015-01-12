@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Suasana di Belakang Imah Gede Perjalanan kali ini adalah perjalanan pada tahun lalu, tepatnya pada tanggal 20/10/2013 yang belum sempat di posting &hellip;">
+  <meta name="description" content="Sudah sejak lama sebenarnya saya migrasi blog dari platform WordPress ke static blog, alasan utama-nya adalah ingin mengejar loading page yang lebih &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,117 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/09/04/setup-octopress-in-linux-mint/">Setup Octopress in Linux Mint</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-04T19:04:48+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:04 pm</span></time>
+        
+           | <a href="/2014/09/04/setup-octopress-in-linux-mint/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2014/09/04/setup-octopress-in-linux-mint/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sudah sejak lama sebenarnya saya migrasi blog dari <em>platform</em> <a href="http://wordpress.com">WordPress</a> ke <em>static</em> blog, alasan utama-nya adalah ingin mengejar <em>loading page</em> yang lebih cepat dan supaya setiap postingan saya bisa di simpan di <a href="http://git-scm.com/">Git</a> (tentu-nya dengan menggunakan <em>repo</em> gratisan di <a href="https://github.com/">GitHub</a>) :D :) Dari banyak-nya pilihan <em>static blog generator</em> yang bisa dilihat di <a href="https://www.staticgen.com/">StaticGen</a>, saya akhirnya memutuskan untuk menggunakan <a href="http://octopress.org">Octopress</a> dikarenakan <strong>Octopress</strong> merupakan <em>static blog generator</em> yang paling populer saat ini dan tutorial setup-nya juga sudah dibuatkan oleh pak <a href="https://www.facebook.com/endy.muhardin?fref=ts">Endy Muhardin</a> di tulisan <a href="http://software.endy.muhardin.com/aplikasi/terima-kasih-wordpress/">Terima Kasih WordPress</a> :D</p>
+
+<p>Nah yang jadi masalah saya adalah karena <strong>Octopress</strong> ini dibuat dengan bahasa pemrograman ruby yang mana saya bener-bener buta :( . Karena kemarin sempat 3 kali setup ruby untuk kepentingan <strong>Octopress</strong> baru berhasil dan sukses menjalankan perintah <code>rake generate &amp;&amp; rake preview</code>, akhirnya saya putuskan untuk men-dokumentasikan langkah-langkah tersebut pada postingan kali ini :)</p>
+
+<p>Semua langkah-langkah ini dijalankan di sistem operasi Linux Mint 17 dengan kondisi <em>fresh install</em> , jadi memang semua kebutuhan juga belum ada. Langkah pertama yang harus dilakukan adalah install dulu <em>library</em> yang dibutuhkan dengan menjalankan perintah <code>sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev curl</code> seperti dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh ~ $ sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev curl
+</span><span class='line'>Reading package lists... Done
+</span><span class='line'>Building dependency tree       
+</span><span class='line'>Reading state information... Done
+</span><span class='line'>libreadline6 is already the newest version.
+</span><span class='line'>zlib1g is already the newest version.
+</span><span class='line'>The following packages were automatically installed and are no longer required:
+</span><span class='line'>  libmysqlcppconn7 libodbc1 libvsqlitepp3 python-pyodbc
+</span><span class='line'>Use 'apt-get autoremove' to remove them.
+</span><span class='line'>The following extra packages will be installed:
+</span><span class='line'>  dpkg-dev g++ g++-4.8 libbison-dev libc-dev-bin libc6-dev libstdc++-4.8-dev
+</span><span class='line'>  libtinfo-dev libyaml-0-2 m4
+</span><span class='line'>Suggested packages:
+</span><span class='line'>  autoconf2.13 autoconf-archive gnu-standards autoconf-doc libtool bison-doc
+</span><span class='line'>  debian-keyring g++-multilib g++-4.8-multilib gcc-4.8-doc libstdc++6-4.8-dbg
+</span><span class='line'>  glibc-doc libstdc++-4.8-doc
+</span><span class='line'>Recommended packages:
+</span><span class='line'>  automake automaken libalgorithm-merge-perl libssl-doc
+</span><span class='line'>The following NEW packages will be installed:
+</span><span class='line'>  autoconf bison build-essential dpkg-dev g++ g++-4.8 libbison-dev
+</span><span class='line'>  libc-dev-bin libc6-dev libreadline6-dev libssl-dev libstdc++-4.8-dev
+</span><span class='line'>  libtinfo-dev libyaml-0-2 libyaml-dev m4 zlib1g-dev
+</span><span class='line'>0 upgraded, 17 newly installed, 0 to remove and 44 not upgraded.
+</span><span class='line'>Need to get 13.6 MB of archives.
+</span><span class='line'>After this operation, 56.7 MB of additional disk space will be used.
+</span><span class='line'>Do you want to continue? [Y/n] y
+</span><span class='line'>...
+</span><span class='line'>...
+</span><span class='line'>Setting up libreadline6-dev:amd64 (6.3-4ubuntu2) ...
+</span><span class='line'>Setting up zlib1g-dev:amd64 (1:1.2.8.dfsg-1ubuntu1) ...
+</span><span class='line'>Setting up libssl-dev:amd64 (1.0.1f-1ubuntu2.5) ...
+</span><span class='line'>Setting up libyaml-dev:amd64 (0.1.4-3ubuntu3) ...
+</span><span class='line'>Processing triggers for libc-bin (2.19-0ubuntu6.3) ...
+</span><span class='line'>martinusadyh@martinusadyh ~ $</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2014/09/04/setup-octopress-in-linux-mint/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -285,50 +396,6 @@ Karena kegiatan pendakian gunung ini sebagian besar dilakukan dengan berjalan ka
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-06-22T15:21:07+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>3:21 pm</span></time>
-        
-           | <a href="/2013/06/22/howto-disable-individual-jetpack-module/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2013/06/22/howto-disable-individual-jetpack-module/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Gara-gara sering kelupaan bagaimana cara-nya men-disable sebuah modul di <a href="http://wordpress.org/plugins/jetpack/">Jetpack</a>, akhirnya saya buatkan posting sekalian biar besok-besok tidak lupa lagi :D Postingan ini ditulis gara-gara saya tidak puas dengan module <strong>Likes</strong> di Jetpack. Karena sudah terlanjur di aktifkan dan tidak puas, jadi beginilah step by step untuk mendisable-nya :)</p>
-
-<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/TampilanModuleLikesyangAktif.png" width="300" height="183" title="Tampilan Module Likes yang Aktif" ></p>
-
-<p>Jika sudah, sekarang tekanlah tombol <strong>Learn More</strong> di module yang ingin di disable untuk menampilkan tombol <strong>Deactive</strong> seperti gambar dibawah ini (lihat tombol yang dibulatin) :</p>
-
-<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/KlikTombolDeactive.png" width="300" height="196" title="Klik Tombol Deactive" ></p>
-
-<p>Kalau tampilan sudah seperti gambar diatas, maka sekarang tekanlah tombol <strong>Deactive</strong> untuk mendisable module yang dimaksud. Dan harusnya jika tidak ada masalah, maka kita akan melihat tampilan seperti gambar dibawah ini :</p>
-
-<p><img class="center" src="/images/blog-images/blogging/HowtoDisableIndividualJetpackModule/ProsesDeactiveBerhasil.png" width="300" height="181" title="Proses Deactive Berhasil" ></p>
-
-<p>Sebenarnya gampang bukan ? Mungkin memang karena faktor <strong>&ldquo;U&rdquo;</strong> nih yang bikin jadi sering lupa :(</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -361,6 +428,10 @@ Karena kegiatan pendakian gunung ini sebagian besar dilakukan dengan berjalan ka
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/12/perjalanan-ke-kasepuhan-ciptagelar-bagian-2/">Perjalanan Ke Kasepuhan Ciptagelar (Bagian 2)</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
@@ -416,10 +487,6 @@ Karena kegiatan pendakian gunung ini sebagian besar dilakukan dengan berjalan ka
     
       <li class="post">
         <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
       </li>
     
   </ul>

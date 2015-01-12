@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Ingin membuat sebuah installer untuk aplikasi yang jalan di Windows (ber-ekstensi exe) tapi dari GNU/Linux atau Nix ? Jika jawaban-nya adalah iya, &hellip;">
+  <meta name="description" content="Tulisan ini hanya untuk teman-teman yang bingung bagaimana menginstall gambas2-2.18.0 di mesin Slackware 13.0, soalnya saya sendiri cari-cari belum &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,77 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/01/02/installing-gambas2-2180-on-slackware-13/">Installing Gambas2-2.18.0 on Slackware 13</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-01-02T07:06:06+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2010</span></span> <span class='time'>7:06 am</span></time>
+        
+           | <a href="/2010/01/02/installing-gambas2-2180-on-slackware-13/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/01/02/installing-gambas2-2180-on-slackware-13/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tulisan ini hanya untuk teman-teman yang bingung bagaimana menginstall gambas2-2.18.0 di mesin Slackware 13.0, soalnya saya sendiri cari-cari belum ketemu :D Nah langkah pertama yang harus dilakukan yaitu download dulu <strong>binary packages</strong> yang sudah dibuat oleh temen-temen slackers dari <a href="http://www.slacky.eu/aadm/pkgs/index.php?ver=13&amp;pkg=134">slacky.eu</a> yang bisa di download <a href="http://repository.slacky.eu/slackware-13.0/development/gambas2/2.18.0/gambas2-2.18.0-i486-1sl.txz">disini</a> dan simpanlah pada direktori <strong>~/gambas</strong> seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~]$ mkdir ~/gambas
+martinus@martinusadyh:[~]$ cd gambas
+martinus@martinusadyh:[~/gambas]$ wget -c http://repository.slacky.eu/slackware-13.0/development/gambas2/2.18.0/gambas2-2.18.0-i486-1sl.txz
+--2010-01-02 06:53:57--  http://repository.slacky.eu/slackware-13.0/development/gambas2/2.18.0/gambas2-2.18.0-i486-1sl.txz
+Resolving repository.slacky.eu... 151.1.182.109
+Connecting to repository.slacky.eu|151.1.182.109|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 11079204 (11M) [text/plain]
+Saving to: `gambas2-2.18.0-i486-1sl.txz'
+
+100%[==============================================================================================================================&gt;] 11,079,204  11.1K/s   in 11m 11s
+
+2010-01-02 07:05:10 (16.1 KB/s) - `gambas2-2.18.0-i486-1sl.txz' saved [11079204/11079204]
+
+martinus@martinusadyh:[~/gambas]$
+</code></pre>
+
+<p>Karena Slackware 13.0 sudah menggunakan KDE4 yang notabene pakai Qt4, maka kita harus meng-install library <strong>qt3</strong> agar aplikasi gambas2 dapat berjalan dengan semestinya. Sekarang download dahulu packages <strong>qt3</strong> yang bisa kita download <a href="http://ftp.pnfi.depdiknas.go.id/slackware/slackware-13.0/extra/kde3-compat/qt3-3.3.8b-i486-opt1.txz">disini</a> dan simpanlah pada direktori <strong>~/gambas</strong> yang sudah dibuat pada langkah sebelum-nya seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~/gambas]$ wget -c http://ftp.pnfi.depdiknas.go.id/slackware/slackware-13.0/extra/kde3-compat/qt3-3.3.8b-i486-opt1.txz
+--2010-01-02 06:54:09--  http://ftp.pnfi.depdiknas.go.id/slackware/slackware-13.0/extra/kde3-compat/qt3-3.3.8b-i486-opt1.txz
+Resolving ftp.pnfi.depdiknas.go.id... 118.98.232.229
+Connecting to ftp.pnfi.depdiknas.go.id|118.98.232.229|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6174072 (5.9M) [application/octet-stream]
+Saving to: `qt3-3.3.8b-i486-opt1.txz'
+
+100%[==============================================================================================================================&gt;] 6,174,072   26.0K/s   in 3m 49s
+
+2010-01-02 06:57:58 (26.4 KB/s) - `qt3-3.3.8b-i486-opt1.txz' saved [6174072/6174072]
+
+martinus@martinusadyh:[~/gambas]$
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/01/02/installing-gambas2-2180-on-slackware-13/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -333,48 +404,6 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/12/06/review-album-design-your-universe-epica/">Review Album Design Your Universe (EPICA)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-12-06T20:44:24+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>8:44 pm</span></time>
-        
-           | <a href="/2009/12/06/review-album-design-your-universe-epica/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/12/06/review-album-design-your-universe-epica/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hii all, berhubung karena keren-nya album ini jadi ngebuat saya pingin posting ke blog :D. Review Ini saya dapat dari forum <a href="http://www.facebook.com/group.php?gid=122826632728">Symphonic/Gothic Metal Group</a> di FaceBook dan ditulis oleh bro <a href="http://www.facebook.com/profile.php?id=1624398291">Luxmand Grapow</a> yang notabene adalah pengurus group ini. Dan inilah dia review-nya :</p>
-
-<pre><code>        [![Cover Album Design Your Universe](http://photos-h.ak.fbcdn.net/hphotos-ak-snc1/hs238.snc1/8517_1192695950598_1624398291_30497143_4645420_n.jpg)  
-</code></pre>
-
-<p>EPICA - DESIGN YOUR UNIVERSE (2009)](<a href="http://www.facebook.com/photo.php?pid=30497143&amp;id=1624398291">http://www.facebook.com/photo.php?pid=30497143&amp;id=1624398291</a>)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/12/06/review-album-design-your-universe-epica/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/38">&larr; Older</a>
@@ -407,6 +436,10 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/12/perjalanan-ke-kasepuhan-ciptagelar-bagian-2/">Perjalanan Ke Kasepuhan Ciptagelar (Bagian 2)</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a>
@@ -462,10 +495,6 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
     
       <li class="post">
         <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/14/serunya-perjalanan-ke-waduk-jatiluhur/">Serunya Perjalanan Ke Waduk Jatiluhur</a>
       </li>
     
   </ul>
