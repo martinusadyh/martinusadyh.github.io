@@ -108,3 +108,6 @@ google_analytics_tracking_id: UA-6422034-1
 
 # Facebook Like
 facebook_like: true
+
+# related post plugin
+lsi: true
