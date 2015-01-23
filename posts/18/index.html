@@ -156,12 +156,15 @@
 
   <div class="entry-content"><p>Akhirnya kesampaian juga bermain-main dengan Database <a href="http://www.oracle.com/index.html">Oracle</a> di Slackware 13.0 :) dan ternyata proses installasi Oracle tidak semudah yang dibayangkan meskipun saya sudah mengikuti tulisan <a href="http://fxbudiar.blogspot.com/2009/04/menginstall-oracle-10g-di-slackware.html">Menginstall Oracle 10g di Slackware</a> dari mas Budi Ariyanto :( Ok sekarang mari kita mulai saja tahapan-tahapan proses instalasi Oracle pada Slackware 13.0 :)</p>
 
-<p>Sebelum melakukan proses installasi, buatlah 3 <strong>group</strong> dahulu untuk Oracle yaitu <strong>oinstall,dba</strong> dan <strong>oper</strong> dengan cara seperti dibawah ini :
-[plain]
-root@martinusadyh:[~]# /usr/sbin/groupadd oinstall
-root@martinusadyh:[~]# /usr/sbin/groupadd -g 502 dba
-root@martinusadyh:[~]# /usr/sbin/groupadd -g 505 oper
-[/plain]</p>
+<p>Sebelum melakukan proses installasi, buatlah 3 <strong>group</strong> dahulu untuk Oracle yaitu <strong>oinstall,dba</strong> dan <strong>oper</strong> dengan cara seperti dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@martinusadyh:[~]# /usr/sbin/groupadd oinstall
+</span><span class='line'>root@martinusadyh:[~]# /usr/sbin/groupadd -g 502 dba
+</span><span class='line'>root@martinusadyh:[~]# /usr/sbin/groupadd -g 505 oper</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Setelah membuat 3 <strong>group</strong> tersebut, sekarang buatlah user <strong>oracle</strong> yang mempunyai primary group <strong>oinstall</strong> dan secondary group-nya <strong>dba</strong> dan <strong>oper</strong> dengan mengetikkan perintah seperti dibawah ini :</p>
 
