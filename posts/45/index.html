@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Mungkin ada diantara teman-teman yang sudah pernah membikin sebuah custom komponen di Java Swing, nah ada baiknya juga kalau custom komponen tersebut &hellip;">
+  <meta name="description" content="Pernah mendapatkan pesan pkg: the following package(s) violated constraints: ketika ingin menginstall sebuah packages di OpenSolaris ?? Yaps saya &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Violeted Constraints When Installing Packages in OpenSolaris</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-05-31T14:09:42+07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2009</span></span> <span class='time'>2:09 pm</span></time>
+        
+           | <a href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pernah mendapatkan pesan <strong>pkg: the following package(s) violated constraints:</strong> ketika ingin menginstall sebuah packages di OpenSolaris ?? Yaps saya pernah :D dan ini berkali-kali saya alamin, kejadian ini terjadi kalau kita mempunyai lebih dari 1 mirror repositori selain yang terdapat di <a href="http://pkg.opensolaris.org/release/">http://pkg.opensolaris.org/release/</a>. Masalah ini saya alami ketika saya ingin menginstall packages amp di OpenSolaris yang saya gunakan, sedangkan konfigurasi repository yang saya pakai adalah sebagai berikut :</p>
+
+<pre><code>[martin@opensolarisbox:~]# pkg authority
+AUTHORITY                           URL
+Development                         http://pkg.opensolaris.org/dev/
+Blastwave                           http://blastwave.network.com:10000/
+OpenSolaris (preferred)             http://pkg.opensolaris.org/release/
+
+[martin@opensolarisbox:~]#
+</code></pre>
+
+<p>Sedangkan untuk menginstall packages amp, saya gunakan perintah pkg install amp dan akhirnya saya dengan sukses mendapatkan pesan error seperti dibawah ini :</p>
+
+<pre><code>martin@opensolarisbox:~]# pkg install amp
+Creating Plan -
+pkg: the following package(s) violated constraints:
+    Package pkg:/SUNWcsl@0.5.11,5.11-0.111 conflicts with constraint in installed pkg:/entire:
+            Pkg SUNWcsl: Optional min_version: 0.5.11,5.11-0.101 max version: 0.5.11,5.11-0.101 defined by: pkg:/entire
+[martin@opensolarisbox:~]#
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -371,117 +427,6 @@ MPlayer-1.0rc2/libpostproc/Makefile
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/11/release-zencafe-20/">Release Zencafe 2.0</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-04-11T00:16:37+07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:16 am</span></time>
-        
-           | <a href="/2009/04/11/release-zencafe-20/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/04/11/release-zencafe-20/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wah akhirnya <a href="http://www.belajaronline.web.id/downloads/zencafe-2.0.iso">Zencafe 2.0</a> Release euy &hellip; salut deh buat temen-temen di <a href="http://www.awali.org/">AWALI</a> yang udah berusaha semaksimal mungkin untuk tetep <strong>keukeuh</strong> ngembangin Zencafe :)</p>
-
-<p>Sedangkan press release ini saya ketahui dari postingan om <a href="http://redmouse-ku.com">Romi</a> ke milis <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#x6c;&#x69;&#110;&#x75;&#120;&#x2d;&#97;&#107;&#x74;&#x69;&#118;&#105;&#x73;&#x40;&#x6c;&#x69;&#x6e;&#117;&#x78;&#46;&#111;&#x72;&#x2e;&#x69;&#100;">&#108;&#105;&#110;&#x75;&#x78;&#x2d;&#97;&#107;&#x74;&#x69;&#x76;&#105;&#115;&#x40;&#x6c;&#x69;&#x6e;&#117;&#120;&#46;&#x6f;&#x72;&#46;&#x69;&#100;</a> yang isinya kurang lebih seperti berikut :</p>
-
-<blockquote><p>Date: Thu, 9 Apr 2009 18:54:44 +0700
-From: redmouse internet cafe
-To: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x6c;&#105;&#110;&#117;&#120;&#45;&#97;&#x6b;&#116;&#x69;&#118;&#105;&#115;&#x40;&#x6c;&#105;&#x6e;&#x75;&#120;&#46;&#x6f;&#114;&#46;&#x69;&#100;">&#x6c;&#x69;&#110;&#117;&#x78;&#x2d;&#x61;&#107;&#116;&#x69;&#118;&#105;&#x73;&#x40;&#108;&#x69;&#x6e;&#117;&#x78;&#x2e;&#x6f;&#x72;&#46;&#x69;&#100;</a>
-Subject: [linux-aktivis] Release terbaru Zencafe 2.0</p></blockquote>
-
-<p>Press Release AWALI :</p>
-
-<p>Alhamdulillah,
-Puji syukur kami ucapkan kepada Tuhan YME
-Kami dari developer Zencafe dan support dari AWALI pada tanggal 9
-April 2009 Pukul 18.00 WIB dari Tegal Jawa Tengah dengan resmi
-menyatakan telah me-release distro warnet terbaru yaitu ;</p>
-
-<p>ZENCAFE 2.0</p>
-
-<p>Dimana pada release, memiliki beberapa update sebagai berikut;</p>
-
-<ol>
-<li>Memakai kernel terbaru yaitu 2.6.28.7</li>
-<li>Tahapan Instalasi yang lebih pendek dan mudah</li>
-<li>Implementasi shortcut seperti pada OS Windows (misal key logo
-windows berfungsi untuk menampilkan menu, win+e membuka file manager
-dan lain sebagainya)</li>
-<li>Aplikasi tambahan bagi kebutuhan warnet di folder additional yang
-berisi berbagai macam aplikasi</li>
-<li>Right clik pada desktop akan menampilkan menu tersendiri</li>
-<li>Desain icon yang baru</li>
-<li>Dukungan webcam yang lebih baik</li>
-<li>Firefox kembali menjadi default web browser :)</li>
-<li>Dukungan terhadap format dokumen MS Office 2007 atau docx
-dan fitur-fitur lainnya</li>
-</ol>
-
-
-<p>Screenshot dapat dilihat di :
-<a href="http://linux.blogs.ie/screenshots/">http://linux.blogs.ie/screenshots/</a></p>
-
-<p>Download :
-Mirror Priority Only (Hanya untuk mirror)
-iso : <a href="http://www.ahardiena.web.id/downloads/zencafe-2.0.iso">http://www.ahardiena.web.id/downloads/zencafe-2.0.iso</a>
-md5sum : <a href="http://www.ahardiena.web.id/downloads/zencafe-2.0.iso.md5">http://www.ahardiena.web.id/downloads/zencafe-2.0.iso.md5</a></p>
-
-<p>Mirror yang tersedia saat ini:
-<a href="ftp://dl2.foss-id.web.id/iso/zencafe/zencafe-2.0.iso">ftp://dl2.foss-id.web.id/iso/zencafe/zencafe-2.0.iso</a>
-<a href="http://www.zencafe.web.id/download/iso/zencafe-2.0.iso">http://www.zencafe.web.id/download/iso/zencafe-2.0.iso</a>
-<a href="http://www.belajaronline.web.id/downloads/zencafe-2.0.iso">http://www.belajaronline.web.id/downloads/zencafe-2.0.iso</a></p>
-
-<p>Karena keterbatasan mirror yang ada, mohon bantuan teman-teman untuk
-membantu mirroring, sehingga dapat ditambahkan didalam list di
-<a href="http://linux.blogs.ie/downloads/">http://linux.blogs.ie/downloads/</a></p>
-
-<p>Untuk support tidak resmi bisa diperoleh di website :
-<a href="http://zencafe.web.id">http://zencafe.web.id</a>
-<a href="http://kwali.info">http://kwali.info</a></p>
-
-<p>IRC :
-Server DALNET chanel #awali
-Server DALNET chanel #awalitegal di DALNET</p>
-
-<p>Semoga dengan release terbaru dari zencafe 2.0 dapat memberikan
-sumbangan yang berguna bagi warnet linux Indonesia sekaligus menjadi
-jawaban bagi pengusaha/calon pengusaha/pengelola warnet akan kebutuhan
-operating system yang terjangkau dan handal untuk warnet.</p>
-
-<p>Salam dari kami :
-A.Hardiena (ZENCAFE)
-Romi Muharyono (AWALI)</p>
-
-<p>&ndash;</p>
-
-<h2>keep the fighting spirit&hellip;</h2>
-
-<p><a href="http://redmouse-ku.com">http://redmouse-ku.com</a>
-<a href="http://kwali.info">http://kwali.info</a></p>
-
-<p>Hmm&hellip; ga ada yang bisa saya katakan lagi disini :) Salute abis ama perjuangan om2x di <a href="http://www.awali.org/">AWALI</a> dan maaf ya om masih belum bisa bantu-bantu di rilis <a href="http://www.belajaronline.web.id/downloads/zencafe-2.0.iso">Zencafe 2.0</a> ini :malu: Saat ini saya masih bisa bantuin nge-mirror ISO-nya <a href="http://artivisi.com/~martinus/downloads/Zencafe/iso/zencafe-2.0.iso">disini</a> om dan moga-moga bisa membantu :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/46">&larr; Older</a>
@@ -514,6 +459,10 @@ Romi Muharyono (AWALI)</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/26/indah-nya-setu-patok-dan-menantang-nya-lereng-gunung-ciremai/">Indah-nya Setu Patok Dan Menantang-nya Lereng Gunung Ciremai</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/12/perjalanan-ke-kasepuhan-ciptagelar-bagian-2/">Perjalanan Ke Kasepuhan Ciptagelar (Bagian 2)</a>
@@ -569,10 +518,6 @@ Romi Muharyono (AWALI)</p>
     
       <li class="post">
         <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
       </li>
     
   </ul>

@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Sebenarnya sudah sejak lama ingin menulis sebuah tulisan atau buku mengikuti gaya penulisan yang terdapat pada DocBook, tapi apa daya sampai sekarang &hellip;">
+  <meta name="description" content="Barusan tidak sengaja baca-baca tulisan om Walecha yang berjudul Mengakali Panasnya CPU, dan ternyata cocok dengan kondisi saya yang akhir-akhir ini &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/02/19/membuat-laptop-anda-tetap-dingin-di-slackware/">Membuat Laptop Anda Tetap Dingin Di Slackware</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-02-19T18:22:20+07:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>6:22 pm</span></time>
+        
+           | <a href="/2011/02/19/membuat-laptop-anda-tetap-dingin-di-slackware/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2011/02/19/membuat-laptop-anda-tetap-dingin-di-slackware/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Barusan tidak sengaja baca-baca tulisan om Walecha yang berjudul <a href="http://walecha.net/content/mengakali-panasnya-cpu">Mengakali Panasnya CPU</a>, dan ternyata cocok dengan kondisi saya yang akhir-akhir ini merasa laptop jadi sering banget menjadi panas (untungnya belum pernah sampai restart sendiri gara-gara masalah kepanasan) :D Nah ternyata di Slackware 13.0 yang saya gunakan <em><strong>&ldquo;by default&rdquo;</strong></em> belum ada tool bernama <a href="http://www.kernel.org/pub/linux/utils/kernel/cpufreq/cpufrequtils.html">cpufrequtils</a> :(</p>
+
+<p>Nah buat teman-teman yang masih menggunakan Slackware 13.0 seperti saya, silahkan download dahulu <a href="http://slackbuilds.org/repository/13.0/libraries/cpufrequtils/">slackbuild script cpufrequtils</a> dan install pada laptop teman-teman :) dan dibawah ini adalah hasil perintah <strong>cpufreq-info</strong> yang terdapat di laptop yang saya gunakan :
+[plain]
+root@martinusadyh:[/media/data/SLACKBUILDS/cpufrequtils]# cpufreq-info
+cpufrequtils 005: cpufreq-info &copy; Dominik Brodowski 2004-2006
+Report errors and bugs to cpufreq@vger.kernel.org, please.
+analyzing CPU 0:
+  driver: acpi-cpufreq
+  CPUs which need to switch frequency at the same time: 0
+  hardware limits: 1.20 GHz - 2.10 GHz
+  available frequency steps: 2.10 GHz, 1.60 GHz, 1.20 GHz
+  available cpufreq governors: ondemand, userspace
+  current policy: frequency should be within 1.20 GHz and 2.10 GHz.
+                  The governor &ldquo;ondemand&rdquo; may decide which speed to use
+                  within this range.
+  current CPU frequency is 1.20 GHz (asserted by call to hardware).
+analyzing CPU 1:
+  driver: acpi-cpufreq
+  CPUs which need to switch frequency at the same time: 1
+  hardware limits: 1.20 GHz - 2.10 GHz
+  available frequency steps: 2.10 GHz, 1.60 GHz, 1.20 GHz
+  available cpufreq governors: ondemand, userspace
+  current policy: frequency should be within 1.20 GHz and 2.10 GHz.
+                  The governor &ldquo;ondemand&rdquo; may decide which speed to use
+                  within this range.
+  current CPU frequency is 1.20 GHz (asserted by call to hardware).
+root@martinusadyh:[/media/data/SLACKBUILDS/cpufrequtils]#
+[/plain]</p>
+
+<p>Dan dibawah ini adalah hasil ketika mencoba menjalankan proses yang sedikit membutuhkan proses CPU :
+[plain]
+martinus@martinusadyh:[~]$ cpufreq-info | grep &lsquo;CPU frequency&rsquo;
+  current CPU frequency is 1.20 GHz.
+  current CPU frequency is 1.20 GHz.
+martinus@martinusadyh:[~]$ cpufreq-info | grep &lsquo;CPU frequency&rsquo;
+  current CPU frequency is 1.20 GHz.
+  current CPU frequency is 2.10 GHz.
+martinus@martinusadyh:[~]$ cpufreq-info | grep &lsquo;CPU frequency&rsquo;
+  current CPU frequency is 2.10 GHz.
+  current CPU frequency is 1.20 GHz.
+martinus@martinusadyh:[~]$ cpufreq-info | grep &lsquo;CPU frequency&rsquo;
+  current CPU frequency is 1.20 GHz.
+  current CPU frequency is 1.20 GHz.
+[/plain]</p>
+
+<p>Untuk detail gimana konfigurasinya, silahkan merujuk langsung ke tulisan om Walecha yang berjudul <a href="http://walecha.net/content/mengakali-panasnya-cpu">Mengakali Panasnya CPU</a> :)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -318,49 +396,6 @@ E-Mail : <a href="mailto:info@artivisi.com">info@artivisi.com</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/01/05/training-git-di-artivisi-intermedia/">Training Git Di Artivisi Intermedia</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-01-05T21:13:21+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>9:13 pm</span></time>
-        
-           | <a href="/2011/01/05/training-git-di-artivisi-intermedia/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2011/01/05/training-git-di-artivisi-intermedia/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Buat yang belum tahu apa sih itu <a href="http://git-scm.com/">GIT</a> dan bagaimana cara menggunakan <a href="http://git-scm.com/">GIT</a> untuk kebutuhan <strong><em>development</em></strong> sehari-hari, kita dari Artivisi Intermedia akan membuka sebuah training tentang <a href="http://git-scm.com/">GIT</a>. Sedangkan detail apa saja yang dibahas, silahkan cek dibawah ini :</p>
-
-<p>Berikut silabusnya (1 sesi = 3 jam) :
-<a href="http://artivisi.com/?cat=28">http://artivisi.com/?cat=28</a></p>
-
-<p>Berikut jadwalnya :
-<a href="http://artivisi.com/?page_id=109">http://artivisi.com/?page_id=109</a></p>
-
-<p>Yang mau daftar silahkan langsung isi form :
-<a href="https://spreadsheets.google.com/viewform?formkey=dC0xbk9yZ2k3MzRjZGRHckpVRlRPYWc6MQ">https://spreadsheets.google.com/viewform?formkey=dC0xbk9yZ2k3MzRjZGRHckpVRlRPYWc6MQ</a></p>
-
-<p>Pertanyaan tentang training silahkan email ke <a href="mailto:info@artivisi.com">info@artivisi.com</a> atau email langsung ke saya. Pertanyaan tentang Git, bisa ditanyakan pada saat training :D</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/18">&larr; Older</a>
@@ -393,6 +428,10 @@ E-Mail : <a href="mailto:info@artivisi.com">info@artivisi.com</a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/26/indah-nya-setu-patok-dan-menantang-nya-lereng-gunung-ciremai/">Indah-nya Setu Patok Dan Menantang-nya Lereng Gunung Ciremai</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/12/perjalanan-ke-kasepuhan-ciptagelar-bagian-2/">Perjalanan Ke Kasepuhan Ciptagelar (Bagian 2)</a>
@@ -448,10 +487,6 @@ E-Mail : <a href="mailto:info@artivisi.com">info@artivisi.com</a></p>
     
       <li class="post">
         <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
       </li>
     
   </ul>

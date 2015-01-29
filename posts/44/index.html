@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Banyak sekali pertanyaan dari teman-teman tentang bagaimana cara membuat report dengan menggunakan JRBeansCollection sebagai datasource-nya, &hellip;">
+  <meta name="description" content="Cuma pingin ngeramein klo Slackware 13.0 udah release, dan ini release note dari situs resminya :) ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/08/28/slackware-130-released/">Slackware 13.0 Released</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-08-28T17:59:00+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>5:59 pm</span></time>
+        
+           | <a href="/2009/08/28/slackware-130-released/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/08/28/slackware-130-released/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Cuma pingin ngeramein klo Slackware 13.0 udah release, dan ini release note dari situs resminya :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/08/28/slackware-130-released/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -427,62 +464,6 @@ mysql&gt;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Violeted Constraints When Installing Packages in OpenSolaris</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-05-31T14:09:42+07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2009</span></span> <span class='time'>2:09 pm</span></time>
-        
-           | <a href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pernah mendapatkan pesan <strong>pkg: the following package(s) violated constraints:</strong> ketika ingin menginstall sebuah packages di OpenSolaris ?? Yaps saya pernah :D dan ini berkali-kali saya alamin, kejadian ini terjadi kalau kita mempunyai lebih dari 1 mirror repositori selain yang terdapat di <a href="http://pkg.opensolaris.org/release/">http://pkg.opensolaris.org/release/</a>. Masalah ini saya alami ketika saya ingin menginstall packages amp di OpenSolaris yang saya gunakan, sedangkan konfigurasi repository yang saya pakai adalah sebagai berikut :</p>
-
-<pre><code>[martin@opensolarisbox:~]# pkg authority
-AUTHORITY                           URL
-Development                         http://pkg.opensolaris.org/dev/
-Blastwave                           http://blastwave.network.com:10000/
-OpenSolaris (preferred)             http://pkg.opensolaris.org/release/
-
-[martin@opensolarisbox:~]#
-</code></pre>
-
-<p>Sedangkan untuk menginstall packages amp, saya gunakan perintah pkg install amp dan akhirnya saya dengan sukses mendapatkan pesan error seperti dibawah ini :</p>
-
-<pre><code>martin@opensolarisbox:~]# pkg install amp
-Creating Plan -
-pkg: the following package(s) violated constraints:
-    Package pkg:/SUNWcsl@0.5.11,5.11-0.111 conflicts with constraint in installed pkg:/entire:
-            Pkg SUNWcsl: Optional min_version: 0.5.11,5.11-0.101 max version: 0.5.11,5.11-0.101 defined by: pkg:/entire
-[martin@opensolarisbox:~]#
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/05/31/violeted-constraints-when-installing-packages-in-opensolaris/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/45">&larr; Older</a>
@@ -515,6 +496,10 @@ pkg: the following package(s) violated constraints:
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/26/indah-nya-setu-patok-dan-menantang-nya-lereng-gunung-ciremai/">Indah-nya Setu Patok Dan Menantang-nya Lereng Gunung Ciremai</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/12/perjalanan-ke-kasepuhan-ciptagelar-bagian-2/">Perjalanan Ke Kasepuhan Ciptagelar (Bagian 2)</a>
@@ -570,10 +555,6 @@ pkg: the following package(s) violated constraints:
     
       <li class="post">
         <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
       </li>
     
   </ul>

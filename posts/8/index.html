@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Kesulitan mencari villa murah di Bali? Anda dapat menyimak tips berikut ini. Tua-muda pergi ke Bali. Baik hanya untuk urusan bisnis ataupun sengaja &hellip;">
+  <meta name="description" content="[caption id=&ldquo;attachment_1883&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;110&rdquo;]JavaDB[/caption]Kemarin sempat bermain-main sebentar &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/10/27/create-auto-increment-in-javadb/">Create Auto Increment in JavaDB</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-27T21:33:42+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>9:33 pm</span></time>
+        
+           | <a href="/2012/10/27/create-auto-increment-in-javadb/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2012/10/27/create-auto-increment-in-javadb/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[caption id=&ldquo;attachment_1883&rdquo; align=&ldquo;alignleft&rdquo; width=&ldquo;110&rdquo;]<a href="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/08/JavaDB.png" alt="JavaDB" /></a>JavaDB[/caption]Kemarin sempat bermain-main sebentar dengan <a href="http://www.oracle.com/technetwork/java/javadb/index.html">JavaDB</a> dan ternyata baru tahu, kalau editor SQL di NetBeans ternyata tidak (belum) ada fitur untuk membuat kolom <strong>auto increment</strong> untuk <strong>JavaDB</strong> :( Nah untuk teman-teman yang ingin membuat kolom <strong>auto increment</strong> di <strong>JavaDB</strong> mungkin bisa menambahkan perintah <code>ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)</code> pada script <code>create table</code> di JavaDB seperti terlihat pada script dibawah ini :</p>
+
+<pre><code>create table M_BARANG
+(
+    ID INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
+    HARGA NUMERIC(19),
+    ISEDITABLE SMALLINT,
+    KETERANGAN VARCHAR(255),
+    KODE_BARANG VARCHAR(255) not null
+)
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/10/27/create-auto-increment-in-javadb/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -263,46 +311,6 @@ Catatan: Direktori <code>/tmp</code> bisa kita ganti ke direktori yang di ingink
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/08/16/remove-guest-session-in-ubuntu-12-04/">Remove Guest Session in Ubuntu 12.04</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-08-16T03:00:50+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>3:00 am</span></time>
-        
-           | <a href="/2012/08/16/remove-guest-session-in-ubuntu-12-04/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2012/08/16/remove-guest-session-in-ubuntu-12-04/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ingin menghilangkan guest session di Ubuntu 12.04 ? Jika iya, silahkan edit file <code>/etc/lightdm/lightdm.conf</code> dan tambahkan baris <code>allow-guest=false</code> menjadi seperti dibawah ini :</p>
-
-<pre><code>[SeatDefaults]
-user-session=ubuntu
-greeter-session=unity-greeter
-allow-guest=false
-</code></pre>
-
-<p>Setelah merubah file <code>/etc/lightdm/lightdm.conf</code> simpan dan logout :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -335,6 +343,10 @@ allow-guest=false
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/26/indah-nya-setu-patok-dan-menantang-nya-lereng-gunung-ciremai/">Indah-nya Setu Patok Dan Menantang-nya Lereng Gunung Ciremai</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/12/perjalanan-ke-kasepuhan-ciptagelar-bagian-2/">Perjalanan Ke Kasepuhan Ciptagelar (Bagian 2)</a>
@@ -390,10 +402,6 @@ allow-guest=false
     
       <li class="post">
         <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/23/step-by-step-apache-tomcat-ssl-configuration/">Step by Step Apache Tomcat SSL Configuration</a>
       </li>
     
   </ul>
