@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Indah-nya Setu Patok dan Menantang-nya Lereng Gunung Ciremai"
+title: "Indahnya Setu Patok dan Menantangnya Lereng Gunung Ciremai"
 date: 2015-01-26 21:05:51 +0700
 comments: true
 sharing: true
