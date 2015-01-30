@@ -101,18 +101,6 @@ Puas mengisi tenaga, akhirnya perjalanan kita lanjutkan kembali dan tujuan kita 
 
 Kita sempat beristirahat sebentar di tengah hutan ini, sembari menghabiskan sebatang rokok saya pun sempat _nyeletuk_ ke om Agus bahwa jalurnya ga jauh beda ama jalur pendakian :D Dan ternyata om Agus menimpali **"Iya emang, ini enak kita masih turun. Nah kalau teman-teman jalur seperti ini dibuat kebalik. Dari bawah naik ke atas"**, widih bisa dibayangkan bagaimana saya bakal benar-benar kesulitan :D Sebelum melanjutkan perjalanan, om Agus sempat memperingati saya bahwa nanti didepan akan terdapat sebuah turunan yang cukup "curam". Setelah berkata demikian akhirnya perjalanan-pun kita lanjutkan kembali, tidak membutuhkan waktu yang lama buat kita untuk sampai pada turunan curam yang dimaksud oleh om Agus dan bagi saya ini turunan-nya benar-benar curam. Disini saya sempat berpikir cukup lama, apa mau diambil atau tidak,  ditengah-tengah kegalauan saya om Agus sempat berceletuk **"Gimana, berani ga? Kalau ga berani, sini biar saya aja yang bawa."** Setelah melihat-lihat situasi dan menimbang-nimbang, akhirnya saya beranikan diri untuk mengambil turunan ini dengan memantapkan hati jika sejelek-jeleknya nanti jika jatuh ke kanan atau ke kiri ya _nyungsep_ ke semak-semak bukan di jurang :D
 
-<div>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- 300x250, created 12/13/09 -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-8822787298726866"
-     data-ad-slot="0323780848"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
-
 Akhirnya sayapun berhasil dengan selamat sampai dibawah ;) dan om Agus-pun berkata **"Tenang, sebentar lagi kita sudah keluar dari hutan kok."**, dan saya pun akhirnya bisa tersenyum karena saya merasa bahwa ujian utama-nya sudah terlewati. Tapi untuk keluar dari hutan-pun bukanlah sesuatu yang mudah, ternyata di depan masih banyak turunan-turunan licin yang akhirnya berhasil membuat saya terjatuh untuk kesekian kali-nya disini. Kurang lebih jam 15:30 sore, akhirnya kita pun keluar dari lebatnya hutan pinus di lereng gunung Ciremai dan langsung pulang menuju ke rumah om Agus.
 
 {% imgcap https://lh6.googleusercontent.com/-i7LYJkCVJr0/VMkbLTZXkNI/AAAAAAAADOM/coezLZAHUgw/s640/DSC06748.JPG Turunan Curam (Doc. Om Agus) %}
