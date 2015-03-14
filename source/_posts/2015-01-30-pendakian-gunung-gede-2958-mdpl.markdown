@@ -25,7 +25,6 @@ Gunung Gede diselimuti oleh hutan pegunungan, yang mencakup zona-zona submontana
 
 Sedangkan untuk jalur pendakian, Gunung Gede mempunyai 3 jalur resmi yaitu **Cibodas, Gunung Putri** dan **Selabintana**. Selain menyediakan wisata pendakian, pihak Taman Nasional Gede Pangrango juga menyediakan wahana wisata lain yang berbasiskan pada alam seperti **Canopy Trail, Bumi Perkemahan Mandalawangi, Pusat Rehabilitasi Owa Jawa, dll** seperti terlihat pada peta interfaktif dibawah ini _(peta interaktif ini diambil dari web resmi Taman Nasional Gede Pangrango)_:
 
-<iframe src="https://www.google.com/maps/d/embed?mid=zcZeMr8-O8fI.kgxikfxN21Mk&hl=id" width="640" height="480"></iframe>
 <!-- more -->
 Seperti-nya racun yang saya sebarkan cukup ampuh untuk menggoyahkan iman teman-teman yang mayoritas pekerja kantoran semua, ini terbukti dengan banyaknya peserta yang ingin ikut. Tercatat ada 14 orang yang meyatakan kesanggupan-nya, dan yang lebih spesial dari pendakian kali ini adalah terdapat 2 pasangan pengantin baru yang ikutan (alamat menyiapkan 2 tenda khusus buat mereka berdua, supaya lebih berasa suasana _honey moon_-nya -_- )
 

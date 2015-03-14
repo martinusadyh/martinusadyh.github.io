@@ -56,7 +56,7 @@ publish() {
     rake generate && rake deploy
 
     # ping search engine
-    rake notify
+    # rake notify
 }
 
 preview() {
