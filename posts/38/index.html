@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Buat teman-teman yang sering chatting di IRC (Internet Relay Chat) pasti-nya sudah tidak asing lagi dong dengan situs pastebin ini, nah sedangkan &hellip;">
+  <meta name="description" content="Membuat sebuah Internet Connection Sharing di GNU/Linux bagi saya merupakan hal yang baru, karena sebelum-nya saya tidak pernah bermain-main terlalu &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/12/12/cara-mudah-internet-connection-sharing-di-slackware-ad-hoc-mode/">Cara Mudah Internet Connection Sharing Di Slackware (Ad Hoc Mode)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-12-12T00:36:07+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>12:36 am</span></time>
+        
+           | <a href="/2009/12/12/cara-mudah-internet-connection-sharing-di-slackware-ad-hoc-mode/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/12/12/cara-mudah-internet-connection-sharing-di-slackware-ad-hoc-mode/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Membuat sebuah <strong>Internet Connection Sharing</strong> di GNU/Linux bagi saya merupakan hal yang baru, karena sebelum-nya saya tidak pernah bermain-main terlalu dalam di dunia jaringan :D :) . Apalagi kalau harus ber-urusan dengan yang namanya <strong>IP Tables</strong> dan kawan-kawan-nya, sepertinya saya harus belajar lebih dalam lagi untuk bisa bersentuhan dengan makanan-makanan tersebut. Nah tulisan ini sebenarnya cuma ingin sharing tentang pengalaman saya pribadi menggunakan internet connection sharing di kontrakan yang saya tinggalin sekarang. Dan khusus untuk tulisan kali ini, kita tidak akan bermain-main dengan yang nama-nya <strong>terminal, command prompt atau pun konsole</strong>. Yaps, semua-nya ini selesai hanya dengan proses <strong>klik sini</strong> dan <strong>klik sana</strong> dan alat-alat yang saya gunakan pada tulisan kali ini yaitu :</p>
+
+<ul>
+<li><p>Sistem Operasi GNU/Linux Slackware 13.0 (kernel 2.6.29.6-smp)</p></li>
+<li><p>Desktop Manager menggunakan GnomeSlackBuild versi 2.6.23</p></li>
+<li><p>Network Manager Applet versi 0.7.1 yang di install dari repository GnomeSlackBuild</p></li>
+</ul>
+
+
+<p>Sedangkan kasus yang terjadi di kontrakan saya yaitu kita hanya mendapatkan 1 buah modem + 1 kabel UTP untuk bisa menggunakan internet dengan nyaman, dan penghuni di kontrakan yang haus akan internet kurang lebih ada 7 orang (termasuk saya :D ) yang kesemua-nya membawa laptop masing-masing. Nah karena cuma mendapatkan 1 kabel UTP saja, akhir-nya kita memutuskan bahwa yang online menggunakan kabel UTP harus <strong>rela</strong> membagi koneksi yang didapatkan-nya ke seluruh penghuni kontrakan melalui <strong>wifi</strong> dengan menggunakan mode <strong>Ad Hoc</strong> :) Dan kira-kira topologi jaringan (halah baru bisa gambar topoologi ajah dah pamer <em><em>($</em>&amp;$</em>%&amp;^&amp;#)</b> ) di kontrakan saya kurang lebih seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/4176251631/" title="ICS by thundherbolth, on Flickr"><img src="http://farm3.static.flickr.com/2539/4176251631_fbaa6bc176_m.jpg" width="240" height="218" alt="ICS" /><br /><small>Gambar Topologi Jaringan ICS dengan Mode Ad-Hoc</small></a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/12/12/cara-mudah-internet-connection-sharing-di-slackware-ad-hoc-mode/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -312,76 +359,6 @@ root@martinusadyh:[~]#
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/">Changing Editor Fonts in NetBeans IDE</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-11-25T01:21:56+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:21 am</span></time>
-        
-           | <a href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/11/25/changing-editor-fonts-in-netbeans-ide/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Kemarin habis baca-baca artikel tentang <a href="http://hivelogic.com/articles/top-10-programming-fonts">Top 10 Programming Fonts</a>, akhir-nya jadi iseng-iseng deh cobain ganti font di editor-nya <a href="http://netbeans.org/">NetBeans IDE</a> supaya lebih betah lama-lama ngetik-nya :D</p>
-
-<p>Nah buat teman-teman yang ingin berburu font, mungkin bisa mengunjungi situs <a href="http://hivelogic.com/articles/top-10-programming-fonts">Top 10 Programming Fonts</a> untuk melihat-lihat font mana yang cocok kemudian download dan install deh :) Setelah proses download selesai, untuk menginstall font tersebut di GNU/Linux kita harus memasukkan font tersebut ke dalam direktori <strong>/usr/share/fonts/TTF</strong> agar font tersebut dikenali oleh user lain yang terdapat di sistem. Tapi kalau kita cuma ingin testing aja, kita bisa memasukkan font tersebut kedalam direktori <strong>.fonts</strong> yang terdapat di direktori home user kita masing-masing :)</p>
-
-<p>Bagaimana kalau direktori <strong>.fonts</strong> belum ada ? Ya mari kita buat direktori tersebut dengan perintah seperti dibawah ini :</p>
-
-<pre><code>martinus@martinusadyh:[~]$ mkdir ~/.fonts
-martinus@martinusadyh:[~]$
-</code></pre>
-
-<p>Setelah itu kopikan font yang sudah di download kedalam direktori <strong>~/.fonts</strong> tersebut seperti dibawah ini :</p>
-
-<pre><code>martinus@martinusadyh:[~]$ cp Inconsolata.ttf ~/.fonts/
-martinus@martinusadyh:[~]$ cd ~/.fonts/
-martinus@martinusadyh:[~/.fonts]$ ls
-Inconsolata.ttf
-martinus@martinusadyh:[~/.fonts]$
-</code></pre>
-
-<p>Sekarang mari kita update dahulu font cache kita dengan menjalankan perintah <strong>fc-cache -f -v</strong> agar font yang kita tambahkan bisa dikenali oleh NetBeans seperti dibawah ini :</p>
-
-<pre><code>martinus@martinusadyh:[~/.fonts]$ fc-cache -f -v
-/usr/share/fonts/OTF: caching, new cache contents: 23 fonts, 0 dirs
-/usr/share/fonts/TTF: caching, new cache contents: 92 fonts, 0 dirs
-/usr/share/fonts/Type1: caching, new cache contents: 64 fonts, 0 dirs
-/usr/share/fonts/Speedo: caching, new cache contents: 0 fonts, 0 dirs
-/usr/share/fonts/cyrillic: caching, new cache contents: 0 fonts, 0 dirs
-/usr/share/fonts/misc: caching, new cache contents: 59 fonts, 0 dirs
-/home/martinus/.fonts: caching, new cache contents: 1 fonts, 0 dirs
-/var/cache/fontconfig: not cleaning unwritable cache directory
-/home/martinus/.fontconfig: cleaning cache directory
-fc-cache: succeeded
-martinus@martinusadyh:[~/.fonts]$
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/11/25/changing-editor-fonts-in-netbeans-ide/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/39">&larr; Older</a>
@@ -414,6 +391,10 @@ martinus@martinusadyh:[~/.fonts]$
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -469,10 +450,6 @@ martinus@martinusadyh:[~/.fonts]$
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Pernah mendapatkan pesan pkg: the following package(s) violated constraints: ketika ingin menginstall sebuah packages di OpenSolaris ?? Yaps saya &hellip;">
+  <meta name="description" content="Hore.. OpenOffice sekarang sudah bisa menampilkan schema database loh, misalkan kita punya 3 tabel yaitu T_ARTIKEL, T_KOMENTAR dan &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,103 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/06/20/view-your-database-schema-with-openoffice-301/">View Your DataBase Schema With OpenOffice 3.0.1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-06-20T20:55:25+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>8:55 pm</span></time>
+        
+           | <a href="/2009/06/20/view-your-database-schema-with-openoffice-301/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hore.. OpenOffice sekarang sudah bisa menampilkan schema database loh, misalkan kita punya 3 tabel yaitu <strong>T_ARTIKEL, T_KOMENTAR</strong> dan <strong>T_ARTIKEL_T_KOMENTAR</strong> dengan struktur tabel seperti dibawah ini:</p>
+
+<pre><code>mysql&gt; show create table T_ARTIKEL;
+*************************** 1. row ***************************
+       Table: T_ARTIKEL
+Create Table: CREATE TABLE `T_ARTIKEL` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `content` varchar(255) default NULL,
+  `mode` varchar(255) default NULL,
+  `publishDate` datetime default NULL,
+  `title` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.01 sec)
+
+ERROR:
+No query specified
+
+mysql&gt; show create table T_KOMENTAR;
+*************************** 1. row ***************************
+       Table: T_KOMENTAR
+Create Table: CREATE TABLE `T_KOMENTAR` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `email` varchar(255) default NULL,
+  `komentar` varchar(255) default NULL,
+  `url` varchar(255) default NULL,
+  `username` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.66 sec)
+
+ERROR:
+No query specified
+
+mysql&gt; show create table T_ARTIKEL_T_KOMENTAR;
+*************************** 1. row ***************************
+       Table: T_ARTIKEL_T_KOMENTAR
+Create Table: CREATE TABLE `T_ARTIKEL_T_KOMENTAR` (
+  `T_ARTIKEL_id` bigint(20) NOT NULL,
+  `listKomentar_id` bigint(20) NOT NULL,
+  UNIQUE KEY `listKomentar_id` (`listKomentar_id`),
+  KEY `FK2BF571DCDAEA7AB0` (`listKomentar_id`),
+  KEY `FK2BF571DC8E399F31` (`T_ARTIKEL_id`),
+  CONSTRAINT `FK2BF571DC8E399F31` FOREIGN KEY (`T_ARTIKEL_id`) REFERENCES `T_ARTIKEL` (`id`),
+  CONSTRAINT `FK2BF571DCDAEA7AB0` FOREIGN KEY (`listKomentar_id`) REFERENCES `T_KOMENTAR` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+1 row in set (0.47 sec)
+
+ERROR:
+No query specified
+
+mysql&gt;
+</code></pre>
+
+<p>Kalau tabel yang kita miliki cuma sedikit sih tidak begitu masalah, sekarang bagaimana kalau tabel kita lebih dari 10 ? Mau dilihat satu persatu dari terminal ? :D Nah untungnya sekarang kita bisa melihat schema database tersebut dari OpenOffice :) Sedangkan perlengkapan yang saya pakai disini adalah seperti berikut:
+- <a href="http://mysql.com">MySQL server versi 5.0.67</a>
+- <a href="http://openoffice.org/">OpenOffice 3.0.1</a></p>
+
+<p>Sedangkan langkah-langkah yang harus kita lakukan yaitu adalah sebagai berikut:
+1. Memasang MySQL JDBC Driver di OpenOffice
+2. Akses Database MySQL menggunakan OpenOffice</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/06/20/view-your-database-schema-with-openoffice-301/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -324,109 +421,6 @@ x1720        x820         xl83         xpcterms     xterm        xterm-color  xt
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/19/playing-multimedia-file-in-opensolaris-200811-with-mplayer/">Playing Multimedia File in OpenSolaris 2008.11 With MPlayer</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-04-19T15:18:45+07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>3:18 pm</span></time>
-        
-           | <a href="/2009/04/19/playing-multimedia-file-in-opensolaris-200811-with-mplayer/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/04/19/playing-multimedia-file-in-opensolaris-200811-with-mplayer/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wah akhirnya setelah beberapa lama ga bisa nonton koleksi video clip yang mempunyai ekstensi *.avi, akhirnya sekarang bisa juga :) Cara ini saya dapat dari entri blog-nya om Roman Strobl yang bisa dilihat <a href="http://blogs.sun.com/observatory/entry/compiling_mplayer_on_opensolaris_this">disini</a> Langkah pertama yang harus dilakukan yaitu install dulu packages <strong>SUNWgcc, SUNWgmake, SUNWxorg-headers, SUNWGtk dan SUNWsfwhea</strong> (packages <strong>SUNWsfwhea</strong> ini buat apaan yah ??) dengan cara seperti dibawah ini :</p>
-
-<pre><code>[martin@opensolarisbox:~]$ pfexec pkg install SUNWgmake SUNWxorg-headers SUNWGtk SUNWsfwhea
-DOWNLOAD                                    PKGS       FILES     XFER (MB)
-Completed                                    6/6     933/933     2.36/2.36
-
-PHASE                                        ACTIONS
-Install Phase                              1137/1137
-PHASE                                          ITEMS
-Reading Existing Index                           9/9
-Indexing Packages                                6/6
-[martin@opensolarisbox:~]$
-</code></pre>
-
-<p>Nah setelah selesai menginstall packages-packages yang dibutuhkan, sekarang mari kita download source code dari MPlayer tapi sebelumnya buat dahulu tempat penyimpanan file source code MPlayer-nya kemudian download dengan perintah <strong>wget</strong> seperti dibawah ini :</p>
-
-<pre><code>[martin@opensolarisbox:~]$ mkdir Download/MPlayer
-[martin@opensolarisbox:~]$ cd Download/MPlayer
-[martin@opensolarisbox:~/Download/MPlayer]$ wget -c http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc2.tar.bz2
---14:21:55--  http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc2.tar.bz2
-           =&gt; `MPlayer-1.0rc2.tar.bz2'
-Resolving www.mplayerhq.hu... 193.225.187.202, 199.125.85.41, 216.14.112.110, ...
-Connecting to www.mplayerhq.hu|193.225.187.202|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 9,338,201 (8.9M) [application/x-tar]
-
-    [                                                                                     &lt;=&gt;                          ] 234,087        2.86K/
-
-15:10:53 (3.96 KB/s) - `MPlayer-1.0rc2.tar.bz2' saved [234087]
-
-[martin@opensolarisbox:~/Download/MPlayer]$
-</code></pre>
-
-<p>Nah setelah proses download selesai, sekarang coba ekstrak dengan perintah <strong>tar xjvf nama_file.tar.bz2</strong> seperti dibawah ini :</p>
-
-<pre><code>[martin@opensolarisbox:~/Download/MPlayer]$ tar xjvf MPlayer-1.0rc2.tar.bz2
-....
-....
-MPlayer-1.0rc2/libavformat/daud.c
-MPlayer-1.0rc2/libavformat/flic.c
-MPlayer-1.0rc2/libavformat/mpegenc.c
-MPlayer-1.0rc2/libavformat/mpc.c
-MPlayer-1.0rc2/libavformat/framehook.h
-MPlayer-1.0rc2/libavformat/mpegtsenc.c
-MPlayer-1.0rc2/libavformat/segafilm.c
-MPlayer-1.0rc2/libavformat/nutenc.c
-MPlayer-1.0rc2/libavformat/tiertexseq.c
-MPlayer-1.0rc2/libavformat/allformats.c
-MPlayer-1.0rc2/libavformat/gif.c
-MPlayer-1.0rc2/libavformat/v4l.c
-MPlayer-1.0rc2/libavformat/file.c
-MPlayer-1.0rc2/libavformat/gifdec.c
-MPlayer-1.0rc2/libavformat/nutdec.c
-MPlayer-1.0rc2/libavformat/idcin.c
-MPlayer-1.0rc2/libavformat/voc.c
-MPlayer-1.0rc2/libavformat/aviobuf.c
-MPlayer-1.0rc2/libavformat/voc.h
-MPlayer-1.0rc2/libavformat/wav.c
-MPlayer-1.0rc2/libpostproc/
-MPlayer-1.0rc2/libpostproc/postprocess_template.c
-MPlayer-1.0rc2/libpostproc/postprocess.c
-MPlayer-1.0rc2/libpostproc/postprocess_internal.h
-MPlayer-1.0rc2/libpostproc/postprocess_altivec_template.c
-MPlayer-1.0rc2/libpostproc/postprocess.h
-MPlayer-1.0rc2/libpostproc/Makefile
-[martin@opensolarisbox:~/Download/MPlayer]$
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/04/19/playing-multimedia-file-in-opensolaris-200811-with-mplayer/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/46">&larr; Older</a>
@@ -459,6 +453,10 @@ MPlayer-1.0rc2/libpostproc/Makefile
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -514,10 +512,6 @@ MPlayer-1.0rc2/libpostproc/Makefile
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

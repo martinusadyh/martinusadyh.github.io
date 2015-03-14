@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Waaaw&hellip; baru tahu, ternyata Android baru saja ber Ulang Tahun :) Pada Ulang Tahun ke 2-nya ini, om Lucky Sebastian dari milis id-android@ &hellip;">
+  <meta name="description" content="Apa Itu Transaksi? oleh : Steven Haryanto Artikel ini hendak memperkenalkan konsep transaksi kepada mereka yang masih asing dengannya. Berhubung &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,75 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/10/23/apa-itu-transaksi/">Apa Itu Transaksi?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-10-23T00:42:04+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2010</span></span> <span class='time'>12:42 am</span></time>
+        
+           | <a href="/2010/10/23/apa-itu-transaksi/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/10/23/apa-itu-transaksi/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Apa Itu Transaksi?</h2>
+
+<p><strong>oleh : Steven Haryanto</strong></p>
+
+<p>Artikel ini hendak memperkenalkan konsep transaksi kepada mereka yang masih asing dengannya. Berhubung transaksi baru diperkenalkan di MySQL sekitar 2 tahun lalu, masih banyak penggunanya yang tidak pernah mengenal fasilitas yang sebetulnya amat penting ini. Begitu database kita sudah mengandung data yang cukup penting bukan sekedar berisi posting komentar pengunjung situs yang bisa dihapus kapan saja, misalnya atau begitu kita menginginkan stabilitas dan konsistensi dan tidak ingin waktu demi waktu harus memperbaiki record yang ngaco, misalnya maka kita harus memahami transaksi.</p>
+
+<h2>Contoh Pertama</h2>
+
+<p>Setiap kali orang menerangkan tentang transaksi database, contoh yang biasanya diambil adalah nyaris selalu tentang transaksi di bank, khususnya tentang seorang nasabah yang menyimpan sejumlah uang di rekening tabungannya, atau memindahkan uang dari rekening cek ke tabungan. Saya akan meneruskan tradisi ini karena memang contoh tersebut pas sekali menekankan pentingnya sebuah transaksi.</p>
+
+<p>Anggaplah kita seorang nasabah untuk sebuah bank bernama Mandi Sendiri jelas bukan bank dengan aset terbesar di Indonesia karena ternyata dia sudah merasa cukup dengan hanya memakai Python dan MySQL. Tiga buah tabel di database bank ini skemanya sebagai berikut (telah disederhanakan):</p>
+
+<pre><code># mencatat daftar transaksi
+CREATE TABLE trans (
+    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    tgl DATETIME,
+    ket varchar(255) NOT NULL,
+    teller_id SMALLINT NOT NULL
+);
+
+# jurnal kredit tabungan
+CREATE TABLE jtabungan (
+    trans_id BIGINT NOT NULL,
+    norek_nasabah INT NOT NULL,
+    jumlah DOUBLE NOT NULL
+);
+
+# jurnal kas bank
+CREATE TABLE jkas (
+    trans_id BIGINT NOT NULL,
+    jumlah DOUBLE NOT NULL
+);
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/10/23/apa-itu-transaksi/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -210,8 +279,8 @@
 
 
   <div class="entry-content"><p><a href="http://artivisi.com">ARTIVISI INTERMEDIA</a> akan mengadakan training <strong>JAVA DESKTOP BASIC</strong> (Sabtu/Minggu) pada tanggal 23 dan 24 Oktober 2010 mendatang, info lebih lanjut silahkan menghubungi :
-- Ira &lt; <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#105;&#x72;&#97;&#64;&#97;&#114;&#x74;&#105;&#118;&#x69;&#x73;&#105;&#x2e;&#99;&#x6f;&#109;">&#105;&#x72;&#x61;&#64;&#x61;&#114;&#116;&#105;&#118;&#x69;&#115;&#x69;&#x2e;&#x63;&#x6f;&#x6d;</a> >
-- Meliawati &lt; <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#109;&#x65;&#108;&#105;&#64;&#97;&#x72;&#116;&#x69;&#x76;&#105;&#x73;&#105;&#46;&#99;&#111;&#109;">&#x6d;&#x65;&#108;&#105;&#64;&#x61;&#x72;&#x74;&#105;&#x76;&#105;&#x73;&#x69;&#x2e;&#x63;&#111;&#x6d;</a> ></p>
+- Ira &lt; <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#x69;&#114;&#97;&#x40;&#97;&#114;&#x74;&#105;&#118;&#105;&#x73;&#105;&#x2e;&#99;&#x6f;&#x6d;">&#105;&#114;&#97;&#64;&#x61;&#114;&#x74;&#x69;&#118;&#x69;&#115;&#105;&#46;&#x63;&#x6f;&#x6d;</a> >
+- Meliawati &lt; <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#109;&#x65;&#x6c;&#105;&#x40;&#x61;&#x72;&#116;&#x69;&#x76;&#105;&#x73;&#x69;&#46;&#x63;&#111;&#109;">&#109;&#x65;&#x6c;&#105;&#64;&#97;&#x72;&#x74;&#105;&#118;&#105;&#115;&#x69;&#46;&#99;&#x6f;&#x6d;</a> ></p>
 
 <p><strong>JAVA DESKTOP BASIC </strong>
 Tanggal : 23 dan 24 Oktober 2010
@@ -298,113 +367,6 @@ Biaya : Rp 350.000,-</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/09/29/netbeans-6-9-and-eclispe-helios-shortcut-mapping/">NetBeans 6.9 and Eclispe Helios Shortcut Mapping</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-09-29T20:47:27+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>8:47 pm</span></time>
-        
-           | <a href="/2010/09/29/netbeans-6-9-and-eclispe-helios-shortcut-mapping/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/09/29/netbeans-6-9-and-eclispe-helios-shortcut-mapping/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Beberapa minggu ini saya sering menggunakan 2 IDE yaitu NetBeans dan Eclipse secara bergantian, karena saya adalah pengguna NetBeans selama ini. Jadinya ketika menggunakan Eclipse, saya mencari-cari apa persamaan <strong>shortcut</strong> antara NetBeans dan Eclipse. Nah dibawah ini merupakan daftar persamaan <strong>shortcut</strong> antara NetBeans dan Eclipse yang sering saya gunakan dan yang saya baru tahu :D</p>
-
-<pre><code>        Function
-        Eclipse Shortcut
-        NetBeans Shortcut
-</code></pre>
-
-<p>Move Line Up/Down</p>
-
-<p>ALT + UP/DOWN</p>
-
-<p>ALT + SHIFT + UP/DOWN</p>
-
-<p>Delete One Line</p>
-
-<p>CTRL + D</p>
-
-<p>CTRL + E</p>
-
-<p>Auto Import</p>
-
-<p>CTRL + SHIFT + O</p>
-
-<p>CTRL + SHIFT + I</p>
-
-<p>Moving to Another Active Tab</p>
-
-<p>CTRL + E</p>
-
-<p>CTRL + SHIFT + TAB</p>
-
-<p>Goto File</p>
-
-<p>CTRL + SHIFT + R</p>
-
-<p>ALT + SHIFT + O</p>
-
-<p>Rename</p>
-
-<p>ALT + SHIFT + R</p>
-
-<p>CTRL + R</p>
-
-<p>Copy One Line UP/DOWN</p>
-
-<p>CTRL + ALT + UP/DOWN</p>
-
-<p>CTRL + SHIFT + UP/DOWN</p>
-
-<p>Comment / Un Comment</p>
-
-<p>CTRL + /</p>
-
-<p>CTRL + /</p>
-
-<p>Create Method/Local Variable/Variable</p>
-
-<p>CTRL + 1</p>
-
-<p>ALT + ENTER</p>
-
-<p>Open Type/Class</p>
-
-<p>CTRL + SHIFT + T</p>
-
-<p>CTRL + O</p>
-
-<p>Autoformat</p>
-
-<p>CTRL + SHIFT + F</p>
-
-<p>ALT + SHIFT + F</p>
-
-<p>Dari daftar diatas, masih ada 1 lagi <strong>shortcut</strong> di NetBeans yang saya belum tahu persamaan-nya di Eclipse :( . <strong>Shortcut</strong> tersebut adalah <strong>ALT+SHIFT+LEFT/RIGHT</strong>, <strong>shortcut</strong> ini fungsinya untuk memindahkan <strong>baris/blok kode</strong> ke kanan atau ke kiri. Jadi dengan menggunakan <strong>shortcut</strong> ini, saya tidak perlu menekan tombol <strong>TAB</strong> agar baris/blok method saya jadi sinkron dengan kode diatas-nya :)</p>
-
-<p>Nah bagaimana dengan teman-teman ?? Apakah teman-teman mempunyai daftar persamaan <strong>shortcut</strong> antara NetBeans dan Eclipse yang belum ada di daftar saya ?</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/20">&larr; Older</a>
@@ -437,6 +399,10 @@ Biaya : Rp 350.000,-</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -492,10 +458,6 @@ Biaya : Rp 350.000,-</p>
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

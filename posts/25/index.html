@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Hari ini tidak sengaja buka-buka informasi di Google dan ternyata ketemu bahwa ada lowongan diGoogle dan lokasinya ada di Singapore :) Dan ternyata &hellip;">
+  <meta name="description" content="Buat teman-teman yang sudah terbiasa menggunakan MySQL mungkin pernah mendengar atau mendapatkan saran seperti ini &ldquo;Jika ingin query-nya &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/06/04/table-index-on-hibernate/">Table Index on Hibernate</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-06-04T02:13:04+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>2:13 am</span></time>
+        
+           | <a href="/2010/06/04/table-index-on-hibernate/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/06/04/table-index-on-hibernate/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman yang sudah terbiasa menggunakan MySQL mungkin pernah mendengar atau mendapatkan saran seperti ini <strong>&ldquo;Jika ingin query-nya berjalan cepat maka kita harus menambahkan sebuah index pada kolom-kolom yang sering digunakan pada klausa where&rdquo;</strong>. Saran seperti ini memang betul sih jika kita menggunakan MySQL sebagai solusi DataBase Server yang kita gunakan, sedangkan untuk DataBase Server lain mungkin berbeda lagi penerapan-nya karena saya juga belum mempunyai pengalaman :D</p>
+
+<p>Dulu.. pada milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan seperti ini <strong>&ldquo;TANYA : Table Index Pada Hibernate&rdquo;</strong> (thread lengkap untuk pertanyaan ini bisa dibaca <a href="http://tech.groups.yahoo.com/group/netbeans-indonesia/message/8066">disini</a>), nah karena dulu saya juga belum tahu dan ketika itu mencari-cari referensi di Google juga tidak mendapatkan hasil yang memuaskan (apa saya yang kurang jeli ya ??) akhirnya keputusan terakhir adalah solusi pembuatan index harus dilakukan manual melalui MySQL bukan dari sisi Hibernate.</p>
+
+<p>Nah ternyata, cara untuk menambahkan sebuah index pada sebuah kolom pada tabel di hibernate dapat dilakukan dengan menggunakan Annotations (@) <strong>@org.hibernate.annotations.Table</strong> pada domain class yang kita buat. Sedangkan cara penggunaan annotations <strong>@org.hibernate.annotations.Table</strong> adalah seperti contoh kode dibawah ini :</p>
+
+<pre><code>@org.hibernate.annotations.Table(
+    appliesTo="&lt;&lt; table-name &gt;&gt;",
+    indexes={
+        @Index(name="&lt;&lt; index-name &gt;&gt;", columnNames={"&lt;&lt; column-names &gt;&gt;"}),
+        @Index(name="&lt;&lt; another-index-name &gt;&gt;", columnNames={"&lt;&lt; another-column-names &gt;&gt;"})
+    }
+)
+</code></pre>
+
+<p>Yang perlu diperhatikan disini yaitu <strong>&ldquo;Annotations @org.hibernate.annotations.Table ini bukan merupakan pengganti dari annotations @javax.persistence.Table&rdquo;</strong> dan dibawah ini adalah kutipan dari halaman manual hibernate :</p>
+
+<blockquote><p>@org.hibernate.annotations.Table is a complement, not a replacement to @javax.persistence.Table. Especially, if you want to change the default name of a table, you must use @javax.persistence.Table, not @org.hibernate.annotations.Table.</p></blockquote>
+
+<p>Merasa penasaran ??? Jika iya, yuk mari kita coba sekarang :) Peralatan yang dipakai pada latihan kali ini adalah :</p>
+
+<ol>
+<li><p> MySQL DataBase</p></li>
+<li><p> Hibernate Annotations</p></li>
+<li><p> Spring Framework 3.0.2</p></li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/06/04/table-index-on-hibernate/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -336,47 +399,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/05/24/relakah-anda-menyetorkan-kepala-anda/">Relakah Anda Menyetorkan Kepala Anda ??</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-05-24T20:53:49+07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>8:53 pm</span></time>
-        
-           | <a href="/2010/05/24/relakah-anda-menyetorkan-kepala-anda/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/05/24/relakah-anda-menyetorkan-kepala-anda/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Beberapa hari terakhir ini ada kejadian yang cukup membuat <a href="http://planet.slackware-id.org">teman-teman Slacker&rsquo;s</a> sedikit sibuk :D Kegiatan ini juga tidak ada kaitan-nya dengan oprek mengoprek server atau melakukan kompilasi kernel maupun kegiatan yang berhubungan dengan si manis Slackware :) Kegiatan ini adalah <strong>penggal-memenggal</strong> kepala sendiri :D kwkwkwk&hellip;, bingung kan ? Hal ini terjadi karena mulai kemarin, blog agregator untuk komunitas Slackware Indonesia yang ada di <a href="http://planet.slackware-id.org">http://planet.slackware-id.org</a> mulai aktif kembali dibawah kemudi om <a href="http://slackblogs.blogspot.com/">Willy SR</a> :) Agar tampil seperti layak-nya agregator blog pada umum-nya, maka diperlukanlah sebuah <strong>&ldquo;hackergotchi&rdquo;</strong> atau bisa disebut juga avatar. Hackergotchi ini berfungsi sebagai pengenal siapa pemilik blog yang bersangkutan tersebut dan biasanya adalah foto potongan kepala pemilik blog, sedangkan bagi saya sendiri moment ini saya gunakan untuk mengupdate hackergotchi yang sudah lama nangkring di <a href="http://planet.slackware-id.org">http://planet.slackware-id.org</a>. Kenapa diganti ? karena hackergotchi yang lama gambarnya terlalu besar dan tidak mempunyai efek <strong>drop shadow</strong> seperti layaknya hackergotchi yang lain :D</p>
-
-<p>Cara membuat hackergotchi sangat mudah sekali, tinggal pilih foto pribadi yang ingin &ldquo;dipotong&rdquo; kepala-nya kemudian tinggal ikutin tahapan membuat hackergotchi dengan menggunakan GIMP pada halaman <a href="http://howto.nicubunu.ro/gimp_hackergotchi/">Gimp Hackergotchi</a> ini :) , nah untuk teman-teman yang masih kurang ide bagaimana caranya membuat sebuah hackergotchi mungkin bisa jalan-jalan dulu di <a href="http://planet.gnome.org/heads/">kumpulan kepala gnome blogger</a> untuk melihat contoh-contoh hackergotchi :)</p>
-
-<p>Dari banyaknya contoh hackergotchi yang terdapat di <a href="http://planet.gnome.org/heads/">kumpulan kepala gnome blogger</a> , menurut saya yang paling keren adalah hackergotchi dibawah ini :
-<a href="http://planet.gnome.org/heads/alan.png"><img src="http://planet.gnome.org/heads/alan.png" alt="" /></a></p>
-
-<p>Kwkwkwk&hellip; keren yah ?? Hm.. buat teman-teman yang bisa bikin hackergotchi seperti diatas, ajarin dong :D :) Bingung bikin efek kartun ama bagaimana ya biar kepala-nya besar dan badan-nya mengecil gitu ???? :malu:</p>
-
-<p>Bagaimana teman-teman asyik kan ? Yuuuukk mari memotong kepala kita masing-masing dan setorkan ke Planet Slackware-ID :) :D</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/26">&larr; Older</a>
@@ -409,6 +431,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -464,10 +490,6 @@
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

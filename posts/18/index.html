@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Buat yang belum tahu apa sih itu GIT dan bagaimana cara menggunakan GIT untuk kebutuhan development sehari-hari, kita dari Artivisi Intermedia akan &hellip;">
+  <meta name="description" content="Akhirnya setelah lama tak &ldquo;tersentuh&rdquo; , akhirnya minggu kemarin dapat kesempatan juga untuk mulai &ldquo;ngoprek&rdquo; si Robot Ijo :) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,47 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/01/18/android-gingerbeard-on-htc-desire-with-oxygen-rom/">Android GingerBeard on HTC Desire With Oxygen ROM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-01-18T00:12:34+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:12 am</span></time>
+        
+           | <a href="/2011/01/18/android-gingerbeard-on-htc-desire-with-oxygen-rom/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2011/01/18/android-gingerbeard-on-htc-desire-with-oxygen-rom/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Akhirnya setelah lama tak <strong>&ldquo;tersentuh&rdquo;</strong> , akhirnya minggu kemarin dapat kesempatan juga untuk mulai <strong>&ldquo;ngoprek&rdquo;</strong> si Robot Ijo :) Kisah awalnya sih gara-gara dikomporin ama temen yang punya Nexian Journey yang versi Android-nya udah di upgrade ke 2.3.1, gara-gara hal ini akhirnya jadi deh proses <strong>&ldquo;belah duren&rdquo;</strong> si Robot Ijo :D</p>
+
+<p>Karena <strong>HTC Desire</strong> saya masih <strong>unrooted</strong>, proses pertama yang dilakukan yaitu adalah nge-<strong>root</strong> dahulu. Proses ini juga tidak susah sama sekali karena dibantu oleh aplikasi yang bernama <a href="http://unrevoked.com/recovery/">UnRevoked3</a>. Prosesnya mudah sekali, kita cuma tinggal klik-klik dan secara otomatis handphone akan reboot. Tunggu sampai ada keterangan pada layar <strong>UnRevoked3</strong> muncul tulisan <strong>Done</strong>.</p>
+
+<p>Sedangkan untuk ROM Manager-nya, dibantu oleh aplikasi <strong>Clockworkmod Recovery</strong> yang tutorial cara installasinya bisa dibaca pada halaman <a href="http://forum.xda-developers.com/showthread.php?t=639153">ROM Manager and Clockwork Recovery Image</a>. Setelah selesai melakukan proses <strong>rooting</strong>,  sekarang download-lah <strong>Oxygen ROM</strong> yang bisa diambil pada halaman <a href="http://forum.xda-developers.com/showthread.php?t=829734">Oxygen v2.0-RC6 (Cleanest, Fastest Gingerbread ROM!!!)</a> kemudian simpan pada <strong>root</strong> direktori SD Card anda dan ikuti cara installasi yang terdapat pada thread di xda-developer tersebut :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/01/18/android-gingerbeard-on-htc-desire-with-oxygen-rom/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -325,75 +366,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/10/23/apa-itu-transaksi/">Apa Itu Transaksi?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-10-23T00:42:04+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2010</span></span> <span class='time'>12:42 am</span></time>
-        
-           | <a href="/2010/10/23/apa-itu-transaksi/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/10/23/apa-itu-transaksi/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Apa Itu Transaksi?</h2>
-
-<p><strong>oleh : Steven Haryanto</strong></p>
-
-<p>Artikel ini hendak memperkenalkan konsep transaksi kepada mereka yang masih asing dengannya. Berhubung transaksi baru diperkenalkan di MySQL sekitar 2 tahun lalu, masih banyak penggunanya yang tidak pernah mengenal fasilitas yang sebetulnya amat penting ini. Begitu database kita sudah mengandung data yang cukup penting bukan sekedar berisi posting komentar pengunjung situs yang bisa dihapus kapan saja, misalnya atau begitu kita menginginkan stabilitas dan konsistensi dan tidak ingin waktu demi waktu harus memperbaiki record yang ngaco, misalnya maka kita harus memahami transaksi.</p>
-
-<h2>Contoh Pertama</h2>
-
-<p>Setiap kali orang menerangkan tentang transaksi database, contoh yang biasanya diambil adalah nyaris selalu tentang transaksi di bank, khususnya tentang seorang nasabah yang menyimpan sejumlah uang di rekening tabungannya, atau memindahkan uang dari rekening cek ke tabungan. Saya akan meneruskan tradisi ini karena memang contoh tersebut pas sekali menekankan pentingnya sebuah transaksi.</p>
-
-<p>Anggaplah kita seorang nasabah untuk sebuah bank bernama Mandi Sendiri jelas bukan bank dengan aset terbesar di Indonesia karena ternyata dia sudah merasa cukup dengan hanya memakai Python dan MySQL. Tiga buah tabel di database bank ini skemanya sebagai berikut (telah disederhanakan):</p>
-
-<pre><code># mencatat daftar transaksi
-CREATE TABLE trans (
-    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    tgl DATETIME,
-    ket varchar(255) NOT NULL,
-    teller_id SMALLINT NOT NULL
-);
-
-# jurnal kredit tabungan
-CREATE TABLE jtabungan (
-    trans_id BIGINT NOT NULL,
-    norek_nasabah INT NOT NULL,
-    jumlah DOUBLE NOT NULL
-);
-
-# jurnal kas bank
-CREATE TABLE jkas (
-    trans_id BIGINT NOT NULL,
-    jumlah DOUBLE NOT NULL
-);
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/10/23/apa-itu-transaksi/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/19">&larr; Older</a>
@@ -426,6 +398,10 @@ CREATE TABLE jkas (
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -481,10 +457,6 @@ CREATE TABLE jkas (
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

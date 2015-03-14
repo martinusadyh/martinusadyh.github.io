@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Tulisan kali ini sebenarnya untuk menambah archive blog saya saja :D . Setelah Wifi udah jalan dan GNOME pun udah terinstall, sekarang mari &hellip;">
+  <meta name="description" content="Buat teman-teman pengguna NetBeans IDE, pasti sudah tahu fitur baru di NetBeans versi 6.7 kan. Yak, adanya penambahan integrasi dengan Project Kenai &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/">Mengenal Method setHonorVisibility() Dan Replace() Pada GroupLayout</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-10-06T01:00:05+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:00 am</span></time>
+        
+           | <a href="/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Buat teman-teman pengguna NetBeans IDE, pasti sudah tahu fitur baru di NetBeans versi 6.7 kan. Yak, adanya penambahan integrasi dengan <a href="http://kenai.com/">Project Kenai</a> :) Terus terang saya sendiri belum pernah pakai <a href="http://kenai.com/">Project Kenai</a> , tapi kemarin iseng cobain fitur <a href="http://kenai.com/">Project Kenai</a> di NetBeans IDE dan ternyata humm ada yang keren loh :) Mungkin buat yang belum tahu, coba deh lihat di status bar NetBeans versi 6.7.1, disana ada 1 tambahan icon yang tampilan-nya seperti gambar dibawah ini (tempat-nya ada di pojok kanan bawah):
+<a href="http://www.flickr.com/photos/10243554@N02/3984646214/"><img src="http://farm3.static.flickr.com/2625/3984646214_4f3785c631_o.png" alt="ToolBarKenai" /><br/>
+Tampilan Icon Project Kenai Pada StatusBar NetBeans</a></p>
+
+<p>Tidak ada yang spesial dengan icon diatas, tapi sekarang coba klik 2 kali pada icon tersebut kemudian coba deh tekan tombol login tanpa memasukkan username dan password. Dan hasil-nya adalah seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3983879223/"><img src="http://farm4.static.flickr.com/3531/3983879223_ed802dba53_o.png" alt="Login" /><br/>
+Tampilan Awal Login Dialog</a>
+<a href="http://www.flickr.com/photos/10243554@N02/3984646204/"><img src="http://farm3.static.flickr.com/2504/3984646204_e9a747932b_o.png" alt="ProsesLogin" /><br/>
+Ketika Tombol Login Di Tekan</a>
+<a href="http://www.flickr.com/photos/10243554@N02/3984646166/"><img src="http://farm3.static.flickr.com/2674/3984646166_7c84bb4f25_o.png" alt="LoginFailed" /><br/>
+Login Failed, Pesan Kesalahan Berada Pada Posisi JProgressBar</a></p>
+
+<p>Hmm&hellip; ada yang aneh dari <strong>UI</strong> diatas ?? Klo menurut saya ada yang aneh, coba deh lihat lagi pada gambar dialog login dan proses login di atas. JToolBar-nya bisa muncul diantara label <strong>No account on Kenai.com? Sign up now.</strong> dan tombol <strong>Login</strong>. Kenapa aneh, setahu saya klo kita menggunakan <strong>GroupLayout</strong> secara standart dan kita ingin menyembunyikan komponen ditengah-tengah komponen yang lain dengan menggunakan method <strong>setVisible()</strong> hasil-nya pasti jelek :D Ok sekarang mari kita coba, bikinlah 1 project java kemudian tambahkanlah <strong>JDialog</strong> dan design seperti gambar dibawah ini :
+<a href="http://www.flickr.com/photos/10243554@N02/3983879193/"><img src="http://farm3.static.flickr.com/2467/3983879193_96563de50e_o.png" alt="DesignLogin" /><br/>
+Design Login Dialog</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/10/06/mengenal-method-sethonorvisibility-dan-replace-pada-grouplayout/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -299,38 +350,6 @@ problem.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/09/23/installing-gnome-2263-gsb-distribution-in-slackware-130/">Installing GNOME 2.26.3 (GSB Distribution) in Slackware 13.0</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-09-23T02:36:51+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2009</span></span> <span class='time'>2:36 am</span></time>
-        
-           | <a href="/2009/09/23/installing-gnome-2263-gsb-distribution-in-slackware-130/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/09/23/installing-gnome-2263-gsb-distribution-in-slackware-130/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/43">&larr; Older</a>
@@ -363,6 +382,10 @@ problem.</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -418,10 +441,6 @@ problem.</p>
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

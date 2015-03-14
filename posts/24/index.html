@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Buat teman-teman yang belum tahu bagaimana sih caranya menaikkan traffic blog/website, dibawah ini merupakan kumpulan tips dan trik untuk menaikkan &hellip;">
+  <meta name="description" content="DIBUTUHKAN SEGERA PT. ArtiVisi Intermedia sebuah perusahaan IT yang bergerak di bidang IT Consultant dan Software Development membutuhkan talenta &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/06/08/urgently-needed-java-programmer/">Urgently Needed Java Programmer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-06-08T22:47:36+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>10:47 pm</span></time>
+        
+           | <a href="/2010/06/08/urgently-needed-java-programmer/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/06/08/urgently-needed-java-programmer/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>DIBUTUHKAN SEGERA</strong></p>
+
+<p><a href="http://artivisi.com">PT. ArtiVisi Intermedia</a> sebuah perusahaan IT yang bergerak di bidang IT Consultant dan Software Development membutuhkan talenta muda untuk ikut bergabung dengan kami sebagai tenaga kontrak selama ~+ 6 bulan.</p>
+
+<p><strong>Persyaratan yang dibutuhkan antara lain :</strong></p>
+
+<ol>
+<li><p> Menguasai Java SE</p></li>
+<li><p> Menguasai Eclipse IDE</p></li>
+<li><p> Menguasai Ant</p></li>
+<li><p> Menguasai OOP</p></li>
+<li><p> Menguasai Relational Database Concept</p></li>
+<li><p> Menguasai Jasper Report</p></li>
+</ol>
+
+
+<p>Bagi yang tertarik, silahkan kirim CV ke info[at]artivisi.com dengan subyek <strong>Kontrak Java Programmer</strong></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -340,69 +388,6 @@ Requirements:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/06/04/table-index-on-hibernate/">Table Index on Hibernate</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-06-04T02:13:04+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>2:13 am</span></time>
-        
-           | <a href="/2010/06/04/table-index-on-hibernate/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/06/04/table-index-on-hibernate/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Buat teman-teman yang sudah terbiasa menggunakan MySQL mungkin pernah mendengar atau mendapatkan saran seperti ini <strong>&ldquo;Jika ingin query-nya berjalan cepat maka kita harus menambahkan sebuah index pada kolom-kolom yang sering digunakan pada klausa where&rdquo;</strong>. Saran seperti ini memang betul sih jika kita menggunakan MySQL sebagai solusi DataBase Server yang kita gunakan, sedangkan untuk DataBase Server lain mungkin berbeda lagi penerapan-nya karena saya juga belum mempunyai pengalaman :D</p>
-
-<p>Dulu.. pada milis <a href="mailto:netbeans-indonesia@yahoogroups.com">netbeans-indonesia@yahoogroups.com</a> ada pertanyaan seperti ini <strong>&ldquo;TANYA : Table Index Pada Hibernate&rdquo;</strong> (thread lengkap untuk pertanyaan ini bisa dibaca <a href="http://tech.groups.yahoo.com/group/netbeans-indonesia/message/8066">disini</a>), nah karena dulu saya juga belum tahu dan ketika itu mencari-cari referensi di Google juga tidak mendapatkan hasil yang memuaskan (apa saya yang kurang jeli ya ??) akhirnya keputusan terakhir adalah solusi pembuatan index harus dilakukan manual melalui MySQL bukan dari sisi Hibernate.</p>
-
-<p>Nah ternyata, cara untuk menambahkan sebuah index pada sebuah kolom pada tabel di hibernate dapat dilakukan dengan menggunakan Annotations (@) <strong>@org.hibernate.annotations.Table</strong> pada domain class yang kita buat. Sedangkan cara penggunaan annotations <strong>@org.hibernate.annotations.Table</strong> adalah seperti contoh kode dibawah ini :</p>
-
-<pre><code>@org.hibernate.annotations.Table(
-    appliesTo="&lt;&lt; table-name &gt;&gt;",
-    indexes={
-        @Index(name="&lt;&lt; index-name &gt;&gt;", columnNames={"&lt;&lt; column-names &gt;&gt;"}),
-        @Index(name="&lt;&lt; another-index-name &gt;&gt;", columnNames={"&lt;&lt; another-column-names &gt;&gt;"})
-    }
-)
-</code></pre>
-
-<p>Yang perlu diperhatikan disini yaitu <strong>&ldquo;Annotations @org.hibernate.annotations.Table ini bukan merupakan pengganti dari annotations @javax.persistence.Table&rdquo;</strong> dan dibawah ini adalah kutipan dari halaman manual hibernate :</p>
-
-<blockquote><p>@org.hibernate.annotations.Table is a complement, not a replacement to @javax.persistence.Table. Especially, if you want to change the default name of a table, you must use @javax.persistence.Table, not @org.hibernate.annotations.Table.</p></blockquote>
-
-<p>Merasa penasaran ??? Jika iya, yuk mari kita coba sekarang :) Peralatan yang dipakai pada latihan kali ini adalah :</p>
-
-<ol>
-<li><p> MySQL DataBase</p></li>
-<li><p> Hibernate Annotations</p></li>
-<li><p> Spring Framework 3.0.2</p></li>
-</ol>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/06/04/table-index-on-hibernate/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/25">&larr; Older</a>
@@ -435,6 +420,10 @@ Requirements:</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -490,10 +479,6 @@ Requirements:</p>
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

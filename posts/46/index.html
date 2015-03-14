@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Wah akhirnya Zencafe 2.0 Release euy &hellip; salut deh buat temen-temen di AWALI yang udah berusaha semaksimal mungkin untuk tetep keukeuh &hellip;">
+  <meta name="description" content="Wah akhirnya setelah beberapa lama ga bisa nonton koleksi video clip yang mempunyai ekstensi *.avi, akhirnya sekarang bisa juga :) Cara ini saya &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +94,109 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2009/04/19/playing-multimedia-file-in-opensolaris-200811-with-mplayer/">Playing Multimedia File in OpenSolaris 2008.11 With MPlayer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-04-19T15:18:45+07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>3:18 pm</span></time>
+        
+           | <a href="/2009/04/19/playing-multimedia-file-in-opensolaris-200811-with-mplayer/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/04/19/playing-multimedia-file-in-opensolaris-200811-with-mplayer/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Wah akhirnya setelah beberapa lama ga bisa nonton koleksi video clip yang mempunyai ekstensi *.avi, akhirnya sekarang bisa juga :) Cara ini saya dapat dari entri blog-nya om Roman Strobl yang bisa dilihat <a href="http://blogs.sun.com/observatory/entry/compiling_mplayer_on_opensolaris_this">disini</a> Langkah pertama yang harus dilakukan yaitu install dulu packages <strong>SUNWgcc, SUNWgmake, SUNWxorg-headers, SUNWGtk dan SUNWsfwhea</strong> (packages <strong>SUNWsfwhea</strong> ini buat apaan yah ??) dengan cara seperti dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~]$ pfexec pkg install SUNWgmake SUNWxorg-headers SUNWGtk SUNWsfwhea
+DOWNLOAD                                    PKGS       FILES     XFER (MB)
+Completed                                    6/6     933/933     2.36/2.36
+
+PHASE                                        ACTIONS
+Install Phase                              1137/1137
+PHASE                                          ITEMS
+Reading Existing Index                           9/9
+Indexing Packages                                6/6
+[martin@opensolarisbox:~]$
+</code></pre>
+
+<p>Nah setelah selesai menginstall packages-packages yang dibutuhkan, sekarang mari kita download source code dari MPlayer tapi sebelumnya buat dahulu tempat penyimpanan file source code MPlayer-nya kemudian download dengan perintah <strong>wget</strong> seperti dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~]$ mkdir Download/MPlayer
+[martin@opensolarisbox:~]$ cd Download/MPlayer
+[martin@opensolarisbox:~/Download/MPlayer]$ wget -c http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc2.tar.bz2
+--14:21:55--  http://www.mplayerhq.hu/MPlayer/releases/MPlayer-1.0rc2.tar.bz2
+           =&gt; `MPlayer-1.0rc2.tar.bz2'
+Resolving www.mplayerhq.hu... 193.225.187.202, 199.125.85.41, 216.14.112.110, ...
+Connecting to www.mplayerhq.hu|193.225.187.202|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 9,338,201 (8.9M) [application/x-tar]
+
+    [                                                                                     &lt;=&gt;                          ] 234,087        2.86K/
+
+15:10:53 (3.96 KB/s) - `MPlayer-1.0rc2.tar.bz2' saved [234087]
+
+[martin@opensolarisbox:~/Download/MPlayer]$
+</code></pre>
+
+<p>Nah setelah proses download selesai, sekarang coba ekstrak dengan perintah <strong>tar xjvf nama_file.tar.bz2</strong> seperti dibawah ini :</p>
+
+<pre><code>[martin@opensolarisbox:~/Download/MPlayer]$ tar xjvf MPlayer-1.0rc2.tar.bz2
+....
+....
+MPlayer-1.0rc2/libavformat/daud.c
+MPlayer-1.0rc2/libavformat/flic.c
+MPlayer-1.0rc2/libavformat/mpegenc.c
+MPlayer-1.0rc2/libavformat/mpc.c
+MPlayer-1.0rc2/libavformat/framehook.h
+MPlayer-1.0rc2/libavformat/mpegtsenc.c
+MPlayer-1.0rc2/libavformat/segafilm.c
+MPlayer-1.0rc2/libavformat/nutenc.c
+MPlayer-1.0rc2/libavformat/tiertexseq.c
+MPlayer-1.0rc2/libavformat/allformats.c
+MPlayer-1.0rc2/libavformat/gif.c
+MPlayer-1.0rc2/libavformat/v4l.c
+MPlayer-1.0rc2/libavformat/file.c
+MPlayer-1.0rc2/libavformat/gifdec.c
+MPlayer-1.0rc2/libavformat/nutdec.c
+MPlayer-1.0rc2/libavformat/idcin.c
+MPlayer-1.0rc2/libavformat/voc.c
+MPlayer-1.0rc2/libavformat/aviobuf.c
+MPlayer-1.0rc2/libavformat/voc.h
+MPlayer-1.0rc2/libavformat/wav.c
+MPlayer-1.0rc2/libpostproc/
+MPlayer-1.0rc2/libpostproc/postprocess_template.c
+MPlayer-1.0rc2/libpostproc/postprocess.c
+MPlayer-1.0rc2/libpostproc/postprocess_internal.h
+MPlayer-1.0rc2/libpostproc/postprocess_altivec_template.c
+MPlayer-1.0rc2/libpostproc/postprocess.h
+MPlayer-1.0rc2/libpostproc/Makefile
+[martin@opensolarisbox:~/Download/MPlayer]$
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/04/19/playing-multimedia-file-in-opensolaris-200811-with-mplayer/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2009/04/11/release-zencafe-20/">Release Zencafe 2.0</a></h1>
     
     
@@ -115,11 +218,11 @@
 
   <div class="entry-content"><p>Wah akhirnya <a href="http://www.belajaronline.web.id/downloads/zencafe-2.0.iso">Zencafe 2.0</a> Release euy &hellip; salut deh buat temen-temen di <a href="http://www.awali.org/">AWALI</a> yang udah berusaha semaksimal mungkin untuk tetep <strong>keukeuh</strong> ngembangin Zencafe :)</p>
 
-<p>Sedangkan press release ini saya ketahui dari postingan om <a href="http://redmouse-ku.com">Romi</a> ke milis <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x6c;&#x69;&#x6e;&#x75;&#120;&#45;&#97;&#x6b;&#116;&#x69;&#118;&#x69;&#x73;&#64;&#108;&#x69;&#x6e;&#117;&#x78;&#x2e;&#111;&#114;&#x2e;&#x69;&#100;">&#x6c;&#105;&#x6e;&#117;&#x78;&#45;&#x61;&#107;&#x74;&#105;&#118;&#x69;&#x73;&#x40;&#x6c;&#105;&#x6e;&#x75;&#120;&#46;&#x6f;&#x72;&#x2e;&#x69;&#x64;</a> yang isinya kurang lebih seperti berikut :</p>
+<p>Sedangkan press release ini saya ketahui dari postingan om <a href="http://redmouse-ku.com">Romi</a> ke milis <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#108;&#x69;&#110;&#x75;&#120;&#45;&#x61;&#107;&#x74;&#105;&#x76;&#x69;&#x73;&#x40;&#x6c;&#x69;&#x6e;&#x75;&#x78;&#46;&#x6f;&#114;&#46;&#x69;&#100;">&#x6c;&#x69;&#110;&#x75;&#120;&#x2d;&#x61;&#x6b;&#x74;&#105;&#x76;&#x69;&#x73;&#64;&#108;&#x69;&#x6e;&#117;&#120;&#46;&#x6f;&#x72;&#46;&#105;&#100;</a> yang isinya kurang lebih seperti berikut :</p>
 
 <blockquote><p>Date: Thu, 9 Apr 2009 18:54:44 +0700
 From: redmouse internet cafe
-To: <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#x6c;&#x69;&#110;&#117;&#120;&#x2d;&#x61;&#x6b;&#116;&#x69;&#x76;&#x69;&#x73;&#64;&#x6c;&#105;&#x6e;&#x75;&#120;&#x2e;&#x6f;&#x72;&#46;&#105;&#x64;">&#108;&#x69;&#110;&#x75;&#x78;&#45;&#97;&#x6b;&#116;&#x69;&#x76;&#105;&#115;&#64;&#108;&#x69;&#x6e;&#x75;&#120;&#46;&#111;&#x72;&#x2e;&#105;&#x64;</a>
+To: <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x6c;&#x69;&#110;&#x75;&#120;&#x2d;&#97;&#x6b;&#x74;&#105;&#118;&#105;&#115;&#64;&#x6c;&#x69;&#110;&#117;&#x78;&#x2e;&#x6f;&#x72;&#x2e;&#105;&#x64;">&#108;&#105;&#x6e;&#x75;&#x78;&#45;&#97;&#107;&#116;&#105;&#118;&#x69;&#115;&#x40;&#108;&#105;&#x6e;&#117;&#120;&#x2e;&#111;&#x72;&#46;&#105;&#x64;</a>
 Subject: [linux-aktivis] Release terbaru Zencafe 2.0</p></blockquote>
 
 <p>Press Release AWALI :</p>
@@ -224,10 +327,10 @@ Romi Muharyono (AWALI)</p>
   </header>
 
 
-  <div class="entry-content"><p>Sore tadi waktu ngelihat milis tanya-jawab@linux.or.id, ada pertanyaan dari om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> tentang bagaimana sih cara membuat database, user dan password sekaligus berbasis pada user yang terdaftar pada mesin linux kita.  Nah dibawah ini pertanyaan yang dikirim oleh om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> ke milis <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#116;&#x61;&#110;&#121;&#97;&#45;&#106;&#x61;&#119;&#x61;&#x62;&#64;&#x6c;&#x69;&#x6e;&#117;&#x78;&#x2e;&#x6f;&#x72;&#x2e;&#105;&#x64;">&#116;&#97;&#x6e;&#x79;&#x61;&#45;&#106;&#x61;&#119;&#x61;&#x62;&#x40;&#x6c;&#x69;&#x6e;&#117;&#x78;&#x2e;&#x6f;&#x72;&#46;&#x69;&#100;</a></p>
+  <div class="entry-content"><p>Sore tadi waktu ngelihat milis tanya-jawab@linux.or.id, ada pertanyaan dari om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> tentang bagaimana sih cara membuat database, user dan password sekaligus berbasis pada user yang terdaftar pada mesin linux kita.  Nah dibawah ini pertanyaan yang dikirim oleh om <a href="http://ffaradyc.blogsome.com/">Dewa Ehem</a> ke milis <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#116;&#97;&#110;&#x79;&#97;&#x2d;&#x6a;&#97;&#119;&#97;&#x62;&#64;&#x6c;&#105;&#x6e;&#117;&#x78;&#x2e;&#x6f;&#114;&#46;&#x69;&#x64;">&#116;&#97;&#110;&#x79;&#97;&#x2d;&#106;&#97;&#x77;&#97;&#98;&#x40;&#x6c;&#x69;&#110;&#x75;&#x78;&#46;&#111;&#114;&#x2e;&#105;&#x64;</a></p>
 
 <blockquote><p>From: &ldquo;Funny Farady Coastera&rdquo;
-To: <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#58;&#x74;&#97;&#110;&#121;&#97;&#45;&#106;&#97;&#x77;&#x61;&#x62;&#64;&#108;&#105;&#x6e;&#x75;&#x78;&#46;&#111;&#114;&#x2e;&#x69;&#x64;">&#x74;&#x61;&#x6e;&#x79;&#x61;&#x2d;&#x6a;&#x61;&#119;&#97;&#98;&#64;&#108;&#105;&#110;&#117;&#x78;&#x2e;&#x6f;&#x72;&#x2e;&#x69;&#100;</a>
+To: <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x74;&#97;&#x6e;&#x79;&#97;&#45;&#106;&#97;&#119;&#x61;&#x62;&#64;&#108;&#105;&#x6e;&#117;&#x78;&#x2e;&#x6f;&#x72;&#x2e;&#105;&#x64;">&#116;&#97;&#110;&#121;&#97;&#45;&#106;&#x61;&#x77;&#97;&#98;&#64;&#108;&#105;&#110;&#x75;&#120;&#46;&#111;&#114;&#46;&#105;&#100;</a>
 Date: Thu, 9 Apr 2009 16:35:55 +0700
 Subject: [tanya-jawab] mengatur privilege user mysql secara masal</p></blockquote>
 
@@ -368,51 +471,6 @@ drwxr-xr-x   3 root   bin       5 2008-11-20 07:35 yp
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/03/29/setting-vim-color-di-opensolaris-200811/">Setting VIM Color Di OpenSolaris 2008.11</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-03-29T01:56:33+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:56 am</span></time>
-        
-           | <a href="/2009/03/29/setting-vim-color-di-opensolaris-200811/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/03/29/setting-vim-color-di-opensolaris-200811/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Buat teman-teman yang seneng bermain di Terminal atau Console, pasti sudah tidak asing lagi kan ama yang namanya <a href="http://www.vim.org/">Vim</a> :) Yups, <a href="http://www.vim.org/">Vim</a> adalah text editor yang berjalan di mode teks sedangkan di mode GUI temen-teman bisa pakai yang namanya GVim.</p>
-
-<p>Nah yang paling saya sukai di <a href="http://www.vim.org/">Vim</a> yaitu syntax hightlighting-nya yang sangat bagus dan tiap-tiap file type beda-beda warna-nya :) :D (keren banget). Mungkin teman-teman juga sudah tahu kalau untuk meng-enable pewarnaan kita bisa pakai perintah <strong>:syntax on</strong> pada mode command di <a href="http://www.vim.org/">Vim</a>, tapi apa yang terjadi ketika saya mencoba memberikan perintah tersebut di <a href="http://www.vim.org/">Vim</a> yang berjalan di OpenSolaris ? Hasilnya adalah seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3393046556/"><img src="http://farm4.static.flickr.com/3560/3393046556_cfeba3b2f0.jpg" alt="SyntaxOn" /><br/>
-Tampilannya koq cuma bold aja yah ???</a></p>
-
-<p>dan ketika saya mencoba meng-enable line number dengan memberikan perintah <strong>:set nu</strong> hasilnya menjadi seperti ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3393046562/"><img src="http://farm4.static.flickr.com/3443/3393046562_431dfdb67f.jpg" alt="setnu" /><br/>
-Wah tambah parah, koq malah dikasih underline :( </a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/03/29/setting-vim-color-di-opensolaris-200811/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/47">&larr; Older</a>
@@ -445,6 +503,10 @@ Wah tambah parah, koq malah dikasih underline :( </a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -500,10 +562,6 @@ Wah tambah parah, koq malah dikasih underline :( </a></p>
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

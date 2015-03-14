@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Cuma pingin ngeramein klo Slackware 13.0 udah release, dan ini release note dari situs resminya :) ">
+  <meta name="description" content="Bagi teman-teman yang sudah sering sekali menggunakan MySQL sebagai database server-nya mungkin sudah tidak asing lagi dengan beberapa tips dan trik &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/08/31/mysql-tips-n-trik/">MySQL Tips N Trik</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-08-31T11:17:07+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2009</span></span> <span class='time'>11:17 am</span></time>
+        
+           | <a href="/2009/08/31/mysql-tips-n-trik/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/08/31/mysql-tips-n-trik/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Bagi teman-teman yang sudah sering sekali menggunakan <a href="http://www.mysql.com/">MySQL</a> sebagai database server-nya mungkin sudah tidak asing lagi dengan beberapa tips dan trik yang ada pada tulisan kali ini :) Tapi kenapa saya menulis ini, karena saya sendiri sering lupa dan membuat saya sering <strong>googling</strong> lagi untuk kasus yang sama :malu: Beberapa perintah atau tips dan trik yang sering membuat saya lupa yaitu :</p>
+
+<ul>
+<li>Mengganti Password Root di MySQL</li>
+<li>Mereset Password Root MySQL</li>
+<li>Melihat DataBase Engine yang Terinstall</li>
+<li>Backup Data dengan Menggunakan Perintah <code>mysqldump</code></li>
+<li>Restore Data Pada MySQL</li>
+<li>Backup Per Tabel Menggunakan Perintah <code>SELECT INTO OUTFILE</code></li>
+<li>Insert Data Menggunakan Perintah <code>LOAD DATA INFILE</code></li>
+<li>Melihat Struktur Tabel di MySQL</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/08/31/mysql-tips-n-trik/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -367,103 +416,6 @@ END
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/20/view-your-database-schema-with-openoffice-301/">View Your DataBase Schema With OpenOffice 3.0.1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-06-20T20:55:25+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>8:55 pm</span></time>
-        
-           | <a href="/2009/06/20/view-your-database-schema-with-openoffice-301/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/06/20/view-your-database-schema-with-openoffice-301/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hore.. OpenOffice sekarang sudah bisa menampilkan schema database loh, misalkan kita punya 3 tabel yaitu <strong>T_ARTIKEL, T_KOMENTAR</strong> dan <strong>T_ARTIKEL_T_KOMENTAR</strong> dengan struktur tabel seperti dibawah ini:</p>
-
-<pre><code>mysql&gt; show create table T_ARTIKEL;
-*************************** 1. row ***************************
-       Table: T_ARTIKEL
-Create Table: CREATE TABLE `T_ARTIKEL` (
-  `id` bigint(20) NOT NULL auto_increment,
-  `content` varchar(255) default NULL,
-  `mode` varchar(255) default NULL,
-  `publishDate` datetime default NULL,
-  `title` varchar(255) default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
-1 row in set (0.01 sec)
-
-ERROR:
-No query specified
-
-mysql&gt; show create table T_KOMENTAR;
-*************************** 1. row ***************************
-       Table: T_KOMENTAR
-Create Table: CREATE TABLE `T_KOMENTAR` (
-  `id` bigint(20) NOT NULL auto_increment,
-  `email` varchar(255) default NULL,
-  `komentar` varchar(255) default NULL,
-  `url` varchar(255) default NULL,
-  `username` varchar(255) default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
-1 row in set (0.66 sec)
-
-ERROR:
-No query specified
-
-mysql&gt; show create table T_ARTIKEL_T_KOMENTAR;
-*************************** 1. row ***************************
-       Table: T_ARTIKEL_T_KOMENTAR
-Create Table: CREATE TABLE `T_ARTIKEL_T_KOMENTAR` (
-  `T_ARTIKEL_id` bigint(20) NOT NULL,
-  `listKomentar_id` bigint(20) NOT NULL,
-  UNIQUE KEY `listKomentar_id` (`listKomentar_id`),
-  KEY `FK2BF571DCDAEA7AB0` (`listKomentar_id`),
-  KEY `FK2BF571DC8E399F31` (`T_ARTIKEL_id`),
-  CONSTRAINT `FK2BF571DC8E399F31` FOREIGN KEY (`T_ARTIKEL_id`) REFERENCES `T_ARTIKEL` (`id`),
-  CONSTRAINT `FK2BF571DCDAEA7AB0` FOREIGN KEY (`listKomentar_id`) REFERENCES `T_KOMENTAR` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
-1 row in set (0.47 sec)
-
-ERROR:
-No query specified
-
-mysql&gt;
-</code></pre>
-
-<p>Kalau tabel yang kita miliki cuma sedikit sih tidak begitu masalah, sekarang bagaimana kalau tabel kita lebih dari 10 ? Mau dilihat satu persatu dari terminal ? :D Nah untungnya sekarang kita bisa melihat schema database tersebut dari OpenOffice :) Sedangkan perlengkapan yang saya pakai disini adalah seperti berikut:
-- <a href="http://mysql.com">MySQL server versi 5.0.67</a>
-- <a href="http://openoffice.org/">OpenOffice 3.0.1</a></p>
-
-<p>Sedangkan langkah-langkah yang harus kita lakukan yaitu adalah sebagai berikut:
-1. Memasang MySQL JDBC Driver di OpenOffice
-2. Akses Database MySQL menggunakan OpenOffice</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/06/20/view-your-database-schema-with-openoffice-301/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/45">&larr; Older</a>
@@ -496,6 +448,10 @@ mysql&gt;
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -551,10 +507,6 @@ mysql&gt;
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>

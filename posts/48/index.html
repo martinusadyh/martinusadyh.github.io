@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Hii all, buat teman-teman yang ingin atau sedang mempelajari tentang NetBeans RCP sekarang jadi lebih mudah loch. Soalnya sekarang kita bisa belajar &hellip;">
+  <meta name="description" content="Fyuh akhirnya berhasil juga nih konfigurasi Lan Card di OpenSolaris 2008.11 pada Laptop Acer Aspire 5500Z :) sedangkan untuk wifi-nya masih belum &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,68 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/03/20/installasi-driver-bcm4401-opensolaris-200811-di-acer-aspire-5500z/">Installasi Driver BCM4401 OpenSolaris 2008.11 Di Acer Aspire 5500Z</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-03-20T04:00:29+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>4:00 am</span></time>
+        
+           | <a href="/2009/03/20/installasi-driver-bcm4401-opensolaris-200811-di-acer-aspire-5500z/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/03/20/installasi-driver-bcm4401-opensolaris-200811-di-acer-aspire-5500z/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Fyuh akhirnya berhasil juga nih konfigurasi Lan Card di OpenSolaris 2008.11 pada Laptop Acer Aspire 5500Z :) sedangkan untuk wifi-nya masih belum ketemu cara konfigurasinya :malu: (Apa wifinya ga enable gara-gara waktu boot saya pakai opsi <strong>acpi-user-options=0x8</strong> yach ?? Tapi gpp lah, yang penting dah bisa konek ke internet dulu :) )</p>
+
+<p>Nah karena yang masalah yang sedang saya hadapi adalah LanCard di laptop yang saya pakai tidak terdeteksi, maka cara paling gampang yaitu masuk ke Linux dan kemudian kita lihat dengan perintah <strong>lspci</strong> yang akan dengan baik hati memberi tahu device apa saja yang tertancap pada laptop yang saya pakai ini. Dan output dari perintah <strong>lspci</strong> di laptop yang saya pakai adalah sebagai berikut :</p>
+
+<pre><code>00:00.0 Host bridge: Intel Corporation Mobile 915GM/PM/GMS/910GML Express Processor to DRAM Controller (rev 04)
+00:02.0 VGA compatible controller: Intel Corporation Mobile 915GM/GMS/910GML Express Graphics Controller (rev 04)
+00:02.1 Display controller: Intel Corporation Mobile 915GM/GMS/910GML Express Graphics Controller (rev 04)
+00:1c.0 PCI bridge: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) PCI Express Port 1 (rev 04)
+00:1c.1 PCI bridge: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) PCI Express Port 2 (rev 04)
+00:1d.0 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #1 (rev 04)
+00:1d.1 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #2 (rev 04)
+00:1d.2 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #3 (rev 04)
+00:1d.3 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #4 (rev 04)
+00:1d.7 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB2 EHCI Controller (rev 04)
+00:1e.0 PCI bridge: Intel Corporation 82801 Mobile PCI Bridge (rev d4)
+00:1e.2 Multimedia audio controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) AC'97 Audio Controller (rev 04)
+00:1e.3 Modem: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) AC'97 Modem Controller (rev 04)
+00:1f.0 ISA bridge: Intel Corporation 82801FBM (ICH6M) LPC Interface Bridge (rev 04)
+00:1f.1 IDE interface: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) IDE Controller (rev 04)
+00:1f.3 SMBus: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) SMBus Controller (rev 04)
+05:01.0 Ethernet controller: Broadcom Corporation BCM4401-B0 100Base-TX (rev 02)
+05:02.0 Network controller: Intel Corporation PRO/Wireless 2200BG [Calexico2] Network Connection (rev 05)
+05:04.0 CardBus bridge: ENE Technology Inc CB1410 Cardbus Controller (rev 01)
+</code></pre>
+
+<p>Nah ketahuan tuh informasi tentang Lan Card yang dipakai di laptop saya, nah akhirnya iseng-iseng cari di google dengan keyword <strong>BCM4401-B0 100Base-TX open solaris</strong> dan menemukan beberapa petunjuk yang dapat dilihat <a href="http://homepage2.nifty.com/mrym3/taiyodo/eng/">disini</a> dan <a href="http://echelog.matzon.dk/logs/browse/opensolaris/1228258800">disana</a> :) Dari hasil <a href="http://echelog.matzon.dk/logs/browse/opensolaris/1228258800">chatting</a> yang saya baca diatas, kita tinggal mengikuti panduan manual yang terdapat pada driver bfe yang dapat didownload <a href="http://homepage2.nifty.com/mrym3/taiyodo/eng/">disini</a>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/20/installasi-driver-bcm4401-opensolaris-200811-di-acer-aspire-5500z/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -300,43 +362,6 @@ initrd      /boot/initrd.img-2.6.27-7-generic
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/10/02/the-poet-and-the-pendulum-nightwish/">The Poet and the Pendulum - Nightwish</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-10-02T21:02:55+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2008</span></span> <span class='time'>9:02 pm</span></time>
-        
-           | <a href="/2008/10/02/the-poet-and-the-pendulum-nightwish/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2008/10/02/the-poet-and-the-pendulum-nightwish/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wow cool barusan dapat konser Nightwish nih, termasuk konser terbagus yang pernah saya lihat nih :) Ga rugi klo ngeliatin nih konser, :)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2008/10/02/the-poet-and-the-pendulum-nightwish/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/49">&larr; Older</a>
@@ -369,6 +394,10 @@ initrd      /boot/initrd.img-2.6.27-7-generic
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/26/indahnya-setu-patok-dan-menantangnya-lereng-gunung-ciremai/">Indahnya Setu Patok Dan Menantangnya Lereng Gunung Ciremai</a>
@@ -424,10 +453,6 @@ initrd      /boot/initrd.img-2.6.27-7-generic
     
       <li class="post">
         <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/04/29/berburu-sunset-di-pantai-ranca-buaya-dan-pantai-santolo/">Berburu Sunset Di Pantai Ranca Buaya Dan Pantai Santolo</a>
       </li>
     
   </ul>
