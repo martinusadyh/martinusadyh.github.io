@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Akhirnya setelah lama tak &ldquo;tersentuh&rdquo; , akhirnya minggu kemarin dapat kesempatan juga untuk mulai &ldquo;ngoprek&rdquo; si Robot Ijo :) &hellip;">
+  <meta name="description" content="Sedang mencari solusi Paging di JTable ? Jika iya, pada posting kali ini kita akan mencoba membuat supaya JTable pada aplikasi kita mendukung &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/01/31/paging-on-jtable/">Paging on JTable</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-01-31T02:43:45+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2011</span></span> <span class='time'>2:43 am</span></time>
+        
+           | <a href="/2011/01/31/paging-on-jtable/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2011/01/31/paging-on-jtable/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sedang mencari solusi <strong>Paging di JTable</strong> ? Jika iya, pada posting kali ini kita akan mencoba membuat supaya <strong>JTable</strong> pada aplikasi kita mendukung <strong>pagination</strong> :D Niat awal sih sebenarnya ingin menjadikan <strong>Table Paging</strong> ini menjadi sebuah komponen yang tinggal <strong>&ldquo;drag and drop&rdquo;</strong> saja untuk menggunakan-nya, tapi apa daya sampai sekarang juga belum jadi-jadi komponen-nya :D</p>
+
+<p>Pembuatan <strong>Table Paging</strong> ini semuanya terinspirasi dari komponen javascript untuk jQuery bernama <a href="http://www.flexigrid.info/">Flexigrid</a> yang tampilan-nya kurang lebih seperti gambar dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='http://farm6.static.flickr.com/5052/5400874631_7bfb733fcf.jpg' width='' height='' title='Tampilan Paging Flexigrid'><span class='caption-text'>Tampilan Paging Flexigrid</span></span></p>
+
+<p>Sedangkan tampilan <strong>JTable</strong> yang akan kita buat kurang lebih seperti gambar dibawah ini :</p>
+
+<p><span class='caption-wrapper'><img class='caption' src='http://farm6.static.flickr.com/5171/5400874633_7c2390d82a.jpg' width='' height='' title='Tampilan Paging on JTable'><span class='caption-text'>Tampilan Paging on JTable</span></span></p>
+
+<p>Pada posting kali ini, kita akan coba meng-implementasikan <strong>Table Paging</strong> ini menggunakan <strong>JDBC</strong> dan <strong>Hibernate</strong>. Untuk yang tidak menggunakan <strong>JDBC</strong> maupun <strong>Hibernate</strong>, saya rasa juga tidak akan begitu kesulitan karena tinggal mengganti sintaks query-nya saja :D Dan database yang digunakan pada posting kali ini adalah MySQL :)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/01/31/paging-on-jtable/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -263,109 +310,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/11/09/tutorial-iso-8583-with-jpos/">Tutorial ISO 8583 With jPOS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-11-09T03:26:36+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>3:26 am</span></time>
-        
-           | <a href="/2010/11/09/tutorial-iso-8583-with-jpos/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/11/09/tutorial-iso-8583-with-jpos/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Fyuh&hellip; setelah lama <em>ngendon</em> di draft, akhirnya baru pagi ini tulisan pertama saya bisa di publish  :gembira:  :gembira: Konsep yang saya bawa pada tulisan di blog ini adalah model semi DockBook + ada fasilitas untuk komentar bagi pembaca :D Nah bagi yang penasaran apa sih daftar isinya ? Berikut ini adalah daftar isi dari tulisan pertama saya yang berjudul <strong>Berkenalan dengan ISO8583 Menggunakan Java</strong> :</p>
-
-<ol>
-<li><p> Tentang Buku Ini</p>
-
-<ol>
-<li><p>Latar Belakang Pembaca</p></li>
-<li><p>Aturan Penulisan</p></li>
-</ol>
-</li>
-<li><p> Pendahuluan</p>
-
-<ol>
-<li><p>Apa Itu ISO 8583</p></li>
-<li><p>Tipe Message ISO 8583</p></li>
-</ol>
-</li>
-<li><p> Message Type Indicator</p>
-
-<ol>
-<li><p>Versi ISO 8583</p></li>
-<li><p>Message Class</p></li>
-<li><p>Message Function</p></li>
-<li><p>Message Origin</p></li>
-<li><p>Contoh Message Type Indicator</p></li>
-</ol>
-</li>
-<li><p> Bitmap</p>
-
-<ol>
-<li>Cara Menghitung Bitmap</li>
-</ol>
-</li>
-<li><p> Data Element</p>
-
-<ol>
-<li><p>Data Element Standart ISO 8583</p></li>
-<li><p>Contoh Menyusun Message Lengkap ISO 8583</p></li>
-</ol>
-</li>
-<li><p> Implementasi Menggunakan Java</p>
-
-<ol>
-<li><p>Pembuatan Spesifikasi Message Network Management</p></li>
-<li><p>Pembuatan Aplikasi Server</p></li>
-<li><p>Pembuatan Aplikasi Client</p></li>
-<li><p>Testing</p></li>
-</ol>
-</li>
-<li><p> Pengenalan jPOS</p>
-
-<ol>
-<li><p>ISOPackager</p></li>
-<li><p>ISOChannel</p></li>
-<li><p>ISOServer dan ISOMUX</p></li>
-<li><p>ISOMsg</p></li>
-</ol>
-</li>
-<li><p> Implementasi Menggunakan jPOS</p>
-
-<ol>
-<li><p>Persiapan Project</p></li>
-<li><p>Pembuatan Aplikasi Server</p></li>
-<li><p>Pembuatan Aplikasi Client</p></li>
-</ol>
-</li>
-<li><p> Referensi</p></li>
-<li><p>. Penutup</p></li>
-</ol>
-
-
-<p>Sedangkan untuk tutorial-nya bisa teman-teman lihat pada halaman <a href="http://iso8583tutorial.blogspot.com/">ISO 8583 Tutorial</a> :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/19">&larr; Older</a>
@@ -398,6 +342,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
@@ -453,10 +401,6 @@
     
       <li class="post">
         <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
       </li>
     
   </ul>

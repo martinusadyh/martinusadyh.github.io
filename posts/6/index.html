@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Sudah lama saya tidak menulis hal-hal yang berkaitan dengan dunia TI, dan akhirnya setelah cukup lama beristirahat akhirnya malam ini saya mencoba &hellip;">
+  <meta name="description" content="Pernah merasa bahwa font yang digunakan oleh aplikasi MySQL Workbench kurang nikmat dipandang mata ? Pernah merasa ingin mengganti font yang &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/03/16/howto-change-default-editor-font-in-mysql-workbench/">Howto Change Default Editor Font in MySQL Workbench</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-03-16T20:57:54+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:57 pm</span></time>
+        
+           | <a href="/2013/03/16/howto-change-default-editor-font-in-mysql-workbench/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2013/03/16/howto-change-default-editor-font-in-mysql-workbench/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pernah merasa bahwa font yang digunakan oleh aplikasi <a href="http://dev.mysql.com/downloads/workbench/">MySQL Workbench</a> kurang nikmat dipandang mata ? Pernah merasa ingin mengganti font yang digunakan oleh <strong>MySQL Workbench</strong> melalui menu <strong>Edit > Preferences</strong> tapi masih saja tidak berubah  ? Jika iya, berarti kita mempunyai masalah yang sama :D Setelah kemarin iseng-iseng bertanya ke paman <a href="http://google.com">Google</a>, akhirnya saya menemukan juga bagaimana mengganti font untuk SQL Editor di <strong>MySQL Workbench</strong> :) Jika kita menggunakan linux, maka carilah file dengan nama <code>/home/namauser/.mysql/workbench</code> (catatan: <strong>namauser</strong> diganti dengan nama user anda) dan jika di Windows maka carilah file <code>C:\Users\User\AppData\Roaming\MySQL\Workbench\wb_options.xml</code> Jika sudah, sekarang carilah entri seperti dibawah ini :</p>
+
+<pre><code>&lt;value type="string" key="workbench.general.Editor:Font"&gt;Bitstream Vera Sans Mono 11&lt;/value&gt;
+</code></pre>
+
+<p>Gantilah entrian font dengan font yang anda inginkan, jika sudah tutup dan jalankan lagi <strong>MySQL Workbench</strong> maka kita akan mendapatkan hasil kurang lebih seperti gambar dibawah ini :)</p>
+
+<p><img class="center" src="/images/blog-images/DataBase/HowtoChangeDefaultEditorFontinMySQLWorkbench/TampilanEditordenganFontMonaco.png" title="Tampilan Editor dengan Font Monaco" ></p>
+
+<p>Nah dengan begini, jadi makin betah bukan berlama-lama menggunakan <strong>MySQL Workbench</strong> :)</p>
+
+<p><strong>Referensi:</strong></p>
+
+<ol>
+<li> <a href="http://starikovs.com/2011/02/20/change-font-mysql-workbench-editor/">Change Font MySQL Workbench</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -380,42 +428,6 @@ NUSANTARIDE
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/24/selamat-hari-natal-2012/">Selamat Hari Natal 2012</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-12-24T23:38:46+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:38 pm</span></time>
-        
-           | <a href="/2012/12/24/selamat-hari-natal-2012/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2012/12/24/selamat-hari-natal-2012/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>[caption id=&ldquo;attachment_2184&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;400&rdquo;]<a href="http://martinusadyh.web.id/gallery/?album=4&amp;gallery=3&amp;pid=290"><img src="http://martinusadyh.web.id/wp-content/uploads/2012/12/Selamat-Hari-Natal.jpg" alt="Selamat Hari Natal" /></a> Selamat Hari Natal[/caption]</p>
-
-<p>Hiiip&hellip;hiiip huray, malam ini adalah malam Natal  :senyum:  :senyum:   Dan pada kesempatan kali ini, saya sekeluarga (nyokap dan adik2 saya) mengucapkan <strong>&ldquo;Selamat Hari Natal&rdquo;</strong> kepada teman-teman yang merayakan-nya  :lovekiss:  :lovekiss:</p>
-
-<p>Semoga berkat Natal menyertai kita semua, Amin :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -448,6 +460,10 @@ NUSANTARIDE
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
@@ -503,10 +519,6 @@ NUSANTARIDE
     
       <li class="post">
         <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
       </li>
     
   </ul>

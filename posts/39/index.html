@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Kemarin habis baca-baca artikel tentang Top 10 Programming Fonts, akhir-nya jadi iseng-iseng deh cobain ganti font di editor-nya NetBeans IDE supaya &hellip;">
+  <meta name="description" content="Bingung bagaimana cara mendapatkan informasi dari BIOS (Basic Input/Ouput System) di Sistem Operasi GNU/Linux ? Jika iya, mungkin teman-teman perlu &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/12/01/getting-your-bios-vendor-information-in-gnulinux/">Getting Your BIOS Vendor Information in GNU/Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-12-01T14:01:08+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2009</span></span> <span class='time'>2:01 pm</span></time>
+        
+           | <a href="/2009/12/01/getting-your-bios-vendor-information-in-gnulinux/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/12/01/getting-your-bios-vendor-information-in-gnulinux/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Bingung bagaimana cara mendapatkan informasi dari <a href="">BIOS</a> (Basic Input/Ouput System) di Sistem Operasi GNU/Linux ? Jika iya, mungkin teman-teman perlu melihat lagi isi dari direktori <strong>/sys/class/dmi/id/</strong> yang didalam-nya terdapat beberapa file yang isinya kurang lebih seperti ini :</p>
+
+<pre><code>root@martinusadyh:[~]# ls /sys/class/dmi/id/
+bios_date     board_asset_tag  board_vendor       chassis_serial  chassis_version  product_name    product_version  uevent
+bios_vendor   board_name       board_version      chassis_type    modalias         product_serial  subsystem@
+bios_version  board_serial     chassis_asset_tag  chassis_vendor  power/           product_uuid    sys_vendor
+root@martinusadyh:[~]#
+</code></pre>
+
+<p>Nah sedangkan isi dari file-file tersebut kurang lebih isi-ya seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:[~]# cat /sys/class/dmi/id/product_uuid
+44454C4C-4800-104B-804D-B1C04F4C4B31
+root@martinusadyh:[~]# cat /sys/class/dmi/id/chassis_serial
+1HKMLK1
+root@martinusadyh:[~]# cat /sys/class/dmi/id/board_serial
+.1HKMLK1.CN1296197P0164.
+root@martinusadyh:[~]# cat /sys/class/dmi/id/board_name
+0186NX
+root@martinusadyh:[~]# cat /sys/class/dmi/id/sys_vendor
+Dell Inc.
+root@martinusadyh:[~]# cat /sys/class/dmi/id/bios_version
+A01
+root@martinusadyh:[~]#
+</code></pre>
+
+<p><strong>Note: Beda hardware harus-nya informasi yang ditampilkan juga berbeda. Jadi informasi diatas tergantung dari hardware yang teman-teman gunakan</strong></p>
+
+<p>Semoga sedikit informasi ini bisa berguna buat teman-teman :) Maklum saya juga baru tahu koq :D</p>
+
+<p><strong>Link-link terkait :</strong>
+- <a href="http://en.wikipedia.org/wiki/BIOS">Basic Input/Output System</a>
+- <a href="http://0pointer.de/blog">No More dmidecode</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -326,110 +390,6 @@ Plazma ERP Accordion Menu In Action</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/11/13/the-best-of-xandria/">The Best of Xandria</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-11-13T19:34:06+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>7:34 pm</span></time>
-        
-           | <a href="/2009/11/13/the-best-of-xandria/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/11/13/the-best-of-xandria/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Akhirnya saya menemukan lagi 1 group band dengan vokalis cewek :) yang membawa aliran <a href="http://en.wikipedia.org/wiki/Symphonic_metal">Symphonic Metal</a>. Mungkin buat teman-teman pecinta aliran <a href="http://en.wikipedia.org/wiki/Symphonic_metal">Symphonic Metal</a> pasti udah tahu donk group band <a href="http://en.wikipedia.org/wiki/Xandria">Xandria</a> ini :) Nah dari ke 5 album <a href="http://en.wikipedia.org/wiki/Xandria">Xandria</a> (yaitu <em><a href="http://en.wikipedia.org/wiki/Kill_the_Sun">Kill_the_Sun</a> , <a href="http://en.wikipedia.org/wiki/Ravenheart">Ravenheart</a>, <a href="http://en.wikipedia.org/wiki/India_(album">India</a>), <a href="http://en.wikipedia.org/wiki/Salom%C3%A9_-_The_Seventh_Veil">Salome<em>-</em>The_Seventh_Veil</a> dan <a href="http://en.wikipedia.org/wiki/Now_%26_Forever_-_Best_of_Xandria">Now and Forever</a></em>) yang menurut saya paling bagus (soalnya ini yang sering saya denger :D ) yaitu :</p>
-
-<h3>Sister Of The Light dari Album Salome The Seventh Veil</h3>
-
-<p>Yang saya seneng dari lagu ini adalah intronya :) Menurut saya hm.., asyik banget suasananya kek ada suara ketipung-ketipung-nya gitu :D (eh bener ga yah :P :)) ) , ini klo mau lyrics-nya sekalian :
-<strong>Lyrics:</strong>
-follow me through the night
-we are the sisters of the light</p>
-
-<p>Follow me through the night
-We are sisters of the light
-We are daughters of sin
-We are laughter in the wind
-Follow me through the night
-We are sisters of the light
-We are wild, we are free
-Through the darkness follow me!</p>
-
-<p>I am here to break the silence and
-I want you to be the voice of mine</p>
-
-<p>follow me follow me follow me now</p>
-
-<p>Follow me through the night
-We are sisters of the light
-We are daughters of sin
-We are laughter in the wind
-Follow me through the night
-We are sisters of the light
-We are wild, we are free
-Through the darkness follow me</p>
-
-<p>You alone, you can let time stand still and
-You create the missing element</p>
-
-<p>We&rsquo;re the fires of hell
-We&rsquo;re the deep rough sea
-We&rsquo;re the stormy air
-We are we
-We&rsquo;re the ashes of time
-And we are banshee
-Through the darkness, sisters,
-Follow me!</p>
-
-<p>follow me follow me follow me now</p>
-
-<p>Follow me through the night
-We are sisters of the light
-We are daughters of sin
-We are laughter in the wind
-Follow me through the night
-We are sisters of the light
-We are wild, we are free
-Through the darkness follow me</p>
-
-<p>sisters of the light
-sisters of the light</p>
-
-<p>Follow me through the night
-We are sisters of the light
-We are daughters of sin
-We are laughter in the wind
-Follow me through the night
-We are sisters of the light
-We are wild, we are free
-Through the darkness follow me</p>
-
-<p>we are sisters of the light</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/11/13/the-best-of-xandria/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/40">&larr; Older</a>
@@ -462,6 +422,10 @@ Through the darkness follow me</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
@@ -517,10 +481,6 @@ Through the darkness follow me</p>
     
       <li class="post">
         <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
       </li>
     
   </ul>

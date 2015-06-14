@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Hii all.. cuma ingin kasih info tentang perubahan tampilan di blog ini :) Malam minggu kemarin, saya mulai main-main lagi dengan blog. Dan hasil &hellip;">
+  <meta name="description" content="Kalau dulu kita sudah pernah install dan konfigurasi MySQL pada Slackware dan OpenSolaris, sekarang bagaimana jika kita install di distro CentOS ??? &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,113 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/02/24/installing-mysql-in-centos-5-4/">Installing MySQL in CentOS 5.4</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-02-24T03:14:22+07:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>3:14 am</span></time>
+        
+           | <a href="/2010/02/24/installing-mysql-in-centos-5-4/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/02/24/installing-mysql-in-centos-5-4/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kalau dulu kita sudah pernah install dan konfigurasi <a href="http://www.mysql.com/downloads/">MySQL</a> pada <a href="http://martinusadyh.web.id/2009/09/27/konfigurasi-mysql-di-slackware-130/">Slackware</a> dan <a href="http://martinusadyh.web.id/2009/03/28/installasi-dan-konfigurasi-mysql-di-opensolaris-200811/">OpenSolaris</a>, sekarang bagaimana jika kita install di distro <a href="http://centos.org/">CentOS</a> ??? Cara install-nya sih <strong>berbeda</strong> tapi untuk konfigurasi-nya sama saja. Karena <a href="http://martinusadyh.web.id/2010/02/17/step-by-step-installing-centos-54/">kemarin</a> kita sudah belajar untuk meng-install distro <a href="http://centos.org/">CentOS</a>, sekarang mari kita install dan konfigurasi <a href="http://www.mysql.com/downloads/">MySQL</a>-nya :)</p>
+
+<p>Langkah pertama yang harus dilakukan yaitu bukalah sebuah terminal kemudian ganti akses user anda menjadi <strong>super user</strong> atau <strong>root</strong> dengan mengetikkan perintah <strong>su -</strong> kemudian isikan password <strong>user root</strong> yang terdapat pada sistem anda. Jika sudah, sekarang mari kita install <a href="http://www.mysql.com/downloads/">MySQL</a> dengan menggunakan <strong>yum</strong> dengan cara seperti dibawah ini :
+[plain]
+[root@localhost ~]# yum install mysql-server
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * addons: ftp.oss.eznetsols.org
+ * base: ftp.oss.eznetsols.org
+ * extras: ftp.oss.eznetsols.org
+ * updates: ftp.oss.eznetsols.org
+Setting up Install Process
+Resolving Dependencies
+&ndash;> Running transaction check
+&mdash;> Package mysql-server.i386 0:5.0.77-4.el5_4.1 set to be updated
+&ndash;> Processing Dependency: mysql = 5.0.77-4.el5_4.1 for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient.so.15(libmysqlclient_15) for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient_r.so.15(libmysqlclient_15) for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient.so.15 for package: mysql-server
+&ndash;> Processing Dependency: libmysqlclient_r.so.15 for package: mysql-server
+&ndash;> Processing Dependency: perl-DBD-MySQL for package: mysql-server
+&ndash;> Running transaction check
+&mdash;> Package mysql.i386 0:5.0.77-4.el5_4.1 set to be updated
+&mdash;> Package perl-DBD-MySQL.i386 0:3.0007-2.el5 set to be updated
+&ndash;> Finished Dependency Resolution</p>
+
+<p>Dependencies Resolved</p>
+
+<hr />
+
+<h1> Package                   Arch            Version                      Repository          Size</h1>
+
+<p>Installing:
+ mysql-server              i386            5.0.77-4.el5_4.1             updates            9.8 M
+Installing for dependencies:
+ mysql                     i386            5.0.77-4.el5_4.1             updates            4.8 M
+ perl-DBD-MySQL            i386            3.0007-2.el5                 base               148 k</p>
+
+<h1>Transaction Summary</h1>
+
+<p>Install      3 Package(s)       <br/>
+Update       0 Package(s)       <br/>
+Remove       0 Package(s)</p>
+
+<p>Total download size: 15 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/3): perl-DBD-MySQL-3.0007-2.el5.i386.rpm                               | 148 kB     00:11   <br/>
+(2/3): mysql-5.0.77-4.el5_4.1.i386.rpm                                    | 4.8 MB     06:33</p>
+
+<h2>(3/3): mysql-server-5.0.77-4.el5_4.1.i386.rpm                             | 9.8 MB     06:21     </h2>
+
+<p>Total                                                             19 kB/s |  15 MB     13:17   <br/>
+Running rpm_check_debug
+Running Transaction Test
+Finished Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing     : mysql                                                                     1/3
+  Installing     : perl-DBD-MySQL                                                            2/3
+  Installing     : mysql-server                                                              3/3</p>
+
+<p>Installed:
+  mysql-server.i386 0:5.0.77-4.el5_4.1</p>
+
+<p>Dependency Installed:
+  mysql.i386 0:5.0.77-4.el5_4.1                perl-DBD-MySQL.i386 0:3.0007-2.el5</p>
+
+<p>Complete!
+[root@localhost ~]#
+[/plain]</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/02/24/installing-mysql-in-centos-5-4/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -306,38 +413,6 @@ Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/02/13/linux-monitoring-utility/">Linux Monitoring Utility</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-02-13T07:14:08+07:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>7:14 am</span></time>
-        
-           | <a href="/2010/02/13/linux-monitoring-utility/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/02/13/linux-monitoring-utility/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/37">&larr; Older</a>
@@ -370,6 +445,10 @@ Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
+      </li>
     
       <li class="post">
         <a href="/2015/01/30/pendakian-gunung-gede-2958-mdpl/">Pendakian Gunung Gede 2958 Mdpl</a>
@@ -425,10 +504,6 @@ Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
     
       <li class="post">
         <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/13/bermain-air-minggu-pagi-di-sungai-citarik/">Bermain Air Minggu Pagi Di Sungai Citarik</a>
       </li>
     
   </ul>

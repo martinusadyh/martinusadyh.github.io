@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Martinus Ady H. BloG]]></title>
   <link href="http://martinusadyh.web.id/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://martinusadyh.web.id/"/>
-  <updated>2015-03-15T04:25:34+07:00</updated>
+  <updated>2015-06-14T22:29:57+07:00</updated>
   <id>http://martinusadyh.web.id/</id>
   <author>
     <name><![CDATA[Martinus Ady H]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Openshot Simple Video Editor for Linux]]></title>
+    <link href="http://martinusadyh.web.id/2015/06/14/openshot-simple-video-editor-for-linux/"/>
+    <updated>2015-06-14T20:34:15+07:00</updated>
+    <id>http://martinusadyh.web.id/2015/06/14/openshot-simple-video-editor-for-linux</id>
+    <content type="html"><![CDATA[<p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-eLmh_VSnBEs/VX2FhRfS7MI/AAAAAAAADbk/g6zMy-mXJr8/s640/OpenShot.png">https://lh3.googleusercontent.com/-eLmh_VSnBEs/VX2FhRfS7MI/AAAAAAAADbk/g6zMy-mXJr8/s640/OpenShot.png</a>' width='' height='' title='Tampilan Openshot'><span class='caption-text'>Tampilan Openshot</span></span></p>
+
+<p>Sedang mencari aplikasi <em>video editor</em> yang mudah di Linux ? Jika iya, mungkin teman-teman bisa melirik aplikasi video editor <a href="http://www.openshot.org/">Openshot</a>. Dibanding aplikasi video editor sejenis di Linux, <em>OpenShot</em> ini termasuk aplikasi yang sederhana dan sangat mudah untuk digunakan. Tetapi jangan salah, meskipun dengan tampilan yang sederhana <em>OpenShot</em> ini mempunyai beberapa fitur yaitu :</p>
+
+<ul>
+<li>Support for many video, audio, and image formats (based on FFmpeg)</li>
+<li>GNOME integration (drag-and-drop support)</li>
+<li>Multiple tracks</li>
+<li>Clip resizing, trimming, snapping, and cutting</li>
+<li>Video transitions with real-time previews</li>
+<li>Compositing, image overlays, watermarks</li>
+<li>3D Animated Titles (by using Blender on the background)</li>
+<li>Title templates, title creation, sub-titles</li>
+<li>SVG friendly, to create and include titles and credits</li>
+<li>Digital video effects, including brightness, gamma, hue, greyscale, chroma key (bluescreen / greenscreen), and over 20 other video effects</li>
+<li>etc..etc..</li>
+</ul>
+
+
+<p>Selain fitur-fitur diatas, <em>OpenShot</em> juga mendukung export ke beberapa situs <em>video sharing</em> seperti <a href="https://www.youtube.com/">Youtube</a>, <a href="https://vimeo.com/">Vimeo</a> dan lain-lain. Jadi tunggu apalagi untuk segera mencoba <em>OpenShot</em> ? ;)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Send Email From Shell Script]]></title>
@@ -79,12 +107,12 @@ martinusadyh@martinusadyh:[~]$
 
 <h1>masukkan alamat email yang digunakan sebagai sender disini</h1>
 
-<p>root=<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#120;&#x78;&#x78;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#120;&#x78;&#x78;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>root=<a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#120;&#120;&#x78;&#64;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#120;&#x78;&#x78;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></p>
 
 <p>mailhub=smtp.gmail.com:465
 rewriteDomain=gmail.com</p>
 
-<h1>masukkan username email disini, klo emailnya <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#x78;&#x78;&#x78;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#x78;&#120;&#120;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#x6d;</a> maka isi kolom</h1>
+<h1>masukkan username email disini, klo emailnya <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x78;&#x78;&#120;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#x78;&#x78;&#x78;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#111;&#109;</a> maka isi kolom</h1>
 
 <h1>dibawah ini dengan</h1>
 
@@ -390,7 +418,7 @@ to do that add the following line to &lsquo;/home/martinusadyh/.bash_profile&rsq
 </ul>
 
 
-<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x77;&#97;&#121;&#110;&#x65;&#101;&#115;&#x65;&#103;&#x75;&#105;&#110;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#119;&#97;&#121;&#x6e;&#x65;&#x65;&#x73;&#x65;&#103;&#117;&#105;&#110;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>, Michal Papis <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x6d;&#112;&#97;&#x70;&#105;&#x73;&#x40;&#103;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;">&#x6d;&#112;&#97;&#112;&#105;&#x73;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
+<p>rvm 1.25.29 (stable) by Wayne E. Seguin <a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#119;&#x61;&#121;&#110;&#101;&#101;&#115;&#x65;&#x67;&#117;&#105;&#110;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;">&#119;&#x61;&#x79;&#x6e;&#101;&#x65;&#x73;&#x65;&#103;&#117;&#105;&#110;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;</a>, Michal Papis <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#109;&#x70;&#97;&#112;&#105;&#x73;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#x6d;&#112;&#x61;&#x70;&#x69;&#x73;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a> [<a href="https://rvm.io/">https://rvm.io/</a>]
 Searching for binary rubies, this might take some time.
 No binary rubies available for: mint/17/x86_64/ruby-2.1.2.
 Continuing with compilation. Please read &lsquo;rvm help mount&rsquo; to get more information on binary rubies.
