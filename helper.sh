@@ -1,7 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 # Helper script untuk posting pake octopress, karena ga hafal klo harus
 # jalanin manual :'( plus males klo harus nulis satu2 ~_~'
+
+rvm use 1.9.3
 
 judul=""
 file=""
@@ -69,8 +71,6 @@ quit() {
 }
 
 main() {
-    # rvm use 1.9.3
-
     echo "[ Octopress Helper ] ------------------------------------------------"
     echo "1) New Post"
     echo "2) Preview"
