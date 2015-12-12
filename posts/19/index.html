@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Fyuh&hellip; setelah lama ngendon di draft, akhirnya baru pagi ini tulisan pertama saya bisa di publish :gembira: :gembira: Konsep yang saya bawa &hellip;">
+  <meta name="description" content="Akhirnya kesampaian juga bermain-main dengan Database Oracle di Slackware 13.0 :) dan ternyata proses installasi Oracle tidak semudah yang &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/">Step by Step Installing Oracle 11g Release 2 on Slackware 13.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-12-08T05:07:55+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>5:07 am</span></time>
+        
+           | <a href="/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Akhirnya kesampaian juga bermain-main dengan Database <a href="http://www.oracle.com/index.html">Oracle</a> di Slackware 13.0 :) dan ternyata proses installasi Oracle tidak semudah yang dibayangkan meskipun saya sudah mengikuti tulisan <a href="http://fxbudiar.blogspot.com/2009/04/menginstall-oracle-10g-di-slackware.html">Menginstall Oracle 10g di Slackware</a> dari mas Budi Ariyanto :( Ok sekarang mari kita mulai saja tahapan-tahapan proses instalasi Oracle pada Slackware 13.0 :)</p>
+
+<p>Sebelum melakukan proses installasi, buatlah 3 <strong>group</strong> dahulu untuk Oracle yaitu <strong>oinstall,dba</strong> dan <strong>oper</strong> dengan cara seperti dibawah ini :</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@martinusadyh:[~]# /usr/sbin/groupadd oinstall
+</span><span class='line'>root@martinusadyh:[~]# /usr/sbin/groupadd -g 502 dba
+</span><span class='line'>root@martinusadyh:[~]# /usr/sbin/groupadd -g 505 oper</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Setelah membuat 3 <strong>group</strong> tersebut, sekarang buatlah user <strong>oracle</strong> yang mempunyai primary group <strong>oinstall</strong> dan secondary group-nya <strong>dba</strong> dan <strong>oper</strong> dengan mengetikkan perintah seperti dibawah ini :</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/12/08/step-by-step-installing-oracle-11g-release-2-on-slackware-13-0/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -357,64 +406,6 @@ CREATE TABLE jkas (
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/10/19/java-desktop-training-paket-pahe/">Java Desktop Training Paket PAHE</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-10-19T21:33:07+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>9:33 pm</span></time>
-        
-           | <a href="/2010/10/19/java-desktop-training-paket-pahe/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/10/19/java-desktop-training-paket-pahe/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://artivisi.com">ARTIVISI INTERMEDIA</a> akan mengadakan training <strong>JAVA DESKTOP BASIC</strong> (Sabtu/Minggu) pada tanggal 23 dan 24 Oktober 2010 mendatang, info lebih lanjut silahkan menghubungi :
-- Ira &lt; <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#x69;&#x72;&#97;&#64;&#97;&#x72;&#x74;&#x69;&#118;&#x69;&#x73;&#105;&#46;&#99;&#x6f;&#x6d;">&#105;&#x72;&#x61;&#x40;&#x61;&#x72;&#x74;&#x69;&#x76;&#x69;&#x73;&#105;&#x2e;&#99;&#111;&#109;</a> >
-- Meliawati &lt; <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x6d;&#101;&#108;&#105;&#64;&#97;&#x72;&#x74;&#105;&#x76;&#105;&#x73;&#105;&#x2e;&#99;&#x6f;&#109;">&#109;&#101;&#x6c;&#x69;&#64;&#x61;&#x72;&#116;&#x69;&#x76;&#x69;&#x73;&#105;&#46;&#99;&#x6f;&#109;</a> ></p>
-
-<p><strong>JAVA DESKTOP BASIC </strong>
-Tanggal : 23 dan 24 Oktober 2010
-Waktu : 09.00 s/d 17.00 WIB
-Trainer : Endy Muhardin, Martinus Ady H, Adi Sulistiono dan Jimmy Rengga
-Biaya : Rp 350.000,-</p>
-
-<p><strong>Hari Ke 1 - Fundamental :  </strong>
-1. Packages dan Anatomi Aplikasi<br/>
-2. Konfigurasi MySQL<br/>
-3. Konsep IoC Pada SpringFramework<br/>
-4. Autowiring<br/>
-5. Hibernate Mapping<br/>
-6. Hibernate Common Problem</p>
-
-<p><strong>Hari Ke 2 - Java Desktop  :</strong>
-1. JFC Fundamental <br/>
-2. Swing Development Using Netbeans 6 <br/>
-3. Mengenal Model Pada Swing (TableModel, ListModel, TreeModel) <br/>
-4. Pengenalan iReport dan Desain Report<br/>
-5. JasperReport Datasource<br/>
-6. Integrasi JasperReport dengan Swing</p>
-
-<p>Hm&hellip;. bagaimana all ?? :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/20">&larr; Older</a>
@@ -447,6 +438,10 @@ Biaya : Rp 350.000,-</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
+      </li>
     
       <li class="post">
         <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
@@ -502,10 +497,6 @@ Biaya : Rp 350.000,-</p>
     
       <li class="post">
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
       </li>
     
   </ul>

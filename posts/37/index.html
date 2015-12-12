@@ -10,8 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Tulisan kali ini murni untuk dokumentasi pribadi saya dan diperuntukkan bagi teman-teman yang masih baru banget di dunia GNU/Linux dan ingin bermain- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +88,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/02/18/step-by-step-installing-centos-54/">Step by Step Installing CentOS 5.4</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-02-18T02:54:26+07:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>2:54 am</span></time>
+        
+           | <a href="/2010/02/18/step-by-step-installing-centos-54/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/02/18/step-by-step-installing-centos-54/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tulisan kali ini murni untuk dokumentasi pribadi saya dan diperuntukkan bagi teman-teman yang masih baru banget di dunia GNU/Linux dan ingin bermain-main dengan distro <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a>. Buat teman-teman yang belum tahu apa sih distro <a href="http://centos.org/">CentOS</a> ini, distro ini adalah merupakan versi <strong>Community</strong> dari distro komersial yaitu <a href="http://www.redhat.com/">Red Hat Enterprise Linux (RHEL)</a> nah jadi buat teman-teman yang ingin merasakan versi <a href="http://www.redhat.com/">Red Hat Enterprise Linux (RHEL)</a> tapi belum punya pikiran untuk beli <strong>subscription</strong>-nya mungkin distro ini cocok untuk anda. Sedangkan pada tulisan kali ini, versi <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> yang digunakan yaitu versi <strong>5.4</strong> untuk mesin <strong>32 bit</strong> dan dicoba di <a href="http://www.virtualbox.org/">VirtualBox</a> (harusnya sih bisa langsung di implement di <strong>real</strong> komputer):)</p>
+
+<p>Ok sekarang mari kita mulai permainan-nya :) Langkah awal yang pasti yaitu masukkan <strong>cd installer</strong>  <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> ke dalam <strong>cd/dvd rom</strong> kemudian aturlah <a href="http://en.wikipedia.org/wiki/BIOS">BIOS</a> di komputer anda agar dapat <strong>boot</strong> melalui <strong>cd/dvd rom</strong>. Setelah semua-nya selesai, sekarang tunggu-lah beberapa saat hingga tampilan installer <a href="http://centos.org/">CentOS (The Community Enterprise Operating System)</a> tampil seperti gambar dibawah ini:</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4365803644/"><img src="http://farm5.static.flickr.com/4004/4365803644_9d48265f49.jpg" alt="Screenshot" /><br/>
+Tampilan Awal Installer CentOS</a></p>
+
+<p>Setelah terlihat tampilan seperti diatas, tekan saja tombol <strong>ENTER</strong> untuk memulai proses installasi. Setelah kita menekan tombol <strong>ENTER</strong> maka pada layar selanjutnya adalah proses pengecekan <strong>cd installer</strong>. Skip saja bagian ini dengan memilih tombol <strong>Skip</strong> seperti gambar dibawah ini :</p>
+
+<p><a href="http://www.flickr.com/photos/10243554@N02/4365803646/"><img src="http://farm3.static.flickr.com/2708/4365803646_f88bc45cf6.jpg" alt="Screenshot-5" /><br/>
+Tekan Tombol Skip Untuk Pengecekan CD Installer</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/02/18/step-by-step-installing-centos-54/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -304,98 +350,6 @@ martinus@martinusadyh:[~/gambas]$
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/12/25/building-nsis-on-slackware-130/">Building NSIS on Slackware 13.0</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-12-25T19:11:29+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>7:11 pm</span></time>
-        
-           | <a href="/2009/12/25/building-nsis-on-slackware-130/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/12/25/building-nsis-on-slackware-130/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ingin membuat sebuah installer untuk aplikasi yang jalan di Windows (ber-ekstensi exe) tapi dari GNU/Linux atau <em>Nix ? Jika jawaban-nya adalah iya, maka aplikasi NSIS ini mungkin cocok untuk teman-teman. Nah apa sih NSIS (Nullsoft Scriptable Install System) ini sebenar-nya ? NSIS (Nullsoft Scriptable Install System)  ini adalah sebuah <strong><em>installer creator</em></strong> opensource yang ditujukan untuk aplikasi yang berjalan di Sistem Operasi Microsoft Windows. Karena NSIS (Nullsoft Scriptable Install System) ini dapat di install pada sistem yang mengikuti standart <a href="http://en.wikipedia.org/wiki/POSIX">POSIX</a>, maka harusnya NSIS (Nullsoft Scriptable Install System) dapat digunakan secara mulus pada Sistem Operasi GNU/Linux dan </em>Nix family seperti OpenSolaris dan lain-nya.</p>
-
-<p>Pada tulisan kali ini, kita akan mencoba menginstall NSIS (Nullsoft Scriptable Install System) pada Sistem Operasi GNU/Linux Slackware dan seluruh langkah yang dijelaskan pada tulisan ini mengacu ke struktur direktori standart milik Slackware (Untuk distribusi GNU/Linux yang lain, harusnya bisa menerapkan langkah-langkah pada tulisan ini tanpa ada masalah asalkan kebutuhan paket yang diminta oleh NSIS sudah terinstall sebelumnya). Agar proses kompilasi NSIS (Nullsoft Scriptable Install System) ini berjalan dengan sukses, maka pastikan dahulu kebutuhan dibawah ini terdapat pada sistem anda :
-- Python 2.6.2
-- Scons 1.2.0
-<strong>Note: Jika versi di sistem anda lebih tinggi, harus-nya tidak akan ada masalah dan kebutuhan diatas adalah kebutuhan yang diperlukan di GNU/Linux Slackware 13.0 :) </strong></p>
-
-<p>Pada default installasi Slackware 13.0 tidak terdapat packages <a href="http://www.scons.org/">Scons</a>, jadi sekarang mari kita install dulu packages <a href="http://www.scons.org/">Scons</a>-nya yang dapat di download dari situs SlackBuild.org. Sekarang bukalah halaman Scons yang terdapat pada situs SlackBuild yang bisa dilihat <a href="http://slackbuilds.org/repository/13.0/development/scons/">di sini</a> kemudian download seluruh file SlackBuild yang diperlukan seperti dibawah ini :</p>
-
-<pre><code>martinus@martinusadyh:[~/SLACKBUILDS/scons]$ wget -c http://slackbuilds.org/slackbuilds/13.0/development/scons/scons.SlackBuild &amp;&amp; wget -c http://slackbuilds.org/slackbuilds/13.0/development/scons/scons.info &amp;&amp; wget -c http://slackbuilds.org/slackbuilds/13.0/development/scons/slack-desc &amp;&amp; wget -c http://slackbuilds.org/slackbuilds/13.0/development/scons/README
---2009-12-15 19:07:58--  http://slackbuilds.org/slackbuilds/13.0/development/scons/scons.SlackBuild
-Resolving slackbuilds.org... 208.67.159.181
-Connecting to slackbuilds.org|208.67.159.181|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 1046 (1.0K) [text/plain]
-Saving to: `scons.SlackBuild'
-
-100%[==============================================================================================================================&gt;] 1,046       --.-K/s   in 0s
-
-2009-12-15 19:08:00 (46.8 MB/s) - `scons.SlackBuild' saved [1046/1046]
-
---2009-12-15 19:08:00--  http://slackbuilds.org/slackbuilds/13.0/development/scons/scons.info
-Resolving slackbuilds.org... 208.67.159.181
-Connecting to slackbuilds.org|208.67.159.181|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 279 [text/plain]
-Saving to: `scons.info'
-
-100%[==============================================================================================================================&gt;] 279         --.-K/s   in 0s
-
-2009-12-15 19:08:01 (16.8 MB/s) - `scons.info' saved [279/279]
-
---2009-12-15 19:08:01--  http://slackbuilds.org/slackbuilds/13.0/development/scons/slack-desc
-Resolving slackbuilds.org... 208.67.159.181
-Connecting to slackbuilds.org|208.67.159.181|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 932 [text/plain]
-Saving to: `slack-desc'
-
-100%[==============================================================================================================================&gt;] 932         --.-K/s   in 0s
-
-2009-12-15 19:08:03 (46.3 MB/s) - `slack-desc' saved [932/932]
-
---2009-12-15 19:08:03--  http://slackbuilds.org/slackbuilds/13.0/development/scons/README
-Resolving slackbuilds.org... 208.67.159.181
-Connecting to slackbuilds.org|208.67.159.181|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 458 [text/plain]
-Saving to: `README'
-
-100%[==============================================================================================================================&gt;] 458         --.-K/s   in 0s
-
-2009-12-15 19:08:04 (25.8 MB/s) - `README' saved [458/458]
-
-martinus@martinusadyh:[~/SLACKBUILDS/scons]$
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/12/25/building-nsis-on-slackware-130/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/38">&larr; Older</a>
@@ -428,6 +382,10 @@ martinus@martinusadyh:[~/SLACKBUILDS/scons]$
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
+      </li>
     
       <li class="post">
         <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
@@ -483,10 +441,6 @@ martinus@martinusadyh:[~/SLACKBUILDS/scons]$
     
       <li class="post">
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
       </li>
     
   </ul>

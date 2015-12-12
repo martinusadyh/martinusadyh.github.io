@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Ihui&hellip; akhirnya GNOME SlackBuild mengabarkan bahwa GNOME 2.28.0 sudah tersedia untuk Slackware 13.0 meskipun masih versi current :) Dan ini &hellip;">
+  <meta name="description" content="Hari ini saya ada kebutuhan untuk membuat sebuah database diagram (ER) untuk tujuan dokumentasi pribadi (maklum klo cuma ditulis dikertas, lama-lama &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/10/08/installing-mysql-workbench-di-slackware-130/">Installing MySQL WorkBench Di Slackware 13.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-10-08T01:38:32+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:38 am</span></time>
+        
+           | <a href="/2009/10/08/installing-mysql-workbench-di-slackware-130/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/10/08/installing-mysql-workbench-di-slackware-130/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hari ini saya ada kebutuhan untuk membuat sebuah database diagram (<a href="http://en.wikipedia.org/wiki/Entity-relationship_model">ER</a>) untuk tujuan dokumentasi pribadi (maklum klo cuma ditulis dikertas, lama-lama kertas-nya sobek-sobek :( ) Karena database yang biasa saya gunakan adalah <a href="http://www.mysql.com/?bydis_dis_index=1">MySQL</a> maka pilihan saya jatuh pada <a href="http://dev.mysql.com/downloads/workbench/5.1.html">MySQL WorkBench</a> :) Mungkin untuk pengguna distro yang mempunyai package manajemen seperti DEB dan RPM tidak begitu kesulitan, karena MySQL sudah menyediakan package binary yang sudah siap untuk di install :) Sedangkan untuk pengguna distro lain seperti Slackware, mari kita bikin sendiri binary package-nya via kompilasi dari source again :D :)</p>
+
+<p>Nah untung-nya lagi saya menemukan link <a href="http://www.mail-archive.com/slackbuilds-users@slackbuilds.org/msg02040.html">ini.</a> yang menjelaskan bagaimana cara meng-install <a href="http://dev.mysql.com/downloads/workbench/5.1.html">MySQL WorkBench</a>. Dan dibawah ini cuplikan bagaimana cara installasi-nya di <a href="http://slackware.com/">Slackware 13.0</a> :</p>
+
+<blockquote><p>has anyone, or could someone made a build script for mysql-workbench?</p></blockquote>
+
+<p>I did one, you can find it here:
+<a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/</a></p>
+
+<p>But as Niels Horn has mentioned, &ldquo;it has too many dependencies&hellip; &rdquo;
+from gnome, so i installed first gnome from <a href="http://gnomeslackbuild.org">http://gnomeslackbuild.org</a>
+in slackware-13.0, then lua from SBo&rsquo;s repository and finally i
+builded mysql-workbench using my SlackBuild. But seriously&hellip; gnome
+still sucks for me. I&rsquo;m gonna reinstall slackware and then try to get
+mysql-workbench but without all the gnome thing.</p>
+
+<p>-hba</p>
+
+<p><strong>Posting asli ini bisa dibaca <a href="http://www.mail-archive.com/slackbuilds-users@slackbuilds.org/msg02100.html">disini</a></strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/10/08/installing-mysql-workbench-di-slackware-130/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -299,65 +354,6 @@ root@martinusadyh:~#
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/">GNOMESlackBuild 2.26.3 Stable Released for Slackware and Slackware64</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-09-27T22:30:58+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>10:30 pm</span></time>
-        
-           | <a href="/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/09/27/gnomeslackbuild-2263-stable-released-for-slackware-and-slackware64/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Untuk teman-teman sesama pecinta <a href="http://www.gnome.org/">GNOME</a> untuk distribusi <a href="http://slackware.com/">Slackware</a>, akhirnya team <a href="http://gnomeslackbuild.org/">GNOME SlackBuild (GSB)</a> meluncurkan <a href="http://www.gnome.org/">GNOME  2.26.3</a> versi <strong>Stable</strong> untuk <a href="http://slackware.com/">Slackware 13.0</a> dan <a href="http://slackware.com/">Slackware64 13.0</a> . Pada rilis ini ada beberapa perubahan yang dilakukan dari rilis <a href="http://www.gnome.org/">GNOME  2.26.3</a> yang di tujukan untuk distribusi <a href="http://slackware.com/">Slackware 12.2</a>.</p>
-
-<p>Dan dibawah ini adalah pemberitahuan resmi dari situs <a href="http://gnomeslackbuild.org/">GNOME SlackBuild</a> menyangkut rilis kali ini :</p>
-
-<blockquote><p><strong>GNOMESlackBuild 2.26.3 Stable Released for Slackware and Slackware64.</strong></p></blockquote>
-
-<p>We&rsquo;ve brought our GNOME SlackBuild 2.26.3 to the latest Slackware and
-Slackware64, and it&rsquo;s working solidly.  There have been some updates over the
-previous 2.26.3 release for Slackware 12.2, so please make sure to read the
-documentation, particularly our SLACKWARE-13.0_REPLACED_PACKAGES.TXT,
-CHANGES_AND_HINTS.TXT, and the INSTALL.TXT  For those of you upgrading from
-gsb-current, please make sure to update your SOURCE lines in your slapt-getrc to
-point to the new directories.  Check out our download
-page for more information.</p>
-
-<p>The release will be filtering out to a bunch of our new mirrors, which have
-recently been added, so please check the MIRRORS.TXT to find a local copy near
-you.  You may need to wait a bit before all the mirrors are up to date.</p>
-
-<p>Many thanks to all those who helped us out by submitting suggestions or
-reporting bugs! Now onto GNOME 2.28.0!</p>
-
-<p>Sayang-nya distribusi <a href="http://gnomeslackbuild.org/">GNOME SlackBuild (GSB)</a> masih belum menyertakan file <strong>ISO</strong> yang bisa kita download dan install secara manual dan tanpa koneksi internet  :(</p>
-
-<p>Tapi ga ada salah-nya mencoba kan ?? Happy Slacking ;)</p>
-
-<p><strong>Link-link terkait : </strong>
-- <a href="http://gnomeslackbuild.org/">Situs Resmi GNOMESlackBuild</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/43">&larr; Older</a>
@@ -390,6 +386,10 @@ reporting bugs! Now onto GNOME 2.28.0!</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
+      </li>
     
       <li class="post">
         <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
@@ -445,10 +445,6 @@ reporting bugs! Now onto GNOME 2.28.0!</p>
     
       <li class="post">
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
       </li>
     
   </ul>

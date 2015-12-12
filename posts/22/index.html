@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Beberapa hari terakhir ini, kita di ArtiVisi melakukan migrasi repository dari Subversion ke Git :) (cuma masih belum semua, melainkan hanya beberapa &hellip;">
+  <meta name="description" content="Waw.. bulan-bulan ini merupakan bulan yang bisa dikatakan sangat menyedihkan untuk perkembangan dunia OpenSource :( , setelah kasus Oracle vs Google &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/08/14/opensolaris-project-is-dead/">OpenSolaris Project Is Dead ???</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-08-14T22:31:10+07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2010</span></span> <span class='time'>10:31 pm</span></time>
+        
+           | <a href="/2010/08/14/opensolaris-project-is-dead/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2010/08/14/opensolaris-project-is-dead/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Waw.. bulan-bulan ini merupakan bulan yang bisa dikatakan sangat menyedihkan untuk perkembangan dunia OpenSource :( , setelah kasus <a href="http://news.cnet.com/8301-30684_3-20013546-265.html">Oracle vs Google</a> tentang Android, sekarang timbul <strong>memo</strong> pada milis <a href="mailto:opensolaris-discuss@opensolaris.org">osol-discuss</a> yang menyatakan bahwa project <strong>OpenSolaris</strong> tidak akan dikembangkan lagi oleh Oracle dan diganti dengan Solaris 11 Express :( Setelah berbulan-bulan Oracle sunyi-senyap tanpa kabar tentang Project OpenSolaris akhirnya setelah timbul <strong>memo</strong> dibawah ini jelas sudah nasib OpenSolaris kedepan-nya :( , Dan dibawah ini adalah detail dari <strong>memo</strong> yang di posting ke milis <a href="mailto:opensolaris-discuss@opensolaris.org">osol-discuss</a> dengan Subject <strong>OpenSolaris cancelled, to be replaced with Solaris 11 Express</strong> :</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/08/14/opensolaris-project-is-dead/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -273,77 +310,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/06/23/slackbuild-script-for-mysql-workbench/">SlackBuild Script for MySQL WorkBench</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2010-06-23T23:58:54+07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2010</span></span> <span class='time'>11:58 pm</span></time>
-        
-           | <a href="/2010/06/23/slackbuild-script-for-mysql-workbench/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2010/06/23/slackbuild-script-for-mysql-workbench/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Dikarenakan ada beberapa permintaan SlackBuild Script untuk MySQL Workbench dan ternyata situs aslinya <a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">MySQL Workbench SlackBuild Script</a> menghilang tanpa jejak :( Buat teman-teman yang ingin melakukan kompilasi dan installasi MySQL Workbench untuk Slackware 13.1, silahkan coba gunakan SlackBuild script MySQL Workbench dibawah ini yang telah saya gunakan di Slackware 13.0 dan berjalan tanpa ada masalah.</p>
-
-<p><strong>Note: Script-script dibawah ini murni saya ambil dari situs <a href="http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/">http://hba.ath.cx/projects/slackbuilds/testing/mysql-workbench-oss-5.1.18/</a> dan saya re-posting disini karena ketika tulisan ini dibuat, situs aslinya sedang tidak bisa diakses.</strong></p>
-
-<p>Copy dan paste kode dibawah ini, kemudian simpan dengan nama <strong>README</strong></p>
-
-<pre><code>MySQL Workbench (A visual database design tool developed by MySQL)
-
-MySQL Workbench is a cross-platform, visual database design tool
-developed by MySQL. It is the highly anticipated successor
-application of the DBDesigner4 project. 
-
-This package is the Community OSS Edition.
-</code></pre>
-
-<p><strong>README File</strong></p>
-
-<p>Copy dan paste kode dibawah ini, kemudian simpan dengan nama <strong>doinst.sh</strong></p>
-
-<pre><code>if [ -x /usr/bin/update-desktop-database ]; then
-  /usr/bin/update-desktop-database -q usr/share/applications &gt;/dev/null 2&gt;&amp;1
-fi
-
-if [ -x /usr/bin/update-mime-database ]; then
-  /usr/bin/update-mime-database usr/share/mime &gt;/dev/null 2&gt;&amp;1
-fi
-
-if [ -e usr/share/icons/hicolor/icon-theme.cache ]; then
-  if [ -x /usr/bin/gtk-update-icon-cache ]; then
-    /usr/bin/gtk-update-icon-cache usr/share/icons/hicolor &gt;/dev/null 2&gt;&amp;1
-  fi  
-fi
-</code></pre>
-
-<p><strong>doinst.sh</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2010/06/23/slackbuild-script-for-mysql-workbench/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/23">&larr; Older</a>
@@ -376,6 +342,10 @@ fi
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
+      </li>
     
       <li class="post">
         <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
@@ -431,10 +401,6 @@ fi
     
       <li class="post">
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
       </li>
     
   </ul>

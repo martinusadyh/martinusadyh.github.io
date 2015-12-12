@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Tampilan Openshot Sedang mencari aplikasi video editor yang mudah di Linux ? Jika iya, mungkin teman-teman bisa melirik aplikasi video editor &hellip;">
+  <meta name="description" content="Pemandangan Lebat-nya Hutan di kaki Gunung Pangrango dilihat dari Catwalk PPKA Bodogol Perjalanan kali ini adalah sebuah perjalanan impian saya dari &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-10T21:36:31+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:36 pm</span></time>
+        
+           | <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class='caption-wrapper'><img class='caption' src='https://lh3.googleusercontent.com/-nbcu_2qhfSk/Vmxpkz-Ot-I/AAAAAAAADvc/IabKzXQqf30/s640-Ic42/Pemandangan%252520kaki%252520Gunung%252520Pangrango%252520dilihat%252520dari%252520Catwalk%252520PPKA%252520Bodogol.png' width='' height='' title='Pemandangan Lebat-nya Hutan di kaki Gunung Pangrango dilihat dari Catwalk PPKA Bodogol'><span class='caption-text'>Pemandangan Lebat-nya Hutan di kaki Gunung Pangrango dilihat dari Catwalk PPKA Bodogol</span></span></p>
+
+<p>Perjalanan kali ini adalah sebuah perjalanan impian saya dari tahun 2014 lalu gara-gara membaca postingan berjudul <a href="http://proof.nationalgeographic.com/2014/08/14/postcards-from-borneo-the-best-swimming-hole-in-gunung-palung">Postcards from Borneo: The Best Swimming Hole in Gunung Palung</a>, dan akhirnya membuat saya secara tidak sengaja mendengarkan suara <strong><em>gibbon</em></strong> yang sangat merdu di pedalaman hutan kalimantan tersebut. Supaya teman-teman bisa ikut menikmati merdu-nya suara mamalia satu ini, silahkan dengarkan rekaman-nya dibawah ini yang saya sadur dari tulisan <a href="http://proof.nationalgeographic.com/author/jlaman/">Jessica Laman</a> diatas.</p>
+
+<iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/162709651&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -268,101 +312,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2015/01/10/send-email-from-shell-script/">Send Email From Shell Script</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-10T16:19:36+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:19 pm</span></time>
-        
-           | <a href="/2015/01/10/send-email-from-shell-script/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2015/01/10/send-email-from-shell-script/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Tertarik untuk mencoba mengirim e-mail lewat shell script ? Jika iya, yuk mari kita bahas beberapa langkah sederhana dibawah ini agar kita bisa mengirimkan e-mail lewat shell script :) Semua langkah-langkah dibawah ini dilakukan di sistem operasi turunan Debian <em>(Linux Mint 17.1)</em> dan seharusnya bisa jalan secara normal di sistem operasi berbasis Debian lain-nya, untuk yang menggunakan distribusi Linux lain mungkin bisa mencari cara installasi atau konfigurasi yang sesuai dengan distribusi yang digunakan.</p>
-
-<p>Untuk mengirim e-mail lewat shell script, kita akan menggunakan aplikasi kecil bernama <code>ssmtp</code> yang konfigurasi-nya cukup sederhana. Dan supaya e-mail yang kita kirim tidak masuk ke kotak <em>spam</em> , maka kita akan menggunakan <strong>SMTP</strong> <em>(Simple Mail Transport Protocol)</em> milik <a href="http://google.com">Google</a> yaitu <strong>GMail</strong>.</p>
-
-<h2>Installasi ssmtp</h2>
-
-<p>Karena kita akan menggunakan <code>ssmtp</code> maka ya tentu saja kita harus menginstall-nya dulu :) Untuk pembaca yang menggunakan distribusi linux berbasis <strong>Debian</strong> bisa melakukan proses installasi dengan cara menjalankan perintah <code>sudo apt-get install ssmtp</code> seperti dibawah ini :</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>martinusadyh@martinusadyh:[~]$ sudo apt-get install ssmtp
-</span><span class='line'>Reading package lists... Done
-</span><span class='line'>Building dependency tree       
-</span><span class='line'>Reading state information... Done
-</span><span class='line'>The following packages were automatically installed and are no longer required:
-</span><span class='line'>  liblua5.1-0 libmysqlcppconn7 libodbc1 libvsqlitepp3 mysql-workbench-data
-</span><span class='line'>  python-mysql.connector python-pyodbc python-pysqlite2
-</span><span class='line'>Use 'apt-get autoremove' to remove them.
-</span><span class='line'>The following NEW packages will be installed:
-</span><span class='line'>  ssmtp
-</span><span class='line'>0 upgraded, 1 newly installed, 0 to remove and 38 not upgraded.
-</span><span class='line'>Need to get 46,2 kB of archives.
-</span><span class='line'>After this operation, 8.192 B of additional disk space will be used.
-</span><span class='line'>Get:1 http://archive.ubuntu.com/ubuntu/ trusty/universe ssmtp amd64 2.64-7 [46,2 kB]
-</span><span class='line'>Fetched 46,2 kB in 1s (24,5 kB/s)
-</span><span class='line'>Preconfiguring packages ...
-</span><span class='line'>Selecting previously unselected package ssmtp.
-</span><span class='line'>(Reading database ... 168794 files and directories currently installed.)
-</span><span class='line'>Preparing to unpack .../ssmtp_2.64-7_amd64.deb ...
-</span><span class='line'>Unpacking ssmtp (2.64-7) ...
-</span><span class='line'>Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
-</span><span class='line'>Setting up ssmtp (2.64-7) ...
-</span><span class='line'>martinusadyh@martinusadyh:[~]$ </span></code></pre></td></tr></table></div></figure>
-
-
-<p><small>Catatan: Untuk distribusi linux yang lain, mungkin bisa mencoba cara installasi <b>ssmtp</b> pada distribusi yang digunakan. </small></p>
-
-<p>Jika sudah sekarang mari kita masuk ke tahapan yang paling menyenangkan yaitu konfigurasi :)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2015/01/10/send-email-from-shell-script/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -393,6 +342,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
+      </li>
     
       <li class="post">
         <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
@@ -448,10 +401,6 @@
     
       <li class="post">
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
       </li>
     
   </ul>

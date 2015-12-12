@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Hmm&hellip; gara-gara ngebet banget pingin cobain Open Solaris 10 dan ndak keturutan (iks&hellip; soalnya RAM saya kurang, cuman 256 MB doank), &hellip;">
+  <meta name="description" content="Untuk teman-teman yang masih bingung bagaimana menggunakan CVS di sourceforge.net, mungkin langkah-langkah yang saya lakukan ini bisa menjadi panduan &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/10/02/using-cvs-at-sourceforgenet/">Using CVS at SourceForge.net</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2007-10-02T20:49:28+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2007</span></span> <span class='time'>8:49 pm</span></time>
+        
+           | <a href="/2007/10/02/using-cvs-at-sourceforgenet/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2007/10/02/using-cvs-at-sourceforgenet/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk teman-teman yang masih bingung bagaimana menggunakan <a href="http://en.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a> di <a href="http://sourceforge.net/">sourceforge.net</a>, mungkin langkah-langkah yang saya lakukan ini bisa menjadi panduan bagaimana menggunakan <a href="http://en.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a> di <a href="http://sourceforge.net/">sourceforge.net</a>.</p>
+
+<p>Oh iya saya akses <a href="http://en.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a> di <a href="http://sourceforge.net/">sourceforge.net</a> ini dari warnet dan Sistem Operasi yang saya gunakan adalah Windows XP :malu: , mungkin cara ini bisa diterapkan pada warnet-warnet berbasis Windows yang memakai DeepFreeze atau sistem proteksi yang melarang user untuk instal program macam-macam pada komputer di warnetnya.</p>
+
+<p>Pertama-tama download dulu <a href="ftp.reportlab.com/tools/ssh-1.2.14-win32bin.zip">ssh client</a> ama <a href="http://ftp.gnu.org/non-gnu/cvs/binary/stable/x86-woe/cvs-1-11-22.zip">cvs client</a> nya, kemudian buat 1 folder tempat Project anda berada, misalkan disini buat foldernya di <strong>C:></strong></p>
+
+<blockquote><p>C:> mkdir Project</p></blockquote>
+
+<p>Nah klo sudah, dibawah folder Project saya membuat 1 folder lagi yaitu folder tools. (Folder tools ini untuk menaruh <strong>cvs.exe</strong> ama <strong>ssh.exe</strong> saya)</p>
+
+<blockquote><p>C:>cd Project
+C:\Project> mkdir tool</p></blockquote>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2007/10/02/using-cvs-at-sourceforgenet/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -292,79 +340,6 @@ Note: <a href="https://nimbus.dev.java.net/">read more here</a></p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2007/09/18/install-themes-firefox-secara-offline/">Install Themes Firefox Secara Offline</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2007-09-18T22:59:49+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2007</span></span> <span class='time'>10:59 pm</span></time>
-        
-           | <a href="/2007/09/18/install-themes-firefox-secara-offline/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2007/09/18/install-themes-firefox-secara-offline/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pingin tahu gimana cara install themes firefox secara offline ?? Ini ada artikel <a href="http://www.pcbypaul.com/linux/firefox_theme.html">disini</a>, yang memberitahu caranya :)
-Ternyata sangat mudah sekali, tinggal copy paste kode dibawah ini kemudian simpan dengan ekstensi *.html</p>
-
-<pre><code>&lt;script type="text/javascript"&gt;
-function installTheme(where) {
-var file = '';
-if (where == 'local') {
-file = 'file:///' + escape(document.getElementById('filename').value.replace(/\/g,'/'));
-} else {
-file = document.getElementById('url').value;
-}
-InstallTrigger.installChrome(InstallTrigger.SKIN, file, getName(file));
-}
-function getName(raw) {
-var grabFileStart = raw.lastIndexOf('/');
-var grabFileEnd = raw.lastIndexOf('.');
-if (grabFileStart &gt;= grabFileEnd) {
-return 'Invalid file name';
-} else {
-return raw.substring(grabFileStart + 1,grabFileEnd);
-}
-}
-function installThemeNow(file) {
-InstallTrigger.installChrome(InstallTrigger.SKIN, file, getName(file));
-return true;
-}
-&lt;/script&gt;
-&lt;table width="80%" border="0" align="center" bgcolor="#a52a2a" cellpadding="0" cellspacing="2"&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td bgcolor="#f5f4ed"&gt;
-&lt;p align="center"&gt;&lt;span class="style2"&gt;Install Firefox .JAR theme from Harddisk
-
-&lt;/span&gt;
-&lt;form&gt;
-&lt;input type="file" id="filename"&gt;&lt;/input&gt;
-&lt;input type="button" onclick="installTheme('local');" value="Install"&gt;&lt;/input&gt;&lt;/form&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-</code></pre>
-
-<p>Setelah disimpan, buka pakai firefox kemudian ambil themes yang ingin diinstal dengan cara klik tombol browse setelah itu tekan instal. Ing..eng.. themes firefox sudah terinstal :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/55">&larr; Older</a>
@@ -397,6 +372,10 @@ return true;
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
+      </li>
     
       <li class="post">
         <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
@@ -452,10 +431,6 @@ return true;
     
       <li class="post">
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
       </li>
     
   </ul>

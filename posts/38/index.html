@@ -10,7 +10,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Hari ini ada sedikit masalah di aplikasi yang berjalan menggunakan dosemu, yups masalah ini terjadi ketika saya meng-upgrade Sistem Operasi GNU/Linux &hellip;">
+  <meta name="description" content="Ingin membuat sebuah installer untuk aplikasi yang jalan di Windows (ber-ekstensi exe) tapi dari GNU/Linux atau Nix ? Jika jawaban-nya adalah iya, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,98 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/12/25/building-nsis-on-slackware-130/">Building NSIS on Slackware 13.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-12-25T19:11:29+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>7:11 pm</span></time>
+        
+           | <a href="/2009/12/25/building-nsis-on-slackware-130/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/12/25/building-nsis-on-slackware-130/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ingin membuat sebuah installer untuk aplikasi yang jalan di Windows (ber-ekstensi exe) tapi dari GNU/Linux atau <em>Nix ? Jika jawaban-nya adalah iya, maka aplikasi NSIS ini mungkin cocok untuk teman-teman. Nah apa sih NSIS (Nullsoft Scriptable Install System) ini sebenar-nya ? NSIS (Nullsoft Scriptable Install System)  ini adalah sebuah <strong><em>installer creator</em></strong> opensource yang ditujukan untuk aplikasi yang berjalan di Sistem Operasi Microsoft Windows. Karena NSIS (Nullsoft Scriptable Install System) ini dapat di install pada sistem yang mengikuti standart <a href="http://en.wikipedia.org/wiki/POSIX">POSIX</a>, maka harusnya NSIS (Nullsoft Scriptable Install System) dapat digunakan secara mulus pada Sistem Operasi GNU/Linux dan </em>Nix family seperti OpenSolaris dan lain-nya.</p>
+
+<p>Pada tulisan kali ini, kita akan mencoba menginstall NSIS (Nullsoft Scriptable Install System) pada Sistem Operasi GNU/Linux Slackware dan seluruh langkah yang dijelaskan pada tulisan ini mengacu ke struktur direktori standart milik Slackware (Untuk distribusi GNU/Linux yang lain, harusnya bisa menerapkan langkah-langkah pada tulisan ini tanpa ada masalah asalkan kebutuhan paket yang diminta oleh NSIS sudah terinstall sebelumnya). Agar proses kompilasi NSIS (Nullsoft Scriptable Install System) ini berjalan dengan sukses, maka pastikan dahulu kebutuhan dibawah ini terdapat pada sistem anda :
+- Python 2.6.2
+- Scons 1.2.0
+<strong>Note: Jika versi di sistem anda lebih tinggi, harus-nya tidak akan ada masalah dan kebutuhan diatas adalah kebutuhan yang diperlukan di GNU/Linux Slackware 13.0 :) </strong></p>
+
+<p>Pada default installasi Slackware 13.0 tidak terdapat packages <a href="http://www.scons.org/">Scons</a>, jadi sekarang mari kita install dulu packages <a href="http://www.scons.org/">Scons</a>-nya yang dapat di download dari situs SlackBuild.org. Sekarang bukalah halaman Scons yang terdapat pada situs SlackBuild yang bisa dilihat <a href="http://slackbuilds.org/repository/13.0/development/scons/">di sini</a> kemudian download seluruh file SlackBuild yang diperlukan seperti dibawah ini :</p>
+
+<pre><code>martinus@martinusadyh:[~/SLACKBUILDS/scons]$ wget -c http://slackbuilds.org/slackbuilds/13.0/development/scons/scons.SlackBuild &amp;&amp; wget -c http://slackbuilds.org/slackbuilds/13.0/development/scons/scons.info &amp;&amp; wget -c http://slackbuilds.org/slackbuilds/13.0/development/scons/slack-desc &amp;&amp; wget -c http://slackbuilds.org/slackbuilds/13.0/development/scons/README
+--2009-12-15 19:07:58--  http://slackbuilds.org/slackbuilds/13.0/development/scons/scons.SlackBuild
+Resolving slackbuilds.org... 208.67.159.181
+Connecting to slackbuilds.org|208.67.159.181|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1046 (1.0K) [text/plain]
+Saving to: `scons.SlackBuild'
+
+100%[==============================================================================================================================&gt;] 1,046       --.-K/s   in 0s
+
+2009-12-15 19:08:00 (46.8 MB/s) - `scons.SlackBuild' saved [1046/1046]
+
+--2009-12-15 19:08:00--  http://slackbuilds.org/slackbuilds/13.0/development/scons/scons.info
+Resolving slackbuilds.org... 208.67.159.181
+Connecting to slackbuilds.org|208.67.159.181|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 279 [text/plain]
+Saving to: `scons.info'
+
+100%[==============================================================================================================================&gt;] 279         --.-K/s   in 0s
+
+2009-12-15 19:08:01 (16.8 MB/s) - `scons.info' saved [279/279]
+
+--2009-12-15 19:08:01--  http://slackbuilds.org/slackbuilds/13.0/development/scons/slack-desc
+Resolving slackbuilds.org... 208.67.159.181
+Connecting to slackbuilds.org|208.67.159.181|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 932 [text/plain]
+Saving to: `slack-desc'
+
+100%[==============================================================================================================================&gt;] 932         --.-K/s   in 0s
+
+2009-12-15 19:08:03 (46.3 MB/s) - `slack-desc' saved [932/932]
+
+--2009-12-15 19:08:03--  http://slackbuilds.org/slackbuilds/13.0/development/scons/README
+Resolving slackbuilds.org... 208.67.159.181
+Connecting to slackbuilds.org|208.67.159.181|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 458 [text/plain]
+Saving to: `README'
+
+100%[==============================================================================================================================&gt;] 458         --.-K/s   in 0s
+
+2009-12-15 19:08:04 (25.8 MB/s) - `README' saved [458/458]
+
+martinus@martinusadyh:[~/SLACKBUILDS/scons]$
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/12/25/building-nsis-on-slackware-130/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -283,73 +375,6 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/12/03/enabling-font-smoothing-in-gnome/">Enabling Font Smoothing in GNOME</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-12-03T01:09:14+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2009</span></span> <span class='time'>1:09 am</span></time>
-        
-           | <a href="/2009/12/03/enabling-font-smoothing-in-gnome/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/12/03/enabling-font-smoothing-in-gnome/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Apakah teman-teman sudah puas dengan tampilan font rendering yang terdapat pada Desktop Manager GNOME ? Jika jawaban-nya tidak, mungkin teman-teman perlu mencoba mengaktifkan fitur <strong>font smoothing</strong> agar tampilan font terlihat lebih <strong>smooth</strong> :) . Fitur ini tidak bisa kita konfigurasi melalui dialog <strong>Fonts Preferences</strong> yang dapat diakses melalui <strong>System > Preferences > Appearence</strong> karena memang ternyata GNOME belum menyediakan fasilitas ini :(</p>
-
-<p>Agar tampilan font kita terlihat lebih <strong>smooth</strong>, simpanlah kode dibawah ini dengan nama <strong>.fonts.conf</strong> dan letakkan pada direktori <strong>/home/namauseranda</strong> :</p>
-
-<pre><code>&lt;fontconfig&gt;
-    &lt;match target="font"&gt;
-        &lt;edit mode="assign" name="autohint"&gt;
-            &lt;bool&gt;true&lt;/bool&gt;
-        &lt;/edit&gt;
-    &lt;/match&gt;
-    &lt;match target="font"&gt;
-        &lt;edit mode="assign" name="rgba"&gt;
-            &lt;const&gt;none&lt;/const&gt;
-        &lt;/edit&gt;
-    &lt;/match&gt;
-    &lt;match target="font"&gt;
-        &lt;edit mode="assign" name="hinting"&gt;
-            &lt;bool&gt;false&lt;/bool&gt;
-        &lt;/edit&gt;
-    &lt;/match&gt;
-    &lt;match target="font"&gt;
-        &lt;edit mode="assign" name="hintstyle"&gt;
-            &lt;const&gt;hintnone&lt;/const&gt;
-        &lt;/edit&gt;
-    &lt;/match&gt;
-    &lt;match target="font"&gt;
-        &lt;edit mode="assign" name="antialias"&gt;
-            &lt;bool&gt;true&lt;/bool&gt;
-        &lt;/edit&gt;
-    &lt;/match&gt;
-&lt;/fontconfig&gt;
-</code></pre>
-
-<p><strong>Note: Source code asli bisa diambil dari <a href="http://rewind.themasterplan.in/dl/Kubuntu_FontsConf">Kubuntu Fonts Config</a></strong></p>
-
-<p>Setelah menyimpan konfigurasi font diatas sekarang coba-lah untuk logout kemudian login lagi dan lihat bagaimana perbedaan-nya :) Untuk sumber resmi dari tulisan ini, mungkin teman-teman bisa melihat tulisan The Masterplan tentang <a href="http://rewind.themasterplan.in/2007/07/15/sexy-smooth-fonts-on-kubuntu/">Sexy smooth fonts on Kubuntu</a> :)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/39">&larr; Older</a>
@@ -382,6 +407,10 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
+      </li>
     
       <li class="post">
         <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
@@ -437,10 +466,6 @@ Dosemu sudah bisa jalan lagi di Slackware 13.0 :) </a></p>
     
       <li class="post">
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
       </li>
     
   </ul>

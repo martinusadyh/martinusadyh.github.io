@@ -10,7 +10,8 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Wah&hellip; udah lama banget ga nengok-nengok ke blog :( Ada beberapa hal baru yang saya alami nih dalam beberapa bulan terakhir ini, salah satu-nya &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +89,38 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04/">Konfigurasi User Home Direktori Apache Di Ubuntu 12.04</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-07-07T18:58:40+07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>6:58 pm</span></time>
+        
+           | <a href="/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2012/07/07/konfigurasi-user-home-direktori-apache-di-ubuntu-12-04/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -298,77 +331,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/">Membaca System Properties Dari Spring ApplicationContext</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-01-15T17:18:05+07:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>5:18 pm</span></time>
-        
-           | <a href="/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Apakah pernah punya pengalaman ingin membaca <a href="http://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html">Java System Properties</a> dari aplikasi yang kita buat menggunakan <a href="http://www.springsource.org/">Spring Framework</a> tetapi kesulitan ? Jika pernah, ternyata Spring Framework sejak versi 3 telah menambahkan fitur baru yaitu <strong>Spring Expression Language (SpEL)</strong> yang informasi-nya ternyata bisa kita baca pada halaman <a href="http://static.springsource.org/spring/docs/3.0.5.RELEASE/reference/new-in-3.html">fitur-fitur pada SpringFramework 3.0</a>. Dengan adanya penambahan fitur ini, kita bisa membuat sebuah konfigurasi yang benar-benar sangat flexible :)</p>
-
-<p>Bagi yang belum tahu apa itu <strong>Java System Properties</strong> ini adalah merupakan sebuah kumpulan nilai konfigurasi pada sistem kita yang digunakan oleh Java. Nah sedangkan untuk mengetahui properties apa saja yang terdapat pada sistem kita, sekarang buatlah 1 buah class sederhana yang isinya kurang lebih seperti ini :</p>
-
-<pre><code>public class TestSystemProperties {
-    public static void main(String[] args) {
-        for (String propertyName : System.getProperties().stringPropertyNames()) {
-            System.out.println("Nama Properties [" + propertyName + "] Value ["+System.getProperty(propertyName) + "]");
-        }
-    }
-}
-</code></pre>
-
-<p>Simpan, lakukan proses kompilasi dan coba jalankan. Jika tidak ada pesan kesalahan, maka kita akan melihat daftar sistem properties yang kurang lebih seperti dibawah ini :
-[plain]
-Nama Properties [java.runtime.name] Value [Java&trade; SE Runtime Environment]
-Nama Properties [sun.boot.library.path] Value [/usr/lib/java/jre/lib/i386]
-Nama Properties [java.vm.version] Value [20.1-b02]
-Nama Properties [java.vm.vendor] Value [Sun Microsystems Inc.]
-Nama Properties [java.vendor.url] Value [<a href="http://java.sun.com/">http://java.sun.com/</a>]
-Nama Properties [path.separator] Value [:]
-Nama Properties [java.vm.name] Value [Java HotSpot&trade; Server VM]
-Nama Properties [file.encoding.pkg] Value [sun.io]
-Nama Properties [user.country] Value [US]
-Nama Properties [sun.java.launcher] Value [SUN_STANDARD]
-Nama Properties [sun.os.patch.level] Value [unknown]
-Nama Properties [java.vm.specification.name] Value [Java Virtual Machine Specification]
-Nama Properties [user.dir] Value [/home/martinus/Latihan/Java]
-Nama Properties [java.runtime.version] Value [1.6.0_26-b03]
-Nama Properties [java.awt.graphicsenv] Value [sun.awt.X11GraphicsEnvironment]
-Nama Properties [java.endorsed.dirs] Value [/usr/lib/java/jre/lib/endorsed]
-Nama Properties [os.arch] Value [i386]
-&hellip;
-&hellip;
-[/plain]</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/01/15/membaca-system-properties-dari-spring-applicationcontext/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/12">&larr; Older</a>
@@ -401,6 +363,10 @@ Nama Properties [os.arch] Value [i386]
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
+      </li>
     
       <li class="post">
         <a href="/2015/06/14/openshot-simple-video-editor-for-linux/">Openshot Simple Video Editor for Linux</a>
@@ -456,10 +422,6 @@ Nama Properties [os.arch] Value [i386]
     
       <li class="post">
         <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/14/bercengkrama-dengan-nusantarider-di-event-ride-n-roast/">Bercengkrama Dengan Nusantarider Di Event Ride N Roast</a>
       </li>
     
   </ul>
