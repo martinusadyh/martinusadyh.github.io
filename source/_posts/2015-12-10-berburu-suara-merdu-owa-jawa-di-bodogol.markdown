@@ -24,13 +24,13 @@ tags:
 
 {% imgcap https://lh3.googleusercontent.com/-nbcu_2qhfSk/Vmxpkz-Ot-I/AAAAAAAADvc/IabKzXQqf30/s640-Ic42/Pemandangan%252520kaki%252520Gunung%252520Pangrango%252520dilihat%252520dari%252520Catwalk%252520PPKA%252520Bodogol.png Pemandangan Lebat-nya Hutan di kaki Gunung Pangrango dilihat dari Catwalk PPKA Bodogol %}
 
-Perjalanan kali ini adalah sebuah perjalanan impian saya dari tahun 2014 lalu gara-gara membaca postingan berjudul [Postcards from Borneo: The Best Swimming Hole in Gunung Palung](http://proof.nationalgeographic.com/2014/08/14/postcards-from-borneo-the-best-swimming-hole-in-gunung-palung), dan akhirnya membuat saya secara tidak sengaja mendengarkan suara **_gibbon_** yang sangat merdu di pedalaman hutan kalimantan tersebut. Supaya teman-teman bisa ikut menikmati merdu-nya suara mamalia satu ini, silahkan dengarkan rekaman-nya dibawah ini yang saya sadur dari tulisan [Jessica Laman](http://proof.nationalgeographic.com/author/jlaman/) diatas.
+Perjalanan kali ini adalah sebuah perjalanan impian saya dari tahun 2014 lalu gara-gara membaca postingan berjudul [Postcards from Borneo: The Best Swimming Hole in Gunung Palung](http://proof.nationalgeographic.com/2014/08/14/postcards-from-borneo-the-best-swimming-hole-in-gunung-palung), dan akhirnya membuat saya secara tidak sengaja mendengarkan suara **_gibbon_** yang sangat merdu di pedalaman hutan kalimantan tersebut. Supaya teman-teman bisa ikut menikmati merdu-nya suara primata satu ini, silahkan dengarkan rekaman-nya dibawah ini yang saya sadur dari tulisan [Jessica Laman](http://proof.nationalgeographic.com/author/jlaman/) diatas.
 
 <iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/162709651&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 
 <!-- more -->
 
-Karena keinginan untuk mengunjungi **Gunung Palung** ternyata membutuhkan biaya yang cukup mahal bagi saya, akhirnya sayapun memilih untuk mencari alternatif-nya di pulau Jawa dengan tujuan untuk memangkas biaya perjalanan. Untungnya ternyata di Jawa masih tersisa mahkluk yang ternyata dinamai **Owa**, dan di Jawa mamalia ini disebut dengan **Owa Jawa**. Berdasarkan informasi yang saya kumpulkan di internet, kita masih bisa melihat mamalia yang hampir punah ini di beberapa lokasi di Pulau Jawa antara lain :
+Karena keinginan untuk mengunjungi **Gunung Palung** ternyata membutuhkan biaya yang cukup mahal bagi saya, akhirnya sayapun memilih untuk mencari alternatif-nya di pulau Jawa dengan tujuan untuk memangkas biaya perjalanan. Untungnya ternyata di Jawa masih tersisa mahkluk yang ternyata dinamai **Owa**, dan di Jawa primata ini disebut dengan **Owa Jawa**. Berdasarkan informasi yang saya kumpulkan di internet, kita masih bisa melihat primata yang hampir punah ini di beberapa lokasi di Pulau Jawa antara lain :
 
   * Taman Nasional Gunung Halimun Salak,
   * Taman Nasional Gunung Gede Pangrango _(yang lokasi untuk pengamatan-nya ada di Bodogol)_  dan,
