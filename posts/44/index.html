@@ -12,7 +12,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Sudah pernah mencoba menampilkan JCheckBox didalam JTable ? Bagi sebagian teman-teman mungkin langsung berkata &ldquo;Itu kan gampang, tinggal &hellip;">
+  <meta name="description" content="Mau bikin project opensource ? Kalau iya, kita harus pikirkan juga donk lisensi untuk source code yang ingin kita opensource-kan :) Buat teman-teman &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,122 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/09/05/adding-license-in-netbeans-ide/">Adding License in NetBeans IDE</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-09-05T13:43:54+07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>1:43 pm</span></time>
+        
+           | <a href="/2009/09/05/adding-license-in-netbeans-ide/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/09/05/adding-license-in-netbeans-ide/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mau bikin project opensource ? Kalau iya, kita harus pikirkan juga donk lisensi untuk source code yang ingin kita opensource-kan :) Buat teman-teman pengguna NetBeans IDE, pasti pernah donk melihat potongan souce code seperti dibawah ini  :</p>
+
+<pre><code>/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+</code></pre>
+
+<p>Yups.. tampilan kode diatas adalah tampilan standart dari NetBeans IDE setiap kita membuat sebuah file Java baru, nah bagaimana jika kita ingin menambahkan lisensi untuk source code kita menjadi seperti dibawah ini :</p>
+
+<pre><code>/*
+ * Copyright (c) 2009, Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * o Redistributions of source code must retain the above copyright notice,
+ *   this list of conditions and the following disclaimer.
+ * o Redistributions in binary form must reproduce the above copyright
+ *   notice, this list of conditions and the following disclaimer in the
+ *   documentation and/or other materials provided with the distribution.
+ * o Neither the name of the &lt;organization&gt; nor the names of its contributors
+ *   may be used to endorse or promote products derived from this software
+ *   without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+</code></pre>
+
+<p>Mau pastein lisensi-nya satu persatu diseluruh source code ? Tentunya pekerjaan yang sangat melelahkan donk :D Nah biar cepat, simpan dan modifikasi-lah <strong>Template</strong> lisensi BSD dibawah ini ke dalam komputer anda :</p>
+
+<pre><code>&lt;#if licenseFirst??&gt;
+${licenseFirst}
+
+${licensePrefix} Copyright (c) ${date?date?string("yyyy")} Martinus Ady H &lt;mrt.itnewbies@gmail.com&gt;.
+${licensePrefix} All rights reserved.
+${licensePrefix}
+${licensePrefix} Redistribution and use in source and binary forms, with or without
+${licensePrefix} modification, are permitted provided that the following conditions
+${licensePrefix} are met:
+${licensePrefix}
+${licensePrefix} o Redistributions of source code must retain the above copyright notice,
+${licensePrefix}   this list of conditions and the following disclaimer.
+${licensePrefix} o Redistributions in binary form must reproduce the above copyright
+${licensePrefix}   notice, this list of conditions and the following disclaimer in the
+${licensePrefix}   documentation and/or other materials provided with the distribution.
+${licensePrefix} o Neither the name of the &lt;organization&gt; nor the names of its contributors
+${licensePrefix}   may be used to endorse or promote products derived from this software
+${licensePrefix}   without specific prior written permission.
+${licensePrefix}
+${licensePrefix} THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+${licensePrefix} "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+${licensePrefix} TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+${licensePrefix} PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+${licensePrefix} CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+${licensePrefix} EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+${licensePrefix} PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+${licensePrefix} OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+${licensePrefix} WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+${licensePrefix} OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+${licensePrefix} ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+${licensePrefix}
+${licensePrefix} ${name}.java
+${licensePrefix}
+${licensePrefix} Created on ${date}, ${time}
+&lt;#if licenseLast??&gt;
+${licenseLast}
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/09/05/adding-license-in-netbeans-ide/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -349,130 +465,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/07/12/membuat-master-detail-report-menggunakan-jrbeanscollections-datasource/">Membuat Master Detail Report Menggunakan JRBeansCollections DataSource</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-07-12T05:35:37+07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>5:35 am</span></time>
-        
-           | <a href="/2009/07/12/membuat-master-detail-report-menggunakan-jrbeanscollections-datasource/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/07/12/membuat-master-detail-report-menggunakan-jrbeanscollections-datasource/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Banyak sekali pertanyaan dari teman-teman tentang bagaimana cara membuat report dengan menggunakan JRBeansCollection sebagai datasource-nya, sebenarnya konsepnya tidak jauh berbeda dari pembuatan report dengan menggunakan JDBC sebagai datasourcenya. Pada latihan kali ini, sekarang mari kita coba bagaimana sih membuat report menggunakan JRBeansCollection sebagai datasourcenya :) Untuk teman-teman yang belum tahu bagaimana membuat report dengan menggunakan JDBC DataSource, silahkan baca dahulu tulisan tentang <a href="http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/">Membuat Master Detail Report dengan iReport</a>, dan buat teman-teman yang sudah tidak sabar bagaimana membuat Report dengan menggunakan JRBeansCollections mari langsung kita mulai saja.</p>
-
-<p>Sebelum memulai latihan kali ini, persiapkanlah dahulu perlengkapan yang akan digunakan yaitu :
-1. <a href="http://sourceforge.net/projects/ireport/files/">iReport 3.0.0</a>
-2. <a href="http://www.netbeans.org/downloads/index.html">NetBeans IDE 6.7</a>
-3. <a href="http://dev.mysql.com/downloads/">MySQL 5.0.67</a>
-4. <a href="http://java.sun.com/javase/downloads/?intcmp=1281">JDK 1.6.0_13</a></p>
-
-<p>Setelah semua perlengkan selesai, pada tulisan kali ini akan dibagi menjadi beberapa bagian yaitu :
-1. Download Sample Project RptMasterDetail.zip dan RptMasterDetail.sql
-2. Modifikasi Report RptMaster.jrxml dan RptDetail.jrxml
-3. Menggunakan JRBeansCollections Sebagai DataSource</p>
-
-<ol>
-<li><p> <strong> Download Sample Project RptMasterDetail.zip dan RptMasterDetail.sql</strong>
-Sebagai langkah awal, mari kita download dahulu aplikasi RptMasterDetail.zip dan Database schema RptMasterDetail.sql dari tutorial <a href="http://martinusadyh.web.id/2007/12/24/membuat-masterdetail-report-dengan-ireport/">Membuat Master Detail Report dengan iReport</a> dengan cara sebagai berikut :</p>
-
-<p>  [martin@opensolarisbox:~/jrbeans]$ wget -c <a href="http://martinusadyh.web.id/download/RptMasterDetail.zip">http://martinusadyh.web.id/download/RptMasterDetail.zip</a>
-  &ndash;00:49:53&ndash;  <a href="http://martinusadyh.web.id/download/RptMasterDetail.zip">http://martinusadyh.web.id/download/RptMasterDetail.zip</a>
-             => `RptMasterDetail.zip&#8217;
-  Resolving martinusadyh.web.id&hellip; 208.87.243.66
-  Connecting to martinusadyh.web.id|208.87.243.66|:80&hellip; connected.
-  HTTP request sent, awaiting response&hellip; 200 OK
-  Length: 31,118 (30K) [application/zip]</p>
-
-<p>  100%[========================================================================================================================================>] 31,118        21.80K/s</p>
-
-<p>  00:49:55 (21.75 KB/s) - `RptMasterDetail.zip&#8217; saved [31118/31118]</p>
-
-<p>  [martin@opensolarisbox:~/jrbeans]$ wget -c <a href="http://martinusadyh.web.id/download/RptMasterDetail.sql">http://martinusadyh.web.id/download/RptMasterDetail.sql</a>
-  &ndash;00:50:03&ndash;  <a href="http://martinusadyh.web.id/download/RptMasterDetail.sql">http://martinusadyh.web.id/download/RptMasterDetail.sql</a>
-             => `RptMasterDetail.sql&#8217;
-  Resolving martinusadyh.web.id&hellip; 208.87.243.66
-  Connecting to martinusadyh.web.id|208.87.243.66|:80&hellip; connected.
-  HTTP request sent, awaiting response&hellip; 200 OK
-  Length: 1,824 (1.8K) [text/x-sql]</p>
-
-<p>  100%[========================================================================================================================================>] 1,824          6.93K/s</p>
-
-<p>  00:50:03 (6.92 KB/s) - `RptMasterDetail.sql&#8217; saved [1824/1824]</p>
-
-<p>  [martin@opensolarisbox:~/jrbeans]$</p></li>
-</ol>
-
-
-<p>Setelah proses download selesai, sekarang restore database schema RptMasterDetail.sql kedalam MySQL dengan cara sebagai berikut :</p>
-
-<pre><code>[martin@opensolarisbox:~/jrbeans]$ mysql -u root -p &lt; RptMasterDetail.sql
-Enter password:
-[martin@opensolarisbox:~/jrbeans]$
-</code></pre>
-
-<p>Proses konfigurasi database telah selesai, sekarang kita coba melakukan modifikasi report yang menggunakan JDBC DataSource agar menggunakan JRBeansCollections sebagai datasourcenya :)</p>
-
-<ol>
-<li><p> <strong> Modifikasi Report RptMaster.jrxml dan RptDetail.jrxml</strong>
-Ekstrak-lah file <strong>RptMasterDetail.zip</strong> dengan perintah <strong>unzip namafile.zip</strong> seperti dibawah ini :</p>
-
-<p>  [martin@opensolarisbox:~/jrbeans]$ unzip RptMasterDetail.zip
-  Archive:  RptMasterDetail.zip
-    inflating: RptMasterDetail/src/rptmasterdetail/FormReport.java
-    inflating: RptMasterDetail/src/rptmasterdetail/FormReport.form
-    inflating: RptMasterDetail/src/rptmasterdetail/Main.java
-    inflating: RptMasterDetail/nbproject/private/private.xml
-    inflating: RptMasterDetail/nbproject/private/private.properties
-    inflating: RptMasterDetail/nbproject/project.properties
-    inflating: RptMasterDetail/nbproject/project.xml
-    inflating: RptMasterDetail/nbproject/build-impl.xml
-    inflating: RptMasterDetail/nbproject/genfiles.properties
-    inflating: RptMasterDetail/Report/RptDetail.jasper
-    inflating: RptMasterDetail/Report/RptMaster.jrxml
-    inflating: RptMasterDetail/Report/RptDetail.jrxml
-   extracting: RptMasterDetail/Report/netbeans_logo.gif
-    inflating: RptMasterDetail/Report/RptMaster.jasper
-    inflating: RptMasterDetail/manifest.mf
-    inflating: RptMasterDetail/build.xml
-  [martin@opensolarisbox:~/jrbeans]$</p></li>
-</ol>
-
-
-<p>kemudian bukalah file <strong>RptMaster.jrxml</strong> dan <strong>RptDetail.jrxml</strong> yang terdapat pada direktori <strong>RptMasterDetail/Report/</strong> pada iReport seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3710388729/"><img src="http://farm3.static.flickr.com/2501/3710388729_04419d9f2b.jpg" alt="open_report" /></a></p>
-
-<p>Sekarang coba jalankan report tersebut dari iReport dengan menggunakan <strong>Active Connection</strong> (buatlah dahulu datasourcenya dengan menggunakan JDBC Connection dan arahkan databasenya ke <strong>rptmasterdetail</strong>) hingga tampilannya menjadi seperti gambar dibawah ini :
-<a href="http://www.flickr.com/photos/10243554@N02/3710388735/"><img src="http://farm3.static.flickr.com/2477/3710388735_ca41f41b87.jpg" alt="run_report" /></a>
-<strong>Note: Usahakan report berjalan dengan sukses sampai langkah ini, jika belum berjalan dengan benar silahkan cek ulang lagi mungkin ada konfigurasi yang terlewati.</strong></p>
-
-<p>Setelah berhasil menjalankan report dengan <strong>JDBC Connection</strong> sekarang saatnya untuk merubah report kita agar menggunakan <strong>JRBeanCollection</strong> sebagai datasourcenya, nah agar report kita menggunakan <strong>JRBeanCollection</strong> kita harus melakukan beberapa modifikasi yang harus dilakukan yaitu :</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/07/12/membuat-master-detail-report-menggunakan-jrbeanscollections-datasource/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/45">&larr; Older</a>
@@ -505,6 +497,10 @@ Ekstrak-lah file <strong>RptMasterDetail.zip</strong> dengan perintah <strong>un
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/04/29/panorama-lembah-sungai-purwokerto/">Panorama Lembah Sungai Purwokerto</a>
+      </li>
     
       <li class="post">
         <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
@@ -562,10 +558,6 @@ Ekstrak-lah file <strong>RptMasterDetail.zip</strong> dengan perintah <strong>un
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -588,7 +580,7 @@ Ekstrak-lah file <strong>RptMasterDetail.zip</strong> dengan perintah <strong>un
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Martinus Ady H -
+  Copyright &copy; 2016 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

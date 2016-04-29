@@ -12,7 +12,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Akhir-nya kesampaian juga menulis tentang Menu Accordion Di Java Swing ini :) Soalnya dulu bingung menu yang saya buat ini namanya apaan :malu: , nah &hellip;">
+  <meta name="description" content="Untuk membangun sebuah File Server menggunakan SAMBA di Slackware sebenarnya tidak begitu susah, sama seperti kalau kita menggunakan distribusi GNU/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,79 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/">Membangun File Server Dengan Samba Di Slackware</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-11-22T04:21:15+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2009</span></span> <span class='time'>4:21 am</span></time>
+        
+           | <a href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/11/22/membangun-file-server-dengan-samba-di-slackware/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk membangun sebuah <strong>File Server</strong> menggunakan <a href="http://www.samba.org">SAMBA</a> di Slackware sebenarnya tidak begitu susah, sama seperti kalau kita menggunakan distribusi GNU/Linux yang lain :) Nah untungnya lagi, packages <a href="http://www.samba.org">SAMBA</a> sudah terinstall secara default pada Slackware yang kita gunakan dan kita hanya perlu melakukan sedikit konfigurasi agar <a href="http://www.samba.org">SAMBA</a> dapat berjalan :)</p>
+
+<p>Hal pertama yang perlu kita lakukan agar service <a href="http://www.samba.org">SAMBA</a> kita dapat berjalan yaitu melakukan konfigurasi terhadap file <strong>smb.conf</strong> yang terletak pada direktori <strong>/etc/samba</strong>. Karena di Slackware tidak menyertakan file <strong>smb.conf</strong> melainkan file <strong>smb.conf-sample</strong> maka kopikan-lah dahulu file <strong>smb.conf-sample</strong> menjadi <strong>smb.conf</strong> seperti dibawah ini :</p>
+
+<pre><code>root@martinusadyh:/etc/samba# cp smb.conf-sample smb.conf
+root@martinusadyh:/etc/samba# ls
+private/  smb.conf  smb.conf-sample
+root@martinusadyh:/etc/samba#
+</code></pre>
+
+<p>Sekarang edit-lah file <strong>smb.conf</strong> diatas menjadi seperti dibawah ini:</p>
+
+<pre><code>[global]
+    workgroup = SLACKWARE_FILESERVER
+    server string = %h server (Samba, Slackware)
+    map to guest = Bad User
+    obey pam restrictions = Yes
+    passdb backend = tdbsam
+    pam password change = Yes
+    passwd program = /usr/bin/passwd %u
+    passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+    unix password sync = Yes
+    socket options = TCP_NODELAY
+    syslog = 0
+    log file = /var/log/samba/log.%m
+    max log size = 1000
+    dns proxy = No
+    usershare allow guests = Yes
+
+[PublicShare]
+    comment = Slackware File Server
+    path = /home/sharing/data
+    read only = No
+    create mask = 0777
+    directory mask = 0777
+    guest ok = Yes
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/22/membangun-file-server-dengan-samba-di-slackware/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -335,55 +408,6 @@ Through the darkness follow me</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-11-07T19:02:04+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>7:02 pm</span></time>
-        
-           | <a href="/2009/11/07/lebih-dekat-dengan-class-swingworker/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Beberapa minggu terakhir ini, saya mendapatkan 2 pertanyaan tentang <strong>Bagaimana sih agar progress bar bisa berjalan pada saat proses Query ?</strong> dan <strong>Bagaimana sih cara membuat sebuah login dialog yang menampilkan progress bar ?</strong> Nah karena 2 pertanyaan tersebut saling berkaitan menurut saya (sama-sama ingin menjalankan Progress Bar pada saat aplikasi sedang menjalankan <strong>tugas/proses</strong> yang lain) maka akan saya jawab bersama-sama pada tulisan ini :) . Nah sebelum kita masuk ke penjelasan lebih detail, kita harus tahu dahulu dong kenapa kita tidak bisa secara langsung menjalankan progress bar di saat kita melakukan proses yang lain ? Ada yang tahu kenapa ? Ini karena semua <strong>&ldquo;Event Handling&rdquo;</strong> yang terdapat pada Java Swing dijalankan oleh Thread yang bernama <strong>Event Dispatch Thread (EDT) </strong> Waks.. Thread ? Yaps betul Thread :)</p>
-
-<p>Agar aplikasi yang kita bangun di Java Swing tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang), maka kita juga perlu tahu beberapa Thread yang terdapat di Java Swing. Thread-thread tersebut yaitu :</p>
-
-<ol>
-<li><p> <strong>Initial Thread</strong>
-Thread ini bertugas untuk menjalankan method <strong>main</strong> dari aplikasi Swing kita dan thread ini bertugas untuk menampilkan GUI (Graphical User Interface) yang sudah kita bangun diatas Swing ke layar. Setelah GUI (Graphical User Interface) tampil, maka kerja dari thread ini telah selesai dan akan dilanjutkan oleh <strong>Event Dispatch Thread</strong>.</p></li>
-<li><p> <strong>Event Dispatch Thread</strong>
-Setiap aplikasi berbasis Java Swing hanya dapat mempunyai 1 Event Dispacth Thread (EDT) saja. Setiap respon dari penekanan tombol, menu item, update tampilan komponen akan dijalankan oleh thread ini. Dan semua proses tersebut <strong><em>biasanya</em></strong> tidak membutuhkan waktu yang lama. Jadi, segala proses yang dijalankan pada thread ini harus selesai secepat mungkin agar aplikasi kita tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang) .</p></li>
-<li><p> <strong>Worker Thread</strong>
-Worker thread atau biasanya disebut dengan <strong>background thread</strong> ini berfungsi untuk menjalankan proses yang lama seperti pembacaan direktori pada file system atau proses query ke database. Gunakan thread ini untuk melakukan operasi atau proses yang kita tidak bisa menentukan kapan kira-kira proses tersebut selesai.</p></li>
-</ol>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2009/11/07/lebih-dekat-dengan-class-swingworker/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/41">&larr; Older</a>
@@ -416,6 +440,10 @@ Worker thread atau biasanya disebut dengan <strong>background thread</strong> in
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/04/29/panorama-lembah-sungai-purwokerto/">Panorama Lembah Sungai Purwokerto</a>
+      </li>
     
       <li class="post">
         <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
@@ -473,10 +501,6 @@ Worker thread atau biasanya disebut dengan <strong>background thread</strong> in
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -499,7 +523,7 @@ Worker thread atau biasanya disebut dengan <strong>background thread</strong> in
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Martinus Ady H -
+  Copyright &copy; 2016 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

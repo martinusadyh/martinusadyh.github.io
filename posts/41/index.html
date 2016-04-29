@@ -12,7 +12,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Pernah merasa butuh mengedit file PDF ? Jika jawaban-nya adalah Ya dan file PDF yang ingin di edit/dimodifikasi tidak begitu kompleks mungkin kita &hellip;">
+  <meta name="description" content="Beberapa minggu terakhir ini, saya mendapatkan 2 pertanyaan tentang Bagaimana sih agar progress bar bisa berjalan pada saat proses Query ? dan &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/11/07/lebih-dekat-dengan-class-swingworker/">Lebih Dekat Dengan Class SwingWorker</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-11-07T19:02:04+07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>7:02 pm</span></time>
+        
+           | <a href="/2009/11/07/lebih-dekat-dengan-class-swingworker/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/11/07/lebih-dekat-dengan-class-swingworker/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Beberapa minggu terakhir ini, saya mendapatkan 2 pertanyaan tentang <strong>Bagaimana sih agar progress bar bisa berjalan pada saat proses Query ?</strong> dan <strong>Bagaimana sih cara membuat sebuah login dialog yang menampilkan progress bar ?</strong> Nah karena 2 pertanyaan tersebut saling berkaitan menurut saya (sama-sama ingin menjalankan Progress Bar pada saat aplikasi sedang menjalankan <strong>tugas/proses</strong> yang lain) maka akan saya jawab bersama-sama pada tulisan ini :) . Nah sebelum kita masuk ke penjelasan lebih detail, kita harus tahu dahulu dong kenapa kita tidak bisa secara langsung menjalankan progress bar di saat kita melakukan proses yang lain ? Ada yang tahu kenapa ? Ini karena semua <strong>&ldquo;Event Handling&rdquo;</strong> yang terdapat pada Java Swing dijalankan oleh Thread yang bernama <strong>Event Dispatch Thread (EDT) </strong> Waks.. Thread ? Yaps betul Thread :)</p>
+
+<p>Agar aplikasi yang kita bangun di Java Swing tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang), maka kita juga perlu tahu beberapa Thread yang terdapat di Java Swing. Thread-thread tersebut yaitu :</p>
+
+<ol>
+<li><p> <strong>Initial Thread</strong>
+Thread ini bertugas untuk menjalankan method <strong>main</strong> dari aplikasi Swing kita dan thread ini bertugas untuk menampilkan GUI (Graphical User Interface) yang sudah kita bangun diatas Swing ke layar. Setelah GUI (Graphical User Interface) tampil, maka kerja dari thread ini telah selesai dan akan dilanjutkan oleh <strong>Event Dispatch Thread</strong>.</p></li>
+<li><p> <strong>Event Dispatch Thread</strong>
+Setiap aplikasi berbasis Java Swing hanya dapat mempunyai 1 Event Dispacth Thread (EDT) saja. Setiap respon dari penekanan tombol, menu item, update tampilan komponen akan dijalankan oleh thread ini. Dan semua proses tersebut <strong><em>biasanya</em></strong> tidak membutuhkan waktu yang lama. Jadi, segala proses yang dijalankan pada thread ini harus selesai secepat mungkin agar aplikasi kita tidak terlihat nge-<strong>&ldquo;freeze&rdquo;</strong> (tidak responsif/nge-hang) .</p></li>
+<li><p> <strong>Worker Thread</strong>
+Worker thread atau biasanya disebut dengan <strong>background thread</strong> ini berfungsi untuk menjalankan proses yang lama seperti pembacaan direktori pada file system atau proses query ke database. Gunakan thread ini untuk melakukan operasi atau proses yang kita tidak bisa menentukan kapan kira-kira proses tersebut selesai.</p></li>
+</ol>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/11/07/lebih-dekat-dengan-class-swingworker/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -311,72 +360,6 @@ BUILD FAILED (total time: 1 second)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/10/10/konfigurasi-user-home-direktori-apache-di-slackware-130/">Konfigurasi User Home Direktori Apache Di Slackware 13.0</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2009-10-10T04:02:42+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>4:02 am</span></time>
-        
-           | <a href="/2009/10/10/konfigurasi-user-home-direktori-apache-di-slackware-130/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2009/10/10/konfigurasi-user-home-direktori-apache-di-slackware-130/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Karena pingin ngoprek WordPress, akhirnya timbul deh kebutuhan untuk mengkonfigurasi Apache dan PHP di Slackware 13.0 (karena paket Apache dan PHP sudah ter-install secara default pada Slackware 13.0) Tulisan ini banyak yang saya ambil dari tulisan om Somat yang <a href="http://somat.web.id/2009/sep/08/slackware-dan-apache/">Slackware dan apache</a> dan <a href="http://somat.web.id/2009/sep/08/slackware-dan-php/">Slackware dan php</a> dengan beberapa perubahan yang saya sesuaikan dengan kondisi di Slackware saya :D</p>
-
-<p><strong>Konfigurasi Apache</strong>
-Langkah yang saya lakukan yaitu sama persis seperti tulisan om Somat di <a href="http://somat.web.id/2009/sep/08/slackware-dan-apache/">Slackware dan apache</a> yaitu beri akses <strong>execute</strong> pada file <strong>/etc/rc.d/rc.httpd</strong> dan jalankan apache-nya dengan perintah <strong>/usr/sbin/apachectl -k start
-</strong> seperti dibawah ini :</p>
-
-<pre><code>root@martinusadyh:/etc/rc.d# chmod +x rc.httpd
-root@martinusadyh:/etc/rc.d# /usr/sbin/apachectl -k start
-</code></pre>
-
-<p><strong>Konfigurasi Apache dan PHP</strong>
-Nah pada langkah ini, yang saya lakukan sedikit berbeda dengan yang om Somat lakukan :D. Karena packages PHP sudah terinstall, maka saya tinggal menambahkan 2 baris dibawah ini pada file <strong>/etc/httpd/httpd.conf</strong> :</p>
-
-<pre><code>AddType application/x-httpd-php .php
-DirectoryIndex index.html index.php index.shtml
-</code></pre>
-
-<p><strong>Konfigurasi Apache dan User Home Directories</strong>
-Agar kita bisa tidak perlu repot-repot melakukan copy paste ke direktori <strong>/var/www/htdocs</strong>, nyalakan konfigurasi <strong>User home directories</strong> dengan meng-enable baris <strong>Include /etc/httpd/extra/httpd-userdir.conf</strong> pada file <strong>/etc/httpd/httpd.conf</strong> seperti dibawah ini:</p>
-
-<pre><code>Include /etc/httpd/extra/httpd-userdir.conf
-</code></pre>
-
-<p>Setelah selesai, buat sebuah direktori dengan nama <strong>public_html</strong> di <strong>home</strong> kemudian buatlah sebuah script php seperti dibawah ini :</p>
-
-<p>Restart apache-nya dengan menjalankan perintah berikut :</p>
-
-<pre><code>/usr/sbin/apachectl -k restart
-</code></pre>
-
-<p>Sekarang coba browsing ke <strong>localhost/~namauser/php-info.php</strong> harusnya di browser muncul informasi tentang php :)</p>
-
-<p><strong>Link-link terkait :</strong>
-- <a href="http://somat.web.id/2009/sep/08/slackware-dan-apache/">Slackware dan apache</a>
-- <a href="http://somat.web.id/2009/sep/08/slackware-dan-php/">Slackware dan php</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/42">&larr; Older</a>
@@ -409,6 +392,10 @@ Agar kita bisa tidak perlu repot-repot melakukan copy paste ke direktori <strong
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/04/29/panorama-lembah-sungai-purwokerto/">Panorama Lembah Sungai Purwokerto</a>
+      </li>
     
       <li class="post">
         <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
@@ -466,10 +453,6 @@ Agar kita bisa tidak perlu repot-repot melakukan copy paste ke direktori <strong
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -492,7 +475,7 @@ Agar kita bisa tidak perlu repot-repot melakukan copy paste ke direktori <strong
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Martinus Ady H -
+  Copyright &copy; 2016 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

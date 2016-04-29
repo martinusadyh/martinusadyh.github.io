@@ -12,7 +12,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="Silahkan di dengerin nih buat yang belum tahu, lagu dari mantan vokalisnya Nigtwish udah gitu cakep lagi :malu: sayangnya sih udah nikah :( ">
+  <meta name="description" content="Fyuh akhirnya setelah sekian lama pingin cobain themes GTK Nimbus, akhirnya kesampaian juga kemarin install OpenSolaris 2008.11 di laptop kantor ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,95 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/03/10/trying-opensolaris-200811/">Trying OpenSolaris 2008.11</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2009-03-10T22:25:36+07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2009</span></span> <span class='time'>10:25 pm</span></time>
+        
+           | <a href="/2009/03/10/trying-opensolaris-200811/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2009/03/10/trying-opensolaris-200811/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Fyuh akhirnya setelah sekian lama pingin cobain themes GTK Nimbus, akhirnya kesampaian juga kemarin install OpenSolaris 2008.11 di laptop kantor (Acer Aspire 5500Z ) :) (Tepatnya laptopnya <a href="http://ifnu.artivisi.com/">mas Ifnu</a> :D ).</p>
+
+<p>Proses instal sebenarnya juga ga begitu mulus sih, sehabis boot via CD ternyata berhenti di proses probing device :( luaaaaaaaama banget. Setelah tanya-tanya ke paman google, akhirnya dapat link <a href="http://blogs.sun.com/danasblog/entry/configuring_solaris_acpi_at_boot">disini</a>. Akhirnya dengan modal tekad dan nekat, coba lagi dah dengan menambahkan opsi <strong>acpi-user-options=0x8</strong> akhirnya tampil deh GNOME 2.24.0 dengan themes Nimbus idaman saya :)</p>
+
+<p>Proses instalasi OpenSolaris ga begitu sulit ternyata, cukup mudah dan tinggal ikutin langkah-langkah yang udah dijelasin ama om Rachmat <a href="http://w3hol.wordpress.com/2009/02/14/install-opensolaris-itu-mudah/">disini</a>. Seperti yang udah om Rachmat katakan, proses instalasi yang saya lakukan juga ga begitu sulit koq tinggal Next, Next dan Done :)</p>
+
+<p>Tapi setelah proses instalasi selesai ternyata timbul masalah baru lagi, saya lupa backup grub Ubuntu 8.10 yang saya pakai tiap hari :(( . Yah akhirnya mau ga mau cari LiveCD Ubuntu kemudian copy file menu.lst punya Ubuntu dan paste ke grub-nya OpenSolaris yang terdapat di <strong>/rpool/boot/grub</strong> dan hasil akhir menu.lst saya adalah sebagai berikut :</p>
+
+<pre><code>splashimage /boot/grub/splash.xpm.gz
+background 215ECA
+timeout 30
+default 0
+#---------- ADDED BY BOOTADM - DO NOT EDIT ----------
+title OpenSolaris 2008.11 snv_101b_rc2 X86
+findroot (pool_rpool,3,a)
+splashimage /boot/solaris.xpm
+foreground d25f00
+background 115d93
+bootfs rpool/ROOT/opensolaris
+kernel$ /platform/i86pc/kernel/$ISADIR/unix -B $ZFS-BOOTFS,console=graphics,acpi-user-options=0x8
+module$ /platform/i86pc/$ISADIR/boot_archive
+#---------------------END BOOTADM--------------------
+
+# Unknown partition of type 131 found on /dev/rdsk/c3d0p0 partition: 1
+# It maps to the GRUB device: (hd0,0) .
+
+# Unknown partition of type 5 found on /dev/rdsk/c3d0p0 partition: 2
+# It maps to the GRUB device: (hd0,1) .
+
+# Unknown partition of type 131 found on /dev/rdsk/c3d0p0 partition: 3
+# It maps to the GRUB device: (hd0,2) .
+
+title OpenSolaris 2008.11 snv_101b_rc2 X86 text boot
+findroot (pool_rpool,3,a)
+bootfs rpool/ROOT/opensolaris
+kernel$ /platform/i86pc/kernel/$ISADIR/unix -B $ZFS-BOOTFS,acpi-user-options=0x8
+module$ /platform/i86pc/$ISADIR/boot_archive
+
+#--------------- UBUNTU -------------------------------------
+title       Ubuntu 8.10, kernel 2.6.27-7-generic
+uuid        1ddb05f1-298e-4d0e-a308-fc7d31279eb0
+root            (hd0,0)
+kernel      /boot/vmlinuz-2.6.27-7-generic root=UUID=1ddb05f1-298e-4d0e-a308-fc7d31279eb0 ro quiet splash
+initrd      /boot/initrd.img-2.6.27-7-generic
+quiet
+
+title       Ubuntu 8.10, kernel 2.6.27-7-generic (recovery mode)
+uuid        1ddb05f1-298e-4d0e-a308-fc7d31279eb0
+root            (hd0,0)
+kernel      /boot/vmlinuz-2.6.27-7-generic root=UUID=1ddb05f1-298e-4d0e-a308-fc7d31279eb0 ro  single
+initrd      /boot/initrd.img-2.6.27-7-generic
+#--------------- END UBUNTU -------------------------------------
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2009/03/10/trying-opensolaris-200811/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -239,45 +328,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/10/02/bye-bye-beautiful-nightwish/">Bye Bye Beautiful - Nightwish</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2008-10-02T18:55:00+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2008</span></span> <span class='time'>6:55 pm</span></time>
-        
-           | <a href="/2008/10/02/bye-bye-beautiful-nightwish/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2008/10/02/bye-bye-beautiful-nightwish/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>Story</strong></p>
-
-<p>&ldquo;Bye Bye Beautiful&rdquo; is written by <a href="http://en.wikipedia.org/wiki/Tuomas_Holopainen">Tuomas Holopainen</a> about the band’s former vocalist, <a href="http://en.wikipedia.org/wiki/Tarja_Turunen">Tarja Turunen</a>, who was dismissed from the band with an open letter in 2005, and his feelings before and after the time she changed her attitude towards the band and its music. This was at first rumoured among fans and later revealed by Holopainen in an interview.[4] The chorus also contains the lyrics “Did you ever read what I wrote you?/ Did you ever listen to what we played?” in which the first part is a reference to the lyrics written by Holopainen, and the second part is about her lack of dedication to the music.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2008/10/02/bye-bye-beautiful-nightwish/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/50">&larr; Older</a>
@@ -310,6 +360,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/04/29/panorama-lembah-sungai-purwokerto/">Panorama Lembah Sungai Purwokerto</a>
+      </li>
     
       <li class="post">
         <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
@@ -367,10 +421,6 @@
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -393,7 +443,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Martinus Ady H -
+  Copyright &copy; 2016 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

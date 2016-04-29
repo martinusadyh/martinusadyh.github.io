@@ -12,7 +12,7 @@
   <meta name="author" content="Martinus Ady H">
 
   
-  <meta name="description" content="[caption id=&ldquo;attachment_2052&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;960&rdquo;] Motor Peserta Touring[/caption] Setelah sekian lama &hellip;">
+  <meta name="description" content="Untuk yang sering bermain dengan Apache HTTPD mungkin sudah tidak asing dengan module mod_userdir, modul ini berfungsi supaya aplikasi web kita tidak &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +90,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/18/konfigurasi-user-web-applications-pada-apache-tomcat/">Konfigurasi User Web Applications Pada Apache Tomcat</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-18T23:27:09+07:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:27 pm</span></time>
+        
+           | <a href="/2012/12/18/konfigurasi-user-web-applications-pada-apache-tomcat/#disqus_thread"
+             data-disqus-identifier="http://martinusadyh.web.id/2012/12/18/konfigurasi-user-web-applications-pada-apache-tomcat/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Untuk yang sering bermain dengan <a href="http://httpd.apache.org/">Apache HTTPD</a> mungkin sudah tidak asing dengan <a href="http://httpd.apache.org/docs/2.2/mod/mod_userdir.html">module mod_userdir</a>, modul ini berfungsi supaya aplikasi web kita tidak perlu di simpan di direktori <code>/var/www</code> sesuai konfigurasi standart milik <strong>Apache</strong>, melainkan di direktori <code>~/public_html</code>. Keuntungan yang kita dapat adalah, kita tidak perlu merubah hak akses direktori <code>/var/www</code> ataupun menambahkan user kita kedalam group milik <strong>Apache</strong>. Dengan model seperti ini, proses <em>development</em> kita menjadi lebih mudah karena semuanya dilakukan pada direktori <code>/home</code> kita sendiri :)</p>
+
+<p>Nah tahukah kalian bahwa ternyata <a href="http://tomcat.apache.org/">Apache Tomcat</a> juga memiliki fitur yang sama seperti saudara-nya <strong>Apache HTTPD</strong> ? Jika di <strong>Apache HTTPD</strong> nama module-nya adalah <a href="http://httpd.apache.org/docs/2.2/mod/mod_userdir.html">mod_userdir</a>, maka pada <strong>Apache Tomcat</strong> dikenal dengan nama <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/host.html#User_Web_Applications">User Web Applications</a>.</p>
+
+<p>Untuk mencoba-nya installah dahulu <a href="http://tomcat.apache.org/">Apache Tomcat</a> pada komputer/laptop anda, dan konfigurasikan supaya setiap kali komputer/laptop restart <strong>Apache Tomcat</strong> bisa langsung berjalan. Untuk pengguna distribusi <strong>Ubuntu</strong> kita bisa menginstall dengan mengetikkan perintah :
+[plain]
+martinusadyh@artivisi:~$ sudo apt-get install tomcat7
+[/plain]</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/12/18/konfigurasi-user-web-applications-pada-apache-tomcat/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -271,65 +315,6 @@ Kalau begitu Internet adalah sahabat terbaik anda. Dengan internet anda bisa men
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/10/24/tips-mencari-villa-murah-di-bali/">Tips Mencari Villa Murah Di Bali</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-10-24T11:53:30+07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:53 am</span></time>
-        
-           | <a href="/2012/10/24/tips-mencari-villa-murah-di-bali/#disqus_thread"
-             data-disqus-identifier="http://martinusadyh.web.id/2012/10/24/tips-mencari-villa-murah-di-bali/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Kesulitan mencari villa murah di Bali? Anda dapat menyimak tips berikut ini.</p>
-
-<p><img src="http://www.balivillas.co.id/images/villa-gallery/6279.jpeg" alt="Villa Obeori - villa murah di Bali" />Tua-muda pergi ke Bali. Baik hanya untuk urusan bisnis ataupun sengaja untuk liburan di Pulau Dewata yang penuh dengan impian ini. Untuk liburan ke Bali, kita perlu merogoh kocek lebih dalam. Bagi anda yang tinggal di luar pulau Bali, tentunya anda harus menggunakan transportasi untuk sampai disana. Belum lagi fasilitas-fasilitas yang ditawarkan di Bali, yang harganya tidak dapat dikatakan terbilang murah.</p>
-
-<p>Anak-anak muda khususnya backpacker yang ingin berlibur ke Bali tentu harus memikirkan matang-matang dan mengatur pengeluaran uangnya. Persiapan yang matang mengenai transportasi ataupun fasilitas untuk menginap tentu harus diperhitungkan. Anak-anak muda tersebut tentu ingin mendapatkan dan merasakan keindahan pulau Bali, meskipun hanya menginap di tempat penginapan atau villa yang biayanya murah. Tapi terkadang, para anak muda tersebut masih kesulitan dalam mencari villa yang murah di Bali.</p>
-
-<p>Namun tidak perlu khawatir, karena kini ada cara atau tips mencari <a href="http://www.balivillas.co.id">villa murah di Bali</a>:</p>
-
-<ul>
-<li><strong>Hindari Hari Liburan</strong></li>
-</ul>
-
-
-<p>Jika anda tidak ingin membelalakkan mata hanya karena sewa villa yang sangat mahal per-malamnya, hindari hari liburan. Jangan pernah pergi Bali saat-saat pada hari libur seperti liburan kenaikan kelas, natal, ataupun hari besar lainnya. Pada hari libur, akan semakin banyak wisatawan yang berkunjung ke Bali. Tentu saja para pemilik hotel, villa, dan penginapan akan memanfaatkan kesempatan ini dengan menaikkan tarif hingga dua kali lipat.</p>
-
-<ul>
-<li><strong>Reservasi secara grup, jangan individual</strong></li>
-</ul>
-
-
-<p>Kalau ingin menikmati villa di Bali dengan harga yang lebih murah, usahakan liburan ke Bali dalam kelompok orang yang banyak baik itu keluarga maupun teman-teman dekat. Semakin banyak orang dalam grup anda, akan semakin murah harga villa kalau dihitung biaya per kamarnya. Cari villa yang kamarnya banyak dan sesuai dengan jumlah orang dalam grup anda.</p>
-
-<ul>
-<li><strong>Gunakan jasa agent villa</strong></li>
-</ul>
-
-
-<p>Anda bisa mencari agent villa yang ada di Bali dan menanyakan promo-promo yang tersedia, agent villa terpercaya seperti <a href="http://www.baliheaven.com">CV. Bali Heaven</a> biasanya menawarkan paket-paket promo yang sangat menarik. Menggunakan jasa agent villa terpercaya juga dapat menghilangkan resiko penipuan dan ketidaknyamanan Anda dalam menikmati liburan di Bali.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -362,6 +347,10 @@ Kalau begitu Internet adalah sahabat terbaik anda. Dengan internet anda bisa men
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/04/29/panorama-lembah-sungai-purwokerto/">Panorama Lembah Sungai Purwokerto</a>
+      </li>
     
       <li class="post">
         <a href="/2015/12/10/berburu-suara-merdu-owa-jawa-di-bodogol/">Berburu Suara Merdu Owa Jawa Di Bodogol</a>
@@ -419,10 +408,6 @@ Kalau begitu Internet adalah sahabat terbaik anda. Dengan internet anda bisa men
         <a href="/2013/06/27/pendakian-gunung-sindoro-3153-mdpl/">Pendakian Gunung Sindoro 3153 Mdpl</a>
       </li>
     
-      <li class="post">
-        <a href="/2013/06/22/howto-disable-individual-jetpack-module/">Howto Disable Individual Jetpack Module</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -445,7 +430,7 @@ Kalau begitu Internet adalah sahabat terbaik anda. Dengan internet anda bisa men
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Martinus Ady H -
+  Copyright &copy; 2016 - Martinus Ady H -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
